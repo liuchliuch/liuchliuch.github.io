@@ -28,10 +28,10 @@ Publications
 Preprint, [arXiv:2509.24757](https://arxiv.org/abs/2509.24757).  
 2. **Quantum Speedup for Hypergraph Sparsification**  
 <span style="color:red">Ⓒ</span> Chenghua Liu, Minbo Gao, Zhengfeng Ji, Mingsheng Ying.  
-ICML 2025, [arXiv:2505.01763](https://arxiv.org/abs/2505.01763).  
+ICML 2025, [arXiv:2505.01763](https://arxiv.org/abs/2505.01763), [Poster](/files/2505.01763-Poster.pdf).
 3. **Quantum Speedup for Sampling Random Spanning Trees**  
 <span style="color:orange">Ⓐ</span> Simon Apers, Minbo Gao, Zhengfeng Ji, Chenghua Liu.  
-ICALP 2025, [arXiv:2504.15603](https://arxiv.org/abs/2504.15603).  
+ICALP 2025, [arXiv:2504.15603](https://arxiv.org/abs/2504.15603), [Poster](/files/2504.15603-Poster.pdf), [Lecture](/files/2504.15603-Lecture.pdf).
 
 
 
