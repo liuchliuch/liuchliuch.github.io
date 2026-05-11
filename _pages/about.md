@@ -8,10 +8,10 @@ redirect_from:
 ---
 
 
-I am a third-year PhD student at Institute of Software, Chinese Academy of Sciences. I am fortunate to be advised by Zhengfeng Ji and Mingsheng Ying. Previously, I received my B.Sc. degree in Computer Science and Technology, along with a minor in Statistics, from Tsinghua University.
+I am a third-year PhD student at the Institute of Software, Chinese Academy of Sciences, where I am fortunate to be advised by Zhengfeng Ji and Mingsheng Ying. Previously, I received my B.Sc. degree in Computer Science and Technology, with a minor in Statistics, from Tsinghua University.
 
 
-My research interests lie in **quantum computing** and **algorithms and complexity**. Outside of research, I enjoy road cycling and hiking.
+My research interests lie in **quantum computing** and **algorithms and complexity**. Outside of research, I enjoy road cycling, hiking, and humanistic photography.
 <!-- 
 Research Interests
 ------
@@ -28,7 +28,7 @@ Publications
 Preprint, [arXiv:2511.10253](https://arxiv.org/abs/2511.10253).  
 2. **Accelerating Regression Tasks with Quantum Algorithms**  
 <span style="color:red">Ⓒ</span> Chenghua Liu, Zhengfeng Ji.  
-Preprint, [arXiv:2509.24757](https://arxiv.org/abs/2509.24757).  
+ICML 2026, [arXiv:2509.24757](https://arxiv.org/abs/2509.24757).  
 3. **Quantum Speedup for Hypergraph Sparsification**  
 <span style="color:red">Ⓒ</span> Chenghua Liu, Minbo Gao, Zhengfeng Ji, Mingsheng Ying.  
 ICML 2025, [arXiv:2505.01763](https://arxiv.org/abs/2505.01763), [Poster](/files/2505.01763-Poster.pdf).
