@@ -1,0 +1,580 @@
+/* Homepage-only styling, closely following the visual system of uovou.me. */
+
+:root {
+  --mondrian-paper: #f5f2e9;
+  --mondrian-white: #fff;
+  --mondrian-ink: #111;
+  --mondrian-red: #e53935;
+  --mondrian-blue: #1e88e5;
+  --mondrian-yellow: #fdd835;
+  --mondrian-serif: Georgia, "Times New Roman", serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body.mondrian-home {
+  min-height: 100vh;
+  margin: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+  color: var(--mondrian-ink);
+  background: var(--mondrian-paper);
+  font-family: var(--mondrian-serif);
+  font-size: 16px;
+  line-height: normal;
+}
+
+.mondrian-home *,
+.mondrian-home *::before,
+.mondrian-home *::after {
+  box-sizing: border-box;
+}
+
+.mondrian-home h1,
+.mondrian-home h2,
+.mondrian-home p,
+.mondrian-home ol {
+  margin: 0;
+}
+
+.mondrian-home a {
+  color: inherit;
+}
+
+.mondrian-field {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background-color: var(--mondrian-paper);
+  background-image:
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-red) 0 0),
+    linear-gradient(var(--mondrian-blue) 0 0),
+    linear-gradient(var(--mondrian-yellow) 0 0),
+    linear-gradient(var(--mondrian-red) 0 0),
+    linear-gradient(var(--mondrian-white) 0 0),
+    linear-gradient(var(--mondrian-blue) 0 0),
+    linear-gradient(var(--mondrian-yellow) 0 0),
+    linear-gradient(var(--mondrian-white) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0),
+    linear-gradient(var(--mondrian-ink) 0 0);
+  background-size:
+    100% 4px,
+    100% 6px,
+    4px 100%,
+    5px 100%,
+    1vw 10vh,
+    2.1vw 2vh,
+    2.7vw 1.7vh,
+    26vw 26vh,
+    16vw 36vh,
+    20vw 28vh,
+    30vw 22vh,
+    18vw 18vh,
+    10vw 10vh,
+    3.2vw 2.6vh,
+    3vw 2.4vh,
+    1.6vw 1.3vh,
+    0.8vw 0.8vh,
+    3.8vw 1.1vh,
+    1.2vw 1vh,
+    1.4vw 1.2vh,
+    1.8vw 1.4vh,
+    1.1vw 1vh,
+    1.6vw 1.6vh;
+  background-position:
+    0 28vh,
+    0 68vh,
+    36vw 0,
+    68vw 0,
+    97vw 80vh,
+    92vw 89vh,
+    87.5vw 89vh,
+    6vw 8vh,
+    62vw 5vh,
+    14vw 58vh,
+    58vw 45vh,
+    78vw 70vh,
+    87vw 68vh,
+    12vw 84vh,
+    86vw 46vh,
+    24vw 14vh,
+    18vw 28vh,
+    52vw 76vh,
+    72vw 18vh,
+    8vw 62vh,
+    90vw 12vh,
+    68vw 84vh,
+    40vw 88vh;
+  background-repeat: no-repeat;
+  animation: mondrian-field-in 700ms ease-out both;
+}
+
+/* The upper white field becomes a quiet portrait reveal on mouse hover. */
+.portrait-reveal {
+  position: fixed;
+  z-index: 2;
+  top: 5vh;
+  left: 62vw;
+  width: 16vw;
+  height: 36vh;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.portrait-reveal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 40% center;
+  transform: scale(1.025);
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portrait-reveal.is-visible {
+  opacity: 1;
+}
+
+.portrait-reveal.is-visible img {
+  transform: scale(1);
+}
+
+/* A second white field quietly reveals interests beyond research. */
+.interest-reveal {
+  position: fixed;
+  z-index: 2;
+  top: 70vh;
+  left: 78vw;
+  display: flex;
+  width: 18vw;
+  height: 18vh;
+  padding: clamp(14px, 1.8vw, 28px);
+  align-items: center;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  color: var(--mondrian-ink);
+  background: rgba(255, 255, 255, 0.97);
+  transition: opacity 220ms ease;
+}
+
+.interest-reveal__content {
+  transform: translateY(5px);
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.interest-reveal h2 {
+  margin: 0 0 0.5rem;
+  font-family: var(--mondrian-serif);
+  font-size: clamp(0.7rem, 0.75vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.interest-reveal p {
+  margin: 0;
+  font-family: var(--mondrian-serif);
+  font-size: clamp(0.84rem, 1vw, 1.05rem);
+  line-height: 1.45;
+}
+
+.interest-reveal.is-visible,
+.interest-reveal:focus-visible {
+  opacity: 1;
+}
+
+.interest-reveal.is-visible .interest-reveal__content,
+.interest-reveal:focus-visible .interest-reveal__content {
+  transform: translateY(0);
+}
+
+.home-page {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 8vh auto;
+  padding: 2.5rem;
+  border: 2px solid var(--mondrian-ink);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 8px 8px 0 var(--mondrian-ink);
+  overflow: visible;
+  animation: mondrian-page-in 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Yellow-dominant rails replace the top and left borders. */
+.home-page::before,
+.home-page::after {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+}
+
+.home-page::before {
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: 9px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--mondrian-yellow) 0 24px,
+    var(--mondrian-blue) 24px 31px,
+    var(--mondrian-yellow) 31px 58px,
+    var(--mondrian-white) 58px 64px,
+    var(--mondrian-yellow) 64px 90px,
+    var(--mondrian-red) 90px 98px,
+    var(--mondrian-yellow) 98px 128px
+  );
+  transform-origin: left center;
+  animation: mondrian-stripe-in 560ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+}
+
+.home-page::after {
+  top: -2px;
+  left: -2px;
+  width: 9px;
+  height: calc(100% + 4px);
+  background: repeating-linear-gradient(
+    180deg,
+    var(--mondrian-yellow) 0 22px,
+    var(--mondrian-red) 22px 29px,
+    var(--mondrian-yellow) 29px 51px,
+    var(--mondrian-white) 51px 57px,
+    var(--mondrian-yellow) 57px 82px,
+    var(--mondrian-blue) 82px 89px,
+    var(--mondrian-yellow) 89px 118px
+  );
+  transform-origin: center top;
+  animation: mondrian-stripe-vertical-in 620ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 12px;
+  left: 12px;
+  padding: 8px 12px;
+  transform: translateY(-180%);
+  border: 2px solid var(--mondrian-ink);
+  background: var(--mondrian-white);
+  box-shadow: 3px 3px 0 var(--mondrian-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.profile-header h1 {
+  margin: 0 0 0.5rem;
+  font-family: var(--mondrian-serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: normal;
+}
+
+.affiliation {
+  margin: 0 !important;
+  font-size: 1.1rem;
+  line-height: normal;
+}
+
+.home-section {
+  margin-top: 2rem;
+}
+
+.home-section h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--mondrian-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.home-section p + p {
+  margin-top: 0.65rem;
+}
+
+.coming-soon {
+  opacity: 0.62;
+}
+
+.section-era {
+  opacity: 0.55;
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+}
+
+/* MiMo's warm monochrome identity, distilled into a quiet inline link. */
+.mimo-link {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  margin-inline: 0.03em;
+  padding: 0 0.12em 0.02em;
+  border-bottom: 1px solid currentColor;
+  color: var(--mondrian-ink) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.mimo-link::before {
+  position: absolute;
+  z-index: 1;
+  inset: -0.16em -0.2em;
+  display: grid;
+  place-items: center;
+  content: "M I M O";
+  pointer-events: none;
+  color: var(--mondrian-white);
+  background: var(--mondrian-ink);
+  clip-path: circle(0 at 50% 50%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: 0.61em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: clip-path 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mimo-link:hover::before,
+.mimo-link:focus-visible::before {
+  clip-path: circle(78% at 50% 50%);
+}
+
+.contact-links {
+  display: block;
+}
+
+.publication-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.publication-list li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.publication {
+  margin-bottom: 1.2rem !important;
+  padding-left: 0;
+}
+
+.publication:last-child {
+  margin-bottom: 0 !important;
+}
+
+.publication-title {
+  font-weight: 700;
+}
+
+.publication-authors,
+.publication-details {
+  margin-top: 0.2rem;
+  color: inherit;
+  font-size: inherit;
+}
+
+.order-mark {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.12em;
+  border: 0;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+  vertical-align: baseline;
+  cursor: help;
+}
+
+.order-mark::after {
+  position: absolute;
+  z-index: 6;
+  bottom: calc(100% + 0.45rem);
+  left: 50%;
+  padding: 0.32rem 0.48rem;
+  content: attr(data-order);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  color: var(--mondrian-white);
+  background: var(--mondrian-ink);
+  font-family: var(--mondrian-serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: none;
+  white-space: nowrap;
+  transform: translate(-50%, 4px);
+  transition:
+    opacity 140ms ease,
+    transform 180ms ease,
+    visibility 140ms ease;
+}
+
+.order-mark:hover::after {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.affiliation a,
+.contact-links a,
+.publication-details a {
+  color: inherit !important;
+  text-decoration: none;
+  border-bottom: 1px solid var(--mondrian-ink);
+  transition: border-bottom-width 120ms ease;
+}
+
+.affiliation a:hover,
+.contact-links a:hover,
+.publication-details a:hover {
+  border-bottom-width: 2px;
+}
+
+.mondrian-home :focus-visible {
+  outline: 2px solid var(--mondrian-blue);
+  outline-offset: 3px;
+}
+
+@keyframes mondrian-field-in {
+  from {
+    opacity: 0.72;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mondrian-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mondrian-stripe-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.68);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes mondrian-stripe-vertical-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.68);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@media (max-width: 720px) {
+  .home-page {
+    margin: 4vh 1rem;
+    padding: 1.75rem;
+    box-shadow: 6px 6px 0 var(--mondrian-ink);
+  }
+
+  .profile-header h1 {
+    font-size: 2.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .mondrian-field,
+  .home-page,
+  .home-page::before,
+  .home-page::after,
+  .portrait-reveal,
+  .interest-reveal {
+    animation: none;
+  }
+
+  .portrait-reveal,
+  .portrait-reveal img,
+  .interest-reveal,
+  .interest-reveal__content,
+  .mimo-link::before,
+  .order-mark::after {
+    transition: none;
+  }
+}
+
+@media print {
+  body.mondrian-home {
+    background: var(--mondrian-white);
+  }
+
+  .mondrian-field,
+  .portrait-reveal,
+  .interest-reveal,
+  .mimo-link::before,
+  .home-page::before,
+  .home-page::after {
+    display: none;
+  }
+
+  .home-page {
+    max-width: none;
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+  }
+}

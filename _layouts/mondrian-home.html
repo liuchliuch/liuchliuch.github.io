@@ -1,0 +1,38 @@
+---
+layout: compress
+---
+{% include base_path %}
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 | default: 'en' }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-19">
+    <meta name="theme-color" content="#f5f2e9">
+  </head>
+
+  <body class="mondrian-home" id="top">
+    {% include browser-upgrade.html %}
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="mondrian-field" aria-hidden="true"></div>
+
+    <div class="portrait-reveal" data-pointer-reveal aria-hidden="true">
+      <img src="{{ '/images/profile.png' | relative_url }}" alt="">
+    </div>
+
+    <main class="home-page" id="main-content" itemscope itemtype="https://schema.org/Person">
+      {{ content }}
+    </main>
+
+    <aside class="interest-reveal" data-pointer-reveal tabindex="0" aria-labelledby="interest-reveal-title">
+      <div class="interest-reveal__content">
+        <h2 id="interest-reveal-title">Beyond research</h2>
+        <p>Road cycling · Hiking · Humanistic photography</p>
+      </div>
+    </aside>
+
+    <script defer src="{{ '/assets/js/mondrian-home.js' | relative_url }}?v=reveal-2"></script>
+    {% include analytics.html %}
+  </body>
+</html>
