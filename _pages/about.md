@@ -23,8 +23,6 @@ redirect_from:
   <h2 id="contact-title">Contact</h2>
   <p class="contact-links">
     <a href="mailto:{{ site.author.email }}" itemprop="email">Email</a>
-    <span aria-hidden="true">·</span>
-    <a href="{{ site.author.googlescholar }}" rel="me">Google Scholar</a>
   </p>
 </section>
 

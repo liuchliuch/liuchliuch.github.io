@@ -7,7 +7,7 @@ layout: compress
   <head>
     {% include head.html %}
     {% include head/custom.html %}
-    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-19">
+    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-20">
     <meta name="theme-color" content="#f5f2e9">
   </head>
 
@@ -23,6 +23,9 @@ layout: compress
 
     <main class="home-page" id="main-content" itemscope itemtype="https://schema.org/Person">
       {{ content }}
+      <footer class="design-credit">
+        Design forked from <a href="https://uovou.me/" rel="external">uovou.me</a>
+      </footer>
     </main>
 
     <aside class="interest-reveal" data-pointer-reveal tabindex="0" aria-labelledby="interest-reveal-title">
