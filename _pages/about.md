@@ -28,13 +28,38 @@ redirect_from:
 
 <section class="home-section rising-sea-section" aria-labelledby="rising-sea-title">
   <h2 id="rising-sea-title">Rising Sea</h2>
-  <p class="coming-soon">Coming soon.</p>
+
+  <ol class="publication-list">
+    <li class="publication">
+      <div class="publication-title">From Block Orthogonality to Decidability in Complex-Weighted Counting CSP</div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.14845">arXiv</a></div>
+    </li>
+  </ol>
+
+  <details class="more-work">
+    <summary>More papers</summary>
+
+    <ol class="publication-list publication-list--secondary" start="2">
+      <li class="publication">
+        <div class="publication-title">A Correlation-Gap Bound for Nonlinear Gaussian PCA</div>
+        <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.15035">arXiv</a></div>
+      </li>
+    </ol>
+  </details>
 </section>
 
 <section class="home-section publications-section" aria-labelledby="publications-title">
   <h2 id="publications-title">Publications <span class="section-era">(Ancient)</span></h2>
 
   <ol class="publication-list">
+    <li class="publication">
+      <div class="publication-title">Quantum Communication Lower Bounds for Search Problems via Matrix Discrepancy</div>
+      <div class="publication-authors">Minbo Gao, <strong>Chenghua Liu</strong>, Guangxu Yang, and Tianyi Zhang. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.08517">arXiv</a></div>
+    </li>
+
     <li class="publication">
       <div class="publication-title">Ancilla-Free Fast-Forwarding Lindbladian Simulation Algorithms by Hamiltonian Twirling</div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
