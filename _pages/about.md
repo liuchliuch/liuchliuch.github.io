@@ -63,7 +63,7 @@ redirect_from:
     <li class="publication">
       <div class="publication-title">Ancilla-Free Fast-Forwarding Lindbladian Simulation Algorithms by Hamiltonian Twirling</div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2511.10253">arXiv</a></div>
+      <div class="publication-details"><em>Physical Review Letters</em> (accepted) · <a href="https://arxiv.org/abs/2511.10253">arXiv</a></div>
     </li>
 
     <li class="publication">
