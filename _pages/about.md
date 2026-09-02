@@ -31,6 +31,18 @@ redirect_from:
 
   <ol class="publication-list">
     <li class="publication">
+      <div class="publication-title">A Dichotomy for Complex Boolean Holant with Binary Disequality</div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00219">arXiv</a></div>
+    </li>
+
+    <li class="publication">
+      <div class="publication-title">Bounded Relative Boundary Implies Narrow DNF Approximation</div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00240">arXiv</a></div>
+    </li>
+
+    <li class="publication">
       <div class="publication-title">From Block Orthogonality to Decidability in Complex-Weighted Counting CSP</div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.14845">arXiv</a></div>
@@ -40,7 +52,13 @@ redirect_from:
   <details class="more-work">
     <summary>More papers</summary>
 
-    <ol class="publication-list publication-list--secondary" start="2">
+    <ol class="publication-list publication-list--secondary" start="4">
+      <li class="publication">
+        <div class="publication-title">Lower Bounds for Domination-Type Problems Parameterized by Rank-Width</div>
+        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.18854">arXiv</a></div>
+      </li>
+
       <li class="publication">
         <div class="publication-title">A Correlation-Gap Bound for Nonlinear Gaussian PCA</div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
