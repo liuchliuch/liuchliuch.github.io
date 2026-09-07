@@ -1,0 +1,57 @@
+---
+layout: mondrian-home
+title: Repository
+permalink: /repository.html
+author_profile: false
+profile_reveals: false
+schema_type: CollectionPage
+math: true
+excerpt: "A repository started by Chenghua Liu and Hanyu Li to share AI-generated papers, without plans for submission or formal publication."
+---
+
+<header class="profile-header">
+  <nav class="repository-navigation" aria-label="Back to homepage">
+    <a href="{{ '/' | relative_url }}"><span aria-hidden="true">←</span> Homepage</a>
+  </nav>
+  <h1>Repository</h1>
+  <p class="repository-intro">This repository was started by <span class="repository-person">Chenghua Liu<a class="repository-email" href="mailto:liuch.russell@gmail.com" aria-label="Email Chenghua Liu" title="Email Chenghua Liu"><span aria-hidden="true">✉</span></a></span> and <span class="repository-person">Hanyu Li<a class="repository-email" href="mailto:lhydave@pku.edu.cn" aria-label="Email Hanyu Li" title="Email Hanyu Li"><span aria-hidden="true">✉</span></a></span> to share AI-generated papers. Papers are listed without authors and are not intended for submission or formal publication. While we are reasonably confident in their correctness, they have been verified and polished less thoroughly than published work.</p>
+</header>
+
+<section class="repository-section" aria-label="Repository papers">
+  {% assign papers = site.data.repository.papers %}
+  {% if papers.size > 0 %}
+  <ol class="publication-list repository-list">
+    {% for paper in papers %}
+    <li class="publication repository-paper">
+      <article>
+        <h2 class="repository-paper-title">{{ paper.title | escape }}</h2>
+        <div class="publication-details repository-paper-meta">
+          {% if paper.pdf and paper.pdf != '' %}
+          {% assign pdf_url = paper.pdf %}
+          {% unless pdf_url contains '://' %}{% assign pdf_url = pdf_url | relative_url %}{% endunless %}
+          <a href="{{ pdf_url | escape }}" aria-label="PDF: {{ paper.title | escape }}">PDF</a>
+          {% endif %}
+          {% if paper.abstract and paper.abstract != '' %}
+          <button class="repository-abstract-toggle" type="button" aria-expanded="false" aria-controls="paper-abstract-{{ forloop.index }}">
+            <span class="repository-abstract-arrow" aria-hidden="true">▸</span> Abstract
+          </button>
+          {% endif %}
+          {% if paper.added %}
+          <time datetime="{{ paper.added | date: '%Y-%m-%d' }}">{{ paper.added | date: '%B %-d, %Y' }}</time>
+          {% endif %}
+        </div>
+        {% if paper.abstract and paper.abstract != '' %}
+        <div class="repository-abstract" id="paper-abstract-{{ forloop.index }}" hidden>
+          {{ paper.abstract | markdownify }}
+        </div>
+        {% endif %}
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+  {% else %}
+  <p class="repository-empty">Papers will be added here.</p>
+  {% endif %}
+</section>
+
+<script defer src="{{ '/assets/js/repository.js' | relative_url }}"></script>

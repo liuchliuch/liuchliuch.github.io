@@ -1,0 +1,231 @@
+# Repository entries are displayed in this order; prepend new batches.
+# Titles and abstracts follow the PDFs. Reference numbers refer to each PDF.
+# added is the repository inclusion date, not a publication or acceptance date.
+# Use inline $$...$$ for math in abstracts and a site-relative or HTTPS PDF URL.
+papers:
+  - title: "Near-Optimal Label Complexity for Active Huber Regression"
+    pdf: "/files/repository/AHR-near_linear_label_complexity_for_active_huber_regression.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      We resolve, up to logarithmic factors, the Huber dimension-dependence question posed by Musco,
+      Musco, Woodruff, and Yasuda [14], reducing the rank exponent from $$4-2\sqrt2$$ to one. We study
+      fixed-design active regression in the exact-real label-query model: the feature matrix
+      $$A\in\mathbb{R}^{n\times d}$$ is known, while an arbitrary response vector is accessible only
+      through coordinate queries. For $$r=\operatorname{rank}(A)$$, our randomized nonadaptive
+      algorithm queries $$\min\{n,\widetilde O(r/\varepsilon^2)\}$$ labels and, with probability at
+      least $$0.99$$, returns a $$(1+\varepsilon)$$-approximation to the square root of the empirical
+      Huber loss. All query locations are fixed before any label is read. For every admissible pool
+      size and rank, and $$0<\varepsilon\leq1/800$$, we construct a fixed rank-$$r$$ design on which
+      every adaptive randomized algorithm with the same worst-case guarantee needs
+      $$\Omega(\min\{n,r/\varepsilon^2\})$$ labels in worst-case expectation. Thus label complexity is
+      jointly optimal in pool size, rank, and accuracy up to logarithmic factors in this range. The
+      guarantee requires no distributional or noise assumptions and includes zero-optimum instances.
+      The key ingredient is a centered affine transfer lemma: design-only multiscale scores preserve
+      the objective increments needed to locate the minimizer after an independent constant-factor
+      pilot. This overcomes the hidden-label dependence of standard affine sparsification and turns
+      near-linear design sparsification into a near-optimal active algorithm.
+
+  - title: "Minimax Calibration Distance under Simultaneous Play"
+    pdf: "/files/repository/DAC-deterministic_adversarial_calibration_distance.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      We establish the $$\Theta(\sqrt T)$$ minimax rate of calibration distance in sequential binary
+      prediction under simultaneous play. This closes the lower-bound exponent gap posed by Qiao and
+      Zheng [13], from $$\Omega(T^{1/3})$$ to $$\Omega(\sqrt T)$$, for behavioral-kernel randomized
+      forecasters against deterministic past-adaptive adversaries. The adversary may use past
+      forecasts and outcomes but cannot observe the current private forecast. Calibration distance is
+      the total $$\ell_1$$ change needed to make the forecast sequence perfectly calibrated in
+      hindsight. For every $$T\geq2$$, every such forecaster incurs expected distance at least $$\sqrt
+      T/4320$$, while a deterministic algorithm guarantees distance below $$\sqrt T$$ on every outcome
+      path. For deterministic forecasters, one fixed outcome string also forces $$\Omega(\sqrt T)$$
+      distance. The upper bound improves the explicit $$2\sqrt T+1$$ guarantee of Arunachaleswaran et
+      al. [1]. Its shifted-grid construction admits exact integer optimization and $$O(\log(T+1))$$
+      worst-case time per round in the word-RAM model. Restarting gives a horizon-free bound below
+      $$(2+\sqrt2)\sqrt T$$ for every prefix, using $$O(\sqrt T)$$ memory. The lower bound combines a
+      mean-reverting adversary, Lipschitz calibration witnesses, and martingale fluctuations;
+      averaging then fixes a deterministic adversary. Together, these results determine the minimax
+      exponent in the stated simultaneous-play model. The randomized-forecaster rate against a fixed
+      outcome string remains open.
+
+  - title: "Dimension-Free Gradient-Norm Minimization in ℓₚ and Schatten-p Spaces"
+    pdf: "/files/repository/DFSG-dimension_free_small_gradients_in_ell_p_geometry.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      We establish dimension-free gradient-query bounds without multiplicative logarithmic loss for
+      convex optimization in $$\ell_p$$ and Schatten-$$p$$ spaces. For fixed $$2\le p<\infty$$,
+      $$1<\kappa\le2$$, and $$q=p/(p-1)$$, suppose the gradient is $$(\kappa-1)$$-Hölder continuous
+      from $$\ell_p$$ to $$\ell_q$$ with constant $$L$$, and the initial point lies within distance
+      $$R$$ of a minimizer. In the deterministic exact-real oracle model, our accumulative
+      shifted-power regularization method finds $$x$$ with $$\left\lVert \nabla
+      f(x)\right\rVert_q\le\varepsilon$$ using $$O_{p,\kappa}((LR^{\kappa-1}/\varepsilon)^{p/(\kappa
+      p+\kappa-p)})$$ gradient queries when $$0<\varepsilon<LR^{\kappa-1}$$, independently of
+      dimension. For Lipschitz gradients, the exponent $$p/(p+2)$$ improves the earlier
+      $$2(p-1)/(p+2)$$ upper-bound exponent for $$p>2$$, addressing the complexity gap identified by
+      Diakonikolas and Guzmán [6]. Contemporaneous work by Pelleriti et al. [18] obtains the same
+      vector rate through accumulated regularization. Our framework also yields a dimension-free
+      Schatten-$$p$$ bound for matrix objectives and an accuracy-oblivious checkpoint scheme that
+      retains the target-accuracy rate. The analysis combines minimizer transport, localization, and a
+      summable path bound to convert approximate composite minimization into a final-gradient
+      guarantee. The matrix extension permits exact multicenter proximal computations between oracle
+      calls. We further give a matching minimax comparison under an explicit simultaneous hard-family
+      assumption.
+
+  - title: "Nonminimizing Limits of Noisy Clarke Subgradient Descent"
+    pdf: "/files/repository/GCLM-counterexample_to_generic_convergence_to_local_minima.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      We disprove the conjecture of Davis, Drusvyatskiy, and Jiang [11] that generic convergence of
+      noisy subgradient descent to local minima remains valid without subdifferential regularity. Our
+      counterexample is an explicit two-dimensional, nonnegative, coercive, globally Lipschitz,
+      semialgebraic continuous piecewise-affine objective. For every linear tilt in a nonempty open
+      set, every initialization in a fixed positive-area rectangle, and every $$\gamma\in(1/2,1)$$,
+      the noisy Clarke-subgradient iterates with steps $$\alpha_k=(k+8)^{-\gamma}$$ converge almost
+      surely to the origin, which is not a local minimizer. The conclusion holds for every admissible
+      Clarke choice made before the current noise is sampled, under conditionally absolutely
+      continuous perturbations bounded coordinatewise by $$10^{-2}$$. In particular, a fixed Borel
+      selection with independent and identically distributed uniform disk noise satisfies the original
+      stochastic-approximation assumptions and directly falsifies the conjecture; the open bad-tilt
+      set rules out an almost-everywhere guarantee. The limit is Clarke-critical but not
+      limiting-critical, identifying subdifferential convexification as the obstruction. A shrinking
+      pathwise invariant gives an $$O(\alpha_{k-1})$$ convergence envelope. Scaling and separable
+      embedding extend the construction to arbitrary finite uniform-noise radii and every dimension at
+      least two. Thus definability, coercivity, generic linear perturbations, and continuous noise do
+      not suffice to guarantee local-minimum convergence for this recursion.
+
+  - title: "Exact Coverage Frontiers for Multi-Environment Jackknife+"
+    pdf: "/files/repository/MEJF-exact_rank_frontier_for_multi_environment_jackknife_plus.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      We answer the question raised by Duchi, Gupta, Jiang, and Sur [5] of replacing the conservative
+      multi-environment jackknife-minmax envelope by corrected jackknife+ endpoint quantiles. Assuming
+      exchangeability across environments and allowing arbitrary within-environment dependence, we
+      characterize exactly when an interval covers at least a $$1-\alpha$$ fraction of a new
+      environment with probability at least $$1-\delta$$. The solution jointly calibrates the
+      within-environment residual rank and the across-environment endpoint ranks. For equal-size
+      environments, we obtain the exact worst-case failure probability and all valid finite-sample
+      rank pairs, including rounding and ties. The limiting validity budget is
+      $$a/\alpha+2b/\delta\leq1$$, where $$a$$ and $$b$$ are the inner and outer trimming levels.
+      Comparison-graph degree bounds prove validity, and explicit tie-free constructions establish
+      sharpness. For a fixed multiset of unequal environment sizes, an exact Hall-type
+      characterization is computable in quadratic time after sorting when the induced inner ranks and
+      outer rank are positive. In the balanced positive-rank model, asymmetric endpoint ranks offer no
+      minimax improvement, while hidden independent global outer-rank randomization admits an exact
+      tournament-score optimization. We also derive an exact coverage guarantee for an expanded rule
+      under simultaneous on-sample deletion stability and sharp degradation under approximate block
+      exchangeability. Finally, an atomless construction exhibits an arbitrarily large pathwise
+      average-length improvement over jackknife-minmax, demonstrating the potential efficiency gain of
+      calibrated endpoint quantiles.
+
+  - title: "Scale-Independent Robust Multivariate Polynomial Regression"
+    pdf: "/files/repository/OSR-optimal_sample_scale_independent_robust_multivariate_polynomial_regression.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      We resolve the sample-versus-scale tradeoff posed by Arora, Bhattacharyya, Boban, Guruswami, and
+      Kelman [1, Remark 1.9] in robust multivariate polynomial regression, giving scale-independent
+      recovery with optimal degree exponents in an exact-real LP-oracle model. The unknown polynomial
+      $$p$$ has degree at most $$d$$ in each of $$n$$ coordinates. Covariates are i.i.d.
+      product-Chebyshev or uniform, and outlier indicators are mutually independent, independent of
+      the covariates, and have probabilities at most a known $$\rho<1/2$$. Inlier errors are bounded
+      by an unknown $$\sigma$$; admissible labels may otherwise be adversarial. For
+      $$0<\delta\leq\varepsilon\leq1/2$$, our algorithm returns $$\widehat p$$ with $$\left\lVert
+      \widehat p-p\right\rVert_\infty\leq(2+\varepsilon)\sigma$$ with probability at least
+      $$1-\delta$$, using $$O_{n,\rho}((d/\varepsilon)^n\log(d/\delta))$$ product-Chebyshev samples or
+      $$O_{n,\rho}((d/\varepsilon)^{2n}\log(d/\delta))$$ uniform samples. It does not use $$\sigma$$,
+      recovers $$p$$ exactly at zero noise, and makes a predetermined
+      $$O_{n,\rho}(1+\log(d/\varepsilon))$$ number of LP calls independent of signal magnitude. For
+      fixed dimension, accuracy, positive contamination rate, and success probability, the Chebyshev
+      rate matches the known dependence on $$d$$, while the uniform rate has the optimal degree
+      exponent up to an occupancy logarithm. The key ingredient is an arbitrary-representative
+      product-Chebyshev $$L^1$$ norming inequality, which enables a Chebyshev-mass-weighted
+      least-absolute-deviations initializer followed by fixed-budget median refinements.
+
+  - title: "Sharp Rank Laws for Maxout Switch Density"
+    pdf: "/files/repository/RKM-rank_linear_knot_density_for_maxout.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      We resolve the linear-rank conjecture of Goujon, Etemadi, and Unser [10] for the expected
+      density of active-candidate switches in random Maxout units. Their quadratic bound counts all
+      pairwise candidate intersections; our analysis counts only intersections visible on the upper
+      envelope. A multiplicity-aware area formula and a sharp visibility inequality give a rank-linear
+      bound along every deterministic finite-length rectifiable path. For a rank-$$K$$ unit in the
+      original iid-coordinate model, with weight-coordinate variance $$\sigma_w^2$$ and independent
+      bias density bounded by $$B$$, we prove $$\mathbb{E}\lambda\leq(K/\sqrt3)B\sigma_w$$, where
+      $$\lambda$$ is the switch count divided by path length. The fixed-rank coefficient $$K/\sqrt3$$
+      is sharp in the supremal sense, and the optimal universal constant multiplying
+      $$(K-1)B\sigma_w$$ is $$2/\sqrt3$$. The argument extends to weight-dependent conditional
+      bias-density envelopes and independent heterogeneous candidates. For iid copies of a jointly
+      Gaussian weight–bias vector, we derive an exact spherical-length formula whenever score variance
+      is nonzero along the path. Its coefficient is $$c_K=\mathbb{E}\max_{j\leq
+      K}G_j/\sqrt\pi\sim\sqrt{2\log K/\pi}$$, where $$G_j$$ are iid standard normals. This identifies
+      a sharp contrast between worst-case linear rank dependence and Gaussian square-root-logarithmic
+      growth. The single-unit laws also yield explicit layerwise switch-density bounds for networks
+      with independent layers, linking the resolved conjecture to pathwise complexity in deep random
+      networks.
+
+  - title: "Anytime Posterior Sampling under Nested CVaR Constraints"
+    pdf: "/files/repository/SCPS-sparse_calibration_for_dynamic_cvar_constraints.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      We develop an anytime posterior-sampling algorithm for finite episodic Markov decision processes
+      with unknown transitions and a separate nested upper-tail CVaR constraint. The method extends
+      the bounded-violation posterior-sampling framework of Kalagarla et al. [18] beyond additive
+      expected-cost constraints to time-consistent tail risk. This extension faces a structural
+      obstruction: when action randomization lies inside CVaR, generic threshold tightening can cause
+      a constant value loss and a strict scalar duality gap. Our solution is a risk bank that sparsely
+      executes minimum-risk policies and uses their sampled-model slack to support untightened
+      constrained planning. With known rewards and costs, model-wise strict feasibility on the support
+      of an arbitrary prior, and exact posterior-sampling and constrained-planning oracles, the
+      learner needs neither a common feasible baseline, the induced feasibility gap, nor the learning
+      horizon. For fixed problem parameters, we prove a $$\widetilde O(\sqrt K)$$ upper bound on
+      signed Bayesian reward shortfall after $$K$$ episodes, a $$K$$-independent upper bound on
+      expected signed risk-value debt, and a sublinear number of calibration episodes. The comparator
+      is a randomized physical-state Markov policy, and risk control is a signed aggregate guarantee
+      rather than per-episode safety. A support-size-independent CVaR–Hellinger inequality and
+      distorted-occupancy analysis quantify the dependence on tail mass and horizon. We also establish
+      a fixed-$$K$$ high-probability certificate, a two-model lower bound attaining the worst-case
+      rare-event risk-debt exponent, and NP-completeness of a one-state planning subclass at every
+      fixed rational tail mass in $$(0,1)$$.
+
+  - title: "Rate-Optimal Polynomial-Time Prediction of Stationary Renewal Processes"
+    pdf: "/files/repository/SRP-sharp_polynomial_time_renewal_prediction.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      Han, Jiang, and Wu [11] established the minimax $$\Theta(n^{-1/2})$$ one-step Kullback–Leibler
+      (KL) prediction rate for stationary binary renewal processes and left polynomial-time attainment
+      open. We resolve this computational question under only a finite-mean gap law, without a known
+      uniform mean bound, higher-moment condition, or mixing assumption. Our exact multiset dynamic
+      program evaluates a queried prefix continuation mass of a renewal likelihood envelope in
+      $$O(N^4)$$ integer operations. With $$N=n+1$$, the full batch required by a
+      compression-to-prediction reduction takes $$O(N^5)$$ integer operations and polynomial bit time,
+      yielding the optimal $$O(n^{-1/2})$$ risk averaged over stationary histories. A computable
+      mixture over occupied gap types retains this worst-case rate and adapts to simpler gap laws: it
+      achieves $$O(s\log n/n)$$ for $$s$$-point support, $$O(\log^2 n/n)$$ for exponential tails, and
+      $$O(n^{-(1-1/\alpha)}\log n)$$ when $$\mu(d)\leq Cd^{-\alpha}$$ with $$\alpha>2$$. The block
+      assignment also gives $$O(\sqrt N)$$ pathwise log-loss regret at a known horizon; dyadic
+      restarting yields a horizon-free polynomial-time predictor with minimax-order $$O(\sqrt N)$$
+      cumulative KL risk. A matching fixed-time lower bound holds even for aperiodic finite-support
+      laws satisfying $$T\leq4\mathbb{E} T$$. Finally, we distinguish the genuine stationary
+      conditional on an all-zero history from the ordinary post-renewal hazard, whose substitution
+      changes the integrated minimax risk to the nonvanishing value $$\log2$$.
+
+  - title: "Uniform-in-Time Particle Convergence for Projected Gaussian SVGD"
+    pdf: "/files/repository/UIP-uniform_in_time_particle_convergence_for_gaussian_svgd.pdf"
+    added: "2026-09-07"
+    abstract: >-
+      Liu, Ghosal, Balasubramanian, and Pillai [12] conjectured uniform-in-time mean-field convergence
+      for projected Gaussian Stein variational gradient descent (SVGD) beyond Gaussian targets. We
+      give a quantitative affirmative answer for the continuous-time, exact-Gaussian-moment system
+      with kernel $$K_1(x,y)=x^\top y+1$$, assuming $$\pi(dx)\propto e^{-V(x)}dx$$, $$V\in
+      C^2(\mathbb{R}^d)$$, and $$0<\alpha I\preceq\nabla^2V\preceq\beta I$$. For Gaussian i.i.d.
+      initialization and every $$N\ge d+1$$, the empirical particle law $$\zeta_{N,t}$$ and Gaussian
+      mean-field law $$\rho_t$$ satisfy $$\mathbb{E}[\sup_{t\ge0}W_2^2(\zeta_{N,t},\rho_t)]\le C
+      r_d(N)$$. The asymptotic orders of $$r_d(N)$$ are $$N^{-1}\log\log N$$, $$N^{-1}(\log N)^2$$,
+      and $$N^{-2/d}$$ in dimensions one, two, and at least three, respectively; each is sharp in
+      particle number. Thus the time supremum can be placed inside the expectation without losing the
+      Gaussian empirical-measure rate, even at the minimal full-rank sample size. We also obtain
+      high-probability all-time bounds and a last-iterate guarantee to the reverse-KL optimal Gaussian
+      at the same statistical scale. The key deterministic inequality separates initial moment
+      mismatch from the Wasserstein discrepancy of the standardized cloud, using stability in
+      square-root covariance coordinates and exact affine transport. At fixed $$N$$, we characterize
+      the discrete limiting cloud: its moments are optimal, but its preserved standardized shape
+      leaves a strictly positive full-law error.

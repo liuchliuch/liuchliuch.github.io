@@ -7,8 +7,11 @@ layout: compress
   <head>
     {% include head.html %}
     {% include head/custom.html %}
-    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-25">
+    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-31">
     <meta name="theme-color" content="#f5f2e9">
+    {% if page.math %}
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+    {% endif %}
   </head>
 
   <body class="mondrian-home" id="top">
@@ -17,17 +20,20 @@ layout: compress
 
     <div class="mondrian-field" aria-hidden="true"></div>
 
+    {% unless page.profile_reveals == false %}
     <div class="portrait-reveal" data-pointer-reveal aria-hidden="true">
       <img src="{{ '/images/profile.png' | relative_url }}" alt="">
     </div>
+    {% endunless %}
 
-    <main class="home-page" id="main-content" itemscope itemtype="https://schema.org/Person">
+    <main class="home-page" id="main-content" itemscope itemtype="https://schema.org/{{ page.schema_type | default: 'Person' | escape }}">
       {{ content }}
       <footer class="design-credit">
         Design forked from <a href="https://uovou.me/" rel="external">uovou.me</a>
       </footer>
     </main>
 
+    {% unless page.profile_reveals == false %}
     <aside class="interest-reveal" data-pointer-reveal tabindex="0" aria-labelledby="interest-reveal-title">
       <div class="interest-reveal__content">
         <h2 id="interest-reveal-title">Beyond research</h2>
@@ -36,6 +42,7 @@ layout: compress
     </aside>
 
     <script defer src="{{ '/assets/js/mondrian-home.js' | relative_url }}?v=reveal-2"></script>
+    {% endunless %}
     {% include analytics.html %}
   </body>
 </html>

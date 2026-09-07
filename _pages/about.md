@@ -27,7 +27,10 @@ redirect_from:
 </section>
 
 <section class="home-section rising-sea-section" aria-labelledby="rising-sea-title">
-  <h2 id="rising-sea-title">Rising Sea</h2>
+  <div class="section-heading">
+    <h2 id="rising-sea-title">Rising Sea</h2>
+    <a class="repository-link" href="{{ '/repository.html' | relative_url }}">Repository <span aria-hidden="true">→</span></a>
+  </div>
 
   <ol class="publication-list">
     <li class="publication">

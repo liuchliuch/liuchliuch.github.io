@@ -1,4 +1,4 @@
-/* Homepage-only styling, closely following the visual system of uovou.me. */
+/* Shared homepage and repository styling, following the visual system of uovou.me. */
 
 :root {
   --mondrian-paper: #f5f2e9;
@@ -346,6 +346,160 @@ body.mondrian-home {
   margin-top: 0.65rem;
 }
 
+.section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+}
+
+.repository-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 2.125rem;
+  margin-left: auto;
+  padding: 0.3rem 0.65rem;
+  border: 2px solid var(--mondrian-ink);
+  background: var(--mondrian-yellow);
+  box-shadow: 3px 3px 0 var(--mondrian-ink);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.repository-link:hover,
+.repository-link:focus-visible {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--mondrian-ink);
+}
+
+.repository-link:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--mondrian-ink);
+}
+
+.repository-navigation a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.repository-navigation a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.repository-navigation {
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+}
+
+.repository-intro {
+  line-height: 1.5;
+}
+
+.repository-person {
+  white-space: nowrap;
+}
+
+.repository-email {
+  margin-left: 0.18em;
+  text-decoration: none;
+}
+
+.repository-email:hover {
+  color: var(--mondrian-blue);
+}
+
+.repository-section {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(17, 17, 17, 0.2);
+}
+
+.repository-empty {
+  color: #555;
+  line-height: 1.5;
+}
+
+.repository-list .repository-paper {
+  margin-bottom: 1.75rem !important;
+}
+
+.repository-list .repository-paper:last-child {
+  margin-bottom: 0 !important;
+}
+
+.repository-paper-title {
+  font-family: var(--mondrian-serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.repository-paper-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  font-size: 0.875rem;
+}
+
+.repository-paper-meta time {
+  color: #555;
+}
+
+.repository-abstract-toggle {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  background: none;
+  font: inherit;
+  text-transform: none;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.repository-abstract-toggle:hover {
+  color: inherit;
+  background: none;
+  text-decoration-thickness: 2px;
+}
+
+.repository-abstract-arrow {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.repository-abstract-toggle[aria-expanded="true"] .repository-abstract-arrow {
+  transform: rotate(90deg);
+}
+
+.repository-abstract {
+  margin-top: 0.65rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.repository-abstract p + p {
+  margin-top: 0.65rem;
+}
+
 .coming-soon {
   opacity: 0.62;
 }
@@ -593,6 +747,13 @@ body.mondrian-home {
   }
 }
 
+@media (max-width: 420px) {
+  .repository-link {
+    padding-inline: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -612,6 +773,7 @@ body.mondrian-home {
   .interest-reveal,
   .interest-reveal__content,
   .mimo-link::before,
+  .repository-link,
   .order-mark::after {
     transition: none;
   }
