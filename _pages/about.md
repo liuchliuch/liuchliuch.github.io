@@ -34,6 +34,18 @@ redirect_from:
 
   <ol class="publication-list">
     <li class="publication">
+      <div class="publication-title">Quantum Behaviors Are Not Semialgebraic</div>
+      <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18865">arXiv</a></div>
+    </li>
+
+    <li class="publication">
+      <div class="publication-title">Hidden Circuits and Exact Counting in Ordered Graphs</div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18132">arXiv</a></div>
+    </li>
+
+    <li class="publication">
       <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact Width</div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
@@ -67,7 +79,7 @@ redirect_from:
   <details class="more-work">
     <summary>More papers</summary>
 
-    <ol class="publication-list publication-list--secondary" start="6">
+    <ol class="publication-list publication-list--secondary" start="8">
       <li class="publication">
         <div class="publication-title">Optimal Covariance Inflation under Gaussian Tilts</div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
