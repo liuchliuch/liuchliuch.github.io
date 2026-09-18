@@ -16,7 +16,7 @@ redirect_from:
 <section class="home-section" aria-labelledby="about-title">
   <h2 id="about-title">About</h2>
   <p>I received my B.Sc. in Computer Science and Technology, with a minor in Statistics, from Tsinghua University. My research interests included quantum computing, algorithms, and complexity.</p>
-  <p>Recently, my research focus has shifted to large language models, and I am currently conducting research at <a class="mimo-link" href="https://mimo.xiaomi.com/" rel="external" aria-label="MiMo official website"><span>MiMo</span></a>. I am interested in auto-research, interpretability, and—more importantly—<strong>safe</strong> self-improvement (beyond my current research).</p>
+  <p>Recently, my research focus has shifted to large language models, and I am currently conducting research at <a class="mimo-link" href="https://mimo.xiaomi.com/" rel="external" aria-label="MiMo official website"><span>MiMo</span></a>. I am interested in auto-research, post-training, and—more importantly—<strong>safe</strong> self-improvement (beyond my current research).</p>
 </section>
 
 <section class="home-section" aria-labelledby="contact-title">
@@ -121,6 +121,12 @@ redirect_from:
       <div class="publication-title">Ancilla-Free Fast-Forwarding Lindbladian Simulation Algorithms by Hamiltonian Twirling</div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details"><em>Physical Review Letters</em> (accepted) · <a href="https://arxiv.org/abs/2511.10253">arXiv</a></div>
+    </li>
+
+    <li class="publication">
+      <div class="publication-title">Quantum Speedups for Log-Concave Sampling from Local Structure</div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong>, Qisheng Wang, and Zhengfeng Ji. <abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.20253">arXiv</a></div>
     </li>
 
     <li class="publication">
