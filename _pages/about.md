@@ -10,7 +10,7 @@ redirect_from:
 
 <header class="profile-header">
   <h1 itemprop="name">Chenghua Liu</h1>
-  <p class="affiliation" itemprop="jobTitle">Third-year PhD student · Advisors: <strong><a href="https://www.cs.tsinghua.edu.cn/csen/info/1312/4388.htm" rel="external">Zhengfeng Ji</a></strong> and <strong><a href="https://www.cs.tsinghua.edu.cn/csen/info/1312/4395.htm" rel="external">Mingsheng Ying</a></strong><br><span itemprop="affiliation">Institute of Software, Chinese Academy of Sciences</span></p>
+  <p class="affiliation" itemprop="jobTitle">Fourth-year PhD student · Advisors: <strong><a href="https://www.cs.tsinghua.edu.cn/csen/info/1312/4388.htm" rel="external">Zhengfeng Ji</a></strong> and <strong><a href="https://www.cs.tsinghua.edu.cn/csen/info/1312/4395.htm" rel="external">Mingsheng Ying</a></strong><br><span itemprop="affiliation">Institute of Software, Chinese Academy of Sciences</span></p>
 </header>
 
 <section class="home-section" aria-labelledby="about-title">
