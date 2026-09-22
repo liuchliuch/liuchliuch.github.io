@@ -348,6 +348,10 @@ body.mondrian-home {
   margin-top: 0.65rem;
 }
 
+.works-days-section + .rising-sea-section {
+  margin-top: 1.5rem;
+}
+
 .section-heading {
   display: flex;
   flex-wrap: wrap;

@@ -11,6 +11,9 @@ redirect_from:
 <header class="profile-header">
   <h1 itemprop="name">Chenghua Liu</h1>
   <p class="affiliation" itemprop="jobTitle">Fourth-year PhD student · Advisors: <strong><a href="https://www.cs.tsinghua.edu.cn/csen/info/1312/4388.htm" rel="external">Zhengfeng Ji</a></strong> and <strong><a href="https://www.cs.tsinghua.edu.cn/csen/info/1312/4395.htm" rel="external">Mingsheng Ying</a></strong><br><span itemprop="affiliation">Institute of Software, Chinese Academy of Sciences</span></p>
+  <p class="contact-links">
+    <a href="mailto:{{ site.author.email }}" itemprop="email">Email</a>
+  </p>
 </header>
 
 <section class="home-section" aria-labelledby="about-title">
@@ -19,11 +22,27 @@ redirect_from:
   <p>Recently, my research focus has shifted to large language models, and I am currently conducting research at <a class="mimo-link" href="https://mimo.xiaomi.com/" rel="external" aria-label="MiMo official website"><span>MiMo</span></a>. I am interested in auto-research, post-training, and—more importantly—<strong>safe</strong> self-improvement (beyond my current research).</p>
 </section>
 
-<section class="home-section" aria-labelledby="contact-title">
-  <h2 id="contact-title">Contact</h2>
-  <p class="contact-links">
-    <a href="mailto:{{ site.author.email }}" itemprop="email">Email</a>
-  </p>
+<section class="home-section works-days-section" aria-labelledby="works-days-title">
+  <h2 id="works-days-title">Works &amp; Days</h2>
+
+  <ol class="publication-list">
+    <li class="publication">
+      <div class="publication-title">MiMo-V2.6</div>
+      <div class="publication-details">Core contributor · <a href="https://mimo.xiaomi.com/mimo-v2-6">Website</a> · <a href="https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/blob/main/MiMo_V2_6_technical_report.pdf">Technical report</a></div>
+    </li>
+  </ol>
+
+  <details class="more-work">
+    <summary>More work</summary>
+
+    <ol class="publication-list publication-list--secondary" start="2">
+      <li class="publication">
+        <div class="publication-title">Flow-Matched Motion Priors: Online Optimal-Transport Rewards for Imitation Learning</div>
+        <div class="publication-authors">Yilin Zou, <strong>Chenghua Liu</strong>, Chenglong Wu, and Fanghua Jiang. <abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.15631">arXiv</a></div>
+      </li>
+    </ol>
+  </details>
 </section>
 
 <section class="home-section rising-sea-section" aria-labelledby="rising-sea-title">
