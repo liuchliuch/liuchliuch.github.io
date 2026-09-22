@@ -428,6 +428,84 @@ body.mondrian-home {
   color: var(--mondrian-blue);
 }
 
+.sea-epigraph {
+  display: block;
+  margin: 1.75rem 1rem 0;
+  padding: 0;
+  border: 0;
+  color: #55524c;
+}
+
+.sea-epigraph [hidden] {
+  display: none !important;
+}
+
+.sea-epigraph blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--mondrian-serif);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.sea-epigraph figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.3rem 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.sea-epigraph-source {
+  margin-left: auto;
+  text-align: right;
+}
+
+.sea-epigraph figcaption a {
+  text-decoration: none;
+}
+
+.sea-epigraph figcaption a:hover {
+  text-decoration: underline;
+  text-decoration-color: #c8c4bb;
+  text-underline-offset: 0.2em;
+}
+
+.sea-epigraph-languages {
+  display: flex;
+  flex-shrink: 0;
+  align-items: baseline;
+  gap: 0.3rem;
+  color: #767169;
+  font-size: 0.6875rem;
+}
+
+.sea-epigraph-languages button {
+  min-height: 1.75rem;
+  margin: 0;
+  padding: 0.2rem 0.15rem;
+  border: 0;
+  border-radius: 0;
+  color: #767169;
+  background: none;
+  font: inherit;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.sea-epigraph-languages button[aria-pressed="true"],
+.sea-epigraph-languages button:hover {
+  color: #393630;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
 .repository-section {
   margin-top: 1.75rem;
   padding-top: 1.5rem;

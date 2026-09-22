@@ -17,6 +17,21 @@ excerpt: "A repository started by Chenghua Liu and Hanyu Li to share AI-generate
   <p class="repository-intro">This repository was started by <span class="repository-person">Chenghua Liu<a class="repository-email" href="mailto:liuch.russell@gmail.com" aria-label="Email Chenghua Liu" title="Email Chenghua Liu"><span aria-hidden="true">✉</span></a></span> and <span class="repository-person">Hanyu Li<a class="repository-email" href="mailto:lhydave@pku.edu.cn" aria-label="Email Hanyu Li" title="Email Hanyu Li"><span aria-hidden="true">✉</span></a></span> to share AI-generated papers. Papers are listed without authors and are not intended for submission or formal publication. While we are reasonably confident in their correctness, they have been verified and polished less thoroughly than published work.</p>
 </header>
 
+<figure class="sea-epigraph" aria-label="Grothendieck on the rising sea">
+  <blockquote id="sea-epigraph-quote" cite="https://webusers.imj-prg.fr/~leila.schneps/grothendieckcircle/RetSbis.pdf#page=687">
+    <p lang="fr" data-sea-language="fr">La mer s’avance insensiblement et sans bruit, rien ne semble se casser rien ne bouge l’eau est si loin on l’entend à peine… Pourtant elle finit par entourer la substance rétive…</p>
+    <p lang="en" data-sea-language="en" hidden>The sea advances imperceptibly and without a sound; nothing seems to break, nothing moves, the water is so far away that we can scarcely hear it… Yet in the end it surrounds the resistant substance…</p>
+  </blockquote>
+  <figcaption>
+    <div class="sea-epigraph-languages" role="group" aria-label="Quotation language" hidden>
+      <button type="button" data-sea-select="fr" aria-label="Read in French" aria-pressed="true" aria-controls="sea-epigraph-quote">FR</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" data-sea-select="en" aria-label="Read in English" aria-pressed="false" aria-controls="sea-epigraph-quote">EN</button>
+    </div>
+    <span class="sea-epigraph-source">— Alexandre Grothendieck, <a href="https://webusers.imj-prg.fr/~leila.schneps/grothendieckcircle/RetSbis.pdf#page=687"><cite lang="fr">Récoltes et Semailles</cite></a></span>
+  </figcaption>
+</figure>
+
 <section class="repository-section" aria-label="Repository papers">
   {% assign papers = site.data.repository.papers %}
   {% if papers.size > 0 %}
@@ -54,4 +69,4 @@ excerpt: "A repository started by Chenghua Liu and Hanyu Li to share AI-generate
   {% endif %}
 </section>
 
-<script defer src="{{ '/assets/js/repository.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/repository.js' | relative_url }}?v=sea-1"></script>
