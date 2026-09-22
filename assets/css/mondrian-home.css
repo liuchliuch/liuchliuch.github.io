@@ -233,6 +233,33 @@ body.mondrian-home {
   border-bottom-color: currentColor;
 }
 
+.author-order-notes {
+  margin-top: 2rem;
+  color: #65615b;
+  font-size: 0.75rem;
+  line-height: 1.65;
+}
+
+.author-order-notes p {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.author-order-notes p + p {
+  margin-top: 0.2rem;
+}
+
+.author-order-notes .order-mark {
+  flex-shrink: 0;
+  margin-left: 0;
+  font-size: 0.625rem;
+}
+
+.author-order-notes + .design-credit {
+  margin-top: 0.85rem;
+}
+
 .home-page {
   position: relative;
   /* Let individual controls stack above the fixed hover reveals. */

@@ -167,3 +167,8 @@ redirect_from:
     </li>
   </ol>
 </section>
+
+<aside class="author-order-notes" aria-label="Author order notes">
+  <p><abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr><span>Alphabetical order, common in theoretical fields.</span></p>
+  <p><abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr><span>Authors listed in order of contribution.</span></p>
+</aside>
