@@ -53,6 +53,12 @@ redirect_from:
 
   <ol class="publication-list">
     <li class="publication">
+      <div class="publication-title">Quantum Channel Stein’s Lemma with an Exponential Strong Converse</div>
+      <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="{{ '/files/quantum-channel-stein-lemma-exponential-strong-converse.pdf' | relative_url }}">PDF</a></div>
+    </li>
+
+    <li class="publication">
       <div class="publication-title">Quantum Behaviors Are Not Semialgebraic</div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18865">arXiv</a></div>
@@ -98,7 +104,7 @@ redirect_from:
   <details class="more-work">
     <summary>More papers</summary>
 
-    <ol class="publication-list publication-list--secondary" start="8">
+    <ol class="publication-list publication-list--secondary" start="9">
       <li class="publication">
         <div class="publication-title">Optimal Covariance Inflation under Gaussian Tilts</div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
