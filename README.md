@@ -19,6 +19,17 @@ See more info at https://academicpages.github.io/
 
 When you are initially working on your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
 
+### macOS quick start
+
+This repository includes a local setup that uses Homebrew Ruby 3.3 and keeps the production GitHub Pages URL unchanged:
+
+```bash
+./scripts/setup_local.sh
+./scripts/serve_local.sh
+```
+
+Then open [http://localhost:4000](http://localhost:4000). Local assets and links are served from the local site rather than `liuchliuch.github.io`.
+
 1. Clone the repository and made updates as detailed above.
 
 ### Using a different IDE

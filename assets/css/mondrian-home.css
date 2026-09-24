@@ -668,6 +668,29 @@ body.mondrian-home {
   display: block;
 }
 
+.comic-gallery {
+  display: grid;
+  gap: 2rem;
+  max-width: 540px;
+  margin: 1.5rem auto 0;
+}
+
+.comic-page {
+  margin: 0;
+}
+
+.comic-page figcaption {
+  margin-bottom: 0.65rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.comic-page img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .publication-list {
   margin: 0;
   padding-left: 1.2rem;
@@ -759,7 +782,15 @@ body.mondrian-home {
   background: rgba(152, 99, 69, 0.065);
 }
 
-.order-mark::after {
+.rip-mark {
+  position: relative;
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.15em;
+}
+
+.order-mark::after,
+.rip-mark::after {
   position: absolute;
   z-index: 6;
   bottom: calc(100% + 0.45rem);
@@ -785,7 +816,18 @@ body.mondrian-home {
     visibility 140ms ease;
 }
 
-.order-mark:hover::after {
+.rip-mark::after {
+  width: 13rem;
+  max-width: calc(100vw - 2rem);
+  content: attr(data-tooltip);
+  line-height: 1.3;
+  text-align: center;
+  white-space: normal;
+}
+
+.order-mark:hover::after,
+.rip-mark:hover::after,
+.rip-mark:focus-visible::after {
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, 0);
@@ -901,7 +943,8 @@ body.mondrian-home {
   .interest-reveal__content,
   .mimo-link::before,
   .repository-link,
-  .order-mark::after {
+  .order-mark::after,
+  .rip-mark::after {
     transition: none;
   }
 }

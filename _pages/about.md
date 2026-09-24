@@ -53,6 +53,12 @@ redirect_from:
 
   <ol class="publication-list">
     <li class="publication">
+      <div class="publication-title">A Generalized Stein Lemma for Quantum Channels</div>
+      <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="{{ '/files/generalized-stein-lemma-quantum-channels.pdf' | relative_url }}">PDF</a></div>
+    </li>
+
+    <li class="publication">
       <div class="publication-title">Quantum Channel Stein’s Lemma with an Exponential Strong Converse</div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27196">arXiv</a> · <a href="{{ '/files/quantum-channel-stein-lemma-exponential-strong-converse.pdf' | relative_url }}">PDF</a></div>
@@ -79,7 +85,7 @@ redirect_from:
     <li class="publication">
       <div class="publication-title">A Full Complexity Dichotomy for Complex-Valued Boolean Holant Problems</div>
       <div class="publication-authors"><strong>Chenghua Liu</strong>, Boning Meng, and Juqiu Wang. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
     </li>
 
     <li class="publication">
@@ -104,7 +110,7 @@ redirect_from:
   <details class="more-work">
     <summary>More papers</summary>
 
-    <ol class="publication-list publication-list--secondary" start="9">
+    <ol class="publication-list publication-list--secondary" start="10">
       <li class="publication">
         <div class="publication-title">Optimal Covariance Inflation under Gaussian Tilts</div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
@@ -114,7 +120,7 @@ redirect_from:
       <li class="publication">
         <div class="publication-title">Independent Set Discovery on Biclique-Free Graphs Is Fixed-Parameter Tractable</div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="{{ '/files/independent-set-discovery-biclique-free-graphs.pdf' | relative_url }}">PDF</a></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27837">arXiv</a> · <a href="{{ '/files/independent-set-discovery-biclique-free-graphs.pdf' | relative_url }}">PDF</a></div>
       </li>
 
       <li class="publication">
@@ -143,15 +149,21 @@ redirect_from:
     </li>
 
     <li class="publication">
-      <div class="publication-title">Ancilla-Free Fast-Forwarding Lindbladian Simulation Algorithms by Hamiltonian Twirling</div>
+      <div class="publication-title">Lévy-Khintchine Structure Enables Fast-Forwardable Lindbladian Simulation</div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details"><em>Physical Review Letters</em> (accepted) · <a href="https://arxiv.org/abs/2511.10253">arXiv</a></div>
+      <div class="publication-details"><em>Physical Review Letters</em> · <a href="https://journals.aps.org/prl/accepted/29072Y78A3e1f69775ac7c56757f9afcfd0003bc9">APS</a> · <a href="https://arxiv.org/abs/2511.10253">arXiv</a></div>
     </li>
 
     <li class="publication">
       <div class="publication-title">Quantum Speedups for Log-Concave Sampling from Local Structure</div>
       <div class="publication-authors"><strong>Chenghua Liu</strong>, Qisheng Wang, and Zhengfeng Ji. <abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.20253">arXiv</a></div>
+      <div class="publication-details"><span title="Not accepted to NeurIPS 2026">🪦 NeurIPS 2026 <em>casualty</em></span> (<abbr class="rip-mark" tabindex="0" data-tooltip="Laid to rest on arXiv. For eternity." aria-label="R.I.P. — Laid to rest on arXiv. For eternity.">R.I.P.</abbr>) · <a href="https://arxiv.org/abs/2609.20253">arXiv</a></div>
+    </li>
+
+    <li class="publication">
+      <div class="publication-title">Quantum Composite Hypothesis Testing with Small Error</div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Qisheng Wang. <abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr></div>
+      <div class="publication-details">NeurIPS 2026 (to appear)</div>
     </li>
 
     <li class="publication">

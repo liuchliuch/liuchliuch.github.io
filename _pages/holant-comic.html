@@ -1,0 +1,40 @@
+---
+layout: mondrian-home
+title: Holant — The Comic
+permalink: /holant-comic.html
+author_profile: false
+profile_reveals: false
+schema_type: ImageGallery
+excerpt: "A four-part comic about A Full Complexity Dichotomy for Complex-Valued Boolean Holant Problems."
+parts:
+  - number: I
+    title: "Local Rules, Global Mystery"
+    image: /images/holant-comic/holant-comic-01.png
+  - number: II
+    title: "So What Did the Paper Prove?"
+    image: /images/holant-comic/holant-comic-02.png
+  - number: III
+    title: "The Proof Roadmap: Finding a Mountain"
+    image: /images/holant-comic/holant-comic-03.png
+  - number: IV
+    title: "What Happens at Each Height?"
+    image: /images/holant-comic/holant-comic-04.png
+---
+
+<header class="profile-header">
+  <nav class="repository-navigation" aria-label="Comic navigation">
+    <a href="{{ '/' | relative_url }}#rising-sea-title"><span aria-hidden="true">←</span> Homepage</a>
+    · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">Paper PDF</a>
+  </nav>
+  <h1>Holant — The Comic</h1>
+  <p>A Full Complexity Dichotomy for Complex-Valued Boolean Holant Problems</p>
+</header>
+
+<section class="comic-gallery" aria-label="Holant comic in four parts">
+  {% for part in page.parts %}
+  <figure class="comic-page">
+    <figcaption>Part {{ part.number }} · {{ part.title | escape }}</figcaption>
+    <img src="{{ part.image | relative_url }}" width="1024" height="1536" alt="Holant comic, Part {{ part.number }}: {{ part.title | escape }}" decoding="async">
+  </figure>
+  {% endfor %}
+</section>
