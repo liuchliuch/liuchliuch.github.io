@@ -7,7 +7,7 @@ layout: compress
   <head>
     {% include head.html %}
     {% include head/custom.html %}
-    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-40">
+    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-42">
     {% if page.repository_fulltext %}
     <link rel="stylesheet" href="{{ '/assets/css/vendor/latexml/latexml.css' | relative_url }}?v=1">
     <link rel="stylesheet" href="{{ '/assets/css/vendor/latexml/article.css' | relative_url }}?v=1">
@@ -33,9 +33,11 @@ layout: compress
 
     <main class="home-page{% if page.repository_fulltext %} repository-paper-page{% endif %}" id="main-content" itemscope itemtype="https://schema.org/{{ page.schema_type | default: 'Person' | escape }}">
       {{ content }}
+      {% unless page.show_design_credit == false %}
       <footer class="design-credit">
         Design forked from <a href="https://uovou.me/" rel="external">uovou.me</a>
       </footer>
+      {% endunless %}
     </main>
 
     {% unless page.profile_reveals == false %}

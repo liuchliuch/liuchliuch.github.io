@@ -39,6 +39,8 @@ ruby scripts/generate_repository_html.rb \
 - 样式加载入口：`_layouts/mondrian-home.html`。
 - 本站全文样式：`assets/css/repository-paper.css`。
 
+列表的即时搜索由 `assets/js/repository.js` 处理，检索清单中的标题和摘要，支持不区分大小写、重音符号的多关键词匹配。搜索文本由 Liquid 写入条目的 `data-search-text`，不受 MathJax 转换影响；无 JavaScript 时仍显示完整论文列表。
+
 公式使用 LaTeXML 的对齐表格。网站的普通 `table` / `td` 样式不能给公式增加边框或缩小字号；相关覆盖规则已集中在全文样式中。真实表格的显式 `ltx_border_*` 横线与数学公式本身的方框应保留。
 
 仅调整样式时，无需重新转换论文。不要手改生成页面中的 MathML 或把正文变成图片。

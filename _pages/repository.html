@@ -4,6 +4,7 @@ title: Repository
 permalink: /repository.html
 author_profile: false
 profile_reveals: false
+show_design_credit: false
 schema_type: CollectionPage
 math: true
 excerpt: "A repository started by Chenghua Liu and Hanyu Li to share AI-generated papers, without plans for submission or formal publication."
@@ -35,9 +36,19 @@ excerpt: "A repository started by Chenghua Liu and Hanyu Li to share AI-generate
 <section class="repository-section" aria-label="Repository papers">
   {% assign papers = site.data.repository.papers %}
   {% if papers.size > 0 %}
-  <ol class="publication-list repository-list">
+  <div class="repository-search" role="search" aria-label="Search repository papers" hidden>
+    <label for="repository-search-input">Search papers</label>
+    <div class="repository-search-field">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 5 5"></path></svg>
+      <input id="repository-search-input" type="search" placeholder="Search titles and abstracts…" autocomplete="off" spellcheck="false" aria-controls="repository-papers" aria-describedby="repository-search-status">
+      <button class="repository-search-clear" type="button" aria-label="Clear search" hidden>Clear</button>
+    </div>
+    <p class="repository-search-status" id="repository-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
+  </div>
+  <p class="repository-search-empty" hidden>No papers match your search. Try a different keyword.</p>
+  <ol class="publication-list repository-list" id="repository-papers">
     {% for paper in papers %}
-    <li class="publication repository-paper">
+    <li class="publication repository-paper" data-search-text="{{ paper.title | append: ' ' | append: paper.abstract | escape }}">
       <article>
         {% assign html_path = '/repository/' | append: paper.slug | append: '/' %}
         <h2 class="repository-paper-title"><a href="{{ html_path | relative_url }}">{{ paper.title | escape }}</a></h2>
@@ -71,4 +82,4 @@ excerpt: "A repository started by Chenghua Liu and Hanyu Li to share AI-generate
   {% endif %}
 </section>
 
-<script defer src="{{ '/assets/js/repository.js' | relative_url }}?v=sea-1"></script>
+<script defer src="{{ '/assets/js/repository.js' | relative_url }}?v=search-1"></script>
