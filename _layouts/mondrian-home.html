@@ -33,11 +33,11 @@ layout: compress
 
     <main class="home-page{% if page.repository_fulltext %} repository-paper-page{% endif %}" id="main-content" itemscope itemtype="https://schema.org/{{ page.schema_type | default: 'Person' | escape }}">
       {{ content }}
-      {% unless page.show_design_credit == false %}
+      {% if page.url == '/' %}
       <footer class="design-credit">
         Design forked from <a href="https://uovou.me/" rel="external">uovou.me</a>
       </footer>
-      {% endunless %}
+      {% endif %}
     </main>
 
     {% unless page.profile_reveals == false %}
