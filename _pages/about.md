@@ -53,6 +53,12 @@ redirect_from:
 
   <ol class="publication-list">
     <li class="publication">
+      <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative Weights</div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF</a></div>
+    </li>
+
+    <li class="publication">
       <div class="publication-title">A Generalized Stein Lemma for Quantum Channels</div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="{{ '/files/generalized-stein-lemma-quantum-channels.pdf' | relative_url }}">PDF</a></div>
@@ -110,7 +116,7 @@ redirect_from:
   <details class="more-work">
     <summary>More papers</summary>
 
-    <ol class="publication-list publication-list--secondary" start="10">
+    <ol class="publication-list publication-list--secondary" start="11">
       <li class="publication">
         <div class="publication-title">Optimal Covariance Inflation under Gaussian Tilts</div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
