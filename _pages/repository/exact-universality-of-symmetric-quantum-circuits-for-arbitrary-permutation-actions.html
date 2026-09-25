@@ -1,0 +1,1192 @@
+---
+layout: "repository-paper"
+title: "Exact universality of symmetric quantum circuits for arbitrary permutation actions"
+repository_title_html: "Exact universality of symmetric quantum circuits\n<br class=\"ltx_break\">for arbitrary permutation actions"
+description: "We prove exact universality of symmetric quantum circuits for every finite permutation action on qubits. In the model of arbitrary one-qubit gates and reversible unbounded-fan-in threshold gates, a unitary has a"
+permalink: "/repository/exact-universality-of-symmetric-quantum-circuits-for-arbitrary-permutation-actions/"
+pdf: "/files/repository/UPA-exact_universality_of_symmetric_quantum_circuits_for_arbitrary_permutation_actions.pdf"
+repository_added: "2026-09-24"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-subsection"><a href="#S1.SS1">1.1 Main result</a></li>
+<li class="repository-toc-section"><a href="#S2">2 Circuit symmetry and selector preparation</a></li>
+<li class="repository-toc-section"><a href="#S3">3 A symmetric Pauli block encoding</a></li>
+<li class="repository-toc-section"><a href="#S4">4 From block encoding to exact universality</a></li>
+<li class="repository-toc-appendix"><a href="#A1">Appendix A A conditional construction from a Choi state</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Exact universality of symmetric quantum circuits
+<br class="ltx_break">for arbitrary permutation actions</h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">We prove exact universality of symmetric quantum circuits for every finite
+permutation action on qubits. In the model of arbitrary one-qubit gates
+and reversible unbounded-fan-in threshold gates, a unitary has a symmetric
+circuit with clean workspace if and only if it commutes with the given
+action. Symmetry is required at every layer: each permutation in the
+given action must admit an extension to all wires that preserves every
+layer as a set of commuting gates. This answers the arbitrary-group
+universality question of Castro-Silva, Gur, and Strelchuk (ITCS 2026). For <math id="abstract1.m1" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>
+active qubits, the nonuniform construction uses <math id="abstract1.m2" class="ltx_Math" alttext="O(n8^{n})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>⁢</mo><msup><mn>8</mn><mi>n</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math> gates and
+<math id="abstract1.m3" class="ltx_Math" alttext="O(4^{n})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mn>4</mn><mi>n</mi></msup><mo stretchy="false">)</mo></mrow></mrow></math> workspace qubits. The main difficulty is that equivariance of a
+Pauli expansion makes its coefficients constant on orbits, but does not
+make its individual terms equivariant. We assign a selector wire to each
+Pauli word and let the group act on these wires. Symmetric preparation and
+commuting incidence layers then give a block encoding of the target
+unitary. Exact oblivious amplification removes the normalization using
+reflections that tolerate permuted workspace, returning all ancillary
+qubits to their initial zero state and retaining the target global phase.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">A unitary can respect a permutation of its qubits while its elementary
+gate decomposition distinguishes them. The swap of two qubits is a basic
+example: it commutes with interchanging the two wires, but its usual
+three-CNOT realization starts with a gate whose control and target are
+exchanged by that permutation. The first layer is therefore not preserved.
+Operator equivariance alone does not guarantee the wire automorphisms
+required of a symmetric circuit.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Castro-Silva, Gur, and Strelchuk formalize this requirement using circuits
+of arbitrary one-qubit gates and reversible threshold gates, organized
+into layers of pairwise commuting gates <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite>. Every permutation of
+the active wires in the prescribed group must extend to a permutation of
+all circuit wires preserving each layer. Workspace qubits may be permuted
+among themselves. Their universality theorem handles partition groups
+<math id="S1.p2.m1" class="ltx_math_unparsed" alttext="S_{n_{1}}\times\cdots\times S_{n_{t}}" display="inline"><mrow><mi>S</mi><msub><mrow></mrow><msub><mi>n</mi><mn>1</mn></msub></msub><mo lspace="0.222em">×</mo><mo lspace="0.055em" rspace="0.055em">⋯</mo><mo rspace="0.222em">×</mo><mi>S</mi><msub><mrow></mrow><msub><mi>n</mi><mi>t</mi></msub></msub></mrow></math>, acting on disjoint blocks, and
+they leave universality for arbitrary permutation actions open
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Theorem 12 and Section 1.5]</cite>. We prove that commutation with the
+action is sufficient in every case, with exact implementation on the full
+Hilbert space and workspace returned to zero.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The partition-group proof combines simple equivariant unitaries by a
+symmetric linear-combination construction <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Lemma 10]</cite>. A Pauli
+expansion supplies simple unitaries for an arbitrary action, but loses the
+hypothesis that each summand is equivariant. Taking orbit sums does not
+repair this: even for two interchangeable qubits, the exchanged words
+<math id="S1.p3.m1" class="ltx_Math" alttext="\sigma_{1}\otimes I_{2}" display="inline"><mrow><msub><mi>σ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>I</mi><mn>2</mn></msub></mrow></math> and <math id="S1.p3.m2" class="ltx_Math" alttext="I_{2}\otimes\sigma_{1}" display="inline"><mrow><msub><mi>I</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>σ</mi><mn>1</mn></msub></mrow></math> have a sum with a
+nontrivial kernel. Orbit sums supply equivariant operators but do not give the unitary
+summands required by the linear-combination lemma.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">We retain the individual Pauli words and give each one a selector wire.
+Under an active-wire permutation, the selector wires are permuted by the
+induced action on Pauli words. Equal coefficients on each orbit then allow
+a symmetric superposition of one-hot selector states. Selection respects
+the joint action on the active and selector wires, although selecting an
+individual word need not respect the active action alone. This is the
+role of permutable workspace in the proof: it carries the labels needed
+to apply the individual summands without choosing an orbit representative.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">There are two further circuit constraints. First, controlled Pauli words
+can fail to commute when several selector bits are one. Their behavior
+on those inputs matters even though the prepared selector is one-hot,
+because commutation within a layer is an operator identity on the full
+Hilbert space. We split selection according to the three nonidentity
+Pauli symbols; each stage uses a commuting CNOT incidence layer between
+uniform local basis changes. Second, preparation and selection
+produce a normalized block of the target unitary, rather than the unitary
+itself. Its normalization is independent of the active input, so exact
+oblivious amplification applies. The required all-zero workspace test is
+preserved by every workspace permutation, allowing amplification to use
+the same wire action as selection.</p>
+</div>
+<section id="S1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">1.1 </span>Main result</h3>
+
+<div id="S1.SS1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.SS1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a finite set of active wires, let <math id="S1.SS1.p1.m2" class="ltx_Math" alttext="n=\lvert X\rvert" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>X</mi><mo stretchy="false">|</mo></mrow></mrow></math>, and write
+<math id="S1.SS1.p1.m3" class="ltx_Math" alttext="\mathcal{H}_{X}=(\mathbb{C}^{2})^{\otimes X}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></msup></mrow></math>. The symmetric group on <math id="S1.SS1.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is denoted by
+<math id="S1.SS1.p1.m5" class="ltx_Math" alttext="S_{X}" display="inline"><msub><mi>S</mi><mi>X</mi></msub></math>. Its tensor-factor permutation representation is</p>
+<table id="S1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex1.m1" class="ltx_math_unparsed" alttext="R_{X}(\gamma)\bigotimes_{x\in X}\lvert b_{x}\rangle_{x}=\bigotimes_{x\in X}\lvert b_{\gamma^{-1}x}\rangle_{x}\qquad(\gamma\in S_{X})." display="block"><mrow><msub><mi>R</mi><mi>X</mi></msub><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><munder><mo movablelimits="false" rspace="0em">⨂</mo><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></munder><msub><mrow><mo stretchy="false">|</mo><msub><mi>b</mi><mi>x</mi></msub><mo stretchy="false">⟩</mo></mrow><mi>x</mi></msub><mo rspace="0.111em">=</mo><munder><mo movablelimits="false" rspace="0em">⨂</mo><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></munder><msub><mrow><mo stretchy="false">|</mo><msub><mi>b</mi><mrow><msup><mi>γ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mi>x</mi></mrow></msub><mo stretchy="false">⟩</mo></mrow><mi>x</mi></msub><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>∈</mo><msub><mi>S</mi><mi>X</mi></msub><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">We call a unitary <math id="S1.SS1.p1.m6" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> <em class="ltx_emph ltx_font_italic"><math id="S1.SS1.p1.m7" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-equivariant</em> if
+<math id="S1.SS1.p1.m8" class="ltx_Math" alttext="[U,R_{X}(\gamma)]=0" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mrow><mi>U</mi><mo>,</mo><mrow><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">]</mo></mrow><mo>=</mo><mn>0</mn></mrow></math> for all <math id="S1.SS1.p1.m9" class="ltx_Math" alttext="\gamma\in\Gamma\leq S_{X}" display="inline"><mrow><mi>γ</mi><mo>∈</mo><mi mathvariant="normal">Γ</mi><mo>≤</mo><msub><mi>S</mi><mi>X</mi></msub></mrow></math>.</p>
+</div>
+<div id="S1.SS1.p2" class="ltx_para">
+<p class="ltx_p">A clean implementation returns every workspace qubit to <math id="S1.SS1.p2.m1" class="ltx_math_unparsed" alttext="\lvert 0\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math> for
+every active input, with the target global phase retained. We count each
+one-qubit or unbounded-fan-in threshold gate once, and write
+<math id="S1.SS1.p2.m2" class="ltx_Math" alttext="s(\mathcal{C})" display="inline"><mrow><mi>s</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S1.SS1.p2.m3" class="ltx_Math" alttext="a(\mathcal{C})" display="inline"><mrow><mi>a</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></math> for the number of gates and workspace
+qubits. Section <a href="#S2" title="2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a> gives the precise circuit conventions.</p>
+</div>
+<div id="S1.SS1.p3" class="ltx_para">
+<p class="ltx_p">We use the phase-free Hermitian Pauli basis
+<math id="S1.SS1.p3.m1" class="ltx_Math" alttext="\mathcal{P}_{X}=\{I_{2},\sigma_{1},\sigma_{2},\sigma_{3}\}^{\otimes X}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>X</mi></msub><mo>=</mo><msup><mrow><mo stretchy="false">{</mo><mrow><msub><mi>I</mi><mn>2</mn></msub><mo>,</mo><msub><mi>σ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>σ</mi><mn>2</mn></msub><mo>,</mo><msub><mi>σ</mi><mn>3</mn></msub></mrow><mo stretchy="false">}</mo></mrow><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></msup></mrow></math>, where</p>
+<table id="S1.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex2.m1" class="ltx_Math" alttext="\sigma_{1}=\begin{pmatrix}0&amp;1\\
+1&amp;0\end{pmatrix},\qquad\sigma_{2}=\begin{pmatrix}0&amp;-i\\
+i&amp;0\end{pmatrix},\qquad\sigma_{3}=\begin{pmatrix}1&amp;0\\
+0&amp;-1\end{pmatrix}." display="block"><mrow><mrow><mrow><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>)</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><mi>i</mi></mrow></mtd></mtr><mtr><mtd><mi>i</mi></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>)</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>σ</mi><mn>3</mn></msub><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Universality for finite permutation actions)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be finite and <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\Gamma\leq S_{X}" display="inline"><mrow><mi mathvariant="normal">Γ</mi><mo>≤</mo><msub><mi>S</mi><mi>X</mi></msub></mrow></math>. A unitary on <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{H}_{X}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub></math>
+has an exact clean-workspace <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-symmetric circuit if and only if it
+commutes with <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="R_{X}(\Gamma)" display="inline"><mrow><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Γ</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span></p>
+</div>
+<div id="S1.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For <math id="S1.Thmtheorem1.p2.m1" class="ltx_Math" alttext="n=\lvert X\rvert\geq 1" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>X</mi><mo stretchy="false">|</mo></mrow><mo>≥</mo><mn>1</mn></mrow></math>, write
+<math id="S1.Thmtheorem1.p2.m2" class="ltx_Math" alttext="U=\sum_{P\in\mathcal{P}_{X}}\alpha_{P}P" display="inline"><mrow><mi>U</mi><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>P</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>X</mi></msub></mrow></msub><mrow><msub><mi>α</mi><mi>P</mi></msub><mo>⁢</mo><mi>P</mi></mrow></mrow></mrow></math>, and put</span></p>
+<table id="S1.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex3.m1" class="ltx_Math" alttext="J=\{P\in\mathcal{P}_{X}:\alpha_{P}\neq 0\},\qquad M=\lvert J\rvert,\qquad\lambda=\sum_{P\in J}\lvert\alpha_{P}\rvert." display="block"><mrow><mrow><mrow><mi>J</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>P</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>X</mi></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>α</mi><mi>P</mi></msub><mo>≠</mo><mn>0</mn></mrow><mo stretchy="false">}</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>J</mi><mo stretchy="false">|</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>λ</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow></munder><mrow><mo stretchy="false">|</mo><msub><mi>α</mi><mi>P</mi></msub><mo stretchy="false">|</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S1.Thmtheorem1.p2.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> is <math id="S1.Thmtheorem1.p2.m4" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-equivariant, a realizing circuit can be chosen with</span></p>
+<table id="S1.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E1.m1" class="ltx_Math" alttext="\begin{split}a(\mathcal{C})&amp;\leq M+5\leq 4^{n}+5,\\
+s(\mathcal{C})&amp;=O(nM\lambda).\end{split}" display="block"><mtable columnspacing="0pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>a</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mphantom></mphantom><mo>≤</mo><mrow><mi>M</mi><mo>+</mo><mn>5</mn></mrow><mo>≤</mo><mrow><msup><mn>4</mn><mi>n</mi></msup><mo>+</mo><mn>5</mn></mrow></mrow><mo>,</mo></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>s</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>⁢</mo><mi>M</mi><mo>⁢</mo><mi>λ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">In particular, since <math id="S1.Thmtheorem1.p2.m5" class="ltx_Math" alttext="\lambda\leq\sqrt{M}" display="inline"><mrow><mi>λ</mi><mo>≤</mo><msqrt><mi>M</mi></msqrt></mrow></math>, the gate count is
+<math id="S1.Thmtheorem1.p2.m6" class="ltx_Math" alttext="O(nM^{3/2})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>⁢</mo><msup><mi>M</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math> and hence <math id="S1.Thmtheorem1.p2.m7" class="ltx_Math" alttext="O(n8^{n})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>⁢</mo><msup><mn>8</mn><mi>n</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>. These bounds hold both when
+equality gates are counted as single gates and when they are expanded into
+threshold and one-qubit gates. If
+<math id="S1.Thmtheorem1.p2.m8" class="ltx_Math" alttext="X=\varnothing" display="inline"><mrow><mi>X</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, one fixed clean workspace qubit and one one-qubit gate
+suffice.</span></p>
+</div>
+</div>
+<div id="S1.SS1.p4" class="ltx_para">
+<p class="ltx_p">The theorem is nonuniform: the one-qubit parameters depend on the exact
+Pauli coefficients, and the size bound does not include their classical
+computation or representation. In the worst case the circuit has
+exponential size. The gate model also counts an unbounded-fan-in threshold
+test as one gate, independently of its number of control wires. These are
+the resources under which the universality statement holds.</p>
+</div>
+<div id="S1.SS1.p5" class="ltx_para">
+<p class="ltx_p">Several related notions of symmetry impose different constraints.
+Representation-adapted layers and their learning-theoretic properties are
+studied in equivariant quantum neural networks <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, <a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite>.
+Symmetry-adapted projections for many-body simulation are studied by
+Bastidas et al. <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>]</cite>. Our concern is the realizability of an
+arbitrary equivariant unitary by elementary gates whose individual layers
+admit the required wire automorphisms, rather than the construction of
+symmetry-adapted operators alone.</p>
+</div>
+<div id="S1.SS1.p6" class="ltx_para">
+<p class="ltx_p">Universality also depends on the available interactions. Kazi, Larocca, and
+Cerezo identify relative-phase restrictions for fully permutation-equivariant
+generators of bounded bodyness <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib7" title="" class="ltx_ref">7</a>]</cite>. Deliyannis and Marvian prove
+realizability of all fully permutation-invariant unitaries, up to global
+phase, using global fields and a Tavis–Cummings interaction with a bosonic
+mode returned to its initial state <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>, Theorem 1]</cite>.
+Local symmetric-gate models can exhibit both nonuniversality and its removal
+by ancillary resources <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib9" title="" class="ltx_ref">9</a>]</cite>. In our model, symmetry may permute the elementary gates within a commuting
+layer, with the ancillary wires participating in the same action. The
+proof below constructs those layer automorphisms explicitly. Numbered
+citations to <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite> refer to its full arXiv version 2.</p>
+</div>
+</section>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>Circuit symmetry and selector preparation</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">We first fix the circuit conventions, then construct the selector state
+used in the Pauli expansion. Besides arbitrary gates
+in <math id="S2.p1.m1" class="ltx_Math" alttext="U(2)" display="inline"><mrow><mi>U</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></math>, the elementary gates are reversible threshold gates
+<math id="S2.p1.m2" class="ltx_Math" alttext="\Th_{t}^{S,h}" display="inline"><msubsup><mi>Th</mi><mi>t</mi><mrow><mi>S</mi><mo>,</mo><mi>h</mi></mrow></msubsup></math>, where the control set <math id="S2.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> does not contain the head wire
+<math id="S2.p1.m4" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math>. On a computational-basis state, this gate toggles <math id="S2.p1.m5" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> if and only if
+<math id="S2.p1.m6" class="ltx_Math" alttext="\sum_{u\in S}b_{u}\geq t" display="inline"><mrow><mrow><msub><mo>∑</mo><mrow><mi>u</mi><mo>∈</mo><mi>S</mi></mrow></msub><msub><mi>b</mi><mi>u</mi></msub></mrow><mo>≥</mo><mi>t</mi></mrow></math>, leaving all other bits unchanged. We also write
+<math id="S2.p1.m7" class="ltx_Math" alttext="\Eq_{t}^{S,h}" display="inline"><msubsup><mi>Eq</mi><mi>t</mi><mrow><mi>S</mi><mo>,</mo><mi>h</mi></mrow></msubsup></math> for the corresponding equality test
+<math id="S2.p1.m8" class="ltx_Math" alttext="\sum_{u\in S}b_{u}=t" display="inline"><mrow><mrow><msub><mo>∑</mo><mrow><mi>u</mi><mo>∈</mo><mi>S</mi></mrow></msub><msub><mi>b</mi><mi>u</mi></msub></mrow><mo>=</mo><mi>t</mi></mrow></math>. For <math id="S2.p1.m9" class="ltx_Math" alttext="0\leq t\leq\lvert S\rvert" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mrow><mo stretchy="false">|</mo><mi>S</mi><mo stretchy="false">|</mo></mrow></mrow></math>,</p>
+<table id="S2.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E2.m1" class="ltx_Math" alttext="\Eq_{t}^{S,h}=\Th_{t}^{S,h}\Th_{t+1}^{S,h}," display="block"><mrow><mrow><msubsup><mi>Eq</mi><mi>t</mi><mrow><mi>S</mi><mo>,</mo><mi>h</mi></mrow></msubsup><mo>=</mo><mrow><msubsup><mi>Th</mi><mi>t</mi><mrow><mi>S</mi><mo>,</mo><mi>h</mi></mrow></msubsup><mo lspace="0.167em">⁢</mo><msubsup><mi>Th</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>S</mi><mo>,</mo><mi>h</mi></mrow></msubsup></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S2.p1.m10" class="ltx_Math" alttext="\Th_{0}^{S,h}" display="inline"><msubsup><mi>Th</mi><mn>0</mn><mrow><mi>S</mi><mo>,</mo><mi>h</mi></mrow></msubsup></math> is the one-qubit bit flip and
+<math id="S2.p1.m11" class="ltx_Math" alttext="\Th_{\lvert S\rvert+1}^{S,h}=I" display="inline"><mrow><msubsup><mi>Th</mi><mrow><mrow><mo stretchy="false">|</mo><mi>S</mi><mo stretchy="false">|</mo></mrow><mo>+</mo><mn>1</mn></mrow><mrow><mi>S</mi><mo>,</mo><mi>h</mi></mrow></msubsup><mo>=</mo><mi>I</mi></mrow></math>. Thus an equality gate abbreviates at most two
+allowed gates and uses no additional qubit. The control sets are unbounded
+in size; the gate count does not count control incidences separately.
+Throughout, operator products act from right to left.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Symmetric circuits and clean implementation)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A circuit on disjoint active and workspace wire sets <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> is a
+sequence of layers, each consisting of pairwise commuting elementary gates.
+It is <em class="ltx_emph ltx_font_italic"><math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-symmetric</em> if, for every <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\gamma\in\Gamma" display="inline"><mrow><mi>γ</mi><mo>∈</mo><mi mathvariant="normal">Γ</mi></mrow></math>, there
+is a permutation <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\widetilde{\gamma}\in S_{X\sqcup W}" display="inline"><mrow><mover accent="true"><mi>γ</mi><mo>~</mo></mover><mo>∈</mo><msub><mi>S</mi><mrow><mi>X</mi><mo>⊔</mo><mi>W</mi></mrow></msub></mrow></math> whose restriction
+to <math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <math id="S2.Thmtheorem1.p1.m7" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>, such that relabeling wires by
+<math id="S2.Thmtheorem1.p1.m8" class="ltx_Math" alttext="\widetilde{\gamma}" display="inline"><mover accent="true"><mi>γ</mi><mo>~</mo></mover></math> maps each layer to itself as a set of labeled gates.
+In particular, gate parameters, control sets, and head wires are respected
+under this relabeling.</p>
+</div>
+<div id="S2.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">The circuit <math id="S2.Thmtheorem1.p2.m1" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></math> <em class="ltx_emph ltx_font_italic">exactly implements <math id="S2.Thmtheorem1.p2.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> with clean
+workspace</em> if</p>
+<table id="S2.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E3.m1" class="ltx_math_unparsed" alttext="\mathcal{C}\bigl(\lvert\psi\rangle_{X}\lvert 0^{W}\rangle\bigr)=(U\lvert\psi\rangle)_{X}\lvert 0^{W}\rangle\qquad\text{for every }\lvert\psi\rangle\in\mathcal{H}_{X}." display="block"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><msub><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mi>X</mi></msub><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>W</mi></msup><mo stretchy="false">⟩</mo></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mo>=</mo><msub><mrow><mo stretchy="false">(</mo><mi>U</mi><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow><mi>X</mi></msub><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>W</mi></msup><mo stretchy="false">⟩</mo></mrow><mtext>for every </mtext><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Its size <math id="S2.Thmtheorem1.p2.m3" class="ltx_Math" alttext="s(\mathcal{C})" display="inline"><mrow><mi>s</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></math> is its number of gates, and its workspace size is
+<math id="S2.Thmtheorem1.p2.m4" class="ltx_Math" alttext="a(\mathcal{C})=\lvert W\rvert" display="inline"><mrow><mrow><mi>a</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>W</mi><mo stretchy="false">|</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">The symmetry condition is Definition 12 of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite>; cleanliness is the
+additional implementation requirement in (<a href="#S2.E3" title="In Definition 2.1 (Symmetric circuits and clean implementation). ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>). A lift
+<math id="S2.p2.m1" class="ltx_Math" alttext="\widetilde{\gamma}" display="inline"><mover accent="true"><mi>γ</mi><mo>~</mo></mover></math> necessarily preserves <math id="S2.p2.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> setwise, but it need not
+fix its wires individually. The definition asks for a lift separately for
+each <math id="S2.p2.m3" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>, without requiring a homomorphism. Our construction supplies
+a single explicit group action on all wires. This also ensures that the
+same lifts work for every subcircuit we concatenate.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.2</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Every unitary implemented by a clean <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-symmetric circuit is
+<math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-equivariant.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Fix <math id="S2.p3.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> and an associated lift <math id="S2.p3.m2" class="ltx_Math" alttext="\widetilde{\gamma}" display="inline"><mover accent="true"><mi>γ</mi><mo>~</mo></mover></math>. Relabeling
+permutes the gates in each layer, and these gates commute. Hence the circuit
+unitary commutes with <math id="S2.p3.m3" class="ltx_Math" alttext="R_{X\sqcup W}(\widetilde{\gamma})" display="inline"><mrow><msub><mi>R</mi><mrow><mi>X</mi><mo>⊔</mo><mi>W</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>γ</mi><mo>~</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math>. Since the lift
+preserves <math id="S2.p3.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S2.p3.m5" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> separately and fixes <math id="S2.p3.m6" class="ltx_math_unparsed" alttext="\lvert 0^{W}\rangle" display="inline"><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>W</mi></msup><mo stretchy="false">⟩</mo></mrow></math>, applying this
+commutation identity to <math id="S2.p3.m7" class="ltx_math_unparsed" alttext="\lvert\psi\rangle\lvert 0^{W}\rangle" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>W</mi></msup><mo stretchy="false">⟩</mo></mrow></mrow></math> and using (<a href="#S2.E3" title="In Definition 2.1 (Symmetric circuits and clean implementation). ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>)
+gives <math id="S2.p3.m8" class="ltx_math_unparsed" alttext="UR_{X}(\gamma)\lvert\psi\rangle=R_{X}(\gamma)U\lvert\psi\rangle" display="inline"><mrow><mi>U</mi><msub><mi>R</mi><mi>X</mi></msub><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msub><mi>R</mi><mi>X</mi></msub><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mi>U</mi><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">For the converse, the Pauli coefficients determine both the selector
+amplitudes and the phases to be applied during selection. Assume
+<math id="S2.p4.m1" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>. Orthogonality of the Hermitian Pauli basis gives</p>
+<table id="S2.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E4.m1" class="ltx_Math" alttext="U=\sum_{P\in\mathcal{P}_{X}}\alpha_{P}P,\qquad\alpha_{P}=2^{-n}\Tr(PU)." display="block"><mrow><mrow><mrow><mi>U</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>P</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>X</mi></msub></mrow></munder><mrow><msub><mi>α</mi><mi>P</mi></msub><mo>⁢</mo><mi>P</mi></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>α</mi><mi>P</mi></msub><mo>=</mo><mrow><msup><mn>2</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>P</mi><mo>⁢</mo><mi>U</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">For <math id="S2.p4.m2" class="ltx_Math" alttext="\gamma\in\Gamma" display="inline"><mrow><mi>γ</mi><mo>∈</mo><mi mathvariant="normal">Γ</mi></mrow></math>, define
+<math id="S2.p4.m3" class="ltx_Math" alttext="\gamma P=R_{X}(\gamma)PR_{X}(\gamma)^{\dagger}" display="inline"><mrow><mrow><mi>γ</mi><mo>⁢</mo><mi>P</mi></mrow><mo>=</mo><mrow><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mo>†</mo></msup></mrow></mrow></math>. This action only permutes
+tensor factors; it introduces no signs.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.3</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> is <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-equivariant, then
+<math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\alpha_{\gamma P}=\alpha_{P}" display="inline"><mrow><msub><mi>α</mi><mrow><mi>γ</mi><mo>⁢</mo><mi>P</mi></mrow></msub><mo>=</mo><msub><mi>α</mi><mi>P</mi></msub></mrow></math> for every <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="P\in\mathcal{P}_{X}" display="inline"><mrow><mi>P</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>X</mi></msub></mrow></math> and
+<math id="S2.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\gamma\in\Gamma" display="inline"><mrow><mi>γ</mi><mo>∈</mo><mi mathvariant="normal">Γ</mi></mrow></math>. Moreover, <math id="S2.Thmtheorem3.p1.m6" class="ltx_Math" alttext="\sum_{P}\lvert\alpha_{P}\rvert^{2}=1" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>P</mi></msub><msup><mrow><mo lspace="0em" stretchy="false">|</mo><msub><mi>α</mi><mi>P</mi></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mn>1</mn></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Cyclicity of trace and commutation with <math id="S2.p5.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> give</p>
+<table id="S2.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex4.m1" class="ltx_Math" alttext="\begin{split}\alpha_{\gamma P}&amp;=2^{-n}\Tr\bigl(R_{X}(\gamma)PR_{X}(\gamma)^{\dagger}U\bigr)\\
+&amp;=2^{-n}\Tr\bigl(PR_{X}(\gamma)^{\dagger}UR_{X}(\gamma)\bigr)=\alpha_{P}.\end{split}" display="block"><mtable columnspacing="0pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_right" columnalign="right"><msub><mi>α</mi><mrow><mi>γ</mi><mo>⁢</mo><mi>P</mi></mrow></msub></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mphantom></mphantom><mo>=</mo><mrow><msup><mn>2</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mo>†</mo></msup><mo>⁢</mo><mi>U</mi></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow></mrow></mtd></mtr><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><msup><mn>2</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>P</mi><mo>⁢</mo><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mo>†</mo></msup><mo>⁢</mo><mi>U</mi><mo>⁢</mo><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow><mo>=</mo><msub><mi>α</mi><mi>P</mi></msub></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Since <math id="S2.p5.m2" class="ltx_Math" alttext="2^{-n}\Tr(P^{\dagger}Q)=\delta_{P,Q}" display="inline"><mrow><mrow><msup><mn>2</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>P</mi><mo>†</mo></msup><mo>⁢</mo><mi>Q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>P</mi><mo>,</mo><mi>Q</mi></mrow></msub></mrow></math>, expanding
+<math id="S2.p5.m3" class="ltx_Math" alttext="2^{-n}\Tr(U^{\dagger}U)" display="inline"><mrow><msup><mn>2</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>U</mi><mo>†</mo></msup><mo>⁢</mo><mi>U</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> in this basis yields
+<math id="S2.p5.m4" class="ltx_Math" alttext="\sum_{P}\lvert\alpha_{P}\rvert^{2}=2^{-n}\Tr(I)=1" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>P</mi></msub><msup><mrow><mo lspace="0em" stretchy="false">|</mo><msub><mi>α</mi><mi>P</mi></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mrow><msup><mn>2</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">It follows that <math id="S2.p6.m1" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> is <math id="S2.p6.m2" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-stable and</p>
+<table id="S2.E5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E5.m1" class="ltx_Math" alttext="1\leq\lambda\leq\sqrt{M}." display="block"><mrow><mrow><mn>1</mn><mo>≤</mo><mi>λ</mi><mo>≤</mo><msqrt><mi>M</mi></msqrt></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Indeed, the lower bound is <math id="S2.p6.m3" class="ltx_Math" alttext="\lVert\alpha\rVert_{1}\geq\lVert\alpha\rVert_{2}=1" display="inline"><mrow><msub><mrow><mo fence="true" rspace="0em">∥</mo><mi>α</mi><mo fence="true" lspace="0em">∥</mo></mrow><mn>1</mn></msub><mo rspace="0.1389em">≥</mo><msub><mrow><mo fence="true" lspace="0.1389em" rspace="0em">∥</mo><mi>α</mi><mo fence="true" lspace="0em" rspace="0.1389em">∥</mo></mrow><mn>2</mn></msub><mo lspace="0.1389em">=</mo><mn>1</mn></mrow></math>, and the
+upper bound is Cauchy–Schwarz on the <math id="S2.p6.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> nonzero coefficients. Define</p>
+<table id="S2.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex5.m1" class="ltx_math_unparsed" alttext="d_{P}=\sqrt{\frac{\lvert\alpha_{P}\rvert}{\lambda}},\qquad\omega_{P}=\frac{\alpha_{P}}{\lvert\alpha_{P}\rvert}\quad(P\in J)." display="block"><mrow><msub><mi>d</mi><mi>P</mi></msub><mo>=</mo><msqrt><mfrac><mrow><mo stretchy="false">|</mo><msub><mi>α</mi><mi>P</mi></msub><mo stretchy="false">|</mo></mrow><mi>λ</mi></mfrac></msqrt><mo rspace="2.167em">,</mo><msub><mi>ω</mi><mi>P</mi></msub><mo>=</mo><mfrac><msub><mi>α</mi><mi>P</mi></msub><mrow><mo stretchy="false">|</mo><msub><mi>α</mi><mi>P</mi></msub><mo stretchy="false">|</mo></mrow></mfrac><mrow><mo stretchy="false">(</mo><mi>P</mi><mo>∈</mo><mi>J</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Both parameters are constant on each orbit, and <math id="S2.p6.m5" class="ltx_Math" alttext="\sum_{P\in J}d_{P}^{2}=1" display="inline"><mrow><mrow><msub><mo>∑</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow></msub><msubsup><mi>d</mi><mi>P</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">Introduce selector wires <math id="S2.p7.m1" class="ltx_Math" alttext="Q=\{q_{P}:P\in J\}" display="inline"><mrow><mi>Q</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><msub><mi>q</mi><mi>P</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>, with group action
+<math id="S2.p7.m2" class="ltx_Math" alttext="q_{P}\mapsto q_{\gamma P}" display="inline"><mrow><msub><mi>q</mi><mi>P</mi></msub><mo stretchy="false">↦</mo><msub><mi>q</mi><mrow><mi>γ</mi><mo>⁢</mo><mi>P</mi></mrow></msub></mrow></math>. Let <math id="S2.p7.m3" class="ltx_math_unparsed" alttext="\lvert e_{P}\rangle" display="inline"><mrow><mo stretchy="false">|</mo><msub><mi>e</mi><mi>P</mi></msub><mo stretchy="false">⟩</mo></mrow></math> be the computational-basis
+state whose only nonzero bit is on <math id="S2.p7.m4" class="ltx_Math" alttext="q_{P}" display="inline"><msub><mi>q</mi><mi>P</mi></msub></math>. We will prepare</p>
+<table id="S2.E6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E6.m1" class="ltx_math_unparsed" alttext="\lvert\chi\rangle=\sum_{P\in J}d_{P}\lvert e_{P}\rangle." display="block"><mrow><mrow><mo stretchy="false">|</mo><mi>χ</mi><mo stretchy="false">⟩</mo></mrow><mo rspace="0.111em">=</mo><munder><mo movablelimits="false">∑</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow></munder><msub><mi>d</mi><mi>P</mi></msub><mrow><mo stretchy="false">|</mo><msub><mi>e</mi><mi>P</mi></msub><mo stretchy="false">⟩</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Each distinct Pauli word has one selector wire, irrespective of its
+stabilizer. Thus there is no multiplicity from indexing by group elements.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">The amplitudes in (<a href="#S2.E6" title="In 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>) have no preferred order within an orbit,
+so we prepare them through simultaneous local rotations and a Hamming-weight
+test. A product of one-qubit states with amplitude ratios <math id="S2.p8.m1" class="ltx_Math" alttext="d_{P}" display="inline"><msub><mi>d</mi><mi>P</mi></msub></math> already
+has the desired relative amplitudes on weight one. The probability of that
+subspace lies between <math id="S2.p8.m2" class="ltx_Math" alttext="e^{-1}" display="inline"><msup><mi>e</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> and <math id="S2.p8.m3" class="ltx_Math" alttext="1/2" display="inline"><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></math>, regardless of <math id="S2.p8.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+We lower it to <math id="S2.p8.m5" class="ltx_Math" alttext="\sin^{2}(\pi/10)" display="inline"><mrow><msup><mi>sin</mi><mn>2</mn></msup><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>π</mi><mo>/</mo><mn>10</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> with one auxiliary rotation, making
+two amplification steps exact. We record the reflection identity first;
+its isometry formulation will later amplify every active input at once.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.4</span></span><span class="ltx_text ltx_font_bold"> </span>(Two-reflection identity)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\Pi" display="inline"><mi mathvariant="normal">Π</mi></math> be an orthogonal projector on a finite-dimensional Hilbert space,
+and let <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathsf{S},\mathsf{G}" display="inline"><mrow><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi><mo>,</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></mrow></math> be isometries into that space from the same
+Hilbert space <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\mathcal{K}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></math>. Suppose that
+<math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\Pi\mathsf{S}=\sin\vartheta\,\mathsf{G}" display="inline"><mrow><mrow><mi mathvariant="normal">Π</mi><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi></mrow><mo>=</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mrow><mi>ϑ</mi><mo lspace="0.170em">⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></mrow></mrow></mrow></math>, where
+<math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="0&lt;\vartheta&lt;\pi/2" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>ϑ</mi><mo>&lt;</mo><mrow><mi>π</mi><mo>/</mo><mn>2</mn></mrow></mrow></math>. Put</span></p>
+<table id="S2.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex6.m1" class="ltx_Math" alttext="\mathsf{B}=\frac{\mathsf{S}-\sin\vartheta\,\mathsf{G}}{\cos\vartheta},\qquad R_{G}=I-2\Pi,\qquad R_{S}=I-2\mathsf{S}\mathsf{S}^{\dagger}." display="block"><mrow><mrow><mrow><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi><mo>=</mo><mfrac><mrow><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi><mo>−</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mrow><mi>ϑ</mi><mo lspace="0.170em">⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></mrow></mrow></mrow><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>ϑ</mi></mrow></mfrac></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>R</mi><mi>G</mi></msub><mo>=</mo><mrow><mi>I</mi><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi mathvariant="normal">Π</mi></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>R</mi><mi>S</mi></msub><mo>=</mo><mrow><mi>I</mi><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">SS</mi><mo>†</mo></msup></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Then <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\mathsf{B}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi></math> is an isometry orthogonal to <math id="S2.Thmtheorem4.p1.m7" class="ltx_Math" alttext="\mathsf{G}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></math>, and for every
+integer <math id="S2.Thmtheorem4.p1.m8" class="ltx_Math" alttext="j\geq 0" display="inline"><mrow><mi>j</mi><mo>≥</mo><mn>0</mn></mrow></math>,</span></p>
+<table id="S2.E7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E7.m1" class="ltx_Math" alttext="(R_{S}R_{G})^{j}\mathsf{S}=(-1)^{j}\bigl(\sin((2j+1)\vartheta)\mathsf{G}+\cos((2j+1)\vartheta)\mathsf{B}\bigr)." display="block"><mrow><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>R</mi><mi>S</mi></msub><mo>⁢</mo><msub><mi>R</mi><mi>G</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mi>j</mi></msup><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi></mrow><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>j</mi></msup><mo>⁢</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>j</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>ϑ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></mrow><mo>+</mo><mrow><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>j</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>ϑ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Applying <math id="S2.p9.m1" class="ltx_Math" alttext="\Pi" display="inline"><mi mathvariant="normal">Π</mi></math> again gives <math id="S2.p9.m2" class="ltx_Math" alttext="\Pi\mathsf{G}=\mathsf{G}" display="inline"><mrow><mrow><mi mathvariant="normal">Π</mi><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></mrow><mo>=</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></mrow></math>. Hence
+<math id="S2.p9.m3" class="ltx_Math" alttext="\mathsf{G}^{\dagger}\mathsf{S}=\sin\vartheta\,I" display="inline"><mrow><mrow><msup><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi><mo>†</mo></msup><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi></mrow><mo>=</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mrow><mi>ϑ</mi><mo lspace="0.170em">⁢</mo><mi>I</mi></mrow></mrow></mrow></math>, and substitution into
+the definition of <math id="S2.p9.m4" class="ltx_Math" alttext="\mathsf{B}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi></math> gives
+<math id="S2.p9.m5" class="ltx_Math" alttext="\mathsf{G}^{\dagger}\mathsf{B}=0" display="inline"><mrow><mrow><msup><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi><mo>†</mo></msup><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>, <math id="S2.p9.m6" class="ltx_Math" alttext="\mathsf{B}^{\dagger}\mathsf{B}=I" display="inline"><mrow><mrow><msup><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi><mo>†</mo></msup><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi></mrow><mo>=</mo><mi>I</mi></mrow></math>, and
+<math id="S2.p9.m7" class="ltx_Math" alttext="\Pi\mathsf{B}=0" display="inline"><mrow><mrow><mi mathvariant="normal">Π</mi><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>. In the orthogonal coordinates given by
+<math id="S2.p9.m8" class="ltx_Math" alttext="\mathsf{G}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></math> and <math id="S2.p9.m9" class="ltx_Math" alttext="\mathsf{B}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">B</mi></math>, the starting isometry is represented by
+<math id="S2.p9.m10" class="ltx_Math" alttext="\binom{\sin\vartheta}{\cos\vartheta}\otimes I_{\mathcal{K}}" display="inline"><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>ϑ</mi></mrow><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>ϑ</mi></mrow></mfrac><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mi>I</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></msub></mrow></math>, and</p>
+<table id="S2.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex7.m1" class="ltx_math_unparsed" alttext="R_{S}R_{G}=-\begin{pmatrix}\cos(2\vartheta)&amp;\sin(2\vartheta)\\
+-\sin(2\vartheta)&amp;\cos(2\vartheta)\end{pmatrix}\otimes I_{\mathcal{K}}" display="block"><mrow><mi>R</mi><msub><mrow></mrow><mi>S</mi></msub><mi>R</mi><msub><mrow></mrow><mi>G</mi></msub><mo rspace="0em">=</mo><mo lspace="0em">−</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>ϑ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>ϑ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mo rspace="0.167em">−</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>ϑ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mtd><mtd><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>ϑ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr></mtable><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><msub><mrow></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">on their joint range. Multiplying this matrix sends
+<math id="S2.p9.m11" class="ltx_Math" alttext="\binom{\sin t}{\cos t}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>t</mi></mrow><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>t</mi></mrow></mfrac><mo>)</mo></mrow></math> to
+<math id="S2.p9.m12" class="ltx_Math" alttext="-\binom{\sin(t+2\vartheta)}{\cos(t+2\vartheta)}" display="inline"><mrow><mo>−</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>ϑ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>ϑ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>)</mo></mrow></mrow></math>. Iteration proves
+(<a href="#S2.E7" title="In Lemma 2.4 (Two-reflection identity). ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>).
+∎</p>
+</div>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">We use the rotation convention</p>
+<table id="S2.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex8.m1" class="ltx_math_unparsed" alttext="R_{y}(t)=\begin{pmatrix}\cos(t/2)&amp;-\sin(t/2)\\
+\sin(t/2)&amp;\cos(t/2)\end{pmatrix},\qquad\lvert-\rangle=\frac{\lvert 0\rangle-\lvert 1\rangle}{\sqrt{2}}." display="block"><mrow><msub><mi>R</mi><mi>y</mi></msub><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mrow><mo rspace="0.167em">−</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr></mtable><mo>)</mo></mrow><mo rspace="2.167em">,</mo><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mfrac><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo><mo>−</mo><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><msqrt><mn>2</mn></msqrt></mfrac><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">In particular, <math id="S2.p10.m1" class="ltx_math_unparsed" alttext="R_{y}(-\pi/2)\lvert 0\rangle=\lvert-\rangle" display="inline"><mrow><msub><mi>R</mi><mi>y</mi></msub><mrow><mo stretchy="false">(</mo><mo lspace="0em">−</mo><mi>π</mi><mo>/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow></mrow></math> and
+<math id="S2.p10.m2" class="ltx_math_unparsed" alttext="R_{y}(\pi/2)\lvert-\rangle=\lvert 0\rangle" display="inline"><mrow><msub><mi>R</mi><mi>y</mi></msub><mrow><mo stretchy="false">(</mo><mi>π</mi><mo>/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></mrow></math>. A reversible predicate test with head in
+<math id="S2.p10.m3" class="ltx_math_unparsed" alttext="\lvert-\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow></math> leaves that head unchanged and contributes a minus sign exactly
+when the predicate holds. We use this phase-kickback implementation for all
+reflections below.</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.5</span></span><span class="ltx_text ltx_font_bold"> </span>(Symmetric one-hot preparation)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">There is a circuit <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> on <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> and three additional wires such that</span></p>
+<table id="S2.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex9.m1" class="ltx_math_unparsed" alttext="B\lvert 0^{Q}\rangle\lvert 0^{3}\rangle=\lvert\chi\rangle\lvert 0^{3}\rangle,\qquad s(B)=O(M)." display="block"><mrow><mi>B</mi><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>Q</mi></msup><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mn>3</mn></msup><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>χ</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mn>3</mn></msup><mo stretchy="false">⟩</mo></mrow><mo rspace="2.167em">,</mo><mi>s</mi><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>O</mi><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Every permutation of the selector wires within each <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-orbit,
+extended by fixing the three additional wires, preserves every layer of
+<math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p">Apply <math id="S2.p11.m1" class="ltx_Math" alttext="R_{y}(2\arctan d_{P})" display="inline"><mrow><msub><mi>R</mi><mi>y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo lspace="0.167em">⁢</mo><mrow><mi>arctan</mi><mo lspace="0.167em">⁡</mo><msub><mi>d</mi><mi>P</mi></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> to each <math id="S2.p11.m2" class="ltx_Math" alttext="q_{P}" display="inline"><msub><mi>q</mi><mi>P</mi></msub></math>, and denote the resulting
+one-layer circuit by <math id="S2.p11.m3" class="ltx_Math" alttext="A_{0}" display="inline"><msub><mi>A</mi><mn>0</mn></msub></math>. Then</p>
+<table id="S2.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex10.m1" class="ltx_math_unparsed" alttext="A_{0}\lvert 0^{Q}\rangle=c_{0}\bigotimes_{P\in J}(\lvert 0\rangle+d_{P}\lvert 1\rangle),\qquad c_{0}=\prod_{P\in J}(1+d_{P}^{2})^{-1/2}." display="block"><mrow><msub><mi>A</mi><mn>0</mn></msub><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>Q</mi></msup><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msub><mi>c</mi><mn>0</mn></msub><munder><mo movablelimits="false" rspace="0em">⨂</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow></munder><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mo>+</mo><msub><mi>d</mi><mi>P</mi></msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow><mo rspace="2.167em">,</mo><msub><mi>c</mi><mn>0</mn></msub><mo rspace="0.111em">=</mo><munder><mo movablelimits="false" rspace="0em">∏</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow></munder><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><msubsup><mi>d</mi><mi>P</mi><mn>2</mn></msubsup><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Let <math id="S2.p11.m4" class="ltx_Math" alttext="P_{1}" display="inline"><msub><mi>P</mi><mn>1</mn></msub></math> project onto the weight-one subspace of <math id="S2.p11.m5" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math>. We have
+<math id="S2.p11.m6" class="ltx_math_unparsed" alttext="P_{1}A_{0}\lvert 0^{Q}\rangle=c_{0}\lvert\chi\rangle" display="inline"><mrow><msub><mi>P</mi><mn>1</mn></msub><msub><mi>A</mi><mn>0</mn></msub><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>Q</mi></msup><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msub><mi>c</mi><mn>0</mn></msub><mrow><mo stretchy="false">|</mo><mi>χ</mi><mo stretchy="false">⟩</mo></mrow></mrow></math>, so the success probability is
+<math id="S2.p11.m7" class="ltx_Math" alttext="p_{0}=c_{0}^{2}" display="inline"><mrow><msub><mi>p</mi><mn>0</mn></msub><mo>=</mo><msubsup><mi>c</mi><mn>0</mn><mn>2</mn></msubsup></mrow></math>. The inequalities</p>
+<table id="S2.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex11.m1" class="ltx_Math" alttext="2=1+\sum_{P}d_{P}^{2}\leq\prod_{P}(1+d_{P}^{2})\leq\exp\Bigl(\sum_{P}d_{P}^{2}\Bigr)=e" display="block"><mrow><mn>2</mn><mo>=</mo><mrow><mn>1</mn><mo rspace="0.055em">+</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>P</mi></munder><msubsup><mi>d</mi><mi>P</mi><mn>2</mn></msubsup></mrow></mrow><mo rspace="0.111em">≤</mo><mrow><munder><mo movablelimits="false" rspace="0em">∏</mo><mi>P</mi></munder><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msubsup><mi>d</mi><mi>P</mi><mn>2</mn></msubsup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo maxsize="1.600em" minsize="1.600em">(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>P</mi></munder><msubsup><mi>d</mi><mi>P</mi><mn>2</mn></msubsup></mrow><mo maxsize="1.600em" minsize="1.600em">)</mo></mrow></mrow><mo>=</mo><mi>e</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">give <math id="S2.p11.m8" class="ltx_Math" alttext="e^{-1}\leq p_{0}\leq 1/2" display="inline"><mrow><msup><mi>e</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><msub><mi>p</mi><mn>0</mn></msub><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></math>.</p>
+</div>
+<div id="S2.p12" class="ltx_para">
+<p class="ltx_p">The weight-one probability need not correspond to an exact integer
+number of Grover rotations. The adjustment wire <math id="S2.p12.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> corrects this,
+while <math id="S2.p12.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> stores a predicate and <math id="S2.p12.m3" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> supplies phase kickback. Set
+<math id="S2.p12.m4" class="ltx_Math" alttext="\vartheta_{0}=\pi/10" display="inline"><mrow><msub><mi>ϑ</mi><mn>0</mn></msub><mo>=</mo><mrow><mi>π</mi><mo>/</mo><mn>10</mn></mrow></mrow></math>, and choose <math id="S2.p12.m5" class="ltx_Math" alttext="\beta_{0}\in(0,\pi)" display="inline"><mrow><msub><mi>β</mi><mn>0</mn></msub><mo>∈</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>π</mi><mo stretchy="false">)</mo></mrow></mrow></math> by</p>
+<table id="S2.E8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E8.m1" class="ltx_Math" alttext="\sin(\beta_{0}/2)=\frac{\sin\vartheta_{0}}{\sqrt{p_{0}}}." display="block"><mrow><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>β</mi><mn>0</mn></msub><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><msub><mi>ϑ</mi><mn>0</mn></msub></mrow><msqrt><msub><mi>p</mi><mn>0</mn></msub></msqrt></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">This is possible because
+<math id="S2.p12.m6" class="ltx_math_unparsed" alttext="0&lt;\sin(\pi/10)&lt;1/2&lt;e^{-1/2}\leq\sqrt{p_{0}}" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>sin</mi><mrow><mo stretchy="false">(</mo><mi>π</mi><mo>/</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mn>1</mn><mo>/</mo><mn>2</mn><mo>&lt;</mo><msup><mi>e</mi><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>≤</mo><msqrt><msub><mi>p</mi><mn>0</mn></msub></msqrt></mrow></math>.
+Let <math id="S2.p12.m7" class="ltx_Math" alttext="T_{0}" display="inline"><msub><mi>T</mi><mn>0</mn></msub></math> apply <math id="S2.p12.m8" class="ltx_Math" alttext="A_{0}" display="inline"><msub><mi>A</mi><mn>0</mn></msub></math> on <math id="S2.p12.m9" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> and <math id="S2.p12.m10" class="ltx_Math" alttext="R_{y}(\beta_{0})" display="inline"><mrow><msub><mi>R</mi><mi>y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>β</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> on <math id="S2.p12.m11" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>,
+acting trivially on <math id="S2.p12.m12" class="ltx_Math" alttext="f,z" display="inline"><mrow><mi>f</mi><mo>,</mo><mi>z</mi></mrow></math>. On <math id="S2.p12.m13" class="ltx_Math" alttext="Q,f,r" display="inline"><mrow><mi>Q</mi><mo>,</mo><mi>f</mi><mo>,</mo><mi>r</mi></mrow></math>, define</p>
+<table id="S2.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex12.m1" class="ltx_math_unparsed" alttext="\lvert s_{0}\rangle=T_{0}\lvert 0^{Q},0_{f},0_{r}\rangle,\qquad\lvert g_{0}\rangle=\lvert\chi\rangle\lvert 0_{f}\rangle\lvert 1_{r}\rangle." display="block"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>s</mi><mn>0</mn></msub><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msub><mi>T</mi><mn>0</mn></msub><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>Q</mi></msup><mo>,</mo><msub><mn>0</mn><mi>f</mi></msub><mo>,</mo><msub><mn>0</mn><mi>r</mi></msub><mo stretchy="false">⟩</mo></mrow><mo rspace="2.167em">,</mo><mrow><mo stretchy="false">|</mo><msub><mi>g</mi><mn>0</mn></msub><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>χ</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msub><mn>0</mn><mi>f</mi></msub><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msub><mn>1</mn><mi>r</mi></msub><mo stretchy="false">⟩</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The projector onto weight one on <math id="S2.p12.m14" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math>, zero on <math id="S2.p12.m15" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, and one on <math id="S2.p12.m16" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>
+sends <math id="S2.p12.m17" class="ltx_math_unparsed" alttext="\lvert s_{0}\rangle" display="inline"><mrow><mo stretchy="false">|</mo><msub><mi>s</mi><mn>0</mn></msub><mo stretchy="false">⟩</mo></mrow></math> to <math id="S2.p12.m18" class="ltx_math_unparsed" alttext="\sin\vartheta_{0}\lvert g_{0}\rangle" display="inline"><mrow><mi>sin</mi><msub><mi>ϑ</mi><mn>0</mn></msub><mrow><mo stretchy="false">|</mo><msub><mi>g</mi><mn>0</mn></msub><mo stretchy="false">⟩</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S2.p13" class="ltx_para">
+<p class="ltx_p">Here are explicit gates for the two required reflections. Put</p>
+<table id="S2.E9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E9.m1" class="ltx_Math" alttext="D=\Eq_{1}^{Q,f},\qquad F_{G}=D\,\Eq_{2}^{\{f,r\},z}\,D,\qquad F_{0}=\Eq_{0}^{Q\cup\{f,r\},z}." display="block"><mrow><mrow><mrow><mi>D</mi><mo>=</mo><msubsup><mi>Eq</mi><mn>1</mn><mrow><mi>Q</mi><mo>,</mo><mi>f</mi></mrow></msubsup></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>F</mi><mi>G</mi></msub><mo>=</mo><mrow><mi>D</mi><mo lspace="0.337em">⁢</mo><msubsup><mi>Eq</mi><mn>2</mn><mrow><mrow><mo stretchy="false">{</mo><mrow><mi>f</mi><mo>,</mo><mi>r</mi></mrow><mo stretchy="false">}</mo></mrow><mo>,</mo><mi>z</mi></mrow></msubsup><mo lspace="0.167em">⁢</mo><mi>D</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>F</mi><mn>0</mn></msub><mo>=</mo><msubsup><mi>Eq</mi><mn>0</mn><mrow><mrow><mi>Q</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mrow><mi>f</mi><mo>,</mo><mi>r</mi></mrow><mo stretchy="false">}</mo></mrow></mrow><mo>,</mo><mi>z</mi></mrow></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">On the subspace where <math id="S2.p13.m1" class="ltx_Math" alttext="f=0" display="inline"><mrow><mi>f</mi><mo>=</mo><mn>0</mn></mrow></math> and <math id="S2.p13.m2" class="ltx_math_unparsed" alttext="z=\lvert-\rangle" display="inline"><mrow><mi>z</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow></mrow></math>, the rightmost <math id="S2.p13.m3" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>
+computes the weight-one predicate into <math id="S2.p13.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, the middle gate contributes a
+minus sign precisely when this predicate and <math id="S2.p13.m5" class="ltx_Math" alttext="r=1" display="inline"><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow></math> both hold, and the
+leftmost <math id="S2.p13.m6" class="ltx_Math" alttext="D=D^{\dagger}" display="inline"><mrow><mi>D</mi><mo>=</mo><msup><mi>D</mi><mo>†</mo></msup></mrow></math> returns <math id="S2.p13.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to zero. Thus <math id="S2.p13.m8" class="ltx_Math" alttext="F_{G}" display="inline"><msub><mi>F</mi><mi>G</mi></msub></math> is the good
+reflection on this invariant subspace. With <math id="S2.p13.m9" class="ltx_math_unparsed" alttext="z=\lvert-\rangle" display="inline"><mrow><mi>z</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow></mrow></math>, the gate
+<math id="S2.p13.m10" class="ltx_Math" alttext="F_{0}" display="inline"><msub><mi>F</mi><mn>0</mn></msub></math> reflects about <math id="S2.p13.m11" class="ltx_math_unparsed" alttext="\lvert 0^{Q},0_{f},0_{r}\rangle" display="inline"><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>Q</mi></msup><mo>,</mo><msub><mn>0</mn><mi>f</mi></msub><mo>,</mo><msub><mn>0</mn><mi>r</mi></msub><mo stretchy="false">⟩</mo></mrow></math>; consequently,
+<math id="S2.p13.m12" class="ltx_Math" alttext="T_{0}F_{0}T_{0}^{\dagger}" display="inline"><mrow><msub><mi>T</mi><mn>0</mn></msub><mo>⁢</mo><msub><mi>F</mi><mn>0</mn></msub><mo>⁢</mo><msubsup><mi>T</mi><mn>0</mn><mo>†</mo></msubsup></mrow></math> reflects about <math id="S2.p13.m13" class="ltx_math_unparsed" alttext="\lvert s_{0}\rangle" display="inline"><mrow><mo stretchy="false">|</mo><msub><mi>s</mi><mn>0</mn></msub><mo stretchy="false">⟩</mo></mrow></math>. Both reflections
+preserve the subspace <math id="S2.p13.m14" class="ltx_Math" alttext="f=0" display="inline"><mrow><mi>f</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S2.p14" class="ltx_para">
+<p class="ltx_p">Lemma <a href="#S2.Thmtheorem4" title="Lemma 2.4 (Two-reflection identity). ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a>, applied within that subspace with
+<math id="S2.p14.m1" class="ltx_Math" alttext="\mathcal{K}=\mathbb{C}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>=</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></mrow></math>, now gives</p>
+<table id="S2.Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex13.m1" class="ltx_math_unparsed" alttext="(T_{0}F_{0}T_{0}^{\dagger}F_{G})^{2}\bigl(\lvert s_{0}\rangle\lvert-\rangle_{z}\bigr)=\lvert g_{0}\rangle\lvert-\rangle_{z}," display="block"><mrow><msup><mrow><mo stretchy="false">(</mo><msub><mi>T</mi><mn>0</mn></msub><msub><mi>F</mi><mn>0</mn></msub><msubsup><mi>T</mi><mn>0</mn><mo>†</mo></msubsup><msub><mi>F</mi><mi>G</mi></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mo stretchy="false">|</mo><msub><mi>s</mi><mn>0</mn></msub><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow><mi>z</mi></msub><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><msub><mi>g</mi><mn>0</mn></msub><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow><mi>z</mi></msub><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">since <math id="S2.p14.m2" class="ltx_Math" alttext="5\vartheta_{0}=\pi/2" display="inline"><mrow><mrow><mn>5</mn><mo>⁢</mo><msub><mi>ϑ</mi><mn>0</mn></msub></mrow><mo>=</mo><mrow><mi>π</mi><mo>/</mo><mn>2</mn></mrow></mrow></math> and <math id="S2.p14.m3" class="ltx_Math" alttext="(-1)^{2}=1" display="inline"><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow></math>. In particular, an explicit
+preparation circuit is</p>
+<table id="S2.E10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E10.m1" class="ltx_math_unparsed" alttext="B=\sigma_{1,r}\,R_{y}(\pi/2)_{z}(T_{0}F_{0}T_{0}^{\dagger}F_{G})^{2}T_{0}R_{y}(-\pi/2)_{z}." display="block"><mrow><mi>B</mi><mo>=</mo><msub><mi>σ</mi><mrow><mn>1</mn><mo>,</mo><mi>r</mi></mrow></msub><msub><mi>R</mi><mi>y</mi></msub><msub><mrow><mo stretchy="false">(</mo><mi>π</mi><mo>/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mi>z</mi></msub><msup><mrow><mo stretchy="false">(</mo><msub><mi>T</mi><mn>0</mn></msub><msub><mi>F</mi><mn>0</mn></msub><msubsup><mi>T</mi><mn>0</mn><mo>†</mo></msubsup><msub><mi>F</mi><mi>G</mi></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><msub><mi>T</mi><mn>0</mn></msub><msub><mi>R</mi><mi>y</mi></msub><msub><mrow><mo stretchy="false">(</mo><mo lspace="0em">−</mo><mi>π</mi><mo>/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mi>z</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(10)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The final bit flip resets <math id="S2.p14.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, the rotation resets <math id="S2.p14.m5" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>, and the
+computed predicate on <math id="S2.p14.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has already been uncomputed. Since the two
+reflection steps contribute phase <math id="S2.p14.m7" class="ltx_Math" alttext="(-1)^{2}=1" display="inline"><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow></math>, this is the exact
+preparation identity, including its phase.</p>
+</div>
+<div id="S2.p15" class="ltx_para">
+<p class="ltx_p">To verify the circuit symmetry, implement the rotations on <math id="S2.p15.m1" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> as one layer,
+each fixed-wire rotation as its own layer, and each equality gate in
+(<a href="#S2.E9" title="In 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9</span></a>) as its own layer. The parameters <math id="S2.p15.m2" class="ltx_Math" alttext="d_{P}" display="inline"><msub><mi>d</mi><mi>P</mi></msub></math> are
+equal within each orbit, so the layers of <math id="S2.p15.m3" class="ltx_Math" alttext="A_{0}" display="inline"><msub><mi>A</mi><mn>0</mn></msub></math> and <math id="S2.p15.m4" class="ltx_Math" alttext="A_{0}^{\dagger}" display="inline"><msubsup><mi>A</mi><mn>0</mn><mo>†</mo></msubsup></math> are
+preserved under all orbitwise selector permutations. Every equality control
+set either contains all of <math id="S2.p15.m5" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> and some fixed wires or consists entirely
+of fixed wires. Its head is fixed. These permutations therefore preserve
+every layer of (<a href="#S2.E10" title="In 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>). There are five occurrences of
+<math id="S2.p15.m6" class="ltx_Math" alttext="A_{0}" display="inline"><msub><mi>A</mi><mn>0</mn></msub></math> or <math id="S2.p15.m7" class="ltx_Math" alttext="A_{0}^{\dagger}" display="inline"><msubsup><mi>A</mi><mn>0</mn><mo>†</mo></msubsup></math> and only a constant number of other gates, giving
+<math id="S2.p15.m8" class="ltx_Math" alttext="s(B)=O(M)" display="inline"><mrow><mrow><mi>s</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Expanding the equality gates by
+(<a href="#S2.E2" title="In 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>), using a separate layer for each factor,
+preserves the same symmetries and count up to a constant factor.
+∎</p>
+</div>
+</div>
+<div id="S2.p16" class="ltx_para">
+<p class="ltx_p">This is an explicit instance of exact amplitude amplification
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, Section 2.1]</cite>, with the symmetry preserved as in
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Lemma 6]</cite>. Here the initial product rotations and predicate
+tests supply the entire state-preparation circuit, together with its
+action on the workspace wires.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>A symmetric Pauli block encoding</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">A prepared one-hot selector asks for exactly one Pauli word to be applied.
+The circuit implementing this request must still be a unitary on every
+selector input. In particular, controlled Pauli words cannot all be put in
+one commuting layer: two anticommuting words still anticommute on the
+branch where both of their controls are one. Ordering these whole-word
+gates arbitrarily would distinguish labels that the group may exchange.
+We instead order the three Pauli symbols, which are fixed by wire
+permutations, and put every incidence of a given symbol in the same
+commuting stage.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">For <math id="S3.p2.m1" class="ltx_Math" alttext="s\in\{1,2,3\}" display="inline"><mrow><mi>s</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>, let <math id="S3.p2.m2" class="ltx_Math" alttext="L_{s}" display="inline"><msub><mi>L</mi><mi>s</mi></msub></math> be the unitary of the incidence layer</p>
+<table id="S3.E11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E11.m1" class="ltx_math_unparsed" alttext="\mathcal{L}_{s}=\bigl\{\CNOT(q_{P}\longrightarrow x):P\in J,\ x\in X,\ P_{x}=\sigma_{s}\bigr\}." display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">L</mi><mi>s</mi></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>CNOT</mi><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>P</mi></msub><mo stretchy="false">⟶</mo><mi>x</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><mi>P</mi><mo>∈</mo><mi>J</mi><mo rspace="0.667em">,</mo><mi>x</mi><mo>∈</mo><mi>X</mi><mo rspace="0.667em">,</mo><msub><mi>P</mi><mi>x</mi></msub><mo>=</mo><msub><mi>σ</mi><mi>s</mi></msub><mo stretchy="false">}</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(11)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="S3.p2.m3" class="ltx_Math" alttext="P_{x}" display="inline"><msub><mi>P</mi><mi>x</mi></msub></math> denotes the factor of <math id="S3.p2.m4" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> at wire <math id="S3.p2.m5" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>. All controls lie in
+<math id="S3.p2.m6" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> and all targets in <math id="S3.p2.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, so no target is a control of another gate.
+Gates with a common target apply the same bit flip, and gates with distinct
+targets also commute. Thus <math id="S3.p2.m8" class="ltx_Math" alttext="\mathcal{L}_{s}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">L</mi><mi>s</mi></msub></math> is a legal layer. Each CNOT is
+a threshold gate with one control.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p3.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> be the Hadamard gate and <math id="S3.p3.m2" class="ltx_Math" alttext="S=\diag(1,i)" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mi>diag</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The identities
+<math id="S3.p3.m3" class="ltx_Math" alttext="H\sigma_{1}H=\sigma_{3}" display="inline"><mrow><mrow><mi>H</mi><mo>⁢</mo><msub><mi>σ</mi><mn>1</mn></msub><mo>⁢</mo><mi>H</mi></mrow><mo>=</mo><msub><mi>σ</mi><mn>3</mn></msub></mrow></math> and <math id="S3.p3.m4" class="ltx_Math" alttext="S\sigma_{1}S^{\dagger}=\sigma_{2}" display="inline"><mrow><mrow><mi>S</mi><mo>⁢</mo><msub><mi>σ</mi><mn>1</mn></msub><mo>⁢</mo><msup><mi>S</mi><mo>†</mo></msup></mrow><mo>=</mo><msub><mi>σ</mi><mn>2</mn></msub></mrow></math> give
+controlled-symbol stages</p>
+<table id="S3.Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex14.m1" class="ltx_Math" alttext="C_{1}=L_{1},\qquad C_{3}=H^{\otimes X}L_{3}H^{\otimes X},\qquad C_{2}=S^{\otimes X}L_{2}(S^{\dagger})^{\otimes X}." display="block"><mrow><mrow><mrow><msub><mi>C</mi><mn>1</mn></msub><mo>=</mo><msub><mi>L</mi><mn>1</mn></msub></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>C</mi><mn>3</mn></msub><mo>=</mo><mrow><msup><mi>H</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></msup><mo>⁢</mo><msub><mi>L</mi><mn>3</mn></msub><mo>⁢</mo><msup><mi>H</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></msup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>C</mi><mn>2</mn></msub><mo>=</mo><mrow><msup><mi>S</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></msup><mo>⁢</mo><msub><mi>L</mi><mn>2</mn></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mo>†</mo></msup><mo stretchy="false">)</mo></mrow><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Each uniform tensor product is a layer of identical one-qubit gates on
+<math id="S3.p3.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>. Define the selector phase layer and the selection circuit by</p>
+<table id="S3.E12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E12.m1" class="ltx_Math" alttext="\Delta=\prod_{P\in J}\diag(1,\omega_{P})_{q_{P}},\qquad\SEL=C_{2}C_{3}C_{1}\Delta." display="block"><mrow><mrow><mrow><mi mathvariant="normal">Δ</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∏</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow></munder><mrow><mi>diag</mi><mo>⁡</mo><msub><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><msub><mi>ω</mi><mi>P</mi></msub><mo stretchy="false">)</mo></mrow><msub><mi>q</mi><mi>P</mi></msub></msub></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>SELECT</mi><mo>=</mo><mrow><msub><mi>C</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>C</mi><mn>3</mn></msub><mo>⁢</mo><msub><mi>C</mi><mn>1</mn></msub><mo>⁢</mo><mi mathvariant="normal">Δ</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(12)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">For a one-hot selector, only the incidences belonging to its selected word
+are active. The three stages then act on disjoint positions in that word,
+so their order introduces no Pauli phase. It follows that</p>
+<table id="S3.E13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E13.m1" class="ltx_math_unparsed" alttext="\SEL\bigl(\lvert\psi\rangle_{X}\lvert e_{P}\rangle_{Q}\bigr)=\omega_{P}(P\lvert\psi\rangle)_{X}\lvert e_{P}\rangle_{Q}." display="block"><mrow><mi>SELECT</mi><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><msub><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mi>X</mi></msub><msub><mrow><mo stretchy="false">|</mo><msub><mi>e</mi><mi>P</mi></msub><mo stretchy="false">⟩</mo></mrow><mi>Q</mi></msub><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mo>=</mo><msub><mi>ω</mi><mi>P</mi></msub><msub><mrow><mo stretchy="false">(</mo><mi>P</mi><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow><mi>X</mi></msub><msub><mrow><mo stretchy="false">|</mo><msub><mi>e</mi><mi>P</mi></msub><mo stretchy="false">⟩</mo></mrow><mi>Q</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(13)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Equation (<a href="#S3.E13" title="In 3 A symmetric Pauli block encoding ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">13</span></a>) specifies the action needed for the
+block encoding. The same elementary circuit defines a unitary on all other
+selector inputs, and every incidence layer remains a legal commuting layer.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">For every <math id="S3.p4.m1" class="ltx_Math" alttext="\gamma\in\Gamma" display="inline"><mrow><mi>γ</mi><mo>∈</mo><mi mathvariant="normal">Γ</mi></mrow></math>, use the lift</p>
+<table id="S3.E14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E14.m1" class="ltx_math_unparsed" alttext="x\longmapsto\gamma x,\qquad q_{P}\longmapsto q_{\gamma P},\qquad\text{all three preparation wires fixed}." display="block"><mrow><mi>x</mi><mo stretchy="false">⟼</mo><mi>γ</mi><mi>x</mi><mo rspace="2.167em">,</mo><mi>q</mi><msub><mrow></mrow><mi>P</mi></msub><mo stretchy="false">⟼</mo><mi>q</mi><msub><mrow></mrow><mrow><mi>γ</mi><mo>⁢</mo><mi>P</mi></mrow></msub><mo rspace="2.167em">,</mo><mtext>all three preparation wires fixed</mtext><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(14)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The phase layer is preserved because <math id="S3.p4.m2" class="ltx_Math" alttext="\omega_{\gamma P}=\omega_{P}" display="inline"><mrow><msub><mi>ω</mi><mrow><mi>γ</mi><mo>⁢</mo><mi>P</mi></mrow></msub><mo>=</mo><msub><mi>ω</mi><mi>P</mi></msub></mrow></math>.
+The identity <math id="S3.p4.m3" class="ltx_Math" alttext="(\gamma P)_{\gamma x}=P_{x}" display="inline"><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>γ</mi><mo>⁢</mo><mi>P</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>γ</mi><mo>⁢</mo><mi>x</mi></mrow></msub><mo>=</mo><msub><mi>P</mi><mi>x</mi></msub></mrow></math> shows that each incidence
+layer is preserved. The uniform basis-change layers are preserved as well.
+Lemma <a href="#S2.Thmtheorem5" title="Lemma 2.5 (Symmetric one-hot preparation). ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.5</span></a> supplies precisely the same lift for <math id="S3.p4.m4" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>, and
+also for <math id="S3.p4.m5" class="ltx_Math" alttext="B^{\dagger}" display="inline"><msup><mi>B</mi><mo>†</mo></msup></math>. More generally, a lift preserving a circuit’s layers
+preserves its inverse layers: taking adjoints preserves commutativity and
+reverses only the order of the layers.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p5.m1" class="ltx_Math" alttext="W_{0}" display="inline"><msub><mi>W</mi><mn>0</mn></msub></math> contain the <math id="S3.p5.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> selectors and the three preparation wires.
+Extend <math id="S3.p5.m3" class="ltx_Math" alttext="\SEL" display="inline"><mi>SELECT</mi></math> trivially to the latter wires, and put</p>
+<table id="S3.E15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E15.m1" class="ltx_Math" alttext="A=(I_{X}\otimes B^{\dagger})\,\SEL\,(I_{X}\otimes B)." display="block"><mrow><mrow><mi>A</mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>I</mi><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>B</mi><mo>†</mo></msup></mrow><mo stretchy="false">)</mo></mrow><mo lspace="0.337em">⁢</mo><mrow><mi>SELECT</mi><mo lspace="0.170em">⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>I</mi><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(15)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">This is a <math id="S3.p5.m4" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-symmetric circuit under (<a href="#S3.E14" title="In 3 A symmetric Pauli block encoding ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">14</span></a>), which in fact
+defines a homomorphism on all its wires. Its all-zero workspace block is</p>
+<table id="S3.E16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E16.m1" class="ltx_Math" alttext="\begin{split}&amp;(I_{X}\otimes\langle 0^{W_{0}}\rvert)A(I_{X}\otimes\lvert 0^{W_{0}}\rangle)\\
+&amp;\quad=(I_{X}\otimes\langle\chi\rvert)\SEL(I_{X}\otimes\lvert\chi\rangle)\\
+&amp;\quad=\sum_{P\in J}d_{P}^{2}\omega_{P}P=\frac{1}{\lambda}\sum_{P\in J}\alpha_{P}P=\frac{U}{\lambda}.\end{split}" display="block"><mtable columnspacing="0pt" displaystyle="true" rowspacing="0pt"><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mo stretchy="false">(</mo><mi>I</mi><msub><mrow></mrow><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mo stretchy="false">⟨</mo><mn>0</mn><msup><mrow></mrow><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">|</mo><mo stretchy="false">)</mo><mi>A</mi><mo stretchy="false">(</mo><mi>I</mi><msub><mrow></mrow><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mo stretchy="false">|</mo><mn>0</mn><msup><mrow></mrow><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mo>=</mo><mo stretchy="false">(</mo><mi>I</mi><msub><mrow></mrow><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mo stretchy="false">⟨</mo><mi>χ</mi><mo stretchy="false">|</mo><mo rspace="0.167em" stretchy="false">)</mo><mi>SELECT</mi><mo stretchy="false">(</mo><mi>I</mi><msub><mrow></mrow><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mo stretchy="false">|</mo><mi>χ</mi><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mphantom></mphantom><mo lspace="1.278em" rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow></munder><mrow><msubsup><mi>d</mi><mi>P</mi><mn>2</mn></msubsup><mo>⁢</mo><msub><mi>ω</mi><mi>P</mi></msub><mo>⁢</mo><mi>P</mi></mrow></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mi>λ</mi></mfrac><mo>⁢</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>P</mi><mo>∈</mo><mi>J</mi></mrow></munder><mrow><msub><mi>α</mi><mi>P</mi></msub><mo>⁢</mo><mi>P</mi></mrow></mrow></mrow><mo>=</mo><mfrac><mi>U</mi><mi>λ</mi></mfrac></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(16)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The first equality only uses the action of <math id="S3.p5.m5" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> on the all-zero state
+and its adjoint. Thus the unspecified action of the preparation circuit
+on other inputs does not enter the block identity. The normalization
+<math id="S3.p5.m6" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> leaves a nonzero-workspace component when <math id="S3.p5.m7" class="ltx_Math" alttext="\lambda&gt;1" display="inline"><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow></math>;
+its norm is determined by unitarity, as follows.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">In that case, with
+<math id="S3.p6.m1" class="ltx_math_unparsed" alttext="\Pi_{0}=I_{X}\otimes\lvert 0^{W_{0}}\rangle\langle 0^{W_{0}}\rvert" display="inline"><mrow><msub><mi mathvariant="normal">Π</mi><mn>0</mn></msub><mo>=</mo><msub><mi>I</mi><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">|</mo></mrow></mrow></math>, unitarity of <math id="S3.p6.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>
+and <math id="S3.p6.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> gives, for each unit vector <math id="S3.p6.m4" class="ltx_math_unparsed" alttext="\lvert\psi\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>,</p>
+<table id="S3.E17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E17.m1" class="ltx_math_unparsed" alttext="A\bigl(\lvert\psi\rangle\lvert 0^{W_{0}}\rangle\bigr)=\lambda^{-1}U\lvert\psi\rangle\lvert 0^{W_{0}}\rangle+\sqrt{1-\lambda^{-2}}\lvert\Phi_{\psi}\rangle," display="block"><mrow><mi>A</mi><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">⟩</mo></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mo>=</mo><msup><mi>λ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>U</mi><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">⟩</mo></mrow><mo>+</mo><msqrt><mrow><mn>1</mn><mo>−</mo><msup><mi>λ</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></msqrt><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Φ</mi><mi>ψ</mi></msub><mo stretchy="false">⟩</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(17)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">where</p>
+<table id="S3.Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex15.m1" class="ltx_math_unparsed" alttext="\lvert\Phi_{\psi}\rangle=\frac{(I-\Pi_{0})A(\lvert\psi\rangle\lvert 0^{W_{0}}\rangle)}{\sqrt{1-\lambda^{-2}}}" display="block"><mrow><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Φ</mi><mi>ψ</mi></msub><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>I</mi><mo>−</mo><mi mathvariant="normal">Π</mi><msub><mrow></mrow><mn>0</mn></msub><mo stretchy="false">)</mo><mi>A</mi><mo stretchy="false">(</mo><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo><mo stretchy="false">|</mo><mn>0</mn><msup><mrow></mrow><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">⟩</mo><mo stretchy="false">)</mo></mrow><msqrt><mrow><mn>1</mn><mo>−</mo><msup><mi>λ</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></msqrt></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">is a unit vector in <math id="S3.p6.m5" class="ltx_Math" alttext="\ker\Pi_{0}" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msub><mi mathvariant="normal">Π</mi><mn>0</mn></msub></mrow></math>. In particular, the success probability
+<math id="S3.p6.m6" class="ltx_Math" alttext="\lambda^{-2}" display="inline"><msup><mi>λ</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></math> is independent of the input.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">There are at most <math id="S3.p7.m1" class="ltx_Math" alttext="nM" display="inline"><mrow><mi>n</mi><mo>⁢</mo><mi>M</mi></mrow></math> CNOT incidences across the three symbol stages,
+<math id="S3.p7.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> selector phases, and <math id="S3.p7.m3" class="ltx_Math" alttext="4n" display="inline"><mrow><mn>4</mn><mo>⁢</mo><mi>n</mi></mrow></math> basis-change gates. Together with
+Lemma <a href="#S2.Thmtheorem5" title="Lemma 2.5 (Symmetric one-hot preparation). ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.5</span></a>, this yields</p>
+<table id="S3.E18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E18.m1" class="ltx_Math" alttext="\lvert W_{0}\rvert=M+3,\qquad s(A)=O(nM)." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">|</mo><msub><mi>W</mi><mn>0</mn></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mi>M</mi><mo>+</mo><mn>3</mn></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>s</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(18)</span></td></tr></tbody>
+</table>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">4 </span>From block encoding to exact universality</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">The block encoding succeeds with the same probability on every active
+input. This allows amplification without a reflection about the unknown
+input state. This is the input-independent setting of oblivious amplitude
+amplification used for linear combinations of unitaries
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Section I]</cite>. The symmetric oblivious-amplification statement in
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Lemma 7]</cite> assumes workspace fixed pointwise, whereas our selector
+wires are permuted. The proof only needs a reflection about the whole
+zero-workspace subspace. Its equality test uses the workspace as an
+unordered control set, so it remains symmetric under precisely those
+permutations. We give the construction with its exact phase to obtain
+literal equality with the target unitary.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 4.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Exact symmetric oblivious amplification)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-symmetric circuit on active wires <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and
+workspace <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>, and let <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a unitary on <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\mathcal{H}_{X}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub></math>. Suppose that,
+for a specified <math id="S4.Thmtheorem1.p1.m7" class="ltx_Math" alttext="p\in(0,1)" display="inline"><mrow><mi>p</mi><mo>∈</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>,</span></p>
+<table id="S4.E19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E19.m1" class="ltx_math_unparsed" alttext="(I_{X}\otimes\langle 0^{W}\rvert)A(I_{X}\otimes\lvert 0^{W}\rangle)=\sqrt{p}\,V." display="block"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>W</mi></msup><mo stretchy="false">|</mo></mrow><mo stretchy="false">)</mo></mrow><mi>A</mi><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>W</mi></msup><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><msqrt><mi>p</mi></msqrt><mi>V</mi><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(19)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Then <math id="S4.Thmtheorem1.p1.m8" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> has an exact clean-workspace <math id="S4.Thmtheorem1.p1.m9" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math>-symmetric circuit using
+<math id="S4.Thmtheorem1.p1.m10" class="ltx_Math" alttext="\lvert W\rvert+2" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>W</mi><mo stretchy="false">|</mo></mrow><mo>+</mo><mn>2</mn></mrow></math> workspace qubits and
+<math id="S4.Thmtheorem1.p1.m11" class="ltx_Math" alttext="O((s(A)+1)/\sqrt{p})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>s</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><msqrt><mi>p</mi></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow></math> gates. Every lift witnessing the symmetry of <math id="S4.Thmtheorem1.p1.m12" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>
+extends to a lift for this circuit by fixing the two new wires.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Add an adjustment wire <math id="S4.p2.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> and a phase-kickback wire <math id="S4.p2.m2" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>, both fixed
+under every lift. Set</p>
+<table id="S4.E20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E20.m1" class="ltx_Math" alttext="K=\left\lceil\frac{\pi}{4\sqrt{p}}\right\rceil,\qquad\vartheta=\frac{\pi}{4K+2},\qquad\cos(\zeta/2)=\frac{\sin\vartheta}{\sqrt{p}}." display="block"><mrow><mrow><mrow><mi>K</mi><mo>=</mo><mrow><mo>⌈</mo><mfrac><mi>π</mi><mrow><mn>4</mn><mo>⁢</mo><msqrt><mi>p</mi></msqrt></mrow></mfrac><mo>⌉</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>ϑ</mi><mo>=</mo><mfrac><mi>π</mi><mrow><mrow><mn>4</mn><mo>⁢</mo><mi>K</mi></mrow><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ζ</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>ϑ</mi></mrow><msqrt><mi>p</mi></msqrt></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(20)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The angle <math id="S4.p2.m3" class="ltx_Math" alttext="\zeta\in(0,\pi)" display="inline"><mrow><mi>ζ</mi><mo>∈</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>π</mi><mo stretchy="false">)</mo></mrow></mrow></math> exists uniquely because</p>
+<table id="S4.Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex16.m1" class="ltx_Math" alttext="0&lt;\frac{\sin\vartheta}{\sqrt{p}}&lt;\frac{\vartheta}{\sqrt{p}}&lt;\frac{\pi}{4K\sqrt{p}}\leq 1." display="block"><mrow><mrow><mn>0</mn><mo>&lt;</mo><mfrac><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>ϑ</mi></mrow><msqrt><mi>p</mi></msqrt></mfrac><mo>&lt;</mo><mfrac><mi>ϑ</mi><msqrt><mi>p</mi></msqrt></mfrac><mo>&lt;</mo><mfrac><mi>π</mi><mrow><mn>4</mn><mo>⁢</mo><mi>K</mi><mo>⁢</mo><msqrt><mi>p</mi></msqrt></mrow></mfrac><mo>≤</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Let <math id="S4.p2.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> apply <math id="S4.p2.m5" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> on <math id="S4.p2.m6" class="ltx_Math" alttext="X\sqcup W" display="inline"><mrow><mi>X</mi><mo>⊔</mo><mi>W</mi></mrow></math> and <math id="S4.p2.m7" class="ltx_Math" alttext="R_{y}(\zeta)" display="inline"><mrow><msub><mi>R</mi><mi>y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ζ</mi><mo stretchy="false">)</mo></mrow></mrow></math> on <math id="S4.p2.m8" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>,
+and act trivially on <math id="S4.p2.m9" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>. For the moment omit the last wire, and define
+the zero-workspace embedding</p>
+<table id="S4.Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex17.m1" class="ltx_math_unparsed" alttext="E:\mathcal{H}_{X}\longrightarrow\mathcal{H}_{X\sqcup W\sqcup\{r\}},\qquad E\lvert\psi\rangle=\lvert\psi\rangle\lvert 0^{W}\rangle\lvert 0\rangle_{r}." display="block"><mrow><mi>E</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub><mo stretchy="false">⟶</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mrow><mi>X</mi><mo>⊔</mo><mi>W</mi><mo>⊔</mo><mrow><mo stretchy="false">{</mo><mi>r</mi><mo stretchy="false">}</mo></mrow></mrow></msub><mo rspace="2.167em">,</mo><mi>E</mi><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>W</mi></msup><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>r</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Put <math id="S4.p2.m10" class="ltx_Math" alttext="\Pi=EE^{\dagger}" display="inline"><mrow><mi mathvariant="normal">Π</mi><mo>=</mo><mrow><mi>E</mi><mo>⁢</mo><msup><mi>E</mi><mo>†</mo></msup></mrow></mrow></math>, <math id="S4.p2.m11" class="ltx_Math" alttext="\mathsf{S}=TE" display="inline"><mrow><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><mi>E</mi></mrow></mrow></math>, and <math id="S4.p2.m12" class="ltx_Math" alttext="\mathsf{G}=EV" display="inline"><mrow><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi><mo>=</mo><mrow><mi>E</mi><mo>⁢</mo><mi>V</mi></mrow></mrow></math>.
+The maps <math id="S4.p2.m13" class="ltx_Math" alttext="\mathsf{S}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi></math> and <math id="S4.p2.m14" class="ltx_Math" alttext="\mathsf{G}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></math> are isometries because
+<math id="S4.p2.m15" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> and <math id="S4.p2.m16" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> are unitary. The block identity
+(<a href="#S4.E19" title="In Lemma 4.1 (Exact symmetric oblivious amplification). ‣ 4 From block encoding to exact universality ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">19</span></a>) gives</p>
+<table id="S4.Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex18.m1" class="ltx_Math" alttext="E^{\dagger}TE=\sqrt{p}\cos(\zeta/2)V=\sin\vartheta\,V,\qquad\Pi\mathsf{S}=\sin\vartheta\,\mathsf{G}." display="block"><mrow><mrow><mrow><mrow><msup><mi>E</mi><mo>†</mo></msup><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mi>E</mi></mrow><mo>=</mo><mrow><msqrt><mi>p</mi></msqrt><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ζ</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi>V</mi></mrow><mo>=</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mrow><mi>ϑ</mi><mo lspace="0.170em">⁢</mo><mi>V</mi></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi mathvariant="normal">Π</mi><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi></mrow><mo>=</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mrow><mi>ϑ</mi><mo lspace="0.170em">⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The scalar <math id="S4.p2.m17" class="ltx_Math" alttext="\sin\vartheta" display="inline"><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>ϑ</mi></mrow></math> is the same on all of <math id="S4.p2.m18" class="ltx_Math" alttext="\mathcal{H}_{X}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub></math>.
+Consequently the two isometric copies of <math id="S4.p2.m19" class="ltx_Math" alttext="\mathcal{H}_{X}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub></math> rotate through a
+common angle, and Lemma <a href="#S2.Thmtheorem4" title="Lemma 2.4 (Two-reflection identity). ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a> applies simultaneously to
+every input, with domain <math id="S4.p2.m20" class="ltx_Math" alttext="\mathcal{K}=\mathcal{H}_{X}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>=</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub></mrow></math>.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Initialize <math id="S4.p3.m1" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> in <math id="S4.p3.m2" class="ltx_math_unparsed" alttext="\lvert-\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow></math> and set</p>
+<table id="S4.E21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E21.m1" class="ltx_Math" alttext="F=\Eq_{0}^{W\cup\{r\},z}." display="block"><mrow><mrow><mi>F</mi><mo>=</mo><msubsup><mi>Eq</mi><mn>0</mn><mrow><mrow><mi>W</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>r</mi><mo stretchy="false">}</mo></mrow></mrow><mo>,</mo><mi>z</mi></mrow></msubsup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(21)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">On this invariant <math id="S4.p3.m3" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>-subspace, <math id="S4.p3.m4" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> implements <math id="S4.p3.m5" class="ltx_Math" alttext="I-2\Pi" display="inline"><mrow><mi>I</mi><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi mathvariant="normal">Π</mi></mrow></mrow></math>, while
+<math id="S4.p3.m6" class="ltx_Math" alttext="TFT^{\dagger}" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mi>F</mi><mo>⁢</mo><msup><mi>T</mi><mo>†</mo></msup></mrow></math> implements
+<math id="S4.p3.m7" class="ltx_Math" alttext="I-2T\Pi T^{\dagger}=I-2\mathsf{S}\mathsf{S}^{\dagger}" display="inline"><mrow><mrow><mi>I</mi><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mi mathvariant="normal">Π</mi><mo>⁢</mo><msup><mi>T</mi><mo>†</mo></msup></mrow></mrow><mo>=</mo><mrow><mi>I</mi><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">SS</mi><mo>†</mo></msup></mrow></mrow></mrow></math>. Consequently,
+(<a href="#S2.E7" title="In Lemma 2.4 (Two-reflection identity). ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>) and
+<math id="S4.p3.m8" class="ltx_Math" alttext="(2K+1)\vartheta=\pi/2" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>K</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>ϑ</mi></mrow><mo>=</mo><mrow><mi>π</mi><mo>/</mo><mn>2</mn></mrow></mrow></math> imply</p>
+<table id="S4.Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex19.m1" class="ltx_Math" alttext="(TFT^{\dagger}F)^{K}\mathsf{S}=(-1)^{K}\mathsf{G}," display="block"><mrow><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>⁢</mo><mi>F</mi><mo>⁢</mo><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mi>F</mi></mrow><mo stretchy="false">)</mo></mrow><mi>K</mi></msup><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">S</mi></mrow><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>K</mi></msup><mo>⁢</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">G</mi></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where the unchanged factor <math id="S4.p3.m9" class="ltx_math_unparsed" alttext="\lvert-\rangle_{z}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">⟩</mo></mrow><mi>z</mi></msub></math> is suppressed. The good output has
+<math id="S4.p3.m10" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> and <math id="S4.p3.m11" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> exactly zero. Apply <math id="S4.p3.m12" class="ltx_Math" alttext="R_{y}(\pi/2)" display="inline"><mrow><msub><mi>R</mi><mi>y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>π</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> to <math id="S4.p3.m13" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> to return
+it to zero as well. Finally, let <math id="S4.p3.m14" class="ltx_Math" alttext="\Omega_{K}" display="inline"><msub><mi mathvariant="normal">Ω</mi><mi>K</mi></msub></math> be the identity if <math id="S4.p3.m15" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> is
+even and the one-qubit gate <math id="S4.p3.m16" class="ltx_Math" alttext="-I_{2}" display="inline"><mrow><mo>−</mo><msub><mi>I</mi><mn>2</mn></msub></mrow></math> on <math id="S4.p3.m17" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> if <math id="S4.p3.m18" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> is odd. An explicit
+circuit for literal <math id="S4.p3.m19" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, including its global phase, is therefore</p>
+<table id="S4.E22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E22.m1" class="ltx_math_unparsed" alttext="\mathcal{C}_{V}=\Omega_{K}R_{y}(\pi/2)_{z}(TFT^{\dagger}F)^{K}TR_{y}(-\pi/2)_{z}." display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mi>V</mi></msub><mo>=</mo><msub><mi mathvariant="normal">Ω</mi><mi>K</mi></msub><msub><mi>R</mi><mi>y</mi></msub><msub><mrow><mo stretchy="false">(</mo><mi>π</mi><mo>/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mi>z</mi></msub><msup><mrow><mo stretchy="false">(</mo><mi>T</mi><mi>F</mi><msup><mi>T</mi><mo>†</mo></msup><mi>F</mi><mo stretchy="false">)</mo></mrow><mi>K</mi></msup><mi>T</mi><msub><mi>R</mi><mi>y</mi></msub><msub><mrow><mo stretchy="false">(</mo><mo lspace="0em">−</mo><mi>π</mi><mo>/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mi>z</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(22)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The scalar correction does not disturb a clean qubit and uses no additional
+wire. No unknown input-dependent reflection is required.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">It remains to check the syntax. Fix a lift for <math id="S4.p4.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>. Its restriction to
+<math id="S4.p4.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> is a permutation, so it preserves the whole control set
+<math id="S4.p4.m3" class="ltx_Math" alttext="W\cup\{r\}" display="inline"><mrow><mi>W</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>r</mi><mo stretchy="false">}</mo></mrow></mrow></math> in (<a href="#S4.E21" title="In 4 From block encoding to exact universality ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">21</span></a>); the head <math id="S4.p4.m4" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> is fixed.
+Every fixed-wire gate and every layer of <math id="S4.p4.m5" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> or <math id="S4.p4.m6" class="ltx_Math" alttext="A^{\dagger}" display="inline"><msup><mi>A</mi><mo>†</mo></msup></math> is also
+preserved. Implement <math id="S4.p4.m7" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> by the layers of <math id="S4.p4.m8" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, followed by a separate
+layer for its rotation on <math id="S4.p4.m9" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>. The circuit in (<a href="#S4.E22" title="In 4 From block encoding to exact universality ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">22</span></a>)
+then has the asserted layer automorphisms. The same check applies to each
+factor when <math id="S4.p4.m10" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is expanded using (<a href="#S2.E2" title="In 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>).</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">There are <math id="S4.p5.m1" class="ltx_Math" alttext="2K+1" display="inline"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>K</mi></mrow><mo>+</mo><mn>1</mn></mrow></math> calls to <math id="S4.p5.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> or <math id="S4.p5.m3" class="ltx_Math" alttext="A^{\dagger}" display="inline"><msup><mi>A</mi><mo>†</mo></msup></math>, together with
+<math id="S4.p5.m4" class="ltx_Math" alttext="O(K+1)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>K</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> other gates. Since <math id="S4.p5.m5" class="ltx_math_unparsed" alttext="K=O(p^{-1/2})" display="inline"><mrow><mi>K</mi><mo>=</mo><mi>O</mi><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo stretchy="false">)</mo></mrow></mrow></math>, this gives the claimed
+size. Only <math id="S4.p5.m6" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> and <math id="S4.p5.m7" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> have been added to <math id="S4.p5.m8" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>.
+∎</p>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Applying the lemma to the Pauli block encoding completes the construction.
+The unit-normalization case can be handled directly, so no singular
+amplification parameters are needed.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1 (Universality for finite permutation actions). ‣ 1.1 Main result ‣ 1 Introduction ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a>.</h6>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">Necessity is Lemma <a href="#S2.Thmtheorem2" title="Lemma 2.2. ‣ 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>. For sufficiency, first assume
+<math id="S4.p7.m1" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math> and use the block circuit <math id="S4.p7.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> from
+(<a href="#S3.E15" title="In 3 A symmetric Pauli block encoding ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">15</span></a>). If <math id="S4.p7.m3" class="ltx_Math" alttext="\lambda&gt;1" display="inline"><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow></math>, apply Lemma <a href="#S4.Thmtheorem1" title="Lemma 4.1 (Exact symmetric oblivious amplification). ‣ 4 From block encoding to exact universality ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4.1</span></a>
+with <math id="S4.p7.m4" class="ltx_Math" alttext="V=U" display="inline"><mrow><mi>V</mi><mo>=</mo><mi>U</mi></mrow></math> and <math id="S4.p7.m5" class="ltx_Math" alttext="p=\lambda^{-2}" display="inline"><mrow><mi>p</mi><mo>=</mo><msup><mi>λ</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></math>. Its hypotheses follow from
+(<a href="#S3.E16" title="In 3 A symmetric Pauli block encoding ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">16</span></a>), and the lifts (<a href="#S3.E14" title="In 3 A symmetric Pauli block encoding ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">14</span></a>) fix the two new
+wires. The resulting circuit exactly implements <math id="S4.p7.m6" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and returns all
+workspace to zero, including the selector and both sets of amplification
+wires.</p>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">If <math id="S4.p8.m1" class="ltx_Math" alttext="\lambda=1" display="inline"><mrow><mi>λ</mi><mo>=</mo><mn>1</mn></mrow></math>, amplification is unnecessary. For a unit vector
+<math id="S4.p8.m2" class="ltx_math_unparsed" alttext="\lvert\psi\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>, the zero-workspace component of
+<math id="S4.p8.m3" class="ltx_math_unparsed" alttext="A(\lvert\psi\rangle\lvert 0^{W_{0}}\rangle)" display="inline"><mrow><mi>A</mi><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is
+<math id="S4.p8.m4" class="ltx_math_unparsed" alttext="U\lvert\psi\rangle\lvert 0^{W_{0}}\rangle" display="inline"><mrow><mi>U</mi><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><msub><mi>W</mi><mn>0</mn></msub></msup><mo stretchy="false">⟩</mo></mrow></mrow></math>, already of norm one. As <math id="S4.p8.m5" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is unitary,
+its orthogonal component has norm zero. Thus <math id="S4.p8.m6" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> itself is a clean
+implementation. In this case, the identity</p>
+<table id="S4.Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex20.m1" class="ltx_Math" alttext="\left(\sum_{P}\lvert\alpha_{P}\rvert\right)^{2}=\sum_{P}\lvert\alpha_{P}\rvert^{2}+\sum_{P\neq Q}\lvert\alpha_{P}\rvert\lvert\alpha_{Q}\rvert" display="block"><mrow><msup><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false" rspace="0em">∑</mo><mi>P</mi></munder><mrow><mo stretchy="false">|</mo><msub><mi>α</mi><mi>P</mi></msub><mo stretchy="false">|</mo></mrow></mrow><mo>)</mo></mrow><mn>2</mn></msup><mo rspace="0.111em">=</mo><mrow><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mi>P</mi></munder><msup><mrow><mo stretchy="false">|</mo><msub><mi>α</mi><mi>P</mi></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow><mo rspace="0.055em">+</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>P</mi><mo>≠</mo><mi>Q</mi></mrow></munder><mrow><mrow><mo stretchy="false">|</mo><msub><mi>α</mi><mi>P</mi></msub><mo stretchy="false">|</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">|</mo><msub><mi>α</mi><mi>Q</mi></msub><mo stretchy="false">|</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">also shows that <math id="S4.p8.m7" class="ltx_Math" alttext="M=1" display="inline"><mrow><mi>M</mi><mo>=</mo><mn>1</mn></mrow></math>; the target is a scalar of modulus one times a
+single Pauli word.</p>
+</div>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">For <math id="S4.p9.m1" class="ltx_Math" alttext="\lambda&gt;1" display="inline"><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow></math>, the amplification count is
+<math id="S4.p9.m2" class="ltx_Math" alttext="K=\lceil\pi\lambda/4\rceil=O(\lambda)" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mo stretchy="false">⌈</mo><mrow><mrow><mi>π</mi><mo>⁢</mo><mi>λ</mi></mrow><mo>/</mo><mn>4</mn></mrow><mo stretchy="false">⌉</mo></mrow><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Combining
+(<a href="#S3.E18" title="In 3 A symmetric Pauli block encoding ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">18</span></a>) with Lemma <a href="#S4.Thmtheorem1" title="Lemma 4.1 (Exact symmetric oblivious amplification). ‣ 4 From block encoding to exact universality ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4.1</span></a>, and using <math id="S4.p9.m3" class="ltx_Math" alttext="n,M\geq 1" display="inline"><mrow><mrow><mi>n</mi><mo>,</mo><mi>M</mi></mrow><mo>≥</mo><mn>1</mn></mrow></math>,
+gives <math id="S4.p9.m4" class="ltx_Math" alttext="s(\mathcal{C})=O(nM\lambda)" display="inline"><mrow><mrow><mi>s</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>⁢</mo><mi>M</mi><mo>⁢</mo><mi>λ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The same bound holds when
+<math id="S4.p9.m5" class="ltx_Math" alttext="\lambda=1" display="inline"><mrow><mi>λ</mi><mo>=</mo><mn>1</mn></mrow></math>. There are <math id="S4.p9.m6" class="ltx_Math" alttext="M+3" display="inline"><mrow><mi>M</mi><mo>+</mo><mn>3</mn></mrow></math> block-encoding workspace qubits and at
+most two more for outer amplification. Equation (<a href="#S2.E5" title="In 2 Circuit symmetry and selector preparation ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>) and
+<math id="S4.p9.m7" class="ltx_Math" alttext="M\leq 4^{n}" display="inline"><mrow><mi>M</mi><mo>≤</mo><msup><mn>4</mn><mi>n</mi></msup></mrow></math> now give every bound in (<a href="#S1.E1" title="In Theorem 1.1 (Universality for finite permutation actions). ‣ 1.1 Main result ‣ 1 Introduction ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>). All equality
+gates used here occur in separate layers. Their threshold expansions retain
+these symmetries and add no workspace, so the bounds apply to the stated
+elementary gate set.</p>
+</div>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">Finally, if <math id="S4.p10.m1" class="ltx_Math" alttext="X=\varnothing" display="inline"><mrow><mi>X</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, then <math id="S4.p10.m2" class="ltx_Math" alttext="\mathcal{H}_{X}\cong\mathbb{C}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mi>X</mi></msub><mo>≅</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></mrow></math> and
+<math id="S4.p10.m3" class="ltx_Math" alttext="U=e^{i\varphi}" display="inline"><mrow><mi>U</mi><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mo>⁢</mo><mi>φ</mi></mrow></msup></mrow></math> for some <math id="S4.p10.m4" class="ltx_Math" alttext="\varphi" display="inline"><mi>φ</mi></math>. The allowed one-qubit gate
+<math id="S4.p10.m5" class="ltx_Math" alttext="e^{i\varphi}I_{2}" display="inline"><mrow><msup><mi>e</mi><mrow><mi>i</mi><mo>⁢</mo><mi>φ</mi></mrow></msup><mo>⁢</mo><msub><mi>I</mi><mn>2</mn></msub></mrow></math>, applied to one fixed workspace wire in <math id="S4.p10.m6" class="ltx_math_unparsed" alttext="\lvert 0\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math>,
+implements this scalar exactly and leaves that wire clean.
+∎</p>
+</div>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_corollary">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Corollary 4.2</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let a finite group <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> act on <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> through a homomorphism
+<math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\rho:G\to S_{X}" display="inline"><mrow><mi>ρ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><msub><mi>S</mi><mi>X</mi></msub></mrow></mrow></math>, not necessarily injectively. Every unitary commuting
+with <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="R_{X}(\rho(G))" display="inline"><mrow><msub><mi>R</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ρ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> has an exact clean circuit symmetric under this
+action, with the bounds of Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1 (Universality for finite permutation actions). ‣ 1.1 Main result ‣ 1 Introduction ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p11" class="ltx_para">
+<p class="ltx_p">Apply the theorem to <math id="S4.p11.m1" class="ltx_Math" alttext="\Gamma=\im\rho" display="inline"><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><mi>ρ</mi></mrow></mrow></math>, and compose its explicit action
+on the circuit wires with <math id="S4.p11.m2" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math>. The kernel of <math id="S4.p11.m3" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math> acts trivially
+on every wire.
+∎</p>
+</div>
+</div>
+<div id="S4.p12" class="ltx_para">
+<p class="ltx_p">The selector cost is controlled by the number of Pauli words, not the
+number of their orbits. Replacing an orbit by a single selector label
+would no longer specify which of its individual words should be applied;
+the corresponding orbit sum need not be unitary. Thus orbit-constant
+coefficients explain symmetry of the construction but do not, by
+themselves, compress it. Appendix <a href="#A1" title="Appendix A A conditional construction from a Choi state ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A</span></a> records a different route
+through symmetric Choi-state preparation, with that preparation made an
+explicit hypothesis.</p>
+</div>
+</section>
+<section id="A1" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix"><span class="ltx_tag ltx_tag_appendix">Appendix A </span>A conditional construction from a Choi state</h2>
+
+<div id="A1.p1" class="ltx_para">
+<p class="ltx_p">An exact symmetric preparation of the Choi state of <math id="A1.p1.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> would also
+suffice for exact symmetric synthesis of <math id="A1.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>. The reduction below
+records the required workspace action and normalization. It is conditional
+on that state-preparation circuit and independent of the Pauli construction.</p>
+</div>
+<div id="A1.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="A1.p2.m1" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>, let <math id="A1.p2.m2" class="ltx_Math" alttext="d=2^{n}" display="inline"><mrow><mi>d</mi><mo>=</mo><msup><mn>2</mn><mi>n</mi></msup></mrow></math>, and let <math id="A1.p2.m3" class="ltx_Math" alttext="D,A,B" display="inline"><mrow><mi>D</mi><mo>,</mo><mi>A</mi><mo>,</mo><mi>B</mi></mrow></math> be three copies of the
+wire set <math id="A1.p2.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>. Define</p>
+<table id="A1.Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex21.m1" class="ltx_math_unparsed" alttext="\lvert\Phi_{d}\rangle_{AB}=d^{-1/2}\sum_{b\in\{0,1\}^{X}}\lvert b\rangle_{A}\lvert b\rangle_{B},\qquad\lvert J_{U}\rangle_{AB}=(I_{A}\otimes U_{B})\lvert\Phi_{d}\rangle_{AB}." display="block"><mrow><msub><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Φ</mi><mi>d</mi></msub><mo stretchy="false">⟩</mo></mrow><mrow><mi>A</mi><mo>⁢</mo><mi>B</mi></mrow></msub><mo>=</mo><msup><mi>d</mi><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>b</mi><mo>∈</mo><msup><mrow><mo stretchy="false">{</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow><mi>X</mi></msup></mrow></munder><msub><mrow><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><msub><mrow><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub><mo rspace="2.167em">,</mo><msub><mrow><mo stretchy="false">|</mo><msub><mi>J</mi><mi>U</mi></msub><mo stretchy="false">⟩</mo></mrow><mrow><mi>A</mi><mo>⁢</mo><mi>B</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>U</mi><mi>B</mi></msub><mo stretchy="false">)</mo></mrow><msub><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Φ</mi><mi>d</mi></msub><mo stretchy="false">⟩</mo></mrow><mrow><mi>A</mi><mo>⁢</mo><mi>B</mi></mrow></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The diagonal action of <math id="A1.p2.m5" class="ltx_Math" alttext="\Gamma" display="inline"><mi mathvariant="normal">Γ</mi></math> on <math id="A1.p2.m6" class="ltx_Math" alttext="A\sqcup B" display="inline"><mrow><mi>A</mi><mo>⊔</mo><mi>B</mi></mrow></math> fixes
+<math id="A1.p2.m7" class="ltx_math_unparsed" alttext="\lvert\Phi_{d}\rangle" display="inline"><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Φ</mi><mi>d</mi></msub><mo stretchy="false">⟩</mo></mrow></math>: it permutes the summation labels in both factors in
+the same way. Since <math id="A1.p2.m8" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> commutes with this action on <math id="A1.p2.m9" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>, the diagonal action
+also fixes <math id="A1.p2.m10" class="ltx_math_unparsed" alttext="\lvert J_{U}\rangle" display="inline"><mrow><mo stretchy="false">|</mo><msub><mi>J</mi><mi>U</mi></msub><mo stretchy="false">⟩</mo></mrow></math>.</p>
+</div>
+<div id="A1.p3" class="ltx_para">
+<p class="ltx_p">Suppose a circuit <math id="A1.p3.m1" class="ltx_Math" alttext="C_{J}" display="inline"><msub><mi>C</mi><mi>J</mi></msub></math>, symmetric under that diagonal action, prepares
+<math id="A1.p3.m2" class="ltx_math_unparsed" alttext="\lvert J_{U}\rangle_{AB}" display="inline"><msub><mrow><mo stretchy="false">|</mo><msub><mi>J</mi><mi>U</mi></msub><mo stretchy="false">⟩</mo></mrow><mrow><mi>A</mi><mo>⁢</mo><mi>B</mi></mrow></msub></math> from zero using additional workspace <math id="A1.p3.m3" class="ltx_Math" alttext="T_{J}" display="inline"><msub><mi>T</mi><mi>J</mi></msub></math>, returned
+to zero. Each of its chosen lifts is assumed to restrict to the prescribed
+action on both <math id="A1.p3.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> and <math id="A1.p3.m5" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>. Let <math id="A1.p3.m6" class="ltx_Math" alttext="F_{DA}" display="inline"><msub><mi>F</mi><mrow><mi>D</mi><mo>⁢</mo><mi>A</mi></mrow></msub></math> be Bell preparation on
+corresponding pairs: a uniform Hadamard layer on <math id="A1.p3.m7" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, followed by the
+layer of CNOTs from <math id="A1.p3.m8" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> to <math id="A1.p3.m9" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>. Then
+<math id="A1.p3.m10" class="ltx_math_unparsed" alttext="F_{DA}\lvert 0^{D},0^{A}\rangle=\lvert\Phi_{d}\rangle_{DA}" display="inline"><mrow><msub><mi>F</mi><mrow><mi>D</mi><mo>⁢</mo><mi>A</mi></mrow></msub><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>D</mi></msup><mo>,</mo><msup><mn>0</mn><mi>A</mi></msup><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msub><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Φ</mi><mi>d</mi></msub><mo stretchy="false">⟩</mo></mrow><mrow><mi>D</mi><mo>⁢</mo><mi>A</mi></mrow></msub></mrow></math>. Define</p>
+<table id="A1.Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex22.m1" class="ltx_Math" alttext="A_{J}=\operatorname{SWAP}_{DB}\,F_{DA}^{\dagger}\,C_{J}," display="block"><mrow><mrow><msub><mi>A</mi><mi>J</mi></msub><mo>=</mo><mrow><mrow><msub><mi>SWAP</mi><mrow><mi>D</mi><mo>⁢</mo><mi>B</mi></mrow></msub><mo lspace="0.167em">⁡</mo><msubsup><mi>F</mi><mrow><mi>D</mi><mo>⁢</mo><mi>A</mi></mrow><mo>†</mo></msubsup></mrow><mo>⁢</mo><msub><mi>C</mi><mi>J</mi></msub></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">with every factor extended by the identity on unused wires. The register
+swap is three layers of CNOTs on corresponding pairs. Extending each lift
+of <math id="A1.p3.m11" class="ltx_Math" alttext="C_{J}" display="inline"><msub><mi>C</mi><mi>J</mi></msub></math> by the same action on <math id="A1.p3.m12" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> preserves every Bell-unpreparation
+and swap layer. Thus <math id="A1.p3.m13" class="ltx_Math" alttext="A_{J}" display="inline"><msub><mi>A</mi><mi>J</mi></msub></math> is symmetric with active register <math id="A1.p3.m14" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> and
+workspace <math id="A1.p3.m15" class="ltx_Math" alttext="A\sqcup B\sqcup T_{J}" display="inline"><mrow><mi>A</mi><mo>⊔</mo><mi>B</mi><mo>⊔</mo><msub><mi>T</mi><mi>J</mi></msub></mrow></math>.</p>
+</div>
+<div id="A1.p4" class="ltx_para">
+<p class="ltx_p">For <math id="A1.p4.m1" class="ltx_math_unparsed" alttext="\lvert\psi\rangle=\sum_{b}\psi_{b}\lvert b\rangle" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo rspace="0.111em">=</mo><msub><mo>∑</mo><mi>b</mi></msub><msub><mi>ψ</mi><mi>b</mi></msub><mrow><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">⟩</mo></mrow></mrow></math>, direct contraction gives</p>
+<table id="A1.E23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.E23.m1" class="ltx_math_unparsed" alttext="(\langle\Phi_{d}\rvert_{DA}\otimes I_{B})(\lvert\psi\rangle_{D}\otimes\lvert J_{U}\rangle_{AB})=\frac{1}{d}\sum_{b}\psi_{b}U\lvert b\rangle_{B}=\frac{1}{d}U\lvert\psi\rangle_{B}." display="block"><mrow><mrow><mo stretchy="false">(</mo><msub><mrow><mo stretchy="false">⟨</mo><msub><mi mathvariant="normal">Φ</mi><mi>d</mi></msub><mo rspace="0.055em" stretchy="false">|</mo></mrow><mrow><mi>D</mi><mo>⁢</mo><mi>A</mi></mrow></msub><mo rspace="0.222em">⊗</mo><msub><mi>I</mi><mi>B</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><msub><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mi>D</mi></msub><mo rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><msub><mi>J</mi><mi>U</mi></msub><mo stretchy="false">⟩</mo></mrow><mrow><mi>A</mi><mo>⁢</mo><mi>B</mi></mrow></msub><mo stretchy="false">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mi>d</mi></mfrac><munder><mo movablelimits="false">∑</mo><mi>b</mi></munder><msub><mi>ψ</mi><mi>b</mi></msub><mi>U</mi><msub><mrow><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>d</mi></mfrac><mi>U</mi><msub><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(23)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Before the swap, the all-zero component on <math id="A1.p4.m2" class="ltx_Math" alttext="D\sqcup A" display="inline"><mrow><mi>D</mi><mo>⊔</mo><mi>A</mi></mrow></math> is therefore
+<math id="A1.p4.m3" class="ltx_math_unparsed" alttext="\lvert 0^{D},0^{A}\rangle U\lvert\psi\rangle_{B}/d" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>D</mi></msup><mo>,</mo><msup><mn>0</mn><mi>A</mi></msup><mo stretchy="false">⟩</mo></mrow><mi>U</mi><msub><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub><mo>/</mo><mi>d</mi></mrow></math>; <math id="A1.p4.m4" class="ltx_Math" alttext="T_{J}" display="inline"><msub><mi>T</mi><mi>J</mi></msub></math> is already zero. The swap
+moves the output to <math id="A1.p4.m5" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, so</p>
+<table id="A1.Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex23.m1" class="ltx_math_unparsed" alttext="(I_{D}\otimes\langle 0^{A\sqcup B\sqcup T_{J}}\rvert)A_{J}(I_{D}\otimes\lvert 0^{A\sqcup B\sqcup T_{J}}\rangle)=\frac{U}{d}." display="block"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>D</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mrow><mi>A</mi><mo>⊔</mo><mi>B</mi><mo>⊔</mo><msub><mi>T</mi><mi>J</mi></msub></mrow></msup><mo stretchy="false">|</mo></mrow><mo stretchy="false">)</mo></mrow><msub><mi>A</mi><mi>J</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>D</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mrow><mi>A</mi><mo>⊔</mo><mi>B</mi><mo>⊔</mo><msub><mi>T</mi><mi>J</mi></msub></mrow></msup><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><mfrac><mi>U</mi><mi>d</mi></mfrac><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Lemma <a href="#S4.Thmtheorem1" title="Lemma 4.1 (Exact symmetric oblivious amplification). ‣ 4 From block encoding to exact universality ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4.1</span></a> applies with <math id="A1.p4.m6" class="ltx_Math" alttext="p=d^{-2}" display="inline"><mrow><mi>p</mi><mo>=</mo><msup><mi>d</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></math>. The resulting resource estimates depend on <math id="A1.p4.m7" class="ltx_Math" alttext="s(C_{J})" display="inline"><mrow><mi>s</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>C</mi><mi>J</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> and
+<math id="A1.p4.m8" class="ltx_Math" alttext="a(C_{J})" display="inline"><mrow><mi>a</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>C</mi><mi>J</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>. An independently efficient symmetric Choi-state preparation
+would therefore give an alternative synthesis route; the bounds in
+(<a href="#S1.E1" title="In Theorem 1.1 (Universality for finite permutation actions). ‣ 1.1 Main result ‣ 1 Introduction ‣ Exact universality of symmetric quantum circuitsfor arbitrary permutation actions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>) follow from the explicit Pauli selector instead.</p>
+</div>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock">
+D. Castro-Silva, T. Gur, and S. Strelchuk.
+
+</span>
+<span class="ltx_bibblock">Symmetric quantum computation.
+
+</span>
+<span class="ltx_bibblock">In <em class="ltx_emph ltx_font_italic">17th Innovations in Theoretical Computer Science
+Conference (ITCS 2026)</em>, volume 362 of <em class="ltx_emph ltx_font_italic">LIPIcs</em>, article 35, 2026.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.4230/LIPIcs.ITCS.2026.35" title="" class="ltx_ref ltx_href">doi:10.4230/LIPIcs.ITCS.2026.35</a>.
+
+</span>
+<span class="ltx_bibblock">Full version: <a href="https://arxiv.org/abs/2501.01214v2" title="" class="ltx_ref ltx_href">arXiv:2501.01214v2</a>, 2025.
+
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock">
+G. Brassard, P. Høyer, M. Mosca, and A. Tapp.
+
+</span>
+<span class="ltx_bibblock">Quantum amplitude amplification and estimation.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Contemporary Mathematics</em>, 305:53–74, 2002.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1090/conm/305/05215" title="" class="ltx_ref ltx_href">doi:10.1090/conm/305/05215</a>.
+
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock">
+D. W. Berry, A. M. Childs, R. Cleve, R. Kothari, and R. D. Somma.
+
+</span>
+<span class="ltx_bibblock">Simulating Hamiltonian dynamics with a truncated Taylor series.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Physical Review Letters</em>, 114:090502, 2015.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1103/PhysRevLett.114.090502" title="" class="ltx_ref ltx_href">doi:10.1103/PhysRevLett.114.090502</a>.
+
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock">
+Q. T. Nguyen, L. Schatzki, P. Braccia, M. Ragone, P. J. Coles,
+F. Sauvage, M. Larocca, and M. Cerezo.
+
+</span>
+<span class="ltx_bibblock">Theory for equivariant quantum neural networks.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">PRX Quantum</em>, 5:020328, 2024.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1103/PRXQuantum.5.020328" title="" class="ltx_ref ltx_href">doi:10.1103/PRXQuantum.5.020328</a>.
+
+</span></li>
+      
+<li id="bib.bib5" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock">
+L. Schatzki, M. Larocca, Q. T. Nguyen, F. Sauvage, and M. Cerezo.
+
+</span>
+<span class="ltx_bibblock">Theoretical guarantees for permutation-equivariant quantum neural
+networks.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">npj Quantum Information</em>, 10:12, 2024.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1038/s41534-024-00804-1" title="" class="ltx_ref ltx_href">doi:10.1038/s41534-024-00804-1</a>.
+
+</span></li>
+      
+<li id="bib.bib6" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock">
+V. M. Bastidas, N. Fitzpatrick, K. J. Joven, Z. M. Rossi, S. Islam,
+T. Van Voorhis, I. L. Chuang, and Y. Liu.
+
+</span>
+<span class="ltx_bibblock">Unification of finite symmetries in the simulation of many-body
+systems on quantum computers.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Physical Review A</em>, 111:052433, 2025.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1103/PhysRevA.111.052433" title="" class="ltx_ref ltx_href">doi:10.1103/PhysRevA.111.052433</a>.
+
+</span></li>
+      
+<li id="bib.bib7" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock">
+S. Kazi, M. Larocca, and M. Cerezo.
+
+</span>
+<span class="ltx_bibblock">On the universality of <math id="bib.bib7.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>-equivariant <math id="bib.bib7.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-body gates.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">New Journal of Physics</em>, 26:053030, 2024.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1088/1367-2630/ad4819" title="" class="ltx_ref ltx_href">doi:10.1088/1367-2630/ad4819</a>.
+
+</span></li>
+      
+<li id="bib.bib8" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock">
+P. Deliyannis and I. Marvian.
+
+</span>
+<span class="ltx_bibblock">Permutation-invariant <math id="bib.bib8.m1" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>-body gates via the Tavis–Cummings
+interaction.
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2506.03453v3" title="" class="ltx_ref ltx_href">arXiv:2506.03453</a>, 2025; version 3, 2026.
+
+</span></li>
+      
+<li id="bib.bib9" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock">
+I. Marvian.
+
+</span>
+<span class="ltx_bibblock">Restrictions on realizable unitary operations imposed by symmetry
+and locality.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Nature Physics</em>, 18:283–289, 2022.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1038/s41567-021-01464-0" title="" class="ltx_ref ltx_href">doi:10.1038/s41567-021-01464-0</a>.
+
+</span></li>
+    
+</ul>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="Exact universality of symmetric quantum circuits for arbitrary permutation actions"></div>
+
+</article>
+{% endraw %}

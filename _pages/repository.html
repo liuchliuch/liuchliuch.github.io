@@ -39,8 +39,10 @@ excerpt: "A repository started by Chenghua Liu and Hanyu Li to share AI-generate
     {% for paper in papers %}
     <li class="publication repository-paper">
       <article>
-        <h2 class="repository-paper-title">{{ paper.title | escape }}</h2>
+        {% assign html_path = '/repository/' | append: paper.slug | append: '/' %}
+        <h2 class="repository-paper-title"><a href="{{ html_path | relative_url }}">{{ paper.title | escape }}</a></h2>
         <div class="publication-details repository-paper-meta">
+          <a href="{{ html_path | relative_url }}" aria-label="HTML full text: {{ paper.title | escape }}">HTML</a>
           {% if paper.pdf and paper.pdf != '' %}
           {% assign pdf_url = paper.pdf %}
           {% unless pdf_url contains '://' %}{% assign pdf_url = pdf_url | relative_url %}{% endunless %}

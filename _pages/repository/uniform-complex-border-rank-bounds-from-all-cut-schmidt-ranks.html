@@ -1,0 +1,1334 @@
+---
+layout: "repository-paper"
+title: "Uniform complex border-rank bounds from all-cut Schmidt ranks"
+repository_title_html: "Uniform complex border-rank bounds\n<br class=\"ltx_break\">from all-cut Schmidt ranks"
+description: "Every Schmidt rank is a lower bound on CP border rank. We prove a converse uniform in tensor order: if all Schmidt ranks of a complex tensor are at most r, its CP border rank is at most exp⁡(O⁡(r2⁢log⁡r)), independently"
+permalink: "/repository/uniform-complex-border-rank-bounds-from-all-cut-schmidt-ranks/"
+pdf: "/files/repository/UBR-uniform_complex_border_rank_bounds_from_all_cut_schmidt_ranks.pdf"
+repository_added: "2026-09-24"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-subsection"><a href="#S1.SS1">1.1 Main theorem</a></li>
+<li class="repository-toc-section"><a href="#S2">2 From all-cut constraints to a matrix-product structure</a></li>
+<li class="repository-toc-section"><a href="#S3">3 Border rank of products in commutative algebras</a></li>
+<li class="repository-toc-section"><a href="#S4">4 Proof of the uniform bound</a></li>
+<li class="repository-toc-section"><a href="#S5">5 Cactus varieties and algebraic branching programs</a></li>
+<li class="repository-toc-subsection"><a href="#S5.SS1">5.1 Cactus varieties</a></li>
+<li class="repository-toc-subsection"><a href="#S5.SS2">5.2 Examples and algebraic branching programs</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Uniform complex border-rank bounds
+<br class="ltx_break">from all-cut Schmidt ranks</h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">Every Schmidt rank is a lower bound on CP border rank. We prove a converse
+uniform in tensor order: if all Schmidt ranks of a complex tensor are at
+most <math id="abstract1.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, its CP border rank is at most <math id="abstract1.m2" class="ltx_Math" alttext="\exp(O(r^{2}\log r))" display="inline"><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>r</mi><mn>2</mn></msup><mo lspace="0.167em">⁢</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>r</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>,
+independently of the number and dimensions of its factors. This answers
+the border-rank question of Florido-Llinàs et al. (PRX Quantum 2025) for matrix product
+states under permutations. Product contractions retain an invertible core
+of a maximal-rank flattening on boundedly many factors. The other cut
+constraints force a common matrix-product representation, with
+noncommutativity confined to boundedly many factors. The remaining factors
+multiply in a finite-dimensional commutative algebra. Decomposing this
+algebra into local components, we use nilpotence of their maximal ideals
+and polarization to express the products through bounded-degree
+coefficients of product curves. Finite differences give border-rank
+degenerations of size independent of the product length.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">A decomposition into <math id="S1.p1.m1" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> product tensors gives a matrix of rank at most
+<math id="S1.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> across every bipartition. The same bound holds for limits of such
+decompositions, because matrix rank conditions are closed. Thus Schmidt
+ranks provide necessary lower bounds on CP border rank. The converse is
+less clear: low-rank decompositions across different cuts need not use
+compatible product factors. We ask whether bounding <em class="ltx_emph ltx_font_italic">all</em> Schmidt
+ranks is nevertheless enough to bound border rank when the number of
+parties is allowed to grow.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">This question arises naturally for matrix product states (MPS). A bound
+on the Schmidt ranks of prefix cuts gives an open-boundary MPS in one
+chosen ordering. Requiring the same bound in every ordering imposes it
+on every bipartition. Florido-Llinàs et al. study this class of states
+and obtain product structure under further assumptions on their MPS
+representations <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite>. They ask whether exact MPS
+under permutations can have border rank growing without bound with the
+system size <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Outlook]</cite>. We show that they cannot,
+without imposing injectivity, translation invariance, or permutation
+invariance of the state.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Exact tensor rank would give a false converse even at Schmidt rank two.
+For linearly independent <math id="S1.p3.m1" class="ltx_Math" alttext="e_{0},e_{1}" display="inline"><mrow><msub><mi>e</mi><mn>0</mn></msub><mo>,</mo><msub><mi>e</mi><mn>1</mn></msub></mrow></math>, the <math id="S1.p3.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>-party <math id="S1.p3.m3" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> tensor,
+<math id="S1.p3.m4" class="ltx_Math" alttext="N\geq 2" display="inline"><mrow><mi>N</mi><mo>≥</mo><mn>2</mn></mrow></math>, has tensor rank <math id="S1.p3.m5" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> and every Schmidt rank at most two
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Sections I.C and VIII]</cite>. Yet</p>
+<table id="S1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex1.m1" class="ltx_Math" alttext="W_{N}=\lim_{t\to 0}\frac{(e_{0}+te_{1})^{\otimes N}-e_{0}^{\otimes N}}{t}" display="block"><mrow><msub><mi>W</mi><mi>N</mi></msub><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0.167em">lim</mo><mrow><mi>t</mi><mo stretchy="false">→</mo><mn>0</mn></mrow></munder><mfrac><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>0</mn></msub><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>N</mi></mrow></msup><mo>−</mo><msubsup><mi>e</mi><mn>0</mn><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>N</mi></mrow></msubsup></mrow><mi>t</mi></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">has border rank two. The distinction is that all <math id="S1.p3.m6" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> possible positions
+of <math id="S1.p3.m7" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math> are obtained from one coefficient of a product curve. Our
+proof extends this coefficient-extraction mechanism to the algebraic
+structure forced by the all-cut constraints.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">The usual local support reduction does not give the required uniformity.
+Singleton cuts of rank at most <math id="S1.p4.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> allow every local space to be
+replaced by one of dimension at most <math id="S1.p4.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, but expanding the resulting
+tensor still gives only <math id="S1.p4.m3" class="ltx_Math" alttext="r^{N-1}" display="inline"><msup><mi>r</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msup></math> product terms. More general exact-rank
+bounds from separating collections of cuts also depend on <math id="S1.p4.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>]</cite>. Nor does bounded-degree definability of
+border-rank loci resolve the issue. Draisma and Kuttler show that, for
+each fixed border-rank threshold, equations of bounded degree suffice
+uniformly in the tensor spaces <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite>. Here the threshold
+itself must be deduced from flattening minors alone.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">We obtain that threshold by first finding a small set of factors that
+preserves the full information of one maximal-rank cut. Product
+contractions can retain its two <math id="S1.p5.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-dimensional Schmidt supports while
+leaving at most <math id="S1.p5.m2" class="ltx_Math" alttext="r-1" display="inline"><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></math> factors on either side. The contracted tensor is
+an invertible matrix. Keeping this matrix visible inside each further
+flattening that separates the two anchor sets forces its other blocks to
+factor through it. Consequently,
+the remaining local variables admit matrix representatives whose
+products can be taken in any order. Although the matrices attached to
+one factor may fail to commute internally, each such factor strictly
+reduces a common centralizer in the <math id="S1.p5.m3" class="ltx_Math" alttext="r^{2}" display="inline"><msup><mi>r</mi><mn>2</mn></msup></math>-dimensional matrix space.
+Only boundedly many factors can do so.</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">Expanding these exceptional factors leaves arbitrarily long products in
+a commutative algebra of bounded dimension. Diagonalizing the algebra
+would turn these products into sums of product tensors, but commutative
+algebras with nonzero nilpotent elements need not be diagonalizable. Instead, we decompose the algebra
+into local factors and use nilpotence to bound the number of non-scalar
+terms that survive in a product. Polarization collects terms of the same
+degree into coefficients of product curves, just as in the <math id="S1.p6.m1" class="ltx_Math" alttext="W_{N}" display="inline"><msub><mi>W</mi><mi>N</mi></msub></math>
+example. The number of evaluations needed to recover such a coefficient
+depends on its degree, rather than on <math id="S1.p6.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>. This yields the uniform
+border-rank bound below.</p>
+</div>
+<section id="S1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">1.1 </span>Main theorem</h3>
+
+<div id="S1.SS1.p1" class="ltx_para">
+<p class="ltx_p">Throughout, all vector spaces are finite-dimensional over <math id="S1.SS1.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math>. Write
+<math id="S1.SS1.p1.m2" class="ltx_Math" alttext="[N]=\{1,\ldots,N\}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>N</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>, put
+<math id="S1.SS1.p1.m3" class="ltx_Math" alttext="V_{I}=\bigotimes_{i\in I}V_{i}" display="inline"><mrow><msub><mi>V</mi><mi>I</mi></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>⨂</mo><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow></msub><msub><mi>V</mi><mi>i</mi></msub></mrow></mrow></math>, and set <math id="S1.SS1.p1.m4" class="ltx_Math" alttext="V_{\varnothing}=\mathbb{C}" display="inline"><mrow><msub><mi>V</mi><mi mathvariant="normal">∅</mi></msub><mo>=</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></mrow></math>.
+We identify tensor products that differ only by a reordering of their
+factors. For <math id="S1.SS1.p1.m5" class="ltx_Math" alttext="S\subseteq[N]" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></mrow></math>, the flattening of
+<math id="S1.SS1.p1.m6" class="ltx_Math" alttext="T\in V_{[N]}" display="inline"><mrow><mi>T</mi><mo>∈</mo><msub><mi>V</mi><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></msub></mrow></math> across <math id="S1.SS1.p1.m7" class="ltx_Math" alttext="S\mid S^{c}" display="inline"><mrow><mi>S</mi><mo fence="false">|</mo><msup><mi>S</mi><mi>c</mi></msup></mrow></math> is</p>
+<table id="S1.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex2.m1" class="ltx_math_unparsed" alttext="\operatorname{Flat}_{S\mid S^{c}}(T):V_{S}^{*}\longrightarrow V_{S^{c}},\qquad\xi\longmapsto(\xi\otimes\operatorname{id})(T)." display="block"><mrow><msub><mi>Flat</mi><mrow><mi>S</mi><mo fence="false">|</mo><msup><mi>S</mi><mi>c</mi></msup></mrow></msub><mrow><mo stretchy="false">(</mo><mi>T</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><msubsup><mi>V</mi><mi>S</mi><mo>∗</mo></msubsup><mo stretchy="false">⟶</mo><msub><mi>V</mi><msup><mi>S</mi><mi>c</mi></msup></msub><mo rspace="2.167em">,</mo><mi>ξ</mi><mo stretchy="false">⟼</mo><mrow><mo stretchy="false">(</mo><mi>ξ</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>id</mi><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Its matrix rank is the Schmidt rank across that cut. The CP rank
+<math id="S1.SS1.p1.m8" class="ltx_Math" alttext="\operatorname{R}(T)" display="inline"><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the least number of decomposable tensors whose sum is <math id="S1.SS1.p1.m9" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>.
+The complex CP border rank <math id="S1.SS1.p1.m10" class="ltx_Math" alttext="\underline{\operatorname{R}}(T)" display="inline"><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the least integer <math id="S1.SS1.p1.m11" class="ltx_Math" alttext="b\geq 0" display="inline"><mrow><mi>b</mi><mo>≥</mo><mn>0</mn></mrow></math>
+such that <math id="S1.SS1.p1.m12" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> belongs to the Zariski closure of the tensors of CP rank
+at most <math id="S1.SS1.p1.m13" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>. Over <math id="S1.SS1.p1.m14" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math>, this is also their Euclidean closure.
+In particular, <math id="S1.SS1.p1.m15" class="ltx_Math" alttext="\underline{\operatorname{R}}(T)\leq b" display="inline"><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>b</mi></mrow></math> exactly when <math id="S1.SS1.p1.m16" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is a limit of tensors
+of rank at most <math id="S1.SS1.p1.m17" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>. We set <math id="S1.SS1.p1.m18" class="ltx_Math" alttext="\operatorname{R}(0)=\underline{\operatorname{R}}(0)=0" display="inline"><mrow><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S1.SS1.p2" class="ltx_para">
+<p class="ltx_p">For an integer <math id="S1.SS1.p2.m1" class="ltx_Math" alttext="D\geq 1" display="inline"><mrow><mi>D</mi><mo>≥</mo><mn>1</mn></mrow></math>, the hypothesis of interest is</p>
+<table id="S1.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E1.m1" class="ltx_Math" alttext="\operatorname{rank}\operatorname{Flat}_{S\mid S^{c}}(T)\leq D\qquad(\varnothing\neq S\subsetneq[N])." display="block"><mrow><mrow><mrow><mrow><mi>rank</mi><mo lspace="0.167em">⁡</mo><mrow><msub><mi>Flat</mi><mrow><mi>S</mi><mo fence="false">|</mo><msup><mi>S</mi><mi>c</mi></msup></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mi>D</mi></mrow><mspace style="width:2em;" width="2em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">∅</mi><mo>≠</mo><mi>S</mi><mo>⊊</mo><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">For a fixed ordering of the factors, the minimal bond dimensions of an
+open-boundary matrix product state (MPS) are the Schmidt ranks across its
+prefix cuts. Indeed, a bond gives a factorization of the corresponding
+flattening, while successive Schmidt decompositions attain these ranks.
+Every bipartition is a prefix cut in some ordering. Thus
+(<a href="#S1.E1" title="In 1.1 Main theorem ‣ 1 Introduction ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>) is equivalent to admitting an open-boundary
+MPS of bond dimension at most <math id="S1.SS1.p2.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> in every ordering.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+              <span class="ltx_tag ltx_tag_note">1</span>
+              
+              
+              
+            This
+numerical equivalence uses open boundaries. A periodic MPS with bond
+dimension at most <math id="footnote1.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> gives Schmidt rank at most <math id="footnote1.m2" class="ltx_Math" alttext="D^{2}" display="inline"><msup><mi>D</mi><mn>2</mn></msup></math> across a
+contiguous bipartition, since that cut crosses two bonds.</span></span></span>
+No bound on the ambient local dimensions is needed: the singleton cuts
+already bound the dimensions of the local supports.</p>
+</div>
+<div id="S1.SS1.p3" class="ltx_para">
+<p class="ltx_p">Set <math id="S1.SS1.p3.m1" class="ltx_Math" alttext="F(1)=1" display="inline"><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>, and for integers <math id="S1.SS1.p3.m2" class="ltx_Math" alttext="q\geq 2" display="inline"><mrow><mi>q</mi><mo>≥</mo><mn>2</mn></mrow></math> define</p>
+<table id="S1.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E2.m1" class="ltx_Math" alttext="F(q):=\sum_{k=0}^{q-1}(k+1)\binom{q+k-2}{k}=\binom{2q-2}{q-1}+(q-1)\binom{2q-2}{q-2}." display="block"><mrow><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">:=</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></munderover><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mi>q</mi><mo>+</mo><mi>k</mi></mrow><mo>−</mo><mn>2</mn></mrow><mi>k</mi></mfrac><mo>)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow><mo>−</mo><mn>2</mn></mrow><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>)</mo></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow><mo>−</mo><mn>2</mn></mrow><mrow><mi>q</mi><mo>−</mo><mn>2</mn></mrow></mfrac><mo>)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The equality and the monotonicity properties used below are proved in
+Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1. ‣ 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a>.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Uniform border-rank bound)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="N\geq 2" display="inline"><mrow><mi>N</mi><mo>≥</mo><mn>2</mn></mrow></math>, let <math id="S1.Thmtheorem1.p1.m2" class="ltx_math_unparsed" alttext="0\neq T\in V_{1}\otimes\cdots\otimes V_{N}" display="inline"><mrow><mn>0</mn><mo>≠</mo><mi>T</mi><mo>∈</mo><mi>V</mi><msub><mrow></mrow><mn>1</mn></msub><mo lspace="0.222em">⊗</mo><mo lspace="0.055em" rspace="0.055em">⋯</mo><mo rspace="0.222em">⊗</mo><mi>V</mi><msub><mrow></mrow><mi>N</mi></msub></mrow></math>, and put</span></p>
+<table id="S1.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex3.m1" class="ltx_Math" alttext="r:=\max_{\varnothing\neq S\subsetneq[N]}\operatorname{rank}\operatorname{Flat}_{S\mid S^{c}}(T)." display="block"><mrow><mrow><mi>r</mi><mo>:=</mo><mrow><munder><mi>max</mi><mrow><mi mathvariant="normal">∅</mi><mo>≠</mo><mi>S</mi><mo>⊊</mo><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></mrow></munder><mo lspace="0.167em">⁡</mo><mrow><mi>rank</mi><mo lspace="0.167em">⁡</mo><mrow><msub><mi>Flat</mi><mrow><mi>S</mi><mo fence="false">|</mo><msup><mi>S</mi><mi>c</mi></msup></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="r=1" display="inline"><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow></math>, then <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is decomposable. If <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="r\geq 2" display="inline"><mrow><mi>r</mi><mo>≥</mo><mn>2</mn></mrow></math>, then</span></p>
+<table id="S1.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E3.m1" class="ltx_Math" alttext="\underline{\operatorname{R}}(T)\leq r^{\,r^{2}+2r-3}F(r^{2})." display="block"><mrow><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msup><mi>r</mi><mrow><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>⁢</mo><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div id="S1.SS1.p4" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.SS1.p4.m1" class="ltx_Math" alttext="B_{*}(D)" display="inline"><mrow><msub><mi>B</mi><mo>∗</mo></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the supremum of <math id="S1.SS1.p4.m2" class="ltx_Math" alttext="\underline{\operatorname{R}}(T)" display="inline"><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> over all nonzero complex
+tensors of order <math id="S1.SS1.p4.m3" class="ltx_Math" alttext="N\geq 2" display="inline"><mrow><mi>N</mi><mo>≥</mo><mn>2</mn></mrow></math> satisfying (<a href="#S1.E1" title="In 1.1 Main theorem ‣ 1 Introduction ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>),
+allowing both <math id="S1.SS1.p4.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> and the local dimensions to vary. Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1 (Uniform border-rank bound). ‣ 1.1 Main theorem ‣ 1 Introduction ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a>
+shows that this supremum is finite. It therefore is the smallest
+integer bound valid uniformly over all such tensor spaces. Define
+<math id="S1.SS1.p4.m5" class="ltx_Math" alttext="\widehat{B}(1)=1" display="inline"><mrow><mrow><mover accent="true"><mi>B</mi><mo>^</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math> and, for integers <math id="S1.SS1.p4.m6" class="ltx_Math" alttext="D\geq 2" display="inline"><mrow><mi>D</mi><mo>≥</mo><mn>2</mn></mrow></math>,</p>
+<table id="S1.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E4.m1" class="ltx_Math" alttext="\widehat{B}(D):=D^{D^{2}+2D-3}\left[\binom{2D^{2}-2}{D^{2}-1}+(D^{2}-1)\binom{2D^{2}-2}{D^{2}-2}\right]." display="block"><mrow><mrow><mrow><mover accent="true"><mi>B</mi><mo>^</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow><mo>:=</mo><mrow><msup><mi>D</mi><mrow><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>D</mi></mrow></mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>⁢</mo><mrow><mo>[</mo><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>D</mi><mn>2</mn></msup></mrow><mo>−</mo><mn>2</mn></mrow><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac><mo>)</mo></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>D</mi><mn>2</mn></msup></mrow><mo>−</mo><mn>2</mn></mrow><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn></mrow></mfrac><mo>)</mo></mrow></mrow></mrow><mo>]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+</table>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_corollary">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Corollary 1.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Uniform secant containment)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For every integer <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="D\geq 1" display="inline"><mrow><mi>D</mi><mo>≥</mo><mn>1</mn></mrow></math>,
+<math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="B_{*}(D)\leq\widehat{B}(D)" display="inline"><mrow><mrow><msub><mi>B</mi><mo>∗</mo></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mover accent="true"><mi>B</mi><mo>^</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Equivalently, if</span></p>
+<table id="S1.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex4.m1" class="ltx_math_unparsed" alttext="X=\operatorname{Seg}(\mathbb{P}V_{1}\times\cdots\times\mathbb{P}V_{N})\subseteq\mathbb{P}(V_{[N]})," display="block"><mrow><mi>X</mi><mo>=</mo><mi>Seg</mi><mrow><mo stretchy="false">(</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><msub><mi>V</mi><mn>1</mn></msub><mo lspace="0.222em">×</mo><mo lspace="0.055em" rspace="0.055em">⋯</mo><mo rspace="0.222em">×</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><msub><mi>V</mi><mi>N</mi></msub><mo stretchy="false">)</mo></mrow><mo>⊆</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><mrow><mo stretchy="false">(</mo><msub><mi>V</mi><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></msub><mo stretchy="false">)</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">where <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="N\geq 2" display="inline"><mrow><mi>N</mi><mo>≥</mo><mn>2</mn></mrow></math> and the <math id="S1.Thmtheorem2.p1.m4" class="ltx_Math" alttext="V_{i}" display="inline"><msub><mi>V</mi><mi>i</mi></msub></math> are nonzero, then, set-theoretically,</span></p>
+<table id="S1.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex5.m1" class="ltx_Math" alttext="\left\{[T]:\operatorname{rank}\operatorname{Flat}_{S\mid S^{c}}(T)\leq D\text{ for every }\varnothing\neq S\subsetneq[N]\right\}\subseteq\sigma_{\widehat{B}(D)}(X)." display="block"><mrow><mrow><mrow><mo>{</mo><mrow><mo stretchy="false">[</mo><mi>T</mi><mo rspace="0.278em" stretchy="false">]</mo></mrow><mo rspace="0.278em">:</mo><mrow><mrow><mi>rank</mi><mo lspace="0.167em">⁡</mo><mrow><msub><mi>Flat</mi><mrow><mi>S</mi><mo fence="false">|</mo><msup><mi>S</mi><mi>c</mi></msup></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mi>D</mi><mo>⁢</mo><mtext class="ltx_mathvariant_italic"> for every </mtext><mo>⁢</mo><mi mathvariant="normal">∅</mi></mrow><mo>≠</mo><mi>S</mi><mo>⊊</mo><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></mrow><mo>}</mo></mrow><mo>⊆</mo><mrow><msub><mi>σ</mi><mrow><mover accent="true"><mi>B</mi><mo>^</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Here <math id="S1.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\sigma_{b}(X)" display="inline"><mrow><msub><mi>σ</mi><mi>b</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the Zariski closure of the union of the linear
+spans of at most <math id="S1.Thmtheorem2.p1.m6" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> points of <math id="S1.Thmtheorem2.p1.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S1.SS1.p5" class="ltx_para">
+<p class="ltx_p">For <math id="S1.SS1.p5.m1" class="ltx_Math" alttext="2\leq r\leq D" display="inline"><mrow><mn>2</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><mi>D</mi></mrow></math>, both the base and the exponent of
+<math id="S1.SS1.p5.m2" class="ltx_Math" alttext="r^{r^{2}+2r-3}" display="inline"><msup><mi>r</mi><mrow><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>−</mo><mn>3</mn></mrow></msup></math> increase with <math id="S1.SS1.p5.m3" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, as does <math id="S1.SS1.p5.m4" class="ltx_Math" alttext="F(r^{2})" display="inline"><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>.
+Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1 (Uniform border-rank bound). ‣ 1.1 Main theorem ‣ 1 Introduction ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a> therefore gives the claimed bound. The case <math id="S1.SS1.p5.m5" class="ltx_Math" alttext="r=1" display="inline"><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow></math>
+is included in the same theorem. The secant formulation follows from
+<math id="S1.SS1.p5.m6" class="ltx_Math" alttext="[T]\in\sigma_{b}(X)" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>T</mi><mo stretchy="false">]</mo></mrow><mo>∈</mo><mrow><msub><mi>σ</mi><mi>b</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> if and only if <math id="S1.SS1.p5.m7" class="ltx_Math" alttext="\underline{\operatorname{R}}(T)\leq b" display="inline"><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>b</mi></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S1.SS1.p6" class="ltx_para">
+<p class="ltx_p">The rank-one case gives <math id="S1.SS1.p6.m1" class="ltx_Math" alttext="B_{*}(1)=1" display="inline"><mrow><mrow><msub><mi>B</mi><mo>∗</mo></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>, and the conclusion is already
+known with the sharp bound at <math id="S1.SS1.p6.m2" class="ltx_Math" alttext="D=2" display="inline"><mrow><mi>D</mi><mo>=</mo><mn>2</mn></mrow></math>.
+Raicu’s theorem states that the ideal of the second secant of a Segre
+variety is generated by the <math id="S1.SS1.p6.m3" class="ltx_Math" alttext="3\times 3" display="inline"><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3</mn></mrow></math> minors of its flattenings
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, Corollary 4.2]</cite>; hence <math id="S1.SS1.p6.m4" class="ltx_Math" alttext="B_{*}(2)=2" display="inline"><mrow><mrow><msub><mi>B</mi><mo>∗</mo></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>2</mn></mrow></math>. The analogous equality
+with the matching secant fails at <math id="S1.SS1.p6.m5" class="ltx_Math" alttext="D=3" display="inline"><mrow><mi>D</mi><mo>=</mo><mn>3</mn></mrow></math>. Qi’s description of the third
+secant uses Strassen’s equations in addition to the <math id="S1.SS1.p6.m6" class="ltx_Math" alttext="4\times 4" display="inline"><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>4</mn></mrow></math>
+flattening minors <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Theorem 1.4]</cite>. More concretely, a general
+<math id="S1.SS1.p6.m7" class="ltx_Math" alttext="3\times 3\times 3" display="inline"><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3</mn></mrow></math> tensor has border rank <math id="S1.SS1.p6.m8" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math>: the fourth secant of
+<math id="S1.SS1.p6.m9" class="ltx_Math" alttext="\operatorname{Seg}(\mathbb{P}^{2}\times\mathbb{P}^{2}\times\mathbb{P}^{2})" display="inline"><mrow><mi>Seg</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><mn>2</mn></msup><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><mn>2</mn></msup><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is defective, whereas its fifth
+secant fills the ambient space
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Section 4]</cite>. Every flattening of
+such a tensor has rank at most <math id="S1.SS1.p6.m10" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>. Thus</p>
+<table id="S1.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex6.m1" class="ltx_Math" alttext="5\leq B_{*}(3)\leq\widehat{B}(3)=3^{12}F(9)=55{,}477{,}125{,}990." display="block"><mrow><mrow><mn>5</mn><mo>≤</mo><mrow><msub><mi>B</mi><mo>∗</mo></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mover accent="true"><mi>B</mi><mo>^</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mn>3</mn><mn>12</mn></msup><mo>⁢</mo><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>55,477,125,990</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The estimate is consequently far from sharp already at <math id="S1.SS1.p6.m11" class="ltx_Math" alttext="D=3" display="inline"><mrow><mi>D</mi><mo>=</mo><mn>3</mn></mrow></math>.
+Its significance is that <math id="S1.SS1.p6.m12" class="ltx_Math" alttext="B_{*}(D)" display="inline"><mrow><msub><mi>B</mi><mo>∗</mo></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></math> is finite for every fixed <math id="S1.SS1.p6.m13" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, even
+as the order and local dimensions vary. The proof occupies
+Sections <a href="#S2" title="2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>–<a href="#S4" title="4 Proof of the uniform bound ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>.
+Proposition <a href="#S3.Thmtheorem2" title="Proposition 3.2 (Border rank of an algebra product). ‣ 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.2</span></a>, which bounds arbitrary-length
+products in a commutative algebra, also gives a cactus-to-secant
+containment in Section <a href="#S5" title="5 Cactus varieties and algebraic branching programs ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>. That section records the
+connection with any-order algebraic branching programs as well.</p>
+</div>
+</section>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>From all-cut constraints to a matrix-product structure</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">Singleton cuts first remove the dependence on local dimensions. For
+<math id="S2.p1.m1" class="ltx_Math" alttext="0\neq T\in V_{[N]}" display="inline"><mrow><mn>0</mn><mo>≠</mo><mi>T</mi><mo>∈</mo><msub><mi>V</mi><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></msub></mrow></math>, let</p>
+<table id="S2.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex7.m1" class="ltx_Math" alttext="E_{i}:=\operatorname{im}\operatorname{Flat}_{[N]\setminus\{i\}\mid\{i\}}(T)\subseteq V_{i}." display="block"><mrow><mrow><msub><mi>E</mi><mi>i</mi></msub><mo>:=</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><mrow><msub><mi>Flat</mi><mrow><mrow><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow><mo>∖</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></mrow><mo fence="false">|</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>⊆</mo><msub><mi>V</mi><mi>i</mi></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Then <math id="S2.p1.m2" class="ltx_math_unparsed" alttext="T\in E_{1}\otimes\cdots\otimes E_{N}" display="inline"><mrow><mi>T</mi><mo>∈</mo><mi>E</mi><msub><mrow></mrow><mn>1</mn></msub><mo lspace="0.222em">⊗</mo><mo lspace="0.055em" rspace="0.055em">⋯</mo><mo rspace="0.222em">⊗</mo><mi>E</mi><msub><mrow></mrow><mi>N</mi></msub></mrow></math>. To see this, choose
+projections <math id="S2.p1.m3" class="ltx_Math" alttext="p_{i}:V_{i}\to E_{i}" display="inline"><mrow><msub><mi>p</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>V</mi><mi>i</mi></msub><mo stretchy="false">→</mo><msub><mi>E</mi><mi>i</mi></msub></mrow></mrow></math> restricting to the identity on <math id="S2.p1.m4" class="ltx_Math" alttext="E_{i}" display="inline"><msub><mi>E</mi><mi>i</mi></msub></math>.
+The definition of <math id="S2.p1.m5" class="ltx_Math" alttext="E_{i}" display="inline"><msub><mi>E</mi><mi>i</mi></msub></math> implies that applying <math id="S2.p1.m6" class="ltx_Math" alttext="p_{i}" display="inline"><msub><mi>p</mi><mi>i</mi></msub></math> in the <math id="S2.p1.m7" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>-th
+factor leaves <math id="S2.p1.m8" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> unchanged, so applying all of them does as well.
+Inclusions and these projections show that restricting to the <math id="S2.p1.m9" class="ltx_Math" alttext="E_{i}" display="inline"><msub><mi>E</mi><mi>i</mi></msub></math>
+preserves all flattening ranks and CP border rank: local linear maps
+cannot increase either quantity, and the maps in the two directions
+fix <math id="S2.p1.m10" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>. Under the all-cut bound, <math id="S2.p1.m11" class="ltx_Math" alttext="\dim E_{i}\leq r" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><msub><mi>E</mi><mi>i</mi></msub></mrow><mo>≤</mo><mi>r</mi></mrow></math>.
+We may therefore assume <math id="S2.p1.m12" class="ltx_Math" alttext="\dim V_{i}\leq r" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><msub><mi>V</mi><mi>i</mi></msub></mrow><mo>≤</mo><mi>r</mi></mrow></math> whenever this is useful.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">A contraction that preserves one nonzero tensor may collapse the other
+vectors in its Schmidt support. We therefore need injectivity on the
+whole support. The next lemma provides it after retaining at most
+<math id="S2.p2.m1" class="ltx_Math" alttext="r-1" display="inline"><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></math> factors. The proof grows the retained set until the contraction
+has full rank: if adding any one factor failed to increase that rank,
+variation over a product basis would force all detected dual spaces to
+coincide, contradicting the dimension of the original support. This is
+the quantitative contraction step used here; related product-contraction
+arguments appear in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Lemma 4.4]</cite>.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Faithful product contraction)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> be a finite index set and let <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="E\subseteq V_{I}" display="inline"><mrow><mi>E</mi><mo>⊆</mo><msub><mi>V</mi><mi>I</mi></msub></mrow></math> have dimension
+<math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="r\geq 1" display="inline"><mrow><mi>r</mi><mo>≥</mo><mn>1</mn></mrow></math>. There are <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="J\subseteq I" display="inline"><mrow><mi>J</mi><mo>⊆</mo><mi>I</mi></mrow></math>, with <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="|J|\leq r-1" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>J</mi><mo stretchy="false">|</mo></mrow><mo>≤</mo><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></mrow></math>, and covectors
+<math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="b_{i}\in V_{i}^{*}" display="inline"><mrow><msub><mi>b</mi><mi>i</mi></msub><mo>∈</mo><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup></mrow></math> for <math id="S2.Thmtheorem1.p1.m7" class="ltx_Math" alttext="i\in I\setminus J" display="inline"><mrow><mi>i</mi><mo>∈</mo><mrow><mi>I</mi><mo>∖</mo><mi>J</mi></mrow></mrow></math> such that</span></p>
+<table id="S2.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex8.m1" class="ltx_Math" alttext="\left.\left(\operatorname{id}_{V_{J}}\otimes\bigotimes_{i\in I\setminus J}b_{i}\right)\right|_{E}:E\longrightarrow V_{J}" display="block"><mrow><msub><mrow><mrow><mo>(</mo><mrow><msub><mi>id</mi><msub><mi>V</mi><mi>J</mi></msub></msub><mo lspace="0em" rspace="0.055em">⊗</mo><mrow><munder><mo movablelimits="false">⨂</mo><mrow><mi>i</mi><mo>∈</mo><mrow><mi>I</mi><mo>∖</mo><mi>J</mi></mrow></mrow></munder><msub><mi>b</mi><mi>i</mi></msub></mrow></mrow><mo>)</mo></mrow><mo>|</mo></mrow><mi>E</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>E</mi><mo stretchy="false">⟶</mo><msub><mi>V</mi><mi>J</mi></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">is injective.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">For <math id="S2.p3.m1" class="ltx_Math" alttext="J\subseteq I" display="inline"><mrow><mi>J</mi><mo>⊆</mo><mi>I</mi></mrow></math> and a tuple
+<math id="S2.p3.m2" class="ltx_Math" alttext="\alpha=(\alpha_{i})_{i\in I\setminus J}" display="inline"><mrow><mi>α</mi><mo>=</mo><msub><mrow><mo stretchy="false">(</mo><msub><mi>α</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>i</mi><mo>∈</mo><mrow><mi>I</mi><mo>∖</mo><mi>J</mi></mrow></mrow></msub></mrow></math> of complementary covectors,
+define</p>
+<table id="S2.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex9.m1" class="ltx_Math" alttext="L_{J}(\alpha):=\left\{\left.\left(\beta\otimes\bigotimes_{i\in I\setminus J}\alpha_{i}\right)\right|_{E}:\beta\in V_{J}^{*}\right\}\subseteq E^{*},\qquad d(J):=\max_{\alpha}\dim L_{J}(\alpha)." display="block"><mrow><mrow><mrow><mrow><msub><mi>L</mi><mi>J</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>:=</mo><mrow><mo>{</mo><msub><mrow><mrow><mo>(</mo><mrow><mi>β</mi><mo lspace="0.222em" rspace="0.055em">⊗</mo><mrow><munder><mo movablelimits="false">⨂</mo><mrow><mi>i</mi><mo>∈</mo><mrow><mi>I</mi><mo>∖</mo><mi>J</mi></mrow></mrow></munder><msub><mi>α</mi><mi>i</mi></msub></mrow></mrow><mo>)</mo></mrow><mo rspace="0.278em">|</mo></mrow><mi>E</mi></msub><mo rspace="0.278em">:</mo><mrow><mi>β</mi><mo>∈</mo><msubsup><mi>V</mi><mi>J</mi><mo>∗</mo></msubsup></mrow><mo>}</mo></mrow><mo>⊆</mo><msup><mi>E</mi><mo>∗</mo></msup></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow><mo>:=</mo><mrow><mi>max</mi><mo lspace="0.167em">⁡</mo><mrow><mrow><mmultiscripts><mo>dim</mo><mprescripts></mprescripts><mi>α</mi><mrow></mrow></mmultiscripts><mo lspace="0.167em">⁡</mo><msub><mi>L</mi><mi>J</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The integer <math id="S2.p3.m3" class="ltx_Math" alttext="d(J)" display="inline"><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the largest rank of a product contraction of
+<math id="S2.p3.m4" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> leaving the factors in <math id="S2.p3.m5" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math>. It is attained on a nonempty
+Zariski-open set of complementary tuples, since rank is detected by
+matrix minors. Product covectors span <math id="S2.p3.m6" class="ltx_Math" alttext="V_{I}^{*}" display="inline"><msubsup><mi>V</mi><mi>I</mi><mo>∗</mo></msubsup></math>, so
+<math id="S2.p3.m7" class="ltx_Math" alttext="d(\varnothing)=1" display="inline"><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math> and <math id="S2.p3.m8" class="ltx_Math" alttext="d(I)=r" display="inline"><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>r</mi></mrow></math>. Moreover,
+<math id="S2.p3.m9" class="ltx_Math" alttext="d(J\cup\{i\})\geq d(J)" display="inline"><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>J</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> whenever <math id="S2.p3.m10" class="ltx_Math" alttext="i\notin J" display="inline"><mrow><mi>i</mi><mo>∉</mo><mi>J</mi></mrow></math>.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Suppose that <math id="S2.p4.m1" class="ltx_Math" alttext="d(J)=d&lt;r" display="inline"><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>d</mi><mo>&lt;</mo><mi>r</mi></mrow></math>. We claim that
+<math id="S2.p4.m2" class="ltx_Math" alttext="d(J\cup\{i\})&gt;d" display="inline"><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>J</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mi>d</mi></mrow></math> for some <math id="S2.p4.m3" class="ltx_Math" alttext="i\notin J" display="inline"><mrow><mi>i</mi><mo>∉</mo><mi>J</mi></mrow></math>. Otherwise every one of these
+integers equals <math id="S2.p4.m4" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>. For each <math id="S2.p4.m5" class="ltx_Math" alttext="i\in I\setminus J" display="inline"><mrow><mi>i</mi><mo>∈</mo><mrow><mi>I</mi><mo>∖</mo><mi>J</mi></mrow></mrow></math>, choose a basis
+<math id="S2.p4.m6" class="ltx_Math" alttext="\mathcal{B}_{i}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi>i</mi></msub></math> of <math id="S2.p4.m7" class="ltx_Math" alttext="V_{i}^{*}" display="inline"><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup></math> so that</p>
+<table id="S2.E5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E5.m1" class="ltx_Math" alttext="\dim L_{J}(\alpha)=d\quad\text{whenever}\quad\alpha\in\prod_{i\in I\setminus J}\mathcal{B}_{i}." display="block"><mrow><mrow><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><msub><mi>L</mi><mi>J</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mi>d</mi></mrow><mspace style="width:1em;" width="1em"></mspace><mtext>whenever</mtext><mspace style="width:1em;" width="1em"></mspace><mrow><mi>α</mi><mo rspace="0.111em">∈</mo><mrow><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mrow><mi>I</mi><mo>∖</mo><mi>J</mi></mrow></mrow></munder><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi>i</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Such bases exist. For each fixed choice of one basis position in every
+factor, the maximal-rank condition is a nonempty Zariski-open condition
+on the product of the spaces of bases. It is nonempty because a
+maximal-rank tuple consists of nonzero covectors and each of those
+covectors can be extended to a basis. There are only finitely many
+choices of positions, and the product of the spaces of bases is
+irreducible, so all these open conditions can be satisfied together.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">If two tuples in this finite product differ only in their <math id="S2.p5.m1" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>-th
+entry, both corresponding spaces <math id="S2.p5.m2" class="ltx_Math" alttext="L_{J}" display="inline"><msub><mi>L</mi><mi>J</mi></msub></math> are contained in
+<math id="S2.p5.m3" class="ltx_Math" alttext="L_{J\cup\{i\}}" display="inline"><msub><mi>L</mi><mrow><mi>J</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></mrow></msub></math> evaluated at their common remaining entries. That
+space has dimension at most <math id="S2.p5.m4" class="ltx_Math" alttext="d(J\cup\{i\})=d" display="inline"><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>J</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>d</mi></mrow></math>, while both subspaces
+have dimension <math id="S2.p5.m5" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> by (<a href="#S2.E5" title="In 2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>). They are therefore equal.
+Changing one entry at a time shows that all spaces in
+(<a href="#S2.E5" title="In 2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>) are a single subspace <math id="S2.p5.m6" class="ltx_Math" alttext="L\subseteq E^{*}" display="inline"><mrow><mi>L</mi><mo>⊆</mo><msup><mi>E</mi><mo>∗</mo></msup></mrow></math>.
+As <math id="S2.p5.m7" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> varies over <math id="S2.p5.m8" class="ltx_Math" alttext="V_{J}^{*}" display="inline"><msubsup><mi>V</mi><mi>J</mi><mo>∗</mo></msubsup></math> and <math id="S2.p5.m9" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> varies over this product
+of bases, the covectors <math id="S2.p5.m10" class="ltx_Math" alttext="\beta\otimes\bigotimes_{i}\alpha_{i}" display="inline"><mrow><mi>β</mi><mo lspace="0.222em" rspace="0.055em">⊗</mo><mrow><msub><mo>⨂</mo><mi>i</mi></msub><msub><mi>α</mi><mi>i</mi></msub></mrow></mrow></math> span
+<math id="S2.p5.m11" class="ltx_Math" alttext="V_{I}^{*}" display="inline"><msubsup><mi>V</mi><mi>I</mi><mo>∗</mo></msubsup></math>. Their restrictions span <math id="S2.p5.m12" class="ltx_Math" alttext="E^{*}" display="inline"><msup><mi>E</mi><mo>∗</mo></msup></math>, forcing <math id="S2.p5.m13" class="ltx_Math" alttext="L=E^{*}" display="inline"><mrow><mi>L</mi><mo>=</mo><msup><mi>E</mi><mo>∗</mo></msup></mrow></math>, contrary
+to <math id="S2.p5.m14" class="ltx_Math" alttext="d&lt;r" display="inline"><mrow><mi>d</mi><mo>&lt;</mo><mi>r</mi></mrow></math>. This proves the claim.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Starting from <math id="S2.p6.m1" class="ltx_Math" alttext="J=\varnothing" display="inline"><mrow><mi>J</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, enlarge <math id="S2.p6.m2" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> using the claim until
+<math id="S2.p6.m3" class="ltx_Math" alttext="d(J)=r" display="inline"><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>r</mi></mrow></math>. Since each enlargement increases <math id="S2.p6.m4" class="ltx_Math" alttext="d(J)" display="inline"><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow></math> by at least one,
+at most <math id="S2.p6.m5" class="ltx_Math" alttext="r-1" display="inline"><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></math> factors are retained. A tuple attaining this rank gives
+the required covectors.
+∎</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">Apply the contraction lemma to both sides of a maximal-rank cut. The
+retained factors will serve as <em class="ltx_emph ltx_font_italic">anchors</em>: together they carry an
+invertible matrix that remains visible in each flattening separating the
+two anchor sets.
+Normalizing this matrix to the identity makes each remaining block equal
+to the product of its blocks in the distinguished row and column. The
+resulting identities give the following factorization.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 2.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Anchored matrix-product form)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="0\neq T\in V_{[N]}" display="inline"><mrow><mn>0</mn><mo>≠</mo><mi>T</mi><mo>∈</mo><msub><mi>V</mi><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></msub></mrow></math> have largest nontrivial flattening rank
+<math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="r\geq 2" display="inline"><mrow><mi>r</mi><mo>≥</mo><mn>2</mn></mrow></math>. There are disjoint nonempty sets <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="L,R\subseteq[N]" display="inline"><mrow><mrow><mi>L</mi><mo>,</mo><mi>R</mi></mrow><mo>⊆</mo><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></mrow></math>, each
+of cardinality at most <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="r-1" display="inline"><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></math>, and, writing
+<math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="C=[N]\setminus(L\cup R)" display="inline"><mrow><mi>C</mi><mo>=</mo><mrow><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow><mo>∖</mo><mrow><mo stretchy="false">(</mo><mrow><mi>L</mi><mo>∪</mo><mi>R</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, there are subspaces
+<math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="U\subseteq V_{L}" display="inline"><mrow><mi>U</mi><mo>⊆</mo><msub><mi>V</mi><mi>L</mi></msub></mrow></math> and <math id="S2.Thmtheorem2.p1.m7" class="ltx_Math" alttext="W\subseteq V_{R}" display="inline"><mrow><mi>W</mi><mo>⊆</mo><msub><mi>V</mi><mi>R</mi></msub></mrow></math> of dimension <math id="S2.Thmtheorem2.p1.m8" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, covectors
+<math id="S2.Thmtheorem2.p1.m9" class="ltx_Math" alttext="b_{i}\in V_{i}^{*}" display="inline"><mrow><msub><mi>b</mi><mi>i</mi></msub><mo>∈</mo><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup></mrow></math> for <math id="S2.Thmtheorem2.p1.m10" class="ltx_Math" alttext="i\in C" display="inline"><mrow><mi>i</mi><mo>∈</mo><mi>C</mi></mrow></math>, an identification
+<math id="S2.Thmtheorem2.p1.m11" class="ltx_Math" alttext="\Theta:\operatorname{End}(\mathbb{C}^{r})\to U\otimes W" display="inline"><mrow><mi mathvariant="normal">Θ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>End</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mi>r</mi></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>U</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></mrow></mrow></math>, and linear maps</span></p>
+<table id="S2.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex10.m1" class="ltx_Math" alttext="M_{i}:V_{i}^{*}\longrightarrow\operatorname{End}(\mathbb{C}^{r})\qquad(i\in C)" display="block"><mrow><mrow><msub><mi>M</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">⟶</mo><mrow><mi>End</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mi>r</mi></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mspace style="width:2em;" width="2em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mi>i</mi><mo>∈</mo><mi>C</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">with the following properties. The tensor lies in
+<math id="S2.Thmtheorem2.p1.m12" class="ltx_Math" alttext="U\otimes W\otimes V_{C}" display="inline"><mrow><mi>U</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>V</mi><mi>C</mi></msub></mrow></math>, and its contraction on the factors in <math id="S2.Thmtheorem2.p1.m13" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>
+is</span></p>
+<table id="S2.E6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E6.m1" class="ltx_Math" alttext="\Phi(x_{C}):=\Theta^{-1}\!\left(\left(\operatorname{id}_{U\otimes W}\otimes\bigotimes_{i\in C}x_{i}\right)T\right)=\prod_{i\in C}M_{i}(x_{i})." display="block"><mrow><mrow><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>:=</mo><mrow><msup><mi mathvariant="normal">Θ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mo>(</mo><mrow><msub><mi>id</mi><mrow><mi>U</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></msub><mo lspace="0em" rspace="0.055em">⊗</mo><mrow><munder><mo movablelimits="false">⨂</mo><mrow><mi>i</mi><mo>∈</mo><mi>C</mi></mrow></munder><msub><mi>x</mi><mi>i</mi></msub></mrow></mrow><mo>)</mo></mrow><mo>⁢</mo><mi>T</mi></mrow><mo>)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>C</mi></mrow></munder><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The empty product is the identity, each <math id="S2.Thmtheorem2.p1.m14" class="ltx_Math" alttext="M_{i}(b_{i})=I_{r}" display="inline"><mrow><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>b</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>I</mi><mi>r</mi></msub></mrow></math>, and</span></p>
+<table id="S2.E7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E7.m1" class="ltx_Math" alttext="[M_{i}(x),M_{j}(y)]=0\qquad(i\neq j,\ x\in V_{i}^{*},\ y\in V_{j}^{*})." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msub><mi>M</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">]</mo></mrow><mo>=</mo><mn>0</mn></mrow><mspace style="width:2em;" width="2em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mi>i</mi><mo>≠</mo><mi>j</mi></mrow><mo>,</mo><mrow><mi>x</mi><mo>∈</mo><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup></mrow><mo>,</mo><mrow><mi>y</mi><mo>∈</mo><msubsup><mi>V</mi><mi>j</mi><mo>∗</mo></msubsup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Consequently the product in (<a href="#S2.E6" title="In Proposition 2.2 (Anchored matrix-product form). ‣ 2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>) may be taken in
+any order.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Choose a cut <math id="S2.p8.m1" class="ltx_Math" alttext="A\mid B" display="inline"><mrow><mi>A</mi><mo fence="false">|</mo><mi>B</mi></mrow></math> of rank <math id="S2.p8.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>. Its two Schmidt support spaces
+<math id="S2.p8.m3" class="ltx_Math" alttext="E_{A}\subseteq V_{A}" display="inline"><mrow><msub><mi>E</mi><mi>A</mi></msub><mo>⊆</mo><msub><mi>V</mi><mi>A</mi></msub></mrow></math> and <math id="S2.p8.m4" class="ltx_Math" alttext="E_{B}\subseteq V_{B}" display="inline"><mrow><msub><mi>E</mi><mi>B</mi></msub><mo>⊆</mo><msub><mi>V</mi><mi>B</mi></msub></mrow></math> have dimension <math id="S2.p8.m5" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, and
+<math id="S2.p8.m6" class="ltx_Math" alttext="T\in E_{A}\otimes E_{B}" display="inline"><mrow><mi>T</mi><mo>∈</mo><mrow><msub><mi>E</mi><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>E</mi><mi>B</mi></msub></mrow></mrow></math> has matrix rank <math id="S2.p8.m7" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> in these spaces. Apply
+Lemma <a href="#S2.Thmtheorem1" title="Lemma 2.1 (Faithful product contraction). ‣ 2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a> separately to <math id="S2.p8.m8" class="ltx_Math" alttext="E_{A}" display="inline"><msub><mi>E</mi><mi>A</mi></msub></math> and <math id="S2.p8.m9" class="ltx_Math" alttext="E_{B}" display="inline"><msub><mi>E</mi><mi>B</mi></msub></math>.
+It yields retained sets <math id="S2.p8.m10" class="ltx_Math" alttext="L\subseteq A" display="inline"><mrow><mi>L</mi><mo>⊆</mo><mi>A</mi></mrow></math> and <math id="S2.p8.m11" class="ltx_Math" alttext="R\subseteq B" display="inline"><mrow><mi>R</mi><mo>⊆</mo><mi>B</mi></mrow></math>, each of
+size at most <math id="S2.p8.m12" class="ltx_Math" alttext="r-1" display="inline"><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></math>, and product contractions injective on both support
+spaces. The tensor <math id="S2.p8.m13" class="ltx_Math" alttext="T_{0}\in V_{L}\otimes V_{R}" display="inline"><mrow><msub><mi>T</mi><mn>0</mn></msub><mo>∈</mo><mrow><msub><mi>V</mi><mi>L</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>V</mi><mi>R</mi></msub></mrow></mrow></math> obtained by applying both
+contractions therefore has rank <math id="S2.p8.m14" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>. Since <math id="S2.p8.m15" class="ltx_Math" alttext="r\geq 2" display="inline"><mrow><mi>r</mi><mo>≥</mo><mn>2</mn></mrow></math>, neither retained
+set is empty.</p>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Contraction cannot increase flattening rank. It follows from the rank
+of <math id="S2.p9.m1" class="ltx_Math" alttext="T_{0}" display="inline"><msub><mi>T</mi><mn>0</mn></msub></math> that the original cuts <math id="S2.p9.m2" class="ltx_Math" alttext="L\mid L^{c}" display="inline"><mrow><mi>L</mi><mo fence="false">|</mo><msup><mi>L</mi><mi>c</mi></msup></mrow></math> and <math id="S2.p9.m3" class="ltx_Math" alttext="R\mid R^{c}" display="inline"><mrow><mi>R</mi><mo fence="false">|</mo><msup><mi>R</mi><mi>c</mi></msup></mrow></math> both
+have rank at least <math id="S2.p9.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, and hence exactly <math id="S2.p9.m5" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>. Let <math id="S2.p9.m6" class="ltx_Math" alttext="U\subseteq V_{L}" display="inline"><mrow><mi>U</mi><mo>⊆</mo><msub><mi>V</mi><mi>L</mi></msub></mrow></math>
+and <math id="S2.p9.m7" class="ltx_Math" alttext="W\subseteq V_{R}" display="inline"><mrow><mi>W</mi><mo>⊆</mo><msub><mi>V</mi><mi>R</mi></msub></mrow></math> be their respective support spaces on the
+retained sides. These have dimension <math id="S2.p9.m8" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>. Applying the two support
+projections shows that <math id="S2.p9.m9" class="ltx_Math" alttext="T\in U\otimes W\otimes V_{C}" display="inline"><mrow><mi>T</mi><mo>∈</mo><mrow><mi>U</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>V</mi><mi>C</mi></msub></mrow></mrow></math>. In particular,
+<math id="S2.p9.m10" class="ltx_Math" alttext="T_{0}\in U\otimes W" display="inline"><mrow><msub><mi>T</mi><mn>0</mn></msub><mo>∈</mo><mrow><mi>U</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></mrow></math> is a full-rank matrix.</p>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">Choose bases <math id="S2.p10.m1" class="ltx_Math" alttext="u_{1},\ldots,u_{r}" display="inline"><mrow><msub><mi>u</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>u</mi><mi>r</mi></msub></mrow></math> of <math id="S2.p10.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and <math id="S2.p10.m3" class="ltx_Math" alttext="w_{1},\ldots,w_{r}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>w</mi><mi>r</mi></msub></mrow></math> of
+<math id="S2.p10.m4" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> such that <math id="S2.p10.m5" class="ltx_Math" alttext="T_{0}=\sum_{a=1}^{r}u_{a}\otimes w_{a}" display="inline"><mrow><msub><mi>T</mi><mn>0</mn></msub><mo rspace="0.111em">=</mo><mrow><mrow><msubsup><mo>∑</mo><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></msubsup><msub><mi>u</mi><mi>a</mi></msub></mrow><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>w</mi><mi>a</mi></msub></mrow></mrow></math>, and set</p>
+<table id="S2.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex11.m1" class="ltx_Math" alttext="\Theta(Z):=\sum_{a,b=1}^{r}Z_{ab}\,u_{a}\otimes w_{b}." display="block"><mrow><mrow><mrow><mi mathvariant="normal">Θ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">:=</mo><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover><mrow><msub><mi>Z</mi><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow></msub><mo>⁢</mo><msub><mi>u</mi><mi>a</mi></msub></mrow></mrow><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>w</mi><mi>b</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Denote the contracting covectors on <math id="S2.p10.m6" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> by <math id="S2.p10.m7" class="ltx_Math" alttext="b_{i}" display="inline"><msub><mi>b</mi><mi>i</mi></msub></math>. The resulting
+matrix-valued multilinear map satisfies <math id="S2.p10.m8" class="ltx_Math" alttext="\Phi(b_{C})=I_{r}" display="inline"><mrow><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>b</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>I</mi><mi>r</mi></msub></mrow></math>. Define
+<math id="S2.p10.m9" class="ltx_Math" alttext="M_{i}(x)=\Phi(b_{C\setminus\{i\}},x)" display="inline"><mrow><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>b</mi><mrow><mi>C</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></mrow></msub><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>; these maps are linear and
+<math id="S2.p10.m10" class="ltx_Math" alttext="M_{i}(b_{i})=I_{r}" display="inline"><mrow><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>b</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>I</mi><mi>r</mi></msub></mrow></math>.</p>
+</div>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p">Fix <math id="S2.p11.m1" class="ltx_Math" alttext="S\subseteq C" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>C</mi></mrow></math>. Extend each nonzero <math id="S2.p11.m2" class="ltx_Math" alttext="b_{i}" display="inline"><msub><mi>b</mi><mi>i</mi></msub></math> to a basis of
+<math id="S2.p11.m3" class="ltx_Math" alttext="V_{i}^{*}" display="inline"><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup></math>. Arrange the coefficients of <math id="S2.p11.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> across
+<math id="S2.p11.m5" class="ltx_Math" alttext="(L\cup S)\mid(R\cup(C\setminus S))" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>L</mi><mo>∪</mo><mi>S</mi></mrow><mo stretchy="false">)</mo></mrow><mo fence="false">|</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>∪</mo><mrow><mo stretchy="false">(</mo><mrow><mi>C</mi><mo>∖</mo><mi>S</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> in a block matrix <math id="S2.p11.m6" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>, whose
+blocks are <math id="S2.p11.m7" class="ltx_Math" alttext="r\times r" display="inline"><mrow><mi>r</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>r</mi></mrow></math> matrices. The block rows are indexed by basis
+tuples on <math id="S2.p11.m8" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, and the block columns by basis tuples on
+<math id="S2.p11.m9" class="ltx_Math" alttext="C\setminus S" display="inline"><mrow><mi>C</mi><mo>∖</mo><mi>S</mi></mrow></math>. Label the all-<math id="S2.p11.m10" class="ltx_Math" alttext="b_{i}" display="inline"><msub><mi>b</mi><mi>i</mi></msub></math> tuple by <math id="S2.p11.m11" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> on each side.
+Then <math id="S2.p11.m12" class="ltx_Math" alttext="H_{0,0}=I_{r}" display="inline"><mrow><msub><mi>H</mi><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow></msub><mo>=</mo><msub><mi>I</mi><mi>r</mi></msub></mrow></math>, and <math id="S2.p11.m13" class="ltx_Math" alttext="\operatorname{rank}H\leq r" display="inline"><mrow><mrow><mi>rank</mi><mo lspace="0.167em">⁡</mo><mi>H</mi></mrow><mo>≤</mo><mi>r</mi></mrow></math> by the all-cut bound. Indeed,
+replacing the ambient spaces <math id="S2.p11.m14" class="ltx_Math" alttext="V_{L},V_{R}" display="inline"><mrow><msub><mi>V</mi><mi>L</mi></msub><mo>,</mo><msub><mi>V</mi><mi>R</mi></msub></mrow></math> by their supports <math id="S2.p11.m15" class="ltx_Math" alttext="U,W" display="inline"><mrow><mi>U</mi><mo>,</mo><mi>W</mi></mrow></math>
+preserves the rank of this flattening.</p>
+</div>
+<div id="S2.p12" class="ltx_para">
+<p class="ltx_p">Partition <math id="S2.p12.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> around its distinguished block as</p>
+<table id="S2.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex12.m1" class="ltx_Math" alttext="H=\begin{pmatrix}I_{r}&amp;B_{0}\\
+C_{0}&amp;D_{0}\end{pmatrix}." display="block"><mrow><mrow><mi>H</mi><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>I</mi><mi>r</mi></msub></mtd><mtd><msub><mi>B</mi><mn>0</mn></msub></mtd></mtr><mtr><mtd><msub><mi>C</mi><mn>0</mn></msub></mtd><mtd><msub><mi>D</mi><mn>0</mn></msub></mtd></mtr></mtable><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Multiplication on the left and right by invertible block matrices gives</p>
+<table id="S2.Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex13.m1" class="ltx_Math" alttext="\begin{pmatrix}I_{r}&amp;0\\
+-C_{0}&amp;I\end{pmatrix}H\begin{pmatrix}I_{r}&amp;-B_{0}\\
+0&amp;I\end{pmatrix}=\begin{pmatrix}I_{r}&amp;0\\
+0&amp;D_{0}-C_{0}B_{0}\end{pmatrix}." display="block"><mrow><mrow><mrow><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>I</mi><mi>r</mi></msub></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mrow><mo>−</mo><msub><mi>C</mi><mn>0</mn></msub></mrow></mtd><mtd><mi>I</mi></mtd></mtr></mtable><mo>)</mo></mrow><mo>⁢</mo><mi>H</mi><mo>⁢</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>I</mi><mi>r</mi></msub></mtd><mtd><mrow><mo>−</mo><msub><mi>B</mi><mn>0</mn></msub></mrow></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mi>I</mi></mtd></mtr></mtable><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>I</mi><mi>r</mi></msub></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><msub><mi>D</mi><mn>0</mn></msub><mo>−</mo><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>⁢</mo><msub><mi>B</mi><mn>0</mn></msub></mrow></mrow></mtd></mtr></mtable><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Thus <math id="S2.p12.m2" class="ltx_Math" alttext="D_{0}=C_{0}B_{0}" display="inline"><mrow><msub><mi>D</mi><mn>0</mn></msub><mo>=</mo><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>⁢</mo><msub><mi>B</mi><mn>0</mn></msub></mrow></mrow></math>, or equivalently
+<math id="S2.p12.m3" class="ltx_Math" alttext="H_{\alpha,\beta}=H_{\alpha,0}H_{0,\beta}" display="inline"><mrow><msub><mi>H</mi><mrow><mi>α</mi><mo>,</mo><mi>β</mi></mrow></msub><mo>=</mo><mrow><msub><mi>H</mi><mrow><mi>α</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>⁢</mo><msub><mi>H</mi><mrow><mn>0</mn><mo>,</mo><mi>β</mi></mrow></msub></mrow></mrow></math> for all block indices.
+If one indexing set is empty, the same identity holds directly.
+By multilinearity, the block identities give</p>
+<table id="S2.E8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E8.m1" class="ltx_Math" alttext="\Phi(x_{S},x_{C\setminus S})=\Phi(x_{S},b_{C\setminus S})\Phi(b_{S},x_{C\setminus S})." display="block"><mrow><mrow><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>S</mi></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>C</mi><mo>∖</mo><mi>S</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>S</mi></msub><mo>,</mo><msub><mi>b</mi><mrow><mi>C</mi><mo>∖</mo><mi>S</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi mathvariant="normal">Φ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>b</mi><mi>S</mi></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>C</mi><mo>∖</mo><mi>S</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Extracting one singleton <math id="S2.p12.m4" class="ltx_Math" alttext="S=\{i\}" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></mrow></math> at a time proves
+(<a href="#S2.E6" title="In Proposition 2.2 (Anchored matrix-product form). ‣ 2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>). The singletons can be extracted in any
+order. In particular, keeping only <math id="S2.p12.m5" class="ltx_Math" alttext="x_{i},x_{j}" display="inline"><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>x</mi><mi>j</mi></msub></mrow></math> free and extracting them
+in the two possible orders gives
+<math id="S2.p12.m6" class="ltx_Math" alttext="M_{i}(x_{i})M_{j}(x_{j})=M_{j}(x_{j})M_{i}(x_{i})" display="inline"><mrow><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>M</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>M</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, proving
+(<a href="#S2.E7" title="In Proposition 2.2 (Anchored matrix-product form). ‣ 2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>).
+∎</p>
+</div>
+</div>
+<div id="S2.p13" class="ltx_para">
+<p class="ltx_p">The distinction between commutation across factors and commutation
+within a factor matters here. The cut identities never compare two
+independent choices of the variable at the same factor, so they do not
+force its coefficient algebra to be commutative. The next lemma shows
+that this is only a bounded obstruction. Each noncommutative algebra
+removes at least one dimension from the common centralizer, while all
+algebras belonging to other factors lie in that centralizer.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.3</span></span><span class="ltx_text ltx_font_bold"> </span>(Centralizer bound)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathcal{A}_{i}\subseteq\operatorname{End}(\mathbb{C}^{r})" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>i</mi></msub><mo>⊆</mo><mrow><mi>End</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mi>r</mi></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be finitely many unital subalgebras,
+and suppose that elements of <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathcal{A}_{i}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>i</mi></msub></math> commute with elements of
+<math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathcal{A}_{j}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>j</mi></msub></math> whenever <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="i\neq j" display="inline"><mrow><mi>i</mi><mo>≠</mo><mi>j</mi></mrow></math>. At most <math id="S2.Thmtheorem3.p1.m5" class="ltx_Math" alttext="r^{2}-1" display="inline"><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></math> of the algebras
+<math id="S2.Thmtheorem3.p1.m6" class="ltx_Math" alttext="\mathcal{A}_{i}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>i</mi></msub></math> are noncommutative. All the remaining algebras together
+generate a commutative unital algebra of dimension at most <math id="S2.Thmtheorem3.p1.m7" class="ltx_Math" alttext="r^{2}" display="inline"><msup><mi>r</mi><mn>2</mn></msup></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p14" class="ltx_para">
+<p class="ltx_p">List the noncommutative algebras as
+<math id="S2.p14.m1" class="ltx_Math" alttext="\mathcal{A}_{q_{1}},\ldots,\mathcal{A}_{q_{b}}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><msub><mi>q</mi><mn>1</mn></msub></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><msub><mi>q</mi><mi>b</mi></msub></msub></mrow></math>, and define</p>
+<table id="S2.Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex14.m1" class="ltx_Math" alttext="Z_{0}=\operatorname{End}(\mathbb{C}^{r}),\qquad Z_{k}=\bigcap_{j=1}^{k}\operatorname{Comm}(\mathcal{A}_{q_{j}})," display="block"><mrow><mrow><mrow><msub><mi>Z</mi><mn>0</mn></msub><mo>=</mo><mrow><mi>End</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mi>r</mi></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>Z</mi><mi>k</mi></msub><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">⋂</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><mrow><mi>Comm</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><msub><mi>q</mi><mi>j</mi></msub></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S2.p14.m2" class="ltx_Math" alttext="\operatorname{Comm}(\mathcal{B})" display="inline"><mrow><mi>Comm</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow></mrow></math> denotes the vector space of matrices
+commuting with every element of <math id="S2.p14.m3" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math>. Cross-site commutation
+implies <math id="S2.p14.m4" class="ltx_Math" alttext="\mathcal{A}_{q_{k}}\subseteq Z_{k-1}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><msub><mi>q</mi><mi>k</mi></msub></msub><mo>⊆</mo><msub><mi>Z</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></math>. Since <math id="S2.p14.m5" class="ltx_Math" alttext="\mathcal{A}_{q_{k}}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><msub><mi>q</mi><mi>k</mi></msub></msub></math> is
+noncommutative, there are <math id="S2.p14.m6" class="ltx_Math" alttext="x,y\in\mathcal{A}_{q_{k}}" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><msub><mi>q</mi><mi>k</mi></msub></msub></mrow></math> with <math id="S2.p14.m7" class="ltx_Math" alttext="[x,y]\neq 0" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo stretchy="false">]</mo></mrow><mo>≠</mo><mn>0</mn></mrow></math>.
+Then <math id="S2.p14.m8" class="ltx_Math" alttext="x\in Z_{k-1}\setminus Z_{k}" display="inline"><mrow><mi>x</mi><mo>∈</mo><mrow><msub><mi>Z</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>∖</mo><msub><mi>Z</mi><mi>k</mi></msub></mrow></mrow></math>, so
+<math id="S2.p14.m9" class="ltx_Math" alttext="Z_{0}\supsetneq Z_{1}\supsetneq\cdots\supsetneq Z_{b}" display="inline"><mrow><msub><mi>Z</mi><mn>0</mn></msub><mo>⊋</mo><msub><mi>Z</mi><mn>1</mn></msub><mo rspace="0.1389em">⊋</mo><mo lspace="0.1389em" rspace="0.1389em">⋯</mo><mo lspace="0.1389em">⊋</mo><msub><mi>Z</mi><mi>b</mi></msub></mrow></math>.
+Every <math id="S2.p14.m10" class="ltx_Math" alttext="Z_{k}" display="inline"><msub><mi>Z</mi><mi>k</mi></msub></math> contains the scalar matrices. The chain therefore has at
+most <math id="S2.p14.m11" class="ltx_Math" alttext="r^{2}-1" display="inline"><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></math> strict inclusions. Finally, elements of the remaining
+algebras commute both within each algebra and across distinct algebras.
+They generate a commutative subalgebra of <math id="S2.p14.m12" class="ltx_Math" alttext="\operatorname{End}(\mathbb{C}^{r})" display="inline"><mrow><mi>End</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mi>r</mi></msup><mo stretchy="false">)</mo></mrow></mrow></math>, whose dimension
+is at most <math id="S2.p14.m13" class="ltx_Math" alttext="r^{2}" display="inline"><msup><mi>r</mi><mn>2</mn></msup></math>.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>Border rank of products in commutative algebras</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">The preceding reduction controls the dimension of the algebra containing
+the remaining matrices, but leaves the number of factors unrestricted.
+Expanding their product term by term would reintroduce that dependence.
+The estimate in this section avoids such an expansion: in a local algebra
+of dimension <math id="S3.p1.m1" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>, every product of <math id="S3.p1.m2" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> elements of the maximal
+ideal vanishes. The surviving terms are indexed by subsets of fewer than
+<math id="S3.p1.m3" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> factors, and polarization combines all subsets of a given size
+into coefficients of product curves. Finite differences bound the border
+rank of those coefficients using only <math id="S3.p1.m4" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">We will use two elementary border-rank properties. Local linear maps
+cannot increase border rank, as noted above. Also,
+<math id="S3.p2.m1" class="ltx_Math" alttext="\underline{\operatorname{R}}(S+T)\leq\underline{\operatorname{R}}(S)+\underline{\operatorname{R}}(T)" display="inline"><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>+</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>: choose convergent sequences of
+bounded-rank approximants to <math id="S3.p2.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> and <math id="S3.p2.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> and add the sequences.
+Tensoring with a fixed decomposable tensor cannot increase border rank,
+by tensoring the approximants with that tensor.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3.1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The two expressions in (<a href="#S1.E2" title="In 1.1 Main theorem ‣ 1 Introduction ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>) agree. The function
+<math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is increasing on the positive integers and satisfies</span></p>
+<table id="S3.E9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E9.m1" class="ltx_Math" alttext="F(a)+F(b)\leq F(a+b)\qquad(a,b\geq 1)." display="block"><mrow><mrow><mrow><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mspace style="width:2em;" width="2em"></mspace><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mrow><mi>b</mi><mo>≥</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">For <math id="S3.p3.m1" class="ltx_Math" alttext="q\geq 2" display="inline"><mrow><mi>q</mi><mo>≥</mo><mn>2</mn></mrow></math>, split the defining sum into its unweighted part and its
+part weighted by <math id="S3.p3.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>. The identities</p>
+<table id="S3.Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex15.m1" class="ltx_math_unparsed" alttext="\sum_{k=0}^{q-1}\binom{q+k-2}{k}=\binom{2q-2}{q-1},\qquad k\binom{q+k-2}{k}=(q-1)\binom{q+k-2}{k-1}\quad(k\geq 1)" display="block"><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></munderover><mrow><mo lspace="0em">(</mo><mfrac linethickness="0pt"><mrow><mrow><mi>q</mi><mo>+</mo><mi>k</mi></mrow><mo>−</mo><mn>2</mn></mrow><mi>k</mi></mfrac><mo>)</mo></mrow><mo>=</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow><mo>−</mo><mn>2</mn></mrow><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>)</mo></mrow><mo rspace="2.167em">,</mo><mi>k</mi><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mi>q</mi><mo>+</mo><mi>k</mi></mrow><mo>−</mo><mn>2</mn></mrow><mi>k</mi></mfrac><mo>)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mi>q</mi><mo>+</mo><mi>k</mi></mrow><mo>−</mo><mn>2</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>)</mo></mrow><mrow><mo stretchy="false">(</mo><mi>k</mi><mo>≥</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">and summation of the second identity give the claimed closed form.
+Equivalently,</p>
+<table id="S3.Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex16.m1" class="ltx_Math" alttext="F(q)=\frac{q^{2}-q+1}{q}\binom{2q-2}{q-1}," display="block"><mrow><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mrow><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>−</mo><mi>q</mi></mrow><mo>+</mo><mn>1</mn></mrow><mi>q</mi></mfrac><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow><mo>−</mo><mn>2</mn></mrow><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">which also holds at <math id="S3.p3.m3" class="ltx_Math" alttext="q=1" display="inline"><mrow><mi>q</mi><mo>=</mo><mn>1</mn></mrow></math>. Consequently, for <math id="S3.p3.m4" class="ltx_Math" alttext="q\geq 2" display="inline"><mrow><mi>q</mi><mo>≥</mo><mn>2</mn></mrow></math>,</p>
+<table id="S3.Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex17.m1" class="ltx_Math" alttext="\frac{F(q)}{F(q-1)}=\frac{2(2q-3)(q^{2}-q+1)}{q(q^{2}-3q+3)}\geq 2." display="block"><mrow><mrow><mfrac><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>−</mo><mi>q</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><mi>q</mi></mrow></mrow><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>≥</mo><mn>2</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The last inequality follows because the difference between
+<math id="S3.p3.m5" class="ltx_Math" alttext="(2q-3)(q^{2}-q+1)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>−</mo><mi>q</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S3.p3.m6" class="ltx_Math" alttext="q(q^{2}-3q+3)" display="inline"><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><mi>q</mi></mrow></mrow><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is
+<math id="S3.p3.m7" class="ltx_Math" alttext="q^{2}(q-2)+2q-3&gt;0" display="inline"><mrow><mrow><mrow><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow></mrow><mo>−</mo><mn>3</mn></mrow><mo>&gt;</mo><mn>0</mn></mrow></math>. Thus <math id="S3.p3.m8" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is increasing, and</p>
+<table id="S3.Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex18.m1" class="ltx_Math" alttext="F(a)+F(b)\leq 2F(a+b-1)\leq F(a+b)," display="block"><mrow><mrow><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mn>2</mn><mo>⁢</mo><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">as required.
+∎</p>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 3.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Border rank of an algebra product)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> be a commutative unital complex algebra of dimension
+<math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="m\geq 1" display="inline"><mrow><mi>m</mi><mo>≥</mo><mn>1</mn></mrow></math>. Let <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>, let <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\phi_{i}:V_{i}^{*}\to\mathcal{A}" display="inline"><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">→</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></mrow></mrow></math> be linear maps,
+and let <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\lambda\in\mathcal{A}^{*}" display="inline"><mrow><mi>λ</mi><mo>∈</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo>∗</mo></msup></mrow></math>. The multilinear form</span></p>
+<table id="S3.E10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E10.m1" class="ltx_Math" alttext="H(x_{1},\ldots,x_{n})=\lambda\!\left(\prod_{i=1}^{n}\phi_{i}(x_{i})\right)" display="block"><mrow><mrow><mi>H</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mpadded style="width:0.413em;" width="0.413em"><mi>λ</mi></mpadded><mo>⁡</mo><mrow><mo>(</mo><mrow><munderover><mo lspace="0em" movablelimits="false">∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(10)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">defines a tensor in <math id="S3.Thmtheorem2.p1.m6" class="ltx_math_unparsed" alttext="V_{1}\otimes\cdots\otimes V_{n}" display="inline"><mrow><mi>V</mi><msub><mrow></mrow><mn>1</mn></msub><mo lspace="0.222em">⊗</mo><mo lspace="0.055em" rspace="0.055em">⋯</mo><mo rspace="0.222em">⊗</mo><mi>V</mi><msub><mrow></mrow><mi>n</mi></msub></mrow></math> of border rank at
+most <math id="S3.Thmtheorem2.p1.m7" class="ltx_Math" alttext="F(m)" display="inline"><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></math>, independently of <math id="S3.Thmtheorem2.p1.m8" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> and the local dimensions.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Decompose the finite-dimensional commutative algebra into its local
+Artin factors,</p>
+<table id="S3.Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex19.m1" class="ltx_Math" alttext="\mathcal{A}=\bigoplus_{\nu=1}^{s}\mathcal{A}_{\nu},\qquad d_{\nu}:=\dim\mathcal{A}_{\nu},\qquad\sum_{\nu=1}^{s}d_{\nu}=m." display="block"><mrow><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">⨁</mo><mrow><mi>ν</mi><mo>=</mo><mn>1</mn></mrow><mi>s</mi></munderover><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>ν</mi></msub></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>d</mi><mi>ν</mi></msub><mo rspace="0.1389em">:=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>ν</mi></msub></mrow></mrow><mo rspace="2.000em">,</mo><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>ν</mi><mo>=</mo><mn>1</mn></mrow><mi>s</mi></munderover><msub><mi>d</mi><mi>ν</mi></msub></mrow><mo>=</mo><mi>m</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This decomposition follows from the Chinese remainder theorem applied
+to sufficiently high powers of the finitely many maximal ideals.
+Each residue field is <math id="S3.p4.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math>, since it is a finite-dimensional field
+extension of <math id="S3.p4.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math>. If <math id="S3.p4.m3" class="ltx_Math" alttext="\mathfrak{m}_{\nu}" display="inline"><msub><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi></msub></math> is the maximal ideal of
+<math id="S3.p4.m4" class="ltx_Math" alttext="\mathcal{A}_{\nu}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>ν</mi></msub></math>, then</p>
+<table id="S3.Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex20.m1" class="ltx_Math" alttext="\mathcal{A}_{\nu}=\mathbb{C}1_{\nu}\oplus\mathfrak{m}_{\nu},\qquad\dim\mathfrak{m}_{\nu}=d_{\nu}-1,\qquad\mathfrak{m}_{\nu}^{d_{\nu}}=0." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>ν</mi></msub><mo>=</mo><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>⁢</mo><msub><mn>1</mn><mi>ν</mi></msub></mrow><mo>⊕</mo><msub><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi></msub></mrow></mrow><mo rspace="1.889em">,</mo><mrow><mrow><mo rspace="0.167em">dim</mo><msub><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi></msub></mrow><mo>=</mo><mrow><msub><mi>d</mi><mi>ν</mi></msub><mo>−</mo><mn>1</mn></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msubsup><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi><msub><mi>d</mi><mi>ν</mi></msub></msubsup><mo>=</mo><mn>0</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For the last assertion, if two consecutive nonzero powers of
+<math id="S3.p4.m5" class="ltx_Math" alttext="\mathfrak{m}_{\nu}" display="inline"><msub><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi></msub></math> were equal, Nakayama’s lemma applied to that ideal as
+an <math id="S3.p4.m6" class="ltx_Math" alttext="\mathcal{A}_{\nu}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>ν</mi></msub></math>-module would force it to be zero. Hence their
+dimensions strictly decrease until zero; starting at dimension
+<math id="S3.p4.m7" class="ltx_Math" alttext="d_{\nu}-1" display="inline"><mrow><msub><mi>d</mi><mi>ν</mi></msub><mo>−</mo><mn>1</mn></mrow></math> gives the asserted exponent.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p5.m1" class="ltx_Math" alttext="\phi_{i,\nu}" display="inline"><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub></math> and <math id="S3.p5.m2" class="ltx_Math" alttext="\lambda_{\nu}" display="inline"><msub><mi>λ</mi><mi>ν</mi></msub></math> denote the components of
+<math id="S3.p5.m3" class="ltx_Math" alttext="\phi_{i}" display="inline"><msub><mi>ϕ</mi><mi>i</mi></msub></math> and <math id="S3.p5.m4" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> on <math id="S3.p5.m5" class="ltx_Math" alttext="\mathcal{A}_{\nu}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>ν</mi></msub></math>. Multiplication is
+componentwise, so <math id="S3.p5.m6" class="ltx_Math" alttext="H=\sum_{\nu}H_{\nu}" display="inline"><mrow><mi>H</mi><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>ν</mi></msub><msub><mi>H</mi><mi>ν</mi></msub></mrow></mrow></math>, where
+<math id="S3.p5.m7" class="ltx_Math" alttext="H_{\nu}(x)=\lambda_{\nu}(\prod_{i}\phi_{i,\nu}(x_{i}))" display="inline"><mrow><mrow><msub><mi>H</mi><mi>ν</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>λ</mi><mi>ν</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mo lspace="0em">∏</mo><mi>i</mi></msub><mrow><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Write</p>
+<table id="S3.Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex21.m1" class="ltx_Math" alttext="\phi_{i,\nu}(x_{i})=\alpha_{i,\nu}(x_{i})1_{\nu}+n_{i,\nu}(x_{i})," display="block"><mrow><mrow><mrow><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>α</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mn>1</mn><mi>ν</mi></msub></mrow><mo>+</mo><mrow><msub><mi>n</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">with <math id="S3.p5.m8" class="ltx_Math" alttext="\alpha_{i,\nu}:V_{i}^{*}\to\mathbb{C}" display="inline"><mrow><msub><mi>α</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">→</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></mrow></mrow></math> and
+<math id="S3.p5.m9" class="ltx_Math" alttext="n_{i,\nu}:V_{i}^{*}\to\mathfrak{m}_{\nu}" display="inline"><mrow><msub><mi>n</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">→</mo><msub><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi></msub></mrow></mrow></math> linear. Fix <math id="S3.p5.m10" class="ltx_Math" alttext="\nu" display="inline"><mi>ν</mi></math> and write
+<math id="S3.p5.m11" class="ltx_Math" alttext="d=d_{\nu}" display="inline"><mrow><mi>d</mi><mo>=</mo><msub><mi>d</mi><mi>ν</mi></msub></mrow></math>. Expanding the product and using
+<math id="S3.p5.m12" class="ltx_Math" alttext="\mathfrak{m}_{\nu}^{d}=0" display="inline"><mrow><msubsup><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi><mi>d</mi></msubsup><mo>=</mo><mn>0</mn></mrow></math> gives</p>
+<table id="S3.E11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E11.m1" class="ltx_Math" alttext="H_{\nu}(x)=\sum_{k=0}^{d-1}\ \sum_{\begin{subarray}{c}S\subseteq[n]\\
+|S|=k\end{subarray}}\lambda_{\nu}\!\left(\prod_{i\in S}n_{i,\nu}(x_{i})\right)\prod_{j\notin S}\alpha_{j,\nu}(x_{j})." display="block"><mrow><mrow><mrow><msub><mi>H</mi><mi>ν</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>d</mi><mo>−</mo><mn>1</mn></mrow></munderover><mrow><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>S</mi><mo>⊆</mo><mrow><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mo stretchy="false">|</mo><mi>S</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mi>k</mi></mrow></mtd></mtr></mtable></munder><mrow><msub><mi>λ</mi><mi>ν</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>S</mi></mrow></munder><mrow><msub><mi>n</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><munder><mo movablelimits="false">∏</mo><mrow><mi>j</mi><mo>∉</mo><mi>S</mi></mrow></munder><mrow><msub><mi>α</mi><mrow><mi>j</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(11)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The empty algebra product in the <math id="S3.p5.m13" class="ltx_Math" alttext="k=0" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow></math> term is <math id="S3.p5.m14" class="ltx_Math" alttext="1_{\nu}" display="inline"><msub><mn>1</mn><mi>ν</mi></msub></math>, so this
+term has rank at most one. For <math id="S3.p5.m15" class="ltx_Math" alttext="k&gt;0" display="inline"><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, bounding each subset separately
+would cost <math id="S3.p5.m16" class="ltx_Math" alttext="\binom{n}{k}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>n</mi><mi>k</mi></mfrac><mo>)</mo></mrow></math> summands. We instead treat the symmetric
+multiplication form once and use the same decomposition for every subset.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">For <math id="S3.p6.m1" class="ltx_Math" alttext="1\leq k\leq d-1" display="inline"><mrow><mn>1</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mrow><mi>d</mi><mo>−</mo><mn>1</mn></mrow></mrow></math>, commutativity makes</p>
+<table id="S3.Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex22.m1" class="ltx_math_unparsed" alttext="(y_{1},\ldots,y_{k})\longmapsto\lambda_{\nu}(y_{1}\cdots y_{k})" display="block"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>y</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟼</mo><msub><mi>λ</mi><mi>ν</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo lspace="0em" rspace="0em">⋯</mo><msub><mi>y</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">a symmetric <math id="S3.p6.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-linear form on <math id="S3.p6.m3" class="ltx_Math" alttext="\mathfrak{m}_{\nu}" display="inline"><msub><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi></msub></math>. Pure powers
+<math id="S3.p6.m4" class="ltx_Math" alttext="\eta^{\otimes k}" display="inline"><msup><mi>η</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>k</mi></mrow></msup></math>, with <math id="S3.p6.m5" class="ltx_Math" alttext="\eta\in\mathfrak{m}_{\nu}^{*}" display="inline"><mrow><mi>η</mi><mo>∈</mo><msubsup><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi><mo>∗</mo></msubsup></mrow></math>, span
+<math id="S3.p6.m6" class="ltx_Math" alttext="\operatorname{Sym}^{k}(\mathfrak{m}_{\nu}^{*})" display="inline"><mrow><msup><mi>Sym</mi><mi>k</mi></msup><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msubsup><mi class="ltx_mathvariant_fraktur" mathvariant="fraktur">m</mi><mi>ν</mi><mo>∗</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow></math>. Indeed, a linear functional annihilating
+all such powers gives a homogeneous polynomial vanishing at every
+<math id="S3.p6.m7" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math>, and hence is zero; equivalently this is polarization in
+characteristic zero. Selecting a basis from these powers therefore
+expresses the displayed form as</p>
+<table id="S3.E12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E12.m1" class="ltx_math_unparsed" alttext="\lambda_{\nu}(y_{1}\cdots y_{k})=\sum_{\ell=1}^{h_{d,k}}c_{\ell}\eta_{\ell}(y_{1})\cdots\eta_{\ell}(y_{k}),\qquad h_{d,k}\leq\binom{d+k-2}{k}." display="block"><mrow><msub><mi>λ</mi><mi>ν</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo lspace="0em" rspace="0em">⋯</mo><msub><mi>y</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow><mo rspace="0.111em">=</mo><munderover><mo movablelimits="false">∑</mo><mrow><mi mathvariant="normal">ℓ</mi><mo>=</mo><mn>1</mn></mrow><msub><mi>h</mi><mrow><mi>d</mi><mo>,</mo><mi>k</mi></mrow></msub></munderover><msub><mi>c</mi><mi mathvariant="normal">ℓ</mi></msub><msub><mi>η</mi><mi mathvariant="normal">ℓ</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mo lspace="0em" rspace="0em">⋯</mo><msub><mi>η</mi><mi mathvariant="normal">ℓ</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow><mo rspace="2.167em">,</mo><msub><mi>h</mi><mrow><mi>d</mi><mo>,</mo><mi>k</mi></mrow></msub><mo>≤</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mi>d</mi><mo>+</mo><mi>k</mi></mrow><mo>−</mo><mn>2</mn></mrow><mi>k</mi></mfrac><mo>)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(12)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The linear forms <math id="S3.p6.m8" class="ltx_Math" alttext="\eta_{\ell}" display="inline"><msub><mi>η</mi><mi mathvariant="normal">ℓ</mi></msub></math> and coefficients <math id="S3.p6.m9" class="ltx_Math" alttext="c_{\ell}" display="inline"><msub><mi>c</mi><mi mathvariant="normal">ℓ</mi></msub></math> depend
+only on the multiplication form at degree <math id="S3.p6.m10" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>, and hence apply to
+every subset in (<a href="#S3.E11" title="In 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">11</span></a>). Zero coefficients or fewer
+summands are allowed.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">Fix one summand and put
+<math id="S3.p7.m1" class="ltx_Math" alttext="\beta_{i}=\eta_{\ell}\circ n_{i,\nu}" display="inline"><mrow><msub><mi>β</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>η</mi><mi mathvariant="normal">ℓ</mi></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><msub><mi>n</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub></mrow></mrow></math>. We identify the linear forms
+<math id="S3.p7.m2" class="ltx_Math" alttext="\alpha_{i,\nu},\beta_{i}" display="inline"><mrow><msub><mi>α</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo>,</mo><msub><mi>β</mi><mi>i</mi></msub></mrow></math> on <math id="S3.p7.m3" class="ltx_Math" alttext="V_{i}^{*}" display="inline"><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup></math> with vectors in <math id="S3.p7.m4" class="ltx_Math" alttext="V_{i}" display="inline"><msub><mi>V</mi><mi>i</mi></msub></math>.
+The corresponding tensor in the degree-<math id="S3.p7.m5" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> part of
+(<a href="#S3.E11" title="In 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">11</span></a>) is the coefficient of <math id="S3.p7.m6" class="ltx_Math" alttext="t^{k}" display="inline"><msup><mi>t</mi><mi>k</mi></msup></math> in</p>
+<table id="S3.Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex23.m1" class="ltx_Math" alttext="P(t):=\bigotimes_{i=1}^{n}\bigl(\alpha_{i,\nu}+t\beta_{i}\bigr)." display="block"><mrow><mrow><mrow><mi>P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">:=</mo><mrow><munderover><mo movablelimits="false" rspace="0em">⨂</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msub><mi>α</mi><mrow><mi>i</mi><mo>,</mo><mi>ν</mi></mrow></msub><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><msub><mi>β</mi><mi>i</mi></msub></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For <math id="S3.p7.m7" class="ltx_Math" alttext="k\geq 1" display="inline"><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow></math>, it has the explicit degeneration</p>
+<table id="S3.E13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E13.m1" class="ltx_Math" alttext="[t^{k}]P(t)=\frac{1}{k!}\lim_{\varepsilon\to 0}\varepsilon^{-k}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}P(j\varepsilon)." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">[</mo><msup><mi>t</mi><mi>k</mi></msup><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mrow><mi>k</mi><mo>!</mo></mrow></mfrac><mo lspace="0.167em">⁢</mo><mrow><munder><mo movablelimits="false" rspace="0.167em">lim</mo><mrow><mi>ε</mi><mo stretchy="false">→</mo><mn>0</mn></mrow></munder><mrow><msup><mi>ε</mi><mrow><mo>−</mo><mi>k</mi></mrow></msup><mo>⁢</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mi>k</mi></munderover><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>k</mi><mo>−</mo><mi>j</mi></mrow></msup><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>k</mi><mi>j</mi></mfrac><mo>)</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>j</mi><mo>⁢</mo><mi>ε</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(13)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">To verify this, expand <math id="S3.p7.m8" class="ltx_Math" alttext="P(t)=\sum_{h}P_{h}t^{h}" display="inline"><mrow><mrow><mi>P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>h</mi></msub><mrow><msub><mi>P</mi><mi>h</mi></msub><mo>⁢</mo><msup><mi>t</mi><mi>h</mi></msup></mrow></mrow></mrow></math>. The <math id="S3.p7.m9" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-th forward
+difference of a polynomial of degree less than <math id="S3.p7.m10" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> is zero, while
+that of <math id="S3.p7.m11" class="ltx_Math" alttext="t^{k}" display="inline"><msup><mi>t</mi><mi>k</mi></msup></math> is the constant <math id="S3.p7.m12" class="ltx_Math" alttext="k!" display="inline"><mrow><mi>k</mi><mo>!</mo></mrow></math>. Thus the coefficients with
+<math id="S3.p7.m13" class="ltx_Math" alttext="h&lt;k" display="inline"><mrow><mi>h</mi><mo>&lt;</mo><mi>k</mi></mrow></math> cancel, the coefficient with <math id="S3.p7.m14" class="ltx_Math" alttext="h=k" display="inline"><mrow><mi>h</mi><mo>=</mo><mi>k</mi></mrow></math> becomes <math id="S3.p7.m15" class="ltx_Math" alttext="P_{k}" display="inline"><msub><mi>P</mi><mi>k</mi></msub></math>, and
+every coefficient with <math id="S3.p7.m16" class="ltx_Math" alttext="h&gt;k" display="inline"><mrow><mi>h</mi><mo>&gt;</mo><mi>k</mi></mrow></math> is multiplied by a positive power of
+<math id="S3.p7.m17" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> and tends to zero. For every nonzero
+<math id="S3.p7.m18" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>, the sum on the right of
+(<a href="#S3.E13" title="In 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">13</span></a>) has CP rank at most <math id="S3.p7.m19" class="ltx_Math" alttext="k+1" display="inline"><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></math>, since each
+<math id="S3.p7.m20" class="ltx_Math" alttext="P(j\varepsilon)" display="inline"><mrow><mi>P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>j</mi><mo>⁢</mo><mi>ε</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is decomposable or zero. Therefore
+<math id="S3.p7.m21" class="ltx_Math" alttext="\underline{\operatorname{R}}([t^{k}]P(t))\leq k+1" display="inline"><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">[</mo><msup><mi>t</mi><mi>k</mi></msup><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></mrow></math>.</p>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">Subadditivity, (<a href="#S3.E12" title="In 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">12</span></a>), and the rank-one
+<math id="S3.p8.m1" class="ltx_Math" alttext="k=0" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow></math> term imply, for <math id="S3.p8.m2" class="ltx_Math" alttext="d\geq 2" display="inline"><mrow><mi>d</mi><mo>≥</mo><mn>2</mn></mrow></math>,</p>
+<table id="S3.Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex24.m1" class="ltx_Math" alttext="\underline{\operatorname{R}}(H_{\nu})\leq 1+\sum_{k=1}^{d-1}(k+1)\binom{d+k-2}{k}=F(d)." display="block"><mrow><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>H</mi><mi>ν</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mn>1</mn><mo rspace="0.055em">+</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>d</mi><mo>−</mo><mn>1</mn></mrow></munderover><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mrow><mi>d</mi><mo>+</mo><mi>k</mi></mrow><mo>−</mo><mn>2</mn></mrow><mi>k</mi></mfrac><mo>)</mo></mrow></mrow></mrow></mrow><mo>=</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For <math id="S3.p8.m3" class="ltx_Math" alttext="d=1" display="inline"><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow></math>, only the rank-one term is present and the same conclusion
+holds with <math id="S3.p8.m4" class="ltx_Math" alttext="F(1)=1" display="inline"><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>. Finally,</p>
+<table id="S3.Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex25.m1" class="ltx_Math" alttext="\underline{\operatorname{R}}(H)\leq\sum_{\nu=1}^{s}F(d_{\nu})\leq F\!\left(\sum_{\nu=1}^{s}d_{\nu}\right)=F(m)" display="block"><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">≤</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>ν</mi><mo>=</mo><mn>1</mn></mrow><mi>s</mi></munderover><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>d</mi><mi>ν</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mpadded style="width:0.612em;" width="0.612em"><mi>F</mi></mpadded><mo>⁡</mo><mrow><mo>(</mo><mrow><munderover><mo lspace="0em" movablelimits="false">∑</mo><mrow><mi>ν</mi><mo>=</mo><mn>1</mn></mrow><mi>s</mi></munderover><msub><mi>d</mi><mi>ν</mi></msub></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">by Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1. ‣ 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a>.
+∎</p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">The key uniformity is visible in (<a href="#S3.E13" title="In 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">13</span></a>): the
+number of evaluation points depends on the coefficient degree <math id="S3.p9.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>,
+which is bounded by the local algebra dimension, and is independent of
+<math id="S3.p9.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>. The degeneration occurs in the tensor space. Thus the argument
+also applies to algebras that are not limits of reduced algebras.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">4 </span>Proof of the uniform bound</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">Only the anchor factors and the noncommutative factors need to be
+expanded in local bases. Their number is bounded by <math id="S4.p1.m1" class="ltx_Math" alttext="r^{2}+2r-3" display="inline"><mrow><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>−</mo><mn>3</mn></mrow></math>; all
+other factors remain together in a single algebra product. The expansion
+must use bases of the original local spaces, since a vector in an anchor
+support <math id="S4.p1.m2" class="ltx_Math" alttext="U\subseteq V_{L}" display="inline"><mrow><mi>U</mi><mo>⊆</mo><msub><mi>V</mi><mi>L</mi></msub></mrow></math> need not be decomposable across <math id="S4.p1.m3" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>.
+This accounts for the power of <math id="S4.p1.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> in the theorem, while the algebra
+product contributes <math id="S4.p1.m5" class="ltx_Math" alttext="F(r^{2})" display="inline"><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1 (Uniform border-rank bound). ‣ 1.1 Main theorem ‣ 1 Introduction ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a>.</h6>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Reduce each <math id="S4.p2.m1" class="ltx_Math" alttext="V_{i}" display="inline"><msub><mi>V</mi><mi>i</mi></msub></math> to its local support, as at the start of
+Section <a href="#S2" title="2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>. This preserves border rank and all
+flattening ranks and gives <math id="S4.p2.m2" class="ltx_Math" alttext="\dim V_{i}\leq r" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><msub><mi>V</mi><mi>i</mi></msub></mrow><mo>≤</mo><mi>r</mi></mrow></math>. If <math id="S4.p2.m3" class="ltx_Math" alttext="r=1" display="inline"><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow></math>, every local
+support is one-dimensional, so <math id="S4.p2.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is decomposable. Assume henceforth
+that <math id="S4.p2.m5" class="ltx_Math" alttext="r\geq 2" display="inline"><mrow><mi>r</mi><mo>≥</mo><mn>2</mn></mrow></math>.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Apply Proposition <a href="#S2.Thmtheorem2" title="Proposition 2.2 (Anchored matrix-product form). ‣ 2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>, with anchor sets <math id="S4.p3.m1" class="ltx_Math" alttext="L,R" display="inline"><mrow><mi>L</mi><mo>,</mo><mi>R</mi></mrow></math>,
+remaining set <math id="S4.p3.m2" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>, support spaces <math id="S4.p3.m3" class="ltx_Math" alttext="U,W" display="inline"><mrow><mi>U</mi><mo>,</mo><mi>W</mi></mrow></math>, identification <math id="S4.p3.m4" class="ltx_Math" alttext="\Theta" display="inline"><mi mathvariant="normal">Θ</mi></math>,
+and matrix maps <math id="S4.p3.m5" class="ltx_Math" alttext="M_{i}" display="inline"><msub><mi>M</mi><mi>i</mi></msub></math>. For each <math id="S4.p3.m6" class="ltx_Math" alttext="i\in C" display="inline"><mrow><mi>i</mi><mo>∈</mo><mi>C</mi></mrow></math>, let <math id="S4.p3.m7" class="ltx_Math" alttext="\mathcal{A}_{i}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>i</mi></msub></math> be the
+unital algebra generated by <math id="S4.p3.m8" class="ltx_Math" alttext="M_{i}(V_{i}^{*})" display="inline"><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow></math>. The cross-site commutation
+relations extend to these generated algebras, because sums and products
+of matrices commuting with a fixed matrix continue to commute with it.
+Let <math id="S4.p3.m9" class="ltx_Math" alttext="Q\subseteq C" display="inline"><mrow><mi>Q</mi><mo>⊆</mo><mi>C</mi></mrow></math> be the set of indices for which <math id="S4.p3.m10" class="ltx_Math" alttext="\mathcal{A}_{i}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>i</mi></msub></math> is
+noncommutative, and put <math id="S4.p3.m11" class="ltx_Math" alttext="G=C\setminus Q" display="inline"><mrow><mi>G</mi><mo>=</mo><mrow><mi>C</mi><mo>∖</mo><mi>Q</mi></mrow></mrow></math>. By
+Lemma <a href="#S2.Thmtheorem3" title="Lemma 2.3 (Centralizer bound). ‣ 2 From all-cut constraints to a matrix-product structure ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3</span></a>,</p>
+<table id="S4.E14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E14.m1" class="ltx_Math" alttext="|Q|\leq r^{2}-1." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi>Q</mi><mo stretchy="false">|</mo></mrow><mo>≤</mo><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(14)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The algebras <math id="S4.p3.m12" class="ltx_Math" alttext="\mathcal{A}_{i}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>i</mi></msub></math>, <math id="S4.p3.m13" class="ltx_Math" alttext="i\in G" display="inline"><mrow><mi>i</mi><mo>∈</mo><mi>G</mi></mrow></math>, generate a commutative unital
+algebra <math id="S4.p3.m14" class="ltx_Math" alttext="\mathcal{A}\subseteq\operatorname{End}(\mathbb{C}^{r})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo>⊆</mo><mrow><mi>End</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mi>r</mi></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, with <math id="S4.p3.m15" class="ltx_Math" alttext="\dim\mathcal{A}\leq r^{2}" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></mrow><mo>≤</mo><msup><mi>r</mi><mn>2</mn></msup></mrow></math>.
+If <math id="S4.p3.m16" class="ltx_Math" alttext="G=\varnothing" display="inline"><mrow><mi>G</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, take <math id="S4.p3.m17" class="ltx_Math" alttext="\mathcal{A}=\mathbb{C}I_{r}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo>=</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>⁢</mo><msub><mi>I</mi><mi>r</mi></msub></mrow></mrow></math>.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Set <math id="S4.p4.m1" class="ltx_Math" alttext="K=L\cup R\cup Q" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>L</mi><mo>∪</mo><mi>R</mi><mo>∪</mo><mi>Q</mi></mrow></mrow></math>. Then</p>
+<table id="S4.E15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E15.m1" class="ltx_Math" alttext="|K|\leq 2(r-1)+(r^{2}-1)=r^{2}+2r-3." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi>K</mi><mo stretchy="false">|</mo></mrow><mo>≤</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>−</mo><mn>3</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(15)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">For each <math id="S4.p4.m2" class="ltx_Math" alttext="i\in K" display="inline"><mrow><mi>i</mi><mo>∈</mo><mi>K</mi></mrow></math>, choose a basis
+<math id="S4.p4.m3" class="ltx_Math" alttext="(e_{i,a})_{a=1}^{d_{i}}" display="inline"><msubsup><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mrow><mi>i</mi><mo>,</mo><mi>a</mi></mrow></msub><mo stretchy="false">)</mo></mrow><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><msub><mi>d</mi><mi>i</mi></msub></msubsup></math> of <math id="S4.p4.m4" class="ltx_Math" alttext="V_{i}" display="inline"><msub><mi>V</mi><mi>i</mi></msub></math>, where <math id="S4.p4.m5" class="ltx_Math" alttext="d_{i}\leq r" display="inline"><mrow><msub><mi>d</mi><mi>i</mi></msub><mo>≤</mo><mi>r</mi></mrow></math>, with dual
+basis <math id="S4.p4.m6" class="ltx_Math" alttext="(e_{i,a}^{*})_{a=1}^{d_{i}}" display="inline"><msubsup><mrow><mo stretchy="false">(</mo><msubsup><mi>e</mi><mrow><mi>i</mi><mo>,</mo><mi>a</mi></mrow><mo>∗</mo></msubsup><mo stretchy="false">)</mo></mrow><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><msub><mi>d</mi><mi>i</mi></msub></msubsup></math>. Expanding only on these factors gives</p>
+<table id="S4.E16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E16.m1" class="ltx_Math" alttext="T=\sum_{\gamma\in\prod_{i\in K}[d_{i}]}\left(\bigotimes_{i\in K}e_{i,\gamma_{i}}\right)\otimes T_{\gamma},\qquad T_{\gamma}\in V_{G}." display="block"><mrow><mrow><mrow><mi>T</mi><mo rspace="0.111em">=</mo><mrow><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>γ</mi><mo>∈</mo><mrow><mstyle displaystyle="false"><msub><mo maxsize="0.700em" minsize="0.700em" stretchy="true">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>K</mi></mrow></msub></mstyle><mrow><mo stretchy="false">[</mo><msub><mi>d</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></munder><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false">⨂</mo><mrow><mi>i</mi><mo>∈</mo><mi>K</mi></mrow></munder><msub><mi>e</mi><mrow><mi>i</mi><mo>,</mo><msub><mi>γ</mi><mi>i</mi></msub></mrow></msub></mrow><mo rspace="0.055em">)</mo></mrow></mrow><mo rspace="0.222em">⊗</mo><msub><mi>T</mi><mi>γ</mi></msub></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>T</mi><mi>γ</mi></msub><mo>∈</mo><msub><mi>V</mi><mi>G</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(16)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">There are <math id="S4.p4.m7" class="ltx_Math" alttext="\prod_{i\in K}d_{i}\leq r^{|K|}" display="inline"><mrow><mrow><msub><mo>∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>K</mi></mrow></msub><msub><mi>d</mi><mi>i</mi></msub></mrow><mo>≤</mo><msup><mi>r</mi><mrow><mo stretchy="false">|</mo><mi>K</mi><mo stretchy="false">|</mo></mrow></msup></mrow></math> summands, and every displayed
+factor on <math id="S4.p4.m8" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> is decomposable in the original tensor factors.</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Suppose first that <math id="S4.p5.m1" class="ltx_Math" alttext="G\neq\varnothing" display="inline"><mrow><mi>G</mi><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow></math>. For a fixed <math id="S4.p5.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>, define</p>
+<table id="S4.Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex26.m1" class="ltx_Math" alttext="B_{\gamma}:=\prod_{i\in Q}M_{i}(e_{i,\gamma_{i}}^{*}),\qquad u_{\gamma}^{*}:=\left.\bigotimes_{i\in L}e_{i,\gamma_{i}}^{*}\right|_{U},\qquad w_{\gamma}^{*}:=\left.\bigotimes_{i\in R}e_{i,\gamma_{i}}^{*}\right|_{W}." display="block"><mrow><mrow><mrow><msub><mi>B</mi><mi>γ</mi></msub><mo rspace="0.111em">:=</mo><mrow><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>Q</mi></mrow></munder><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>e</mi><mrow><mi>i</mi><mo>,</mo><msub><mi>γ</mi><mi>i</mi></msub></mrow><mo>∗</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msubsup><mi>u</mi><mi>γ</mi><mo>∗</mo></msubsup><mo rspace="0.111em">:=</mo><mrow><munder><mo movablelimits="false">⨂</mo><mrow><mi>i</mi><mo>∈</mo><mi>L</mi></mrow></munder><msub><mrow><msubsup><mi>e</mi><mrow><mi>i</mi><mo>,</mo><msub><mi>γ</mi><mi>i</mi></msub></mrow><mo>∗</mo></msubsup><mo>|</mo></mrow><mi>U</mi></msub></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msubsup><mi>w</mi><mi>γ</mi><mo>∗</mo></msubsup><mo rspace="0.111em">:=</mo><mrow><munder><mo movablelimits="false">⨂</mo><mrow><mi>i</mi><mo>∈</mo><mi>R</mi></mrow></munder><msub><mrow><msubsup><mi>e</mi><mrow><mi>i</mi><mo>,</mo><msub><mi>γ</mi><mi>i</mi></msub></mrow><mo>∗</mo></msubsup><mo>|</mo></mrow><mi>W</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The empty product for <math id="S4.p5.m3" class="ltx_Math" alttext="B_{\gamma}" display="inline"><msub><mi>B</mi><mi>γ</mi></msub></math> is <math id="S4.p5.m4" class="ltx_Math" alttext="I_{r}" display="inline"><msub><mi>I</mi><mi>r</mi></msub></math>. These matrices may be
+multiplied in any order, since they come from distinct sites. Define a
+linear functional on <math id="S4.p5.m5" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> by</p>
+<table id="S4.Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex27.m1" class="ltx_Math" alttext="\lambda_{\gamma}(a):=(u_{\gamma}^{*}\otimes w_{\gamma}^{*})\bigl(\Theta(B_{\gamma}a)\bigr)." display="block"><mrow><mrow><mrow><msub><mi>λ</mi><mi>γ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>:=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>u</mi><mi>γ</mi><mo>∗</mo></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>w</mi><mi>γ</mi><mo>∗</mo></msubsup></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi mathvariant="normal">Θ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>B</mi><mi>γ</mi></msub><mo>⁢</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The anchored formula, with the factors in <math id="S4.p5.m6" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> evaluated at their
+chosen dual basis vectors, gives</p>
+<table id="S4.E17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E17.m1" class="ltx_Math" alttext="T_{\gamma}(x_{G})=\lambda_{\gamma}\!\left(\prod_{i\in G}M_{i}(x_{i})\right)." display="block"><mrow><mrow><mrow><msub><mi>T</mi><mi>γ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>G</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>λ</mi><mi>γ</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>G</mi></mrow></munder><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(17)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="S4.p5.m7" class="ltx_Math" alttext="B_{\gamma}" display="inline"><msub><mi>B</mi><mi>γ</mi></msub></math> need not belong to <math id="S4.p5.m8" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math>; it only enters the
+linear functional <math id="S4.p5.m9" class="ltx_Math" alttext="\lambda_{\gamma}" display="inline"><msub><mi>λ</mi><mi>γ</mi></msub></math>. Each <math id="S4.p5.m10" class="ltx_Math" alttext="M_{i}(x_{i})" display="inline"><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S4.p5.m11" class="ltx_Math" alttext="i\in G" display="inline"><mrow><mi>i</mi><mo>∈</mo><mi>G</mi></mrow></math>,
+does belong to <math id="S4.p5.m12" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math>. Proposition <a href="#S3.Thmtheorem2" title="Proposition 3.2 (Border rank of an algebra product). ‣ 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.2</span></a> and
+monotonicity of <math id="S4.p5.m13" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> therefore give</p>
+<table id="S4.Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex28.m1" class="ltx_Math" alttext="\underline{\operatorname{R}}(T_{\gamma})\leq F(\dim\mathcal{A})\leq F(r^{2})." display="block"><mrow><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>T</mi><mi>γ</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">dim</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">When <math id="S4.p5.m14" class="ltx_Math" alttext="G=\varnothing" display="inline"><mrow><mi>G</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, the coefficients in
+(<a href="#S4.E16" title="In 4 Proof of the uniform bound ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">16</span></a>) are scalars, so each summand in that
+expansion already has rank at most one.</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">In either case, subadditivity and
+(<a href="#S4.E16" title="In 4 Proof of the uniform bound ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">16</span></a>) yield</p>
+<table id="S4.Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex29.m1" class="ltx_Math" alttext="\underline{\operatorname{R}}(T)\leq r^{|K|}F(r^{2})\leq r^{\,r^{2}+2r-3}F(r^{2})," display="block"><mrow><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msup><mi>r</mi><mrow><mo stretchy="false">|</mo><mi>K</mi><mo stretchy="false">|</mo></mrow></msup><mo>⁢</mo><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msup><mi>r</mi><mrow><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>⁢</mo><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">which proves the theorem.
+∎</p>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">The argument also covers one-dimensional local factors. A nonzero
+order-one tensor has rank and border rank one; it is excluded from the
+statement only because there is then no nontrivial cut over which to
+define <math id="S4.p7.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">5 </span>Cactus varieties and algebraic branching programs</h2>
+
+<section id="S5.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">5.1 </span>Cactus varieties</h3>
+
+<div id="S5.SS1.p1" class="ltx_para">
+<p class="ltx_p">The algebra-product estimate has a geometric consequence independent of
+the anchored reduction. For a projective variety <math id="S5.SS1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, let
+<math id="S5.SS1.p1.m2" class="ltx_Math" alttext="\kappa_{m}(X)" display="inline"><mrow><msub><mi>κ</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> denote the Zariski closure of the union of the linear
+spans of finite subschemes of <math id="S5.SS1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> of length at most <math id="S5.SS1.p1.m4" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>. This is the
+<math id="S5.SS1.p1.m5" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>-th cactus variety, with the stated closure convention.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_corollary">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Corollary 5.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Cactus-to-secant containment for Segre varieties)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S5.Thmtheorem1.p1.m1" class="ltx_math_unparsed" alttext="X=\operatorname{Seg}(\mathbb{P}V_{1}\times\cdots\times\mathbb{P}V_{n})" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>Seg</mi><mrow><mo stretchy="false">(</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><msub><mi>V</mi><mn>1</mn></msub><mo lspace="0.222em">×</mo><mo lspace="0.055em" rspace="0.055em">⋯</mo><mo rspace="0.222em">×</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><msub><mi>V</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>, where <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>
+and the <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="V_{i}" display="inline"><msub><mi>V</mi><mi>i</mi></msub></math> are nonzero finite-dimensional complex vector spaces.
+For every integer <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="m\geq 1" display="inline"><mrow><mi>m</mi><mo>≥</mo><mn>1</mn></mrow></math>,</span></p>
+<table id="S5.Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S5.Ex30.m1" class="ltx_Math" alttext="\kappa_{m}(X)\subseteq\sigma_{F(m)}(X)." display="block"><mrow><mrow><mrow><msub><mi>κ</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mrow><msub><mi>σ</mi><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The bound is independent of the number and dimensions of the factors.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S5.SS1.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.SS1.p2.m1" class="ltx_Math" alttext="Z\subseteq X" display="inline"><mrow><mi>Z</mi><mo>⊆</mo><mi>X</mi></mrow></math> be a nonempty finite subscheme of length
+<math id="S5.SS1.p2.m2" class="ltx_Math" alttext="1\leq d\leq m" display="inline"><mrow><mn>1</mn><mo>≤</mo><mi>d</mi><mo>≤</mo><mi>m</mi></mrow></math>.
+In each factor choose a homogeneous linear form <math id="S5.SS1.p2.m3" class="ltx_Math" alttext="\ell_{i}\in V_{i}^{*}" display="inline"><mrow><msub><mi mathvariant="normal">ℓ</mi><mi>i</mi></msub><mo>∈</mo><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup></mrow></math>
+that is nonzero at every point in the projection of the finite support
+of <math id="S5.SS1.p2.m4" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math>. This is possible because only finitely many proper
+hyperplanes in <math id="S5.SS1.p2.m5" class="ltx_Math" alttext="V_{i}^{*}" display="inline"><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup></math> are excluded. The resulting product affine
+chart contains <math id="S5.SS1.p2.m6" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math>, and the section <math id="S5.SS1.p2.m7" class="ltx_math_unparsed" alttext="\ell_{1}\cdots\ell_{n}" display="inline"><mrow><mi mathvariant="normal">ℓ</mi><msub><mrow></mrow><mn>1</mn></msub><mo lspace="0em" rspace="0em">⋯</mo><mi mathvariant="normal">ℓ</mi><msub><mrow></mrow><mi>n</mi></msub></mrow></math>
+trivializes <math id="S5.SS1.p2.m8" class="ltx_Math" alttext="\mathcal{O}_{X}(1,\ldots,1)|_{Z}" display="inline"><msub><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">O</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mi>Z</mi></msub></math>.</p>
+</div>
+<div id="S5.SS1.p3" class="ltx_para">
+<p class="ltx_p">The coordinate algebra <math id="S5.SS1.p3.m1" class="ltx_Math" alttext="\mathcal{A}=H^{0}(Z,\mathcal{O}_{Z})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo>=</mo><mrow><msup><mi>H</mi><mn>0</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">O</mi><mi>Z</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> has dimension
+<math id="S5.SS1.p3.m2" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>. Restriction in this trivialization gives linear maps</p>
+<table id="S5.Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S5.Ex31.m1" class="ltx_Math" alttext="\phi_{i}:V_{i}^{*}\longrightarrow\mathcal{A},\qquad x_{i}\longmapsto(x_{i}/\ell_{i})|_{Z}." display="block"><mrow><mrow><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msubsup><mi>V</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">⟶</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">⟼</mo><msub><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>/</mo><msub><mi mathvariant="normal">ℓ</mi><mi>i</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">|</mo></mrow><mi>Z</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The restriction of a decomposable global section
+<math id="S5.SS1.p3.m3" class="ltx_math_unparsed" alttext="x_{1}\cdots x_{n}" display="inline"><mrow><mi>x</mi><msub><mrow></mrow><mn>1</mn></msub><mo lspace="0em" rspace="0em">⋯</mo><mi>x</mi><msub><mrow></mrow><mi>n</mi></msub></mrow></math> is <math id="S5.SS1.p3.m4" class="ltx_Math" alttext="\prod_{i}\phi_{i}(x_{i})" display="inline"><mrow><msub><mo>∏</mo><mi>i</mi></msub><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The affine cone over the
+linear span of <math id="S5.SS1.p3.m5" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math> is the image of the dual of this restriction map:
+its annihilator consists exactly of the linear forms vanishing on
+<math id="S5.SS1.p3.m6" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math>. Consequently, every tensor in that cone has the form
+<math id="S5.SS1.p3.m7" class="ltx_Math" alttext="\lambda(\prod_{i}\phi_{i}(x_{i}))" display="inline"><mrow><mi>λ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mo lspace="0em">∏</mo><mi>i</mi></msub><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> for some <math id="S5.SS1.p3.m8" class="ltx_Math" alttext="\lambda\in\mathcal{A}^{*}" display="inline"><mrow><mi>λ</mi><mo>∈</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo>∗</mo></msup></mrow></math>.
+Proposition <a href="#S3.Thmtheorem2" title="Proposition 3.2 (Border rank of an algebra product). ‣ 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.2</span></a> gives border rank at most
+<math id="S5.SS1.p3.m9" class="ltx_Math" alttext="F(d)\leq F(m)" display="inline"><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Taking the union over <math id="S5.SS1.p3.m10" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math> and then its Zariski
+closure proves the assertion, since <math id="S5.SS1.p3.m11" class="ltx_Math" alttext="\sigma_{F(m)}(X)" display="inline"><mrow><msub><mi>σ</mi><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> is closed.
+∎</p>
+</div>
+</div>
+<div id="S5.SS1.p4" class="ltx_para">
+<p class="ltx_p">This containment has a larger secant index and does not identify cactus
+rank with border rank. The distinction is substantive: Doležálek
+and Michałek construct equations separating the <math id="S5.SS1.p4.m1" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>-th secant from
+the <math id="S5.SS1.p4.m2" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>-th cactus variety for three-factor Segre varieties with
+<math id="S5.SS1.p4.m3" class="ltx_Math" alttext="m\geq 14" display="inline"><mrow><mi>m</mi><mo>≥</mo><mn>14</mn></mrow></math> <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib10" title="" class="ltx_ref">10</a>, Theorem 1.1]</cite>.
+Corollary <a href="#S5.Thmtheorem1" title="Corollary 5.1 (Cactus-to-secant containment for Segre varieties). ‣ 5.1 Cactus varieties ‣ 5 Cactus varieties and algebraic branching programs ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5.1</span></a> is compatible with such separations
+because it permits the loss from <math id="S5.SS1.p4.m4" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> to <math id="S5.SS1.p4.m5" class="ltx_Math" alttext="F(m)" display="inline"><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</section>
+<section id="S5.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">5.2 </span>Examples and algebraic branching programs</h3>
+
+<div id="S5.SS2.p1" class="ltx_para">
+<p class="ltx_p">The finite-difference construction also explains the fixed-weight
+examples directly. Given vectors <math id="S5.SS2.p1.m1" class="ltx_Math" alttext="e_{i,0},e_{i,1}\in V_{i}" display="inline"><mrow><msub><mi>e</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>,</mo><mrow><msub><mi>e</mi><mrow><mi>i</mi><mo>,</mo><mn>1</mn></mrow></msub><mo>∈</mo><msub><mi>V</mi><mi>i</mi></msub></mrow></mrow></math>, put</p>
+<table id="S5.Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S5.Ex32.m1" class="ltx_Math" alttext="D_{N,k}:=[t^{k}]\bigotimes_{i=1}^{N}(e_{i,0}+te_{i,1}),\qquad 0\leq k\leq N." display="block"><mrow><mrow><mrow><msub><mi>D</mi><mrow><mi>N</mi><mo>,</mo><mi>k</mi></mrow></msub><mo>:=</mo><mrow><mrow><mo stretchy="false">[</mo><msup><mi>t</mi><mi>k</mi></msup><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mrow><munderover><mo movablelimits="false" rspace="0em">⨂</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><msub><mi>e</mi><mrow><mi>i</mi><mo>,</mo><mn>1</mn></mrow></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mi>N</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Equation (<a href="#S3.E13" title="In 3 Border rank of products in commutative algebras ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">13</span></a>) gives
+<math id="S5.SS2.p1.m2" class="ltx_Math" alttext="\underline{\operatorname{R}}(D_{N,k})\leq k+1" display="inline"><mrow><mrow><munder accentunder="true"><mi>R</mi><mo stretchy="true">¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>D</mi><mrow><mi>N</mi><mo>,</mo><mi>k</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></mrow></math>, with the case <math id="S5.SS2.p1.m3" class="ltx_Math" alttext="k=0" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow></math> being decomposable.
+Across any cut, sorting the chosen factors by the number on each side
+writes <math id="S5.SS2.p1.m4" class="ltx_Math" alttext="D_{N,k}" display="inline"><msub><mi>D</mi><mrow><mi>N</mi><mo>,</mo><mi>k</mi></mrow></msub></math> as a sum of at most <math id="S5.SS2.p1.m5" class="ltx_Math" alttext="k+1" display="inline"><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></math> bipartite product
+terms, so its flattening ranks are at most <math id="S5.SS2.p1.m6" class="ltx_Math" alttext="k+1" display="inline"><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></math> as well.
+For independent pairs <math id="S5.SS2.p1.m7" class="ltx_Math" alttext="e_{i,0},e_{i,1}" display="inline"><mrow><msub><mi>e</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>,</mo><msub><mi>e</mi><mrow><mi>i</mi><mo>,</mo><mn>1</mn></mrow></msub></mrow></math>, the case <math id="S5.SS2.p1.m8" class="ltx_Math" alttext="k=1" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow></math> is the
+unnormalized <math id="S5.SS2.p1.m9" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> tensor. Its exact rank grows with <math id="S5.SS2.p1.m10" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>, whereas
+its border rank is two for <math id="S5.SS2.p1.m11" class="ltx_Math" alttext="N\geq 2" display="inline"><mrow><mi>N</mi><mo>≥</mo><mn>2</mn></mrow></math>, illustrating why the main theorem
+cannot be strengthened by simply replacing border rank with rank
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Section VIII]</cite>.</p>
+</div>
+<div id="S5.SS2.p2" class="ltx_para">
+<p class="ltx_p">There is a parallel formulation in algebraic complexity. In local bases,
+associate to <math id="S5.SS2.p2.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> the set-multilinear polynomial</p>
+<table id="S5.Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S5.Ex33.m1" class="ltx_math_unparsed" alttext="f_{T}(x_{1},\ldots,x_{N})=\sum_{a_{1},\ldots,a_{N}}T_{a_{1},\ldots,a_{N}}x_{1,a_{1}}\cdots x_{N,a_{N}}," display="block"><mrow><msub><mi>f</mi><mi>T</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>N</mi></msub><mo stretchy="false">)</mo></mrow><mo rspace="0.111em">=</mo><munder><mo movablelimits="false">∑</mo><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>a</mi><mi>N</mi></msub></mrow></munder><msub><mi>T</mi><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>a</mi><mi>N</mi></msub></mrow></msub><msub><mi>x</mi><mrow><mn>1</mn><mo>,</mo><msub><mi>a</mi><mn>1</mn></msub></mrow></msub><mo lspace="0em" rspace="0em">⋯</mo><msub><mi>x</mi><mrow><mi>N</mi><mo>,</mo><msub><mi>a</mi><mi>N</mi></msub></mrow></msub><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S5.SS2.p2.m2" class="ltx_Math" alttext="x_{i}=(x_{i,1},\ldots,x_{i,\dim V_{i}})" display="inline"><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mn>1</mn></mrow></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mrow><mo lspace="0em" rspace="0.167em">dim</mo><msub><mi>V</mi><mi>i</mi></msub></mrow></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> is the <math id="S5.SS2.p2.m3" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>-th variable
+group. A matrix-product representation with one homogeneous linear
+matrix per group is a set-multilinear read-once oblivious algebraic
+branching program. Its minimum width at each layer is the corresponding
+prefix flattening rank, by the same successive-factorization argument
+as for MPS. The all-cut hypothesis is consequently a width bound in
+every group order. Any-order branching programs and identity testing
+are studied in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib7" title="" class="ltx_ref">7</a>]</cite>; the distinction between
+cross-layer commutation, full commutation, and diagonal representations,
+and their connections with tensor and Waring rank, is developed in
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>]</cite>.</p>
+</div>
+<div id="S5.SS2.p3" class="ltx_para">
+<p class="ltx_p">Bhargava and Tengse construct a commutative set-multilinear branching
+program of width at most the dimension of the full partial-derivative
+space <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib9" title="" class="ltx_ref">9</a>, Theorem 1.6]</cite>. This parameter differs from the
+largest flattening rank. If <math id="S5.SS2.p3.m1" class="ltx_Math" alttext="\mathcal{D}(f_{T})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mi>T</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> denotes that full space,
+including the zeroth derivative, then</p>
+<table id="S5.E18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S5.E18.m1" class="ltx_Math" alttext="\dim\mathcal{D}(f_{T})=\sum_{S\subseteq[N]}\operatorname{rank}\operatorname{Flat}_{S\mid S^{c}}(T)\leq 2^{N}r." display="block"><mrow><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mi>T</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>S</mi><mo>⊆</mo><mrow><mo stretchy="false">[</mo><mi>N</mi><mo stretchy="false">]</mo></mrow></mrow></munder><mrow><mi>rank</mi><mo lspace="0.167em">⁡</mo><mrow><msub><mi>Flat</mi><mrow><mi>S</mi><mo fence="false">|</mo><msup><mi>S</mi><mi>c</mi></msup></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>≤</mo><mrow><msup><mn>2</mn><mi>N</mi></msup><mo>⁢</mo><mi>r</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(18)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Indeed, derivatives taken once in each group indexed by <math id="S5.SS2.p3.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> span the
+image of that flattening, and distinct subsets give distinct remaining
+multidegrees. Even for a nonzero decomposable tensor, every summand in
+(<a href="#S5.E18" title="In 5.2 Examples and algebraic branching programs ‣ 5 Cactus varieties and algebraic branching programs ‣ Uniform complex border-rank boundsfrom all-cut Schmidt ranks" class="ltx_ref"><span class="ltx_text ltx_ref_tag">18</span></a>) has dimension one, so the full dimension
+is <math id="S5.SS2.p3.m3" class="ltx_Math" alttext="2^{N}" display="inline"><msup><mn>2</mn><mi>N</mi></msup></math>. Thus the full derivative dimension does not itself yield
+an order-independent bound from the all-cut hypothesis. The exponential
+loss in our theorem also does not resolve the polynomial-simulation
+questions for the structured branching-program classes in
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>]</cite>.</p>
+</div>
+<div id="S5.SS2.p4" class="ltx_para">
+<p class="ltx_p">The all-cut hypothesis also limits the number of independent entangled
+blocks. Suppose a tensor is a product over disjoint blocks of factors,
+and <math id="S5.SS2.p4.m1" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> of those blocks each have an internal cut of rank at least
+two. Choose one such cut in every block and combine them into a cut of
+the whole tensor, placing any remaining blocks entirely on one side.
+The resulting flattening is a tensor product of matrices, so its rank
+is at least <math id="S5.SS2.p4.m2" class="ltx_Math" alttext="2^{s}" display="inline"><msup><mn>2</mn><mi>s</mi></msup></math>. Hence a tensor with maximal cut rank <math id="S5.SS2.p4.m3" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> can have
+at most <math id="S5.SS2.p4.m4" class="ltx_Math" alttext="\lfloor\log_{2}r\rfloor" display="inline"><mrow><mo stretchy="false">⌊</mo><mrow><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0.167em">⁡</mo><mi>r</mi></mrow><mo stretchy="false">⌋</mo></mrow></math> such blocks. This observation does
+not by itself control tensors without a block-product decomposition;
+the anchored factorization supplies the needed replacement.</p>
+</div>
+<div id="S5.SS2.p5" class="ltx_para">
+<p class="ltx_p">The estimate <math id="S5.SS2.p5.m1" class="ltx_Math" alttext="F(q)\leq q4^{q-1}" display="inline"><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>q</mi><mo>⁢</mo><msup><mn>4</mn><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></math> gives
+<math id="S5.SS2.p5.m2" class="ltx_Math" alttext="\widehat{B}(D)=\exp(O(D^{2}\log D))" display="inline"><mrow><mrow><mover accent="true"><mi>B</mi><mo>^</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>D</mi><mn>2</mn></msup><mo lspace="0.167em">⁢</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>D</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The optimal growth of
+<math id="S5.SS2.p5.m3" class="ltx_Math" alttext="B_{*}(D)" display="inline"><mrow><msub><mi>B</mi><mo>∗</mo></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></math>, including its value at <math id="S5.SS2.p5.m4" class="ltx_Math" alttext="D=3" display="inline"><mrow><mi>D</mi><mo>=</mo><mn>3</mn></mrow></math>, remains undetermined.
+The proof also identifies the difficulty in obtaining a stable version
+from approximately low-rank flattenings: the invertible core may be
+ill-conditioned, and the finite-difference coefficients can diverge.
+Controlling these two effects would be necessary for a quantitative
+approximation guarantee. All statements here concern complex border rank;
+the local decomposition used in the proof takes its residue fields to be
+<math id="S5.SS2.p5.m5" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math>.</p>
+</div>
+</section>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock">
+M. Florido-Llinàs, Á. M. Alhambra, R. Trivedi, N. Schuch,
+D. Pérez-García, and J. I. Cirac.
+
+</span>
+<span class="ltx_bibblock">The product structure of matrix product states under permutations.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">PRX Quantum</em> 6:040338, 2025.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1103/8sbs-t24w" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://doi.org/10.1103/8sbs-t24w</a>.
+
+</span>
+<span class="ltx_bibblock">Updated author version: arXiv:2410.19541v2, 2026,
+<a href="https://arxiv.org/abs/2410.19541v2" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/2410.19541v2</a>.
+
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock">
+C. Raicu.
+
+</span>
+<span class="ltx_bibblock">Secant varieties of Segre–Veronese varieties.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Algebra &amp; Number Theory</em> 6(8):1817–1868, 2012.
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/1011.5867" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/1011.5867</a>.
+
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock">
+Y. Qi.
+
+</span>
+<span class="ltx_bibblock">Equations for the third secant variety of the Segre product of
+<math id="bib.bib3.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> projective spaces.
+
+</span>
+<span class="ltx_bibblock">arXiv:1311.2566, 2013.
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/1311.2566" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/1311.2566</a>.
+
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock">
+H. Abo, G. Ottaviani, and C. Peterson.
+
+</span>
+<span class="ltx_bibblock">Induction for secant varieties of Segre varieties.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Transactions of the American Mathematical Society</em>
+361(2):767–792, 2009.
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/math/0607191" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/math/0607191</a>.
+
+</span></li>
+      
+<li id="bib.bib5" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock">
+J. Draisma and J. Kuttler.
+
+</span>
+<span class="ltx_bibblock">Bounded-rank tensors are defined in bounded degree.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Duke Mathematical Journal</em> 163(1):35–63, 2014.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1215/00127094-2405170" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://doi.org/10.1215/00127094-2405170</a>.
+
+</span></li>
+      
+<li id="bib.bib6" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock">
+J. Draisma, E. Kushilevitz, and E. Weinreb.
+
+</span>
+<span class="ltx_bibblock">Partition arguments in multiparty communication complexity.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Theoretical Computer Science</em> 412(24):2611–2622, 2011.
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/0909.5684" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/0909.5684</a>.
+
+</span></li>
+      
+<li id="bib.bib7" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock">
+R. Gurjar, A. Korwar, and N. Saxena.
+
+</span>
+<span class="ltx_bibblock">Identity testing for constant-width, and any-order, read-once
+oblivious arithmetic branching programs.
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Theory of Computing</em> 13, Article 2, 1–21, 2017.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.4086/toc.2017.v013a002" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://doi.org/10.4086/toc.2017.v013a002</a>.
+
+</span></li>
+      
+<li id="bib.bib8" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock">
+C. Ramya and A. Tengse.
+
+</span>
+<span class="ltx_bibblock">On finer separations between subclasses of read-once oblivious ABPs.
+
+</span>
+<span class="ltx_bibblock">In <em class="ltx_emph ltx_font_italic">39th International Symposium on Theoretical Aspects of
+Computer Science (STACS 2022)</em>, LIPIcs 219, 53:1–53:23, 2022.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.4230/LIPIcs.STACS.2022.53" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://doi.org/10.4230/LIPIcs.STACS.2022.53</a>.
+
+</span></li>
+      
+<li id="bib.bib9" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock">
+V. Bhargava and A. Tengse.
+
+</span>
+<span class="ltx_bibblock">Explicit commutative ROABPs from partial derivatives.
+
+</span>
+<span class="ltx_bibblock">In <em class="ltx_emph ltx_font_italic">44th IARCS Annual Conference on Foundations of Software
+Technology and Theoretical Computer Science (FSTTCS 2024)</em>, LIPIcs 323,
+10:1–10:15, 2024.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.4230/LIPIcs.FSTTCS.2024.10" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://doi.org/10.4230/LIPIcs.FSTTCS.2024.10</a>.
+
+</span></li>
+      
+<li id="bib.bib10" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[10]</span>
+<span class="ltx_bibblock">
+M. Doležálek and M. Michałek.
+
+</span>
+<span class="ltx_bibblock">Nonlinear methods for tensors: Determinantal equations for secant
+varieties beyond cactus.
+
+</span>
+<span class="ltx_bibblock">arXiv:2602.12762, 2026.
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2602.12762" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/2602.12762</a>.
+
+</span></li>
+    
+</ul>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="Uniform complex border-rank bounds from all-cut Schmidt ranks"></div>
+
+</article>
+{% endraw %}

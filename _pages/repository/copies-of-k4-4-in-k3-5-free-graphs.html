@@ -1,0 +1,1285 @@
+---
+layout: "repository-paper"
+title: "Copies of K4,4 in K3,5-free graphs"
+repository_title_html: "Copies of <math class=\"ltx_Math\" alttext=\"K_{4,4}\" display=\"inline\"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math> in <math class=\"ltx_Math\" alttext=\"K_{3,5}\" display=\"inline\"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free graphs"
+description: "We prove that the maximum number of copies of K4,4 in an n-vertex K3,5-free graph is Θ⁡(n3), with the lower bound attained by bipartite graphs. Together with a theorem of Wang, Yang, and Zhou (arXiv 2026), this"
+permalink: "/repository/copies-of-k4-4-in-k3-5-free-graphs/"
+pdf: "/files/repository/EKC-copies_of_k4_4_in_k3_5_free_graphs.pdf"
+repository_added: "2026-09-24"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-section"><a href="#S2">2 A quartic cap with many four-point sections</a></li>
+<li class="repository-toc-section"><a href="#S3">3 The incidence graph and preliminary alteration</a></li>
+<li class="repository-toc-section"><a href="#S4">4 Pruning the blocks while preserving copies</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Copies of <math id="m1" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math> in <math id="m2" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free graphs</h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">We prove that the maximum number of copies of <math id="abstract1.m1" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math> in an
+<math id="abstract1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-vertex <math id="abstract1.m3" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free graph is <math id="abstract1.m4" class="ltx_Math" alttext="\Theta(n^{3})" display="inline"><mrow><mi mathvariant="normal">Θ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>, with the
+lower bound attained by bipartite graphs. Together with a theorem
+of Wang, Yang, and Zhou (arXiv 2026), this establishes the cubic order for
+<math id="abstract1.m5" class="ltx_Math" alttext="K_{t,t}" display="inline"><msub><mi>K</mi><mrow><mi>t</mi><mo>,</mo><mi>t</mi></mrow></msub></math> copies in <math id="abstract1.m6" class="ltx_Math" alttext="K_{3,t+1}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></mrow></msub></math>-free graphs for every fixed
+<math id="abstract1.m7" class="ltx_Math" alttext="t\geq 4" display="inline"><mrow><mi>t</mi><mo>≥</mo><mn>4</mn></mrow></math>, answering a question of Pohoata, Tidor, and Yu (arXiv 2026).
+Our construction uses the degree-four specialization of Wang,
+Yang, and Zhou’s finite-field point set. Large plane sections are
+unavoidable at this degree, and reducing all sections to at most
+four points by point deletion retains only a vanishing proportion
+of the point set. We instead alter the incidence graph obtained
+from a random projective pairing. Preliminary edge deletions limit
+how many exceptional complete bipartite subgraphs contain any
+remaining edge. A geometric intersection bound then permits local
+random pruning that eliminates every <math id="abstract1.m8" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math> while preserving
+a constant proportion of the counted <math id="abstract1.m9" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math>’s.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">A <math id="S1.p1.m1" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free graph has at most four common neighbors for
+every triple of vertices. A copy of <math id="S1.p1.m2" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math> saturates this
+restriction on every triple in either of its parts. In fact, a
+triple can lie in a part of at most one such copy, which gives a
+cubic upper bound on the total number of copies. Attaining this
+bound requires many complete bipartite subgraphs to coexist without
+allowing even one triple a fifth common neighbor.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">For finite simple graphs <math id="S1.p2.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> and <math id="S1.p2.m2" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math>, write <math id="S1.p2.m3" class="ltx_Math" alttext="\operatorname{ex}(n,H,F)" display="inline"><mrow><mi>ex</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>H</mi><mo>,</mo><mi>F</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+for the maximum number of unlabeled, not necessarily induced copies
+of <math id="S1.p2.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> in an <math id="S1.p2.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-vertex <math id="S1.p2.m6" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math>-free graph. The problem above is
+the smallest instance of the question of Pohoata, Tidor, and
+Yu <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, Question 4.1]</cite>: for every fixed
+<math id="S1.p2.m7" class="ltx_Math" alttext="3\leq s&lt;t" display="inline"><mrow><mn>3</mn><mo>≤</mo><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow></math>, is</p>
+<table id="S1.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E1.m1" class="ltx_Math" alttext="\operatorname{ex}(n,K_{t,t},K_{s,t+1})=\Theta_{s,t}(n^{s})?" display="block"><mrow><mrow><mi>ex</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><msub><mi>K</mi><mrow><mi>t</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>,</mo><msub><mi>K</mi><mrow><mi>s</mi><mo>,</mo><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi mathvariant="normal">Θ</mi><mrow><mi>s</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mi>s</mi></msup><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>?</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">They proved the corresponding statement for <math id="S1.p2.m8" class="ltx_Math" alttext="s=2" display="inline"><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow></math>. We establish
+the case <math id="S1.p2.m9" class="ltx_Math" alttext="(s,t)=(3,4)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">There is an absolute constant <math id="Thmtheorem1.p1.m1" class="ltx_Math" alttext="c&gt;0" display="inline"><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that, for every
+sufficiently large integer <math id="Thmtheorem1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, some bipartite <math id="Thmtheorem1.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-vertex
+<math id="Thmtheorem1.p1.m4" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free graph contains at least <math id="Thmtheorem1.p1.m5" class="ltx_Math" alttext="cn^{3}" display="inline"><mrow><mi>c</mi><mo>⁢</mo><msup><mi>n</mi><mn>3</mn></msup></mrow></math> copies of
+<math id="Thmtheorem1.p1.m6" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math>. Consequently,</span></p>
+<table id="S1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex1.m1" class="ltx_Math" alttext="\operatorname{ex}(n,K_{4,4},K_{3,5})=\Theta(n^{3})." display="block"><mrow><mrow><mrow><mi>ex</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub><mo>,</mo><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi mathvariant="normal">Θ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The missing parameter is the size of the forbidden common
+neighborhood. The general lower bound of Gerbner and
+Patkós <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Theorem 1.6(iii)]</cite> gives
+<math id="S1.p3.m1" class="ltx_Math" alttext="\Omega(n^{3/2-o(1)})" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mrow><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow><mo>−</mo><mrow><mi>o</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></msup><mo stretchy="false">)</mo></mrow></mrow></math> copies at our parameters.
+Janzer, Longbrake, and Yepremyan <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Theorem 1.1]</cite>
+obtained the cubic order for <math id="S1.p3.m2" class="ltx_Math" alttext="\operatorname{ex}(n,K_{a,b},K_{3,t})" display="inline"><mrow><mi>ex</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><msub><mi>K</mi><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow></msub><mo>,</mo><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math>, for
+fixed <math id="S1.p3.m3" class="ltx_Math" alttext="3&lt;a\leq b" display="inline"><mrow><mn>3</mn><mo>&lt;</mo><mi>a</mi><mo>≤</mo><mi>b</mi></mrow></math> and sufficiently large <math id="S1.p3.m4" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>.
+Hou, Hu, and Wang <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Theorem 1.2]</cite> made the
+sufficient threshold explicit:</p>
+<table id="S1.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex2.m1" class="ltx_Math" alttext="t\geq 2\max\{3,\lceil b/2\rceil\}+1." display="block"><mrow><mrow><mi>t</mi><mo>≥</mo><mrow><mrow><mn>2</mn><mo lspace="0.167em">⁢</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mn>3</mn><mo>,</mo><mrow><mo stretchy="false">⌈</mo><mrow><mi>b</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">⌉</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow><mo>+</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For <math id="S1.p3.m5" class="ltx_Math" alttext="a=b=4" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mo>=</mo><mn>4</mn></mrow></math>, this guarantees many <math id="S1.p3.m6" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math>’s while excluding
+<math id="S1.p3.m7" class="ltx_Math" alttext="K_{3,7}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>7</mn></mrow></msub></math>; it does not exclude <math id="S1.p3.m8" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>.
+Wang, Yang, and Zhou <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Theorem 1.1]</cite> reached
+<math id="S1.p3.m9" class="ltx_Math" alttext="t=b+1" display="inline"><mrow><mi>t</mi><mo>=</mo><mrow><mi>b</mi><mo>+</mo><mn>1</mn></mrow></mrow></math> for <math id="S1.p3.m10" class="ltx_Math" alttext="b\geq 5" display="inline"><mrow><mi>b</mi><mo>≥</mo><mn>5</mn></mrow></math> and <math id="S1.p3.m11" class="ltx_Math" alttext="4\leq a\leq b" display="inline"><mrow><mn>4</mn><mo>≤</mo><mi>a</mi><mo>≤</mo><mi>b</mi></mrow></math>, leaving
+<math id="S1.p3.m12" class="ltx_Math" alttext="b=4" display="inline"><mrow><mi>b</mi><mo>=</mo><mn>4</mn></mrow></math> outside their range. Thus Theorem <a href="#Thmtheorem1" title="Theorem 1. ‣ 1 Introduction ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>, together
+with their theorem, answers (<a href="#S1.E1" title="In 1 Introduction ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>) for every
+<math id="S1.p3.m13" class="ltx_Math" alttext="s=3" display="inline"><mrow><mi>s</mi><mo>=</mo><mn>3</mn></mrow></math> and <math id="S1.p3.m14" class="ltx_Math" alttext="t\geq 4" display="inline"><mrow><mi>t</mi><mo>≥</mo><mn>4</mn></mrow></math>.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">The finite-geometric approach explains both the cubic scale and the
+obstruction at this last parameter. A cap in <math id="S1.p4.m1" class="ltx_Math" alttext="\operatorname{PG}(5,q)" display="inline"><mrow><mi>PG</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a
+set of points with no three collinear, so every triple spans a plane.
+In a point–hyperplane incidence graph, its common neighbors are
+then described by a plane section of the point set. Four-point
+sections can produce <math id="S1.p4.m2" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math>’s, whereas larger sections can
+produce forbidden common neighborhoods. A set with <math id="S1.p4.m3" class="ltx_Math" alttext="q^{3}" display="inline"><msup><mi>q</mi><mn>3</mn></msup></math> points
+and a positive proportion of the <math id="S1.p4.m4" class="ltx_Math" alttext="\Theta(q^{9})" display="inline"><mrow><mi mathvariant="normal">Θ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> planes meeting
+it in four points has the appropriate scale for a cubic construction.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">We use the point set of Wang, Yang, and
+Zhou <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Section 3]</cite>, specializing its defining
+polynomial <math id="S1.p5.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to degree four. On a typical plane, the section
+is given by the roots of
+<math id="S1.p5.m2" class="ltx_Math" alttext="f+A^{2}-\alpha B^{2}-C" display="inline"><mrow><mrow><mi>f</mi><mo>+</mo><msup><mi>A</mi><mn>2</mn></msup></mrow><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><msup><mi>B</mi><mn>2</mn></msup></mrow><mo>−</mo><mi>C</mi></mrow></math>, where <math id="S1.p5.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is a fixed nonsquare
+and <math id="S1.p5.m4" class="ltx_Math" alttext="A,B,C" display="inline"><mrow><mi>A</mi><mo>,</mo><mi>B</mi><mo>,</mo><mi>C</mi></mrow></math> have degree at most two. When <math id="S1.p5.m5" class="ltx_Math" alttext="\deg f\geq 5" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>≥</mo><mn>5</mn></mrow></math>, the other terms cannot
+cancel its leading coefficient. At degree four, the entire section
+polynomial can vanish. This happens for <math id="S1.p5.m6" class="ltx_Math" alttext="q^{3}(q+1)" display="inline"><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> planes for
+every monic quartic, so choosing <math id="S1.p5.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> randomly cannot eliminate
+these sections. Moreover, every point belongs to <math id="S1.p5.m8" class="ltx_Math" alttext="q(q+1)" display="inline"><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> of
+these identity planes. A subset meeting each of them in at most
+four points therefore has size at most <math id="S1.p5.m9" class="ltx_Math" alttext="4q^{2}" display="inline"><mrow><mn>4</mn><mo>⁢</mo><msup><mi>q</mi><mn>2</mn></msup></mrow></math>. Point deletion
+would lose the <math id="S1.p5.m10" class="ltx_Math" alttext="q^{3}" display="inline"><msup><mi>q</mi><mn>3</mn></msup></math> scale on which the construction depends.
+The simultaneous-splitting argument in
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Section 4]</cite> also requires a shift of degree
+strictly less than <math id="S1.p5.m11" class="ltx_Math" alttext="\deg f" display="inline"><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow></math>, whereas the shift can have degree
+four here.</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">We retain all points and modify the incidence graph. First choose
+<math id="S1.p6.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> so that there are <math id="S1.p6.m2" class="ltx_Math" alttext="\Omega(q^{9})" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> four-point sections,
+then use the random projective pairing of
+Janzer, Longbrake, and Yepremyan <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Section 4]</cite>
+to obtain <math id="S1.p6.m3" class="ltx_Math" alttext="\Omega(q^{9})" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> designated copies in expectation.
+The exceptional plane sections define complete bipartite blocks
+containing every possible forbidden common neighborhood. Deleting
+all their edges is too expensive for the available counting
+argument: the expected number of edge–block incidences is
+<math id="S1.p6.m4" class="ltx_Math" alttext="O(q^{5})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>5</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>, and an edge can belong to <math id="S1.p6.m5" class="ltx_Math" alttext="O(q^{4})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> designated
+copies. The resulting <math id="S1.p6.m6" class="ltx_Math" alttext="O(q^{9})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> loss has the same order as the
+entire supply of copies.</p>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">Instead, we first delete the blocks whose two sides come from
+exceptional planes. Their expected edge count is only <math id="S1.p7.m1" class="ltx_Math" alttext="O(q)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+so their deletion costs <math id="S1.p7.m2" class="ltx_Math" alttext="O(q^{5})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>5</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> copies. We then delete edges
+belonging to more than <math id="S1.p7.m3" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> exceptional blocks, at an expected
+cost of <math id="S1.p7.m4" class="ltx_Math" alttext="O(q^{9}/L)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>9</mn></msup><mo>/</mo><mi>L</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> copies. Choosing <math id="S1.p7.m5" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> as a sufficiently
+large absolute constant leaves <math id="S1.p7.m6" class="ltx_Math" alttext="\Omega(q^{9})" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> copies for a
+suitable projective pairing. Each remaining block has one side of
+size at most four, and each remaining edge is subject to at most
+<math id="S1.p7.m7" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> blocks.</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">The last step uses the cap property a second time. A designated
+copy meets the side of size at most four in any remaining block in
+at most two vertices. Three points would determine the controlled-side
+plane and force the opposite rich plane to be exceptional. For each
+vertex on the other side, we independently retain two neighbors in
+this side. This prevents every
+triple there from having a common neighbor through the block. At
+the same time, each choice has a positive constant probability of
+retaining all edges of a fixed designated copy that it affects.
+There are at most <math id="S1.p8.m1" class="ltx_Math" alttext="16L" display="inline"><mrow><mn>16</mn><mo>⁢</mo><mi>L</mi></mrow></math> affecting choices per copy, so its
+survival probability stays bounded away from zero as <math id="S1.p8.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> grows.
+This is why controlling block overlap before pruning preserves the
+cubic order. The geometry is established in Section <a href="#S2" title="2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>,
+and the two alteration stages are proved in
+Sections <a href="#S3" title="3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a> and <a href="#S4" title="4 Pruning the blocks while preserving copies ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>.</p>
+</div>
+<div id="S1.p9" class="ltx_para">
+<p class="ltx_p">For completeness, we give the upper-bound count used above. Write
+<math id="S1.p9.m1" class="ltx_Math" alttext="N(H,G)" display="inline"><mrow><mi>N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo>,</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math> for the number of copies of <math id="S1.p9.m2" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> in <math id="S1.p9.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>. For a
+vertex set <math id="S1.p9.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, let
+<math id="S1.p9.m5" class="ltx_Math" alttext="\Gamma_{G}(X):=\bigcap_{x\in X}N_{G}(x)" display="inline"><mrow><mrow><msub><mi mathvariant="normal">Γ</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">:=</mo><mrow><msub><mo>⋂</mo><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></msub><mrow><msub><mi>N</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> be its common neighborhood.</p>
+</div>
+<div id="Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2</span></span><span class="ltx_text ltx_font_bold"> </span>(Upper bound)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Every <math id="Thmtheorem2.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-vertex <math id="Thmtheorem2.p1.m2" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free graph <math id="Thmtheorem2.p1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> satisfies</span></p>
+<table id="S1.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex3.m1" class="ltx_Math" alttext="N(K_{4,4},G)\leq\frac{1}{8}\binom{n}{3}." display="block"><mrow><mrow><mrow><mi>N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub><mo>,</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mfrac><mn>1</mn><mn>8</mn></mfrac><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>n</mi><mn>3</mn></mfrac><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S1.p10" class="ltx_para">
+<p class="ltx_p">Fix a triple <math id="S1.p10.m1" class="ltx_Math" alttext="X\subseteq V(G)" display="inline"><mrow><mi>X</mi><mo>⊆</mo><mrow><mi>V</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> that is contained in one part of a
+copy of <math id="S1.p10.m2" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math>. The opposite part must be
+<math id="S1.p10.m3" class="ltx_Math" alttext="Y=\Gamma_{G}(X)" display="inline"><mrow><mi>Y</mi><mo>=</mo><mrow><msub><mi mathvariant="normal">Γ</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, since <math id="S1.p10.m4" class="ltx_Math" alttext="|Y|=4" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>Y</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>4</mn></mrow></math> and
+<math id="S1.p10.m5" class="ltx_Math" alttext="|\Gamma_{G}(X)|\leq 4" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi mathvariant="normal">Γ</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>4</mn></mrow></math>. For any triple <math id="S1.p10.m6" class="ltx_Math" alttext="Y^{\prime}\subseteq Y" display="inline"><mrow><msup><mi>Y</mi><mo>′</mo></msup><mo>⊆</mo><mi>Y</mi></mrow></math>,</p>
+<table id="S1.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex4.m1" class="ltx_Math" alttext="X\subseteq\Gamma_{G}(Y)\subseteq\Gamma_{G}(Y^{\prime}),\qquad|\Gamma_{G}(Y^{\prime})|\leq 4." display="block"><mrow><mrow><mrow><mi>X</mi><mo>⊆</mo><mrow><msub><mi mathvariant="normal">Γ</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mrow><msub><mi mathvariant="normal">Γ</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>Y</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi mathvariant="normal">Γ</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>Y</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>4</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">There is therefore at most one possible fourth vertex in the part
+containing <math id="S1.p10.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>. Hence <math id="S1.p10.m8" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> belongs to at most one copy as a
+triple within a part. Each copy has four such triples in each of
+its two parts. Counting these eight triples per copy proves the
+bound.
+∎</p>
+</div>
+</div>
+<div id="S1.p11" class="ltx_para">
+<p class="ltx_p">It remains to prove the lower bound. Throughout the construction, all
+implied constants are absolute, and limits in <math id="S1.p11.m1" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> are taken through
+odd prime powers.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>A quartic cap with many four-point sections</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">The choice of the quartic must produce many four-point sections, but
+it cannot avoid long sections. We first classify the latter and count
+their incidences for an arbitrary quartic. Only then do we choose its
+coefficients to obtain the four-point sections used for the copies.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p2.m1" class="ltx_Math" alttext="q&gt;4" display="inline"><mrow><mi>q</mi><mo>&gt;</mo><mn>4</mn></mrow></math> be an odd prime power, and let <math id="S2.p2.m2" class="ltx_Math" alttext="\mathbb{F}_{q}" display="inline"><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></math> be the field
+with <math id="S2.p2.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> elements. The projective space <math id="S2.p2.m4" class="ltx_Math" alttext="\operatorname{PG}(5,q)" display="inline"><mrow><mi>PG</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math> consists
+of the one-dimensional subspaces of <math id="S2.p2.m5" class="ltx_Math" alttext="\mathbb{F}_{q}^{6}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>6</mn></msubsup></math>; a projective plane
+corresponds to a three-dimensional vector subspace. Subspace
+dimensions below are projective unless explicitly described as
+affine. A <em class="ltx_emph ltx_font_italic">cap</em> is a set with no three collinear points.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Fix a nonsquare <math id="S2.p3.m1" class="ltx_Math" alttext="\alpha\in\mathbb{F}_{q}" display="inline"><mrow><mi>α</mi><mo>∈</mo><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></mrow></math> and a monic quartic</p>
+<table id="S2.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex5.m1" class="ltx_Math" alttext="f(t)=t^{4}+f_{3}t^{3}+f_{2}t^{2}+f_{1}t+f_{0}\in\mathbb{F}_{q}[t]." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>t</mi><mn>4</mn></msup><mo>+</mo><mrow><msub><mi>f</mi><mn>3</mn></msub><mo>⁢</mo><msup><mi>t</mi><mn>3</mn></msup></mrow><mo>+</mo><mrow><msub><mi>f</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>⁢</mo><mi>t</mi></mrow><mo>+</mo><msub><mi>f</mi><mn>0</mn></msub></mrow><mo>∈</mo><mrow><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>t</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">In homogeneous coordinates <math id="S2.p3.m2" class="ltx_math_unparsed" alttext="[w:x:y:z:u:v]" display="inline"><mrow><mo stretchy="false">[</mo><mi>w</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>z</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>u</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>v</mi><mo stretchy="false">]</mo></mrow></math>, set</p>
+<table id="S2.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E2.m1" class="ltx_math_unparsed" alttext="S=S_{f}:=\bigl\{[1:x:y:z:x^{2}:y^{2}-\alpha z^{2}+f(x)]:x,y,z\in\mathbb{F}_{q}\bigr\}." display="block"><mrow><mi>S</mi><mo>=</mo><msub><mi>S</mi><mi>f</mi></msub><mo>:=</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">[</mo><mn>1</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>z</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msup><mi>x</mi><mn>2</mn></msup><mo lspace="0.278em" rspace="0.278em">:</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mi>α</mi><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mi>f</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo rspace="0.278em" stretchy="false">]</mo></mrow><mo rspace="0.278em">:</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>∈</mo><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub><mo stretchy="false">}</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Thus <math id="S2.p3.m3" class="ltx_Math" alttext="|S|=q^{3}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>S</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><msup><mi>q</mi><mn>3</mn></msup></mrow></math>. This is the quartic specialization of the point
+set in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Section 3]</cite>; we give all the section
+arguments needed here.</p>
+</div>
+<div id="Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3</span></span><span class="ltx_text ltx_font_bold"> </span>(Cap property)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">No three points of <math id="Thmtheorem3.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> are collinear.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Suppose that three distinct points of <math id="S2.p4.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> are collinear. Their
+<math id="S2.p4.m2" class="ltx_Math" alttext="(x,y,z)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></math>-coordinates can be written as</p>
+<table id="S2.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex6.m1" class="ltx_Math" alttext="p,\qquad p+h,\qquad p+\lambda h,\qquad h\in\mathbb{F}_{q}^{3}\setminus\{0\},\quad\lambda\in\mathbb{F}_{q}\setminus\{0,1\}." display="block"><mrow><mrow><mi>p</mi><mo rspace="2.167em">,</mo><mrow><mi>p</mi><mo>+</mo><mi>h</mi></mrow><mo rspace="2.167em">,</mo><mrow><mi>p</mi><mo>+</mo><mrow><mi>λ</mi><mo>⁢</mo><mi>h</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>h</mi><mo>∈</mo><mrow><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>3</mn></msubsup><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mi>λ</mi><mo>∈</mo><mrow><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The affine collinearity relation in the <math id="S2.p4.m3" class="ltx_Math" alttext="u=x^{2}" display="inline"><mrow><mi>u</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math> coordinate gives</p>
+<table id="S2.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex7.m1" class="ltx_Math" alttext="\lambda(\lambda-1)h_{x}^{2}=0," display="block"><mrow><mrow><mrow><mrow><mi>λ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>λ</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msubsup><mi>h</mi><mi>x</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mn>0</mn></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">so <math id="S2.p4.m4" class="ltx_Math" alttext="h_{x}=0" display="inline"><mrow><msub><mi>h</mi><mi>x</mi></msub><mo>=</mo><mn>0</mn></mrow></math>. The same relation in the
+<math id="S2.p4.m5" class="ltx_Math" alttext="v=y^{2}-\alpha z^{2}+f(x)" display="inline"><mrow><mi>v</mi><mo>=</mo><mrow><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></mrow><mo>+</mo><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> coordinate now gives</p>
+<table id="S2.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex8.m1" class="ltx_Math" alttext="\lambda(\lambda-1)(h_{y}^{2}-\alpha h_{z}^{2})=0." display="block"><mrow><mrow><mrow><mrow><mi>λ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>λ</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>h</mi><mi>y</mi><mn>2</mn></msubsup><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><msubsup><mi>h</mi><mi>z</mi><mn>2</mn></msubsup></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Since <math id="S2.p4.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is a nonsquare,
+<math id="S2.p4.m7" class="ltx_Math" alttext="h_{y}^{2}-\alpha h_{z}^{2}=0" display="inline"><mrow><mrow><msubsup><mi>h</mi><mi>y</mi><mn>2</mn></msubsup><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><msubsup><mi>h</mi><mi>z</mi><mn>2</mn></msubsup></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> implies <math id="S2.p4.m8" class="ltx_Math" alttext="h_{y}=h_{z}=0" display="inline"><mrow><msub><mi>h</mi><mi>y</mi></msub><mo>=</mo><msub><mi>h</mi><mi>z</mi></msub><mo>=</mo><mn>0</mn></mrow></math>. This contradicts
+<math id="S2.p4.m9" class="ltx_Math" alttext="h\neq 0" display="inline"><mrow><mi>h</mi><mo>≠</mo><mn>0</mn></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Every triple now determines a unique plane. To understand how many
+other points that plane can contain, consider the affine projection</p>
+<table id="S2.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex9.m1" class="ltx_Math" alttext="\rho:\mathbb{F}_{q}^{5}\longrightarrow\mathbb{F}_{q}^{2},\qquad(x,y,z,u,v)\longmapsto(x,u)." display="block"><mrow><mrow><mrow><mi>ρ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>5</mn></msubsup><mo stretchy="false">⟶</mo><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>2</mn></msubsup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟼</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For a projective plane <math id="S2.p5.m1" class="ltx_Math" alttext="\Pi" display="inline"><mi mathvariant="normal">Π</mi></math> not contained in <math id="S2.p5.m2" class="ltx_Math" alttext="w=0" display="inline"><mrow><mi>w</mi><mo>=</mo><mn>0</mn></mrow></math>, let
+<math id="S2.p5.m3" class="ltx_math_unparsed" alttext="H=\Pi\cap\{w=1\}" display="inline"><mrow><mi>H</mi><mo>=</mo><mi mathvariant="normal">Π</mi><mo>∩</mo><mrow><mo stretchy="false">{</mo><mi>w</mi><mo>=</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math>. If <math id="S2.p5.m4" class="ltx_Math" alttext="\dim\rho(H)=2" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><mi>ρ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>2</mn></mrow></math>, the restriction of
+<math id="S2.p5.m5" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math> to <math id="S2.p5.m6" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> is an affine isomorphism, so <math id="S2.p5.m7" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> has a unique
+representation</p>
+<table id="S2.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E3.m1" class="ltx_Math" alttext="y=A(x,u),\qquad z=B(x,u),\qquad v=C(x,u)," display="block"><mrow><mrow><mrow><mi>y</mi><mo>=</mo><mrow><mi>A</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>z</mi><mo>=</mo><mrow><mi>B</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>v</mi><mo>=</mo><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S2.p5.m8" class="ltx_Math" alttext="A,B,C" display="inline"><mrow><mi>A</mi><mo>,</mo><mi>B</mi><mo>,</mo><mi>C</mi></mrow></math> are affine functions of <math id="S2.p5.m9" class="ltx_Math" alttext="(x,u)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow></math>. We call <math id="S2.p5.m10" class="ltx_Math" alttext="\Pi" display="inline"><mi mathvariant="normal">Π</mi></math>
+a <em class="ltx_emph ltx_font_italic">graph plane</em>. Upon substituting <math id="S2.p5.m11" class="ltx_Math" alttext="u=t^{2}" display="inline"><mrow><mi>u</mi><mo>=</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></math>, write</p>
+<table id="S2.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex10.m1" class="ltx_Math" alttext="A(t)=a_{0}+a_{1}t+a_{2}t^{2},\quad B(t)=b_{0}+b_{1}t+b_{2}t^{2},\quad C(t)=c_{0}+c_{1}t+c_{2}t^{2}." display="block"><mrow><mrow><mrow><mrow><mi>A</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>⁢</mo><mi>t</mi></mrow><mo>+</mo><mrow><msub><mi>a</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mi>B</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>b</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>⁢</mo><mi>t</mi></mrow><mo>+</mo><mrow><msub><mi>b</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><mi>t</mi></mrow><mo>+</mo><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The points of <math id="S2.p5.m12" class="ltx_Math" alttext="S\cap\Pi" display="inline"><mrow><mi>S</mi><mo>∩</mo><mi mathvariant="normal">Π</mi></mrow></math> correspond bijectively to the roots in
+<math id="S2.p5.m13" class="ltx_Math" alttext="\mathbb{F}_{q}" display="inline"><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></math> of</p>
+<table id="S2.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E4.m1" class="ltx_Math" alttext="P_{\Pi}(t)=f(t)+A(t)^{2}-\alpha B(t)^{2}-C(t)," display="block"><mrow><mrow><mrow><msub><mi>P</mi><mi mathvariant="normal">Π</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>A</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><mi>B</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>−</mo><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">a polynomial of degree at most four.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p6.m1" class="ltx_Math" alttext="\mathcal{I}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi></math> be the family of graph planes satisfying
+<math id="S2.p6.m2" class="ltx_Math" alttext="P_{\Pi}\equiv 0" display="inline"><mrow><msub><mi>P</mi><mi mathvariant="normal">Π</mi></msub><mo>≡</mo><mn>0</mn></mrow></math>, called <em class="ltx_emph ltx_font_italic">identity planes</em>. For each
+<math id="S2.p6.m3" class="ltx_Math" alttext="c\in\mathbb{F}_{q}" display="inline"><mrow><mi>c</mi><mo>∈</mo><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></mrow></math>, put</p>
+<table id="S2.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex11.m1" class="ltx_Math" alttext="F_{c}:=\{x=cw,\ u=c^{2}w\}\cong\operatorname{PG}(3,q)," display="block"><mrow><mrow><msub><mi>F</mi><mi>c</mi></msub><mo>:=</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><mi>x</mi><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><mi>w</mi></mrow></mrow><mo rspace="0.667em">,</mo><mrow><mi>u</mi><mo>=</mo><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><mi>w</mi></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow><mo>≅</mo><mrow><mi>PG</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">and let <math id="S2.p6.m4" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></math> be the family of all projective planes contained
+in at least one <math id="S2.p6.m5" class="ltx_Math" alttext="F_{c}" display="inline"><msub><mi>F</mi><mi>c</mi></msub></math>. Define the exceptional family and its
+section sizes by</p>
+<table id="S2.E5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E5.m1" class="ltx_math_unparsed" alttext="\mathcal{D}:=\mathcal{I}\cup\mathcal{F},\qquad a_{E}:=|S\cap E|\quad(E\in\mathcal{D})." display="block"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>:=</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo>∪</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi><mo rspace="2.167em">,</mo><msub><mi>a</mi><mi>E</mi></msub><mo rspace="0em">:=</mo><mo fence="false" rspace="0.167em" stretchy="false">|</mo><mi>S</mi><mo>∩</mo><mi>E</mi><mo fence="false" rspace="0.167em" stretchy="false">|</mo><mrow><mo stretchy="false">(</mo><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Membership in <math id="S2.p6.m6" class="ltx_Math" alttext="\mathcal{D}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></math> does not require a section to have more than
+four points; in particular, some exceptional planes miss <math id="S2.p6.m7" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The exceptional family is defined by the form of the plane rather
+than a threshold on its section size. This makes its incidences exactly
+countable and ensures that every section larger than four is included.</p>
+</div>
+<div id="Thmtheorem4" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 4</span></span><span class="ltx_text ltx_font_bold"> </span>(Plane sections and exceptional incidences)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Every plane <math id="Thmtheorem4.p1.m1" class="ltx_Math" alttext="\Pi\notin\mathcal{D}" display="inline"><mrow><mi mathvariant="normal">Π</mi><mo>∉</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math> satisfies <math id="Thmtheorem4.p1.m2" class="ltx_Math" alttext="|S\cap\Pi|\leq 4" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>S</mi><mo>∩</mo><mi mathvariant="normal">Π</mi></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>4</mn></mrow></math>.
+The families <math id="Thmtheorem4.p1.m3" class="ltx_Math" alttext="\mathcal{I}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi></math> and <math id="Thmtheorem4.p1.m4" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></math> are disjoint, and</span></p>
+<table id="S2.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S2.E6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E6.m1" class="ltx_Math" alttext="\displaystyle|\mathcal{I}|" display="inline"><mrow><mo stretchy="false">|</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo stretchy="false">|</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E6.m2" class="ltx_Math" alttext="\displaystyle=q^{3}(q+1)," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td></tr></tbody>
+<tbody id="S2.E7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E7.m1" class="ltx_Math" alttext="\displaystyle|\mathcal{F}|" display="inline"><mrow><mo stretchy="false">|</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi><mo stretchy="false">|</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E7.m2" class="ltx_Math" alttext="\displaystyle=q^{4}+q^{3}+q^{2}+1," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><msup><mi>q</mi><mn>4</mn></msup><mo>+</mo><msup><mi>q</mi><mn>3</mn></msup><mo>+</mo><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+<tbody id="S2.E8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E8.m1" class="ltx_Math" alttext="\displaystyle\sum_{E\in\mathcal{D}}a_{E}" display="inline"><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></munder></mstyle><msub><mi>a</mi><mi>E</mi></msub></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E8.m2" class="ltx_Math" alttext="\displaystyle=2q^{5}+2q^{4}+q^{3}," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>5</mn></msup></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>4</mn></msup></mrow><mo>+</mo><msup><mi>q</mi><mn>3</mn></msup></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td></tr></tbody>
+<tbody id="S2.E9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E9.m1" class="ltx_Math" alttext="\displaystyle\max_{E\in\mathcal{D}}a_{E}" display="inline"><mrow><munder><mi>max</mi><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></munder><mo lspace="0.167em">⁡</mo><msub><mi>a</mi><mi>E</mi></msub></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E9.m2" class="ltx_Math" alttext="\displaystyle\leq 2q." display="inline"><mrow><mrow><mphantom></mphantom><mo>≤</mo><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Each identity plane contains exactly <math id="Thmtheorem4.p1.m5" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> points of <math id="Thmtheorem4.p1.m6" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, and
+each point of <math id="Thmtheorem4.p1.m7" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> lies in exactly <math id="Thmtheorem4.p1.m8" class="ltx_Math" alttext="q(q+1)" display="inline"><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> identity planes.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">We first prove the bound outside <math id="S2.p8.m1" class="ltx_Math" alttext="\mathcal{D}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></math>. A plane contained in
+<math id="S2.p8.m2" class="ltx_Math" alttext="w=0" display="inline"><mrow><mi>w</mi><mo>=</mo><mn>0</mn></mrow></math> misses <math id="S2.p8.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>. Otherwise, use the
+affine plane <math id="S2.p8.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> defined above. If <math id="S2.p8.m5" class="ltx_Math" alttext="\dim\rho(H)=2" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><mi>ρ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>2</mn></mrow></math> and
+<math id="S2.p8.m6" class="ltx_Math" alttext="\Pi\notin\mathcal{I}" display="inline"><mrow><mi mathvariant="normal">Π</mi><mo>∉</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi></mrow></math>, the nonzero polynomial
+(<a href="#S2.E4" title="In 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>) has at most four roots.</p>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">If <math id="S2.p9.m1" class="ltx_Math" alttext="\dim\rho(H)=1" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><mi>ρ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>, the affine line <math id="S2.p9.m2" class="ltx_Math" alttext="\rho(H)" display="inline"><mrow><mi>ρ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></math> meets the
+parabola <math id="S2.p9.m3" class="ltx_Math" alttext="u=x^{2}" display="inline"><mrow><mi>u</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math> in at most two points: substituting <math id="S2.p9.m4" class="ltx_Math" alttext="(t,t^{2})" display="inline"><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>t</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></math>
+into a nonzero affine-linear equation of that line gives a nonzero
+polynomial of degree at most two. Above each intersection point,
+the fiber in <math id="S2.p9.m5" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> is an affine line. By Lemma <a href="#Thmtheorem3" title="Lemma 3 (Cap property). ‣ 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>, it
+contains at most two points of <math id="S2.p9.m6" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>. Thus <math id="S2.p9.m7" class="ltx_Math" alttext="|S\cap\Pi|\leq 4" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>S</mi><mo>∩</mo><mi mathvariant="normal">Π</mi></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>4</mn></mrow></math>.
+If <math id="S2.p9.m8" class="ltx_Math" alttext="\dim\rho(H)=0" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><mi>ρ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> and <math id="S2.p9.m9" class="ltx_Math" alttext="H\cap S\neq\varnothing" display="inline"><mrow><mrow><mi>H</mi><mo>∩</mo><mi>S</mi></mrow><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow></math>, then
+<math id="S2.p9.m10" class="ltx_Math" alttext="\rho(H)=\{(c,c^{2})\}" display="inline"><mrow><mrow><mi>ρ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>c</mi><mo>,</mo><msup><mi>c</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></math> for some <math id="S2.p9.m11" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>, and the projective closure
+of <math id="S2.p9.m12" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> lies in <math id="S2.p9.m13" class="ltx_Math" alttext="F_{c}" display="inline"><msub><mi>F</mi><mi>c</mi></msub></math>. Hence <math id="S2.p9.m14" class="ltx_Math" alttext="\Pi\in\mathcal{F}" display="inline"><mrow><mi mathvariant="normal">Π</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></mrow></math>. These cases
+prove the section bound outside <math id="S2.p9.m15" class="ltx_Math" alttext="\mathcal{D}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></math>.</p>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">We next count the identity planes. For a graph plane to belong to
+<math id="S2.p10.m1" class="ltx_Math" alttext="\mathcal{I}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi></math>, its quartic and cubic
+coefficients must satisfy</p>
+<table id="S2.EGx2" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S2.E10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E10.m1" class="ltx_Math" alttext="\displaystyle 1+a_{2}^{2}-\alpha b_{2}^{2}" display="inline"><mrow><mrow><mn>1</mn><mo>+</mo><msubsup><mi>a</mi><mn>2</mn><mn>2</mn></msubsup></mrow><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><msubsup><mi>b</mi><mn>2</mn><mn>2</mn></msubsup></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E10.m2" class="ltx_Math" alttext="\displaystyle=0," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mn>0</mn></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(10)</span></td></tr></tbody>
+<tbody id="S2.E11"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E11.m1" class="ltx_Math" alttext="\displaystyle f_{3}+2a_{2}a_{1}-2\alpha b_{2}b_{1}" display="inline"><mrow><mrow><msub><mi>f</mi><mn>3</mn></msub><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>a</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>a</mi><mn>1</mn></msub></mrow></mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>α</mi><mo>⁢</mo><msub><mi>b</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>b</mi><mn>1</mn></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E11.m2" class="ltx_Math" alttext="\displaystyle=0." display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(11)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">In <math id="S2.p10.m2" class="ltx_Math" alttext="\mathbb{F}_{q^{2}}=\mathbb{F}_{q}(\sqrt{\alpha})" display="inline"><mrow><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><msup><mi>q</mi><mn>2</mn></msup></msub><mo>=</mo><mrow><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mi>α</mi></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, equation
+(<a href="#S2.E10" title="In 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>) is the norm equation</p>
+<table id="S2.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex12.m1" class="ltx_Math" alttext="N_{\mathbb{F}_{q^{2}}/\mathbb{F}_{q}}(a_{2}+b_{2}\sqrt{\alpha})=-1." display="block"><mrow><mrow><mrow><msub><mi>N</mi><mrow><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><msup><mi>q</mi><mn>2</mn></msup></msub><mo>/</mo><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>a</mi><mn>2</mn></msub><mo>+</mo><mrow><msub><mi>b</mi><mn>2</mn></msub><mo>⁢</mo><msqrt><mi>α</mi></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The norm is <math id="S2.p10.m3" class="ltx_Math" alttext="z\mapsto z^{q+1}" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><msup><mi>z</mi><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow></math>. Since
+<math id="S2.p10.m4" class="ltx_Math" alttext="\mathbb{F}_{q^{2}}^{\times}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><msup><mi>q</mi><mn>2</mn></msup><mo>×</mo></msubsup></math> is cyclic of order <math id="S2.p10.m5" class="ltx_Math" alttext="q^{2}-1" display="inline"><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></math>, its norm map
+has kernel of order <math id="S2.p10.m6" class="ltx_Math" alttext="q+1" display="inline"><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow></math> and image <math id="S2.p10.m7" class="ltx_Math" alttext="\mathbb{F}_{q}^{\times}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mo>×</mo></msubsup></math>.
+Consequently, (<a href="#S2.E10" title="In 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>) has exactly <math id="S2.p10.m8" class="ltx_Math" alttext="q+1" display="inline"><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow></math> solutions
+<math id="S2.p10.m9" class="ltx_Math" alttext="(a_{2},b_{2})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></math>, all nonzero. For each such pair,
+(<a href="#S2.E11" title="In 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">11</span></a>) is a nonzero affine-linear equation in
+<math id="S2.p10.m10" class="ltx_Math" alttext="(a_{1},b_{1})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></math>, with exactly <math id="S2.p10.m11" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> solutions. The coefficients
+<math id="S2.p10.m12" class="ltx_Math" alttext="a_{0},b_{0}" display="inline"><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>,</mo><msub><mi>b</mi><mn>0</mn></msub></mrow></math> are arbitrary, after which
+<math id="S2.p10.m13" class="ltx_Math" alttext="C=f+A^{2}-\alpha B^{2}" display="inline"><mrow><mi>C</mi><mo>=</mo><mrow><mrow><mi>f</mi><mo>+</mo><msup><mi>A</mi><mn>2</mn></msup></mrow><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><msup><mi>B</mi><mn>2</mn></msup></mrow></mrow></mrow></math> is uniquely determined and has degree at
+most two. Therefore</p>
+<table id="S2.Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex13.m1" class="ltx_Math" alttext="|\mathcal{I}|=(q+1)q\,q^{2}=q^{3}(q+1)." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>q</mi><mo lspace="0.170em">⁢</mo><msup><mi>q</mi><mn>2</mn></msup></mrow><mo>=</mo><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">An identity plane contains one point of <math id="S2.p10.m14" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> for each
+<math id="S2.p10.m15" class="ltx_Math" alttext="x\in\mathbb{F}_{q}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></mrow></math>, so its section size is <math id="S2.p10.m16" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>. For a fixed point
+<math id="S2.p10.m17" class="ltx_math_unparsed" alttext="[1:x_{0}:y_{0}:z_{0}:x_{0}^{2}:v_{0}]\in S" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>1</mn><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>y</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>z</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msubsup><mi>x</mi><mn>0</mn><mn>2</mn></msubsup><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>v</mi><mn>0</mn></msub><mo stretchy="false">]</mo></mrow><mo>∈</mo><mi>S</mi></mrow></math>, the equations
+<math id="S2.p10.m18" class="ltx_Math" alttext="A(x_{0})=y_{0}" display="inline"><mrow><mrow><mi>A</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub></mrow></math> and <math id="S2.p10.m19" class="ltx_Math" alttext="B(x_{0})=z_{0}" display="inline"><mrow><mrow><mi>B</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>z</mi><mn>0</mn></msub></mrow></math> determine <math id="S2.p10.m20" class="ltx_Math" alttext="a_{0},b_{0}" display="inline"><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>,</mo><msub><mi>b</mi><mn>0</mn></msub></mrow></math> after the
+other coefficients have been chosen. Thus the point belongs to
+exactly <math id="S2.p10.m21" class="ltx_Math" alttext="q(q+1)" display="inline"><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> identity planes.</p>
+</div>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p">For the fiber family <math id="S2.p11.m1" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></math>, each <math id="S2.p11.m2" class="ltx_Math" alttext="F_{c}\cong\operatorname{PG}(3,q)" display="inline"><mrow><msub><mi>F</mi><mi>c</mi></msub><mo>≅</mo><mrow><mi>PG</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> contains
+<math id="S2.p11.m3" class="ltx_Math" alttext="q^{3}+q^{2}+q+1" display="inline"><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>+</mo><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mi>q</mi><mo>+</mo><mn>1</mn></mrow></math> planes.
+For <math id="S2.p11.m4" class="ltx_Math" alttext="c\neq d" display="inline"><mrow><mi>c</mi><mo>≠</mo><mi>d</mi></mrow></math>, the equations of <math id="S2.p11.m5" class="ltx_Math" alttext="F_{c}\cap F_{d}" display="inline"><mrow><msub><mi>F</mi><mi>c</mi></msub><mo>∩</mo><msub><mi>F</mi><mi>d</mi></msub></mrow></math> imply
+<math id="S2.p11.m6" class="ltx_Math" alttext="w=x=u=0" display="inline"><mrow><mi>w</mi><mo>=</mo><mi>x</mi><mo>=</mo><mi>u</mi><mo>=</mo><mn>0</mn></mrow></math>. Hence distinct <math id="S2.p11.m7" class="ltx_Math" alttext="F_{c}" display="inline"><msub><mi>F</mi><mi>c</mi></msub></math>’s meet in the same plane</p>
+<table id="S2.Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex14.m1" class="ltx_math_unparsed" alttext="W_{\infty}:=\{w=x=u=0\}," display="block"><mrow><msub><mi>W</mi><mi mathvariant="normal">∞</mi></msub><mo>:=</mo><mrow><mo stretchy="false">{</mo><mi>w</mi><mo>=</mo><mi>x</mi><mo>=</mo><mi>u</mi><mo>=</mo><mn>0</mn><mo stretchy="false">}</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">which is disjoint from <math id="S2.p11.m8" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>. It is the only plane counted in
+more than one <math id="S2.p11.m9" class="ltx_Math" alttext="F_{c}" display="inline"><msub><mi>F</mi><mi>c</mi></msub></math>, and so</p>
+<table id="S2.Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex15.m1" class="ltx_Math" alttext="|\mathcal{F}|=1+q(q^{3}+q^{2}+q)=q^{4}+q^{3}+q^{2}+1." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>+</mo><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><msup><mi>q</mi><mn>4</mn></msup><mo>+</mo><msup><mi>q</mi><mn>3</mn></msup><mo>+</mo><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">There are <math id="S2.p11.m10" class="ltx_Math" alttext="q^{2}" display="inline"><msup><mi>q</mi><mn>2</mn></msup></math> points of <math id="S2.p11.m11" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> in each <math id="S2.p11.m12" class="ltx_Math" alttext="F_{c}" display="inline"><msub><mi>F</mi><mi>c</mi></msub></math>, and each lies
+in <math id="S2.p11.m13" class="ltx_Math" alttext="q^{2}+q+1" display="inline"><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mi>q</mi><mo>+</mo><mn>1</mn></mrow></math> planes of <math id="S2.p11.m14" class="ltx_Math" alttext="F_{c}" display="inline"><msub><mi>F</mi><mi>c</mi></msub></math>. Every point of <math id="S2.p11.m15" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> belongs
+to exactly one <math id="S2.p11.m16" class="ltx_Math" alttext="F_{c}" display="inline"><msub><mi>F</mi><mi>c</mi></msub></math>. Thus</p>
+<table id="S2.Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex16.m1" class="ltx_Math" alttext="\sum_{E\in\mathcal{F}}a_{E}=q^{3}(q^{2}+q+1)." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></mrow></munder><msub><mi>a</mi><mi>E</mi></msub></mrow><mo>=</mo><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The counts of planes in <math id="S2.p11.m17" class="ltx_Math" alttext="\operatorname{PG}(3,q)" display="inline"><mrow><mi>PG</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math> and through a fixed point
+follow by counting nonzero linear forms up to scalar, on
+<math id="S2.p11.m18" class="ltx_Math" alttext="\mathbb{F}_{q}^{4}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>4</mn></msubsup></math> and on its quotient by that point, respectively.</p>
+</div>
+<div id="S2.p12" class="ltx_para">
+<p class="ltx_p">To combine these counts, observe that an identity plane has a
+two-dimensional affine projection under
+<math id="S2.p12.m1" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math>. A plane in <math id="S2.p12.m2" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></math> other than <math id="S2.p12.m3" class="ltx_Math" alttext="W_{\infty}" display="inline"><msub><mi>W</mi><mi mathvariant="normal">∞</mi></msub></math> has a
+zero-dimensional affine projection, and <math id="S2.p12.m4" class="ltx_Math" alttext="W_{\infty}" display="inline"><msub><mi>W</mi><mi mathvariant="normal">∞</mi></msub></math> has no affine
+points. Hence <math id="S2.p12.m5" class="ltx_Math" alttext="\mathcal{I}\cap\mathcal{F}=\varnothing" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo>∩</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, giving</p>
+<table id="S2.Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex17.m1" class="ltx_Math" alttext="\sum_{E\in\mathcal{D}}a_{E}=q\,q^{3}(q+1)+q^{3}(q^{2}+q+1)=2q^{5}+2q^{4}+q^{3}." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></munder><msub><mi>a</mi><mi>E</mi></msub></mrow><mo>=</mo><mrow><mrow><mi>q</mi><mo lspace="0.170em">⁢</mo><msup><mi>q</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>5</mn></msup></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>4</mn></msup></mrow><mo>+</mo><msup><mi>q</mi><mn>3</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+<div id="S2.p13" class="ltx_para">
+<p class="ltx_p">Finally, a plane <math id="S2.p13.m1" class="ltx_Math" alttext="E\subset F_{c}" display="inline"><mrow><mi>E</mi><mo>⊂</mo><msub><mi>F</mi><mi>c</mi></msub></mrow></math> other than <math id="S2.p13.m2" class="ltx_Math" alttext="W_{\infty}" display="inline"><msub><mi>W</mi><mi mathvariant="normal">∞</mi></msub></math> has,
+in the affine chart, an equation</p>
+<table id="S2.Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex18.m1" class="ltx_Math" alttext="\beta v+\gamma y+\delta z+\varepsilon=0,\qquad(\beta,\gamma,\delta)\neq(0,0,0)." display="block"><mrow><mrow><mrow><mrow><mrow><mi>β</mi><mo>⁢</mo><mi>v</mi></mrow><mo>+</mo><mrow><mi>γ</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mrow><mi>δ</mi><mo>⁢</mo><mi>z</mi></mrow><mo>+</mo><mi>ε</mi></mrow><mo>=</mo><mn>0</mn></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mo stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>γ</mi><mo>,</mo><mi>δ</mi><mo stretchy="false">)</mo></mrow><mo>≠</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">On <math id="S2.p13.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, this becomes</p>
+<table id="S2.Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex19.m1" class="ltx_Math" alttext="\beta\bigl(y^{2}-\alpha z^{2}+f(c)\bigr)+\gamma y+\delta z+\varepsilon=0." display="block"><mrow><mrow><mrow><mrow><mi>β</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></mrow><mo>+</mo><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>+</mo><mrow><mi>γ</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mrow><mi>δ</mi><mo>⁢</mo><mi>z</mi></mrow><mo>+</mo><mi>ε</mi></mrow><mo>=</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">If <math id="S2.p13.m4" class="ltx_Math" alttext="\beta\neq 0" display="inline"><mrow><mi>β</mi><mo>≠</mo><mn>0</mn></mrow></math>, then for each <math id="S2.p13.m5" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> there are at most two
+solutions for <math id="S2.p13.m6" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>, giving at most <math id="S2.p13.m7" class="ltx_Math" alttext="2q" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>q</mi></mrow></math> points. If
+<math id="S2.p13.m8" class="ltx_Math" alttext="\beta=0" display="inline"><mrow><mi>β</mi><mo>=</mo><mn>0</mn></mrow></math>, the equation is a nonconstant affine-linear equation
+in <math id="S2.p13.m9" class="ltx_Math" alttext="(y,z)" display="inline"><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></math>, giving exactly <math id="S2.p13.m10" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> points. Together with the
+section sizes of <math id="S2.p13.m11" class="ltx_Math" alttext="W_{\infty}" display="inline"><msub><mi>W</mi><mi mathvariant="normal">∞</mi></msub></math> and the identity planes, this proves
+(<a href="#S2.E9" title="In Proposition 4 (Plane sections and exceptional incidences). ‣ 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9</span></a>).
+∎</p>
+</div>
+</div>
+<div id="Thmtheorem5" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_italic">Remark 5</span></span><span class="ltx_text ltx_font_italic"> </span>(The obstruction to point deletion)<span class="ltx_text ltx_font_italic">.</span></h6>
+<div id="Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Suppose that <math id="Thmtheorem5.p1.m1" class="ltx_Math" alttext="X\subseteq S" display="inline"><mrow><mi>X</mi><mo>⊆</mo><mi>S</mi></mrow></math> satisfies <math id="Thmtheorem5.p1.m2" class="ltx_Math" alttext="|X\cap E|\leq 4" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>X</mi><mo>∩</mo><mi>E</mi></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>4</mn></mrow></math> for
+every <math id="Thmtheorem5.p1.m3" class="ltx_Math" alttext="E\in\mathcal{I}" display="inline"><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi></mrow></math>. Counting incidences with identity planes gives</p>
+<table id="S2.Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex20.m1" class="ltx_Math" alttext="|X|q(q+1)=\sum_{E\in\mathcal{I}}|X\cap E|\leq 4|\mathcal{I}|=4q^{3}(q+1)," display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">|</mo><mi>X</mi><mo stretchy="false">|</mo></mrow><mo>⁢</mo><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi></mrow></munder><mrow><mo stretchy="false">|</mo><mrow><mi>X</mi><mo>∩</mo><mi>E</mi></mrow><mo stretchy="false">|</mo></mrow></mrow><mo>≤</mo><mrow><mn>4</mn><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo stretchy="false">|</mo></mrow></mrow><mo>=</mo><mrow><mn>4</mn><mo>⁢</mo><msup><mi>q</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">and hence <math id="Thmtheorem5.p1.m4" class="ltx_Math" alttext="|X|\leq 4q^{2}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>X</mi><mo stretchy="false">|</mo></mrow><mo>≤</mo><mrow><mn>4</mn><mo>⁢</mo><msup><mi>q</mi><mn>2</mn></msup></mrow></mrow></math>. Thus imposing a four-point bound on all
+identity-plane sections by deleting points cannot retain a subset
+of size <math id="Thmtheorem5.p1.m5" class="ltx_Math" alttext="\Theta(q^{3})" display="inline"><mrow><mi mathvariant="normal">Θ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p14" class="ltx_para">
+<p class="ltx_p">The incidence count above holds for every monic quartic. We now choose
+one with <math id="S2.p14.m1" class="ltx_Math" alttext="\Omega(q^{9})" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> four-point sections. At this stage only the
+section on one plane matters; the later random pairing will match it
+with a section on the other side of the graph. Thus a direct average
+over the four lower coefficients of <math id="S2.p14.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> suffices.</p>
+</div>
+<div id="Thmtheorem6" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 6</span></span><span class="ltx_text ltx_font_bold"> </span>(Many four-point sections)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">There is an absolute constant <math id="Thmtheorem6.p1.m1" class="ltx_Math" alttext="c_{0}&gt;0" display="inline"><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn></mrow></math> such that, for every
+sufficiently large odd prime power <math id="Thmtheorem6.p1.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, some monic quartic <math id="Thmtheorem6.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>
+has at least <math id="Thmtheorem6.p1.m4" class="ltx_Math" alttext="c_{0}q^{9}" display="inline"><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></math> planes <math id="Thmtheorem6.p1.m5" class="ltx_Math" alttext="\Pi\notin\mathcal{D}" display="inline"><mrow><mi mathvariant="normal">Π</mi><mo>∉</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math> satisfying
+<math id="Thmtheorem6.p1.m6" class="ltx_Math" alttext="|S_{f}\cap\Pi|=4" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>S</mi><mi>f</mi></msub><mo>∩</mo><mi mathvariant="normal">Π</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>4</mn></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p15" class="ltx_para">
+<p class="ltx_p">There are <math id="S2.p15.m1" class="ltx_Math" alttext="q^{9}" display="inline"><msup><mi>q</mi><mn>9</mn></msup></math> graph planes, one for each ordered triple of
+affine functions in (<a href="#S2.E3" title="In 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>). The leading
+coefficient of their section polynomial is</p>
+<table id="S2.Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex21.m1" class="ltx_Math" alttext="\ell_{\Pi}=1+a_{2}^{2}-\alpha b_{2}^{2}." display="block"><mrow><mrow><msub><mi mathvariant="normal">ℓ</mi><mi mathvariant="normal">Π</mi></msub><mo>=</mo><mrow><mrow><mn>1</mn><mo>+</mo><msubsup><mi>a</mi><mn>2</mn><mn>2</mn></msubsup></mrow><mo>−</mo><mrow><mi>α</mi><mo>⁢</mo><msubsup><mi>b</mi><mn>2</mn><mn>2</mn></msubsup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">By the norm count above, exactly <math id="S2.p15.m2" class="ltx_Math" alttext="(q+1)q^{7}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>q</mi><mn>7</mn></msup></mrow></math> graph planes have
+<math id="S2.p15.m3" class="ltx_Math" alttext="\ell_{\Pi}=0" display="inline"><mrow><msub><mi mathvariant="normal">ℓ</mi><mi mathvariant="normal">Π</mi></msub><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S2.p16" class="ltx_para">
+<p class="ltx_p">Choose <math id="S2.p16.m1" class="ltx_Math" alttext="f_{0},f_{1},f_{2},f_{3}" display="inline"><mrow><msub><mi>f</mi><mn>0</mn></msub><mo>,</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><msub><mi>f</mi><mn>3</mn></msub></mrow></math> independently and uniformly from
+<math id="S2.p16.m2" class="ltx_Math" alttext="\mathbb{F}_{q}" display="inline"><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></math>. For any fixed graph plane with <math id="S2.p16.m3" class="ltx_Math" alttext="\ell_{\Pi}\neq 0" display="inline"><mrow><msub><mi mathvariant="normal">ℓ</mi><mi mathvariant="normal">Π</mi></msub><mo>≠</mo><mn>0</mn></mrow></math>, the
+four lower coefficients of <math id="S2.p16.m4" class="ltx_Math" alttext="P_{\Pi}" display="inline"><msub><mi>P</mi><mi mathvariant="normal">Π</mi></msub></math> are uniform in <math id="S2.p16.m5" class="ltx_Math" alttext="\mathbb{F}_{q}^{4}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>4</mn></msubsup></math>.
+There are exactly <math id="S2.p16.m6" class="ltx_Math" alttext="\binom{q}{4}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>q</mi><mn>4</mn></mfrac><mo>)</mo></mrow></math> polynomials with leading coefficient
+<math id="S2.p16.m7" class="ltx_Math" alttext="\ell_{\Pi}" display="inline"><msub><mi mathvariant="normal">ℓ</mi><mi mathvariant="normal">Π</mi></msub></math> and four distinct roots in <math id="S2.p16.m8" class="ltx_Math" alttext="\mathbb{F}_{q}" display="inline"><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></math>, namely</p>
+<table id="S2.Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex22.m1" class="ltx_Math" alttext="\ell_{\Pi}\prod_{r\in R}(t-r),\qquad R\in\binom{\mathbb{F}_{q}}{4}." display="block"><mrow><mrow><mrow><msub><mi mathvariant="normal">ℓ</mi><mi mathvariant="normal">Π</mi></msub><mo>⁢</mo><mrow><munder><mo movablelimits="false" rspace="0em">∏</mo><mrow><mi>r</mi><mo>∈</mo><mi>R</mi></mrow></munder><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>−</mo><mi>r</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>R</mi><mo>∈</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub><mn>4</mn></mfrac><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="S2.p16.m9" class="ltx_Math" alttext="\binom{\mathbb{F}_{q}}{4}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub><mn>4</mn></mfrac><mo>)</mo></mrow></math> denotes the family of four-element subsets
+of <math id="S2.p16.m10" class="ltx_Math" alttext="\mathbb{F}_{q}" display="inline"><msub><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi></msub></math>. The expected number of graph planes with
+<math id="S2.p16.m11" class="ltx_Math" alttext="\ell_{\Pi}\neq 0" display="inline"><mrow><msub><mi mathvariant="normal">ℓ</mi><mi mathvariant="normal">Π</mi></msub><mo>≠</mo><mn>0</mn></mrow></math> and <math id="S2.p16.m12" class="ltx_Math" alttext="|S_{f}\cap\Pi|=4" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>S</mi><mi>f</mi></msub><mo>∩</mo><mi mathvariant="normal">Π</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>4</mn></mrow></math> is therefore</p>
+<table id="S2.E12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E12.m1" class="ltx_Math" alttext="\bigl(q^{9}-(q+1)q^{7}\bigr)\frac{\binom{q}{4}}{q^{4}}=\left(\frac{1}{24}+o(1)\right)q^{9}." display="block"><mrow><mrow><mrow><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msup><mi>q</mi><mn>9</mn></msup><mo>−</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>q</mi><mn>7</mn></msup></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mo>⁢</mo><mfrac><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>q</mi><mn>4</mn></mfrac><mo>)</mo></mrow><msup><mi>q</mi><mn>4</mn></msup></mfrac></mrow><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mfrac><mn>1</mn><mn>24</mn></mfrac><mo>+</mo><mrow><mi>o</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(12)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Some choice of <math id="S2.p16.m13" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> attains at least this expectation. Each
+counted plane lies outside <math id="S2.p16.m14" class="ltx_Math" alttext="\mathcal{I}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi></math>, since its leading coefficient
+is nonzero, and outside <math id="S2.p16.m15" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></math>, since it is a graph plane.
+∎</p>
+</div>
+</div>
+<div id="S2.p17" class="ltx_para">
+<p class="ltx_p">Fix such a quartic <math id="S2.p17.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, and define</p>
+<table id="S2.Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex23.m1" class="ltx_math_unparsed" alttext="\mathcal{B}:=\{S\cap\Pi:\Pi\notin\mathcal{D},\ |S\cap\Pi|=4\}." display="block"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo>:=</mo><mrow><mo stretchy="false">{</mo><mi>S</mi><mo>∩</mo><mi mathvariant="normal">Π</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi mathvariant="normal">Π</mi><mo>∉</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo rspace="0.667em">,</mo><mo fence="false" rspace="0.167em" stretchy="false">|</mo><mi>S</mi><mo>∩</mo><mi mathvariant="normal">Π</mi><mo fence="false" stretchy="false">|</mo><mo lspace="0.167em">=</mo><mn>4</mn><mo stretchy="false">}</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For <math id="S2.p17.m2" class="ltx_Math" alttext="A\in\mathcal{B}" display="inline"><mrow><mi>A</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></mrow></math>, let <math id="S2.p17.m3" class="ltx_Math" alttext="\Pi_{A}" display="inline"><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub></math> be its associated plane, called
+its <em class="ltx_emph ltx_font_italic">rich plane</em>. This plane is unique: any three points of
+<math id="S2.p17.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> are noncollinear by Lemma <a href="#Thmtheorem3" title="Lemma 3 (Cap property). ‣ 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a> and therefore span
+<math id="S2.p17.m5" class="ltx_Math" alttext="\Pi_{A}" display="inline"><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub></math>. Distinct rich planes give distinct four-sets, so</p>
+<table id="S2.E13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E13.m1" class="ltx_Math" alttext="|\mathcal{B}|\geq c_{0}q^{9}." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(13)</span></td></tr></tbody>
+</table>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>The incidence graph and preliminary alteration</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Fix the cap and the family <math id="S3.p1.m1" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> from Section <a href="#S2" title="2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>. We
+seek a projective pairing with many designated copies after two
+deletions: first remove blocks with two exceptional sides, then remove
+edges lying in too many blocks. To make these requirements hold for
+the same pairing, we will compare the copy count and deletion costs
+pointwise before taking expectations.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">We use the point–hyperplane incidence framework
+of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Section 4]</cite>. Fix a
+nondegenerate symmetric bilinear form
+<math id="S3.p2.m1" class="ltx_Math" alttext="\langle\cdot,\cdot\rangle" display="inline"><mrow><mo stretchy="false">⟨</mo><mrow><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo></mrow><mo stretchy="false">⟩</mo></mrow></math> on <math id="S3.p2.m2" class="ltx_Math" alttext="\mathbb{F}_{q}^{6}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>6</mn></msubsup></math>. For a projective
+subspace <math id="S3.p2.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>, let <math id="S3.p2.m4" class="ltx_Math" alttext="U^{\perp}" display="inline"><msup><mi>U</mi><mo>⟂</mo></msup></math> be the projectivization of the
+orthogonal complement of its corresponding vector subspace. This
+operation reverses containment, maps planes to planes, and satisfies</p>
+<table id="S3.E14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E14.m1" class="ltx_Math" alttext="U^{\perp\perp}=U." display="block"><mrow><mrow><msup><mi>U</mi><mrow><mo>⟂</mo><mo lspace="0em">⁣</mo><mo>⟂</mo></mrow></msup><mo>=</mo><mi>U</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(14)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Choose <math id="S3.p2.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> uniformly from <math id="S3.p2.m6" class="ltx_Math" alttext="\operatorname{PGL}(6,q)" display="inline"><mrow><mi>PGL</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>6</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math>, the group of invertible
+linear transformations of <math id="S3.p2.m7" class="ltx_Math" alttext="\mathbb{F}_{q}^{6}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>6</mn></msubsup></math> modulo nonzero scalar
+multiples. The transformation <math id="S3.p2.m8" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> need not preserve the form.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">On two disjoint copies <math id="S3.p3.m1" class="ltx_Math" alttext="S_{L},S_{R}" display="inline"><mrow><msub><mi>S</mi><mi>L</mi></msub><mo>,</mo><msub><mi>S</mi><mi>R</mi></msub></mrow></math> of <math id="S3.p3.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, define a bipartite
+graph <math id="S3.p3.m3" class="ltx_Math" alttext="G_{T}^{0}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup></math> by</p>
+<table id="S3.E15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E15.m1" class="ltx_math_unparsed" alttext="p_{L}r_{R}\in E(G_{T}^{0})\quad\Longleftrightarrow\quad\langle p,T(r)\rangle=0." display="block"><mrow><msub><mi>p</mi><mi>L</mi></msub><msub><mi>r</mi><mi>R</mi></msub><mo>∈</mo><mi>E</mi><mrow><mo stretchy="false">(</mo><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟺</mo><mrow><mo stretchy="false">⟨</mo><mi>p</mi><mo>,</mo><mi>T</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mn>0</mn><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(15)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The orthogonality test is independent of the nonzero vector
+representatives of the projective points and of the linear
+representative of <math id="S3.p3.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">For <math id="S3.p4.m1" class="ltx_Math" alttext="A,C\in\mathcal{B}" display="inline"><mrow><mrow><mi>A</mi><mo>,</mo><mi>C</mi></mrow><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></mrow></math>, call <math id="S3.p4.m2" class="ltx_Math" alttext="(A,C)" display="inline"><mrow><mo stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></math> a <em class="ltx_emph ltx_font_italic">designated pair</em> when</p>
+<table id="S3.E16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E16.m1" class="ltx_Math" alttext="\Pi_{A}=T(\Pi_{C})^{\perp}." display="block"><mrow><mrow><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(16)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Then <math id="S3.p4.m3" class="ltx_Math" alttext="T(\Pi_{C})=\Pi_{A}^{\perp}" display="inline"><mrow><mrow><mi>T</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msubsup><mi mathvariant="normal">Π</mi><mi>A</mi><mo>⟂</mo></msubsup></mrow></math>, so every point of <math id="S3.p4.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is
+orthogonal to every point of <math id="S3.p4.m5" class="ltx_Math" alttext="T(C)" display="inline"><mrow><mi>T</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mrow></math>. Hence <math id="S3.p4.m6" class="ltx_Math" alttext="A_{L}" display="inline"><msub><mi>A</mi><mi>L</mi></msub></math> and <math id="S3.p4.m7" class="ltx_Math" alttext="C_{R}" display="inline"><msub><mi>C</mi><mi>R</mi></msub></math>
+form a <math id="S3.p4.m8" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math>, which we call a <em class="ltx_emph ltx_font_italic">designated copy</em>.
+Distinct designated pairs give distinct copies, since their vertex
+sets in the fixed bipartition differ.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">For integers <math id="S3.p5.m1" class="ltx_Math" alttext="0\leq k\leq m" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mi>m</mi></mrow></math>, write</p>
+<table id="S3.Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex24.m1" class="ltx_Math" alttext="\genfrac{[}{]}{0.0pt}{}{m}{k}_{q}:=\prod_{i=0}^{k-1}\frac{q^{m-i}-1}{q^{k-i}-1}" display="block"><mrow><msub><mrow><mo>[</mo><mfrac linethickness="0.0pt"><mi>m</mi><mi>k</mi></mfrac><mo>]</mo></mrow><mi>q</mi></msub><mo rspace="0.111em">:=</mo><mrow><munderover><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></munderover><mfrac><mrow><msup><mi>q</mi><mrow><mi>m</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn></mrow><mrow><msup><mi>q</mi><mrow><mi>k</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn></mrow></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">for the number of <math id="S3.p5.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-dimensional vector subspaces of <math id="S3.p5.m3" class="ltx_Math" alttext="\mathbb{F}_{q}^{m}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mi>m</mi></msubsup></math>,
+with the empty product equal to one. The formula follows by
+counting ordered linearly independent <math id="S3.p5.m4" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-tuples and dividing by
+the number of ordered bases of <math id="S3.p5.m5" class="ltx_Math" alttext="\mathbb{F}_{q}^{k}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mi>k</mi></msubsup></math>. In particular, the
+number of projective planes in <math id="S3.p5.m6" class="ltx_Math" alttext="\operatorname{PG}(5,q)" display="inline"><mrow><mi>PG</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math> is</p>
+<table id="S3.E17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E17.m1" class="ltx_Math" alttext="N_{2}:=\genfrac{[}{]}{0.0pt}{}{6}{3}_{q}=\frac{(q^{6}-1)(q^{5}-1)(q^{4}-1)}{(q^{3}-1)(q^{2}-1)(q-1)}=(1+o(1))q^{9}." display="block"><mrow><mrow><msub><mi>N</mi><mn>2</mn></msub><mo>:=</mo><msub><mrow><mo>[</mo><mfrac linethickness="0.0pt"><mn>6</mn><mn>3</mn></mfrac><mo>]</mo></mrow><mi>q</mi></msub><mo>=</mo><mfrac><mrow><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>6</mn></msup><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>5</mn></msup><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>4</mn></msup><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mrow><mi>o</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(17)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The group <math id="S3.p5.m7" class="ltx_Math" alttext="\operatorname{PGL}(6,q)" display="inline"><mrow><mi>PGL</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>6</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math> acts transitively on planes: a linear
+isomorphism between their vector subspaces extends to an
+isomorphism of <math id="S3.p5.m8" class="ltx_Math" alttext="\mathbb{F}_{q}^{6}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">F</mi><mi>q</mi><mn>6</mn></msubsup></math>. Thus, for each fixed <math id="S3.p5.m9" class="ltx_Math" alttext="A,C\in\mathcal{B}" display="inline"><mrow><mrow><mi>A</mi><mo>,</mo><mi>C</mi></mrow><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></mrow></math>,</p>
+<table id="S3.Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex25.m1" class="ltx_Math" alttext="\Pr\bigl(\Pi_{A}=T(\Pi_{C})^{\perp}\bigr)=\frac{1}{N_{2}}." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>=</mo><mfrac><mn>1</mn><msub><mi>N</mi><mn>2</mn></msub></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">If <math id="S3.p5.m10" class="ltx_Math" alttext="K_{0}(T)" display="inline"><mrow><msub><mi>K</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the number of designated copies, then</p>
+<table id="S3.E18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E18.m1" class="ltx_Math" alttext="\mathbb{E}K_{0}(T)=\frac{|\mathcal{B}|^{2}}{N_{2}}=\Omega(q^{9})." display="block"><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msub><mi>K</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><msup><mrow><mo stretchy="false">|</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><msub><mi>N</mi><mn>2</mn></msub></mfrac><mo>=</mo><mrow><mi mathvariant="normal">Ω</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(18)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">This gives the required number of copies on average, but <math id="S3.p5.m11" class="ltx_Math" alttext="G_{T}^{0}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup></math>
+need not be <math id="S3.p5.m12" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free. We next isolate the blocks in which the
+common-neighborhood condition can fail. The estimates of their sizes
+will be combined with (<a href="#S3.E18" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">18</span></a>), rather than imposing
+separate high-probability events.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">A triple can have more than four common neighbors in <math id="S3.p6.m1" class="ltx_Math" alttext="G_{T}^{0}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup></math>
+only when the corresponding plane section is exceptional. For
+<math id="S3.p6.m2" class="ltx_Math" alttext="E\in\mathcal{D}" display="inline"><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math>, define two complete bipartite subgraphs:</p>
+<table id="S3.EGx3" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.E19"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.E19.m1" class="ltx_Math" alttext="\displaystyle B_{E}^{\mathrm{I}}" display="inline"><msubsup><mi>B</mi><mi>E</mi><mi>I</mi></msubsup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.E19.m2" class="ltx_Math" alttext="\displaystyle:=\bigl(S\cap T(E)^{\perp}\bigr)_{L}\times(S\cap E)_{R}," display="inline"><mrow><mrow><mphantom></mphantom><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mphantom></mphantom><mo>=</mo><mrow><msub><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>S</mi><mo>∩</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow><mo maxsize="1.200em" minsize="1.200em" rspace="0.055em">)</mo></mrow><mi>L</mi></msub><mo rspace="0.222em">×</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>∩</mo><mi>E</mi></mrow><mo stretchy="false">)</mo></mrow><mi>R</mi></msub></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(19)</span></td></tr></tbody>
+<tbody id="S3.E20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.E20.m1" class="ltx_Math" alttext="\displaystyle B_{E}^{\mathrm{II}}" display="inline"><msubsup><mi>B</mi><mi>E</mi><mi>II</mi></msubsup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.E20.m2" class="ltx_Math" alttext="\displaystyle:=(S\cap E)_{L}\times\bigl(S\cap T^{-1}(E^{\perp})\bigr)_{R}." display="inline"><mrow><mrow><mphantom></mphantom><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mphantom></mphantom><mo>=</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>∩</mo><mi>E</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mi>L</mi></msub><mo rspace="0.222em">×</mo><msub><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>S</mi><mo>∩</mo><mrow><msup><mi>T</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>E</mi><mo>⟂</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mi>R</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(20)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Here a product of two labeled vertex sets denotes the complete
+bipartite graph between them. Both graphs lie in <math id="S3.p6.m3" class="ltx_Math" alttext="G_{T}^{0}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup></math>, by
+(<a href="#S3.E15" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">15</span></a>). We call them <em class="ltx_emph ltx_font_italic">exceptional blocks</em> and
+keep them indexed by <math id="S3.p6.m4" class="ltx_Math" alttext="(\mathrm{I},E)" display="inline"><mrow><mo stretchy="false">(</mo><mi>I</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></math> or <math id="S3.p6.m5" class="ltx_Math" alttext="(\mathrm{II},E)" display="inline"><mrow><mo stretchy="false">(</mo><mi>II</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></math>,
+even when their edge sets coincide.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">In type I, call the left side the <em class="ltx_emph ltx_font_italic">controlled side</em> and the
+right side the <em class="ltx_emph ltx_font_italic">exceptional side</em>; in type II, reverse these
+roles. Thus the exceptional side always comes from <math id="S3.p7.m1" class="ltx_Math" alttext="S\cap E" display="inline"><mrow><mi>S</mi><mo>∩</mo><mi>E</mi></mrow></math>.
+A block is <em class="ltx_emph ltx_font_italic">mutual</em> if its controlled-side plane is also in
+<math id="S3.p7.m2" class="ltx_Math" alttext="\mathcal{D}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></math>: this means <math id="S3.p7.m3" class="ltx_Math" alttext="T(E)^{\perp}\in\mathcal{D}" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math> in type I and
+<math id="S3.p7.m4" class="ltx_Math" alttext="T^{-1}(E^{\perp})\in\mathcal{D}" display="inline"><mrow><mrow><msup><mi>T</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>E</mi><mo>⟂</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math> in type II. By
+Proposition <a href="#Thmtheorem4" title="Proposition 4 (Plane sections and exceptional incidences). ‣ 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>, the controlled side of every
+nonmutual block has size at most four.</p>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">A uniformly random projective plane contains a fixed point of
+<math id="S3.p8.m1" class="ltx_Math" alttext="\operatorname{PG}(5,q)" display="inline"><mrow><mi>PG</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math> with probability</p>
+<table id="S3.E21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E21.m1" class="ltx_Math" alttext="\frac{q^{2}+q+1}{q^{5}+q^{4}+q^{3}+q^{2}+q+1}=\frac{1}{q^{3}+1}." display="block"><mrow><mrow><mfrac><mrow><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mrow><msup><mi>q</mi><mn>5</mn></msup><mo>+</mo><msup><mi>q</mi><mn>4</mn></msup><mo>+</mo><msup><mi>q</mi><mn>3</mn></msup><mo>+</mo><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mi>q</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(21)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Indeed, count point–plane incidences and use transitivity on
+points. Its expected intersection size with <math id="S3.p8.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is therefore
+<math id="S3.p8.m3" class="ltx_Math" alttext="q^{3}/(q^{3}+1)" display="inline"><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p9.m1" class="ltx_Math" alttext="Z(T)" display="inline"><mrow><mi>Z</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the sum of the edge counts of all exceptional
+blocks, including their indexing multiplicity. For each fixed
+<math id="S3.p9.m2" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math>, both controlled-side planes in (<a href="#S3.E19" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">19</span></a>) and
+(<a href="#S3.E20" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">20</span></a>) are uniformly distributed over all projective
+planes. Hence</p>
+<table id="S3.E22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E22.m1" class="ltx_Math" alttext="\mathbb{E}Z(T)=\frac{2q^{3}}{q^{3}+1}\sum_{E\in\mathcal{D}}a_{E}=O(q^{5})." display="block"><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><mi>Z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>3</mn></msup></mrow><mrow><msup><mi>q</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac><mo>⁢</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></munder><msub><mi>a</mi><mi>E</mi></msub></mrow></mrow><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>5</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(22)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Let <math id="S3.p9.m3" class="ltx_Math" alttext="U(T)" display="inline"><mrow><mi>U</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the corresponding sum over mutual blocks only.
+For fixed <math id="S3.p9.m4" class="ltx_Math" alttext="E,F\in\mathcal{D}" display="inline"><mrow><mrow><mi>E</mi><mo>,</mo><mi>F</mi></mrow><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math>, each event
+<math id="S3.p9.m5" class="ltx_Math" alttext="T(E)^{\perp}=F" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow><mo>=</mo><mi>F</mi></mrow></math> or <math id="S3.p9.m6" class="ltx_Math" alttext="T^{-1}(E^{\perp})=F" display="inline"><mrow><mrow><msup><mi>T</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>E</mi><mo>⟂</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>F</mi></mrow></math> has probability
+<math id="S3.p9.m7" class="ltx_Math" alttext="1/N_{2}" display="inline"><mrow><mn>1</mn><mo>/</mo><msub><mi>N</mi><mn>2</mn></msub></mrow></math>, and the block then has <math id="S3.p9.m8" class="ltx_Math" alttext="a_{E}a_{F}" display="inline"><mrow><msub><mi>a</mi><mi>E</mi></msub><mo>⁢</mo><msub><mi>a</mi><mi>F</mi></msub></mrow></math> edges. Therefore</p>
+<table id="S3.E23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E23.m1" class="ltx_Math" alttext="\mathbb{E}U(T)=\frac{2}{N_{2}}\left(\sum_{E\in\mathcal{D}}a_{E}\right)^{2}=O(q)." display="block"><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><mi>U</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mn>2</mn><msub><mi>N</mi><mn>2</mn></msub></mfrac><mo>⁢</mo><msup><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></munder><msub><mi>a</mi><mi>E</mi></msub></mrow><mo>)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(23)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Here we used (<a href="#S2.E8" title="In Proposition 4 (Plane sections and exceptional incidences). ‣ 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>) and
+(<a href="#S3.E17" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">17</span></a>). To turn these edge estimates into bounds
+on lost copies, we need a uniform bound on the number of designated
+copies containing one edge.</p>
+</div>
+<div id="Thmtheorem7" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 7</span></span><span class="ltx_text ltx_font_bold"> </span>(Copies through an edge)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Every edge of <math id="Thmtheorem7.p1.m1" class="ltx_Math" alttext="G_{T}^{0}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup></math> belongs to at most</span></p>
+<table id="S3.Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex26.m1" class="ltx_Math" alttext="M_{q}:=\genfrac{[}{]}{0.0pt}{}{4}{2}_{q}=O(q^{4})" display="block"><mrow><msub><mi>M</mi><mi>q</mi></msub><mo>:=</mo><msub><mrow><mo>[</mo><mfrac linethickness="0.0pt"><mn>4</mn><mn>2</mn></mfrac><mo>]</mo></mrow><mi>q</mi></msub><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">designated copies.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">If an edge <math id="S3.p10.m1" class="ltx_Math" alttext="p_{L}r_{R}" display="inline"><mrow><msub><mi>p</mi><mi>L</mi></msub><mo>⁢</mo><msub><mi>r</mi><mi>R</mi></msub></mrow></math> belongs to the designated copy <math id="S3.p10.m2" class="ltx_Math" alttext="(A,C)" display="inline"><mrow><mo stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></math>,
+then</p>
+<table id="S3.Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex27.m1" class="ltx_Math" alttext="p\in\Pi_{A}\subseteq T(r)^{\perp}." display="block"><mrow><mrow><mi>p</mi><mo>∈</mo><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub><mo>⊆</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The planes through <math id="S3.p10.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> in the hyperplane
+<math id="S3.p10.m4" class="ltx_Math" alttext="T(r)^{\perp}\cong\operatorname{PG}(4,q)" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow><mo>≅</mo><mrow><mi>PG</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> correspond to two-dimensional
+subspaces of the four-dimensional vector quotient by <math id="S3.p10.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+There are <math id="S3.p10.m6" class="ltx_Math" alttext="\genfrac{[}{]}{0.0pt}{}{4}{2}_{q}" display="inline"><msub><mrow><mo>[</mo><mfrac linethickness="0.0pt"><mn>4</mn><mn>2</mn></mfrac><mo>]</mo></mrow><mi>q</mi></msub></math> such planes. Once <math id="S3.p10.m7" class="ltx_Math" alttext="\Pi_{A}" display="inline"><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub></math> is
+chosen, <math id="S3.p10.m8" class="ltx_Math" alttext="A=S\cap\Pi_{A}" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mi>S</mi><mo>∩</mo><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub></mrow></mrow></math> is determined, and
+(<a href="#S3.E16" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">16</span></a>) determines
+<math id="S3.p10.m9" class="ltx_Math" alttext="\Pi_{C}=T^{-1}(\Pi_{A}^{\perp})" display="inline"><mrow><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub><mo>=</mo><mrow><msup><mi>T</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi mathvariant="normal">Π</mi><mi>A</mi><mo>⟂</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <math id="S3.p10.m10" class="ltx_Math" alttext="C=S\cap\Pi_{C}" display="inline"><mrow><mi>C</mi><mo>=</mo><mrow><mi>S</mi><mo>∩</mo><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub></mrow></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S3.p11" class="ltx_para">
+<p class="ltx_p">Deleting all exceptional-block edges would now give only an
+<math id="S3.p11.m1" class="ltx_Math" alttext="O(q^{9})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> bound on the expected loss, which does not guarantee
+that any fixed proportion of the <math id="S3.p11.m2" class="ltx_Math" alttext="\Omega(q^{9})" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>9</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> copies remains.
+The smaller estimate <math id="S3.p11.m3" class="ltx_Math" alttext="\mathbb{E}U(T)=O(q)" display="inline"><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><mi>U</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> allows mutual blocks
+to be removed outright. For the other blocks, we use their total
+incidence count to discard only edges with large load.</p>
+</div>
+<div id="S3.p12" class="ltx_para">
+<p class="ltx_p">We now make the two preliminary deletions. First delete every edge
+lying in a mutual block, obtaining
+<math id="S3.p12.m1" class="ltx_Math" alttext="G_{T}^{1}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>1</mn></msubsup></math>. For each <math id="S3.p12.m2" class="ltx_Math" alttext="e\in E(G_{T}^{1})" display="inline"><mrow><mi>e</mi><mo>∈</mo><mrow><mi>E</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>G</mi><mi>T</mi><mn>1</mn></msubsup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, define its <em class="ltx_emph ltx_font_italic">load</em></p>
+<table id="S3.Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex28.m1" class="ltx_Math" alttext="\lambda_{e}:=|\{B:B\text{ is an indexed nonmutual block and }e\in E(B)\}|." display="block"><mrow><mrow><msub><mi>λ</mi><mi>e</mi></msub><mo>:=</mo><mrow><mo stretchy="false">|</mo><mrow><mo stretchy="false">{</mo><mi>B</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>B</mi><mo>⁢</mo><mtext> is an indexed nonmutual block and </mtext><mo>⁢</mo><mi>e</mi></mrow><mo>∈</mo><mrow><mi>E</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow><mo stretchy="false">|</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">All blocks in this definition retain their original vertex sets
+and edge sets from <math id="S3.p12.m3" class="ltx_Math" alttext="G_{T}^{0}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup></math>; deletion does not redefine them.
+For a positive integer <math id="S3.p12.m4" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>, delete every edge with
+<math id="S3.p12.m5" class="ltx_Math" alttext="\lambda_{e}&gt;L" display="inline"><mrow><msub><mi>λ</mi><mi>e</mi></msub><mo>&gt;</mo><mi>L</mi></mrow></math>, obtaining <math id="S3.p12.m6" class="ltx_Math" alttext="G_{T}^{\mathrm{pre}}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mi>pre</mi></msubsup></math>. Since</p>
+<table id="S3.Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex29.m1" class="ltx_Math" alttext="\sum_{e\in E(G_{T}^{1})}\lambda_{e}\leq Z(T)," display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>e</mi><mo>∈</mo><mrow><mi>E</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>G</mi><mi>T</mi><mn>1</mn></msubsup><mo stretchy="false">)</mo></mrow></mrow></mrow></munder><msub><mi>λ</mi><mi>e</mi></msub></mrow><mo>≤</mo><mrow><mi>Z</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">at most <math id="S3.p12.m7" class="ltx_Math" alttext="Z(T)/L" display="inline"><mrow><mrow><mi>Z</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>L</mi></mrow></math> edges are deleted in this second step. Every
+edge of <math id="S3.p12.m8" class="ltx_Math" alttext="G_{T}^{\mathrm{pre}}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mi>pre</mi></msubsup></math> lies in at most <math id="S3.p12.m9" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> indexed
+nonmutual blocks.</p>
+</div>
+<div id="S3.p13" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p13.m1" class="ltx_Math" alttext="K_{\mathrm{pre}}(T)" display="inline"><mrow><msub><mi>K</mi><mi>pre</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> count designated copies whose edges all
+survive in <math id="S3.p13.m2" class="ltx_Math" alttext="G_{T}^{\mathrm{pre}}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mi>pre</mi></msubsup></math>. For every <math id="S3.p13.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>, the number of
+removed edges is at most <math id="S3.p13.m4" class="ltx_Math" alttext="U(T)+Z(T)/L" display="inline"><mrow><mrow><mi>U</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mrow><mi>Z</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>L</mi></mrow></mrow></math>. Charging each destroyed
+copy to one of its deleted edges gives</p>
+<table id="S3.E24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E24.m1" class="ltx_Math" alttext="K_{\mathrm{pre}}(T)\geq K_{0}(T)-M_{q}\left(U(T)+\frac{Z(T)}{L}\right)." display="block"><mrow><mrow><mrow><msub><mi>K</mi><mi>pre</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mrow><mrow><msub><mi>K</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msub><mi>M</mi><mi>q</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>U</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mfrac><mrow><mi>Z</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mi>L</mi></mfrac></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(24)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Taking expectations in this pointwise inequality and using
+(<a href="#S3.E18" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">18</span></a>), (<a href="#S3.E22" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">22</span></a>), and
+(<a href="#S3.E23" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">23</span></a>), we obtain absolute constants
+<math id="S3.p13.m5" class="ltx_Math" alttext="c_{1},C_{1},C_{2}&gt;0" display="inline"><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>,</mo><msub><mi>C</mi><mn>1</mn></msub><mo>,</mo><mrow><msub><mi>C</mi><mn>2</mn></msub><mo>&gt;</mo><mn>0</mn></mrow></mrow></math> such that</p>
+<table id="S3.Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex30.m1" class="ltx_Math" alttext="\mathbb{E}K_{\mathrm{pre}}(T)\geq c_{1}q^{9}-C_{1}q^{5}-\frac{C_{2}q^{9}}{L}" display="block"><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msub><mi>K</mi><mi>pre</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow><mo>−</mo><mrow><msub><mi>C</mi><mn>1</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>5</mn></msup></mrow><mo>−</mo><mfrac><mrow><msub><mi>C</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow><mi>L</mi></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">for all sufficiently large <math id="S3.p13.m6" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>. Fix an integer
+<math id="S3.p13.m7" class="ltx_Math" alttext="L\geq 4C_{2}/c_{1}" display="inline"><mrow><mi>L</mi><mo>≥</mo><mrow><mrow><mn>4</mn><mo>⁢</mo><msub><mi>C</mi><mn>2</mn></msub></mrow><mo>/</mo><msub><mi>c</mi><mn>1</mn></msub></mrow></mrow></math>, and then take <math id="S3.p13.m8" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> sufficiently large that
+<math id="S3.p13.m9" class="ltx_Math" alttext="C_{1}q^{5}\leq c_{1}q^{9}/4" display="inline"><mrow><mrow><msub><mi>C</mi><mn>1</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>5</mn></msup></mrow><mo>≤</mo><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow><mo>/</mo><mn>4</mn></mrow></mrow></math>. Some <math id="S3.p13.m10" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> consequently satisfies</p>
+<table id="S3.E25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E25.m1" class="ltx_Math" alttext="K_{\mathrm{pre}}(T)\geq c_{2}q^{9},\qquad c_{2}:=c_{1}/2&gt;0." display="block"><mrow><mrow><mrow><mrow><msub><mi>K</mi><mi>pre</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>:=</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>/</mo><mn>2</mn></mrow><mo>&gt;</mo><mn>0</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(25)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Fix this transformation <math id="S3.p13.m11" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> for the remainder of the proof. The
+pointwise comparison (<a href="#S3.E24" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">24</span></a>) is what permits the
+copy count and both deletion costs to be handled together.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">4 </span>Pruning the blocks while preserving copies</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">Fix the transformation from (<a href="#S3.E25" title="In 3 The incidence graph and preliminary alteration ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">25</span></a>). It remains to
+remove forbidden common neighborhoods inside the nonmutual blocks.
+Each block has at most four vertices on its controlled side, and
+we will retain at most two of them as neighbors of each vertex on
+its exceptional side. Such a restriction could destroy a designated
+copy with probability one if that copy needed three controlled-side
+vertices. The following geometric fact rules out this obstruction.</p>
+</div>
+<div id="Thmtheorem8" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 8</span></span><span class="ltx_text ltx_font_bold"> </span>(Intersection with controlled-side planes)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For every designated pair <math id="Thmtheorem8.p1.m1" class="ltx_Math" alttext="(A,C)" display="inline"><mrow><mo stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></math> and every <math id="Thmtheorem8.p1.m2" class="ltx_Math" alttext="E\in\mathcal{D}" display="inline"><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math>,</span></p>
+<table id="S4.Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex31.m1" class="ltx_Math" alttext="|A\cap T(E)^{\perp}|\leq 2,\qquad|C\cap T^{-1}(E^{\perp})|\leq 2." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>A</mi><mo>∩</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>2</mn></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>C</mi><mo>∩</mo><mrow><msup><mi>T</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>E</mi><mo>⟂</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>2</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">If <math id="S4.p2.m1" class="ltx_Math" alttext="\Pi_{A}" display="inline"><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub></math> and <math id="S4.p2.m2" class="ltx_Math" alttext="T(E)^{\perp}" display="inline"><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></math> share three points of <math id="S4.p2.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>,
+then those points are noncollinear by Lemma <a href="#Thmtheorem3" title="Lemma 3 (Cap property). ‣ 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>, and
+<math id="S4.p2.m4" class="ltx_Math" alttext="\Pi_{A}=T(E)^{\perp}" display="inline"><mrow><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow></math>. Together with
+<math id="S4.p2.m5" class="ltx_Math" alttext="\Pi_{A}=T(\Pi_{C})^{\perp}" display="inline"><mrow><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow></math>, this implies <math id="S4.p2.m6" class="ltx_Math" alttext="E=\Pi_{C}" display="inline"><mrow><mi>E</mi><mo>=</mo><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub></mrow></math>, contrary
+to <math id="S4.p2.m7" class="ltx_Math" alttext="E\in\mathcal{D}" display="inline"><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math> and <math id="S4.p2.m8" class="ltx_Math" alttext="\Pi_{C}\notin\mathcal{D}" display="inline"><mrow><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub><mo>∉</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math>.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Similarly, if <math id="S4.p3.m1" class="ltx_Math" alttext="\Pi_{C}" display="inline"><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub></math> and <math id="S4.p3.m2" class="ltx_Math" alttext="T^{-1}(E^{\perp})" display="inline"><mrow><msup><mi>T</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>E</mi><mo>⟂</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> share three
+points of <math id="S4.p3.m3" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>, they are the same plane. Thus
+<math id="S4.p3.m4" class="ltx_Math" alttext="T(\Pi_{C})=E^{\perp}" display="inline"><mrow><mrow><mi>T</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>E</mi><mo>⟂</mo></msup></mrow></math>, and
+<math id="S4.p3.m5" class="ltx_Math" alttext="\Pi_{A}=T(\Pi_{C})^{\perp}=E" display="inline"><mrow><msub><mi mathvariant="normal">Π</mi><mi>A</mi></msub><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Π</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow><mo>=</mo><mi>E</mi></mrow></math>, again a contradiction.
+∎</p>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">We can therefore choose two-subsets without making the survival of
+any designated copy impossible. For an indexed nonmutual block
+<math id="S4.p4.m1" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>, let <math id="S4.p4.m2" class="ltx_Math" alttext="X_{B}" display="inline"><msub><mi>X</mi><mi>B</mi></msub></math> and <math id="S4.p4.m3" class="ltx_Math" alttext="Y_{B}" display="inline"><msub><mi>Y</mi><mi>B</mi></msub></math>
+denote its original labeled controlled and exceptional sides.
+Whenever <math id="S4.p4.m4" class="ltx_Math" alttext="3\leq|X_{B}|\leq 4" display="inline"><mrow><mn>3</mn><mo>≤</mo><mrow><mo stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>4</mn></mrow></math>, choose, for every <math id="S4.p4.m5" class="ltx_Math" alttext="y\in Y_{B}" display="inline"><mrow><mi>y</mi><mo>∈</mo><msub><mi>Y</mi><mi>B</mi></msub></mrow></math>,
+a uniformly random set</p>
+<table id="S4.Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex32.m1" class="ltx_Math" alttext="R_{B,y}\in\binom{X_{B}}{2}." display="block"><mrow><mrow><msub><mi>R</mi><mrow><mi>B</mi><mo>,</mo><mi>y</mi></mrow></msub><mo>∈</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><msub><mi>X</mi><mi>B</mi></msub><mn>2</mn></mfrac><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">All choices are independent over indexed pairs <math id="S4.p4.m6" class="ltx_Math" alttext="(B,y)" display="inline"><mrow><mo stretchy="false">(</mo><mi>B</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></math>. Retain
+an edge <math id="S4.p4.m7" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> of <math id="S4.p4.m8" class="ltx_Math" alttext="G_{T}^{\mathrm{pre}}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mi>pre</mi></msubsup></math> precisely when, for every
+block <math id="S4.p4.m9" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> containing it with <math id="S4.p4.m10" class="ltx_Math" alttext="|X_{B}|\geq 3" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mn>3</mn></mrow></math>, writing
+<math id="S4.p4.m11" class="ltx_Math" alttext="e=xy" display="inline"><mrow><mi>e</mi><mo>=</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></math> with <math id="S4.p4.m12" class="ltx_Math" alttext="x\in X_{B}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msub><mi>X</mi><mi>B</mi></msub></mrow></math> and <math id="S4.p4.m13" class="ltx_Math" alttext="y\in Y_{B}" display="inline"><mrow><mi>y</mi><mo>∈</mo><msub><mi>Y</mi><mi>B</mi></msub></mrow></math> gives
+<math id="S4.p4.m14" class="ltx_Math" alttext="x\in R_{B,y}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msub><mi>R</mi><mrow><mi>B</mi><mo>,</mo><mi>y</mi></mrow></msub></mrow></math>. Blocks with <math id="S4.p4.m15" class="ltx_Math" alttext="|X_{B}|\leq 2" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>2</mn></mrow></math> impose no
+restriction. The selections use the original sets <math id="S4.p4.m16" class="ltx_Math" alttext="X_{B}" display="inline"><msub><mi>X</mi><mi>B</mi></msub></math>, even
+when some incident edges were deleted earlier. Let <math id="S4.p4.m17" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be the
+resulting random subgraph.</p>
+</div>
+<div id="Thmtheorem9" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 9</span></span><span class="ltx_text ltx_font_bold"> </span>(Exclusion of the forbidden graph)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Every realization of the local pruning is <math id="Thmtheorem9.p1.m1" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Take three vertices <math id="S4.p5.m1" class="ltx_Math" alttext="p_{1},p_{2},p_{3}\in S_{L}" display="inline"><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub><mo>,</mo><mrow><msub><mi>p</mi><mn>3</mn></msub><mo>∈</mo><msub><mi>S</mi><mi>L</mi></msub></mrow></mrow></math>. Their underlying
+points span a plane <math id="S4.p5.m2" class="ltx_Math" alttext="\Pi" display="inline"><mi mathvariant="normal">Π</mi></math> by the cap property. Their common
+right neighbors in <math id="S4.p5.m3" class="ltx_Math" alttext="G_{T}^{0}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup></math> correspond exactly to</p>
+<table id="S4.Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex33.m1" class="ltx_Math" alttext="S\cap E,\qquad E:=T^{-1}(\Pi^{\perp})." display="block"><mrow><mrow><mrow><mi>S</mi><mo>∩</mo><mi>E</mi></mrow><mo rspace="2.167em">,</mo><mrow><mi>E</mi><mo>:=</mo><mrow><msup><mi>T</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi mathvariant="normal">Π</mi><mo>⟂</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">If <math id="S4.p5.m4" class="ltx_Math" alttext="E\notin\mathcal{D}" display="inline"><mrow><mi>E</mi><mo>∉</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math>, there are at most four such neighbors by
+Proposition <a href="#Thmtheorem4" title="Proposition 4 (Plane sections and exceptional incidences). ‣ 2 A quartic cap with many four-point sections ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>. If <math id="S4.p5.m5" class="ltx_Math" alttext="E\in\mathcal{D}" display="inline"><mrow><mi>E</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math>, then
+<math id="S4.p5.m6" class="ltx_Math" alttext="\Pi=T(E)^{\perp}" display="inline"><mrow><mi mathvariant="normal">Π</mi><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow></math>, and the triple belongs to the controlled
+side of <math id="S4.p5.m7" class="ltx_Math" alttext="B_{E}^{\mathrm{I}}" display="inline"><msubsup><mi>B</mi><mi>E</mi><mi>I</mi></msubsup></math>. A mutual block has no edges after
+the preliminary deletion. Otherwise, its controlled side has
+size three or four, and local pruning leaves every vertex on its
+exceptional side with at most two neighbors in that controlled
+side. Thus in this case the triple has no common right neighbor
+in <math id="S4.p5.m8" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">For a triple <math id="S4.p6.m1" class="ltx_Math" alttext="r_{1},r_{2},r_{3}\in S_{R}" display="inline"><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>,</mo><msub><mi>r</mi><mn>2</mn></msub><mo>,</mo><mrow><msub><mi>r</mi><mn>3</mn></msub><mo>∈</mo><msub><mi>S</mi><mi>R</mi></msub></mrow></mrow></math>, let <math id="S4.p6.m2" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> be its spanning
+plane. Its common left neighbors in <math id="S4.p6.m3" class="ltx_Math" alttext="G_{T}^{0}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mn>0</mn></msubsup></math> correspond exactly
+to</p>
+<table id="S4.Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex34.m1" class="ltx_Math" alttext="S\cap E,\qquad E:=T(Q)^{\perp}." display="block"><mrow><mrow><mrow><mi>S</mi><mo>∩</mo><mi>E</mi></mrow><mo rspace="2.167em">,</mo><mrow><mi>E</mi><mo>:=</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>Q</mi><mo stretchy="false">)</mo></mrow><mo>⟂</mo></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">If <math id="S4.p6.m4" class="ltx_Math" alttext="E\notin\mathcal{D}" display="inline"><mrow><mi>E</mi><mo>∉</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math>, there are at most four. Otherwise,
+<math id="S4.p6.m5" class="ltx_Math" alttext="Q=T^{-1}(E^{\perp})" display="inline"><mrow><mi>Q</mi><mo>=</mo><mrow><msup><mi>T</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>E</mi><mo>⟂</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, so the triple belongs to the controlled
+side of <math id="S4.p6.m6" class="ltx_Math" alttext="B_{E}^{\mathrm{II}}" display="inline"><msubsup><mi>B</mi><mi>E</mi><mi>II</mi></msubsup></math>. If this block is mutual, its
+edges have all been deleted. If it is nonmutual, local pruning
+again leaves each exceptional-side vertex with at most two
+neighbors in the controlled side. The triple then has no common
+left neighbor.</p>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">No triple in either bipartition class has five common neighbors.
+Since the connected graph <math id="S4.p7.m1" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math> has a unique bipartition up
+to exchange of its parts, this excludes every copy of <math id="S4.p7.m2" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>
+in <math id="S4.p7.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+∎</p>
+</div>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">The pruning is thus effective for every outcome of the random choices.
+Its effect on designated copies is different: they require at most two
+neighbors from any one choice, and the load bound limits the number of
+choices that affect them. The following estimate quantifies both facts.</p>
+</div>
+<div id="Thmtheorem10" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 10</span></span><span class="ltx_text ltx_font_bold"> </span>(Survival of designated copies)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Some realization of the local pruning retains at least</span></p>
+<table id="S4.Ex35" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex35.m1" class="ltx_Math" alttext="6^{-16L}c_{2}q^{9}" display="block"><mrow><msup><mn>6</mn><mrow><mo>−</mo><mrow><mn>16</mn><mo>⁢</mo><mi>L</mi></mrow></mrow></msup><mo>⁢</mo><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">designated copies.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">Fix a designated copy <math id="S4.p9.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> in <math id="S4.p9.m2" class="ltx_Math" alttext="G_{T}^{\mathrm{pre}}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mi>pre</mi></msubsup></math>. A local
+choice <math id="S4.p9.m3" class="ltx_Math" alttext="R_{B,y}" display="inline"><msub><mi>R</mi><mrow><mi>B</mi><mo>,</mo><mi>y</mi></mrow></msub></math> affects <math id="S4.p9.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> only if <math id="S4.p9.m5" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> has an edge of
+<math id="S4.p9.m6" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> incident with <math id="S4.p9.m7" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>. The vertices of <math id="S4.p9.m8" class="ltx_Math" alttext="X_{B}" display="inline"><msub><mi>X</mi><mi>B</mi></msub></math> that this
+choice must contain form the set</p>
+<table id="S4.Ex36" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex36.m1" class="ltx_Math" alttext="Q_{B,y}:=\{x\in X_{B}:xy\in E(D)\}." display="block"><mrow><mrow><msub><mi>Q</mi><mrow><mi>B</mi><mo>,</mo><mi>y</mi></mrow></msub><mo>:=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>x</mi><mo>∈</mo><msub><mi>X</mi><mi>B</mi></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>∈</mo><mrow><mi>E</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">By Lemma <a href="#Thmtheorem8" title="Lemma 8 (Intersection with controlled-side planes). ‣ 4 Pruning the blocks while preserving copies ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>,
+<math id="S4.p9.m9" class="ltx_Math" alttext="d:=|Q_{B,y}|\leq 2" display="inline"><mrow><mi>d</mi><mo>:=</mo><mrow><mo stretchy="false">|</mo><msub><mi>Q</mi><mrow><mi>B</mi><mo>,</mo><mi>y</mi></mrow></msub><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>2</mn></mrow></math>. For <math id="S4.p9.m10" class="ltx_Math" alttext="k:=|X_{B}|\in\{3,4\}" display="inline"><mrow><mi>k</mi><mo>:=</mo><mrow><mo stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub><mo stretchy="false">|</mo></mrow><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">}</mo></mrow></mrow></math>,</p>
+<table id="S4.Ex37" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex37.m1" class="ltx_Math" alttext="\Pr\bigl(Q_{B,y}\subseteq R_{B,y}\bigr)=\frac{\binom{k-d}{2-d}}{\binom{k}{2}}\geq\frac{1}{6}." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msub><mi>Q</mi><mrow><mi>B</mi><mo>,</mo><mi>y</mi></mrow></msub><mo>⊆</mo><msub><mi>R</mi><mrow><mi>B</mi><mo>,</mo><mi>y</mi></mrow></msub></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mi>k</mi><mo>−</mo><mi>d</mi></mrow><mrow><mn>2</mn><mo>−</mo><mi>d</mi></mrow></mfrac><mo>)</mo></mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>k</mi><mn>2</mn></mfrac><mo>)</mo></mrow></mfrac><mo>≥</mo><mfrac><mn>1</mn><mn>6</mn></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For a fixed block, distinct affecting choices correspond to disjoint
+sets of its edges in <math id="S4.p9.m11" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, since they have different exceptional-side
+endpoints. The number of affecting choices is consequently at most the
+number of edge–block incidences of <math id="S4.p9.m12" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, namely</p>
+<table id="S4.Ex38" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex38.m1" class="ltx_Math" alttext="\sum_{e\in E(D)}\lambda_{e}\leq 16L." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>e</mi><mo>∈</mo><mrow><mi>E</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></munder><msub><mi>λ</mi><mi>e</mi></msub></mrow><mo>≤</mo><mrow><mn>16</mn><mo>⁢</mo><mi>L</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Independence of the choices therefore gives
+<math id="S4.p9.m13" class="ltx_Math" alttext="\Pr(D\subseteq G)\geq 6^{-16L}" display="inline"><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⊆</mo><mi>G</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><msup><mn>6</mn><mrow><mo>−</mo><mrow><mn>16</mn><mo>⁢</mo><mi>L</mi></mrow></mrow></msup></mrow></math>. Summing over the at least
+<math id="S4.p9.m14" class="ltx_Math" alttext="c_{2}q^{9}" display="inline"><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></math> designated copies in <math id="S4.p9.m15" class="ltx_Math" alttext="G_{T}^{\mathrm{pre}}" display="inline"><msubsup><mi>G</mi><mi>T</mi><mi>pre</mi></msubsup></math> proves
+that their expected surviving number is at least
+<math id="S4.p9.m16" class="ltx_Math" alttext="6^{-16L}c_{2}q^{9}" display="inline"><mrow><msup><mn>6</mn><mrow><mo>−</mo><mrow><mn>16</mn><mo>⁢</mo><mi>L</mi></mrow></mrow></msup><mo>⁢</mo><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></math>. Some realization attains this expectation.
+∎</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a href="#Thmtheorem1" title="Theorem 1. ‣ 1 Introduction ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>.</h6>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">For every sufficiently large odd prime power <math id="S4.p10.m1" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>,
+Propositions <a href="#Thmtheorem9" title="Proposition 9 (Exclusion of the forbidden graph). ‣ 4 Pruning the blocks while preserving copies ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9</span></a> and <a href="#Thmtheorem10" title="Proposition 10 (Survival of designated copies). ‣ 4 Pruning the blocks while preserving copies ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a> give a
+bipartite <math id="S4.p10.m2" class="ltx_Math" alttext="K_{3,5}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mn>5</mn></mrow></msub></math>-free graph on <math id="S4.p10.m3" class="ltx_Math" alttext="2q^{3}" display="inline"><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>3</mn></msup></mrow></math> vertices with at
+least <math id="S4.p10.m4" class="ltx_Math" alttext="\kappa q^{9}" display="inline"><mrow><mi>κ</mi><mo>⁢</mo><msup><mi>q</mi><mn>9</mn></msup></mrow></math> copies of <math id="S4.p10.m5" class="ltx_Math" alttext="K_{4,4}" display="inline"><msub><mi>K</mi><mrow><mn>4</mn><mo>,</mo><mn>4</mn></mrow></msub></math>, where
+<math id="S4.p10.m6" class="ltx_Math" alttext="\kappa:=6^{-16L}c_{2}&gt;0" display="inline"><mrow><mi>κ</mi><mo>:=</mo><mrow><msup><mn>6</mn><mrow><mo>−</mo><mrow><mn>16</mn><mo>⁢</mo><mi>L</mi></mrow></mrow></msup><mo>⁢</mo><msub><mi>c</mi><mn>2</mn></msub></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> is absolute.</p>
+</div>
+<div id="S4.p11" class="ltx_para">
+<p class="ltx_p">For sufficiently large <math id="S4.p11.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, choose the largest power of three
+<math id="S4.p11.m2" class="ltx_Math" alttext="q=3^{k}" display="inline"><mrow><mi>q</mi><mo>=</mo><msup><mn>3</mn><mi>k</mi></msup></mrow></math> satisfying <math id="S4.p11.m3" class="ltx_Math" alttext="2q^{3}\leq n" display="inline"><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>3</mn></msup></mrow><mo>≤</mo><mi>n</mi></mrow></math>. Then</p>
+<table id="S4.Ex39" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex39.m1" class="ltx_Math" alttext="2q^{3}\leq n&lt;2(3q)^{3}=54q^{3},\qquad q^{9}&gt;\frac{n^{3}}{54^{3}}." display="block"><mrow><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>3</mn></msup></mrow><mo>≤</mo><mi>n</mi><mo>&lt;</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>⁢</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mn>3</mn></msup></mrow><mo>=</mo><mrow><mn>54</mn><mo>⁢</mo><msup><mi>q</mi><mn>3</mn></msup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msup><mi>q</mi><mn>9</mn></msup><mo>&gt;</mo><mfrac><msup><mi>n</mi><mn>3</mn></msup><msup><mn>54</mn><mn>3</mn></msup></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Apply the construction at this <math id="S4.p11.m4" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, and add isolated vertices
+to obtain an <math id="S4.p11.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-vertex graph. This proves the lower bound with
+<math id="S4.p11.m6" class="ltx_Math" alttext="c=\kappa/54^{3}" display="inline"><mrow><mi>c</mi><mo>=</mo><mrow><mi>κ</mi><mo>/</mo><msup><mn>54</mn><mn>3</mn></msup></mrow></mrow></math>. Lemma <a href="#Thmtheorem2" title="Lemma 2 (Upper bound). ‣ 1 Introduction ‣ Copies of 𝐾_{4,4} in 𝐾_{3,5}-free graphs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a> gives the upper bound.
+∎</p>
+</div>
+</div>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock">
+D. Gerbner and B. Patkós,
+
+</span>
+<span class="ltx_bibblock">Generalized Turán problems for complete bipartite graphs,
+
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic">Graphs and Combinatorics</em> <span class="ltx_text ltx_font_bold">38</span> (2022),
+Paper No. 164.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1007/s00373-022-02570-3" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://doi.org/10.1007/s00373-022-02570-3</a>.
+
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock">
+C. Pohoata, J. Tidor, and H.-H. H. Yu,
+
+</span>
+<span class="ltx_bibblock"><math id="bib.bib2.m1" class="ltx_Math" alttext="K_{2,t+1}" display="inline"><msub><mi>K</mi><mrow><mn>2</mn><mo>,</mo><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></mrow></msub></math>-free graphs with many copies of <math id="bib.bib2.m2" class="ltx_Math" alttext="K_{t,t}" display="inline"><msub><mi>K</mi><mrow><mi>t</mi><mo>,</mo><mi>t</mi></mrow></msub></math>,
+
+</span>
+<span class="ltx_bibblock">arXiv preprint arXiv:2605.25905v1 (2026).
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2605.25905v1" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/2605.25905v1</a>.
+
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock">
+O. Janzer, S. Longbrake, and L. Yepremyan,
+
+</span>
+<span class="ltx_bibblock">On the generalized Turán number of complete bipartite
+graphs,
+
+</span>
+<span class="ltx_bibblock">arXiv preprint arXiv:2606.09801v1 (2026).
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2606.09801v1" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/2606.09801v1</a>.
+
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock">
+J. Hou, C. Hu, and H. Wang,
+
+</span>
+<span class="ltx_bibblock">Explicit thresholds in a generalized Turán problem for
+<math id="bib.bib4.m1" class="ltx_Math" alttext="K_{3,t}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mi>t</mi></mrow></msub></math>-free graphs,
+
+</span>
+<span class="ltx_bibblock">arXiv preprint arXiv:2606.19217v1 (2026).
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2606.19217v1" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/2606.19217v1</a>.
+
+</span></li>
+      
+<li id="bib.bib5" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock">
+J. Wang, Z. Yang, and J. Zhou,
+
+</span>
+<span class="ltx_bibblock">On the generalized Turán number of the complete
+bipartite graph <math id="bib.bib5.m1" class="ltx_Math" alttext="K_{3,b+1}" display="inline"><msub><mi>K</mi><mrow><mn>3</mn><mo>,</mo><mrow><mi>b</mi><mo>+</mo><mn>1</mn></mrow></mrow></msub></math>,
+
+</span>
+<span class="ltx_bibblock">arXiv preprint arXiv:2607.01680v1 (2026).
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2607.01680v1" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/2607.01680v1</a>.
+
+</span></li>
+    
+</ul>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="Copies of K4,4 in K3,5-free graphs"></div>
+
+</article>
+{% endraw %}

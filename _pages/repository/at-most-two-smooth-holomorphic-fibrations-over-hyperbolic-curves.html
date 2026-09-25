@@ -1,0 +1,1029 @@
+---
+layout: "repository-paper"
+title: "At most two smooth holomorphic fibrations over hyperbolic curves"
+repository_title_html: "At most two smooth holomorphic fibrations\n<br class=\"ltx_break\">over hyperbolic curves"
+description: "We prove that a connected compact complex surface admits at most two holomorphic submersions with connected fibres onto compact curves of genus at least two, up to isomorphism of the bases. In particular, there is no"
+permalink: "/repository/at-most-two-smooth-holomorphic-fibrations-over-hyperbolic-curves/"
+pdf: "/files/repository/SHF-at_most_two_smooth_holomorphic_fibrations_over_hyperbolic_curves.pdf"
+repository_added: "2026-09-19"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-section"><a href="#S2">2 Ramification and hyperbolic metrics</a></li>
+<li class="repository-toc-section"><a href="#S3">3 Excluding a third fibration</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+<li class="repository-toc-appendix"><a href="#A1">Appendix A The common-tangency obstruction in coordinates</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">At most two smooth holomorphic fibrations
+<br class="ltx_break">over hyperbolic curves</h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">We prove that a connected compact complex surface admits at most two
+holomorphic submersions with connected fibres onto compact curves of
+genus at least two, up to isomorphism of the bases. In particular, there
+is no surface with three distinct Kodaira fibrations, answering the
+existence question posed by Catanese (Jpn. J. Math., 2017). The result
+also includes isotrivial fibrations and requires no projectivity
+hypothesis. The proof relates the ramification of a pair of fibrations
+to an obstruction to a third. Equality of pulled-back hyperbolic metrics
+forces each reduced ramification component to be smooth and unramified
+over both bases. Its neighbourhood carries a cyclic action, and its
+normal bundle has negative degree. A third fibration would produce a
+holomorphic splitting whose cyclic average is tangent to the
+ramification curve. When all three fibrations are tangent there, the
+splittings are meromorphic; averaging and a constant linear combination
+cancel their principal parts. In either case the resulting regular
+foliation has the ramification curve as a compact leaf, contradicting
+the degree-zero condition imposed by its normal connection. The
+unramified case follows from factorization through a finite product
+cover.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">A Kodaira fibration is a smooth, non-isotrivial holomorphic family of
+curves over a compact curve: its fibres vary in complex structure,
+although the underlying map is a differentiable fibre bundle.
+Kodaira’s construction <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>]</cite> and the double Kodaira fibrations
+studied by Catanese and Rollenske <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite> show that a single compact
+complex surface can support two such families. Catanese
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Question 10]</cite> asked whether three distinct Kodaira
+fibrations can occur on the same surface. Salter
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>, Question 3.3]</cite> asked a related question about smooth surface
+bundle structures on complex surfaces, and more generally on
+four-manifolds with nonzero signature.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">There are restrictions on a possible third fibration and exact counts
+for particular surfaces. Chen <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Theorems 1.1–1.2]</cite> proved that
+the Atiyah–Kodaira manifold considered there, and regular finite covers
+of products of hyperbolic surfaces, have exactly two surface bundle
+structures up to <math id="S1.p2.m1" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math>-fibrewise diffeomorphism. Llosa Isenrich and Py
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib7" title="" class="ltx_ref">7</a>, Theorem 2]</cite> proved that three distinct Kodaira fibrations on a
+compact complex surface would induce a finite-index image in the
+product of the three base fundamental groups. That theorem restricts
+such a configuration but does not exclude it. We exclude it by studying
+the ramification curves of the pairwise maps to products.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Throughout, a complex surface is a connected complex manifold of
+complex dimension two, and a curve is a connected compact Riemann
+surface. A curve is <em class="ltx_emph ltx_font_italic">hyperbolic</em> if its genus is at least two. A
+<em class="ltx_emph ltx_font_italic">fibration</em> is a surjective holomorphic map with connected fibres;
+it is <em class="ltx_emph ltx_font_italic">smooth</em> if it is a submersion. Two fibrations
+<math id="S1.p3.m1" class="ltx_Math" alttext="f_{i}:X\to B_{i}" display="inline"><mrow><msub><mi>f</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><msub><mi>B</mi><mi>i</mi></msub></mrow></mrow></math> are <em class="ltx_emph ltx_font_italic">equivalent</em> if
+<math id="S1.p3.m2" class="ltx_Math" alttext="f_{2}=\alpha\circ f_{1}" display="inline"><mrow><msub><mi>f</mi><mn>2</mn></msub><mo>=</mo><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><msub><mi>f</mi><mn>1</mn></msub></mrow></mrow></math> for an isomorphism <math id="S1.p3.m3" class="ltx_Math" alttext="\alpha:B_{1}\to B_{2}" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>B</mi><mn>1</mn></msub><mo stretchy="false">→</mo><msub><mi>B</mi><mn>2</mn></msub></mrow></mrow></math>.
+No automorphism of <math id="S1.p3.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is included in this equivalence relation.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">A compact complex surface admits at most two equivalence classes of
+smooth fibrations onto hyperbolic curves.</span></p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">The bound is attained by the projections of a product of two hyperbolic
+curves, and also by double Kodaira fibrations <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite>.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_corollary">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Corollary 1.2</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">A compact complex surface admits at most two inequivalent Kodaira
+fibrations.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">The base of a Kodaira fibration has genus at least two; see
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib7" title="" class="ltx_ref">7</a>, Introduction]</cite>. Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1. ‣ 1 Introduction ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a> therefore applies.
+∎</p>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">The proof has two geometric steps. First, the joint map of two
+inequivalent smooth fibrations is finite. On the normalization of any
+ramification component, the two restricted maps have the same
+ramification divisor. Uniqueness of their pulled-back hyperbolic
+metrics then identifies the local ramification image with the graph of
+a hyperbolic isometry. We deduce that the reduced ramification curves
+are smooth and pairwise disjoint. A component <math id="S1.p6.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> with ramification
+index <math id="S1.p6.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> has a cyclic neighbourhood model and satisfies</p>
+<table id="S1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex1.m1" class="ltx_Math" alttext="\mathcal{N}_{D/X}^{\otimes n}\cong TD,\qquad\deg\mathcal{N}_{D/X}=-\frac{2g(D)-2}{n}&lt;0." display="block"><mrow><mrow><mrow><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msubsup><mo>≅</mo><mrow><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow></msub></mrow><mo>=</mo><mrow><mo>−</mo><mfrac><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mn>2</mn></mrow><mi>n</mi></mfrac></mrow><mo>&lt;</mo><mn>0</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">These statements concern ramification curves in the source. They do not
+assert that the entire branch divisor in the product is smooth:
+different points of the source may lie over the same branch value.</p>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">Second, a third fibration would force a regular holomorphic foliation
+tangent to <math id="S1.p7.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>. Schwarz–Pick rigidity shows that its tangency with the
+first two fibrations occurs either everywhere on <math id="S1.p7.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> or nowhere on <math id="S1.p7.m3" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>.
+In the latter case, cyclic averaging of a holomorphic splitting
+produces the required foliation. In the former, two meromorphic
+splittings have principal coefficients whose ratio is constant on
+<math id="S1.p7.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>. Averaging removes the intermediate Laurent terms, and an affine
+combination cancels the remaining pole. A compact leaf of a regular
+holomorphic foliation has a degree-zero normal bundle, giving the
+contradiction. This degree obstruction is classical in the theory of
+holomorphic connections <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, <a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite>; the construction of the
+splitting from the three fibrations is the step needed here.
+Appendix <a href="#A1" title="Appendix A The common-tangency obstruction in coordinates ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A</span></a> gives an alternative calculation of the
+common-tangency obstruction. If the original pair is unramified, an
+elementary factorization argument on a finite product cover completes
+the proof.</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">The theorem counts holomorphic submersions for the given complex
+structure on <math id="S1.p8.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>. It is not a bound on arbitrary smooth surface bundle
+structures on four-manifolds, whose number can be arbitrarily
+large <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>, <a href="#bib.bib9" title="" class="ltx_ref">9</a>]</cite>. Hyperbolicity of the bases and
+smoothness of each fibration are essential to the argument. In
+particular, smoothness must be checked separately for the two
+projections of a branched cover; Remark <a href="#S2.Thmtheorem5" title="Remark 2.5 (Checking both projections). ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.5</span></a>
+explains this distinction for a construction appearing in the
+literature.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>Ramification and hyperbolic metrics</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">For a smooth compact curve <math id="S2.p1.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> in a complex surface <math id="S2.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, write
+<math id="S2.p1.m3" class="ltx_Math" alttext="\mathcal{N}_{D/X}=TX|_{D}/TD" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow></msub><mo>=</mo><mrow><mrow><msub><mrow><mrow><mi>T</mi><mo>⁢</mo><mi>X</mi></mrow><mo stretchy="false">|</mo></mrow><mi>D</mi></msub><mo>/</mo><mi>T</mi></mrow><mo>⁢</mo><mi>D</mi></mrow></mrow></math> for its normal bundle, so that
+<math id="S2.p1.m4" class="ltx_Math" alttext="D^{2}=\deg\mathcal{N}_{D/X}" display="inline"><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>=</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow></msub></mrow></mrow></math>. We first establish the finiteness of a pair map and
+recall the degree obstruction used later.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f:X\to B" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>B</mi></mrow></mrow></math> and <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="g:X\to C" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math> are inequivalent smooth fibrations from a
+compact complex surface, then <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="(f,g):X\to B\times C" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mrow><mi>B</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>C</mi></mrow></mrow></mrow></math> is finite and
+surjective.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">The fibres of <math id="S2.p2.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> are homologous, so the topological degree of the
+restriction of <math id="S2.p2.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> to a fibre of <math id="S2.p2.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is independent of the fibre.
+A holomorphic map of compact curves has degree zero exactly when it is
+constant. Thus, if <math id="S2.p2.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is constant on one fibre of <math id="S2.p2.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, it is constant on
+every fibre. Local holomorphic sections of <math id="S2.p2.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> then give a holomorphic
+factorization <math id="S2.p2.m7" class="ltx_Math" alttext="g=\alpha\circ f" display="inline"><mrow><mi>g</mi><mo>=</mo><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow></mrow></math>. The map <math id="S2.p2.m8" class="ltx_Math" alttext="\alpha:B\to C" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>B</mi><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math> is nonconstant.
+Over a regular value of <math id="S2.p2.m9" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>, a fibre of <math id="S2.p2.m10" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is the disjoint union of
+<math id="S2.p2.m11" class="ltx_Math" alttext="\deg\alpha" display="inline"><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>α</mi></mrow></math> fibres of <math id="S2.p2.m12" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>. Its connectedness forces <math id="S2.p2.m13" class="ltx_Math" alttext="\deg\alpha=1" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>α</mi></mrow><mo>=</mo><mn>1</mn></mrow></math>,
+contrary to inequivalence.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Consequently <math id="S2.p3.m1" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is nonconstant on every fibre of <math id="S2.p3.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>. Each such fibre
+is a smooth connected, hence irreducible, compact curve, so no curve can
+be contracted by <math id="S2.p3.m3" class="ltx_Math" alttext="(f,g)" display="inline"><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></math>. Its fibres are therefore zero-dimensional
+compact analytic sets, hence finite. The map is proper, so it is finite.
+Its image is a closed analytic subset of dimension two in the connected
+surface <math id="S2.p3.m4" class="ltx_Math" alttext="B\times C" display="inline"><mrow><mi>B</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>C</mi></mrow></math>, and is therefore the whole product.
+∎</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">A holomorphic connection on a line bundle <math id="S2.p4.m1" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> over a curve is a
+<math id="S2.p4.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math>-linear sheaf map
+<math id="S2.p4.m3" class="ltx_Math" alttext="\nabla:L\to\Omega^{1}\otimes L" display="inline"><mrow><mo rspace="0.278em">∇</mo><mo rspace="0.278em">:</mo><mrow><mi>L</mi><mo stretchy="false">→</mo><mrow><msup><mi mathvariant="normal">Ω</mi><mn>1</mn></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>L</mi></mrow></mrow></mrow></math> satisfying
+<math id="S2.p4.m4" class="ltx_math_unparsed" alttext="\nabla(hs)=\mathrm{d}h\otimes s+h\nabla s" display="inline"><mrow><mo>∇</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>d</mi><mi>h</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>s</mi><mo>+</mo><mi>h</mi><mo lspace="0.167em" rspace="0.167em">∇</mo><mi>s</mi></mrow></math> for local holomorphic functions
+<math id="S2.p4.m5" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> and sections <math id="S2.p4.m6" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>. The following form of the connection obstruction
+will suffice; compare <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>]</cite> and
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Theorem 7.1 and Corollary 7.3]</cite>.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.2</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">A holomorphic line bundle on a compact curve that admits a holomorphic
+connection has degree zero. In particular, if a regular holomorphic
+foliation on a neighbourhood of a smooth compact curve <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> has <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> as a
+leaf, then <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\deg\mathcal{N}_{D/X}=0" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow></msub></mrow><mo>=</mo><mn>0</mn></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Choose a nonzero meromorphic section <math id="S2.p5.m1" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> of the line bundle and write
+<math id="S2.p5.m2" class="ltx_Math" alttext="\nabla s=\omega\otimes s" display="inline"><mrow><mrow><mo rspace="0.167em">∇</mo><mi>s</mi></mrow><mo>=</mo><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>s</mi></mrow></mrow></math>. If <math id="S2.p5.m3" class="ltx_Math" alttext="s=z^{m}ue" display="inline"><mrow><mi>s</mi><mo>=</mo><mrow><msup><mi>z</mi><mi>m</mi></msup><mo>⁢</mo><mi>u</mi><mo>⁢</mo><mi>e</mi></mrow></mrow></math>, where <math id="S2.p5.m4" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> is a holomorphic
+frame and <math id="S2.p5.m5" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> is a holomorphic unit, then</p>
+<table id="S2.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex2.m1" class="ltx_Math" alttext="\omega=m\frac{\mathrm{d}z}{z}+\frac{\mathrm{d}u}{u}+\theta,\qquad\nabla e=\theta\otimes e," display="block"><mrow><mrow><mrow><mi>ω</mi><mo>=</mo><mrow><mrow><mi>m</mi><mo>⁢</mo><mfrac><mrow><mi>d</mi><mo>⁢</mo><mi>z</mi></mrow><mi>z</mi></mfrac></mrow><mo>+</mo><mfrac><mrow><mi>d</mi><mo>⁢</mo><mi>u</mi></mrow><mi>u</mi></mfrac><mo>+</mo><mi>θ</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mo rspace="0.167em">∇</mo><mi>e</mi></mrow><mo>=</mo><mrow><mi>θ</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>e</mi></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">with <math id="S2.p5.m6" class="ltx_Math" alttext="\theta" display="inline"><mi>θ</mi></math> holomorphic. Thus the poles of <math id="S2.p5.m7" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> have residues equal
+to the orders of the zeros and poles of <math id="S2.p5.m8" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>. The residue theorem gives</p>
+<table id="S2.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex3.m1" class="ltx_Math" alttext="\deg L=\sum_{p}\operatorname{ord}_{p}(s)=\sum_{p}\Res_{p}\omega=0." display="block"><mrow><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>L</mi></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>p</mi></munder><mrow><msub><mi>ord</mi><mi>p</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>p</mi></munder><mrow><msub><mi>Res</mi><mi>p</mi></msub><mo lspace="0.167em">⁡</mo><mi>ω</mi></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">For the second assertion, choose foliation charts <math id="S2.p6.m1" class="ltx_Math" alttext="(z,w)" display="inline"><mrow><mo stretchy="false">(</mo><mi>z</mi><mo>,</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></math> with
+<math id="S2.p6.m2" class="ltx_math_unparsed" alttext="D=\{w=0\}" display="inline"><mrow><mi>D</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>w</mi><mo>=</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> and leaves given by <math id="S2.p6.m3" class="ltx_Math" alttext="w=\text{constant}" display="inline"><mrow><mi>w</mi><mo>=</mo><mtext>constant</mtext></mrow></math>. On a connected
+overlap the transverse coordinates satisfy <math id="S2.p6.m4" class="ltx_Math" alttext="w^{\prime}=\psi(w)" display="inline"><mrow><msup><mi>w</mi><mo>′</mo></msup><mo>=</mo><mrow><mi>ψ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, with
+<math id="S2.p6.m5" class="ltx_Math" alttext="\psi(0)=0" display="inline"><mrow><mrow><mi>ψ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> and <math id="S2.p6.m6" class="ltx_Math" alttext="\psi^{\prime}(0)\neq 0" display="inline"><mrow><mrow><msup><mi>ψ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow></math>. The normal transition functions
+<math id="S2.p6.m7" class="ltx_Math" alttext="\psi^{\prime}(0)" display="inline"><mrow><msup><mi>ψ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> are constant. They define a flat holomorphic connection on
+<math id="S2.p6.m8" class="ltx_Math" alttext="\mathcal{N}_{D/X}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow></msub></math>, namely the normal Bott connection. The first assertion
+applies.
+∎</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">For a hyperbolic curve <math id="S2.p7.m1" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>, let <math id="S2.p7.m2" class="ltx_Math" alttext="h_{B}" display="inline"><msub><mi>h</mi><mi>B</mi></msub></math> denote its metric of curvature
+<math id="S2.p7.m3" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>. Pullback by an unramified covering gives the curvature <math id="S2.p7.m4" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> metric
+on the covering curve. We also need uniqueness when two pullbacks have
+the same degeneracy divisor.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.3</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="u:D\to B" display="inline"><mrow><mi>u</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>D</mi><mo stretchy="false">→</mo><mi>B</mi></mrow></mrow></math> and <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="v:D\to C" display="inline"><mrow><mi>v</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>D</mi><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math> be nonconstant maps of curves, with
+<math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="g(B),g(C)\geq 2" display="inline"><mrow><mrow><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≥</mo><mn>2</mn></mrow></math>. If their ramification divisors on <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> coincide, then
+<math id="S2.Thmtheorem3.p1.m5" class="ltx_Math" alttext="u^{*}h_{B}=v^{*}h_{C}" display="inline"><mrow><mrow><msup><mi>u</mi><mo>∗</mo></msup><mo>⁢</mo><msub><mi>h</mi><mi>B</mi></msub></mrow><mo>=</mo><mrow><msup><mi>v</mi><mo>∗</mo></msup><mo>⁢</mo><msub><mi>h</mi><mi>C</mi></msub></mrow></mrow></math>. Near every point of <math id="S2.Thmtheorem3.p1.m6" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, the image of <math id="S2.Thmtheorem3.p1.m7" class="ltx_Math" alttext="(u,v)" display="inline"><mrow><mo stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></math> is
+contained in the graph of a holomorphic local hyperbolic isometry from
+<math id="S2.Thmtheorem3.p1.m8" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> to <math id="S2.Thmtheorem3.p1.m9" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">In a local coordinate <math id="S2.p8.m1" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> on <math id="S2.p8.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, write the two metrics as
+<math id="S2.p8.m3" class="ltx_Math" alttext="\rho_{u}|\mathrm{d}z|^{2}" display="inline"><mrow><msub><mi>ρ</mi><mi>u</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">|</mo><mrow><mi>d</mi><mo>⁢</mo><mi>z</mi></mrow><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow></math> and <math id="S2.p8.m4" class="ltx_Math" alttext="\rho_{v}|\mathrm{d}z|^{2}" display="inline"><mrow><msub><mi>ρ</mi><mi>v</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">|</mo><mrow><mi>d</mi><mo>⁢</mo><mi>z</mi></mrow><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow></math>. At a point with common
+ramification order <math id="S2.p8.m5" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>, both densities are <math id="S2.p8.m6" class="ltx_Math" alttext="|z|^{2m}" display="inline"><msup><mrow><mo stretchy="false">|</mo><mi>z</mi><mo stretchy="false">|</mo></mrow><mrow><mn>2</mn><mo>⁢</mo><mi>m</mi></mrow></msup></math> times a smooth
+positive function. Hence</p>
+<table id="S2.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex4.m1" class="ltx_Math" alttext="w=\log(\rho_{u}/\rho_{v})" display="block"><mrow><mi>w</mi><mo>=</mo><mrow><mi>log</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ρ</mi><mi>u</mi></msub><mo>/</mo><msub><mi>ρ</mi><mi>v</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">is a smooth real function on all of <math id="S2.p8.m7" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, independent of the coordinate.
+Away from the common zeros, the curvature equation gives</p>
+<table id="S2.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex5.m1" class="ltx_Math" alttext="\Delta_{0}w=2(\rho_{u}-\rho_{v})=2\rho_{v}(e^{w}-1)," display="block"><mrow><mrow><mrow><msub><mi mathvariant="normal">Δ</mi><mn>0</mn></msub><mo>⁢</mo><mi>w</mi></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ρ</mi><mi>u</mi></msub><mo>−</mo><msub><mi>ρ</mi><mi>v</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>ρ</mi><mi>v</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>e</mi><mi>w</mi></msup><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S2.p8.m8" class="ltx_Math" alttext="\Delta_{0}" display="inline"><msub><mi mathvariant="normal">Δ</mi><mn>0</mn></msub></math> is the Euclidean Laplacian in <math id="S2.p8.m9" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>. Both sides extend
+smoothly across the zeros. If <math id="S2.p8.m10" class="ltx_Math" alttext="\omega_{u}" display="inline"><msub><mi>ω</mi><mi>u</mi></msub></math> and <math id="S2.p8.m11" class="ltx_Math" alttext="\omega_{v}" display="inline"><msub><mi>ω</mi><mi>v</mi></msub></math> are the pulled-back
+area forms, this equation is
+<math id="S2.p8.m12" class="ltx_Math" alttext="i\partial\bar{\partial}w=\omega_{u}-\omega_{v}" display="inline"><mrow><mrow><mi>i</mi><mo lspace="0em">⁢</mo><mrow><mo>∂</mo><mrow><mover accent="true"><mo lspace="0em">∂</mo><mo>¯</mo></mover><mo>⁢</mo><mi>w</mi></mrow></mrow></mrow><mo>=</mo><mrow><msub><mi>ω</mi><mi>u</mi></msub><mo>−</mo><msub><mi>ω</mi><mi>v</mi></msub></mrow></mrow></math>. Multiplication by <math id="S2.p8.m13" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> and
+integration by parts yield</p>
+<table id="S2.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex6.m1" class="ltx_math_unparsed" alttext="-\int_{D}i\partial w\wedge\bar{\partial}w=\int_{D}w(e^{w}-1)\omega_{v}\geq 0." display="block"><mrow><mo rspace="0.055em">−</mo><msub><mo>∫</mo><mi>D</mi></msub><mi>i</mi><mo lspace="0em">∂</mo><mi>w</mi><mo rspace="0.055em">∧</mo><mover accent="true"><mo>∂</mo><mo>¯</mo></mover><mi>w</mi><mo rspace="0.111em">=</mo><msub><mo>∫</mo><mi>D</mi></msub><mi>w</mi><mrow><mo stretchy="false">(</mo><msup><mi>e</mi><mi>w</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><msub><mi>ω</mi><mi>v</mi></msub><mo>≥</mo><mn>0</mn><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The left-hand side is nonpositive, so <math id="S2.p8.m14" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> is constant. Since <math id="S2.p8.m15" class="ltx_Math" alttext="\rho_{v}" display="inline"><msub><mi>ρ</mi><mi>v</mi></msub></math> is
+positive away from finitely many points, the curvature equation then
+gives <math id="S2.p8.m16" class="ltx_Math" alttext="w=0" display="inline"><mrow><mi>w</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Where <math id="S2.p9.m1" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> is locally invertible, <math id="S2.p9.m2" class="ltx_Math" alttext="v\circ u^{-1}" display="inline"><mrow><mi>v</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><msup><mi>u</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math> is a holomorphic local
+hyperbolic isometry. Lift small target charts to the unit disc. Such an
+isometry agrees locally with the disc automorphism having the same
+value and differential: isometries with the same first-order data
+agree along geodesics from that point. For a neighbourhood of a
+ramification point of <math id="S2.p9.m3" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, choose a nearby unramified point and the
+corresponding disc automorphism <math id="S2.p9.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>. The lifted maps satisfy
+<math id="S2.p9.m5" class="ltx_Math" alttext="\widetilde{v}=A\circ\widetilde{u}" display="inline"><mrow><mover accent="true"><mi>v</mi><mo>~</mo></mover><mo>=</mo><mrow><mi>A</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mover accent="true"><mi>u</mi><mo>~</mo></mover></mrow></mrow></math> on a nonempty open set, hence on the
+whole neighbourhood by the identity theorem. Descending to smaller
+target charts proves the graph assertion at the ramification point as
+well.
+∎</p>
+</div>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">For two inequivalent smooth fibrations <math id="S2.p10.m1" class="ltx_Math" alttext="f:X\to B" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>B</mi></mrow></mrow></math> and <math id="S2.p10.m2" class="ltx_Math" alttext="g:X\to C" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math>, define</p>
+<table id="S2.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex7.m1" class="ltx_Math" alttext="R(f,g)=\divisor(\mathrm{d}f\wedge\mathrm{d}g)." display="block"><mrow><mrow><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>div</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>f</mi></mrow><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><mi>g</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The wedge is a nonzero holomorphic section of
+<math id="S2.p10.m3" class="ltx_Math" alttext="K_{X}\otimes f^{*}K_{B}^{-1}\otimes g^{*}K_{C}^{-1}" display="inline"><mrow><mrow><mrow><mrow><msub><mi>K</mi><mi>X</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>f</mi><mo>∗</mo></msup></mrow><mo>⁢</mo><msubsup><mi>K</mi><mi>B</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>g</mi><mo>∗</mo></msup></mrow><mo>⁢</mo><msubsup><mi>K</mi><mi>C</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow></math>, where <math id="S2.p10.m4" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> denotes the
+canonical line bundle. Thus <math id="S2.p10.m5" class="ltx_Math" alttext="R(f,g)" display="inline"><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> is an effective divisor, possibly
+empty. Its support is the tangency locus of the two fibre foliations.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 2.4</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="f:X\to B" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>B</mi></mrow></mrow></math> and <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="g:X\to C" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math> be inequivalent smooth fibrations from a
+compact complex surface to hyperbolic curves. The reduced support of
+<math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="R(f,g)" display="inline"><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a disjoint union of smooth compact curves <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, and
+<math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="f|_{D}" display="inline"><msub><mrow><mi>f</mi><mo stretchy="false">|</mo></mrow><mi>D</mi></msub></math> and <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="g|_{D}" display="inline"><msub><mrow><mi>g</mi><mo stretchy="false">|</mo></mrow><mi>D</mi></msub></math> are unramified coverings. If <math id="S2.Thmtheorem4.p1.m7" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> has coefficient <math id="S2.Thmtheorem4.p1.m8" class="ltx_Math" alttext="n-1" display="inline"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math>
+in <math id="S2.Thmtheorem4.p1.m9" class="ltx_Math" alttext="R(f,g)" display="inline"><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math>, then <math id="S2.Thmtheorem4.p1.m10" class="ltx_Math" alttext="n\geq 2" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math> and</span></p>
+<table id="S2.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E1.m1" class="ltx_Math" alttext="\mathcal{N}_{D/X}^{\otimes n}\cong TD,\qquad D^{2}=-\frac{2g(D)-2}{n}&lt;0." display="block"><mrow><mrow><mrow><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msubsup><mo>≅</mo><mrow><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>=</mo><mrow><mo>−</mo><mfrac><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mn>2</mn></mrow><mi>n</mi></mfrac></mrow><mo>&lt;</mo><mn>0</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">There is a neighbourhood <math id="S2.Thmtheorem4.p1.m11" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> of <math id="S2.Thmtheorem4.p1.m12" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> on which <math id="S2.Thmtheorem4.p1.m13" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S2.Thmtheorem4.p1.m14" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> lift to
+holomorphic retractions <math id="S2.Thmtheorem4.p1.m15" class="ltx_Math" alttext="r,s:U\to D" display="inline"><mrow><mrow><mi>r</mi><mo>,</mo><mi>s</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>D</mi></mrow></mrow></math>. Moreover, <math id="S2.Thmtheorem4.p1.m16" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> admits a cyclic
+action of order <math id="S2.Thmtheorem4.p1.m17" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> fixing <math id="S2.Thmtheorem4.p1.m18" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> pointwise and preserving <math id="S2.Thmtheorem4.p1.m19" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> and <math id="S2.Thmtheorem4.p1.m20" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>.
+Locally along <math id="S2.Thmtheorem4.p1.m21" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, suitable coordinates give</span></p>
+<table id="S2.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E2.m1" class="ltx_Math" alttext="r=x,\qquad s=x+y^{n},\qquad\tau(x,y)=(x,\zeta y),\qquad\zeta=e^{2\pi i/n}." display="block"><mrow><mrow><mrow><mi>r</mi><mo>=</mo><mi>x</mi></mrow><mo rspace="2.167em">,</mo><mrow><mi>s</mi><mo>=</mo><mrow><mi>x</mi><mo>+</mo><msup><mi>y</mi><mi>n</mi></msup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>τ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mrow><mi>ζ</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>ζ</mi><mo>=</mo><msup><mi>e</mi><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow><mo>/</mo><mi>n</mi></mrow></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Here the same coordinate on <math id="S2.Thmtheorem4.p1.m22" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> is used for both retractions.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p11.m1" class="ltx_Math" alttext="\nu:\widehat{D}\to X" display="inline"><mrow><mi>ν</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mover accent="true"><mi>D</mi><mo>^</mo></mover><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> be the normalization map of an irreducible
+component of <math id="S2.p11.m2" class="ltx_Math" alttext="R(f,g)" display="inline"><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math>. The cotangent maps induced by <math id="S2.p11.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S2.p11.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are
+nowhere-zero maps of line bundles into <math id="S2.p11.m5" class="ltx_Math" alttext="\nu^{*}\Omega_{X}^{1}" display="inline"><mrow><msup><mi>ν</mi><mo>∗</mo></msup><mo>⁢</mo><msubsup><mi mathvariant="normal">Ω</mi><mi>X</mi><mn>1</mn></msubsup></mrow></math>. Their images
+coincide along <math id="S2.p11.m6" class="ltx_Math" alttext="\widehat{D}" display="inline"><mover accent="true"><mi>D</mi><mo>^</mo></mover></math>, so they differ by a nowhere-zero
+holomorphic bundle isomorphism. Composing with
+<math id="S2.p11.m7" class="ltx_Math" alttext="\nu^{*}\Omega_{X}^{1}\to\Omega_{\widehat{D}}^{1}" display="inline"><mrow><mrow><msup><mi>ν</mi><mo>∗</mo></msup><mo>⁢</mo><msubsup><mi mathvariant="normal">Ω</mi><mi>X</mi><mn>1</mn></msubsup></mrow><mo stretchy="false">→</mo><msubsup><mi mathvariant="normal">Ω</mi><mover accent="true"><mi>D</mi><mo>^</mo></mover><mn>1</mn></msubsup></mrow></math> shows that
+<math id="S2.p11.m8" class="ltx_Math" alttext="\mathrm{d}(f\circ\nu)" display="inline"><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>ν</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S2.p11.m9" class="ltx_Math" alttext="\mathrm{d}(g\circ\nu)" display="inline"><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>ν</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> are related by the same
+isomorphism. If either restricted map were constant, both would be
+constant, contradicting Lemma <a href="#S2.Thmtheorem1" title="Lemma 2.1. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a>. They are therefore
+nonconstant and have identical ramification divisors.</p>
+</div>
+<div id="S2.p12" class="ltx_para">
+<p class="ltx_p">By Lemma <a href="#S2.Thmtheorem3" title="Lemma 2.3. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3</span></a>, each local branch of the ramification image
+is a graph of a local hyperbolic isometry. Fix a point <math id="S2.p12.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> of the
+ramification divisor. All source branches through <math id="S2.p12.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> give the same
+graph germ: its value is <math id="S2.p12.m3" class="ltx_Math" alttext="(f(p),g(p))" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></math>, and its derivative is the unique
+scalar relating the nonzero covectors <math id="S2.p12.m4" class="ltx_Math" alttext="\mathrm{d}f_{p}" display="inline"><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mi>p</mi></msub></mrow></math> and <math id="S2.p12.m5" class="ltx_Math" alttext="\mathrm{d}g_{p}" display="inline"><mrow><mi>d</mi><mo>⁢</mo><msub><mi>g</mi><mi>p</mi></msub></mrow></math> in local
+target coordinates. To obtain the derivative even when the source
+branch is singular, take a limit from points of its normalization where
+the restricted differentials are nonzero. A local hyperbolic isometry
+is determined by its value and differential, so the graph germs agree.</p>
+</div>
+<div id="S2.p13" class="ltx_para">
+<p class="ltx_p">We now apply this conclusion to the finite germ of <math id="S2.p13.m1" class="ltx_Math" alttext="(f,g)" display="inline"><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></math> at <math id="S2.p13.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+Choose disjoint source neighbourhoods around the finitely many points
+over <math id="S2.p13.m3" class="ltx_Math" alttext="(f(p),g(p))" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></math>, and shrink a target bidisc so that its inverse image
+is contained in their union. The component representing the germ at
+<math id="S2.p13.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is finite over the bidisc, has only <math id="S2.p13.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> over its centre, and may be
+chosen connected. After further shrinking, its branch locus is
+contained in the single graph just identified. This assertion concerns
+only this source representative; branch images from other points over
+the centre need not agree with it.</p>
+</div>
+<div id="S2.p14" class="ltx_para">
+<p class="ltx_p">Straighten the graph to <math id="S2.p14.m1" class="ltx_math_unparsed" alttext="\{v=0\}" display="inline"><mrow><mo stretchy="false">{</mo><mi>v</mi><mo>=</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></math>. Away from its inverse image, the
+representative is an unramified cover of <math id="S2.p14.m2" class="ltx_Math" alttext="\Delta\times\Delta^{*}" display="inline"><mrow><mi mathvariant="normal">Δ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi mathvariant="normal">Δ</mi><mo>∗</mo></msup></mrow></math>, where
+<math id="S2.p14.m3" class="ltx_Math" alttext="\Delta" display="inline"><mi mathvariant="normal">Δ</mi></math> is a disc and <math id="S2.p14.m4" class="ltx_Math" alttext="\Delta^{*}=\Delta\setminus\{0\}" display="inline"><mrow><msup><mi mathvariant="normal">Δ</mi><mo>∗</mo></msup><mo>=</mo><mrow><mi mathvariant="normal">Δ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math>. This cover is
+connected: a proper analytic divisor in a connected complex manifold
+does not disconnect it, since paths can be perturbed off its
+real-codimension-two strata. The fundamental group of
+<math id="S2.p14.m5" class="ltx_Math" alttext="\Delta\times\Delta^{*}" display="inline"><mrow><mi mathvariant="normal">Δ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi mathvariant="normal">Δ</mi><mo>∗</mo></msup></mrow></math> is <math id="S2.p14.m6" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi></math>, so each connected finite cover
+is isomorphic to</p>
+<table id="S2.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex8.m1" class="ltx_Math" alttext="(x,y)\longmapsto(x,y^{n})\quad\text{over }\Delta\times\Delta^{*}." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟼</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msup><mi>y</mi><mi>n</mi></msup><mo stretchy="false">)</mo></mrow></mrow><mspace style="width:1em;" width="1em"></mspace><mrow><mrow><mtext>over </mtext><mo>⁢</mo><mi mathvariant="normal">Δ</mi></mrow><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi mathvariant="normal">Δ</mi><mo>∗</mo></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The isomorphism is holomorphic because both covering maps are local
+biholomorphisms. It extends across the divisor by uniqueness of the
+normal finite extension: both extensions are obtained by integral
+closure of the target structure sheaf in the same covering field.
+Since the source is smooth, it is normal. Thus this is also the local
+form of the original finite map. Its reduced ramification curve is
+smooth and maps isomorphically to the local branch graph. In
+particular, different ramification components cannot meet, and both
+restrictions to each component are unramified. The local index <math id="S2.p14.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is
+the coefficient of that component in <math id="S2.p14.m8" class="ltx_Math" alttext="R(f,g)" display="inline"><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> plus one.</p>
+</div>
+<div id="S2.p15" class="ltx_para">
+<p class="ltx_p">Fix a component <math id="S2.p15.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>. Choose a tubular neighbourhood <math id="S2.p15.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> which
+deformation retracts onto <math id="S2.p15.m3" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>. The induced image of <math id="S2.p15.m4" class="ltx_Math" alttext="\pi_{1}(U)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math> under
+<math id="S2.p15.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is the image of <math id="S2.p15.m6" class="ltx_Math" alttext="\pi_{1}(D)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></math> under <math id="S2.p15.m7" class="ltx_Math" alttext="f|_{D}" display="inline"><msub><mrow><mi>f</mi><mo stretchy="false">|</mo></mrow><mi>D</mi></msub></math>. The covering-space lifting
+criterion for the unramified covering <math id="S2.p15.m8" class="ltx_Math" alttext="f|_{D}:D\to B" display="inline"><mrow><msub><mrow><mi>f</mi><mo stretchy="false">|</mo></mrow><mi>D</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>D</mi><mo stretchy="false">→</mo><mi>B</mi></mrow></mrow></math> therefore gives a
+lift <math id="S2.p15.m9" class="ltx_Math" alttext="r:U\to D" display="inline"><mrow><mi>r</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>D</mi></mrow></mrow></math> with <math id="S2.p15.m10" class="ltx_Math" alttext="r|_{D}=\mathrm{id}_{D}" display="inline"><mrow><msub><mrow><mi>r</mi><mo stretchy="false">|</mo></mrow><mi>D</mi></msub><mo>=</mo><msub><mi>id</mi><mi>D</mi></msub></mrow></math>. This lift is holomorphic because the
+covering is locally biholomorphic. The same argument gives a
+holomorphic lift <math id="S2.p15.m11" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> of <math id="S2.p15.m12" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>, also restricting to <math id="S2.p15.m13" class="ltx_Math" alttext="\mathrm{id}_{D}" display="inline"><msub><mi>id</mi><mi>D</mi></msub></math>. The pair
+<math id="S2.p15.m14" class="ltx_Math" alttext="(r,s)" display="inline"><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></math> is locally a cyclic cover branched over the diagonal; in local
+coordinates it consequently has the form <math id="S2.p15.m15" class="ltx_Math" alttext="r=x" display="inline"><mrow><mi>r</mi><mo>=</mo><mi>x</mi></mrow></math>, <math id="S2.p15.m16" class="ltx_Math" alttext="s=x+y^{n}" display="inline"><mrow><mi>s</mi><mo>=</mo><mrow><mi>x</mi><mo>+</mo><msup><mi>y</mi><mi>n</mi></msup></mrow></mrow></math>.</p>
+</div>
+<div id="S2.p16" class="ltx_para">
+<p class="ltx_p">If <math id="S2.p16.m1" class="ltx_Math" alttext="x^{\prime}=\phi(x)" display="inline"><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> is a change of coordinate on <math id="S2.p16.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, the corresponding
+source coordinates satisfy the exact identities</p>
+<table id="S2.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E3.m1" class="ltx_Math" alttext="x^{\prime}=\phi(x),\qquad(y^{\prime})^{n}=\phi(x+y^{n})-\phi(x)." display="block"><mrow><mrow><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msup><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mi>n</mi></msup><mo>=</mo><mrow><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>+</mo><msup><mi>y</mi><mi>n</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Writing <math id="S2.p16.m3" class="ltx_Math" alttext="y^{\prime}=\lambda(x)y+O(y^{n+1})" display="inline"><mrow><msup><mi>y</mi><mo>′</mo></msup><mo>=</mo><mrow><mrow><mrow><mi>λ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> gives
+<math id="S2.p16.m4" class="ltx_Math" alttext="\lambda(x)^{n}=\phi^{\prime}(x)" display="inline"><mrow><mrow><mi>λ</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow><mo>=</mo><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The normal coordinate changes therefore have
+<math id="S2.p16.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th powers equal to the tangent coordinate changes on <math id="S2.p16.m6" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, proving
+<math id="S2.p16.m7" class="ltx_Math" alttext="\mathcal{N}_{D/X}^{\otimes n}\cong TD" display="inline"><mrow><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msubsup><mo>≅</mo><mrow><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow></mrow></math>. Taking degrees gives
+(<a href="#S2.E1" title="In Proposition 2.4. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>); here <math id="S2.p16.m8" class="ltx_Math" alttext="g(D)\geq 2" display="inline"><mrow><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mn>2</mn></mrow></math> because <math id="S2.p16.m9" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> covers a hyperbolic
+curve.</p>
+</div>
+<div id="S2.p17" class="ltx_para">
+<p class="ltx_p">To glue the cyclic action, factor the second identity in
+(<a href="#S2.E3" title="In 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>) as</p>
+<table id="S2.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex9.m1" class="ltx_Math" alttext="(y^{\prime})^{n}=y^{n}H(x,y^{n}),\qquad H(x,0)=\phi^{\prime}(x)\neq 0." display="block"><mrow><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mi>n</mi></msup><mo>=</mo><mrow><msup><mi>y</mi><mi>n</mi></msup><mo>⁢</mo><mi>H</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msup><mi>y</mi><mi>n</mi></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>H</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">On each sufficiently small connected overlap, a holomorphic <math id="S2.p17.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th
+root of <math id="S2.p17.m2" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> gives
+<math id="S2.p17.m3" class="ltx_Math" alttext="y^{\prime}=\xi yH(x,y^{n})^{1/n}" display="inline"><mrow><msup><mi>y</mi><mo>′</mo></msup><mo>=</mo><mrow><mi>ξ</mi><mo>⁢</mo><mi>y</mi><mo>⁢</mo><mi>H</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msup><mi>y</mi><mi>n</mi></msup><mo stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>/</mo><mi>n</mi></mrow></msup></mrow></mrow></math> for a constant <math id="S2.p17.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th root of unity <math id="S2.p17.m5" class="ltx_Math" alttext="\xi" display="inline"><mi>ξ</mi></math>.
+Every transition thus commutes with <math id="S2.p17.m6" class="ltx_Math" alttext="y\mapsto\zeta y" display="inline"><mrow><mi>y</mi><mo stretchy="false">↦</mo><mrow><mi>ζ</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></math>. The coordinate
+actions glue as germs along <math id="S2.p17.m7" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, preserve <math id="S2.p17.m8" class="ltx_Math" alttext="r,s" display="inline"><mrow><mi>r</mi><mo>,</mo><mi>s</mi></mrow></math>, and have order <math id="S2.p17.m9" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+For completeness, these germs can be realized on an invariant open
+neighbourhood. Compactness gives representatives of their finitely many
+powers on a common neighbourhood <math id="S2.p17.m10" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>. Choose a smaller neighbourhood
+<math id="S2.p17.m11" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> of <math id="S2.p17.m12" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> such that all their images lie in <math id="S2.p17.m13" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and all group
+composition identities hold on <math id="S2.p17.m14" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>. The union of these images of <math id="S2.p17.m15" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>
+is invariant, because composing any two representatives on <math id="S2.p17.m16" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> gives
+another power. Restricting to this union yields the asserted action on
+an actual neighbourhood.
+∎</p>
+</div>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_italic">Remark 2.5</span></span><span class="ltx_text ltx_font_italic"> </span>(Checking both projections)<span class="ltx_text ltx_font_italic">.</span></h6>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">A branched cover which gives one smooth fibration need not give a
+second. For a cyclic cover branched along a smooth graph <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="z=\phi(t)" display="inline"><mrow><mi>z</mi><mo>=</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+the local map is</p>
+<table id="S2.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex10.m1" class="ltx_Math" alttext="(t,w)\longmapsto(t,w^{m}+\phi(t)),\qquad m\geq 2." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟼</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mrow><msup><mi>w</mi><mi>m</mi></msup><mo>+</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The first projection is a submersion. The differential of the second is
+<math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="mw^{m-1}\mathrm{d}w+\phi^{\prime}(t)\mathrm{d}t" display="inline"><mrow><mrow><mi>m</mi><mo>⁢</mo><msup><mi>w</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>w</mi></mrow><mo>+</mo><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>t</mi></mrow></mrow></math>, which vanishes at a ramification point
+with <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\phi^{\prime}(t)=0" display="inline"><mrow><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem5.p2" class="ltx_para">
+<p class="ltx_p">This distinction matters for the branch-cover construction discussed
+in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Remark 2.6]</cite>, where the branch divisor is <em class="ltx_emph ltx_font_italic">étale</em>
+over one factor but ramified over the other. In the intermediate
+genus-six family of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib10" title="" class="ltx_ref">10</a>, pp. 186–187]</cite>, a genus-nine curve <math id="S2.Thmtheorem5.p2.m1" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math>
+has degree-two maps <math id="S2.Thmtheorem5.p2.m2" class="ltx_Math" alttext="\pi_{i}:F\to C_{3}" display="inline"><mrow><msub><mi>π</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>F</mi><mo stretchy="false">→</mo><msub><mi>C</mi><mn>3</mn></msub></mrow></mrow></math> to a genus-three curve. After an
+unramified base change <math id="S2.Thmtheorem5.p2.m3" class="ltx_Math" alttext="B\to F" display="inline"><mrow><mi>B</mi><mo stretchy="false">→</mo><mi>F</mi></mrow></math>, the family is a double cover of
+<math id="S2.Thmtheorem5.p2.m4" class="ltx_Math" alttext="B\times C_{3}" display="inline"><mrow><mi>B</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>C</mi><mn>3</mn></msub></mrow></math> branched along the two resulting graphs. Hurwitz’s formula
+gives</p>
+<table id="S2.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex11.m1" class="ltx_Math" alttext="\deg\divisor(\mathrm{d}\pi_{i})=(2\cdot 9-2)-2(2\cdot 3-2)=8." display="block"><mrow><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mrow><mi>div</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>π</mi><mi>i</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>9</mn></mrow><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>8</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This ramification persists under the unramified base change, and the
+local calculation above shows that the projection of this intermediate
+family to <math id="S2.Thmtheorem5.p2.m5" class="ltx_Math" alttext="C_{3}" display="inline"><msub><mi>C</mi><mn>3</mn></msub></math> is not a submersion. The construction therefore does not
+supply two smooth projections. This observation concerns the
+intermediate family, not Zaal’s subsequent construction of a family of
+genus-three curves.</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>Excluding a third fibration</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Suppose that <math id="S3.p1.m1" class="ltx_Math" alttext="f_{i}:X\to B_{i}" display="inline"><mrow><msub><mi>f</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><msub><mi>B</mi><mi>i</mi></msub></mrow></mrow></math>, <math id="S3.p1.m2" class="ltx_Math" alttext="1\leq i\leq 3" display="inline"><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mn>3</mn></mrow></math>, are pairwise inequivalent
+smooth fibrations onto hyperbolic curves. Put <math id="S3.p1.m3" class="ltx_Math" alttext="R_{ij}=R(f_{i},f_{j})" display="inline"><mrow><msub><mi>R</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo>=</mo><mrow><mi>R</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mi>i</mi></msub><mo>,</mo><msub><mi>f</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+We first show that a third fibration cannot be tangent to just part of
+a component of <math id="S3.p1.m4" class="ltx_Math" alttext="R_{12}" display="inline"><msub><mi>R</mi><mn>12</mn></msub></math>.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3.1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> be a component of <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="R_{12}" display="inline"><msub><mi>R</mi><mn>12</mn></msub></math>. Either
+<math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="D\cap(R_{13}\cup R_{23})=\varnothing" display="inline"><mrow><mrow><mi>D</mi><mo>∩</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>R</mi><mn>13</mn></msub><mo>∪</mo><msub><mi>R</mi><mn>23</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, or <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> is a component of all
+three divisors. In the latter case its ramification index is the same
+for all three pairs.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S3.p2.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> meets a component <math id="S3.p2.m2" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> of <math id="S3.p2.m3" class="ltx_Math" alttext="R_{13}" display="inline"><msub><mi>R</mi><mn>13</mn></msub></math> at <math id="S3.p2.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+By Proposition <a href="#S2.Thmtheorem4" title="Proposition 2.4. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a>, <math id="S3.p2.m5" class="ltx_Math" alttext="f_{1}|_{E}" display="inline"><msub><mrow><msub><mi>f</mi><mn>1</mn></msub><mo stretchy="false">|</mo></mrow><mi>E</mi></msub></math> and <math id="S3.p2.m6" class="ltx_Math" alttext="f_{3}|_{E}" display="inline"><msub><mrow><msub><mi>f</mi><mn>3</mn></msub><mo stretchy="false">|</mo></mrow><mi>E</mi></msub></math> are
+unramified coverings, and hence pull back the base metrics to <math id="S3.p2.m7" class="ltx_Math" alttext="h_{E}" display="inline"><msub><mi>h</mi><mi>E</mi></msub></math>.
+The covectors <math id="S3.p2.m8" class="ltx_Math" alttext="\mathrm{d}f_{1}" display="inline"><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow></math> and <math id="S3.p2.m9" class="ltx_Math" alttext="\mathrm{d}f_{3}" display="inline"><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mn>3</mn></msub></mrow></math> are proportional at <math id="S3.p2.m10" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, so the
+two rank-one Hermitian forms <math id="S3.p2.m11" class="ltx_Math" alttext="(f_{1}^{*}h_{B_{1}})_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>f</mi><mn>1</mn><mo>∗</mo></msubsup><mo>⁢</mo><msub><mi>h</mi><msub><mi>B</mi><mn>1</mn></msub></msub></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math> and
+<math id="S3.p2.m12" class="ltx_Math" alttext="(f_{3}^{*}h_{B_{3}})_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>f</mi><mn>3</mn><mo>∗</mo></msubsup><mo>⁢</mo><msub><mi>h</mi><msub><mi>B</mi><mn>3</mn></msub></msub></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math> are proportional. Their common nonzero restriction to
+<math id="S3.p2.m13" class="ltx_Math" alttext="T_{p}E" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mi>E</mi></mrow></math> makes the proportionality factor one.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Since <math id="S3.p3.m1" class="ltx_Math" alttext="f_{1}|_{D}" display="inline"><msub><mrow><msub><mi>f</mi><mn>1</mn></msub><mo stretchy="false">|</mo></mrow><mi>D</mi></msub></math> is an unramified covering, the restriction of this
+identity to <math id="S3.p3.m2" class="ltx_Math" alttext="T_{p}D" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mi>D</mi></mrow></math> says that <math id="S3.p3.m3" class="ltx_Math" alttext="f_{3}|_{D}" display="inline"><msub><mrow><msub><mi>f</mi><mn>3</mn></msub><mo stretchy="false">|</mo></mrow><mi>D</mi></msub></math> attains equality in Schwarz–Pick
+at <math id="S3.p3.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>. In particular it is nonconstant. The equality case of
+Schwarz–Pick, applied to its lift between universal covering discs,
+implies that <math id="S3.p3.m5" class="ltx_Math" alttext="f_{3}|_{D}" display="inline"><msub><mrow><msub><mi>f</mi><mn>3</mn></msub><mo stretchy="false">|</mo></mrow><mi>D</mi></msub></math> is an unramified covering.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Set <math id="S3.p4.m1" class="ltx_Math" alttext="N=\mathcal{N}_{D/X}" display="inline"><mrow><mi>N</mi><mo>=</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow></msub></mrow></math>, <math id="S3.p4.m2" class="ltx_Math" alttext="\kappa_{D}=2g(D)-2" display="inline"><mrow><msub><mi>κ</mi><mi>D</mi></msub><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mn>2</mn></mrow></mrow></math>, and let <math id="S3.p4.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> be the index of
+<math id="S3.p4.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> for the pair <math id="S3.p4.m5" class="ltx_Math" alttext="(f_{1},f_{2})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></math>. The bundle map on <math id="S3.p4.m6" class="ltx_Math" alttext="TX|_{D}" display="inline"><msub><mrow><mrow><mi>T</mi><mo>⁢</mo><mi>X</mi></mrow><mo stretchy="false">|</mo></mrow><mi>D</mi></msub></math> given by</p>
+<table id="S3.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex12.m1" class="ltx_Math" alttext="\beta=\mathrm{d}f_{3}-\mathrm{d}(f_{3}|_{D})\circ\mathrm{d}(f_{1}|_{D})^{-1}\circ\mathrm{d}f_{1}" display="block"><mrow><mi>β</mi><mo>=</mo><mrow><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mn>3</mn></msub></mrow><mo>−</mo><mrow><mrow><mrow><mrow><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mrow><msub><mi>f</mi><mn>3</mn></msub><mo stretchy="false">|</mo></mrow><mi>D</mi></msub><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">∘</mo><mi>d</mi></mrow><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mrow><msub><mi>f</mi><mn>1</mn></msub><mo stretchy="false">|</mo></mrow><mi>D</mi></msub><mo rspace="0.055em" stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo rspace="0.222em">∘</mo><mi>d</mi></mrow><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">vanishes on <math id="S3.p4.m7" class="ltx_Math" alttext="TD" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow></math>, and therefore induces a holomorphic map
+<math id="S3.p4.m8" class="ltx_Math" alttext="N\to(f_{3}|_{D})^{*}TB_{3}" display="inline"><mrow><mi>N</mi><mo stretchy="false">→</mo><mrow><msup><mrow><mo stretchy="false">(</mo><msub><mrow><msub><mi>f</mi><mn>3</mn></msub><mo stretchy="false">|</mo></mrow><mi>D</mi></msub><mo stretchy="false">)</mo></mrow><mo>∗</mo></msup><mo>⁢</mo><mi>T</mi><mo>⁢</mo><msub><mi>B</mi><mn>3</mn></msub></mrow></mrow></math>. The bundle of such maps has degree</p>
+<table id="S3.Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex13.m1" class="ltx_Math" alttext="\deg\Hom\bigl(N,(f_{3}|_{D})^{*}TB_{3}\bigr)=-\kappa_{D}-\deg N=-\kappa_{D}\left(1-\frac{1}{n}\right)&lt;0." display="block"><mrow><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mi>N</mi><mo>,</mo><mrow><msup><mrow><mo stretchy="false">(</mo><msub><mrow><msub><mi>f</mi><mn>3</mn></msub><mo stretchy="false">|</mo></mrow><mi>D</mi></msub><mo stretchy="false">)</mo></mrow><mo>∗</mo></msup><mo>⁢</mo><mi>T</mi><mo>⁢</mo><msub><mi>B</mi><mn>3</mn></msub></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mo>−</mo><msub><mi>κ</mi><mi>D</mi></msub></mrow><mo>−</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>N</mi></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mrow><msub><mi>κ</mi><mi>D</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><mo>)</mo></mrow></mrow></mrow><mo>&lt;</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">A line bundle of negative degree has no nonzero holomorphic section,
+so <math id="S3.p4.m9" class="ltx_Math" alttext="\beta=0" display="inline"><mrow><mi>β</mi><mo>=</mo><mn>0</mn></mrow></math>. Hence <math id="S3.p4.m10" class="ltx_Math" alttext="D\subset R_{13}" display="inline"><mrow><mi>D</mi><mo>⊂</mo><msub><mi>R</mi><mn>13</mn></msub></mrow></math>, and proportionality with
+<math id="S3.p4.m11" class="ltx_Math" alttext="\mathrm{d}f_{2}" display="inline"><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></math> gives <math id="S3.p4.m12" class="ltx_Math" alttext="D\subset R_{23}" display="inline"><mrow><mi>D</mi><mo>⊂</mo><msub><mi>R</mi><mn>23</mn></msub></mrow></math> as well. The same reasoning, with
+indices <math id="S3.p4.m13" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and <math id="S3.p4.m14" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> interchanged, applies if <math id="S3.p4.m15" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> initially meets
+<math id="S3.p4.m16" class="ltx_Math" alttext="R_{23}" display="inline"><msub><mi>R</mi><mn>23</mn></msub></math>. Distinct components of each <math id="S3.p4.m17" class="ltx_Math" alttext="R_{ij}" display="inline"><msub><mi>R</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> are disjoint by
+Proposition <a href="#S2.Thmtheorem4" title="Proposition 2.4. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a>.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">In the common-component case, (<a href="#S2.E1" title="In Proposition 2.4. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>) applied to each pair
+states that <math id="S3.p5.m1" class="ltx_Math" alttext="n_{ij}\deg N=\deg TD" display="inline"><mrow><mrow><msub><mi>n</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo lspace="0.167em">⁢</mo><mi>deg</mi><mo lspace="0.167em">⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow><mo>⁢</mo><mi>D</mi></mrow></mrow></math>. As <math id="S3.p5.m2" class="ltx_Math" alttext="\deg N\neq 0" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>N</mi></mrow><mo>≠</mo><mn>0</mn></mrow></math>, all three indices
+<math id="S3.p5.m3" class="ltx_Math" alttext="n_{ij}" display="inline"><msub><mi>n</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> are equal.
+∎</p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">We will average splittings of a retraction <math id="S3.p6.m1" class="ltx_Math" alttext="r:U\to D" display="inline"><mrow><mi>r</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>D</mi></mrow></mrow></math> over a cyclic
+action preserving <math id="S3.p6.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>. A splitting is a bundle map
+<math id="S3.p6.m3" class="ltx_Math" alttext="\sigma:r^{*}TD\to TU" display="inline"><mrow><mi>σ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msup><mi>r</mi><mo>∗</mo></msup><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow><mo stretchy="false">→</mo><mrow><mi>T</mi><mo>⁢</mo><mi>U</mi></mrow></mrow></mrow></math> satisfying <math id="S3.p6.m4" class="ltx_Math" alttext="\mathrm{d}r\circ\sigma=\mathrm{id}" display="inline"><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>r</mi></mrow><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>σ</mi></mrow><mo>=</mo><mi>id</mi></mrow></math>; it may also
+be meromorphic. If <math id="S3.p6.m5" class="ltx_Math" alttext="\tau" display="inline"><mi>τ</mi></math> generates an action of order <math id="S3.p6.m6" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, define</p>
+<table id="S3.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E4.m1" class="ltx_Math" alttext="A(\sigma)_{p}=\frac{1}{n}\sum_{j=0}^{n-1}\mathrm{d}(\tau^{j})_{\tau^{-j}p}\circ\sigma_{\tau^{-j}p}." display="block"><mrow><mrow><mrow><mi>A</mi><mo>⁢</mo><msub><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></mrow><mo>=</mo><mrow><mrow><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>⁢</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover><mrow><mi>d</mi><mo>⁢</mo><msub><mrow><mo stretchy="false">(</mo><msup><mi>τ</mi><mi>j</mi></msup><mo rspace="0.055em" stretchy="false">)</mo></mrow><mrow><msup><mi>τ</mi><mrow><mo>−</mo><mi>j</mi></mrow></msup><mo>⁢</mo><mi>p</mi></mrow></msub></mrow></mrow></mrow><mo rspace="0.222em">∘</mo><msub><mi>σ</mi><mrow><msup><mi>τ</mi><mrow><mo>−</mo><mi>j</mi></mrow></msup><mo>⁢</mo><mi>p</mi></mrow></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">All terms have domain <math id="S3.p6.m7" class="ltx_Math" alttext="T_{r(p)}D" display="inline"><mrow><msub><mi>T</mi><mrow><mi>r</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mi>D</mi></mrow></math>, since <math id="S3.p6.m8" class="ltx_Math" alttext="r\circ\tau=r" display="inline"><mrow><mrow><mi>r</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>τ</mi></mrow><mo>=</mo><mi>r</mi></mrow></math>. Each term is
+again a splitting, so <math id="S3.p6.m9" class="ltx_Math" alttext="A(\sigma)" display="inline"><mrow><mi>A</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></math> is an invariant splitting. The
+average preserves holomorphicity and, for meromorphic splittings, the
+bound on pole order along <math id="S3.p6.m10" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3.2</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The disjoint alternative in Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1. ‣ 3 Excluding a third fibration ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a> is impossible.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">Use the retraction <math id="S3.p7.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> and cyclic action associated to <math id="S3.p7.m2" class="ltx_Math" alttext="(f_{1},f_{2})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></math>
+by Proposition <a href="#S2.Thmtheorem4" title="Proposition 2.4. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a>. Since <math id="S3.p7.m3" class="ltx_Math" alttext="D\cap R_{13}=\varnothing" display="inline"><mrow><mrow><mi>D</mi><mo>∩</mo><msub><mi>R</mi><mn>13</mn></msub></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>,
+the line bundle <math id="S3.p7.m4" class="ltx_Math" alttext="\ker\mathrm{d}f_{3}" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mn>3</mn></msub></mrow></mrow></math> is transverse to <math id="S3.p7.m5" class="ltx_Math" alttext="\ker\mathrm{d}r" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>d</mi></mrow><mo>⁢</mo><mi>r</mi></mrow></math> along <math id="S3.p7.m6" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>.
+After shrinking to an invariant neighbourhood, the restriction of
+<math id="S3.p7.m7" class="ltx_Math" alttext="\mathrm{d}r" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>r</mi></mrow></math> to <math id="S3.p7.m8" class="ltx_Math" alttext="\ker\mathrm{d}f_{3}" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mn>3</mn></msub></mrow></mrow></math> is an isomorphism. Its inverse gives a
+holomorphic splitting <math id="S3.p7.m9" class="ltx_Math" alttext="\sigma:r^{*}TD\to TU" display="inline"><mrow><mi>σ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msup><mi>r</mi><mo>∗</mo></msup><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow><mo stretchy="false">→</mo><mrow><mi>T</mi><mo>⁢</mo><mi>U</mi></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">At any <math id="S3.p8.m1" class="ltx_Math" alttext="p\in D" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>D</mi></mrow></math>, the differential of <math id="S3.p8.m2" class="ltx_Math" alttext="\tau" display="inline"><mi>τ</mi></math> has eigenvalue <math id="S3.p8.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> on
+<math id="S3.p8.m4" class="ltx_Math" alttext="T_{p}D" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mi>D</mi></mrow></math> and eigenvalue <math id="S3.p8.m5" class="ltx_Math" alttext="\zeta\neq 1" display="inline"><mrow><mi>ζ</mi><mo>≠</mo><mn>1</mn></mrow></math> on the vertical line <math id="S3.p8.m6" class="ltx_Math" alttext="\ker\mathrm{d}r_{p}" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>r</mi><mi>p</mi></msub></mrow></mrow></math>.
+The invariant splitting <math id="S3.p8.m7" class="ltx_Math" alttext="A(\sigma)" display="inline"><mrow><mi>A</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></math> therefore has image <math id="S3.p8.m8" class="ltx_Math" alttext="T_{p}D" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mi>D</mi></mrow></math> at <math id="S3.p8.m9" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+Its image on <math id="S3.p8.m10" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> is a holomorphic line subbundle of <math id="S3.p8.m11" class="ltx_Math" alttext="TU" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mi>U</mi></mrow></math>. A line
+subbundle is integrable: if <math id="S3.p8.m12" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is a local nonvanishing generator, then
+<math id="S3.p8.m13" class="ltx_Math" alttext="[aV,bV]=(aV(b)-bV(a))V" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>V</mi></mrow><mo>,</mo><mrow><mi>b</mi><mo>⁢</mo><mi>V</mi></mrow></mrow><mo stretchy="false">]</mo></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>V</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>V</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>V</mi></mrow></mrow></math>. It thus defines a regular holomorphic
+foliation with compact leaf <math id="S3.p8.m14" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>. Lemma <a href="#S2.Thmtheorem2" title="Lemma 2.2. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a> gives
+<math id="S3.p8.m15" class="ltx_Math" alttext="\deg\mathcal{N}_{D/X}=0" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow></msub></mrow><mo>=</mo><mn>0</mn></mrow></math>, contradicting (<a href="#S2.E1" title="In Proposition 2.4. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>).
+∎</p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">In the common-component case, the fibre directions instead give
+meromorphic splittings. The cyclic action leaves only one possible
+negative Laurent power, which can be cancelled by an affine
+combination.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3.3</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The common-component alternative in Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1. ‣ 3 Excluding a third fibration ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a> is
+impossible.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">Lift the three maps on a tubular neighbourhood of <math id="S3.p10.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> to retractions
+<math id="S3.p10.m2" class="ltx_Math" alttext="r_{i}:U\to D" display="inline"><mrow><msub><mi>r</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>D</mi></mrow></mrow></math> with <math id="S3.p10.m3" class="ltx_Math" alttext="r_{i}|_{D}=\mathrm{id}_{D}" display="inline"><mrow><msub><mrow><msub><mi>r</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mi>D</mi></msub><mo>=</mo><msub><mi>id</mi><mi>D</mi></msub></mrow></math>, as in the proof of
+Proposition <a href="#S2.Thmtheorem4" title="Proposition 2.4. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a>. Shrink <math id="S3.p10.m4" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> so that no other
+component of any <math id="S3.p10.m5" class="ltx_Math" alttext="R_{ij}" display="inline"><msub><mi>R</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> meets it. Let <math id="S3.p10.m6" class="ltx_Math" alttext="n\geq 2" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math> be the common
+ramification index. Use the cyclic action for <math id="S3.p10.m7" class="ltx_Math" alttext="(r_{1},r_{2})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>r</mi><mn>1</mn></msub><mo>,</mo><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></math>, and local
+coordinates with</p>
+<table id="S3.Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex14.m1" class="ltx_Math" alttext="r_{1}=x,\qquad r_{2}=x+y^{n}." display="block"><mrow><mrow><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mi>x</mi></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mrow><mi>x</mi><mo>+</mo><msup><mi>y</mi><mi>n</mi></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The derivative <math id="S3.p10.m8" class="ltx_Math" alttext="\partial r_{3}/\partial y" display="inline"><mrow><mo>∂</mo><mrow><msub><mi>r</mi><mn>3</mn></msub><mo rspace="0.055em">/</mo><mrow><mo>∂</mo><mi>y</mi></mrow></mrow></mrow></math> has order exactly <math id="S3.p10.m9" class="ltx_Math" alttext="n-1" display="inline"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math>
+along <math id="S3.p10.m10" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, and <math id="S3.p10.m11" class="ltx_Math" alttext="r_{3}(x,0)=x" display="inline"><mrow><mrow><msub><mi>r</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>x</mi></mrow></math>. Consequently</p>
+<table id="S3.E5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E5.m1" class="ltx_Math" alttext="r_{3}=x+a(x)y^{n}+O(y^{n+1}),\qquad a(x)\neq 0." display="block"><mrow><mrow><mrow><msub><mi>r</mi><mn>3</mn></msub><mo>=</mo><mrow><mi>x</mi><mo>+</mo><mrow><mrow><mi>a</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msup><mi>y</mi><mi>n</mi></msup></mrow><mo>+</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>a</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">On changing coordinates as in (<a href="#S2.E3" title="In 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>), comparison of the
+coefficients of <math id="S3.p10.m12" class="ltx_Math" alttext="y^{n}" display="inline"><msup><mi>y</mi><mi>n</mi></msup></math> in <math id="S3.p10.m13" class="ltx_Math" alttext="r^{\prime}_{3}=\phi(r_{3})" display="inline"><mrow><msubsup><mi>r</mi><mn>3</mn><mo>′</mo></msubsup><mo>=</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>r</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> gives
+<math id="S3.p10.m14" class="ltx_Math" alttext="\widetilde{a}(\phi(x))\phi^{\prime}(x)=\phi^{\prime}(x)a(x)" display="inline"><mrow><mrow><mover accent="true"><mi>a</mi><mo>~</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, where <math id="S3.p10.m15" class="ltx_Math" alttext="\widetilde{a}" display="inline"><mover accent="true"><mi>a</mi><mo>~</mo></mover></math>
+denotes the coefficient in the new chart. Thus the coefficients define a holomorphic function
+on the compact curve <math id="S3.p10.m16" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, and this function is a constant <math id="S3.p10.m17" class="ltx_Math" alttext="a\neq 0" display="inline"><mrow><mi>a</mi><mo>≠</mo><mn>0</mn></mrow></math>.
+Moreover,</p>
+<table id="S3.Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex15.m1" class="ltx_Math" alttext="\mathrm{d}r_{2}\wedge\mathrm{d}r_{3}=\bigl(n(a-1)y^{n-1}+O(y^{n})\bigr)\mathrm{d}x\wedge\mathrm{d}y." display="block"><mrow><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>r</mi><mn>3</mn></msub></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><mrow><mi>n</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msup><mi>y</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>+</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mi>n</mi></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The common index for <math id="S3.p10.m18" class="ltx_Math" alttext="(r_{2},r_{3})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>r</mi><mn>2</mn></msub><mo>,</mo><msub><mi>r</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></math> is <math id="S3.p10.m19" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, so <math id="S3.p10.m20" class="ltx_Math" alttext="a\neq 1" display="inline"><mrow><mi>a</mi><mo>≠</mo><mn>1</mn></mrow></math>.</p>
+</div>
+<div id="S3.p11" class="ltx_para">
+<p class="ltx_p">Away from <math id="S3.p11.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, the line bundles <math id="S3.p11.m2" class="ltx_Math" alttext="\ker\mathrm{d}r_{2}" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>r</mi><mn>2</mn></msub></mrow></mrow></math> and <math id="S3.p11.m3" class="ltx_Math" alttext="\ker\mathrm{d}r_{3}" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>r</mi><mn>3</mn></msub></mrow></mrow></math>
+define splittings <math id="S3.p11.m4" class="ltx_Math" alttext="\sigma_{2},\sigma_{3}" display="inline"><mrow><msub><mi>σ</mi><mn>2</mn></msub><mo>,</mo><msub><mi>σ</mi><mn>3</mn></msub></mrow></math> of <math id="S3.p11.m5" class="ltx_Math" alttext="\mathrm{d}r_{1}" display="inline"><mrow><mi>d</mi><mo>⁢</mo><msub><mi>r</mi><mn>1</mn></msub></mrow></math>. They extend
+meromorphically across <math id="S3.p11.m6" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, with poles of order at most <math id="S3.p11.m7" class="ltx_Math" alttext="n-1" display="inline"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math>. In the
+chosen coordinates,</p>
+<table id="S3.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex16.m1" class="ltx_math_unparsed" alttext="\displaystyle\sigma_{2}(\partial_{x})" display="inline"><mrow><msub><mi>σ</mi><mn>2</mn></msub><mrow><mo stretchy="false">(</mo><msub><mo lspace="0em">∂</mo><mi>x</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex16.m2" class="ltx_math_unparsed" alttext="\displaystyle=\partial_{x}-\frac{1}{n}y^{1-n}\partial_{y}," display="inline"><mrow><mo rspace="0.111em">=</mo><mo>∂</mo><msub><mrow></mrow><mi>x</mi></msub><mo>−</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>n</mi></mfrac></mstyle><mi>y</mi><msup><mrow></mrow><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow></msup><mo lspace="0em">∂</mo><msub><mrow></mrow><mi>y</mi></msub><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S3.Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex17.m1" class="ltx_math_unparsed" alttext="\displaystyle\sigma_{3}(\partial_{x})" display="inline"><mrow><msub><mi>σ</mi><mn>3</mn></msub><mrow><mo stretchy="false">(</mo><msub><mo lspace="0em">∂</mo><mi>x</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex17.m2" class="ltx_math_unparsed" alttext="\displaystyle=\partial_{x}-\frac{\partial r_{3}/\partial x}{\partial r_{3}/\partial y}\partial_{y}=\partial_{x}-\frac{1}{an}y^{1-n}\partial_{y}+O(y^{2-n})\partial_{y}." display="inline"><mrow><mo rspace="0.111em">=</mo><msub><mo>∂</mo><mi>x</mi></msub><mo>−</mo><mstyle displaystyle="true"><mfrac><mrow><mo>∂</mo><mrow><msub><mi>r</mi><mn>3</mn></msub><mo rspace="0.055em">/</mo><mrow><mo>∂</mo><mi>x</mi></mrow></mrow></mrow><mrow><mo>∂</mo><mrow><msub><mi>r</mi><mn>3</mn></msub><mo rspace="0.055em">/</mo><mrow><mo>∂</mo><mi>y</mi></mrow></mrow></mrow></mfrac></mstyle><msub><mo lspace="0em">∂</mo><mi>y</mi></msub><mo rspace="0.111em">=</mo><msub><mo>∂</mo><mi>x</mi></msub><mo>−</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mrow><mi>a</mi><mo>⁢</mo><mi>n</mi></mrow></mfrac></mstyle><msup><mi>y</mi><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow></msup><msub><mo lspace="0em">∂</mo><mi>y</mi></msub><mo>+</mo><mi>O</mi><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mrow><mn>2</mn><mo>−</mo><mi>n</mi></mrow></msup><mo stretchy="false">)</mo></mrow><msub><mo lspace="0em">∂</mo><mi>y</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The cyclic action preserves <math id="S3.p11.m8" class="ltx_Math" alttext="r_{1}" display="inline"><msub><mi>r</mi><mn>1</mn></msub></math> and <math id="S3.p11.m9" class="ltx_Math" alttext="r_{2}" display="inline"><msub><mi>r</mi><mn>2</mn></msub></math>, so it fixes <math id="S3.p11.m10" class="ltx_Math" alttext="\sigma_{2}" display="inline"><msub><mi>σ</mi><mn>2</mn></msub></math>.
+Average <math id="S3.p11.m11" class="ltx_Math" alttext="\sigma_{3}" display="inline"><msub><mi>σ</mi><mn>3</mn></msub></math> by (<a href="#S3.E4" title="In 3 Excluding a third fibration ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>).</p>
+</div>
+<div id="S3.p12" class="ltx_para">
+<p class="ltx_p">Under the pushforward by <math id="S3.p12.m1" class="ltx_Math" alttext="\tau(x,y)=(x,\zeta y)" display="inline"><mrow><mrow><mi>τ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mrow><mi>ζ</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>, a vertical monomial
+<math id="S3.p12.m2" class="ltx_math_unparsed" alttext="y^{k}\partial_{y}" display="inline"><mrow><mi>y</mi><msup><mrow></mrow><mi>k</mi></msup><mo lspace="0em">∂</mo><msub><mrow></mrow><mi>y</mi></msub></mrow></math> is multiplied by <math id="S3.p12.m3" class="ltx_Math" alttext="\zeta^{1-k}" display="inline"><msup><mi>ζ</mi><mrow><mn>1</mn><mo>−</mo><mi>k</mi></mrow></msup></math>. An invariant vertical
+Laurent series can therefore contain this monomial only when
+<math id="S3.p12.m4" class="ltx_Math" alttext="k\equiv 1\pmod{n}" display="inline"><mrow><mi>k</mi><mo>≡</mo><mrow><mn>1</mn><mspace style="width:0.949em;" width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Among the integers from <math id="S3.p12.m5" class="ltx_Math" alttext="1-n" display="inline"><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow></math> through <math id="S3.p12.m6" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, the only
+such integer is <math id="S3.p12.m7" class="ltx_Math" alttext="1-n" display="inline"><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow></math>. The leading monomial in <math id="S3.p12.m8" class="ltx_Math" alttext="\sigma_{3}" display="inline"><msub><mi>σ</mi><mn>3</mn></msub></math> survives
+averaging, and hence</p>
+<table id="S3.Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex18.m1" class="ltx_math_unparsed" alttext="A(\sigma_{3})(\partial_{x})=\partial_{x}-\frac{1}{an}y^{1-n}\partial_{y}+O(y)\partial_{y}." display="block"><mrow><mi>A</mi><mrow><mo stretchy="false">(</mo><msub><mi>σ</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><msub><mo lspace="0em">∂</mo><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><mo rspace="0.111em">=</mo><msub><mo>∂</mo><mi>x</mi></msub><mo>−</mo><mfrac><mn>1</mn><mrow><mi>a</mi><mo>⁢</mo><mi>n</mi></mrow></mfrac><msup><mi>y</mi><mrow><mn>1</mn><mo>−</mo><mi>n</mi></mrow></msup><msub><mo lspace="0em">∂</mo><mi>y</mi></msub><mo>+</mo><mi>O</mi><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><msub><mo lspace="0em">∂</mo><mi>y</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Since <math id="S3.p12.m9" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> is a global constant different from <math id="S3.p12.m10" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, the bundle map</p>
+<table id="S3.E6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E6.m1" class="ltx_Math" alttext="\sigma=\frac{aA(\sigma_{3})-\sigma_{2}}{a-1}" display="block"><mrow><mi>σ</mi><mo>=</mo><mfrac><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>σ</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><msub><mi>σ</mi><mn>2</mn></msub></mrow><mrow><mi>a</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">is globally defined. Its pole cancels in every chart, so it is
+holomorphic across <math id="S3.p12.m11" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>. The coefficients in this affine combination
+sum to one, giving <math id="S3.p12.m12" class="ltx_Math" alttext="\mathrm{d}r_{1}\circ\sigma=\mathrm{id}" display="inline"><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><msub><mi>r</mi><mn>1</mn></msub></mrow><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>σ</mi></mrow><mo>=</mo><mi>id</mi></mrow></math>. It is invariant and has
+image <math id="S3.p12.m13" class="ltx_Math" alttext="TD" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow></math> along <math id="S3.p12.m14" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>; equivalently, its local expression is
+<math id="S3.p12.m15" class="ltx_math_unparsed" alttext="\sigma(\partial_{x})=\partial_{x}+O(y)\partial_{y}" display="inline"><mrow><mi>σ</mi><mrow><mo stretchy="false">(</mo><msub><mo lspace="0em">∂</mo><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><mo rspace="0.111em">=</mo><msub><mo>∂</mo><mi>x</mi></msub><mo>+</mo><mi>O</mi><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><msub><mo lspace="0em">∂</mo><mi>y</mi></msub></mrow></math>.</p>
+</div>
+<div id="S3.p13" class="ltx_para">
+<p class="ltx_p">The image of <math id="S3.p13.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math> defines a regular holomorphic foliation with
+compact leaf <math id="S3.p13.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>. Lemma <a href="#S2.Thmtheorem2" title="Lemma 2.2. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a> contradicts
+<math id="S3.p13.m3" class="ltx_Math" alttext="\deg\mathcal{N}_{D/X}&lt;0" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mi>D</mi><mo>/</mo><mi>X</mi></mrow></msub></mrow><mo>&lt;</mo><mn>0</mn></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S3.p14" class="ltx_para">
+<p class="ltx_p">It remains to treat an unramified pair. The following holomorphic
+factorization argument is sufficient here; Chen <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Theorem 1.2]</cite>
+treats surface bundle structures on regular finite covers of products
+in the stronger topological setting.</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3.4</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="q:X\to B_{1}\times B_{2}" display="inline"><mrow><mi>q</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mrow><msub><mi>B</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>B</mi><mn>2</mn></msub></mrow></mrow></mrow></math> be a finite unramified covering, with
+<math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="g(B_{1}),g(B_{2})\geq 2" display="inline"><mrow><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>B</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>B</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mn>2</mn></mrow></mrow></math>. Suppose the induced factor maps
+<math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="f_{i}=\operatorname{pr}_{i}\circ q" display="inline"><mrow><msub><mi>f</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>pr</mi><mi>i</mi></msub><mo lspace="0em" rspace="0.222em">∘</mo><mi>q</mi></mrow></mrow></math> have connected fibres. Every fibration
+<math id="S3.Thmtheorem4.p1.m4" class="ltx_Math" alttext="h:X\to C" display="inline"><mrow><mi>h</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math> onto a hyperbolic curve is then equivalent to <math id="S3.Thmtheorem4.p1.m5" class="ltx_Math" alttext="f_{1}" display="inline"><msub><mi>f</mi><mn>1</mn></msub></math> or <math id="S3.Thmtheorem4.p1.m6" class="ltx_Math" alttext="f_{2}" display="inline"><msub><mi>f</mi><mn>2</mn></msub></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p15" class="ltx_para">
+<p class="ltx_p">Write <math id="S3.p15.m1" class="ltx_Math" alttext="\Gamma_{i}=\pi_{1}(B_{i})" display="inline"><mrow><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>B</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and identify <math id="S3.p15.m2" class="ltx_Math" alttext="\pi_{1}(X)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> with a finite-index
+subgroup <math id="S3.p15.m3" class="ltx_Math" alttext="\Gamma\leq\Gamma_{1}\times\Gamma_{2}" display="inline"><mrow><mi mathvariant="normal">Γ</mi><mo>≤</mo><mrow><msub><mi mathvariant="normal">Γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi mathvariant="normal">Γ</mi><mn>2</mn></msub></mrow></mrow></math>. Set</p>
+<table id="S3.Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex19.m1" class="ltx_Math" alttext="H_{1}=\{\gamma\in\Gamma_{1}:(\gamma,1)\in\Gamma\},\qquad H_{2}=\{\gamma\in\Gamma_{2}:(1,\gamma)\in\Gamma\}." display="block"><mrow><mrow><mrow><msub><mi>H</mi><mn>1</mn></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>γ</mi><mo>∈</mo><msub><mi mathvariant="normal">Γ</mi><mn>1</mn></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi mathvariant="normal">Γ</mi></mrow><mo stretchy="false">}</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>H</mi><mn>2</mn></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>γ</mi><mo>∈</mo><msub><mi mathvariant="normal">Γ</mi><mn>2</mn></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi mathvariant="normal">Γ</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Each <math id="S3.p15.m4" class="ltx_Math" alttext="H_{i}" display="inline"><msub><mi>H</mi><mi>i</mi></msub></math> has finite index in <math id="S3.p15.m5" class="ltx_Math" alttext="\Gamma_{i}" display="inline"><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub></math>, and
+<math id="S3.p15.m6" class="ltx_Math" alttext="H_{1}\times H_{2}\subset\Gamma" display="inline"><mrow><mrow><msub><mi>H</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>H</mi><mn>2</mn></msub></mrow><mo>⊂</mo><mi mathvariant="normal">Γ</mi></mrow></math>. Let <math id="S3.p15.m7" class="ltx_Math" alttext="B^{\prime}_{i}\to B_{i}" display="inline"><mrow><msubsup><mi>B</mi><mi>i</mi><mo>′</mo></msubsup><mo stretchy="false">→</mo><msub><mi>B</mi><mi>i</mi></msub></mrow></math> be the corresponding
+unramified curve coverings. Covering-space theory gives a finite
+unramified cover
+<math id="S3.p15.m8" class="ltx_Math" alttext="p:B^{\prime}_{1}\times B^{\prime}_{2}\to X" display="inline"><mrow><mi>p</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msubsup><mi>B</mi><mn>1</mn><mo>′</mo></msubsup><mo lspace="0.222em" rspace="0.222em">×</mo><msubsup><mi>B</mi><mn>2</mn><mo>′</mo></msubsup></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> over <math id="S3.p15.m9" class="ltx_Math" alttext="B_{1}\times B_{2}" display="inline"><mrow><msub><mi>B</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>B</mi><mn>2</mn></msub></mrow></math>. It is holomorphic
+because it is locally a lift through a biholomorphic covering chart.</p>
+</div>
+<div id="S3.p16" class="ltx_para">
+<p class="ltx_p">Consider <math id="S3.p16.m1" class="ltx_Math" alttext="F=h\circ p:B^{\prime}_{1}\times B^{\prime}_{2}\to C" display="inline"><mrow><mi>F</mi><mo>=</mo><mrow><mi>h</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>p</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msubsup><mi>B</mi><mn>1</mn><mo>′</mo></msubsup><mo lspace="0.222em" rspace="0.222em">×</mo><msubsup><mi>B</mi><mn>2</mn><mo>′</mo></msubsup></mrow><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math>. The restrictions
+<math id="S3.p16.m2" class="ltx_Math" alttext="F_{x}:B^{\prime}_{2}\to C" display="inline"><mrow><msub><mi>F</mi><mi>x</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msubsup><mi>B</mi><mn>2</mn><mo>′</mo></msubsup><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math> have a common topological degree. If this degree is
+zero, every <math id="S3.p16.m3" class="ltx_Math" alttext="F_{x}" display="inline"><msub><mi>F</mi><mi>x</mi></msub></math> is constant and <math id="S3.p16.m4" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> depends only on <math id="S3.p16.m5" class="ltx_Math" alttext="x\in B^{\prime}_{1}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msubsup><mi>B</mi><mn>1</mn><mo>′</mo></msubsup></mrow></math>.
+If the degree is positive, differentiation in a vector of <math id="S3.p16.m6" class="ltx_Math" alttext="T_{x}B^{\prime}_{1}" display="inline"><mrow><msub><mi>T</mi><mi>x</mi></msub><mo>⁢</mo><msubsup><mi>B</mi><mn>1</mn><mo>′</mo></msubsup></mrow></math>
+gives a holomorphic section of <math id="S3.p16.m7" class="ltx_Math" alttext="F_{x}^{*}TC" display="inline"><mrow><msubsup><mi>F</mi><mi>x</mi><mo>∗</mo></msubsup><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mi>C</mi></mrow></math> on <math id="S3.p16.m8" class="ltx_Math" alttext="B^{\prime}_{2}" display="inline"><msubsup><mi>B</mi><mn>2</mn><mo>′</mo></msubsup></math>. Its degree is
+<math id="S3.p16.m9" class="ltx_Math" alttext="\deg(F_{x})(2-2g(C))&lt;0" display="inline"><mrow><mrow><mrow><mi>deg</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>F</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mn>0</mn></mrow></math>, so that section vanishes. This holds for every
+<math id="S3.p16.m10" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> and every such vector, hence <math id="S3.p16.m11" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is independent of the first factor.
+In either case, <math id="S3.p16.m12" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> factors through one projection.</p>
+</div>
+<div id="S3.p17" class="ltx_para">
+<p class="ltx_p">Since <math id="S3.p17.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is a local biholomorphism, this factorization implies that
+<math id="S3.p17.m2" class="ltx_Math" alttext="\mathrm{d}h" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>h</mi></mrow></math> vanishes on <math id="S3.p17.m3" class="ltx_Math" alttext="\ker\mathrm{d}f_{i}" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mi>i</mi></msub></mrow></mrow></math> for one <math id="S3.p17.m4" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>. The map <math id="S3.p17.m5" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> is therefore
+constant on every connected fibre of <math id="S3.p17.m6" class="ltx_Math" alttext="f_{i}" display="inline"><msub><mi>f</mi><mi>i</mi></msub></math>. Local holomorphic sections
+of <math id="S3.p17.m7" class="ltx_Math" alttext="f_{i}" display="inline"><msub><mi>f</mi><mi>i</mi></msub></math> give <math id="S3.p17.m8" class="ltx_Math" alttext="h=\alpha\circ f_{i}" display="inline"><mrow><mi>h</mi><mo>=</mo><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><msub><mi>f</mi><mi>i</mi></msub></mrow></mrow></math> for a holomorphic map
+<math id="S3.p17.m9" class="ltx_Math" alttext="\alpha:B_{i}\to C" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>B</mi><mi>i</mi></msub><mo stretchy="false">→</mo><mi>C</mi></mrow></mrow></math>. The map <math id="S3.p17.m10" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is nonconstant, and connectedness
+of the fibres of <math id="S3.p17.m11" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> forces <math id="S3.p17.m12" class="ltx_Math" alttext="\deg\alpha=1" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>α</mi></mrow><mo>=</mo><mn>1</mn></mrow></math>, as in
+Lemma <a href="#S2.Thmtheorem1" title="Lemma 2.1. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a>. Thus <math id="S3.p17.m13" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> and <math id="S3.p17.m14" class="ltx_Math" alttext="f_{i}" display="inline"><msub><mi>f</mi><mi>i</mi></msub></math> are equivalent.
+∎</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1. ‣ 1 Introduction ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a>.</h6>
+<div id="S3.p18" class="ltx_para">
+<p class="ltx_p">Suppose three pairwise inequivalent smooth fibrations exist. If
+<math id="S3.p18.m1" class="ltx_Math" alttext="R_{12}\neq 0" display="inline"><mrow><msub><mi>R</mi><mn>12</mn></msub><mo>≠</mo><mn>0</mn></mrow></math>, choose one of its components <math id="S3.p18.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>.
+Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1. ‣ 3 Excluding a third fibration ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a> gives two alternatives, excluded by
+Lemmas <a href="#S3.Thmtheorem2" title="Lemma 3.2. ‣ 3 Excluding a third fibration ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.2</span></a> and <a href="#S3.Thmtheorem3" title="Lemma 3.3. ‣ 3 Excluding a third fibration ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.3</span></a>. Hence <math id="S3.p18.m3" class="ltx_Math" alttext="R_{12}=0" display="inline"><mrow><msub><mi>R</mi><mn>12</mn></msub><mo>=</mo><mn>0</mn></mrow></math>.
+By Lemma <a href="#S2.Thmtheorem1" title="Lemma 2.1. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a>, <math id="S3.p18.m4" class="ltx_Math" alttext="(f_{1},f_{2})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></math> is then a finite unramified cover
+of <math id="S3.p18.m5" class="ltx_Math" alttext="B_{1}\times B_{2}" display="inline"><mrow><msub><mi>B</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>B</mi><mn>2</mn></msub></mrow></math>. Lemma <a href="#S3.Thmtheorem4" title="Lemma 3.4. ‣ 3 Excluding a third fibration ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.4</span></a> makes <math id="S3.p18.m6" class="ltx_Math" alttext="f_{3}" display="inline"><msub><mi>f</mi><mn>3</mn></msub></math> equivalent to
+one of <math id="S3.p18.m7" class="ltx_Math" alttext="f_{1},f_{2}" display="inline"><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></math>, a contradiction.
+∎</p>
+</div>
+</div>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography" style="font-size:90%;">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+M. Abate, F. Bracci, T. Suwa, and F. Tovena,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Localization of Atiyah classes</em><span class="ltx_text" style="font-size:90%;">,
+Rev. Mat. Iberoam. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">29</span><span class="ltx_text" style="font-size:90%;"> (2013), no. 2, 547–578.
+</span><a href="https://doi.org/10.4171/RMI/730" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.4171/RMI/730</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+M. F. Atiyah,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Complex analytic connections in fibre bundles</em><span class="ltx_text" style="font-size:90%;">,
+Trans. Amer. Math. Soc. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">85</span><span class="ltx_text" style="font-size:90%;"> (1957), 181–207.
+</span><a href="https://doi.org/10.1090/S0002-9947-1957-0086359-5" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1090/S0002-9947-1957-0086359-5</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+F. Catanese,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Kodaira fibrations and beyond: methods for moduli theory</em><span class="ltx_text" style="font-size:90%;">,
+Jpn. J. Math. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">12</span><span class="ltx_text" style="font-size:90%;"> (2017), no. 2, 91–174.
+</span><a href="https://doi.org/10.1007/s11537-017-1569-x" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1007/s11537-017-1569-x</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+F. Catanese and S. Rollenske,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Double Kodaira fibrations</em><span class="ltx_text" style="font-size:90%;">,
+J. Reine Angew. Math. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">628</span><span class="ltx_text" style="font-size:90%;"> (2009), 205–233.
+</span><a href="https://arxiv.org/abs/math/0611428" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:math/0611428</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib5" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+L. Chen,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">The number of fiberings of a surface bundle over a surface</em><span class="ltx_text" style="font-size:90%;">,
+Algebr. Geom. Topol. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">18</span><span class="ltx_text" style="font-size:90%;"> (2018), no. 4, 2245–2263.
+</span><a href="https://doi.org/10.2140/agt.2018.18.2245" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.2140/agt.2018.18.2245</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib6" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+K. Kodaira,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">A certain type of irregular algebraic surfaces</em><span class="ltx_text" style="font-size:90%;">,
+J. Analyse Math. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">19</span><span class="ltx_text" style="font-size:90%;"> (1967), 207–215.
+</span><a href="https://doi.org/10.1007/BF02788717" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1007/BF02788717</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib7" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+C. Llosa Isenrich and P. Py,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Mapping class groups, multiple Kodaira fibrations, and CAT(0) spaces</em><span class="ltx_text" style="font-size:90%;">,
+Math. Ann. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">380</span><span class="ltx_text" style="font-size:90%;"> (2021), no. 1–2, 449–485.
+</span><a href="https://doi.org/10.1007/s00208-020-02125-y" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1007/s00208-020-02125-y</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib8" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+N. Salter,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Surface bundles over surfaces with arbitrarily many fiberings</em><span class="ltx_text" style="font-size:90%;">,
+Geom. Topol. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">19</span><span class="ltx_text" style="font-size:90%;"> (2015), no. 5, 2901–2923.
+</span><a href="https://doi.org/10.2140/gt.2015.19.2901" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.2140/gt.2015.19.2901</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib9" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+N. Salter,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Correction to the article “Surface bundles over surfaces with
+arbitrarily many fiberings”</em><span class="ltx_text" style="font-size:90%;">,
+Geom. Topol. </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">25</span><span class="ltx_text" style="font-size:90%;"> (2021), no. 5, 2707–2711.
+</span><a href="https://doi.org/10.2140/gt.2021.25.2707" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.2140/gt.2021.25.2707</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib10" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[10]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+C. Zaal,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Explicit complete curves in the moduli space of curves of genus three</em><span class="ltx_text" style="font-size:90%;">,
+Geom. Dedicata </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">56</span><span class="ltx_text" style="font-size:90%;"> (1995), no. 2, 185–196.
+</span><a href="https://doi.org/10.1007/BF01267642" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1007/BF01267642</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+    
+</ul>
+</section>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<section id="A1" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix"><span class="ltx_tag ltx_tag_appendix">Appendix A </span>The common-tangency obstruction in coordinates</h2>
+
+<div id="A1.p1" class="ltx_para">
+<p class="ltx_p">We give a second proof of Lemma <a href="#S3.Thmtheorem3" title="Lemma 3.3. ‣ 3 Excluding a third fibration ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.3</span></a>, starting after the
+constant <math id="A1.p1.m1" class="ltx_Math" alttext="a\in\mathbb{C}\setminus\{0,1\}" display="inline"><mrow><mi>a</mi><mo>∈</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math> has been obtained. It produces
+a holomorphic connection directly on <math id="A1.p1.m2" class="ltx_Math" alttext="TD" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow></math>, rather than constructing a
+foliation and using its normal connection.</p>
+</div>
+<div id="A1.p2" class="ltx_para">
+<p class="ltx_p">In a chart write</p>
+<table id="A1.Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex20.m1" class="ltx_Math" alttext="r_{1}=x,\qquad r_{2}=x+y^{n},\qquad r_{3}=x+ay^{n}+\sum_{m&gt;n}b_{m}(x)y^{m}." display="block"><mrow><mrow><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mi>x</mi></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mrow><mi>x</mi><mo>+</mo><msup><mi>y</mi><mi>n</mi></msup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>r</mi><mn>3</mn></msub><mo>=</mo><mrow><mi>x</mi><mo>+</mo><mrow><mi>a</mi><mo>⁢</mo><msup><mi>y</mi><mi>n</mi></msup></mrow><mo rspace="0.055em">+</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>m</mi><mo>&gt;</mo><mi>n</mi></mrow></munder><mrow><msub><mi>b</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>y</mi><mi>m</mi></msup></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For an overlap with coordinate change <math id="A1.p2.m1" class="ltx_Math" alttext="x^{\prime}=\phi(x)" display="inline"><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>=</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, equation
+(<a href="#S2.E3" title="In 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>) gives</p>
+<table id="A1.Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex21.m1" class="ltx_Math" alttext="(y^{\prime})^{n}=\phi^{\prime}(x)y^{n}+\frac{1}{2}\phi^{\prime\prime}(x)y^{2n}+O(y^{3n})." display="block"><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mi>n</mi></msup><mo>=</mo><mrow><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>y</mi><mi>n</mi></msup></mrow><mo>+</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><msup><mi>ϕ</mi><mo>′′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>y</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msup></mrow><mo>+</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mrow><mn>3</mn><mo>⁢</mo><mi>n</mi></mrow></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Let <math id="A1.p2.m2" class="ltx_Math" alttext="\widetilde{b}_{m}(x^{\prime})" display="inline"><mrow><msub><mover accent="true"><mi>b</mi><mo>~</mo></mover><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> be the coefficients of <math id="A1.p2.m3" class="ltx_Math" alttext="r^{\prime}_{3}" display="inline"><msubsup><mi>r</mi><mn>3</mn><mo>′</mo></msubsup></math> in the new
+chart. Compare the coefficients of <math id="A1.p2.m4" class="ltx_Math" alttext="y^{2n}" display="inline"><msup><mi>y</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msup></math> in</p>
+<table id="A1.Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex22.m1" class="ltx_Math" alttext="x^{\prime}+a(y^{\prime})^{n}+\sum_{m&gt;n}\widetilde{b}_{m}(x^{\prime})(y^{\prime})^{m}=\phi\!\left(x+ay^{n}+\sum_{m&gt;n}b_{m}(x)y^{m}\right)." display="block"><mrow><mrow><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>+</mo><mrow><mi>a</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow><mo rspace="0.055em">+</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>m</mi><mo>&gt;</mo><mi>n</mi></mrow></munder><mrow><msub><mover accent="true"><mi>b</mi><mo>~</mo></mover><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mi>m</mi></msup></mrow></mrow></mrow><mo>=</mo><mrow><mpadded style="width:0.426em;" width="0.426em"><mi>ϕ</mi></mpadded><mo>⁡</mo><mrow><mo>(</mo><mrow><mi>x</mi><mo>+</mo><mrow><mi>a</mi><mo>⁢</mo><msup><mi>y</mi><mi>n</mi></msup></mrow><mo rspace="0.055em">+</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>m</mi><mo>&gt;</mo><mi>n</mi></mrow></munder><mrow><msub><mi>b</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>y</mi><mi>m</mi></msup></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For <math id="A1.p2.m5" class="ltx_Math" alttext="n&lt;m&lt;2n" display="inline"><mrow><mi>n</mi><mo>&lt;</mo><mi>m</mi><mo>&lt;</mo><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></mrow></math>, the first correction to the leading term of <math id="A1.p2.m6" class="ltx_Math" alttext="(y^{\prime})^{m}" display="inline"><msup><mrow><mo stretchy="false">(</mo><msup><mi>y</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mi>m</mi></msup></math>
+has order <math id="A1.p2.m7" class="ltx_Math" alttext="m+n&gt;2n" display="inline"><mrow><mrow><mi>m</mi><mo>+</mo><mi>n</mi></mrow><mo>&gt;</mo><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></mrow></math>, so these terms contribute nothing at order <math id="A1.p2.m8" class="ltx_Math" alttext="2n" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></math>.
+Terms with <math id="A1.p2.m9" class="ltx_Math" alttext="m&gt;2n" display="inline"><mrow><mi>m</mi><mo>&gt;</mo><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></mrow></math> also contribute nothing. Thus</p>
+<table id="A1.Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex23.m1" class="ltx_Math" alttext="\frac{a}{2}\phi^{\prime\prime}(x)+\widetilde{b}_{2n}(\phi(x))\phi^{\prime}(x)^{2}=\phi^{\prime}(x)b_{2n}(x)+\frac{a^{2}}{2}\phi^{\prime\prime}(x)," display="block"><mrow><mrow><mrow><mrow><mfrac><mi>a</mi><mn>2</mn></mfrac><mo>⁢</mo><msup><mi>ϕ</mi><mo>′′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msub><mover accent="true"><mi>b</mi><mo>~</mo></mover><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>b</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mfrac><msup><mi>a</mi><mn>2</mn></msup><mn>2</mn></mfrac><mo>⁢</mo><msup><mi>ϕ</mi><mo>′′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">or equivalently</p>
+<table id="A1.E7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.E7.m1" class="ltx_Math" alttext="\widetilde{b}_{2n}(\phi(x))\phi^{\prime}(x)^{2}=\phi^{\prime}(x)b_{2n}(x)+\frac{a^{2}-a}{2}\phi^{\prime\prime}(x)." display="block"><mrow><mrow><mrow><msub><mover accent="true"><mi>b</mi><mo>~</mo></mover><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mrow><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>b</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mi>a</mi></mrow><mn>2</mn></mfrac><mo>⁢</mo><msup><mi>ϕ</mi><mo>′′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The root-of-unity factor in the change of normal coordinate has no
+effect on this identity, since it is raised to the power <math id="A1.p2.m10" class="ltx_Math" alttext="2n" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></math>.</p>
+</div>
+<div id="A1.p3" class="ltx_para">
+<p class="ltx_p">Define a holomorphic function in each chart by</p>
+<table id="A1.Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex24.m1" class="ltx_Math" alttext="\Gamma_{x}=-\frac{2b_{2n}(x)}{a^{2}-a}." display="block"><mrow><mrow><msub><mi mathvariant="normal">Γ</mi><mi>x</mi></msub><mo>=</mo><mrow><mo>−</mo><mfrac><mrow><mn>2</mn><mo>⁢</mo><msub><mi>b</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mi>a</mi></mrow></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Equation (<a href="#A1.E7" title="In Appendix A The common-tangency obstruction in coordinates ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>) becomes</p>
+<table id="A1.Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex25.m1" class="ltx_Math" alttext="\Gamma_{x^{\prime}}(\phi(x))\phi^{\prime}(x)^{2}=\phi^{\prime}(x)\Gamma_{x}(x)-\phi^{\prime\prime}(x)." display="block"><mrow><mrow><mrow><msub><mi mathvariant="normal">Γ</mi><msup><mi>x</mi><mo>′</mo></msup></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ϕ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mrow><mrow><msup><mi>ϕ</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi mathvariant="normal">Γ</mi><mi>x</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msup><mi>ϕ</mi><mo>′′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This is the compatibility condition for the local connections</p>
+<table id="A1.Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex26.m1" class="ltx_math_unparsed" alttext="\nabla_{\partial_{x}}\partial_{x}=\Gamma_{x}\partial_{x}." display="block"><mrow><mo>∇</mo><msub><mrow></mrow><msub><mo>∂</mo><mi>x</mi></msub></msub><mo>∂</mo><msub><mrow></mrow><mi>x</mi></msub><mo>=</mo><mi mathvariant="normal">Γ</mi><msub><mrow></mrow><mi>x</mi></msub><mo lspace="0em">∂</mo><msub><mrow></mrow><mi>x</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Indeed, <math id="A1.p3.m1" class="ltx_math_unparsed" alttext="\partial_{x^{\prime}}=(\phi^{\prime})^{-1}\partial_{x}" display="inline"><mrow><msub><mo>∂</mo><msup><mi>x</mi><mo>′</mo></msup></msub><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><msup><mi>ϕ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mo lspace="0em">∂</mo><mi>x</mi></msub></mrow></math>, and the Leibniz rule
+gives precisely the displayed transformation law. The local
+connections therefore glue to a holomorphic connection on <math id="A1.p3.m2" class="ltx_Math" alttext="TD" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mi>D</mi></mrow></math>.
+Lemma <a href="#S2.Thmtheorem2" title="Lemma 2.2. ‣ 2 Ramification and hyperbolic metrics ‣ At most two smooth holomorphic fibrationsover hyperbolic curves" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a> would imply <math id="A1.p3.m3" class="ltx_Math" alttext="\deg TD=0" display="inline"><mrow><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow><mo>⁢</mo><mi>D</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>, whereas
+<math id="A1.p3.m4" class="ltx_Math" alttext="\deg TD=2-2g(D)&lt;0" display="inline"><mrow><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow><mo>⁢</mo><mi>D</mi></mrow><mo>=</mo><mrow><mn>2</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>&lt;</mo><mn>0</mn></mrow></math>. This proves the required contradiction.</p>
+</div>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="At most two smooth holomorphic fibrations over hyperbolic curves"></div>
+
+</article>
+{% endraw %}

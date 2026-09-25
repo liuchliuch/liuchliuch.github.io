@@ -1,10 +1,12 @@
 # Repository entries are displayed in this order; prepend new batches.
 # Titles and abstracts follow the PDFs. Reference numbers refer to each PDF.
 # added is the repository inclusion date, not a publication or acceptance date.
+# slug is the permanent URL segment for the full-text HTML page.
 # Use inline $$...$$ for math in abstracts and a site-relative or HTTPS PDF URL.
 # Use \lvert and \rvert for absolute values; bare | can trigger Markdown tables.
 papers:
   - title: "Boundary reduction for growth-optimal e-variables: a Gaussian theorem and a finite counterexample"
+    slug: "boundary-reduction-for-growth-optimal-e-variables-a-gaussian-theorem-and-a-finite-counterexample"
     pdf: "/files/repository/BRG-boundary_reduction_for_growth_optimal_e_variables_a_gaussian_theorem_and_a_finite_counterexample.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -25,6 +27,7 @@ papers:
       convexity, connectedness, or smoothness assumptions on the excluded region.
 
   - title: "A tractable streaming moment with square-root cancellation cost in symmetric Lévy decompositions"
+    slug: "a-tractable-streaming-moment-with-square-root-cancellation-cost-in-symmetric-levy-decompositions"
     pdf: "/files/repository/CFHL-a_tractable_streaming_moment_with_square_root_cancellation_cost_in_symmetric_levy_decompositions.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -45,6 +48,7 @@ papers:
       parts.
 
   - title: "Exact semidegree extraction from minimum outdegree"
+    slug: "exact-semidegree-extraction-from-minimum-outdegree"
     pdf: "/files/repository/DSE-exact_semidegree_extraction_from_minimum_outdegree.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -62,6 +66,7 @@ papers:
       which the total capacity condition is also sufficient.
 
   - title: "Copies of \\(K_{4,4}\\) in \\(K_{3,5}\\)-free graphs"
+    slug: "copies-of-k4-4-in-k3-5-free-graphs"
     pdf: "/files/repository/EKC-copies_of_k4_4_in_k3_5_free_graphs.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -79,6 +84,7 @@ papers:
       of the counted $$K_{4,4}$$'s.
 
   - title: "Exact Las Vegas query costs for purification with state-generating oracles"
+    slug: "exact-las-vegas-query-costs-for-purification-with-state-generating-oracles"
     pdf: "/files/repository/ELV-exact_las_vegas_query_costs_for_purification_with_state_generating_oracles.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -99,6 +105,7 @@ papers:
       earlier reciprocal-rescaling construction.
 
   - title: "The logarithmic cost of componentwise constraints in finite de Finetti approximation"
+    slug: "the-logarithmic-cost-of-componentwise-constraints-in-finite-de-finetti-approximation"
     pdf: "/files/repository/LDB-the_logarithmic_cost_of_componentwise_constraints_in_finite_de_finetti_approximation.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -118,6 +125,7 @@ papers:
       n/s\rfloor$$, independently of output-alphabet sizes.
 
   - title: "Optimal uniform sampling for stable geometric median coresets"
+    slug: "optimal-uniform-sampling-for-stable-geometric-median-coresets"
     pdf: "/files/repository/OSG-optimal_uniform_sampling_for_stable_geometric_median_coresets.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -139,6 +147,7 @@ papers:
       2026).
 
   - title: "A deterministic FPTAS for weakly interacting continuous factor models"
+    slug: "a-deterministic-fptas-for-weakly-interacting-continuous-factor-models"
     pdf: "/files/repository/RQE-a_deterministic_fptas_for_weakly_interacting_continuous_factor_models.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -160,6 +169,7 @@ papers:
       $$n$$ is the number of variables and $$\varepsilon$$ the relative accuracy.
 
   - title: "The Griffiths exponent of random-field Ising dynamics at strong Gaussian disorder"
+    slug: "the-griffiths-exponent-of-random-field-ising-dynamics-at-strong-gaussian-disorder"
     pdf: "/files/repository/SGE-the_griffiths_exponent_of_random_field_ising_dynamics_at_strong_gaussian_disorder.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -181,6 +191,7 @@ papers:
       censoring. In dimension two, the pure-model hypothesis holds for every $$\beta>\beta_c(2)$$.
 
   - title: "Strong average self-concordance of the log-determinant metric at linear scale"
+    slug: "strong-average-self-concordance-of-the-log-determinant-metric-at-linear-scale"
     pdf: "/files/repository/SLS-strong_average_self_concordance_of_the_log_determinant_metric_at_linear_scale.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -200,6 +211,7 @@ papers:
       strong average self-concordance simultaneously.
 
   - title: "Uniform complex border-rank bounds from all-cut Schmidt ranks"
+    slug: "uniform-complex-border-rank-bounds-from-all-cut-schmidt-ranks"
     pdf: "/files/repository/UBR-uniform_complex_border_rank_bounds_from_all_cut_schmidt_ranks.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -216,6 +228,7 @@ papers:
       give border-rank degenerations of size independent of the product length.
 
   - title: "Exact universality of symmetric quantum circuits for arbitrary permutation actions"
+    slug: "exact-universality-of-symmetric-quantum-circuits-for-arbitrary-permutation-actions"
     pdf: "/files/repository/UPA-exact_universality_of_symmetric_quantum_circuits_for_arbitrary_permutation_actions.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -235,6 +248,7 @@ papers:
       the target global phase.
 
   - title: "Exponential Lie-algebra gaps for QAOA-MaxCut on asymmetric graphs"
+    slug: "exponential-lie-algebra-gaps-for-qaoa-maxcut-on-asymmetric-graphs"
     pdf: "/files/repository/USG-exponential_lie_algebra_gaps_for_qaoa_maxcut_on_asymmetric_graphs.pdf"
     added: "2026-09-24"
     abstract: >-
@@ -255,6 +269,7 @@ papers:
       polynomial-gap formulation of Kazi et al. (PRX Quantum 2025).
 
   - title: "Strong mixing of the Boca-Cobeli-Zaharescu map"
+    slug: "strong-mixing-bcz-map"
     pdf: "/files/repository/BCZM-strong_mixing_of_the_boca_cobeli_zaharescu_map.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -273,6 +288,7 @@ papers:
       auxiliary torus, and a summable bound for the remaining prime divisors.
 
   - title: "An exact classical threshold in the binary triangle network"
+    slug: "an-exact-classical-threshold-in-the-binary-triangle-network"
     pdf: "/files/repository/BTT-an_exact_classical_threshold_in_the_binary_triangle_network.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -294,6 +310,7 @@ papers:
       certificate files.
 
   - title: "Counter-Free Higher-Dimensional Automata for First-Order Interval-Pomset Languages"
+    slug: "counter-free-higher-dimensional-automata-for-first-order-interval-pomset-languages"
     pdf: "/files/repository/CFHA-counter_free_higher_dimensional_automata_for_first_order_interval_pomset_languages.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -314,6 +331,7 @@ papers:
       realisation.
 
   - title: "The space of Delzant polytopes is an absolute retract"
+    slug: "the-space-of-delzant-polytopes-is-an-absolute-retract"
     pdf: "/files/repository/DAR-the_space_of_delzant_polytopes_is_an_absolute_retract.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -334,6 +352,7 @@ papers:
       metric moduli spaces of symplectic toric manifolds with fixed torus and specified moment maps.
 
   - title: "Galois-modular extensions for Tannakian centers with prescribed spherical structure"
+    slug: "galois-modular-extensions-for-tannakian-centers-with-prescribed-spherical-structure"
     pdf: "/files/repository/GME-galois_modular_extensions_for_tannakian_centers_with_prescribed_spherical_structure.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -353,6 +372,7 @@ papers:
       shows why the prescribed spherical structure need not extend to a fixed ambient category.
 
   - title: "Highness for isomorphism at Scott rank \\(\\omega_1^{\\mathrm{CK}}\\)"
+    slug: "highness-for-isomorphism-at-scott-rank-omega-1-ck"
     pdf: "/files/repository/HSR-highness_for_isomorphism_at_scott_rank_omega_1_ck.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -371,6 +391,7 @@ papers:
       the highness equivalence uses the usual nonuniform convention.
 
   - title: "Counterexamples to log-concavity of local BPS invariants"
+    slug: "counterexamples-to-log-concavity-of-local-bps-invariants"
     pdf: "/files/repository/LBPS-counterexamples_to_log_concavity_of_local_bps_invariants.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -390,6 +411,7 @@ papers:
       included in full.
 
   - title: "Minimax Estimation of the Pseudo-Spectral Gap at Arbitrary Relative Precision"
+    slug: "minimax-estimation-of-the-pseudo-spectral-gap-at-arbitrary-relative-precision"
     pdf: "/files/repository/MPSG-minimax_estimation_of_the_pseudo_spectral_gap_at_arbitrary_relative_precision.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -412,6 +434,7 @@ papers:
       lagged estimates can be combined without additional inverse-gap factors.
 
   - title: "Non-signaling reliability of classical-quantum channels with full-rank outputs"
+    slug: "non-signaling-reliability-of-classical-quantum-channels-with-full-rank-outputs"
     pdf: "/files/repository/NSR-non_signaling_reliability_of_classical_quantum_channels_with_full_rank_outputs.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -434,6 +457,7 @@ papers:
       assisted models with exactly $$\lceil2^{nR}\rceil$$ messages.
 
   - title: "Order-six torsion in an ordered graph configuration space"
+    slug: "order-six-torsion-in-an-ordered-graph-configuration-space"
     pdf: "/files/repository/OGT-order_six_torsion_in_an_ordered_graph_configuration_space.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -452,6 +476,7 @@ papers:
       cocycle condition on every labelled three-dimensional cube.
 
   - title: "The query complexity of uniformity testing with purified unitary access"
+    slug: "the-query-complexity-of-uniformity-testing-with-purified-unitary-access"
     pdf: "/files/repository/PUT-the_query_complexity_of_uniformity_testing_with_purified_unitary_access.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -471,6 +496,7 @@ papers:
       The resulting full-operator norm estimate yields both branches of the lower bound.
 
   - title: "One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements"
+    slug: "one-clean-qubit-simulation-of-quantum-catalytic-logspace-with-measurements"
     pdf: "/files/repository/QCL-one_clean_qubit_simulation_of_quantum_catalytic_logspace_with_measurements.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -492,6 +518,7 @@ papers:
       inverse-polynomial loss in bias.
 
   - title: "Rank-dependent lower bounds for quantum chi-squared tomography"
+    slug: "rank-dependent-lower-bounds-for-quantum-chi-squared-tomography"
     pdf: "/files/repository/QCT-rank_dependent_lower_bounds_for_quantum_chi_squared_tomography.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -513,6 +540,7 @@ papers:
       chi-squared loss.
 
   - title: "At most two smooth holomorphic fibrations over hyperbolic curves"
+    slug: "at-most-two-smooth-holomorphic-fibrations-over-hyperbolic-curves"
     pdf: "/files/repository/SHF-at_most_two_smooth_holomorphic_fibrations_over_hyperbolic_curves.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -532,6 +560,7 @@ papers:
       factorization through a finite product cover.
 
   - title: "Additivity of spherical volume under free products in dimensions at least four"
+    slug: "additivity-of-spherical-volume-under-free-products-in-dimensions-at-least-four"
     pdf: "/files/repository/SVA-additivity_of_spherical_volume_under_free_products_in_dimensions_at_least_four.pdf"
     added: "2026-09-19"
     abstract: >-
@@ -549,6 +578,7 @@ papers:
       statements hold in the presence of finite stabilizers and preserve integer multiplicities.
 
   - title: "Near-Optimal Label Complexity for Active Huber Regression"
+    slug: "near-linear-label-complexity-for-active-huber-regression"
     pdf: "/files/repository/AHR-near_linear_label_complexity_for_active_huber_regression.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -571,6 +601,7 @@ papers:
       near-linear design sparsification into a near-optimal active algorithm.
 
   - title: "Minimax Calibration Distance under Simultaneous Play"
+    slug: "deterministic-adversarial-calibration-distance"
     pdf: "/files/repository/DAC-deterministic_adversarial_calibration_distance.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -593,6 +624,7 @@ papers:
       outcome string remains open.
 
   - title: "Dimension-Free Gradient-Norm Minimization in ℓₚ and Schatten-p Spaces"
+    slug: "dimension-free-small-gradients-in-ell-p-geometry"
     pdf: "/files/repository/DFSG-dimension_free_small_gradients_in_ell_p_geometry.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -616,6 +648,7 @@ papers:
       assumption.
 
   - title: "Nonminimizing Limits of Noisy Clarke Subgradient Descent"
+    slug: "counterexample-to-generic-convergence-to-local-minima"
     pdf: "/files/repository/GCLM-counterexample_to_generic_convergence_to_local_minima.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -638,6 +671,7 @@ papers:
       not suffice to guarantee local-minimum convergence for this recursion.
 
   - title: "Exact Coverage Frontiers for Multi-Environment Jackknife+"
+    slug: "exact-rank-frontier-for-multi-environment-jackknife-plus"
     pdf: "/files/repository/MEJF-exact_rank_frontier_for_multi_environment_jackknife_plus.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -662,6 +696,7 @@ papers:
       calibrated endpoint quantiles.
 
   - title: "Scale-Independent Robust Multivariate Polynomial Regression"
+    slug: "optimal-sample-scale-independent-robust-multivariate-polynomial-regression"
     pdf: "/files/repository/OSR-optimal_sample_scale_independent_robust_multivariate_polynomial_regression.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -685,6 +720,7 @@ papers:
       least-absolute-deviations initializer followed by fixed-budget median refinements.
 
   - title: "Sharp Rank Laws for Maxout Switch Density"
+    slug: "rank-linear-knot-density-for-maxout"
     pdf: "/files/repository/RKM-rank_linear_knot_density_for_maxout.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -708,6 +744,7 @@ papers:
       networks.
 
   - title: "Anytime Posterior Sampling under Nested CVaR Constraints"
+    slug: "sparse-calibration-for-dynamic-cvar-constraints"
     pdf: "/files/repository/SCPS-sparse_calibration_for_dynamic_cvar_constraints.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -732,6 +769,7 @@ papers:
       fixed rational tail mass in $$(0,1)$$.
 
   - title: "Rate-Optimal Polynomial-Time Prediction of Stationary Renewal Processes"
+    slug: "sharp-polynomial-time-renewal-prediction"
     pdf: "/files/repository/SRP-sharp_polynomial_time_renewal_prediction.pdf"
     added: "2026-09-07"
     abstract: >-
@@ -754,6 +792,7 @@ papers:
       changes the integrated minimax risk to the nonvanishing value $$\log2$$.
 
   - title: "Uniform-in-Time Particle Convergence for Projected Gaussian SVGD"
+    slug: "uniform-in-time-particle-convergence-for-gaussian-svgd"
     pdf: "/files/repository/UIP-uniform_in_time_particle_convergence_for_gaussian_svgd.pdf"
     added: "2026-09-07"
     abstract: >-

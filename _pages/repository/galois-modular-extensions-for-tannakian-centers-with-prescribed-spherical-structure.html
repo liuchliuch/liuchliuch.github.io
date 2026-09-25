@@ -1,0 +1,1182 @@
+---
+layout: "repository-paper"
+title: "Galois–modular extensions for Tannakian centers with prescribed spherical structure"
+repository_title_html: "Galois–modular extensions for Tannakian centers\n<br class=\"ltx_break\">with prescribed spherical structure"
+description: "We prove that every premodular fusion category over C whose Müger center is Tannakian admits a fully faithful braided spherical embedding into a modular fusion category with integral centralizer. The spherical structure"
+permalink: "/repository/galois-modular-extensions-for-tannakian-centers-with-prescribed-spherical-structure/"
+pdf: "/files/repository/GME-galois_modular_extensions_for_tannakian_centers_with_prescribed_spherical_structure.pdf"
+repository_added: "2026-09-19"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-section"><a href="#S2">2 Spherical extension over Rep⁡(Z/2)</a></li>
+<li class="repository-toc-section"><a href="#S3">3 Construction of the Galois–modular extension</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+<li class="repository-toc-appendix"><a href="#A1">Appendix A Extending a pivotal structure with fixed boundary</a></li>
+<li class="repository-toc-appendix"><a href="#A2">Appendix B A pointed obstruction in a fixed extension</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line" lang="en">
+<h1 class="ltx_title ltx_title_document">Galois–modular extensions for Tannakian centers
+<br class="ltx_break">with prescribed spherical structure</h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">We prove that every premodular fusion category over <math id="abstract1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math> whose Müger
+center is Tannakian admits a fully faithful braided spherical embedding
+into a modular fusion category with integral centralizer. The spherical
+structure is prescribed and need not be positive on the center.
+Consequently, the embedded simple objects form a union of Galois orbits.
+This removes the pseudounitarity assumption from the Tannakian-center
+case of the extension theorem of Johnson–Freyd (arXiv, 2026).
+The spherical extension step concerns a transparent order-two object
+with trivial self-braiding and categorical dimension <math id="abstract1.m2" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>: every minimal
+nondegenerate extension admits a spherical structure extending the given
+one. We combine fixed-boundary extension theory with the twist constraint
+of Lacabanne (IMRN, 2021) for nondegenerate pivotal categories, which
+excludes the only possible nontrivial pivotal slope. Applying this result
+to a sphericalization yields a modular ambient category with weakly
+integral centralizer. We then use the sign character comparing its
+inherited and positive spherical structures to obtain integrality,
+either directly through a grading or after diagonal condensation.
+A pointed example shows why the prescribed spherical structure need
+not extend to a fixed ambient category.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">A modular extension of a premodular fusion category retains its braiding
+and spherical traces while placing it inside a category with nondegenerate
+modular data. The centralizer of the embedded category measures the
+complement introduced by the extension. Minimal extensions require this
+centralizer to be no larger than the original Müger center. The
+Galois–modular extension problem instead asks for an integral
+centralizer, allowing a larger ambient category in exchange for control
+of its arithmetic.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">The connection with Galois theory is precise. Plavnik, Schopieray, Yu,
+and Zhang <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>]</cite> prove that a fusion subcategory of a modular category
+is closed under the Galois action on simple objects if and only if its
+centralizer is integral. Thus an embedding with integral centralizer
+realizes the given simple objects as a union of ambient Galois orbits.
+Schopieray’s conjecture, as formulated in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite>, asks whether every
+premodular fusion category admits such an extension.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Johnson–Freyd <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite> proves the conjecture for pseudounitary braided
+fusion categories equipped with their positive spherical structures.
+For a Tannakian center, his Proposition 2.3 already supplies a
+nondegenerate braided extension with integral centralizer without
+assuming pseudounitarity. The remaining issue is spherical: that
+extension need not come with a spherical structure restricting to the
+one specified on the original category. Even when a specified structure
+extends pivotally, the extension need not be spherical. Our result
+resolves this issue for Tannakian centers.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">Throughout, fusion categories and tensor functors are over <math id="S1.p4.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math>.
+A <em class="ltx_emph ltx_font_italic">premodular</em> category is a braided fusion category equipped with
+a specified spherical structure; it is <em class="ltx_emph ltx_font_italic">modular</em> if its Müger
+center is trivial. We write <math id="S1.p4.m2" class="ltx_Math" alttext="\mathcal{Z}_{2}(\mathcal{C})" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></math> for the Müger
+center and <math id="S1.p4.m3" class="ltx_Math" alttext="\mathcal{D}^{\prime}_{\mathcal{C}}" display="inline"><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo>′</mo></msubsup></math> for the centralizer of a fusion
+subcategory <math id="S1.p4.m4" class="ltx_Math" alttext="\mathcal{D}\subseteq\mathcal{C}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>⊆</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></mrow></math>. A fusion category is
+<em class="ltx_emph ltx_font_italic">integral</em> if all its simple objects have integer
+Frobenius–Perron dimensions, and <em class="ltx_emph ltx_font_italic">weakly integral</em> if its total
+Frobenius–Perron dimension is an integer.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> be a premodular fusion category with a specified
+spherical structure, and suppose that</span></p>
+<table id="S1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex1.m1" class="ltx_Math" alttext="\mathcal{Z}_{2}(\mathcal{B})\simeq\Rep(G)" display="block"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≃</mo><mrow><mi>Rep</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">as braided fusion categories, for a finite group <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>. There exist a
+modular fusion category <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{M}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi></math> and a fully faithful braided
+spherical tensor functor</span></p>
+<table id="S1.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex2.m1" class="ltx_Math" alttext="\mathcal{B}\hookrightarrow\mathcal{M}" display="block"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">↪</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">such that <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mathcal{B}^{\prime}_{\mathcal{M}}" display="inline"><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>′</mo></msubsup></math> is integral.</span></p>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">The equivalence with <math id="S1.p5.m1" class="ltx_Math" alttext="\Rep(G)" display="inline"><mrow><mi>Rep</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math> concerns the braiding, not the spherical
+structure: no positivity is assumed on the center. The resulting
+extension is not required to be minimal. By the criterion
+of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>]</cite>, the image of <math id="S1.p5.m2" class="ltx_Math" alttext="\Irr(\mathcal{B})" display="inline"><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a union of Galois
+orbits in <math id="S1.p5.m3" class="ltx_Math" alttext="\Irr(\mathcal{M})" display="inline"><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">The key extension result is Proposition <a href="#S2.Thmtheorem2" title="Proposition 2.2. ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>. If the
+entire center is generated by an order-two object <math id="S1.p6.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> with trivial
+self-braiding and dimension <math id="S1.p6.m2" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>, then every minimal nondegenerate
+extension supports the specified spherical structure. There are two
+separate ingredients. Fixed-boundary extension theory extends the
+specified pivotal structure, including its identification on the
+subcategory. Lacabanne’s twist constraint <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>, Proposition 2.21]</cite>
+excludes the nontrivial central object as a possible pivotal slope,
+so this extension is spherical.</p>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">Sphericalization reduces the general construction to this order-two
+case, but enlarges the integral centralizer to a weakly integral one.
+The latter has both an inherited spherical structure and a canonical
+positive spherical structure. Their ratio is a sign character.
+When this character is trivial on the common Tannakian center, it
+produces an invertible object in the odd component of a grading,
+forcing integrality. Otherwise, its positive kernel can be matched
+with a pseudounitary Galois–modular extension. Diagonal condensation
+then produces an integral centralizer while leaving the prescribed
+structure on <math id="S1.p7.m1" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> unchanged. Appendix <a href="#A2" title="Appendix B A pointed obstruction in a fixed extension ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">B</span></a>
+illustrates why changing the ambient extension can be necessary.</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">We use the centralizer and double-centralizer results
+of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib7" title="" class="ltx_ref">7</a>, <a href="#bib.bib2" title="" class="ltx_ref">2</a>]</cite>, and the fusion-category conventions
+of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, <a href="#bib.bib2" title="" class="ltx_ref">2</a>]</cite>. The symbols <math id="S1.p8.m1" class="ltx_Math" alttext="\Irr(\mathcal{C})" display="inline"><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></math> and
+<math id="S1.p8.m2" class="ltx_Math" alttext="\Inv(\mathcal{C})" display="inline"><mrow><mi>Inv</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></math> denote, respectively, the isomorphism classes of
+simple and invertible objects. We identify a fusion category with the
+image of a fully faithful tensor functor when no confusion can arise.
+For a spherical braided category, <math id="S1.p8.m3" class="ltx_Math" alttext="\mathcal{C}^{\mathrm{rev}}" display="inline"><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mi>rev</mi></msup></math> has the reversed
+braiding, the same spherical structure, and inverse twist.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>Spherical extension over
+<math id="S2.m1" class="ltx_Math" alttext="\Rep(\mathbb{Z}/2)" display="inline"><mrow><mi>Rep</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math></h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">The obstruction to sphericality of a pivotal structure is its slope.
+In a nondegenerate braided fusion category, the slope is represented
+by monodromy with an invertible object. The following reformulation
+of Lacabanne’s result constrains the twist of that object.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Lacabanne)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></math> be a nondegenerate braided fusion category with a
+pivotal structure <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math> and associated balancing <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\theta" display="inline"><mi>θ</mi></math>. For
+<math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="X\in\Irr(\mathcal{C})" display="inline"><mrow><mi>X</mi><mo>∈</mo><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, put</span></p>
+<table id="S2.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex1.m1" class="ltx_Math" alttext="d_{X}=\dim_{R}^{j}(X),\qquad n_{X}=d_{X}d_{X^{*}},\qquad\gamma_{X}=\frac{d_{X}}{d_{X^{*}}}." display="block"><mrow><mrow><mrow><msub><mi>d</mi><mi>X</mi></msub><mo rspace="0.1389em">=</mo><mrow><msubsup><mo lspace="0.1389em" rspace="0em">dim</mo><mi>R</mi><mi>j</mi></msubsup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>n</mi><mi>X</mi></msub><mo>=</mo><mrow><msub><mi>d</mi><mi>X</mi></msub><mo>⁢</mo><msub><mi>d</mi><msup><mi>X</mi><mo>∗</mo></msup></msub></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>γ</mi><mi>X</mi></msub><mo>=</mo><mfrac><msub><mi>d</mi><mi>X</mi></msub><msub><mi>d</mi><msup><mi>X</mi><mo>∗</mo></msup></msub></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The scalars <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\gamma_{X}" display="inline"><msub><mi>γ</mi><mi>X</mi></msub></math> define a tensor automorphism of
+<math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\id_{\mathcal{C}}" display="inline"><msub><mi>id</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></msub></math>. There is a unique <math id="S2.Thmtheorem1.p1.m7" class="ltx_Math" alttext="t\in\Inv(\mathcal{C})" display="inline"><mrow><mi>t</mi><mo>∈</mo><mrow><mi>Inv</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> such that</span></p>
+<table id="S2.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E1.m1" class="ltx_Math" alttext="c_{X,t}c_{t,X}=\gamma_{X}\id_{t\otimes X}\qquad\text{for every simple }X," display="block"><mrow><mrow><mrow><mrow><msub><mi>c</mi><mrow><mi>X</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>⁢</mo><msub><mi>c</mi><mrow><mi>t</mi><mo>,</mo><mi>X</mi></mrow></msub></mrow><mo>=</mo><mrow><msub><mi>γ</mi><mi>X</mi></msub><mo lspace="0.167em">⁢</mo><msub><mi>id</mi><mrow><mi>t</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></msub></mrow></mrow><mspace style="width:2.167em;" width="2.167em"></mspace><mrow><mtext class="ltx_mathvariant_italic">for every simple </mtext><mo>⁢</mo><mi>X</mi></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2.1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">and</span></p>
+<table id="S2.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E2.m1" class="ltx_Math" alttext="\theta_{t^{-1}}=1." display="block"><mrow><mrow><msub><mi>θ</mi><msup><mi>t</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></msub><mo>=</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2.2)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p2.m1" class="ltx_math_unparsed" alttext="\delta:\id\to(-)^{****}" display="inline"><mrow><mi>δ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>id</mi><mo stretchy="false">→</mo><msup><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow><mrow><mo rspace="0em">∗</mo><mo lspace="0em" rspace="0em">∗</mo><mo lspace="0em" rspace="0em">∗</mo><mo lspace="0em">∗</mo></mrow></msup></mrow></math> be the canonical Radford isomorphism.
+The pivotal slope is the tensor automorphism
+<math id="S2.p2.m2" class="ltx_Math" alttext="\delta^{-1}j^{**}j" display="inline"><mrow><msup><mi>δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msup><mi>j</mi><mrow><mo>∗</mo><mo lspace="0em">⁣</mo><mo>∗</mo></mrow></msup><mo>⁢</mo><mi>j</mi></mrow></math>, whose scalar on a simple object is <math id="S2.p2.m3" class="ltx_Math" alttext="\gamma_{X}" display="inline"><msub><mi>γ</mi><mi>X</mi></msub></math>.
+Nondegeneracy gives the monodromy isomorphism</p>
+<table id="S2.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E3.m1" class="ltx_Math" alttext="\Inv(\mathcal{C})\simeq\Aut_{\otimes}(\id_{\mathcal{C}})." display="block"><mrow><mrow><mrow><mi>Inv</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≃</mo><mrow><msub><mi>Aut</mi><mo>⊗</mo></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>id</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2.3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Indeed, under the factorization equivalence
+<math id="S2.p2.m4" class="ltx_Math" alttext="\mathcal{C}\boxtimes\mathcal{C}^{\mathrm{rev}}\simeq\mathcal{Z}(\mathcal{C})" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mi>rev</mi></msup></mrow><mo>≃</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+the tensor unit with a half-braiding pulls back to a pair
+<math id="S2.p2.m5" class="ltx_Math" alttext="(t,t^{-1})" display="inline"><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>t</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo></mrow></math> of invertible objects. The half-braiding corresponds to
+monodromy with <math id="S2.p2.m6" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>. This proves the existence and uniqueness in
+(<a href="#S2.E1" title="In Lemma 2.1 (Lacabanne). ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a>). The argument for
+(<a href="#S2.E3" title="In 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3</span></a>) does not use a pivotal structure.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">For completeness, we give a Gauss-sum proof of
+(<a href="#S2.E2" title="In Lemma 2.1 (Lacabanne). ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>). The pivotal Hopf-link matrix</p>
+<table id="S2.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex2.m1" class="ltx_Math" alttext="S_{XY}=\operatorname{tr}_{R}^{j}(c_{Y,X}c_{X,Y})" display="block"><mrow><msub><mi>S</mi><mrow><mi>X</mi><mo>⁢</mo><mi>Y</mi></mrow></msub><mo>=</mo><mrow><msubsup><mi>tr</mi><mi>R</mi><mi>j</mi></msubsup><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>c</mi><mrow><mi>Y</mi><mo>,</mo><mi>X</mi></mrow></msub><mo>⁢</mo><msub><mi>c</mi><mrow><mi>X</mi><mo>,</mo><mi>Y</mi></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">is invertible, and</p>
+<table id="S2.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E4.m1" class="ltx_Math" alttext="\theta_{X^{*}}=\theta_{X}\gamma_{X}^{-1};" display="block"><mrow><mrow><msub><mi>θ</mi><msup><mi>X</mi><mo>∗</mo></msup></msub><mo>=</mo><mrow><msub><mi>θ</mi><mi>X</mi></msub><mo>⁢</mo><msubsup><mi>γ</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow></mrow><mo>;</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2.4)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">these statements do not require sphericality
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>, Propositions 2.10 and 2.17]</cite>. Set</p>
+<table id="S2.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex3.m1" class="ltx_Math" alttext="\tau=\sum_{X\in\Irr(\mathcal{C})}\theta_{X}n_{X}." display="block"><mrow><mrow><mi>τ</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>X</mi><mo>∈</mo><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></munder><mrow><msub><mi>θ</mi><mi>X</mi></msub><mo>⁢</mo><msub><mi>n</mi><mi>X</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Writing <math id="S2.p3.m1" class="ltx_Math" alttext="N_{XY}^{Z}=\dim\Hom(Z,X\otimes Y)" display="inline"><mrow><msubsup><mi>N</mi><mrow><mi>X</mi><mo>⁢</mo><mi>Y</mi></mrow><mi>Z</mi></msubsup><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo>,</mo><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>Y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>, the balancing formula
+and Frobenius reciprocity give</p>
+<table id="S2.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S2.Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex4.m1" class="ltx_Math" alttext="\displaystyle\sum_{X}\theta_{X}d_{X^{*}}S_{XY}" display="inline"><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>X</mi></munder></mstyle><mrow><msub><mi>θ</mi><mi>X</mi></msub><mo>⁢</mo><msub><mi>d</mi><msup><mi>X</mi><mo>∗</mo></msup></msub><mo>⁢</mo><msub><mi>S</mi><mrow><mi>X</mi><mo>⁢</mo><mi>Y</mi></mrow></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex4.m2" class="ltx_Math" alttext="\displaystyle=\theta_{Y}^{-1}\sum_{Z}\theta_{Z}d_{Z}\sum_{X}N_{XY}^{Z}d_{X^{*}}" display="inline"><mrow><mphantom></mphantom><mo>=</mo><mrow><msubsup><mi>θ</mi><mi>Y</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>Z</mi></munder></mstyle><mrow><msub><mi>θ</mi><mi>Z</mi></msub><mo>⁢</mo><msub><mi>d</mi><mi>Z</mi></msub><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>X</mi></munder></mstyle><mrow><msubsup><mi>N</mi><mrow><mi>X</mi><mo>⁢</mo><mi>Y</mi></mrow><mi>Z</mi></msubsup><mo>⁢</mo><msub><mi>d</mi><msup><mi>X</mi><mo>∗</mo></msup></msub></mrow></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S2.Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex5.m1" class="ltx_Math" alttext="\displaystyle=\theta_{Y}^{-1}\sum_{Z}\theta_{Z}d_{Z}d_{Z^{*}}d_{Y}=\tau\frac{d_{Y}}{\theta_{Y}}." display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><msubsup><mi>θ</mi><mi>Y</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>Z</mi></munder></mstyle><mrow><msub><mi>θ</mi><mi>Z</mi></msub><mo>⁢</mo><msub><mi>d</mi><mi>Z</mi></msub><mo>⁢</mo><msub><mi>d</mi><msup><mi>Z</mi><mo>∗</mo></msup></msub><mo>⁢</mo><msub><mi>d</mi><mi>Y</mi></msub></mrow></mrow></mrow><mo>=</mo><mrow><mi>τ</mi><mo>⁢</mo><mstyle displaystyle="true"><mfrac><msub><mi>d</mi><mi>Y</mi></msub><msub><mi>θ</mi><mi>Y</mi></msub></mfrac></mstyle></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Here the second equality uses
+<math id="S2.p3.m2" class="ltx_Math" alttext="N_{XY}^{Z}=N_{Z^{*}Y}^{X^{*}}" display="inline"><mrow><msubsup><mi>N</mi><mrow><mi>X</mi><mo>⁢</mo><mi>Y</mi></mrow><mi>Z</mi></msubsup><mo>=</mo><msubsup><mi>N</mi><mrow><msup><mi>Z</mi><mo>∗</mo></msup><mo>⁢</mo><mi>Y</mi></mrow><msup><mi>X</mi><mo>∗</mo></msup></msubsup></mrow></math> and multiplicativity of pivotal dimensions.
+The vector <math id="S2.p3.m3" class="ltx_Math" alttext="(\theta_{X}d_{X^{*}})_{X}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><msub><mi>θ</mi><mi>X</mi></msub><mo>⁢</mo><msub><mi>d</mi><msup><mi>X</mi><mo>∗</mo></msup></msub></mrow><mo stretchy="false">)</mo></mrow><mi>X</mi></msub></math> is nonzero and <math id="S2.p3.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is invertible,
+so <math id="S2.p3.m5" class="ltx_Math" alttext="\tau\neq 0" display="inline"><mrow><mi>τ</mi><mo>≠</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Reindexing the sum for <math id="S2.p4.m1" class="ltx_Math" alttext="\tau" display="inline"><mi>τ</mi></math> by duality and using
+(<a href="#S2.E4" title="In 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a>) yields</p>
+<table id="S2.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex6.m1" class="ltx_Math" alttext="\tau=\sum_{X}\theta_{X}\gamma_{X}^{-1}n_{X}." display="block"><mrow><mrow><mi>τ</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>X</mi></munder><mrow><msub><mi>θ</mi><mi>X</mi></msub><mo>⁢</mo><msubsup><mi>γ</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><msub><mi>n</mi><mi>X</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Tensoring with an invertible object preserves <math id="S2.p4.m2" class="ltx_Math" alttext="n_{X}" display="inline"><msub><mi>n</mi><mi>X</mi></msub></math>. Moreover,
+(<a href="#S2.E1" title="In Lemma 2.1 (Lacabanne). ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a>) and the balancing formula imply</p>
+<table id="S2.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex7.m1" class="ltx_Math" alttext="\theta_{t^{-1}\otimes X}=\theta_{t^{-1}}\theta_{X}\gamma_{X}^{-1}." display="block"><mrow><mrow><msub><mi>θ</mi><mrow><msup><mi>t</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></msub><mo>=</mo><mrow><msub><mi>θ</mi><msup><mi>t</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></msub><mo>⁢</mo><msub><mi>θ</mi><mi>X</mi></msub><mo>⁢</mo><msubsup><mi>γ</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Reindexing by <math id="S2.p4.m3" class="ltx_Math" alttext="X\mapsto t^{-1}\otimes X" display="inline"><mrow><mi>X</mi><mo stretchy="false">↦</mo><mrow><msup><mi>t</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></mrow></math> therefore gives
+<math id="S2.p4.m4" class="ltx_Math" alttext="\tau=\theta_{t^{-1}}\tau" display="inline"><mrow><mi>τ</mi><mo>=</mo><mrow><msub><mi>θ</mi><msup><mi>t</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></msub><mo>⁢</mo><mi>τ</mi></mrow></mrow></math>, proving (<a href="#S2.E2" title="In Lemma 2.1 (Lacabanne). ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>).
+∎</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">In the notation of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>]</cite>, the invertible object
+<math id="S2.p5.m1" class="ltx_Math" alttext="\overline{\mathbf{1}}" display="inline"><mover accent="true"><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn><mo stretchy="true">¯</mo></mover></math> is characterized by
+<math id="S2.p5.m2" class="ltx_Math" alttext="S_{\overline{\mathbf{1}},X}/d_{\overline{\mathbf{1}}}=d_{X^{*}}" display="inline"><mrow><mrow><msub><mi>S</mi><mrow><mover accent="true"><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn><mo stretchy="true">¯</mo></mover><mo>,</mo><mi>X</mi></mrow></msub><mo>/</mo><msub><mi>d</mi><mover accent="true"><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn><mo stretchy="true">¯</mo></mover></msub></mrow><mo>=</mo><msub><mi>d</mi><msup><mi>X</mi><mo>∗</mo></msup></msub></mrow></math>.
+Thus <math id="S2.p5.m3" class="ltx_Math" alttext="\overline{\mathbf{1}}=t^{-1}" display="inline"><mrow><mover accent="true"><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn><mo stretchy="true">¯</mo></mover><mo>=</mo><msup><mi>t</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>, and
+(<a href="#S2.E2" title="In Lemma 2.1 (Lacabanne). ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>) is precisely
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>, Proposition 2.21]</cite>. The preceding proof records the
+normalization of the slope used below.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 2.2</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> be a premodular fusion category such that</span></p>
+<table id="S2.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex8.m1" class="ltx_Math" alttext="\mathcal{Z}_{2}(\mathcal{A})=\langle f\rangle\simeq\Rep(\mathbb{Z}/2),\qquad\dim_{\mathcal{A}}(f)=-1." display="block"><mrow><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">⟨</mo><mi>f</mi><mo stretchy="false">⟩</mo></mrow><mo>≃</mo><mrow><mi>Rep</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="1.889em">,</mo><mrow><mrow><msub><mo rspace="0em">dim</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></msub><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Then <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> admits a minimal modular extension preserving its
+specified spherical structure. More precisely, every minimal
+nondegenerate braided extension of <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> admits a spherical
+structure with this restriction.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Lemma <a href="#A1.Thmtheorem1" title="Lemma A.1. ‣ Appendix A Extending a pivotal structure with fixed boundary ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A.1</span></a> provides a minimal nondegenerate extension</p>
+<table id="S2.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex9.m1" class="ltx_Math" alttext="\iota:\mathcal{A}\hookrightarrow\mathcal{N},\qquad\mathcal{A}^{\prime}_{\mathcal{N}}=\langle f\rangle." display="block"><mrow><mrow><mrow><mi>ι</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo stretchy="false">↪</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mo>′</mo></msubsup><mo>=</mo><mrow><mo stretchy="false">⟨</mo><mi>f</mi><mo stretchy="false">⟩</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Fix any such extension. The double-dual functor
+<math id="S2.p6.m1" class="ltx_Math" alttext="F=(-)^{**}_{\mathcal{N}}" display="inline"><mrow><mi>F</mi><mo>=</mo><msubsup><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mo>∗</mo><mo lspace="0em">⁣</mo><mo>∗</mo></mrow></msubsup></mrow></math> is a braided tensor autoequivalence.
+The given pivotal structure defines a tensor natural isomorphism
+<math id="S2.p6.m2" class="ltx_Math" alttext="\alpha=j_{\mathcal{A}}^{-1}:F\iota\Rightarrow\iota" display="inline"><mrow><mi>α</mi><mo>=</mo><msubsup><mi>j</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>F</mi><mo>⁢</mo><mi>ι</mi></mrow><mo stretchy="false">⇒</mo><mi>ι</mi></mrow></mrow></math>.
+By the fixed-boundary assertion of Lemma <a href="#A1.Thmtheorem1" title="Lemma A.1. ‣ Appendix A Extending a pivotal structure with fixed boundary ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A.1</span></a>, there is
+a tensor natural isomorphism
+<math id="S2.p6.m3" class="ltx_Math" alttext="\beta:F\Rightarrow\id_{\mathcal{N}}" display="inline"><mrow><mi>β</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>F</mi><mo stretchy="false">⇒</mo><msub><mi>id</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub></mrow></mrow></math> with
+<math id="S2.p6.m4" class="ltx_Math" alttext="\beta\iota=\alpha" display="inline"><mrow><mrow><mi>β</mi><mo>⁢</mo><mi>ι</mi></mrow><mo>=</mo><mi>α</mi></mrow></math>. Consequently</p>
+<table id="S2.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex10.m1" class="ltx_Math" alttext="j_{\mathcal{N}}:=\beta^{-1}:\id_{\mathcal{N}}\longrightarrow(-)^{**}_{\mathcal{N}}" display="block"><mrow><msub><mi>j</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub><mo>:=</mo><msup><mi>β</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>id</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub><mo stretchy="false">⟶</mo><msubsup><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mrow><mo>∗</mo><mo lspace="0em">⁣</mo><mo>∗</mo></mrow></msubsup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">is a pivotal structure restricting to the specified <math id="S2.p6.m5" class="ltx_Math" alttext="j_{\mathcal{A}}" display="inline"><msub><mi>j</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></msub></math>.
+Duals are identified along <math id="S2.p6.m6" class="ltx_Math" alttext="\iota" display="inline"><mi>ι</mi></math> using its tensor structure.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The slope of <math id="S2.p7.m1" class="ltx_Math" alttext="j_{\mathcal{N}}" display="inline"><msub><mi>j</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub></math> is trivial on <math id="S2.p7.m2" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> because
+<math id="S2.p7.m3" class="ltx_Math" alttext="j_{\mathcal{A}}" display="inline"><msub><mi>j</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></msub></math> is spherical. Hence the object <math id="S2.p7.m4" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math> in
+Lemma <a href="#S2.Thmtheorem1" title="Lemma 2.1 (Lacabanne). ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a> belongs to
+<math id="S2.p7.m5" class="ltx_Math" alttext="\mathcal{A}^{\prime}_{\mathcal{N}}=\langle f\rangle" display="inline"><mrow><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mo>′</mo></msubsup><mo>=</mo><mrow><mo stretchy="false">⟨</mo><mi>f</mi><mo stretchy="false">⟩</mo></mrow></mrow></math>, so <math id="S2.p7.m6" class="ltx_Math" alttext="t=\mathbf{1}" display="inline"><mrow><mi>t</mi><mo>=</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow></math> or <math id="S2.p7.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.
+The Tannakian braiding has <math id="S2.p7.m8" class="ltx_Math" alttext="c_{f,f}=\id" display="inline"><mrow><msub><mi>c</mi><mrow><mi>f</mi><mo>,</mo><mi>f</mi></mrow></msub><mo>=</mo><mi>id</mi></mrow></math>, whereas the prescribed
+dimension is <math id="S2.p7.m9" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>. The twist–dimension relation for this invertible
+object gives <math id="S2.p7.m10" class="ltx_Math" alttext="\theta_{f}=-1" display="inline"><mrow><msub><mi>θ</mi><mi>f</mi></msub><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>. Since <math id="S2.p7.m11" class="ltx_Math" alttext="f^{-1}=f" display="inline"><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>f</mi></mrow></math>,
+(<a href="#S2.E2" title="In Lemma 2.1 (Lacabanne). ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>) excludes <math id="S2.p7.m12" class="ltx_Math" alttext="t=f" display="inline"><mrow><mi>t</mi><mo>=</mo><mi>f</mi></mrow></math>.
+Thus the slope is trivial, and <math id="S2.p7.m13" class="ltx_Math" alttext="j_{\mathcal{N}}" display="inline"><msub><mi>j</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub></math> is spherical.
+∎</p>
+</div>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">The negative dimension in Proposition <a href="#S2.Thmtheorem2" title="Proposition 2.2. ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a> is essential
+to the conclusion about every fixed extension. It is the twist
+<math id="S2.p8.m1" class="ltx_Math" alttext="\theta_{f}=-1" display="inline"><mrow><msub><mi>θ</mi><mi>f</mi></msub><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>, rather than the vanishing of an existence obstruction,
+that rules out a nonspherical pivotal extension.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>Construction of the Galois–modular extension</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">We first record the integrality facts used in the construction.
+A tensor functor is <em class="ltx_emph ltx_font_italic">dominant</em> if every simple object of its target
+occurs in the image of some object.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3.1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The target of a dominant tensor functor from an integral fusion category
+is integral. If a finite group <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> acts on a fusion category
+<math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></math>, then <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{C}^{H}" display="inline"><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mi>H</mi></msup></math> is integral if and only if
+<math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></math> is integral.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">The first assertion is the fusion-category case of
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Corollary 8.36]</cite>; we include a direct argument.
+Let <math id="S3.p2.m1" class="ltx_Math" alttext="F:\mathcal{U}\to\mathcal{V}" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">U</mi><mo stretchy="false">→</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">V</mi></mrow></mrow></math> be dominant, with <math id="S3.p2.m2" class="ltx_Math" alttext="\mathcal{U}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">U</mi></math>
+integral. Choose <math id="S3.p2.m3" class="ltx_Math" alttext="V\in\mathcal{U}" display="inline"><mrow><mi>V</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">U</mi></mrow></math> so that <math id="S3.p2.m4" class="ltx_Math" alttext="F(V)" display="inline"><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> contains every
+simple object of <math id="S3.p2.m5" class="ltx_Math" alttext="\mathcal{V}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">V</mi></math>. If <math id="S3.p2.m6" class="ltx_Math" alttext="(Y_{i})_{i}" display="inline"><msub><mrow><mo stretchy="false">(</mo><msub><mi>Y</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mi>i</mi></msub></math> are these simple objects,
+the matrix</p>
+<table id="S3.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex1.m1" class="ltx_Math" alttext="A_{ij}=\dim\Hom(Y_{j},F(V)\otimes Y_{i})" display="block"><mrow><msub><mi>A</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>Y</mi><mi>j</mi></msub><mo>,</mo><mrow><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⊗</mo><msub><mi>Y</mi><mi>i</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">has strictly positive integer entries. Positivity follows by choosing
+a simple constituent of <math id="S3.p2.m7" class="ltx_Math" alttext="Y_{j}\otimes Y_{i}^{*}" display="inline"><mrow><msub><mi>Y</mi><mi>j</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>Y</mi><mi>i</mi><mo>∗</mo></msubsup></mrow></math> and applying Frobenius
+reciprocity. The vector <math id="S3.p2.m8" class="ltx_Math" alttext="d_{i}=\FPdim(Y_{i})" display="inline"><mrow><msub><mi>d</mi><mi>i</mi></msub><mo>=</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>Y</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> satisfies</p>
+<table id="S3.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex2.m1" class="ltx_Math" alttext="Ad=\FPdim(F(V))d=\FPdim(V)d." display="block"><mrow><mrow><mrow><mi>A</mi><mo>⁢</mo><mi>d</mi></mrow><mo>=</mo><mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi>d</mi></mrow><mo>=</mo><mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi>d</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The eigenvalue is an integer, and its eigenspace is one-dimensional
+by the Perron–Frobenius theorem. This eigenspace is therefore defined
+over <math id="S3.p2.m9" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Q</mi></math>. Normalizing by <math id="S3.p2.m10" class="ltx_Math" alttext="d_{\mathbf{1}}=1" display="inline"><mrow><msub><mi>d</mi><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></msub><mo>=</mo><mn>1</mn></mrow></math> shows that every
+<math id="S3.p2.m11" class="ltx_Math" alttext="d_{i}" display="inline"><msub><mi>d</mi><mi>i</mi></msub></math> is rational. Since Frobenius–Perron dimensions are algebraic
+integers, all <math id="S3.p2.m12" class="ltx_Math" alttext="d_{i}" display="inline"><msub><mi>d</mi><mi>i</mi></msub></math> are integers.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">The forgetful functor <math id="S3.p3.m1" class="ltx_Math" alttext="\mathcal{C}^{H}\to\mathcal{C}" display="inline"><mrow><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mi>H</mi></msup><mo stretchy="false">→</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></mrow></math> is dominant,
+which proves one direction of the second assertion. Conversely,
+a simple equivariant object associated to a simple <math id="S3.p3.m2" class="ltx_Math" alttext="Y\in\mathcal{C}" display="inline"><mrow><mi>Y</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></mrow></math>
+and an irreducible projective representation <math id="S3.p3.m3" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math> of its stabilizer
+<math id="S3.p3.m4" class="ltx_Math" alttext="H_{Y}" display="inline"><msub><mi>H</mi><mi>Y</mi></msub></math> has Frobenius–Perron dimension</p>
+<table id="S3.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex3.m1" class="ltx_math_unparsed" alttext="[H:H_{Y}]\dim(\pi)\FPdim(Y)." display="block"><mrow><mrow><mo stretchy="false">[</mo><mi>H</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>H</mi><mi>Y</mi></msub><mo stretchy="false">]</mo></mrow><mo lspace="0.167em" rspace="0em">dim</mo><mrow><mo stretchy="false">(</mo><mi>π</mi><mo rspace="0.167em" stretchy="false">)</mo></mrow><mi>FPdim</mi><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This is an integer when <math id="S3.p3.m5" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></math> is integral.
+∎</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1. ‣ 1 Introduction ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a>.</h6>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">By <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Proposition 2.3]</cite>, there is a nondegenerate braided
+extension</p>
+<table id="S3.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E1.m1" class="ltx_math_unparsed" alttext="\mathcal{B}\hookrightarrow\mathcal{M}_{0},\qquad\mathcal{D}_{0}:=\mathcal{B}^{\prime}_{\mathcal{M}_{0}}\quad\text{integral}." display="block"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">↪</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><msub><mrow></mrow><mn>0</mn></msub><mo rspace="2.167em">,</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><msub><mrow></mrow><mn>0</mn></msub><mo>:=</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><msup><mrow></mrow><mo>′</mo></msup><msub><mrow></mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mn>0</mn></msub></msub><mtext>integral</mtext><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">We first replace <math id="S3.p4.m1" class="ltx_Math" alttext="\mathcal{M}_{0}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mn>0</mn></msub></math> by an ambient category carrying the
+required spherical structure.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p5.m1" class="ltx_Math" alttext="\widehat{\mathcal{M}}_{0}" display="inline"><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>^</mo></mover><mn>0</mn></msub></math> be the canonical sphericalization of
+<math id="S3.p5.m2" class="ltx_Math" alttext="\mathcal{M}_{0}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mn>0</mn></msub></math> <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, Section 2.4.4]</cite>. Its objects are pairs</p>
+<table id="S3.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex4.m1" class="ltx_Math" alttext="(X,\varphi),\qquad\varphi:X\xrightarrow{\sim}X^{**},\qquad\varphi^{**}\circ\varphi=\delta_{X}," display="block"><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi>φ</mi><mo stretchy="false">)</mo></mrow><mo rspace="2.167em">,</mo><mrow><mi>φ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mover accent="true"><mo>→</mo><mo mathsize="0.700em">∼</mo></mover><msup><mi>X</mi><mrow><mo>∗</mo><mo lspace="0em">⁣</mo><mo>∗</mo></mrow></msup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><msup><mi>φ</mi><mrow><mo>∗</mo><mo lspace="0em">⁣</mo><mo>∗</mo></mrow></msup><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>φ</mi></mrow><mo>=</mo><msub><mi>δ</mi><mi>X</mi></msub></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S3.p5.m3" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> is the canonical Radford isomorphism. Morphisms commute
+with the displayed isomorphisms, the tensor product uses the tensor
+structure of <math id="S3.p5.m4" class="ltx_Math" alttext="(-)^{**}" display="inline"><msup><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow><mrow><mo>∗</mo><mo lspace="0em">⁣</mo><mo>∗</mo></mrow></msup></math>, and the pivotal structure is <math id="S3.p5.m5" class="ltx_Math" alttext="\varphi" display="inline"><mi>φ</mi></math>.
+This structure is spherical. The braiding is inherited from
+<math id="S3.p5.m6" class="ltx_Math" alttext="\mathcal{M}_{0}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mn>0</mn></msub></math>, and the forgetful tensor functor is braided and
+dominant. Every simple object of <math id="S3.p5.m7" class="ltx_Math" alttext="\mathcal{M}_{0}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mn>0</mn></msub></math> has two simple lifts,
+with the same Frobenius–Perron dimension as the original object.
+In particular,</p>
+<table id="S3.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex5.m1" class="ltx_Math" alttext="\FPdim(\widehat{\mathcal{M}}_{0})=2\FPdim(\mathcal{M}_{0})." display="block"><mrow><mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>2</mn><mo lspace="0.167em">⁢</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Nondegeneracy of <math id="S3.p5.m8" class="ltx_Math" alttext="\mathcal{M}_{0}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mn>0</mn></msub></math> implies</p>
+<table id="S3.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E2.m1" class="ltx_math_unparsed" alttext="\mathcal{Z}_{2}(\widehat{\mathcal{M}}_{0})=\langle\varepsilon\rangle\simeq\Rep(\mathbb{Z}/2),\qquad\varepsilon=(\mathbf{1},-\id),\qquad\dim(\varepsilon)=-1." display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mn>2</mn></msub><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">⟨</mo><mi>ε</mi><mo stretchy="false">⟩</mo></mrow><mo>≃</mo><mi>Rep</mi><mrow><mo stretchy="false">(</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo rspace="2.167em">,</mo><mi>ε</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn><mo rspace="0em">,</mo><mo lspace="0em">−</mo><mi>id</mi><mo stretchy="false">)</mo></mrow><mo rspace="1.889em">,</mo><mo rspace="0em">dim</mo><mrow><mo stretchy="false">(</mo><mi>ε</mi><mo stretchy="false">)</mo></mrow><mo rspace="0em">=</mo><mo lspace="0em">−</mo><mn>1</mn><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Indeed, the underlying object of a transparent object must be
+transparent in <math id="S3.p5.m9" class="ltx_Math" alttext="\mathcal{M}_{0}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mn>0</mn></msub></math>; the two lifts of the unit give exactly
+the indicated center.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">The specified spherical structure on <math id="S3.p6.m1" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> defines a fully
+faithful braided spherical lift</p>
+<table id="S3.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex6.m1" class="ltx_Math" alttext="X\longmapsto(X,j_{\mathcal{B},X})\quad\text{into }\widehat{\mathcal{M}}_{0}." display="block"><mrow><mrow><mrow><mi>X</mi><mo stretchy="false">⟼</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>j</mi><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo>,</mo><mi>X</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mspace style="width:1em;" width="1em"></mspace><mrow><mtext>into </mtext><mo>⁢</mo><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>^</mo></mover><mn>0</mn></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="S3.p6.m2" class="ltx_Math" alttext="j_{\mathcal{B}}^{**}j_{\mathcal{B}}=\delta|_{\mathcal{B}}" display="inline"><mrow><mrow><msubsup><mi>j</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mrow><mo>∗</mo><mo lspace="0em">⁣</mo><mo>∗</mo></mrow></msubsup><mo>⁢</mo><msub><mi>j</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></msub></mrow><mo>=</mo><msub><mrow><mi>δ</mi><mo stretchy="false">|</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></msub></mrow></math>:
+the canonical Radford isomorphism restricts to that of a full fusion
+subcategory, as follows from its characterization by the left and
+right traces on simple objects. Thus the displayed pairs satisfy
+the defining condition of sphericalization.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">Proposition <a href="#S2.Thmtheorem2" title="Proposition 2.2. ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a> now gives a minimal modular extension
+preserving this spherical structure,</p>
+<table id="S3.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex7.m1" class="ltx_Math" alttext="\widehat{\mathcal{M}}_{0}\hookrightarrow\mathcal{N}." display="block"><mrow><mrow><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">↪</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Set</p>
+<table id="S3.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex8.m1" class="ltx_Math" alttext="\mathcal{K}=\mathcal{B}^{\prime}_{\mathcal{N}},\qquad\mathcal{E}=\mathcal{Z}_{2}(\mathcal{B})\simeq\Rep(G)." display="block"><mrow><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>=</mo><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mo>′</mo></msubsup></mrow><mo rspace="2.167em">,</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≃</mo><mrow><mi>Rep</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Minimality means
+<math id="S3.p7.m1" class="ltx_Math" alttext="(\widehat{\mathcal{M}}_{0})^{\prime}_{\mathcal{N}}=\langle\varepsilon\rangle" display="inline"><mrow><msubsup><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mo>′</mo></msubsup><mo>=</mo><mrow><mo stretchy="false">⟨</mo><mi>ε</mi><mo stretchy="false">⟩</mo></mrow></mrow></math>.
+The double-centralizer theorem consequently gives</p>
+<table id="S3.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E3.m1" class="ltx_Math" alttext="\begin{gathered}\mathcal{Z}_{2}(\mathcal{K})=\mathcal{E},\qquad\FPdim(\mathcal{K})=4\FPdim(\mathcal{D}_{0}),\\
+\varepsilon^{\prime}_{\mathcal{N}}=\widehat{\mathcal{M}}_{0},\qquad\varepsilon^{\prime}_{\mathcal{K}}=\widehat{\mathcal{D}}_{0}.\end{gathered}" display="block"><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><msub><mrow></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo stretchy="false">)</mo><mo>=</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo rspace="4.167em">,</mo><mi>FPdim</mi><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mi>FPdim</mi><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><msub><mrow></mrow><mn>0</mn></msub><mo stretchy="false">)</mo><mo>,</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi>ε</mi><msup><mrow></mrow><mo>′</mo></msup><msub><mrow></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub><mo>=</mo><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>^</mo></mover><msub><mrow></mrow><mn>0</mn></msub><mo rspace="4.167em">,</mo><mi>ε</mi><msup><mrow></mrow><mo>′</mo></msup><msub><mrow></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></msub><mo>=</mo><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>^</mo></mover><msub><mrow></mrow><mn>0</mn></msub><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">In the last equality, <math id="S3.p7.m2" class="ltx_Math" alttext="\widehat{\mathcal{D}}_{0}" display="inline"><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>^</mo></mover><mn>0</mn></msub></math> denotes the full
+preimage of <math id="S3.p7.m3" class="ltx_Math" alttext="\mathcal{D}_{0}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mn>0</mn></msub></math> under the forgetful functor. Indeed,
+centralizing the lifted <math id="S3.p7.m4" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> inside
+<math id="S3.p7.m5" class="ltx_Math" alttext="\widehat{\mathcal{M}}_{0}" display="inline"><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>^</mo></mover><mn>0</mn></msub></math> is exactly the condition of centralizing
+<math id="S3.p7.m6" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> after forgetting the lift. This preimage is integral.
+Thus <math id="S3.p7.m7" class="ltx_Math" alttext="\mathcal{K}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></math> is weakly integral, and the centralizer of
+<math id="S3.p7.m8" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> in <math id="S3.p7.m9" class="ltx_Math" alttext="\mathcal{K}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></math> is integral.</p>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">By <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Propositions 8.23 and 8.24]</cite>, <math id="S3.p8.m1" class="ltx_Math" alttext="\mathcal{K}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></math> is
+pseudounitary and has a canonical positive spherical structure <math id="S3.p8.m2" class="ltx_Math" alttext="j_{+}" display="inline"><msub><mi>j</mi><mo>+</mo></msub></math>.
+Write its inherited spherical structure as</p>
+<table id="S3.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E4.m1" class="ltx_Math" alttext="j=j_{+}\chi,\qquad\chi\in\Aut_{\otimes}(\id_{\mathcal{K}})." display="block"><mrow><mrow><mrow><mi>j</mi><mo>=</mo><mrow><msub><mi>j</mi><mo>+</mo></msub><mo>⁢</mo><mi>χ</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>χ</mi><mo>∈</mo><mrow><msub><mi>Aut</mi><mo>⊗</mo></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>id</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.4)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">On a simple object, <math id="S3.p8.m3" class="ltx_Math" alttext="\chi_{X^{*}}=\chi_{X}^{-1}" display="inline"><mrow><msub><mi>χ</mi><msup><mi>X</mi><mo>∗</mo></msup></msub><mo>=</mo><msubsup><mi>χ</mi><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow></math>. Since both structures
+are spherical and <math id="S3.p8.m4" class="ltx_Math" alttext="\FPdim(X)=\FPdim(X^{*})" display="inline"><mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>X</mi><mo>∗</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, we also have
+<math id="S3.p8.m5" class="ltx_Math" alttext="\chi_{X}=\chi_{X^{*}}" display="inline"><mrow><msub><mi>χ</mi><mi>X</mi></msub><mo>=</mo><msub><mi>χ</mi><msup><mi>X</mi><mo>∗</mo></msup></msub></mrow></math>. Hence <math id="S3.p8.m6" class="ltx_Math" alttext="\chi_{X}\in\{1,-1\}" display="inline"><mrow><msub><mi>χ</mi><mi>X</mi></msub><mo>∈</mo><mrow><mo stretchy="false">{</mo><mrow><mn>1</mn><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.
+Moreover,</p>
+<table id="S3.E5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E5.m1" class="ltx_Math" alttext="\chi_{\varepsilon}=-1." display="block"><mrow><mrow><msub><mi>χ</mi><mi>ε</mi></msub><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The restriction of this sign character to <math id="S3.p8.m7" class="ltx_Math" alttext="\mathcal{E}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></math> determines
+the rest of the construction.</p>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">Case 1: <math id="S3.p9.m1" class="ltx_Math" alttext="\chi|_{\mathcal{E}}=1" display="inline"><mrow><msub><mrow><mi>χ</mi><mo stretchy="false">|</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></msub><mo>=</mo><mn>1</mn></mrow></math>.</em>
+De-equivariantize <math id="S3.p9.m2" class="ltx_Math" alttext="(\mathcal{K},j_{+})" display="inline"><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>,</mo><msub><mi>j</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></math> by its Tannakian center to
+obtain the nondegenerate modular category</p>
+<table id="S3.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex9.m1" class="ltx_Math" alttext="\mathcal{Q}=\mathcal{K}_{G}." display="block"><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">Q</mi><mo>=</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mi>G</mi></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The sign character descends to <math id="S3.p9.m3" class="ltx_Math" alttext="\mathcal{Q}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">Q</mi></math>: it acts trivially on
+the regular algebra of <math id="S3.p9.m4" class="ltx_Math" alttext="\mathcal{E}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></math>, so its component on each
+module is an algebra-linear automorphism. Let <math id="S3.p9.m5" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> be the image of
+<math id="S3.p9.m6" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>. Then <math id="S3.p9.m7" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> is invertible, <math id="S3.p9.m8" class="ltx_Math" alttext="e^{2}=\mathbf{1}" display="inline"><mrow><msup><mi>e</mi><mn>2</mn></msup><mo>=</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow></math>, and the descended
+character takes value <math id="S3.p9.m9" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> on <math id="S3.p9.m10" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math>, so <math id="S3.p9.m11" class="ltx_Math" alttext="e\neq\mathbf{1}" display="inline"><mrow><mi>e</mi><mo>≠</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow></math>. By
+(<a href="#S3.E3" title="In 3 Construction of the Galois–modular extension ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.3</span></a>),</p>
+<table id="S3.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex10.m1" class="ltx_Math" alttext="e^{\prime}_{\mathcal{Q}}=(\widehat{\mathcal{D}}_{0})_{G}." display="block"><mrow><mrow><msubsup><mi>e</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">Q</mi><mo>′</mo></msubsup><mo>=</mo><msub><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mi>G</mi></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This equality can be checked on underlying modules: their monodromy
+with the free image of <math id="S3.p9.m12" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> is precisely the induced
+monodromy with <math id="S3.p9.m13" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>. Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1. ‣ 3 Construction of the Galois–modular extension ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a>, applied
+to the de-equivariantization functor, shows that <math id="S3.p9.m14" class="ltx_Math" alttext="e^{\prime}_{\mathcal{Q}}" display="inline"><msubsup><mi>e</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">Q</mi><mo>′</mo></msubsup></math>
+is integral.</p>
+</div>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">By (<a href="#S2.E3" title="In 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3</span></a>), the descended character is
+monodromy with an invertible object <math id="S3.p10.m1" class="ltx_Math" alttext="a\in\mathcal{Q}" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">Q</mi></mrow></math>.
+Equation (<a href="#S3.E5" title="In 3 Construction of the Galois–modular extension ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.5</span></a>) says that the monodromy of <math id="S3.p10.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and
+<math id="S3.p10.m3" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> is <math id="S3.p10.m4" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>. Monodromy with <math id="S3.p10.m5" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> defines a <math id="S3.p10.m6" class="ltx_Math" alttext="\mathbb{Z}/2" display="inline"><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>2</mn></mrow></math>-grading
+whose even component is <math id="S3.p10.m7" class="ltx_Math" alttext="e^{\prime}_{\mathcal{Q}}" display="inline"><msubsup><mi>e</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">Q</mi><mo>′</mo></msubsup></math>. Tensoring with <math id="S3.p10.m8" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>
+is a bijection between the even and odd simple objects and preserves
+Frobenius–Perron dimensions. Both components are therefore integral.
+Since <math id="S3.p10.m9" class="ltx_Math" alttext="\mathcal{K}\simeq\mathcal{Q}^{G}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>≃</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">Q</mi><mi>G</mi></msup></mrow></math>, Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1. ‣ 3 Construction of the Galois–modular extension ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a>
+implies that <math id="S3.p10.m10" class="ltx_Math" alttext="\mathcal{K}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></math> is integral. We take <math id="S3.p10.m11" class="ltx_Math" alttext="\mathcal{M}=\mathcal{N}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>=</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></mrow></math>.</p>
+</div>
+<div id="S3.p11" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">Case 2: <math id="S3.p11.m1" class="ltx_Math" alttext="\chi|_{\mathcal{E}}\neq 1" display="inline"><mrow><msub><mrow><mi>χ</mi><mo stretchy="false">|</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></msub><mo>≠</mo><mn>1</mn></mrow></math>.</em>
+Let <math id="S3.p11.m2" class="ltx_Math" alttext="\mathcal{K}_{+}=\ker\chi" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>χ</mi></mrow></mrow></math> be the full fusion subcategory generated
+by the simple objects with sign <math id="S3.p11.m3" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math>, and put</p>
+<table id="S3.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex11.m1" class="ltx_Math" alttext="\mathcal{E}_{+}=\mathcal{E}\cap\mathcal{K}_{+}." display="block"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>+</mo></msub><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>∩</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Both inclusions <math id="S3.p11.m4" class="ltx_Math" alttext="\mathcal{K}_{+}\subset\mathcal{K}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo>⊂</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi></mrow></math> and
+<math id="S3.p11.m5" class="ltx_Math" alttext="\mathcal{E}_{+}\subset\mathcal{E}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>+</mo></msub><mo>⊂</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></mrow></math> have index two. The centralizer
+dimension formula for a possibly degenerate braided category gives</p>
+<table id="S3.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex12.m1" class="ltx_Math" alttext="\FPdim((\mathcal{K}_{+})^{\prime}_{\mathcal{K}})=\frac{\FPdim(\mathcal{K})\FPdim(\mathcal{E}_{+})}{\FPdim(\mathcal{K}_{+})}=\FPdim(\mathcal{E})." display="block"><mrow><mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msubsup><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>′</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">As this centralizer contains <math id="S3.p11.m6" class="ltx_Math" alttext="\mathcal{E}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></math>, we conclude that</p>
+<table id="S3.E6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E6.m1" class="ltx_Math" alttext="(\mathcal{K}_{+})^{\prime}_{\mathcal{K}}=\mathcal{E},\qquad\mathcal{Z}_{2}(\mathcal{K}_{+})=\mathcal{E}_{+}." display="block"><mrow><mrow><mrow><msubsup><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>′</mo></msubsup><mo>=</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></mrow><mo rspace="2.167em">,</mo><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>+</mo></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.6)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The inherited spherical structure on <math id="S3.p11.m7" class="ltx_Math" alttext="\mathcal{K}_{+}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub></math> is positive,
+and <math id="S3.p11.m8" class="ltx_Math" alttext="\mathcal{E}_{+}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>+</mo></msub></math> is Tannakian. Applying
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Propositions 2.3 and 2.4]</cite> to <math id="S3.p11.m9" class="ltx_Math" alttext="\mathcal{K}_{+}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub></math> gives a
+pseudounitary modular extension with its positive spherical structure,</p>
+<table id="S3.E7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E7.m1" class="ltx_math_unparsed" alttext="\mathcal{K}_{+}\hookrightarrow\mathcal{P},\qquad\mathcal{I}:=(\mathcal{K}_{+})^{\prime}_{\mathcal{P}}\quad\text{integral}." display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">↪</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo rspace="2.167em">,</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo>:=</mo><msubsup><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo>′</mo></msubsup><mtext>integral</mtext><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.7)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">This embedding preserves the positive spherical structure.</p>
+</div>
+<div id="S3.p12" class="ltx_para">
+<p class="ltx_p">In <math id="S3.p12.m1" class="ltx_Math" alttext="\mathcal{N}\boxtimes\mathcal{P}^{\mathrm{rev}}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>rev</mi></msup></mrow></math>, take the canonical
+diagonal connected étale algebra</p>
+<table id="S3.E8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E8.m1" class="ltx_Math" alttext="L=\bigoplus_{X\in\Irr(\mathcal{K}_{+})}X\boxtimes X^{*}." display="block"><mrow><mrow><mi>L</mi><mo rspace="0.111em">=</mo><mrow><mrow><munder><mo movablelimits="false">⨁</mo><mrow><mi>X</mi><mo>∈</mo><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></munder><mi>X</mi></mrow><mo lspace="0.222em" rspace="0.222em">⊠</mo><msup><mi>X</mi><mo>∗</mo></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.8)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The algebra structure is that obtained from the right adjoint of
+the central tensor product functor
+<math id="S3.p12.m2" class="ltx_Math" alttext="\mathcal{K}_{+}\boxtimes\mathcal{K}_{+}^{\mathrm{rev}}\to\mathcal{K}_{+}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo lspace="0.222em" rspace="0.222em">⊠</mo><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo><mi>rev</mi></msubsup></mrow><mo stretchy="false">→</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub></mrow></math>
+applied to the unit; see <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Lemma 3.5]</cite>.
+The two embeddings of <math id="S3.p12.m3" class="ltx_Math" alttext="\mathcal{K}_{+}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub></math> have the same spherical
+structure. Since the twist in the second factor is reversed,</p>
+<table id="S3.Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex13.m1" class="ltx_Math" alttext="\theta_{L}=\id_{L},\qquad\dim(L)=\sum_{X\in\Irr(\mathcal{K}_{+})}\FPdim(X)^{2}=\FPdim(\mathcal{K}_{+})&gt;0." display="block"><mrow><mrow><mrow><msub><mi>θ</mi><mi>L</mi></msub><mo>=</mo><msub><mi>id</mi><mi>L</mi></msub></mrow><mo rspace="1.889em">,</mo><mrow><mrow><mo rspace="0em">dim</mo><mrow><mo stretchy="false">(</mo><mi>L</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>X</mi><mo>∈</mo><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></munder><mrow><mi>FPdim</mi><mo>⁡</mo><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The multiplication pairing <math id="S3.p12.m4" class="ltx_Math" alttext="L\otimes L\to L\to\mathbf{1}" display="inline"><mrow><mrow><mi>L</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>L</mi></mrow><mo stretchy="false">→</mo><mi>L</mi><mo stretchy="false">→</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow></math> is
+nondegenerate. To see this, choose the projection <math id="S3.p12.m5" class="ltx_Math" alttext="L\to\mathbf{1}" display="inline"><mrow><mi>L</mi><mo stretchy="false">→</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow></math> to
+split the unit. The regular right <math id="S3.p12.m6" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>-module is simple by connectedness
+and separability. The pairing induces a nonzero module morphism
+<math id="S3.p12.m7" class="ltx_Math" alttext="L\to L^{*}" display="inline"><mrow><mi>L</mi><mo stretchy="false">→</mo><msup><mi>L</mi><mo>∗</mo></msup></mrow></math>, hence an isomorphism.</p>
+</div>
+<div id="S3.p13" class="ltx_para">
+<p class="ltx_p">It follows from <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Corollary 3.30 and Remark 3.31(ii)]</cite>
+that the category of local modules</p>
+<table id="S3.E9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E9.m1" class="ltx_Math" alttext="\mathcal{M}=(\mathcal{N}\boxtimes\mathcal{P}^{\mathrm{rev}})_{L}^{0}" display="block"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>=</mo><msubsup><mrow><mo stretchy="false">(</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>rev</mi></msup></mrow><mo stretchy="false">)</mo></mrow><mi>L</mi><mn>0</mn></msubsup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.9)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">is modular, with the twist induced from the ambient category.
+The subcategory <math id="S3.p13.m1" class="ltx_Math" alttext="\mathcal{B}\boxtimes\mathbf{1}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow></math> centralizes <math id="S3.p13.m2" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>.
+Consequently free modules define a braided, twist-preserving functor</p>
+<table id="S3.Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex14.m1" class="ltx_Math" alttext="J:\mathcal{B}\longrightarrow\mathcal{M},\qquad J(X)=(X\boxtimes\mathbf{1})\otimes L." display="block"><mrow><mrow><mrow><mi>J</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">⟶</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>J</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⊗</mo><mi>L</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">It preserves the spherical structure because a pivotal structure is
+determined by the braiding and its associated twist. Moreover, the
+free–forgetful adjunction gives</p>
+<table id="S3.EGx2" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.Ex15"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex15.m1" class="ltx_Math" alttext="\displaystyle\Hom_{L}(J(X),J(Y))" display="inline"><mrow><msub><mi>Hom</mi><mi>L</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>J</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>J</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex15.m2" class="ltx_Math" alttext="\displaystyle\simeq\Hom\bigl(X\boxtimes\mathbf{1},(Y\boxtimes\mathbf{1})\otimes L\bigr)" display="inline"><mrow><mphantom></mphantom><mo>≃</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow><mo>,</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>Y</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⊗</mo><mi>L</mi></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S3.Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex16.m1" class="ltx_Math" alttext="\displaystyle\simeq\Hom_{\mathcal{B}}(X,Y)." display="inline"><mrow><mrow><mphantom></mphantom><mo>≃</mo><mrow><msub><mi>Hom</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Only the summand <math id="S3.p13.m3" class="ltx_Math" alttext="\mathbf{1}\boxtimes\mathbf{1}" display="inline"><mrow><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn><mo lspace="0.222em" rspace="0.222em">⊠</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow></math> of <math id="S3.p13.m4" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> contributes in the
+second Deligne factor. Thus <math id="S3.p13.m5" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> is fully faithful.</p>
+</div>
+<div id="S3.p14" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p14.m1" class="ltx_Math" alttext="\mathcal{D}=J(\mathcal{B})^{\prime}_{\mathcal{M}}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>=</mo><mrow><mi>J</mi><mo>⁢</mo><msubsup><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo>′</mo></msubsup></mrow></mrow></math>. Free modules likewise
+give fully faithful embeddings of <math id="S3.p14.m2" class="ltx_Math" alttext="\mathcal{E}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></math> from the first
+factor and of <math id="S3.p14.m3" class="ltx_Math" alttext="\mathcal{I}^{\mathrm{rev}}" display="inline"><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mi>rev</mi></msup></math> from the second factor into
+<math id="S3.p14.m4" class="ltx_Math" alttext="\mathcal{D}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></math>. Their images centralize one another. We use the same
+notation for these images and now identify their intersection.
+For simple <math id="S3.p14.m5" class="ltx_Math" alttext="U\in\mathcal{E}" display="inline"><mrow><mi>U</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi></mrow></math> and <math id="S3.p14.m6" class="ltx_Math" alttext="V\in\mathcal{I}" display="inline"><mrow><mi>V</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi></mrow></math>, adjunction gives</p>
+<table id="S3.EGx3" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex17.m1" class="ltx_Math" alttext="\displaystyle\Hom_{L}\bigl((U\boxtimes\mathbf{1})\otimes L,(\mathbf{1}\boxtimes V)\otimes L\bigr)" display="inline"><mrow><msub><mi>Hom</mi><mi>L</mi></msub><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>U</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⊗</mo><mi>L</mi></mrow><mo>,</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn><mo lspace="0.222em" rspace="0.222em">⊠</mo><mi>V</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⊗</mo><mi>L</mi></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S3.Ex18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex18.m1" class="ltx_Math" alttext="\displaystyle\hskip 28.45274pt\simeq\bigoplus_{X\in\Irr(\mathcal{K}_{+})}\Hom_{\mathcal{N}}(U,X)\otimes\Hom_{\mathcal{P}}(\mathbf{1},V\otimes X^{*})." display="inline"><mrow><mrow><mphantom></mphantom><mo lspace="3.128em">≃</mo><mrow><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">⨁</mo><mrow><mi>X</mi><mo>∈</mo><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></munder></mstyle><mrow><msub><mi>Hom</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo>,</mo><mi>X</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="0.222em">⊗</mo><mrow><msub><mi>Hom</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn class="ltx_mathvariant_bold" mathvariant="bold">1</mn><mo>,</mo><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>X</mi><mo>∗</mo></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This space is nonzero exactly when <math id="S3.p14.m7" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> is in <math id="S3.p14.m8" class="ltx_Math" alttext="\mathcal{E}_{+}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>+</mo></msub></math> and
+<math id="S3.p14.m9" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is its image under (<a href="#S3.E7" title="In 3 Construction of the Galois–modular extension ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.7</span></a>). In that case
+it is one-dimensional. Thus</p>
+<table id="S3.Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex19.m1" class="ltx_Math" alttext="\mathcal{E}\cap\mathcal{I}^{\mathrm{rev}}=\mathcal{E}_{+}." display="block"><mrow><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>∩</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mi>rev</mi></msup></mrow><mo>=</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>+</mo></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Writing <math id="S3.p14.m10" class="ltx_Math" alttext="\vee" display="inline"><mo>∨</mo></math> for the fusion subcategory generated by two
+subcategories, the dimension formula for their join yields</p>
+<table id="S3.E10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E10.m1" class="ltx_Math" alttext="\FPdim(\mathcal{E}\vee\mathcal{I}^{\mathrm{rev}})=\frac{\FPdim(\mathcal{E})\FPdim(\mathcal{I})}{\FPdim(\mathcal{E}_{+})}=2\FPdim(\mathcal{I})." display="block"><mrow><mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>∨</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mi>rev</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mrow><mn>2</mn><mo lspace="0.167em">⁢</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3.10)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">On the other hand, <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Corollary 3.32]</cite> and the centralizer
+dimension formula give</p>
+<table id="S3.EGx4" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.Ex20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex20.m1" class="ltx_Math" alttext="\displaystyle\FPdim(\mathcal{D})" display="inline"><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex20.m2" class="ltx_Math" alttext="\displaystyle=\frac{\FPdim(\mathcal{N})\FPdim(\mathcal{P})}{\FPdim(\mathcal{B})\FPdim(\mathcal{K}_{+})^{2}}" display="inline"><mrow><mphantom></mphantom><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>FPdim</mi><mo>⁡</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow></mrow></mfrac></mstyle></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S3.Ex21"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex21.m1" class="ltx_Math" alttext="\displaystyle=\frac{\FPdim(\mathcal{K})\FPdim(\mathcal{P})}{\FPdim(\mathcal{K}_{+})^{2}}=2\FPdim(\mathcal{I})." display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mrow><mi>FPdim</mi><mo>⁡</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">K</mi><mo>+</mo></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mfrac></mstyle><mo>=</mo><mrow><mn>2</mn><mo lspace="0.167em">⁢</mo><mrow><mi>FPdim</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Comparison with (<a href="#S3.E10" title="In 3 Construction of the Galois–modular extension ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.10</span></a>) proves</p>
+<table id="S3.Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex22.m1" class="ltx_Math" alttext="\mathcal{D}=\mathcal{E}\vee\mathcal{I}^{\mathrm{rev}}." display="block"><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo>∨</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mi>rev</mi></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Because the two generating subcategories centralize one another,
+tensor product defines a dominant tensor functor</p>
+<table id="S3.Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex23.m1" class="ltx_Math" alttext="\mathcal{E}\boxtimes\mathcal{I}^{\mathrm{rev}}\longrightarrow\mathcal{D}." display="block"><mrow><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mo lspace="0.222em" rspace="0.222em">⊠</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">I</mi><mi>rev</mi></msup></mrow><mo stretchy="false">⟶</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Its source is integral, so Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1. ‣ 3 Construction of the Galois–modular extension ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a> makes
+<math id="S3.p14.m11" class="ltx_Math" alttext="\mathcal{D}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></math> integral. This completes the construction in the
+second case, and hence the proof.
+∎</p>
+</div>
+</div>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography" style="font-size:90%;">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+A. Davydov, M. Müger, D. Nikshych, and V. Ostrik.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">The Witt group of non-degenerate braided fusion categories.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">J. Reine Angew. Math.</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">677</span><span class="ltx_text" style="font-size:90%;"> (2013), 135–177.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1515/crelle.2012.014" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1515/crelle.2012.014</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/1009.2117" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:1009.2117</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+V. Drinfeld, S. Gelaki, D. Nikshych, and V. Ostrik.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">On braided fusion categories I.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Selecta Math. (N.S.)</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">16</span><span class="ltx_text" style="font-size:90%;"> (2010), 1–119.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/0906.0620" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:0906.0620</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+P. Etingof, D. Nikshych, and V. Ostrik.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">On fusion categories.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Ann. of Math. (2)</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">162</span><span class="ltx_text" style="font-size:90%;"> (2005), 581–642.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/math/0203060" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:math/0203060</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+P. Etingof, D. Nikshych, and V. Ostrik.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Fusion categories and homotopy theory.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Quantum Topol.</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">1</span><span class="ltx_text" style="font-size:90%;"> (2010), 209–273.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/0909.3140" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:0909.3140</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib5" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+T. Johnson–Freyd.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Schopieray’s Galois-modular extension conjecture.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2601.23192" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:2601.23192</a><span class="ltx_text" style="font-size:90%;"> (2026).
+</span>
+</span></li>
+      
+<li id="bib.bib6" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+A. Lacabanne.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Slightly degenerate categories and </span><math id="bib.bib6.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi class="ltx_mathvariant_double-struck" mathsize="0.900em" mathvariant="double-struck">Z</mi></math><span class="ltx_text" style="font-size:90%;">-modular data.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Int. Math. Res. Not. IMRN</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">2021</span><span class="ltx_text" style="font-size:90%;">, no. 12,
+9340–9374.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1093/imrn/rnz105" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1093/imrn/rnz105</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/1807.00766" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:1807.00766</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Proposition numbers cited here refer to the published version.
+</span>
+</span></li>
+      
+<li id="bib.bib7" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+M. Müger.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">On the structure of modular categories.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Proc. London Math. Soc. (3)</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">87</span><span class="ltx_text" style="font-size:90%;"> (2003), 291–308.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/math/0201017" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:math/0201017</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib8" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+J. Plavnik, A. Schopieray, Z. Yu, and Q. Zhang.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Modular tensor categories, subcategories, and Galois orbits.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Transform. Groups</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">29</span><span class="ltx_text" style="font-size:90%;"> (2024), 1623–1648.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1007/s00031-022-09787-9" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1007/s00031-022-09787-9</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2111.05228" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:2111.05228</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+    
+</ul>
+</section>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<section id="A1" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix"><span class="ltx_tag ltx_tag_appendix">Appendix A </span>Extending a pivotal structure with fixed boundary</h2>
+
+<div id="A1.p1" class="ltx_para">
+<p class="ltx_p">The pivotal extension argument needs a natural isomorphism that agrees
+with the prescribed one on the subcategory. The following formulation
+keeps that boundary identification as part of the data.</p>
+</div>
+<div id="A1.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma A.1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="A1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="A1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> be a braided fusion category with
+<math id="A1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathcal{Z}_{2}(\mathcal{A})\simeq\Rep(\mathbb{Z}/2)" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≃</mo><mrow><mi>Rep</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+There is a minimal nondegenerate braided extension of <math id="A1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math>.
+For any such extension <math id="A1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\iota:\mathcal{A}\hookrightarrow\mathcal{N}" display="inline"><mrow><mi>ι</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo stretchy="false">↪</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></mrow></mrow></math>,
+any braided tensor autoequivalence <math id="A1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> of <math id="A1.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\mathcal{N}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></math>, and any
+specified tensor natural isomorphism <math id="A1.Thmtheorem1.p1.m7" class="ltx_Math" alttext="\alpha:F\iota\Rightarrow\iota" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>F</mi><mo>⁢</mo><mi>ι</mi></mrow><mo stretchy="false">⇒</mo><mi>ι</mi></mrow></mrow></math>,
+there is a tensor natural isomorphism</span></p>
+<table id="A1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex1.m1" class="ltx_Math" alttext="\beta:F\Rightarrow\id_{\mathcal{N}}\qquad\text{such that}\qquad\beta\iota=\alpha." display="block"><mrow><mrow><mrow><mi>β</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>F</mi><mo stretchy="false">⇒</mo><msub><mi>id</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub></mrow></mrow><mspace style="width:2.167em;" width="2.167em"></mspace><mtext class="ltx_mathvariant_italic">such that</mtext><mspace style="width:2em;" width="2em"></mspace><mrow><mrow><mi>β</mi><mo>⁢</mo><mi>ι</mi></mrow><mo>=</mo><mi>α</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="A1.p2" class="ltx_para">
+<p class="ltx_p">Write <math id="A1.p2.m1" class="ltx_Math" alttext="H=\mathbb{Z}/2" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>2</mn></mrow></mrow></math>, fix the Tannakian identification, and let
+<math id="A1.p2.m2" class="ltx_Math" alttext="R=\operatorname{Fun}(H)\in\Rep(H)" display="inline"><mrow><mi>R</mi><mo>=</mo><mrow><mi>Fun</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mi>Rep</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be the regular algebra.
+De-equivariantization gives a nondegenerate braided fusion category
+<math id="A1.p2.m3" class="ltx_Math" alttext="\mathcal{C}=\mathcal{A}_{H}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo>=</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>H</mi></msub></mrow></math> with a specified categorical <math id="A1.p2.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>-action
+and an equivalence <math id="A1.p2.m5" class="ltx_Math" alttext="\mathcal{A}\simeq\mathcal{C}^{H}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo>≃</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mi>H</mi></msup></mrow></math>.
+Minimal nondegenerate extensions of <math id="A1.p2.m6" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> correspond to
+faithfully graded braided <math id="A1.p2.m7" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>-crossed extensions of <math id="A1.p2.m8" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></math>
+realizing this action. This correspondence is compatible with
+functors and tensor natural isomorphisms, by the
+2-equivalence of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, Theorem 4.44]</cite>.</p>
+</div>
+<div id="A1.p3" class="ltx_para">
+<p class="ltx_p">In particular, a boundary-preserving autoequivalence is a pair
+<math id="A1.p3.m1" class="ltx_Math" alttext="(F,\alpha)" display="inline"><mrow><mo stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></math> as in the statement, not just <math id="A1.p3.m2" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> with an unspecified
+identification of its restriction. The isomorphism <math id="A1.p3.m3" class="ltx_Math" alttext="\alpha_{R}" display="inline"><msub><mi>α</mi><mi>R</mi></msub></math> identifies
+<math id="A1.p3.m4" class="ltx_Math" alttext="F(\iota(R))" display="inline"><mrow><mi>F</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ι</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> with <math id="A1.p3.m5" class="ltx_Math" alttext="\iota(R)" display="inline"><mrow><mi>ι</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></math> and hence induces a functor on the
+module categories used in de-equivariantization. The remaining
+components of <math id="A1.p3.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> retain its specified identification on
+<math id="A1.p3.m7" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></math> and the categorical <math id="A1.p3.m8" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>-action. Equivariantization
+recovers the pair <math id="A1.p3.m9" class="ltx_Math" alttext="(F,\alpha)" display="inline"><mrow><mo stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></math>. Under this correspondence, a morphism
+<math id="A1.p3.m10" class="ltx_Math" alttext="(F,\alpha)\to(F^{\prime},\alpha^{\prime})" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><msup><mi>F</mi><mo>′</mo></msup><mo>,</mo><msup><mi>α</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> is a tensor natural isomorphism
+<math id="A1.p3.m11" class="ltx_Math" alttext="\beta:F\Rightarrow F^{\prime}" display="inline"><mrow><mi>β</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>F</mi><mo stretchy="false">⇒</mo><msup><mi>F</mi><mo>′</mo></msup></mrow></mrow></math> satisfying</p>
+<table id="A1.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.E1.m1" class="ltx_Math" alttext="\alpha^{\prime}\circ(\beta\iota)=\alpha." display="block"><mrow><mrow><mrow><msup><mi>α</mi><mo>′</mo></msup><mo lspace="0.222em" rspace="0.222em">∘</mo><mrow><mo stretchy="false">(</mo><mrow><mi>β</mi><mo>⁢</mo><mi>ι</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>α</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(A.1)</span></td></tr></tbody>
+</table>
+</div>
+<div id="A1.p4" class="ltx_para">
+<p class="ltx_p">We use based classifying maps, retaining the identification of the
+neutral category. We now apply the homotopy description of extension theory
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Theorem 5.2, Sections 7.1–7.2, and Theorem 7.12]</cite>.
+Let <math id="A1.p4.m1" class="ltx_Math" alttext="X=B\mathbf{Pic}(\mathcal{C})" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mi>B</mi><mo>⁢</mo><mi class="ltx_mathvariant_bold" mathvariant="bold">Pic</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be the classifying space of the
+Picard 2-group of invertible module categories, and let
+<math id="A1.p4.m2" class="ltx_Math" alttext="Y=B\mathbf{Aut}^{\mathrm{br}}(\mathcal{C})" display="inline"><mrow><mi>Y</mi><mo>=</mo><mrow><mi>B</mi><mo>⁢</mo><msup><mi class="ltx_mathvariant_bold" mathvariant="bold">Aut</mi><mi>br</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be the classifying
+space of the categorical group of braided autoequivalences.
+The natural map <math id="A1.p4.m3" class="ltx_Math" alttext="X\to Y" display="inline"><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></math> induces isomorphisms on <math id="A1.p4.m4" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math> and
+<math id="A1.p4.m5" class="ltx_Math" alttext="\pi_{2}" display="inline"><msub><mi>π</mi><mn>2</mn></msub></math>, and <math id="A1.p4.m6" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> has no higher homotopy groups. More explicitly,</p>
+<table id="A1.Ex2" class="ltx_equationgroup ltx_eqn_table">
+
+<tbody id="A1.Ex2X"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="A1.Ex2X.m2" class="ltx_Math" alttext="\displaystyle\pi_{2}(X)" display="inline"><mrow><msub><mi>π</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="A1.Ex2X.m3" class="ltx_Math" alttext="\displaystyle=\Inv(\mathcal{C})," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><mi>Inv</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="A1.Ex2X.m5" class="ltx_Math" alttext="\displaystyle\pi_{3}(X)" display="inline"><mrow><msub><mi>π</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="A1.Ex2X.m6" class="ltx_Math" alttext="\displaystyle=\mathbb{C}^{\times}," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="A1.Ex2Xa"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="A1.Ex2Xa.m2" class="ltx_Math" alttext="\displaystyle\pi_{2}(Y)" display="inline"><mrow><msub><mi>π</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="A1.Ex2Xa.m3" class="ltx_Math" alttext="\displaystyle=\Aut_{\otimes}(\id_{\mathcal{C}})," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><msub><mi>Aut</mi><mo>⊗</mo></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>id</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="A1.Ex2Xa.m5" class="ltx_Math" alttext="\displaystyle\pi_{i}(Y)" display="inline"><mrow><msub><mi>π</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="A1.Ex2Xa.m6" class="ltx_Math" alttext="\displaystyle=0\quad(i\geq 3)." display="inline"><mrow><mo>=</mo><mn>0</mn><mo stretchy="false">(</mo><mi>i</mi><mo>≥</mo><mn>3</mn><mo stretchy="false">)</mo><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">These are <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Propositions 7.3 and 7.5]</cite>; the map on
+<math id="A1.p4.m7" class="ltx_Math" alttext="\pi_{2}" display="inline"><msub><mi>π</mi><mn>2</mn></msub></math> is the monodromy isomorphism
+(<a href="#S2.E3" title="In 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3</span></a>). Thus the homotopy fiber of
+<math id="A1.p4.m8" class="ltx_Math" alttext="X\to Y" display="inline"><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></math> is <math id="A1.p4.m9" class="ltx_Math" alttext="K(\mathbb{C}^{\times},3)" display="inline"><mrow><mi>K</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow></math>. The coefficient action is trivial,
+since all functors are <math id="A1.p4.m10" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi></math>-linear.</p>
+</div>
+<div id="A1.p5" class="ltx_para">
+<p class="ltx_p">The specified categorical action is a map <math id="A1.p5.m1" class="ltx_Math" alttext="BH\to Y" display="inline"><mrow><mrow><mi>B</mi><mo>⁢</mo><mi>H</mi></mrow><mo stretchy="false">→</mo><mi>Y</mi></mrow></math>.
+The extension problem is to lift this map to <math id="A1.p5.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, including the
+chosen identification of its image in <math id="A1.p5.m3" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> with that fixed action.
+Choose a normalized cocycle <math id="A1.p5.m4" class="ltx_Math" alttext="\omega\in Z^{4}(H,\mathbb{C}^{\times})" display="inline"><mrow><mi>ω</mi><mo>∈</mo><mrow><msup><mi>Z</mi><mn>4</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo>,</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+representing the resulting obstruction. The cochain model for the
+2-groupoid of lifts is as follows: a lift is a normalized
+<math id="A1.p5.m5" class="ltx_Math" alttext="\psi\in C^{3}(H,\mathbb{C}^{\times})" display="inline"><mrow><mi>ψ</mi><mo>∈</mo><mrow><msup><mi>C</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo>,</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math> with <math id="A1.p5.m6" class="ltx_Math" alttext="d\psi=\omega" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>ψ</mi></mrow><mo>=</mo><mi>ω</mi></mrow></math>; an equivalence
+from <math id="A1.p5.m7" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math> to <math id="A1.p5.m8" class="ltx_Math" alttext="\psi^{\prime}" display="inline"><msup><mi>ψ</mi><mo>′</mo></msup></math> is a normalized degree-two cochain <math id="A1.p5.m9" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>
+with <math id="A1.p5.m10" class="ltx_Math" alttext="d\lambda=\psi^{\prime}/\psi" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>λ</mi></mrow><mo>=</mo><mrow><msup><mi>ψ</mi><mo>′</mo></msup><mo>/</mo><mi>ψ</mi></mrow></mrow></math>; and a natural isomorphism from
+<math id="A1.p5.m11" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> to <math id="A1.p5.m12" class="ltx_Math" alttext="\lambda^{\prime}" display="inline"><msup><mi>λ</mi><mo>′</mo></msup></math> is a normalized degree-one cochain <math id="A1.p5.m13" class="ltx_Math" alttext="\mu" display="inline"><mi>μ</mi></math>
+with <math id="A1.p5.m14" class="ltx_Math" alttext="d\mu=\lambda^{\prime}/\lambda" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>μ</mi></mrow><mo>=</mo><mrow><msup><mi>λ</mi><mo>′</mo></msup><mo>/</mo><mi>λ</mi></mrow></mrow></math>.
+Here <math id="A1.p5.m15" class="ltx_Math" alttext="C^{r}" display="inline"><msup><mi>C</mi><mi>r</mi></msup></math> and <math id="A1.p5.m16" class="ltx_Math" alttext="Z^{r}" display="inline"><msup><mi>Z</mi><mi>r</mi></msup></math> denote group cochains and cocycles, and <math id="A1.p5.m17" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>
+is the group-cohomology coboundary. The successive coherence
+conditions are exactly these coboundary equations in the nerve
+model of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Section 7.1]</cite>.</p>
+</div>
+<div id="A1.p6" class="ltx_para">
+<p class="ltx_p">It follows that existence is obstructed only by
+<math id="A1.p6.m1" class="ltx_Math" alttext="[\omega]\in H^{4}(H,\mathbb{C}^{\times})" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>ω</mi><mo stretchy="false">]</mo></mrow><mo>∈</mo><mrow><msup><mi>H</mi><mn>4</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo>,</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, while, at any chosen lift,
+isomorphism classes of boundary-preserving autoequivalences form</p>
+<table id="A1.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.E2.m1" class="ltx_Math" alttext="H^{2}(H,\mathbb{C}^{\times})." display="block"><mrow><mrow><msup><mi>H</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo>,</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(A.2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The fixed identification with the action is essential here:
+the natural isomorphisms in this homotopy fiber obey
+(<a href="#A1.E1" title="In Appendix A Extending a pivotal structure with fixed boundary ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A.1</span></a>).</p>
+</div>
+<div id="A1.p7" class="ltx_para">
+<p class="ltx_p">For <math id="A1.p7.m1" class="ltx_Math" alttext="H=\mathbb{Z}/2" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>2</mn></mrow></mrow></math> and the trivial coefficient action, the cyclic
+resolution gives</p>
+<table id="A1.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex3.m1" class="ltx_Math" alttext="H^{2r}(H,\mathbb{C}^{\times})=\mathbb{C}^{\times}/(\mathbb{C}^{\times})^{2}=0\qquad(r\geq 1)." display="block"><mrow><mrow><mrow><mrow><msup><mi>H</mi><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo>,</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup><mo>/</mo><msup><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mn>0</mn></mrow><mspace style="width:2em;" width="2em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>≥</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Hence the degree-four obstruction vanishes, giving an extension,
+and (<a href="#A1.E2" title="In Appendix A Extending a pivotal structure with fixed boundary ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A.2</span></a>) is trivial for every
+extension. Explicitly, a normalized degree-two cocycle is determined
+by its value <math id="A1.p7.m2" class="ltx_Math" alttext="\lambda(s,s)" display="inline"><mrow><mi>λ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></math> at the nontrivial element <math id="A1.p7.m3" class="ltx_Math" alttext="s\in H" display="inline"><mrow><mi>s</mi><mo>∈</mo><mi>H</mi></mrow></math>.
+Choose <math id="A1.p7.m4" class="ltx_Math" alttext="\mu(s)\in\mathbb{C}^{\times}" display="inline"><mrow><mrow><mi>μ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">C</mi><mo>×</mo></msup></mrow></math> with
+<math id="A1.p7.m5" class="ltx_Math" alttext="\mu(s)^{2}=\lambda(s,s)" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mrow><mi>λ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <math id="A1.p7.m6" class="ltx_Math" alttext="\mu(1)=1" display="inline"><mrow><mrow><mi>μ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>; then <math id="A1.p7.m7" class="ltx_Math" alttext="d\mu=\lambda" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>μ</mi></mrow><mo>=</mo><mi>λ</mi></mrow></math>.
+Every pair <math id="A1.p7.m8" class="ltx_Math" alttext="(F,\alpha)" display="inline"><mrow><mo stretchy="false">(</mo><mi>F</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></math> is consequently isomorphic to
+<math id="A1.p7.m9" class="ltx_Math" alttext="(\id_{\mathcal{N}},\id_{\iota})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>id</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">N</mi></msub><mo>,</mo><msub><mi>id</mi><mi>ι</mi></msub><mo stretchy="false">)</mo></mrow></math>. Equation
+(<a href="#A1.E1" title="In Appendix A Extending a pivotal structure with fixed boundary ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A.1</span></a>) gives precisely
+<math id="A1.p7.m10" class="ltx_Math" alttext="\beta\iota=\alpha" display="inline"><mrow><mrow><mi>β</mi><mo>⁢</mo><mi>ι</mi></mrow><mo>=</mo><mi>α</mi></mrow></math>, as required.
+∎</p>
+</div>
+</div>
+</section>
+<section id="A2" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix"><span class="ltx_tag ltx_tag_appendix">Appendix B </span>A pointed obstruction in a fixed extension</h2>
+
+<div id="A2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="A2.p1.m1" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">T</mi></math> be the pointed modular category with group</p>
+<table id="A2.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A2.Ex1.m1" class="ltx_Math" alttext="A=\mathbb{Z}/4\times\mathbb{Z}/4" display="block"><mrow><mi>A</mi><mo>=</mo><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>4</mn></mrow><mo lspace="0.222em" rspace="0.222em">×</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi></mrow><mo>/</mo><mn>4</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">and quadratic form <math id="A2.p1.m2" class="ltx_Math" alttext="q(a,b)=i^{ab}" display="inline"><mrow><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>i</mi><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow></msup></mrow></math>, equipped with its positive
+spherical structure. Its monodromy pairing is</p>
+<table id="A2.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A2.Ex2.m1" class="ltx_Math" alttext="m\bigl((a,b),(c,d)\bigr)=i^{ad+bc}," display="block"><mrow><mrow><mrow><mi>m</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>=</mo><msup><mi>i</mi><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></msup></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">which is nondegenerate. Take <math id="A2.p1.m3" class="ltx_Math" alttext="f=(2,0)" display="inline"><mrow><mi>f</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> and set
+<math id="A2.p1.m4" class="ltx_Math" alttext="\mathcal{B}=\langle f\rangle^{\prime}_{\mathcal{T}}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo>=</mo><msubsup><mrow><mo stretchy="false">⟨</mo><mi>f</mi><mo stretchy="false">⟩</mo></mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">T</mi><mo>′</mo></msubsup></mrow></math>.
+Then</p>
+<table id="A2.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A2.Ex3.m1" class="ltx_Math" alttext="\Irr(\mathcal{B})=\{(a,b)\in A:b\text{ is even}\},\qquad\mathcal{Z}_{2}(\mathcal{B})=\langle f\rangle\simeq\Rep(\mathbb{Z}/2)." display="block"><mrow><mrow><mrow><mrow><mi>Irr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>A</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>b</mi><mo>⁢</mo><mtext> is even</mtext></mrow><mo stretchy="false">}</mo></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">Z</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">⟨</mo><mi>f</mi><mo stretchy="false">⟩</mo></mrow><mo>≃</mo><mrow><mi>Rep</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">Z</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">In particular, <math id="A2.p1.m5" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">T</mi></math> is a minimal nondegenerate extension of
+<math id="A2.p1.m6" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math>, and <math id="A2.p1.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has trivial self-braiding.</p>
+</div>
+<div id="A2.p2" class="ltx_para">
+<p class="ltx_p">Modify the positive spherical structure on <math id="A2.p2.m1" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> by the sign
+character</p>
+<table id="A2.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A2.Ex4.m1" class="ltx_Math" alttext="\chi(a,b)=i^{b}\in\{1,-1\}." display="block"><mrow><mrow><mrow><mi>χ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>i</mi><mi>b</mi></msup><mo>∈</mo><mrow><mo stretchy="false">{</mo><mrow><mn>1</mn><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This character takes value <math id="A2.p2.m2" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> on <math id="A2.p2.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, but it does not extend to a
+spherical structure on <math id="A2.p2.m4" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">T</mi></math>. Indeed, spherical structures on
+this pointed category differ from the positive one by characters
+<math id="A2.p2.m5" class="ltx_Math" alttext="A\to\{1,-1\}" display="inline"><mrow><mi>A</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mrow><mn>1</mn><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math>. Every such character is trivial on <math id="A2.p2.m6" class="ltx_Math" alttext="2A" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>A</mi></mrow></math> and hence
+on <math id="A2.p2.m7" class="ltx_Math" alttext="(0,2)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></math>, whereas <math id="A2.p2.m8" class="ltx_Math" alttext="\chi(0,2)=-1" display="inline"><mrow><mrow><mi>χ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>.</p>
+</div>
+<div id="A2.p3" class="ltx_para">
+<p class="ltx_p">The character <math id="A2.p3.m1" class="ltx_Math" alttext="\widetilde{\chi}(a,b)=i^{b}" display="inline"><mrow><mrow><mover accent="true"><mi>χ</mi><mo>~</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>i</mi><mi>b</mi></msup></mrow></math> on all of <math id="A2.p3.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> does give a
+pivotal extension. Its slope is</p>
+<table id="A2.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A2.Ex5.m1" class="ltx_Math" alttext="\widetilde{\chi}(a,b)^{2}=(-1)^{b}=m\bigl(f,(a,b)\bigr)," display="block"><mrow><mrow><mrow><mover accent="true"><mi>χ</mi><mo>~</mo></mover><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>b</mi></msup><mo>=</mo><mrow><mi>m</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mi>f</mi><mo>,</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">so it is nonspherical. The twist of <math id="A2.p3.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> remains <math id="A2.p3.m4" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math>, consistently
+with Lemma <a href="#S2.Thmtheorem1" title="Lemma 2.1 (Lacabanne). ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a>. This is exactly the possibility excluded
+by the hypothesis <math id="A2.p3.m5" class="ltx_Math" alttext="\dim(f)=-1" display="inline"><mrow><mrow><mo rspace="0em">dim</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math> in
+Proposition <a href="#S2.Thmtheorem2" title="Proposition 2.2. ‣ 2 Spherical extension over Rep(ℤ/2) ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>. Theorem <a href="#S1.Thmtheorem1" title="Theorem 1.1. ‣ 1 Introduction ‣ Galois–modular extensions for Tannakian centerswith prescribed spherical structure" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.1</span></a> permits a
+different ambient modular category and therefore does not require
+the prescribed structure to extend within <math id="A2.p3.m6" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">T</mi></math>.</p>
+</div>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="Galois-modular extensions for Tannakian centers with prescribed spherical structure"></div>
+
+</article>
+{% endraw %}

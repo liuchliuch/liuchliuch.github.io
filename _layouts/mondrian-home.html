@@ -8,13 +8,18 @@ layout: compress
     {% include head.html %}
     {% include head/custom.html %}
     <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-40">
+    {% if page.repository_fulltext %}
+    <link rel="stylesheet" href="{{ '/assets/css/vendor/latexml/latexml.css' | relative_url }}?v=1">
+    <link rel="stylesheet" href="{{ '/assets/css/vendor/latexml/article.css' | relative_url }}?v=1">
+    <link rel="stylesheet" href="{{ '/assets/css/repository-paper.css' | relative_url }}?v=5">
+    {% endif %}
     <meta name="theme-color" content="#f5f2e9">
     {% if page.math %}
     <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
     {% endif %}
   </head>
 
-  <body class="mondrian-home" id="top">
+  <body class="mondrian-home{% if page.repository_fulltext %} repository-fulltext{% endif %}" id="top">
     {% include browser-upgrade.html %}
     <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -26,7 +31,7 @@ layout: compress
     </div>
     {% endunless %}
 
-    <main class="home-page" id="main-content" itemscope itemtype="https://schema.org/{{ page.schema_type | default: 'Person' | escape }}">
+    <main class="home-page{% if page.repository_fulltext %} repository-paper-page{% endif %}" id="main-content" itemscope itemtype="https://schema.org/{{ page.schema_type | default: 'Person' | escape }}">
       {{ content }}
       <footer class="design-credit">
         Design forked from <a href="https://uovou.me/" rel="external">uovou.me</a>

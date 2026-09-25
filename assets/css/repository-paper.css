@@ -1,0 +1,485 @@
+/* Reading layout for the repository's LaTeXML full-text pages. */
+
+/* References may be many screens away; jump directly to their destination. */
+html:has(body.repository-fulltext) {
+  scroll-behavior: auto;
+}
+
+.repository-paper-page {
+  max-width: 940px;
+  border: 1px solid #dedbd2;
+  background: #fffdf8;
+  box-shadow: 0 8px 32px rgb(35 32 24 / 8%);
+}
+
+/* Keep the site's colour at the top, without a rail alongside a long paper. */
+.repository-paper-page::after {
+  display: none;
+}
+
+.repository-paper-page::before {
+  height: 5px;
+}
+
+.repository-paper-navigation,
+.repository-paper-end-navigation {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.repository-paper-navigation a,
+.repository-paper-end-navigation a {
+  color: #4d5151;
+  text-decoration: none;
+  border-bottom: 1px solid #aeb2b0;
+}
+
+.repository-paper-navigation a:hover,
+.repository-paper-end-navigation a:hover {
+  color: #111;
+  border-bottom-color: currentColor;
+}
+
+.repository-paper-header {
+  margin: 1.8rem 0 1.4rem;
+  padding-bottom: 1.3rem;
+  border-bottom: 1px solid #d8d7d1;
+}
+
+.repository-paper-header .repository-paper-kicker {
+  margin: 0 0 0.65rem;
+  color: #65615b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.repository-paper-header h1 {
+  max-width: 48rem;
+  margin: 0;
+  font-family: var(--mondrian-serif);
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.23;
+  overflow-wrap: break-word;
+}
+
+.repository-paper-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-top: 1.2rem;
+}
+
+.repository-paper-pdf {
+  display: inline-block;
+  padding: 0.36rem 0.78rem;
+  border: 1px solid #111;
+  color: #111;
+  background: #fff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.repository-paper-pdf:hover {
+  background: #f4f0df;
+}
+
+.repository-paper-header .repository-paper-version {
+  margin: 0;
+  color: #625f59;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.repository-paper-header .repository-paper-disclaimer {
+  margin: 1rem 0 0;
+  color: #69655f;
+  font-size: 0.83rem;
+  line-height: 1.55;
+}
+
+.repository-paper-content {
+  max-width: 50rem;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.64;
+}
+
+.repository-toc {
+  margin-bottom: 1.85rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #deddd6;
+  font-size: 0.88rem;
+}
+
+.repository-toc summary {
+  width: fit-content;
+  color: #2f4f60;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.repository-toc nav {
+  margin-top: 0.8rem;
+}
+
+.repository-toc ol {
+  display: grid;
+  gap: 0.27rem;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  line-height: 1.45;
+}
+
+.repository-toc li.repository-toc-subsection {
+  margin-left: 1rem;
+}
+
+.repository-toc li.repository-toc-subsubsection {
+  margin-left: 2rem;
+}
+
+.repository-toc a {
+  color: #355a6d;
+  text-decoration: none;
+}
+
+.repository-toc a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.repository-paper-content .ltx_document {
+  max-width: 100%;
+  color: #1d1c19;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.repository-paper-content .ltx_title {
+  font-family: inherit;
+}
+
+.repository-paper-content [id] {
+  scroll-margin-top: 1.5rem;
+}
+
+.repository-paper-content a:focus-visible,
+.repository-toc summary:focus-visible {
+  outline: 2px solid #6c8898;
+  outline-offset: 3px;
+}
+
+/* The page heading precedes the contents; the source's duplicate stays in HTML. */
+.repository-paper-content .ltx_title_document {
+  display: none;
+}
+
+.repository-paper-content .ltx_abstract {
+  margin: 0 0 1.8rem;
+  padding: 0 1.3rem;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.repository-paper-content .ltx_title_abstract {
+  margin: 0 0 0.55rem;
+  color: #514f48;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.repository-paper-content .ltx_abstract .ltx_p {
+  margin: 0;
+  text-indent: 0;
+}
+
+.repository-paper-content .ltx_pagination {
+  display: none;
+}
+
+.repository-paper-content .ltx_para {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.repository-paper-content .ltx_para + .ltx_para {
+  margin-top: 0.75rem;
+}
+
+.repository-paper-content .ltx_p {
+  margin: 0;
+  line-height: 1.64;
+  text-indent: 0;
+  overflow-wrap: break-word;
+}
+
+.repository-paper-content .ltx_para > .ltx_p:first-child {
+  text-indent: 0;
+}
+
+.repository-paper-content .ltx_p + .ltx_p {
+  margin-top: 0.65rem;
+}
+
+.repository-paper-content .ltx_section,
+.repository-paper-content .ltx_appendix,
+.repository-paper-content .ltx_bibliography {
+  margin-top: 2.45rem;
+}
+
+.repository-paper-content .ltx_subsection,
+.repository-paper-content .ltx_subsubsection {
+  margin-top: 1.8rem;
+}
+
+.repository-paper-content .ltx_title_section,
+.repository-paper-content .ltx_title_appendix,
+.repository-paper-content .ltx_title_bibliography {
+  margin: 0 0 0.95rem;
+  font-size: 1.36rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.repository-paper-content .ltx_title_subsection {
+  margin: 0 0 0.7rem;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.repository-paper-content .ltx_title_subsubsection {
+  margin: 0 0 0.55rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.repository-paper-content .ltx_theorem {
+  margin: 1.2rem 0;
+}
+
+.repository-paper-content .ltx_title_theorem,
+.repository-paper-content .ltx_title_proof {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.repository-paper-content .ltx_title_proof {
+  margin: 1rem 0 0.35rem;
+  font-style: italic;
+}
+
+/* Remove theme gridlines, with low specificity so the source's explicit
+   LaTeX table rules (ltx_border_*) continue to take precedence. */
+:where(.repository-paper-content) :is(table, thead, tbody, tr, td, th) {
+  border: 0;
+  background: none;
+}
+
+/* LaTeXML uses tables to align equations. Reset the site's data-table theme;
+   keep MathML, alignment columns and intentional mathematical boxes intact. */
+.repository-paper-content .ltx_eqn_table {
+  display: block;
+  max-width: 100%;
+  margin: 1rem 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.5;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #bcb8af transparent;
+}
+
+.repository-paper-content .ltx_eqn_table > tbody {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.repository-paper-content .ltx_eqn_row,
+.repository-paper-content .ltx_eqn_cell {
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.repository-paper-content .ltx_eqn_cell {
+  padding: 0.3em 0;
+}
+
+.repository-paper-content .ltx_eqn_center_padleft,
+.repository-paper-content .ltx_eqn_center_padright {
+  min-width: 0.5em;
+}
+
+.repository-paper-content .ltx_eqn_eqno {
+  width: 1%;
+  max-width: none;
+  padding-left: 1.4em;
+  color: #625f59;
+  font-style: normal;
+}
+
+.repository-paper-content .ltx_eqn_eqno .ltx_tag {
+  float: none;
+  font-size: 0.88em;
+}
+
+.repository-paper-content .ltx_eqn_cell math {
+  margin: 0;
+}
+
+.repository-paper-content .ltx_eqn_table + .ltx_p {
+  margin-top: 0.75rem;
+}
+
+.repository-paper-content .ltx_document a {
+  color: #315d74;
+  text-decoration: underline;
+  text-decoration-color: #9aabb4;
+  text-underline-offset: 0.18em;
+}
+
+.repository-paper-content .ltx_document a:hover {
+  text-decoration-color: currentColor;
+}
+
+.repository-paper-content .ltx_biblist {
+  margin: 0;
+  padding-left: 2.6rem;
+  font-size: 0.94em;
+}
+
+.repository-paper-content .ltx_bibitem {
+  position: relative;
+  margin-bottom: 0.75rem;
+  line-height: 1.52;
+  overflow-wrap: break-word;
+}
+
+.repository-paper-content .ltx_bibitem > .ltx_tag {
+  position: absolute;
+  left: -2.6rem;
+  width: 2.2rem;
+  margin: 0;
+  text-align: right;
+}
+
+.repository-paper-content .ltx_figure,
+.repository-paper-content .ltx_table,
+.repository-paper-content .ltx_tabular {
+  max-width: 100%;
+}
+
+.repository-paper-content .ltx_tabular {
+  font-family: inherit;
+  font-size: 0.92em;
+}
+
+.repository-paper-content .ltx_figure,
+.repository-paper-content .ltx_table,
+.repository-paper-content .ltx_listing {
+  overflow-x: auto;
+}
+
+.repository-paper-content .ltx_graphics {
+  max-width: 100%;
+  height: auto;
+}
+
+.repository-paper-content .ltx_caption {
+  margin: 0.7rem 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: #514f48;
+}
+
+.repository-paper-content .ltx_listing {
+  max-width: 100%;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border: 1px solid #e5e2d8;
+  background: #fbfaf6;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.repository-paper-end-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.7rem 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #d8d7d1;
+}
+
+.repository-paper-page .design-credit {
+  margin-top: 2rem;
+}
+
+@media (max-width: 720px) {
+  .repository-paper-page {
+    margin: 3vh 0.7rem;
+    padding: 1.45rem 1.2rem;
+  }
+
+  .repository-paper-header {
+    margin-top: 1.4rem;
+  }
+
+  .repository-paper-content {
+    font-size: 0.96rem;
+  }
+
+  .repository-paper-content .ltx_abstract {
+    padding: 0;
+  }
+
+  .repository-paper-content .ltx_title_section,
+  .repository-paper-content .ltx_title_appendix,
+  .repository-paper-content .ltx_title_bibliography {
+    font-size: 1.2rem;
+  }
+}
+
+@media print {
+  .repository-paper-page {
+    max-width: none;
+  }
+
+  .repository-paper-navigation,
+  .repository-paper-end-navigation,
+  .repository-toc,
+  .repository-paper-page .design-credit {
+    display: none;
+  }
+
+  .repository-paper-content .ltx_para {
+    overflow: visible;
+  }
+
+  .repository-paper-content .ltx_eqn_table {
+    display: table;
+    overflow: visible;
+  }
+
+  .repository-paper-content .ltx_eqn_table > tbody {
+    display: table-row-group;
+  }
+}

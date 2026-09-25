@@ -1,0 +1,1023 @@
+---
+layout: "repository-paper"
+title: "Strong average self-concordance of the log-determinant metric at linear scale"
+repository_title_html: "Strong average self-concordance of the\n<br class=\"ltx_break\">log-determinant metric at linear scale"
+description: "Strong average self-concordance controls the change in the local norm of a Gaussian step when an arbitrary positive-semidefinite form is added to its proposal precision. For the log-determinant metric G=∇2(−logdet) on"
+permalink: "/repository/strong-average-self-concordance-of-the-log-determinant-metric-at-linear-scale/"
+pdf: "/files/repository/SLS-strong_average_self_concordance_of_the_log_determinant_metric_at_linear_scale.pdf"
+repository_added: "2026-09-24"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-subsection"><a href="#S1.SS1">1.1 Metric and main theorem</a></li>
+<li class="repository-toc-section"><a href="#S2">2 Gaussian trace estimates</a></li>
+<li class="repository-toc-section"><a href="#S3">3 Uniform control of the local norm change</a></li>
+<li class="repository-toc-section"><a href="#S4">4 The exact strong self-concordance threshold</a></li>
+<li class="repository-toc-appendix"><a href="#A1">Appendix A Auxiliary Gaussian calculations</a></li>
+<li class="repository-toc-subsection"><a href="#A1.SS1">A.1 Polynomial Gaussian Poincaré inequality</a></li>
+<li class="repository-toc-subsection"><a href="#A1.SS2">A.2 Exact isotropic trace moments</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Strong average self-concordance of the
+<br class="ltx_break">log-determinant metric at linear scale</h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">Strong average self-concordance controls the change in the local norm of a
+Gaussian step when an arbitrary positive-semidefinite form is added to its
+proposal precision. For the log-determinant metric <math id="abstract1.m1" class="ltx_math_unparsed" alttext="G=\nabla^{2}(-\log\det)" display="inline"><mrow><mi>G</mi><mo>=</mo><msup><mo>∇</mo><mn>2</mn></msup><mrow><mo stretchy="false">(</mo><mo lspace="0em">−</mo><mi>log</mi><mo lspace="0.167em" rspace="0em">det</mo><mo stretchy="false">)</mo></mrow></mrow></math> on
+real symmetric <math id="abstract1.m2" class="ltx_Math" alttext="q\times q" display="inline"><mrow><mi>q</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>q</mi></mrow></math> positive-definite matrices, we prove this property
+for every scaled metric <math id="abstract1.m3" class="ltx_Math" alttext="sG" display="inline"><mrow><mi>s</mi><mo>⁢</mo><mi>G</mi></mrow></math> with <math id="abstract1.m4" class="ltx_Math" alttext="s\geq(q+1)/2" display="inline"><mrow><mi>s</mi><mo>≥</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>. This replaces the quadratic
+sufficient scale of Kook and Vempala (COLT 2024) by a linear one. The
+admissible proposal radius depends only on the error tolerance, and the
+guarantee includes feasibility and a two-sided bound on the change in squared
+local norm. The auxiliary form can correlate matrix entries. We normalize the
+proposal to a centered Gaussian matrix with covariance bounded by the
+identity. A paired-trace estimate of Song and Zhang (arXiv 2026) bounds its quartic trace
+moment, and Gaussian Poincaré reduces the cubic-trace variance to the same
+fourth moment. Both are <math id="abstract1.m5" class="ltx_Math" alttext="O(q^{3})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> uniformly over these covariance contractions,
+yielding the linear scale. We also determine the exact strong self-concordance
+threshold <math id="abstract1.m6" class="ltx_Math" alttext="(q+1)/2" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></math>, making this the optimal scale for requiring strong
+self-concordance and strong average self-concordance simultaneously.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">A Dikin proposal measures a Gaussian displacement in the metric at its
+starting point; the reverse proposal measures that same displacement
+at its endpoint. Average self-concordance controls the difference
+between these two squared local lengths. When the proposal metric is
+a sum of components, a useful statement must control each component
+under the Gaussian step generated by the full sum. Strong average
+self-concordance (SASC) imposes precisely this requirement by allowing
+an arbitrary positive-semidefinite addition to the proposal precision
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite>.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">For the log-determinant barrier on <math id="S1.p2.m1" class="ltx_Math" alttext="q\times q" display="inline"><mrow><mi>q</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>q</mi></mrow></math> positive-definite
+matrices, this addition changes the structure of the random matrix.
+Without it, a congruence transformation produces a Frobenius-isotropic
+Gaussian matrix, whose independent coordinates permit direct trace
+moment calculations. With it, the transformed covariance is still
+bounded by the identity, but the matrix entries may be correlated.
+Kook and Vempala <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Theorem 3.6]</cite> prove ordinary average
+self-concordance at scale <math id="S1.p2.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, whereas their SASC guarantee uses the
+ambient dimension <math id="S1.p2.m3" class="ltx_Math" alttext="n=q(q+1)/2" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math> as the scale. They identify the loss
+of entry independence in Remark G.7 and ask whether the quadratic
+SASC scale can be improved.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Covariance domination alone does not immediately supply the trace
+estimates needed at linear scale. For example, replacing
+<math id="S1.p3.m1" class="ltx_Math" alttext="\operatorname{Tr}(A^{4})" display="inline"><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> by <math id="S1.p3.m2" class="ltx_Math" alttext="\left\lVert A\right\rVert_{\mathrm{F}}^{4}" display="inline"><msubsup><mrow><mo>‖</mo><mi>A</mi><mo>‖</mo></mrow><mi>F</mi><mn>4</mn></msubsup></math> for a centered Gaussian matrix with covariance
+at most the identity gives an expectation bound <math id="S1.p3.m3" class="ltx_Math" alttext="n(n+2)=O(q^{4})" display="inline"><mrow><mrow><mi>n</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+After factoring out the target norm-change scale <math id="S1.p3.m4" class="ltx_Math" alttext="r^{2}/n" display="inline"><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>/</mo><mi>n</mi></mrow></math>, this term
+is multiplied by <math id="S1.p3.m5" class="ltx_Math" alttext="t^{2}=r^{2}/(ns)" display="inline"><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>=</mo><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>⁢</mo><mi>s</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, where <math id="S1.p3.m6" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> is the metric scale and <math id="S1.p3.m7" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> the proposal
+radius. The resulting bound is of order <math id="S1.p3.m8" class="ltx_Math" alttext="r^{2}q^{2}/s" display="inline"><mrow><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>q</mi><mn>2</mn></msup></mrow><mo>/</mo><mi>s</mi></mrow></math>, losing a factor
+of <math id="S1.p3.m9" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> relative to the desired linear scale. The loss is already
+visible for the isotropic Gaussian: its quartic trace has order <math id="S1.p3.m10" class="ltx_Math" alttext="q^{3}" display="inline"><msup><mi>q</mi><mn>3</mn></msup></math>,
+although the fourth moment of its Frobenius norm has order <math id="S1.p3.m11" class="ltx_Math" alttext="q^{4}" display="inline"><msup><mi>q</mi><mn>4</mn></msup></math>.
+A successful estimate must retain the trace structure while allowing
+arbitrary correlations.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">We prove SASC for every <math id="S1.p4.m1" class="ltx_Math" alttext="s\geq(q+1)/2" display="inline"><mrow><mi>s</mi><mo>≥</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>. The normalized covariance can
+be diagonalized in an orthonormal basis of symmetric matrices, even
+though that basis need not be the coordinate basis. The identity
+<math id="S1.p4.m2" class="ltx_Math" alttext="\sum_{a}F_{a}^{2}=(q+1)I_{q}/2" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>a</mi></msub><msubsup><mi>F</mi><mi>a</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>I</mi><mi>q</mi></msub></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math> holds in every such basis. Combined with
+the paired-trace estimate of Song and Zhang
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Lemma 5.8]</cite>, it gives the required <math id="S1.p4.m3" class="ltx_Math" alttext="O(q^{3})" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> fourth
+moment uniformly over covariance contractions. Gaussian Poincaré
+then bounds the variance of <math id="S1.p4.m4" class="ltx_Math" alttext="\operatorname{Tr}(A^{3})" display="inline"><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> by that same fourth moment.
+These two estimates control the leading cubic term and the quartic
+remainder in the norm change. The quartic estimate also ensures that
+the proposed endpoint stays inside the cone.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">The scale has a second interpretation. Strong self-concordance (SSC),
+introduced in the sampling setting by Laddha, Lee, and Vempala
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>]</cite>, is a deterministic bound on the normalized
+metric derivative. We compute its Hilbert–Schmidt norm exactly and
+show that SSC holds if and only if <math id="S1.p5.m1" class="ltx_Math" alttext="s\geq(q+1)/2" display="inline"><mrow><mi>s</mi><mo>≥</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>, attaining the
+lower endpoint of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Lemma E.23]</cite>. Hence <math id="S1.p5.m2" class="ltx_Math" alttext="(q+1)/2" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></math> is
+the minimum scale at which SSC and SASC hold together. This necessity
+comes from SSC; the SASC-only question concerns uniformity of the
+proposal radius across matrix orders and is discussed after the SSC
+calculation.</p>
+</div>
+<section id="S1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">1.1 </span>Metric and main theorem</h3>
+
+<div id="S1.SS1.p1" class="ltx_para">
+<p class="ltx_p">We consider the log-determinant barrier on the positive semidefinite
+(PSD) cone. For an integer <math id="S1.SS1.p1.m1" class="ltx_Math" alttext="q\geq 1" display="inline"><mrow><mi>q</mi><mo>≥</mo><mn>1</mn></mrow></math>, let <math id="S1.SS1.p1.m2" class="ltx_Math" alttext="\mathbb{S}^{q}" display="inline"><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></math> be the space
+of real symmetric <math id="S1.SS1.p1.m3" class="ltx_Math" alttext="q\times q" display="inline"><mrow><mi>q</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>q</mi></mrow></math> matrices and let <math id="S1.SS1.p1.m4" class="ltx_Math" alttext="\mathbb{S}_{++}^{q}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mrow><mo>+</mo><mo lspace="0em">⁣</mo><mo>+</mo></mrow><mi>q</mi></msubsup></math>
+be its positive-definite cone. The Frobenius inner product is
+<math id="S1.SS1.p1.m5" class="ltx_Math" alttext="\left\langle U,V\right\rangle_{\mathrm{F}}=\operatorname{Tr}(U^{\top}V)" display="inline"><mrow><msub><mrow><mo>⟨</mo><mrow><mi>U</mi><mo>,</mo><mi>V</mi></mrow><mo>⟩</mo></mrow><mi>F</mi></msub><mo>=</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>U</mi><mo>⊤</mo></msup><mo>⁢</mo><mi>V</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, which equals <math id="S1.SS1.p1.m6" class="ltx_Math" alttext="\operatorname{Tr}(UV)" display="inline"><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>U</mi><mo>⁢</mo><mi>V</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>
+for symmetric matrices. Write
+<math id="S1.SS1.p1.m7" class="ltx_Math" alttext="n=\dim\mathbb{S}^{q}=q(q+1)/2" display="inline"><mrow><mi>n</mi><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></mrow><mo>=</mo><mrow><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math> and <math id="S1.SS1.p1.m8" class="ltx_Math" alttext="c_{q}=(q+1)/2" display="inline"><mrow><msub><mi>c</mi><mi>q</mi></msub><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>, so that
+<math id="S1.SS1.p1.m9" class="ltx_Math" alttext="n=qc_{q}" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mi>q</mi><mo>⁢</mo><msub><mi>c</mi><mi>q</mi></msub></mrow></mrow></math>. For <math id="S1.SS1.p1.m10" class="ltx_Math" alttext="X\in\mathbb{S}_{++}^{q}" display="inline"><mrow><mi>X</mi><mo>∈</mo><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mrow><mo>+</mo><mo lspace="0em">⁣</mo><mo>+</mo></mrow><mi>q</mi></msubsup></mrow></math>, set</p>
+<table id="S1.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E1.m1" class="ltx_math_unparsed" alttext="\phi(X)=-\log\det X,\qquad G_{X}[U,V]=\operatorname{Tr}(X^{-1}UX^{-1}V),\qquad g_{s}(X)=sG_{X},\quad s&gt;0." display="block"><mrow><mi>ϕ</mi><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo rspace="0em">=</mo><mo lspace="0em">−</mo><mi>log</mi><mo lspace="0.167em" movablelimits="false" rspace="0.167em">det</mo><mi>X</mi><mo rspace="2.167em">,</mo><msub><mi>G</mi><mi>X</mi></msub><mrow><mo stretchy="false">[</mo><mi>U</mi><mo>,</mo><mi>V</mi><mo stretchy="false">]</mo></mrow><mo>=</mo><mi>Tr</mi><mrow><mo stretchy="false">(</mo><msup><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>U</mi><msup><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>V</mi><mo stretchy="false">)</mo></mrow><mo rspace="2.167em">,</mo><msub><mi>g</mi><mi>s</mi></msub><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>s</mi><msub><mi>G</mi><mi>X</mi></msub><mo rspace="1.167em">,</mo><mi>s</mi><mo>&gt;</mo><mn>0</mn><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">We identify bilinear forms with their self-adjoint Riesz operators for
+the Frobenius inner product. In particular,
+<math id="S1.SS1.p1.m11" class="ltx_Math" alttext="\left\lVert H\right\rVert_{g_{s}(X)}^{2}=s\operatorname{Tr}(X^{-1}HX^{-1}H)" display="inline"><mrow><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></msubsup><mo>=</mo><mrow><mi>s</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mi>H</mi><mo>⁢</mo><msup><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mi>H</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>. The notation
+<math id="S1.SS1.p1.m12" class="ltx_Math" alttext="\left\lVert\cdot\right\rVert_{\mathrm{HS}}" display="inline"><msub><mrow><mo>‖</mo><mo lspace="0em" rspace="0em">⋅</mo><mo>‖</mo></mrow><mi>HS</mi></msub></math> denotes the Hilbert–Schmidt norm of an
+operator on <math id="S1.SS1.p1.m13" class="ltx_Math" alttext="\mathbb{S}^{q}" display="inline"><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></math>, whereas <math id="S1.SS1.p1.m14" class="ltx_Math" alttext="\left\lVert\cdot\right\rVert_{\mathrm{F}}" display="inline"><msub><mrow><mo>‖</mo><mo lspace="0em" rspace="0em">⋅</mo><mo>‖</mo></mrow><mi>F</mi></msub></math> and
+<math id="S1.SS1.p1.m15" class="ltx_Math" alttext="\left\lVert\cdot\right\rVert_{\mathrm{op}}" display="inline"><msub><mrow><mo>‖</mo><mo lspace="0em" rspace="0em">⋅</mo><mo>‖</mo></mrow><mi>op</mi></msub></math> denote matrix norms.</p>
+</div>
+<div id="S1.SS1.p2" class="ltx_para">
+<p class="ltx_p">The distinction between operator and matrix norms matters for SSC,
+which measures all directions of the metric derivative together. We
+use the following normalizations. For a Hessian metric, ordinary
+self-concordance means
+<math id="S1.SS1.p2.m1" class="ltx_Math" alttext="\left|D^{3}f(X)[H,H,H]\right|\leq 2\left\lVert H\right\rVert_{\nabla^{2}f(X)}^{3}" display="inline"><mrow><mrow><mo>|</mo><mrow><msup><mi>D</mi><mn>3</mn></msup><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>H</mi><mo>,</mo><mi>H</mi><mo>,</mo><mi>H</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>|</mo></mrow><mo>≤</mo><mrow><mn>2</mn><mo>⁢</mo><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><mrow><msup><mo>∇</mo><mn>2</mn></msup><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mn>3</mn></msubsup></mrow></mrow></math>.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 1.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Strong self-concordance)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A self-concordant positive-definite <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="C^{1}" display="inline"><msup><mi>C</mi><mn>1</mn></msup></math> Hessian metric <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>
+is <em class="ltx_emph ltx_font_italic">strongly self-concordant</em> (SSC) if</p>
+<table id="S1.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E2.m1" class="ltx_math_unparsed" alttext="\left\lVert g(X)^{-1/2}Dg(X)[H]g(X)^{-1/2}\right\rVert_{\mathrm{HS}}\leq 2\left\lVert H\right\rVert_{g(X)}" display="block"><mrow><msub><mrow><mo>‖</mo><mi>g</mi><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mi>D</mi><mi>g</mi><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">[</mo><mi>H</mi><mo stretchy="false">]</mo></mrow><mi>g</mi><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>‖</mo></mrow><mi>HS</mi></msub><mo>≤</mo><mn>2</mn><msub><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">for every base point <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and every direction <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 1.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Uniform strong average self-concordance)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></math> be a family of continuous positive-definite metrics,
+each defined on <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathbb{S}_{++}^{q}" display="inline"><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mrow><mo>+</mo><mo lspace="0em">⁣</mo><mo>+</mo></mrow><mi>q</mi></msubsup></math> for some <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>. The family is
+<em class="ltx_emph ltx_font_italic">uniformly strongly average self-concordant</em> if, for every
+<math id="S1.Thmtheorem2.p1.m4" class="ltx_Math" alttext="0&lt;\varepsilon&lt;1" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>ε</mi><mo>&lt;</mo><mn>1</mn></mrow></math>, there is <math id="S1.Thmtheorem2.p1.m5" class="ltx_Math" alttext="r_{\varepsilon}&gt;0" display="inline"><mrow><msub><mi>r</mi><mi>ε</mi></msub><mo>&gt;</mo><mn>0</mn></mrow></math> with the following
+property. For every <math id="S1.Thmtheorem2.p1.m6" class="ltx_Math" alttext="g\in\mathcal{F}" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></mrow></math>, every base point
+<math id="S1.Thmtheorem2.p1.m7" class="ltx_Math" alttext="X\in\mathbb{S}_{++}^{q}" display="inline"><mrow><mi>X</mi><mo>∈</mo><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mrow><mo>+</mo><mo lspace="0em">⁣</mo><mo>+</mo></mrow><mi>q</mi></msubsup></mrow></math>, every positive-semidefinite bilinear form
+<math id="S1.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\bar{g}(X)" display="inline"><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> on <math id="S1.Thmtheorem2.p1.m9" class="ltx_Math" alttext="\mathbb{S}^{q}" display="inline"><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></math>, and every
+<math id="S1.Thmtheorem2.p1.m10" class="ltx_Math" alttext="0&lt;r\leq r_{\varepsilon}" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>r</mi><mo>≤</mo><msub><mi>r</mi><mi>ε</mi></msub></mrow></math>, the proposal</p>
+<table id="S1.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E3.m1" class="ltx_Math" alttext="H\sim N_{\mathbb{S}^{q}}\!\left(0,\frac{r^{2}}{n}(g(X)+\bar{g}(X))^{-1}\right),\qquad Z=X+H," display="block"><mrow><mrow><mrow><mi>H</mi><mo>∼</mo><mrow><msub><mi>N</mi><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></msub><mo>⁢</mo><mrow><mo>(</mo><mn>0</mn><mo>,</mo><mrow><mfrac><msup><mi>r</mi><mn>2</mn></msup><mi>n</mi></mfrac><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>)</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>Z</mi><mo>=</mo><mrow><mi>X</mi><mo>+</mo><mi>H</mi></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">satisfies</p>
+<table id="S1.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E4.m1" class="ltx_math_unparsed" alttext="\mathbb{P}\!\left[Z\in\mathbb{S}_{++}^{q},\quad\left\lVert H\right\rVert_{g(Z)}^{2}-\left\lVert H\right\rVert_{g(X)}^{2}\leq\frac{2\varepsilon r^{2}}{n}\right]\geq 1-\varepsilon." display="block"><mrow><mpadded style="width:0.611em;" width="0.611em"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi></mpadded><mrow><mo>[</mo><mi>Z</mi><mo>∈</mo><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mrow><mo>+</mo><mo lspace="0em">⁣</mo><mo>+</mo></mrow><mi>q</mi></msubsup><mo rspace="1.167em">,</mo><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></msubsup><mo>−</mo><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><mi>g</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></msubsup><mo>≤</mo><mfrac><mrow><mn>2</mn><mo>⁢</mo><mi>ε</mi><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mi>n</mi></mfrac><mo>]</mo></mrow><mo>≥</mo><mn>1</mn><mo>−</mo><mi>ε</mi><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">A metric is called SASC when its singleton family has this property.
+Setting <math id="S1.Thmtheorem2.p1.m11" class="ltx_Math" alttext="\bar{g}(X)=0" display="inline"><mrow><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> gives the corresponding average
+self-concordance condition.</p>
+</div>
+</div>
+<div id="S1.SS1.p3" class="ltx_para">
+<p class="ltx_p">The covariance in (<a href="#S1.E3" title="In Definition 1.2 (Uniform strong average self-concordance). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>) is relative to the Frobenius inner
+product. The radius is independent of the matrix order, the metric in
+the family, the base point, and the auxiliary form. Only the pointwise
+value <math id="S1.SS1.p3.m1" class="ltx_Math" alttext="\bar{g}(X)" display="inline"><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> enters the proposal; it may be singular, and no
+smoothness or conditioning assumption is imposed. The norm change is
+measured using <math id="S1.SS1.p3.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>, not <math id="S1.SS1.p3.m3" class="ltx_Math" alttext="g+\bar{g}" display="inline"><mrow><mi>g</mi><mo>+</mo><mover accent="true"><mi>g</mi><mo>¯</mo></mover></mrow></math>. Proposals outside the cone are
+counted as failures, so the event does not require evaluating <math id="S1.SS1.p3.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>
+outside its domain.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.3</span></span><span class="ltx_text ltx_font_bold"> </span>(Linear SASC scaling and the exact SSC threshold)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For every integer <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="q\geq 1" display="inline"><mrow><mi>q</mi><mo>≥</mo><mn>1</mn></mrow></math> and every <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="s\geq c_{q}=(q+1)/2" display="inline"><mrow><mi>s</mi><mo>≥</mo><msub><mi>c</mi><mi>q</mi></msub><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>, the
+proposal (<a href="#S1.E3" title="In Definition 1.2 (Uniform strong average self-concordance). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>) with <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="g=g_{s}" display="inline"><mrow><mi>g</mi><mo>=</mo><msub><mi>g</mi><mi>s</mi></msub></mrow></math> satisfies
+(<a href="#S1.E4" title="In Definition 1.2 (Uniform strong average self-concordance). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>) uniformly over <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="X\in\mathbb{S}_{++}^{q}" display="inline"><mrow><mi>X</mi><mo>∈</mo><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mrow><mo>+</mo><mo lspace="0em">⁣</mo><mo>+</mo></mrow><mi>q</mi></msubsup></mrow></math> and
+<math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\bar{g}(X)\succeq 0" display="inline"><mrow><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⪰</mo><mn>0</mn></mrow></math>, whenever <math id="S1.Thmtheorem3.p1.m6" class="ltx_Math" alttext="0&lt;\varepsilon&lt;1" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>ε</mi><mo>&lt;</mo><mn>1</mn></mrow></math> and</span></p>
+<table id="S1.E5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E5.m1" class="ltx_Math" alttext="0&lt;r\leq r_{\varepsilon}:=\frac{\varepsilon^{3/2}}{\sqrt{864}}." display="block"><mrow><mrow><mn>0</mn><mo>&lt;</mo><mi>r</mi><mo>≤</mo><msub><mi>r</mi><mi>ε</mi></msub><mo>:=</mo><mfrac><msup><mi>ε</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup><msqrt><mn>864</mn></msqrt></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">In fact, the stronger two-sided estimate holds:</span></p>
+<table id="S1.E6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E6.m1" class="ltx_math_unparsed" alttext="\mathbb{P}\!\left[Z\in\mathbb{S}_{++}^{q},\quad\left|\left\lVert H\right\rVert_{g_{s}(Z)}^{2}-\left\lVert H\right\rVert_{g_{s}(X)}^{2}\right|\leq\frac{2\varepsilon r^{2}}{n}\right]\geq 1-\varepsilon." display="block"><mrow><mpadded style="width:0.611em;" width="0.611em"><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi></mpadded><mrow><mo>[</mo><mi>Z</mi><mo>∈</mo><msubsup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mrow><mo>+</mo><mo lspace="0em">⁣</mo><mo>+</mo></mrow><mi>q</mi></msubsup><mo rspace="1.167em">,</mo><mo fence="false" rspace="0.167em">|</mo><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></msubsup><mo>−</mo><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></msubsup><mo fence="false">|</mo><mo lspace="0.167em">≤</mo><mfrac><mrow><mn>2</mn><mo>⁢</mo><mi>ε</mi><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mi>n</mi></mfrac><mo>]</mo></mrow><mo>≥</mo><mn>1</mn><mo>−</mo><mi>ε</mi><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Thus <math id="S1.Thmtheorem3.p1.m7" class="ltx_math_unparsed" alttext="\{g_{s}:q\geq 1,\ s\geq(q+1)/2\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>g</mi><mi>s</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mi>q</mi><mo>≥</mo><mn>1</mn><mo rspace="0.667em">,</mo><mi>s</mi><mo>≥</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn><mo stretchy="false">}</mo></mrow></math> is uniformly SASC.</span></p>
+</div>
+<div id="S1.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Moreover, <math id="S1.Thmtheorem3.p2.m1" class="ltx_Math" alttext="g_{s}" display="inline"><msub><mi>g</mi><mi>s</mi></msub></math> is SSC if and only if <math id="S1.Thmtheorem3.p2.m2" class="ltx_Math" alttext="s\geq(q+1)/2" display="inline"><mrow><mi>s</mi><mo>≥</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>. Consequently,
+for each fixed <math id="S1.Thmtheorem3.p2.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>,</span></p>
+<table id="S1.E7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E7.m1" class="ltx_Math" alttext="\min\{s&gt;0:g_{s}\text{ is both SSC and SASC}\}=\frac{q+1}{2}." display="block"><mrow><mrow><mrow><mi>min</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mrow><mi>s</mi><mo>&gt;</mo><mn>0</mn></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mtext class="ltx_mathvariant_italic"> is both SSC and SASC</mtext></mrow><mo stretchy="false">}</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div id="S1.SS1.p4" class="ltx_para">
+<p class="ltx_p">The theorem controls the norm change of the log-determinant component
+itself. This differs from controlling the complete Metropolis ratio,
+where the quadratic and determinant terms may cancel. Song and Zhang
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Lemmas 5.3 and 5.15]</cite> use such cancellation in their
+analysis of spectrahedral walks; their covariance-eigenmode argument
+in Lemma 5.9 is also a technical ingredient of the trace estimates used
+here. Chen and Kook <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Theorem 1 and Corollary 3]</cite>
+already obtain <math id="S1.SS1.p4.m1" class="ltx_Math" alttext="\widetilde{O}(n^{2})" display="inline"><mrow><mover accent="true"><mi>O</mi><mo>~</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> total-variation mixing on truncated
+PSD cones for a hybrid metric containing a linearly scaled
+log-determinant component, through first-order regularity. Their
+separate fourth-order criterion concerns ordinary ASC
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Definition 5 and Lemma 6]</cite>. Thus a linear SASC bound
+answers the local regularity question without asserting a further
+mixing-time improvement. Numbered references to <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite>
+use the published COLT version; those to
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, <a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite> use arXiv version 1.</p>
+</div>
+</section>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>Gaussian trace estimates</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">We first remove the base point and the auxiliary precision from the
+moment calculation. For <math id="S2.p1.m1" class="ltx_Math" alttext="X\succ 0" display="inline"><mrow><mi>X</mi><mo>≻</mo><mn>0</mn></mrow></math>, the invertible congruence operator
+<math id="S2.p1.m2" class="ltx_math_unparsed" alttext="T_{X}(H)=X^{-1/2}HX^{-1/2}" display="inline"><mrow><msub><mi>T</mi><mi>X</mi></msub><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><msup><mi>X</mi><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mi>H</mi><msup><mi>X</mi><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></math> satisfies <math id="S2.p1.m3" class="ltx_Math" alttext="G_{X}=T_{X}^{*}T_{X}" display="inline"><mrow><msub><mi>G</mi><mi>X</mi></msub><mo>=</mo><mrow><msubsup><mi>T</mi><mi>X</mi><mo>∗</mo></msubsup><mo>⁢</mo><msub><mi>T</mi><mi>X</mi></msub></mrow></mrow></math>.
+Normalization leaves a Gaussian covariance contraction on the full
+Frobenius space, as observed in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Remark G.7]</cite>.
+The subsequent estimates depend only on that contraction, so they
+apply uniformly to every auxiliary form in Theorem <a href="#S1.Thmtheorem3" title="Theorem 1.3 (Linear SASC scaling and the exact SSC threshold). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.3</span></a>.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Normalized proposal covariance)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> have the law (<a href="#S1.E3" title="In Definition 1.2 (Uniform strong average self-concordance). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>) for <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="g=g_{s}" display="inline"><mrow><mi>g</mi><mo>=</mo><msub><mi>g</mi><mi>s</mi></msub></mrow></math>, and set</span></p>
+<table id="S2.E8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E8.m1" class="ltx_Math" alttext="t=\frac{r}{\sqrt{ns}},\qquad A=t^{-1}T_{X}(H)." display="block"><mrow><mrow><mrow><mi>t</mi><mo>=</mo><mfrac><mi>r</mi><msqrt><mrow><mi>n</mi><mo>⁢</mo><mi>s</mi></mrow></msqrt></mfrac></mrow><mo rspace="2.167em">,</mo><mrow><mi>A</mi><mo>=</mo><mrow><msup><mi>t</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msub><mi>T</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Then <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is a centered Gaussian in <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mathbb{S}^{q}" display="inline"><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></math>, and its covariance
+operator <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> satisfies <math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="0\preceq Q\preceq I" display="inline"><mrow><mn>0</mn><mo>⪯</mo><mi>Q</mi><mo>⪯</mo><mi>I</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Writing <math id="S2.p2.m1" class="ltx_Math" alttext="\overline{\mathcal{G}}_{X}\succeq 0" display="inline"><mrow><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">G</mi><mo stretchy="true">¯</mo></mover><mi>X</mi></msub><mo>⪰</mo><mn>0</mn></mrow></math> for the Riesz operator of
+<math id="S2.p2.m2" class="ltx_Math" alttext="\bar{g}(X)" display="inline"><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>, the covariance transformation rule gives</p>
+<table id="S2.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex1.m1" class="ltx_Math" alttext="Q=sT_{X}(sT_{X}^{*}T_{X}+\overline{\mathcal{G}}_{X})^{-1}T_{X}^{*}\preceq sT_{X}(sT_{X}^{*}T_{X})^{-1}T_{X}^{*}=I." display="block"><mrow><mrow><mi>Q</mi><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><msub><mi>T</mi><mi>X</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>s</mi><mo>⁢</mo><msubsup><mi>T</mi><mi>X</mi><mo>∗</mo></msubsup><mo>⁢</mo><msub><mi>T</mi><mi>X</mi></msub></mrow><mo>+</mo><msub><mover accent="true"><mi class="ltx_font_mathcaligraphic" mathvariant="script">G</mi><mo stretchy="true">¯</mo></mover><mi>X</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msubsup><mi>T</mi><mi>X</mi><mo>∗</mo></msubsup></mrow><mo>⪯</mo><mrow><mi>s</mi><mo>⁢</mo><msub><mi>T</mi><mi>X</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>⁢</mo><msubsup><mi>T</mi><mi>X</mi><mo>∗</mo></msubsup><mo>⁢</mo><msub><mi>T</mi><mi>X</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msubsup><mi>T</mi><mi>X</mi><mo>∗</mo></msubsup></mrow><mo>=</mo><mi>I</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The inequality follows from inverse monotonicity of positive-definite
+operators, and the last identity follows from invertibility of <math id="S2.p2.m3" class="ltx_Math" alttext="T_{X}" display="inline"><msub><mi>T</mi><mi>X</mi></msub></math>.
+The displayed covariance is positive semidefinite.
+∎</p>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_italic">Remark 2.2</span></span><span class="ltx_text ltx_font_italic"> </span>(Coordinate normalization)<span class="ltx_text ltx_font_italic">.</span></h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">An orthonormal basis of <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{S}^{q}" display="inline"><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></math> is
+<math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="E_{ii}" display="inline"><msub><mi>E</mi><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math> and <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="(E_{ij}+E_{ji})/\sqrt{2}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>E</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo>+</mo><msub><mi>E</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><msqrt><mn>2</mn></msqrt></mrow></math> for <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="i&lt;j" display="inline"><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></math>, where
+<math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="E_{ij}" display="inline"><msub><mi>E</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> is the elementary matrix. Let <math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="\operatorname{fsvec}" display="inline"><mi>fsvec</mi></math> denote coordinates
+in this basis, so its off-diagonal coordinates are <math id="S2.Thmtheorem2.p1.m7" class="ltx_Math" alttext="\sqrt{2}H_{ij}" display="inline"><mrow><msqrt><mn>2</mn></msqrt><mo>⁢</mo><msub><mi>H</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></mrow></math>.
+If <math id="S2.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\operatorname{svec}(H)" display="inline"><mrow><mi>svec</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></math> instead stores each off-diagonal entry once, define
+<math id="S2.Thmtheorem2.p1.m9" class="ltx_Math" alttext="L_{X}" display="inline"><msub><mi>L</mi><mi>X</mi></msub></math> by <math id="S2.Thmtheorem2.p1.m10" class="ltx_Math" alttext="L_{X}\operatorname{svec}(H)=\operatorname{fsvec}(T_{X}H)" display="inline"><mrow><mrow><msub><mi>L</mi><mi>X</mi></msub><mo lspace="0.167em">⁢</mo><mrow><mi>svec</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mi>fsvec</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>T</mi><mi>X</mi></msub><mo>⁢</mo><mi>H</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The raw-coordinate matrix
+of <math id="S2.Thmtheorem2.p1.m11" class="ltx_Math" alttext="G_{X}" display="inline"><msub><mi>G</mi><mi>X</mi></msub></math> is then <math id="S2.Thmtheorem2.p1.m12" class="ltx_Math" alttext="\mathbf{G}_{X}=L_{X}^{\top}L_{X}" display="inline"><mrow><msub><mi class="ltx_mathvariant_bold" mathvariant="bold">G</mi><mi>X</mi></msub><mo>=</mo><mrow><msubsup><mi>L</mi><mi>X</mi><mo>⊤</mo></msubsup><mo>⁢</mo><msub><mi>L</mi><mi>X</mi></msub></mrow></mrow></math>, and</p>
+<table id="S2.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex2.m1" class="ltx_Math" alttext="\operatorname{Cov}(\operatorname{fsvec}(A))=sL_{X}(s\mathbf{G}_{X}+\overline{\mathbf{G}}_{X})^{-1}L_{X}^{\top}\preceq I," display="block"><mrow><mrow><mrow><mi>Cov</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>fsvec</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><msub><mi>L</mi><mi>X</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>s</mi><mo>⁢</mo><msub><mi class="ltx_mathvariant_bold" mathvariant="bold">G</mi><mi>X</mi></msub></mrow><mo>+</mo><msub><mover accent="true"><mi class="ltx_mathvariant_bold" mathvariant="bold">G</mi><mo stretchy="true">¯</mo></mover><mi>X</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msubsup><mi>L</mi><mi>X</mi><mo>⊤</mo></msubsup></mrow><mo>⪯</mo><mi>I</mi></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S2.Thmtheorem2.p1.m13" class="ltx_Math" alttext="\overline{\mathbf{G}}_{X}" display="inline"><msub><mover accent="true"><mi class="ltx_mathvariant_bold" mathvariant="bold">G</mi><mo stretchy="true">¯</mo></mover><mi>X</mi></msub></math> is the raw-coordinate matrix of
+<math id="S2.Thmtheorem2.p1.m14" class="ltx_Math" alttext="\bar{g}(X)" display="inline"><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>. All Hilbert–Schmidt norms use orthonormal coordinates;
+the raw upper-triangular coordinate map is not a Frobenius isometry.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Diagonalizing a covariance operator gives independent scalar Gaussian
+coefficients multiplying symmetric matrices that need not commute.
+In a fourth-moment expansion, the difficult terms have the alternating
+order <math id="S2.p3.m1" class="ltx_Math" alttext="B_{a}B_{b}B_{a}B_{b}" display="inline"><mrow><msub><mi>B</mi><mi>a</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>b</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>a</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>b</mi></msub></mrow></math>. The following <math id="S2.p3.m2" class="ltx_Math" alttext="R=I_{q}" display="inline"><mrow><mi>R</mi><mo>=</mo><msub><mi>I</mi><mi>q</mi></msub></mrow></math> specialization of
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Lemma 5.8]</cite> bounds them by the adjacent terms
+<math id="S2.p3.m3" class="ltx_Math" alttext="B_{a}^{2}B_{b}^{2}" display="inline"><mrow><msubsup><mi>B</mi><mi>a</mi><mn>2</mn></msubsup><mo>⁢</mo><msubsup><mi>B</mi><mi>b</mi><mn>2</mn></msubsup></mrow></math>, whose sum is controlled by <math id="S2.p3.m4" class="ltx_Math" alttext="\sum_{a}B_{a}^{2}" display="inline"><mrow><msub><mo>∑</mo><mi>a</mi></msub><msubsup><mi>B</mi><mi>a</mi><mn>2</mn></msubsup></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2.3</span></span><span class="ltx_text ltx_font_bold"> </span>(Paired traces)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="B_{1},\ldots,B_{m}\in\mathbb{S}^{q}" display="inline"><mrow><msub><mi>B</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mi>B</mi><mi>m</mi></msub><mo>∈</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></mrow></mrow></math>, and suppose
+<math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="B:=\sum_{a}B_{a}^{2}\preceq\Psi" display="inline"><mrow><mi>B</mi><mo rspace="0.111em">:=</mo><mrow><msub><mo>∑</mo><mi>a</mi></msub><msubsup><mi>B</mi><mi>a</mi><mn>2</mn></msubsup></mrow><mo>⪯</mo><mi mathvariant="normal">Ψ</mi></mrow></math> for a PSD matrix <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\Psi" display="inline"><mi mathvariant="normal">Ψ</mi></math>. Then</span></p>
+<table id="S2.E9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E9.m1" class="ltx_Math" alttext="\sum_{a,b=1}^{m}\left|\operatorname{Tr}(B_{a}B_{b}B_{a}B_{b})\right|\leq\operatorname{Tr}(B^{2})\leq\operatorname{Tr}(\Psi^{2})." display="block"><mrow><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><mrow><mo lspace="0em">|</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>B</mi><mi>a</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>b</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>a</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>b</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></mrow><mo>≤</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>B</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi mathvariant="normal">Ψ</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">For symmetric <math id="S2.p4.m1" class="ltx_Math" alttext="U,V" display="inline"><mrow><mi>U</mi><mo>,</mo><mi>V</mi></mrow></math>, Frobenius Cauchy–Schwarz gives</p>
+<table id="S2.E10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E10.m1" class="ltx_Math" alttext="\left|\operatorname{Tr}(UVUV)\right|=\left|\left\langle VU,UV\right\rangle_{\mathrm{F}}\right|\leq\left\lVert UV\right\rVert_{\mathrm{F}}^{2}=\operatorname{Tr}(U^{2}V^{2})." display="block"><mrow><mrow><mrow><mo>|</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>U</mi><mo>⁢</mo><mi>V</mi><mo>⁢</mo><mi>U</mi><mo>⁢</mo><mi>V</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo>=</mo><mrow><mo>|</mo><msub><mrow><mo>⟨</mo><mrow><mrow><mi>V</mi><mo>⁢</mo><mi>U</mi></mrow><mo>,</mo><mrow><mi>U</mi><mo>⁢</mo><mi>V</mi></mrow></mrow><mo>⟩</mo></mrow><mi>F</mi></msub><mo>|</mo></mrow><mo>≤</mo><msubsup><mrow><mo>‖</mo><mrow><mi>U</mi><mo>⁢</mo><mi>V</mi></mrow><mo>‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>U</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>V</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(10)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Summing with <math id="S2.p4.m2" class="ltx_Math" alttext="U=B_{a}" display="inline"><mrow><mi>U</mi><mo>=</mo><msub><mi>B</mi><mi>a</mi></msub></mrow></math>, <math id="S2.p4.m3" class="ltx_Math" alttext="V=B_{b}" display="inline"><mrow><mi>V</mi><mo>=</mo><msub><mi>B</mi><mi>b</mi></msub></mrow></math> proves the first inequality in
+(<a href="#S2.E9" title="In Lemma 2.3 (Paired traces). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9</span></a>). For the second, both <math id="S2.p4.m4" class="ltx_Math" alttext="\Psi-B" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mo>−</mo><mi>B</mi></mrow></math> and <math id="S2.p4.m5" class="ltx_Math" alttext="\Psi+B" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mo>+</mo><mi>B</mi></mrow></math>
+are PSD, and therefore</p>
+<table id="S2.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex3.m1" class="ltx_Math" alttext="\operatorname{Tr}(\Psi^{2})-\operatorname{Tr}(B^{2})=\operatorname{Tr}\bigl((\Psi-B)(\Psi+B)\bigr)\geq 0." display="block"><mrow><mrow><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi mathvariant="normal">Ψ</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>B</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">Ψ</mi><mo>−</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">Ψ</mi><mo>+</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>≥</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The nonnegativity follows by writing the trace of a product of PSD
+matrices <math id="S2.p4.m6" class="ltx_Math" alttext="M,N" display="inline"><mrow><mi>M</mi><mo>,</mo><mi>N</mi></mrow></math> as <math id="S2.p4.m7" class="ltx_Math" alttext="\operatorname{Tr}(M^{1/2}NM^{1/2})" display="inline"><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>M</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>⁢</mo><mi>N</mi><mo>⁢</mo><msup><mi>M</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">The paired-trace inequality turns covariance domination into a
+fourth-moment bound without discarding matrix multiplication inside
+the trace. The cubic trace is odd, hence centered; differentiating it
+in Gaussian coordinates produces <math id="S2.p5.m1" class="ltx_Math" alttext="A^{2}" display="inline"><msup><mi>A</mi><mn>2</mn></msup></math>, so Gaussian Poincaré reduces
+its variance to the same fourth moment. This also covers singular
+covariance operators.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 2.4</span></span><span class="ltx_text ltx_font_bold"> </span>(Gaussian trace bounds)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a centered Gaussian in <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathbb{S}^{q}" display="inline"><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></math> with covariance
+<math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="0\preceq Q\preceq I" display="inline"><mrow><mn>0</mn><mo>⪯</mo><mi>Q</mi><mo>⪯</mo><mi>I</mi></mrow></math>. Then</span></p>
+<table id="S2.E11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E11.m1" class="ltx_Math" alttext="\mathbb{E}\operatorname{Tr}(A^{4})\leq 3nc_{q}\leq 3q^{3},\qquad\mathbb{E}\bigl(\operatorname{Tr}(A^{3})\bigr)^{2}\leq 27nc_{q}\leq 27q^{3}." display="block"><mrow><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mn>3</mn><mo>⁢</mo><mi>n</mi><mo>⁢</mo><msub><mi>c</mi><mi>q</mi></msub></mrow><mo>≤</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>q</mi><mn>3</mn></msup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msup><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mn>2</mn></msup></mrow><mo>≤</mo><mrow><mn>27</mn><mo>⁢</mo><mi>n</mi><mo>⁢</mo><msub><mi>c</mi><mi>q</mi></msub></mrow><mo>≤</mo><mrow><mn>27</mn><mo>⁢</mo><msup><mi>q</mi><mn>3</mn></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(11)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Diagonalize <math id="S2.p6.m1" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> in a Frobenius-orthonormal basis
+<math id="S2.p6.m2" class="ltx_Math" alttext="F_{1},\ldots,F_{n}" display="inline"><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>F</mi><mi>n</mi></msub></mrow></math>, and write</p>
+<table id="S2.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex4.m1" class="ltx_math_unparsed" alttext="A=\sum_{a=1}^{n}\sqrt{\lambda_{a}}\,\xi_{a}F_{a},\qquad 0\leq\lambda_{a}\leq 1,\qquad\xi_{a}\ \text{independent }N(0,1)." display="block"><mrow><mi>A</mi><mo rspace="0.111em">=</mo><munderover><mo movablelimits="false">∑</mo><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msqrt><msub><mi>λ</mi><mi>a</mi></msub></msqrt><msub><mi>ξ</mi><mi>a</mi></msub><msub><mi>F</mi><mi>a</mi></msub><mo rspace="2.167em">,</mo><mn>0</mn><mo>≤</mo><msub><mi>λ</mi><mi>a</mi></msub><mo>≤</mo><mn>1</mn><mo rspace="2.167em">,</mo><msub><mi>ξ</mi><mi>a</mi></msub><mtext>independent </mtext><mi>N</mi><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The covariance basis may rotate arbitrarily with the auxiliary form.
+The following sum-of-squares identity is unchanged by that rotation:</p>
+<table id="S2.E12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E12.m1" class="ltx_Math" alttext="\sum_{a=1}^{n}F_{a}^{2}=c_{q}I_{q}." display="block"><mrow><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msubsup><mi>F</mi><mi>a</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mrow><msub><mi>c</mi><mi>q</mi></msub><mo>⁢</mo><msub><mi>I</mi><mi>q</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(12)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">In the basis of Remark <a href="#S2.Thmtheorem2" title="Remark 2.2 (Coordinate normalization). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a>, the diagonal terms sum
+to <math id="S2.p6.m3" class="ltx_Math" alttext="I_{q}" display="inline"><msub><mi>I</mi><mi>q</mi></msub></math>, and the off-diagonal terms sum to <math id="S2.p6.m4" class="ltx_Math" alttext="(q-1)I_{q}/2" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>I</mi><mi>q</mi></msub></mrow><mo>/</mo><mn>2</mn></mrow></math>.
+For another orthonormal basis, writing its change-of-basis matrix as
+<math id="S2.p6.m5" class="ltx_Math" alttext="O" display="inline"><mi>O</mi></math>, the identity <math id="S2.p6.m6" class="ltx_Math" alttext="\sum_{a}O_{ab}O_{ac}=\delta_{bc}" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>a</mi></msub><mrow><msub><mi>O</mi><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow></msub><mo>⁢</mo><msub><mi>O</mi><mrow><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow></msub></mrow></mrow><mo>=</mo><msub><mi>δ</mi><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></msub></mrow></math> shows that
+the sum of squares is unchanged.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">Set <math id="S2.p7.m1" class="ltx_Math" alttext="B_{a}=\sqrt{\lambda_{a}}F_{a}" display="inline"><mrow><msub><mi>B</mi><mi>a</mi></msub><mo>=</mo><mrow><msqrt><msub><mi>λ</mi><mi>a</mi></msub></msqrt><mo>⁢</mo><msub><mi>F</mi><mi>a</mi></msub></mrow></mrow></math> and <math id="S2.p7.m2" class="ltx_Math" alttext="B=\sum_{a}B_{a}^{2}" display="inline"><mrow><mi>B</mi><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>a</mi></msub><msubsup><mi>B</mi><mi>a</mi><mn>2</mn></msubsup></mrow></mrow></math>.
+As in the covariance-eigenbasis argument of
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, Lemma 5.9]</cite>, <math id="S2.p7.m3" class="ltx_Math" alttext="0\leq\lambda_{a}\leq 1" display="inline"><mrow><mn>0</mn><mo>≤</mo><msub><mi>λ</mi><mi>a</mi></msub><mo>≤</mo><mn>1</mn></mrow></math> gives</p>
+<table id="S2.E13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E13.m1" class="ltx_Math" alttext="0\preceq B\preceq\sum_{a}F_{a}^{2}=c_{q}I_{q},\qquad\operatorname{Tr}(B^{2})\leq qc_{q}^{2}=nc_{q}." display="block"><mrow><mrow><mrow><mn>0</mn><mo>⪯</mo><mi>B</mi><mo rspace="0.111em">⪯</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>a</mi></munder><msubsup><mi>F</mi><mi>a</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mrow><msub><mi>c</mi><mi>q</mi></msub><mo>⁢</mo><msub><mi>I</mi><mi>q</mi></msub></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>B</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>q</mi><mo>⁢</mo><msubsup><mi>c</mi><mi>q</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mrow><mi>n</mi><mo>⁢</mo><msub><mi>c</mi><mi>q</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(13)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">We now expand the fourth moment in the independent coefficients,
+retaining the order of the matrix factors. Using
+<math id="S2.p7.m4" class="ltx_Math" alttext="\mathbb{E}(\xi_{a}\xi_{b}\xi_{c}\xi_{d})=\delta_{ab}\delta_{cd}+\delta_{ac}\delta_{bd}+\delta_{ad}\delta_{bc}" display="inline"><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ξ</mi><mi>a</mi></msub><mo>⁢</mo><msub><mi>ξ</mi><mi>b</mi></msub><mo>⁢</mo><msub><mi>ξ</mi><mi>c</mi></msub><mo>⁢</mo><msub><mi>ξ</mi><mi>d</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>δ</mi><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow></msub><mo>⁢</mo><msub><mi>δ</mi><mrow><mi>c</mi><mo>⁢</mo><mi>d</mi></mrow></msub></mrow><mo>+</mo><mrow><msub><mi>δ</mi><mrow><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo>⁢</mo><msub><mi>δ</mi><mrow><mi>b</mi><mo>⁢</mo><mi>d</mi></mrow></msub></mrow><mo>+</mo><mrow><msub><mi>δ</mi><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow></msub><mo>⁢</mo><msub><mi>δ</mi><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></msub></mrow></mrow></mrow></math>, the three Wick pairings give</p>
+<table id="S2.E14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E14.m1" class="ltx_Math" alttext="\mathbb{E}\operatorname{Tr}(A^{4})=2\operatorname{Tr}(B^{2})+\sum_{a,b}\operatorname{Tr}(B_{a}B_{b}B_{a}B_{b})." display="block"><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mn>2</mn><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>B</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="0.055em">+</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow></munder><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>B</mi><mi>a</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>b</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>a</mi></msub><mo>⁢</mo><msub><mi>B</mi><mi>b</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(14)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Lemma <a href="#S2.Thmtheorem3" title="Lemma 2.3 (Paired traces). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3</span></a> bounds the last sum in absolute value by
+<math id="S2.p7.m5" class="ltx_Math" alttext="\operatorname{Tr}(B^{2})" display="inline"><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>B</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>, proving <math id="S2.p7.m6" class="ltx_Math" alttext="\mathbb{E}\operatorname{Tr}(A^{4})\leq 3nc_{q}" display="inline"><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mn>3</mn><mo>⁢</mo><mi>n</mi><mo>⁢</mo><msub><mi>c</mi><mi>q</mi></msub></mrow></mrow></math>.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">For the second estimate, let <math id="S2.p8.m1" class="ltx_Math" alttext="p(A)=\operatorname{Tr}(A^{3})" display="inline"><mrow><mrow><mi>p</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Its expectation is zero
+because the law of <math id="S2.p8.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is invariant under <math id="S2.p8.m3" class="ltx_Math" alttext="A\mapsto-A" display="inline"><mrow><mi>A</mi><mo stretchy="false">↦</mo><mrow><mo>−</mo><mi>A</mi></mrow></mrow></math>. Gaussian
+Poincaré in the independent coordinates <math id="S2.p8.m4" class="ltx_Math" alttext="\xi_{a}" display="inline"><msub><mi>ξ</mi><mi>a</mi></msub></math> gives</p>
+<table id="S2.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S2.Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex5.m1" class="ltx_Math" alttext="\displaystyle\mathbb{E}p(A)^{2}" display="inline"><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><mi>p</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex5.m2" class="ltx_Math" alttext="\displaystyle=\operatorname{Var}p(A)\leq 9\mathbb{E}\sum_{a=1}^{n}\lambda_{a}\left\langle A^{2},F_{a}\right\rangle_{\mathrm{F}}^{\,2}" display="inline"><mrow><mphantom></mphantom><mo>=</mo><mrow><mi>Var</mi><mo lspace="0.167em">⁡</mo><mrow><mi>p</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mn>9</mn><mo>⁢</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><mrow><msub><mi>λ</mi><mi>a</mi></msub><mo>⁢</mo><msubsup><mrow><mo>⟨</mo><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>,</mo><msub><mi>F</mi><mi>a</mi></msub></mrow><mo>⟩</mo></mrow><mi>F</mi><mn> 2</mn></msubsup></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S2.E15"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E15.m1" class="ltx_Math" alttext="\displaystyle\leq 9\mathbb{E}\left\lVert A^{2}\right\rVert_{\mathrm{F}}^{2}=9\mathbb{E}\operatorname{Tr}(A^{4})\leq 27nc_{q}." display="inline"><mrow><mrow><mphantom></mphantom><mo>≤</mo><mrow><mn>9</mn><mo>⁢</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msubsup><mrow><mo>‖</mo><msup><mi>A</mi><mn>2</mn></msup><mo>‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mrow><mn>9</mn><mo>⁢</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mn>27</mn><mo>⁢</mo><mi>n</mi><mo>⁢</mo><msub><mi>c</mi><mi>q</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(15)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="S2.p8.m5" class="ltx_Math" alttext="\partial_{\xi_{a}}p(A)=3\sqrt{\lambda_{a}}\operatorname{Tr}(A^{2}F_{a})" display="inline"><mrow><mrow><msub><mo>∂</mo><msub><mi>ξ</mi><mi>a</mi></msub></msub><mrow><mi>p</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mn>3</mn><mo>⁢</mo><msqrt><msub><mi>λ</mi><mi>a</mi></msub></msqrt><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>⁢</mo><msub><mi>F</mi><mi>a</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>, and
+the second inequality uses Parseval and <math id="S2.p8.m6" class="ltx_Math" alttext="\lambda_{a}\leq 1" display="inline"><mrow><msub><mi>λ</mi><mi>a</mi></msub><mo>≤</mo><mn>1</mn></mrow></math>.
+Finally, <math id="S2.p8.m7" class="ltx_Math" alttext="nc_{q}=q(q+1)^{2}/4\leq q^{3}" display="inline"><mrow><mrow><mi>n</mi><mo>⁢</mo><msub><mi>c</mi><mi>q</mi></msub></mrow><mo>=</mo><mrow><mrow><mi>q</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>/</mo><mn>4</mn></mrow><mo>≤</mo><msup><mi>q</mi><mn>3</mn></msup></mrow></math> for <math id="S2.p8.m8" class="ltx_Math" alttext="q\geq 1" display="inline"><mrow><mi>q</mi><mo>≥</mo><mn>1</mn></mrow></math>.</p>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">The polynomial Gaussian Poincaré inequality used here is recalled
+with a self-contained proof in Appendix <a href="#A1.SS1" title="A.1 Polynomial Gaussian Poincaré inequality ‣ Appendix A Auxiliary Gaussian calculations ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A.1</span></a>.
+∎</p>
+</div>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">The <math id="S2.p10.m1" class="ltx_Math" alttext="q^{3}" display="inline"><msup><mi>q</mi><mn>3</mn></msup></math> orders in (<a href="#S2.E11" title="In Proposition 2.4 (Gaussian trace bounds). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">11</span></a>) cannot be reduced
+uniformly over covariance contractions. For the Frobenius-isotropic
+Gaussian <math id="S2.p10.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>, whose covariance is the identity,</p>
+<table id="S2.E16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E16.m1" class="ltx_Math" alttext="\mathbb{E}\operatorname{Tr}(W^{4})=\frac{q(2q^{2}+5q+5)}{4},\qquad\mathbb{E}\bigl(\operatorname{Tr}(W^{3})\bigr)^{2}=\frac{3q(4q^{2}+9q+7)}{4}." display="block"><mrow><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>W</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mfrac><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><mi>q</mi></mrow><mo>+</mo><mn>5</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>4</mn></mfrac></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msup><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>W</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mfrac><mrow><mn>3</mn><mo>⁢</mo><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>4</mn><mo>⁢</mo><msup><mi>q</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>9</mn><mo>⁢</mo><mi>q</mi></mrow><mo>+</mo><mn>7</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>4</mn></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(16)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">These identities, derived in Appendix <a href="#A1.SS2" title="A.2 Exact isotropic trace moments ‣ Appendix A Auxiliary Gaussian calculations ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A.2</span></a>, locate the
+factor of <math id="S2.p10.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> saved over a Frobenius-norm estimate. The appendix also
+shows by convexity that the isotropic quartic moment is maximal under
+<math id="S2.p10.m4" class="ltx_Math" alttext="Q\preceq I" display="inline"><mrow><mi>Q</mi><mo>⪯</mo><mi>I</mi></mrow></math>. The cubic-trace variance bound above uses Gaussian
+Poincaré, so it does not require a covariance-monotonicity assertion
+for a sixth-degree polynomial.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>Uniform control of the local norm change</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">At scale <math id="S3.p1.m1" class="ltx_Math" alttext="s\geq c_{q}" display="inline"><mrow><mi>s</mi><mo>≥</mo><msub><mi>c</mi><mi>q</mi></msub></mrow></math>, the moment bounds of
+Proposition <a href="#S2.Thmtheorem4" title="Proposition 2.4 (Gaussian trace bounds). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a>, multiplied by <math id="S3.p1.m2" class="ltx_Math" alttext="t^{2}=r^{2}/(ns)" display="inline"><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>=</mo><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>⁢</mo><mi>s</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+are independent of <math id="S3.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>. To turn them into a statement about the
+endpoint metric, we need both a remainder bound and feasibility.
+The deterministic estimate below applies while
+<math id="S3.p1.m4" class="ltx_Math" alttext="t\left\lVert A\right\rVert_{\mathrm{op}}\leq 1/2" display="inline"><mrow><mrow><mi>t</mi><mo>⁢</mo><msub><mrow><mo>‖</mo><mi>A</mi><mo>‖</mo></mrow><mi>op</mi></msub></mrow><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></math>; in the probabilistic argument, the same
+quartic event that bounds its remainder will enforce this condition.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Metric-change remainder)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="A\in\mathbb{S}^{q}" display="inline"><mrow><mi>A</mi><mo>∈</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></mrow></math>, <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="t&gt;0" display="inline"><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, and <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="t\left\lVert A\right\rVert_{\mathrm{op}}\leq 1/2" display="inline"><mrow><mrow><mi>t</mi><mo>⁢</mo><msub><mrow><mo>‖</mo><mi>A</mi><mo>‖</mo></mrow><mi>op</mi></msub></mrow><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></math>, then</span></p>
+<table id="S3.E17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E17.m1" class="ltx_Math" alttext="\left|F_{t}(A)\right|\leq 2t\left|\operatorname{Tr}(A^{3})\right|+8t^{2}\operatorname{Tr}(A^{4}),\qquad F_{t}(A)=\operatorname{Tr}\!\left[A^{2}\bigl((I_{q}+tA)^{-2}-I_{q}\bigr)\right]." display="block"><mrow><mrow><mrow><mrow><mo>|</mo><mrow><msub><mi>F</mi><mi>t</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo>≤</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mrow><mo>|</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></mrow><mo>+</mo><mrow><mn>8</mn><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><msub><mi>F</mi><mi>t</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mpadded style="width:1.032em;" width="1.032em"><mi>Tr</mi></mpadded><mo>⁡</mo><mrow><mo>[</mo><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>I</mi><mi>q</mi></msub><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><mi>A</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>−</mo><msub><mi>I</mi><mi>q</mi></msub></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(17)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">For <math id="S3.p2.m1" class="ltx_Math" alttext="\left|y\right|\leq 1/2" display="inline"><mrow><mrow><mo>|</mo><mi>y</mi><mo>|</mo></mrow><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></math>,</p>
+<table id="S3.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex6.m1" class="ltx_Math" alttext="y^{2}\bigl((1+y)^{-2}-1\bigr)=-2y^{3}+y^{4}\frac{3+2y}{(1+y)^{2}},\qquad 0\leq\frac{3+2y}{(1+y)^{2}}=\frac{2}{1+y}+\frac{1}{(1+y)^{2}}\leq 8." display="block"><mrow><mrow><mrow><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>−</mo><mn>1</mn></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>y</mi><mn>3</mn></msup></mrow></mrow><mo>+</mo><mrow><msup><mi>y</mi><mn>4</mn></msup><mo>⁢</mo><mfrac><mrow><mn>3</mn><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi></mrow></mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mn>0</mn><mo>≤</mo><mfrac><mrow><mn>3</mn><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi></mrow></mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac><mo>=</mo><mrow><mfrac><mn>2</mn><mrow><mn>1</mn><mo>+</mo><mi>y</mi></mrow></mfrac><mo>+</mo><mfrac><mn>1</mn><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mrow><mo>≤</mo><mn>8</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Apply this identity to <math id="S3.p2.m2" class="ltx_Math" alttext="y=t\mu_{i}" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mi>t</mi><mo>⁢</mo><msub><mi>μ</mi><mi>i</mi></msub></mrow></mrow></math>, where <math id="S3.p2.m3" class="ltx_Math" alttext="\mu_{i}" display="inline"><msub><mi>μ</mi><mi>i</mi></msub></math> are the
+eigenvalues of <math id="S3.p2.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, divide by <math id="S3.p2.m5" class="ltx_Math" alttext="t^{2}" display="inline"><msup><mi>t</mi><mn>2</mn></msup></math>, and sum. This gives</p>
+<table id="S3.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex7.m1" class="ltx_Math" alttext="F_{t}(A)=-2t\operatorname{Tr}(A^{3})+t^{2}\sum_{i=1}^{q}\mu_{i}^{4}\frac{3+2t\mu_{i}}{(1+t\mu_{i})^{2}}." display="block"><mrow><mrow><mrow><msub><mi>F</mi><mi>t</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>t</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>+</mo><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>⁢</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>q</mi></munderover><mrow><msubsup><mi>μ</mi><mi>i</mi><mn>4</mn></msubsup><mo>⁢</mo><mfrac><mrow><mn>3</mn><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>t</mi><mo>⁢</mo><msub><mi>μ</mi><mi>i</mi></msub></mrow></mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><msub><mi>μ</mi><mi>i</mi></msub></mrow></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The triangle inequality and the coefficient bound prove
+(<a href="#S3.E17" title="In Lemma 3.1 (Metric-change remainder). ‣ 3 Uniform control of the local norm change ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">17</span></a>).
+∎</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of the SASC assertion in Theorem <a href="#S1.Thmtheorem3" title="Theorem 1.3 (Linear SASC scaling and the exact SSC threshold). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.3</span></a>.</h6>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Fix <math id="S3.p3.m1" class="ltx_Math" alttext="q,s,X,\bar{g}(X),\varepsilon,r" display="inline"><mrow><mi>q</mi><mo>,</mo><mi>s</mi><mo>,</mo><mi>X</mi><mo>,</mo><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>ε</mi><mo>,</mo><mi>r</mi></mrow></math> as in the theorem, and define
+<math id="S3.p3.m2" class="ltx_Math" alttext="t,A" display="inline"><mrow><mi>t</mi><mo>,</mo><mi>A</mi></mrow></math> by (<a href="#S2.E8" title="In Lemma 2.1 (Normalized proposal covariance). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>). Lemma <a href="#S2.Thmtheorem1" title="Lemma 2.1 (Normalized proposal covariance). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.1</span></a> gives
+<math id="S3.p3.m3" class="ltx_Math" alttext="\operatorname{Cov}(A)\preceq I" display="inline"><mrow><mrow><mi>Cov</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⪯</mo><mi>I</mi></mrow></math>. Proposition <a href="#S2.Thmtheorem4" title="Proposition 2.4 (Gaussian trace bounds). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.4</span></a>, together with
+<math id="S3.p3.m4" class="ltx_Math" alttext="s\geq c_{q}" display="inline"><mrow><mi>s</mi><mo>≥</mo><msub><mi>c</mi><mi>q</mi></msub></mrow></math>, yields</p>
+<table id="S3.E18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E18.m1" class="ltx_Math" alttext="t^{2}\mathbb{E}\operatorname{Tr}(A^{4})\leq 3r^{2}\frac{c_{q}}{s}\leq 3r^{2},\qquad t^{2}\mathbb{E}\bigl(\operatorname{Tr}(A^{3})\bigr)^{2}\leq 27r^{2}\frac{c_{q}}{s}\leq 27r^{2}." display="block"><mrow><mrow><mrow><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>⁢</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup><mo>⁢</mo><mfrac><msub><mi>c</mi><mi>q</mi></msub><mi>s</mi></mfrac></mrow><mo>≤</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>⁢</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msup><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mn>2</mn></msup></mrow><mo>≤</mo><mrow><mn>27</mn><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup><mo>⁢</mo><mfrac><msub><mi>c</mi><mi>q</mi></msub><mi>s</mi></mfrac></mrow><mo>≤</mo><mrow><mn>27</mn><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(18)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The cubic term is centered and is controlled by its second moment;
+the quartic term is nonnegative and is controlled by its first moment.
+Accordingly, define</p>
+<table id="S3.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex8.m1" class="ltx_math_unparsed" alttext="\mathcal{E}_{3}=\left\{t\left|\operatorname{Tr}(A^{3})\right|\leq\frac{\varepsilon}{2}\right\},\qquad\mathcal{E}_{4}=\left\{t^{2}\operatorname{Tr}(A^{4})\leq\frac{\varepsilon}{16}\right\}." display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mn>3</mn></msub><mo>=</mo><mrow><mo>{</mo><mi>t</mi><mo fence="false" rspace="0.167em">|</mo><mi>Tr</mi><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><mo fence="false">|</mo><mo lspace="0.167em">≤</mo><mfrac><mi>ε</mi><mn>2</mn></mfrac><mo>}</mo></mrow><mo rspace="2.167em">,</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mn>4</mn></msub><mo>=</mo><mrow><mo>{</mo><msup><mi>t</mi><mn>2</mn></msup><mi>Tr</mi><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow><mo>≤</mo><mfrac><mi>ε</mi><mn>16</mn></mfrac><mo>}</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Chebyshev’s inequality and Markov’s inequality imply</p>
+<table id="S3.EGx2" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.E19"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.E19.m1" class="ltx_Math" alttext="\displaystyle\mathbb{P}(\mathcal{E}_{3}^{c})" display="inline"><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mn>3</mn><mi>c</mi></msubsup><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.E19.m2" class="ltx_Math" alttext="\displaystyle\leq\frac{4t^{2}}{\varepsilon^{2}}\mathbb{E}\bigl(\operatorname{Tr}(A^{3})\bigr)^{2}\leq\frac{108r^{2}}{\varepsilon^{2}}\leq\frac{\varepsilon}{8}," display="inline"><mrow><mrow><mphantom></mphantom><mo>≤</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mn>4</mn><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup></mrow><msup><mi>ε</mi><mn>2</mn></msup></mfrac></mstyle><mo>⁢</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msup><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mn>2</mn></msup></mrow><mo>≤</mo><mstyle displaystyle="true"><mfrac><mrow><mn>108</mn><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><msup><mi>ε</mi><mn>2</mn></msup></mfrac></mstyle><mo>≤</mo><mstyle displaystyle="true"><mfrac><mi>ε</mi><mn>8</mn></mfrac></mstyle></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(19)</span></td></tr></tbody>
+<tbody id="S3.E20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.E20.m1" class="ltx_Math" alttext="\displaystyle\mathbb{P}(\mathcal{E}_{4}^{c})" display="inline"><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msubsup><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mn>4</mn><mi>c</mi></msubsup><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.E20.m2" class="ltx_Math" alttext="\displaystyle\leq\frac{16t^{2}}{\varepsilon}\mathbb{E}\operatorname{Tr}(A^{4})\leq\frac{48r^{2}}{\varepsilon}\leq\frac{\varepsilon^{2}}{18}," display="inline"><mrow><mrow><mphantom></mphantom><mo>≤</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mn>16</mn><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup></mrow><mi>ε</mi></mfrac></mstyle><mo>⁢</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mstyle displaystyle="true"><mfrac><mrow><mn>48</mn><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mi>ε</mi></mfrac></mstyle><mo>≤</mo><mstyle displaystyle="true"><mfrac><msup><mi>ε</mi><mn>2</mn></msup><mn>18</mn></mfrac></mstyle></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(20)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">where the final inequalities use <math id="S3.p3.m5" class="ltx_Math" alttext="r^{2}\leq\varepsilon^{3}/864" display="inline"><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>≤</mo><mrow><msup><mi>ε</mi><mn>3</mn></msup><mo>/</mo><mn>864</mn></mrow></mrow></math>.
+Their sum is less than <math id="S3.p3.m6" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> for <math id="S3.p3.m7" class="ltx_Math" alttext="0&lt;\varepsilon&lt;1" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>ε</mi><mo>&lt;</mo><mn>1</mn></mrow></math>.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Before applying the remainder estimate, we use <math id="S3.p4.m1" class="ltx_Math" alttext="\mathcal{E}_{4}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mn>4</mn></msub></math> to
+verify that the endpoint metric is defined.
+Since <math id="S3.p4.m2" class="ltx_Math" alttext="ns\geq 1" display="inline"><mrow><mrow><mi>n</mi><mo>⁢</mo><mi>s</mi></mrow><mo>≥</mo><mn>1</mn></mrow></math> and <math id="S3.p4.m3" class="ltx_Math" alttext="r&lt;1" display="inline"><mrow><mi>r</mi><mo>&lt;</mo><mn>1</mn></mrow></math>, we have <math id="S3.p4.m4" class="ltx_Math" alttext="t\leq r&lt;1" display="inline"><mrow><mi>t</mi><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mn>1</mn></mrow></math>. On
+<math id="S3.p4.m5" class="ltx_Math" alttext="\mathcal{E}_{4}" display="inline"><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mn>4</mn></msub></math>,</p>
+<table id="S3.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex9.m1" class="ltx_Math" alttext="(t\left\lVert A\right\rVert_{\mathrm{op}})^{4}\leq t^{4}\operatorname{Tr}(A^{4})=t^{2}\bigl(t^{2}\operatorname{Tr}(A^{4})\bigr)\leq\frac{\varepsilon}{16}\leq\frac{1}{16}." display="block"><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>⁢</mo><msub><mrow><mo>‖</mo><mi>A</mi><mo>‖</mo></mrow><mi>op</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mn>4</mn></msup><mo>≤</mo><mrow><msup><mi>t</mi><mn>4</mn></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msup><mi>t</mi><mn>2</mn></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>≤</mo><mfrac><mi>ε</mi><mn>16</mn></mfrac><mo>≤</mo><mfrac><mn>1</mn><mn>16</mn></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Hence <math id="S3.p4.m6" class="ltx_Math" alttext="I_{q}+tA\succeq I_{q}/2" display="inline"><mrow><mrow><msub><mi>I</mi><mi>q</mi></msub><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><mi>A</mi></mrow></mrow><mo>⪰</mo><mrow><msub><mi>I</mi><mi>q</mi></msub><mo>/</mo><mn>2</mn></mrow></mrow></math>, and
+<math id="S3.p4.m7" class="ltx_Math" alttext="Z=X^{1/2}(I_{q}+tA)X^{1/2}\succ 0" display="inline"><mrow><mi>Z</mi><mo>=</mo><mrow><msup><mi>X</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>I</mi><mi>q</mi></msub><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><mi>A</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>X</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><mo>≻</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">On <math id="S3.p5.m1" class="ltx_Math" alttext="\mathcal{E}_{3}\cap\mathcal{E}_{4}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mn>3</mn></msub><mo>∩</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">E</mi><mn>4</mn></msub></mrow></math>, substituting
+<math id="S3.p5.m2" class="ltx_Math" alttext="H=tX^{1/2}AX^{1/2}" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mi>t</mi><mo>⁢</mo><msup><mi>X</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>⁢</mo><mi>A</mi><mo>⁢</mo><msup><mi>X</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></mrow></math> and using that <math id="S3.p5.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> commutes with
+<math id="S3.p5.m4" class="ltx_Math" alttext="(I_{q}+tA)^{-1}" display="inline"><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>I</mi><mi>q</mi></msub><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><mi>A</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> gives</p>
+<table id="S3.EGx3" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex10.m1" class="ltx_Math" alttext="\displaystyle\Delta" display="inline"><mi mathvariant="normal">Δ</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex10.m2" class="ltx_Math" alttext="\displaystyle:=\left\lVert H\right\rVert_{g_{s}(Z)}^{2}-\left\lVert H\right\rVert_{g_{s}(X)}^{2}" display="inline"><mrow><mphantom></mphantom><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mphantom></mphantom><mo>=</mo><mrow><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></msubsup><mo>−</mo><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></msubsup></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S3.E21"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.E21.m1" class="ltx_Math" alttext="\displaystyle=st^{2}\operatorname{Tr}\!\left[A^{2}\bigl((I_{q}+tA)^{-2}-I_{q}\bigr)\right]=\frac{r^{2}}{n}F_{t}(A)." display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup><mo lspace="0.167em">⁢</mo><mrow><mpadded style="width:1.032em;" width="1.032em"><mi>Tr</mi></mpadded><mo>⁡</mo><mrow><mo>[</mo><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>I</mi><mi>q</mi></msub><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><mi>A</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>−</mo><msub><mi>I</mi><mi>q</mi></msub></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>]</mo></mrow></mrow></mrow><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><msup><mi>r</mi><mn>2</mn></msup><mi>n</mi></mfrac></mstyle><mo>⁢</mo><msub><mi>F</mi><mi>t</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(21)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Lemma <a href="#S3.Thmtheorem1" title="Lemma 3.1 (Metric-change remainder). ‣ 3 Uniform control of the local norm change ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3.1</span></a> now yields</p>
+<table id="S3.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex11.m1" class="ltx_Math" alttext="\left|F_{t}(A)\right|\leq 2t\left|\operatorname{Tr}(A^{3})\right|+8t^{2}\operatorname{Tr}(A^{4})\leq\varepsilon+\frac{\varepsilon}{2}&lt;2\varepsilon." display="block"><mrow><mrow><mrow><mo>|</mo><mrow><msub><mi>F</mi><mi>t</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo>≤</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mrow><mo>|</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></mrow><mo>+</mo><mrow><mn>8</mn><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>≤</mo><mrow><mi>ε</mi><mo>+</mo><mfrac><mi>ε</mi><mn>2</mn></mfrac></mrow><mo>&lt;</mo><mrow><mn>2</mn><mo>⁢</mo><mi>ε</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Thus (<a href="#S1.E6" title="In Theorem 1.3 (Linear SASC scaling and the exact SSC threshold). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>), and hence (<a href="#S1.E4" title="In Definition 1.2 (Uniform strong average self-concordance). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>), holds with
+probability at least
+<math id="S3.p5.m5" class="ltx_Math" alttext="1-\varepsilon/8-\varepsilon^{2}/18&gt;1-\varepsilon" display="inline"><mrow><mrow><mn>1</mn><mo>−</mo><mrow><mi>ε</mi><mo>/</mo><mn>8</mn></mrow><mo>−</mo><mrow><msup><mi>ε</mi><mn>2</mn></msup><mo>/</mo><mn>18</mn></mrow></mrow><mo>&gt;</mo><mrow><mn>1</mn><mo>−</mo><mi>ε</mi></mrow></mrow></math>.
+All dependence on the matrix order and scale entered through
+<math id="S3.p5.m6" class="ltx_Math" alttext="c_{q}/s\leq 1" display="inline"><mrow><mrow><msub><mi>c</mi><mi>q</mi></msub><mo>/</mo><mi>s</mi></mrow><mo>≤</mo><mn>1</mn></mrow></math> in (<a href="#S3.E18" title="In 3 Uniform control of the local norm change ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">18</span></a>); the base point and auxiliary
+form entered only through <math id="S3.p5.m7" class="ltx_Math" alttext="Q\preceq I" display="inline"><mrow><mi>Q</mi><mo>⪯</mo><mi>I</mi></mrow></math>. This proves the asserted
+uniformity.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">4 </span>The exact strong self-concordance threshold</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">The probabilistic argument gives SASC at every scale <math id="S4.p1.m1" class="ltx_Math" alttext="s\geq c_{q}" display="inline"><mrow><mi>s</mi><mo>≥</mo><msub><mi>c</mi><mi>q</mi></msub></mrow></math>.
+Necessity for the joint assertion is determined by the deterministic
+SSC inequality. After the same congruence normalization, the metric
+derivative acts on symmetric matrices by the anticommutator
+<math id="S4.p1.m2" class="ltx_Math" alttext="U\mapsto-(KU+UK)" display="inline"><mrow><mi>U</mi><mo stretchy="false">↦</mo><mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>K</mi><mo>⁢</mo><mi>U</mi></mrow><mo>+</mo><mrow><mi>U</mi><mo>⁢</mo><mi>K</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Its full spectrum gives the exact
+Hilbert–Schmidt norm; the extremal direction is a scalar dilation of
+the base point.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 4.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Normalized derivative identity)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X\succ 0" display="inline"><mrow><mi>X</mi><mo>≻</mo><mn>0</mn></mrow></math>, <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="H\in\mathbb{S}^{q}" display="inline"><mrow><mi>H</mi><mo>∈</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></mrow></math>, and
+<math id="S4.Thmtheorem1.p1.m3" class="ltx_math_unparsed" alttext="K=X^{-1/2}HX^{-1/2}" display="inline"><mrow><mi>K</mi><mo>=</mo><mi>X</mi><msup><mrow></mrow><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mi>H</mi><mi>X</mi><msup><mrow></mrow><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></math>,</span></p>
+<table id="S4.E22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E22.m1" class="ltx_math_unparsed" alttext="\left\lVert g_{s}(X)^{-1/2}Dg_{s}(X)[H]g_{s}(X)^{-1/2}\right\rVert_{\mathrm{HS}}^{2}=(q+2)\left\lVert K\right\rVert_{\mathrm{F}}^{2}+(\operatorname{Tr}K)^{2}." display="block"><mrow><msubsup><mrow><mo>‖</mo><msub><mi>g</mi><mi>s</mi></msub><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mi>D</mi><msub><mi>g</mi><mi>s</mi></msub><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">[</mo><mi>H</mi><mo stretchy="false">]</mo></mrow><msub><mi>g</mi><mi>s</mi></msub><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>‖</mo></mrow><mi>HS</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><msubsup><mrow><mo>‖</mo><mi>K</mi><mo>‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup><mo>+</mo><msup><mrow><mo stretchy="false">(</mo><mi>Tr</mi><mi>K</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(22)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Consequently, <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="g_{s}" display="inline"><msub><mi>g</mi><mi>s</mi></msub></math> is SSC if and only if <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="s\geq(q+1)/2" display="inline"><mrow><mi>s</mi><mo>≥</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Write <math id="S4.p2.m1" class="ltx_Math" alttext="\widetilde{U}=T_{X}(U)" display="inline"><mrow><mover accent="true"><mi>U</mi><mo>~</mo></mover><mo>=</mo><mrow><msub><mi>T</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <math id="S4.p2.m2" class="ltx_Math" alttext="\widetilde{V}=T_{X}(V)" display="inline"><mrow><mover accent="true"><mi>V</mi><mo>~</mo></mover><mo>=</mo><mrow><msub><mi>T</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Differentiating (<a href="#S1.E1" title="In 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>) gives</p>
+<table id="S4.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex12.m1" class="ltx_Math" alttext="Dg_{s}(X)[H][U,V]=-s\left\langle K\widetilde{U}+\widetilde{U}K,\widetilde{V}\right\rangle_{\mathrm{F}}." display="block"><mrow><mrow><mrow><mi>D</mi><mo>⁢</mo><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>H</mi><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>U</mi><mo>,</mo><mi>V</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mi>s</mi><mo>⁢</mo><msub><mrow><mo>⟨</mo><mrow><mrow><mrow><mi>K</mi><mo>⁢</mo><mover accent="true"><mi>U</mi><mo>~</mo></mover></mrow><mo>+</mo><mrow><mover accent="true"><mi>U</mi><mo>~</mo></mover><mo>⁢</mo><mi>K</mi></mrow></mrow><mo>,</mo><mover accent="true"><mi>V</mi><mo>~</mo></mover></mrow><mo>⟩</mo></mrow><mi>F</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Define <math id="S4.p2.m3" class="ltx_Math" alttext="L_{K}(U)=-(KU+UK)" display="inline"><mrow><mrow><msub><mi>L</mi><mi>K</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>K</mi><mo>⁢</mo><mi>U</mi></mrow><mo>+</mo><mrow><mi>U</mi><mo>⁢</mo><mi>K</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The map <math id="S4.p2.m4" class="ltx_Math" alttext="W_{X}=\sqrt{s}\,T_{X}" display="inline"><mrow><msub><mi>W</mi><mi>X</mi></msub><mo>=</mo><mrow><msqrt><mi>s</mi></msqrt><mo lspace="0.170em">⁢</mo><msub><mi>T</mi><mi>X</mi></msub></mrow></mrow></math>
+satisfies <math id="S4.p2.m5" class="ltx_Math" alttext="g_{s}(X)=W_{X}^{*}W_{X}" display="inline"><mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msubsup><mi>W</mi><mi>X</mi><mo>∗</mo></msubsup><mo>⁢</mo><msub><mi>W</mi><mi>X</mi></msub></mrow></mrow></math> and
+<math id="S4.p2.m6" class="ltx_Math" alttext="Dg_{s}(X)[H]=W_{X}^{*}L_{K}W_{X}" display="inline"><mrow><mrow><mi>D</mi><mo>⁢</mo><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>H</mi><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><msubsup><mi>W</mi><mi>X</mi><mo>∗</mo></msubsup><mo>⁢</mo><msub><mi>L</mi><mi>K</mi></msub><mo>⁢</mo><msub><mi>W</mi><mi>X</mi></msub></mrow></mrow></math>. Therefore
+<math id="S4.p2.m7" class="ltx_math_unparsed" alttext="J_{X}=W_{X}g_{s}(X)^{-1/2}" display="inline"><mrow><msub><mi>J</mi><mi>X</mi></msub><mo>=</mo><msub><mi>W</mi><mi>X</mi></msub><msub><mi>g</mi><mi>s</mi></msub><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></math> is orthogonal, and the normalized derivative
+is <math id="S4.p2.m8" class="ltx_Math" alttext="J_{X}^{*}L_{K}J_{X}" display="inline"><mrow><msubsup><mi>J</mi><mi>X</mi><mo>∗</mo></msubsup><mo>⁢</mo><msub><mi>L</mi><mi>K</mi></msub><mo>⁢</mo><msub><mi>J</mi><mi>X</mi></msub></mrow></math>. Its Hilbert–Schmidt norm equals that of <math id="S4.p2.m9" class="ltx_Math" alttext="L_{K}" display="inline"><msub><mi>L</mi><mi>K</mi></msub></math>.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Diagonalize <math id="S4.p3.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>, with eigenvalues <math id="S4.p3.m2" class="ltx_Math" alttext="k_{1},\ldots,k_{q}" display="inline"><mrow><msub><mi>k</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>k</mi><mi>q</mi></msub></mrow></math>. In the
+associated orthonormal symmetric-matrix basis, the eigenvalues of
+<math id="S4.p3.m3" class="ltx_Math" alttext="L_{K}" display="inline"><msub><mi>L</mi><mi>K</mi></msub></math> are <math id="S4.p3.m4" class="ltx_Math" alttext="-2k_{i}" display="inline"><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>k</mi><mi>i</mi></msub></mrow></mrow></math> and <math id="S4.p3.m5" class="ltx_Math" alttext="-(k_{i}+k_{j})" display="inline"><mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>k</mi><mi>i</mi></msub><mo>+</mo><msub><mi>k</mi><mi>j</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math> for <math id="S4.p3.m6" class="ltx_Math" alttext="i&lt;j" display="inline"><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></math>. It follows that</p>
+<table id="S4.EGx4" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S4.Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S4.Ex13.m1" class="ltx_Math" alttext="\displaystyle\left\lVert L_{K}\right\rVert_{\mathrm{HS}}^{2}" display="inline"><msubsup><mrow><mo>‖</mo><msub><mi>L</mi><mi>K</mi></msub><mo>‖</mo></mrow><mi>HS</mi><mn>2</mn></msubsup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S4.Ex13.m2" class="ltx_Math" alttext="\displaystyle=4\sum_{i}k_{i}^{2}+\sum_{i&lt;j}(k_{i}+k_{j})^{2}" display="inline"><mrow><mphantom></mphantom><mo>=</mo><mrow><mrow><mn>4</mn><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>i</mi></munder></mstyle><msubsup><mi>k</mi><mi>i</mi><mn>2</mn></msubsup></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></munder></mstyle><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>k</mi><mi>i</mi></msub><mo>+</mo><msub><mi>k</mi><mi>j</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S4.Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S4.Ex14.m1" class="ltx_Math" alttext="\displaystyle=(q+2)\sum_{i}k_{i}^{2}+\left(\sum_{i}k_{i}\right)^{2}\leq 2(q+1)\left\lVert K\right\rVert_{\mathrm{F}}^{2}." display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>i</mi></munder></mstyle><msubsup><mi>k</mi><mi>i</mi><mn>2</mn></msubsup></mrow></mrow><mo>+</mo><msup><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>i</mi></munder></mstyle><msub><mi>k</mi><mi>i</mi></msub></mrow><mo>)</mo></mrow><mn>2</mn></msup></mrow><mo>≤</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mrow><mo>‖</mo><mi>K</mi><mo>‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This proves (<a href="#S4.E22" title="In Proposition 4.1 (Normalized derivative identity). ‣ 4 The exact strong self-concordance threshold ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">22</span></a>), with equality in the final
+inequality for <math id="S4.p3.m7" class="ltx_Math" alttext="K=I_{q}/\sqrt{q}" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><msub><mi>I</mi><mi>q</mi></msub><mo>/</mo><msqrt><mi>q</mi></msqrt></mrow></mrow></math>. Since
+<math id="S4.p3.m8" class="ltx_Math" alttext="\left\lVert H\right\rVert_{g_{s}(X)}=\sqrt{s}\left\lVert K\right\rVert_{\mathrm{F}}" display="inline"><mrow><msub><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>=</mo><mrow><msqrt><mi>s</mi></msqrt><mo>⁢</mo><msub><mrow><mo>‖</mo><mi>K</mi><mo>‖</mo></mrow><mi>F</mi></msub></mrow></mrow></math>,
+(<a href="#S1.E2" title="In Definition 1.1 (Strong self-concordance). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>) holds for every direction exactly when
+<math id="S4.p3.m9" class="ltx_Math" alttext="\sqrt{2(q+1)}\leq 2\sqrt{s}" display="inline"><mrow><msqrt><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></msqrt><mo>≤</mo><mrow><mn>2</mn><mo>⁢</mo><msqrt><mi>s</mi></msqrt></mrow></mrow></math>.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">It remains to check the ordinary self-concordance prerequisite at these
+scales. For <math id="S4.p4.m1" class="ltx_Math" alttext="f_{s}=s\phi" display="inline"><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><mi>ϕ</mi></mrow></mrow></math>,</p>
+<table id="S4.Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex15.m1" class="ltx_Math" alttext="\left|D^{3}f_{s}(X)[H,H,H]\right|=2s\left|\operatorname{Tr}(K^{3})\right|\leq 2s\left\lVert K\right\rVert_{\mathrm{F}}^{3}\leq 2s^{3/2}\left\lVert K\right\rVert_{\mathrm{F}}^{3}=2\left\lVert H\right\rVert_{g_{s}(X)}^{3}," display="block"><mrow><mrow><mrow><mo>|</mo><mrow><msup><mi>D</mi><mn>3</mn></msup><mo>⁢</mo><msub><mi>f</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>H</mi><mo>,</mo><mi>H</mi><mo>,</mo><mi>H</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>|</mo></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mrow><mo>|</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>K</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></mrow><mo>≤</mo><mrow><mn>2</mn><mo>⁢</mo><mi>s</mi><mo>⁢</mo><msubsup><mrow><mo>‖</mo><mi>K</mi><mo>‖</mo></mrow><mi>F</mi><mn>3</mn></msubsup></mrow><mo>≤</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>s</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>⁢</mo><msubsup><mrow><mo>‖</mo><mi>K</mi><mo>‖</mo></mrow><mi>F</mi><mn>3</mn></msubsup></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><msubsup><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mn>3</mn></msubsup></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S4.p4.m2" class="ltx_Math" alttext="\left|\operatorname{Tr}(K^{3})\right|\leq\sum_{i}\left|k_{i}\right|^{3}\leq(\sum_{i}k_{i}^{2})^{3/2}" display="inline"><mrow><mrow><mo>|</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>K</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo rspace="0.111em">≤</mo><mrow><msub><mo rspace="0em">∑</mo><mi>i</mi></msub><msup><mrow><mo>|</mo><msub><mi>k</mi><mi>i</mi></msub><mo>|</mo></mrow><mn>3</mn></msup></mrow><mo>≤</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mo lspace="0em">∑</mo><mi>i</mi></msub><msubsup><mi>k</mi><mi>i</mi><mn>2</mn></msubsup></mrow><mo stretchy="false">)</mo></mrow><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></math>, and
+<math id="S4.p4.m3" class="ltx_Math" alttext="s\geq(q+1)/2\geq 1" display="inline"><mrow><mi>s</mi><mo>≥</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow><mo>≥</mo><mn>1</mn></mrow></math>. Conversely, if <math id="S4.p4.m4" class="ltx_Math" alttext="s&lt;(q+1)/2" display="inline"><mrow><mi>s</mi><mo>&lt;</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>, the direction
+<math id="S4.p4.m5" class="ltx_Math" alttext="H=X/\sqrt{q}" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mi>X</mi><mo>/</mo><msqrt><mi>q</mi></msqrt></mrow></mrow></math> already violates the SSC inequality.
+∎</p>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Proposition <a href="#S4.Thmtheorem1" title="Proposition 4.1 (Normalized derivative identity). ‣ 4 The exact strong self-concordance threshold ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4.1</span></a> and the SASC estimate in
+Section <a href="#S3" title="3 Uniform control of the local norm change ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a> prove Theorem <a href="#S1.Thmtheorem3" title="Theorem 1.3 (Linear SASC scaling and the exact SSC threshold). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.3</span></a>.
+The extremal SSC direction also explains why
+(<a href="#S1.E7" title="In Theorem 1.3 (Linear SASC scaling and the exact SSC threshold). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>) is an exact threshold: the derivative
+normalization is fixed, so reducing <math id="S4.p5.m1" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> makes that direction violate
+the inequality. SASC permits a different tradeoff because its
+admissible radius can change with a constant rescaling. If a family <math id="S4.p5.m2" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></math> is
+uniformly SASC with radius <math id="S4.p5.m3" class="ltx_Math" alttext="\rho_{\varepsilon}" display="inline"><msub><mi>ρ</mi><mi>ε</mi></msub></math>, then, for any fixed
+<math id="S4.p5.m4" class="ltx_Math" alttext="c&gt;0" display="inline"><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, the family <math id="S4.p5.m5" class="ltx_Math" alttext="c\mathcal{F}" display="inline"><mrow><mi>c</mi><mo>⁢</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">F</mi></mrow></math> is uniformly SASC with radius
+<math id="S4.p5.m6" class="ltx_Math" alttext="\sqrt{c}\,\rho_{\varepsilon}" display="inline"><mrow><msqrt><mi>c</mi></msqrt><mo lspace="0.170em">⁢</mo><msub><mi>ρ</mi><mi>ε</mi></msub></mrow></math>. Indeed, put
+<math id="S4.p5.m7" class="ltx_Math" alttext="u=r/\sqrt{c}" display="inline"><mrow><mi>u</mi><mo>=</mo><mrow><mi>r</mi><mo>/</mo><msqrt><mi>c</mi></msqrt></mrow></mrow></math> and <math id="S4.p5.m8" class="ltx_Math" alttext="\widehat{g}=\bar{g}/c" display="inline"><mrow><mover accent="true"><mi>g</mi><mo>^</mo></mover><mo>=</mo><mrow><mover accent="true"><mi>g</mi><mo>¯</mo></mover><mo>/</mo><mi>c</mi></mrow></mrow></math>. Then</p>
+<table id="S4.Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex16.m1" class="ltx_Math" alttext="\frac{r^{2}}{n}(cg+\bar{g})^{-1}=\frac{u^{2}}{n}(g+\widehat{g})^{-1}," display="block"><mrow><mrow><mrow><mfrac><msup><mi>r</mi><mn>2</mn></msup><mi>n</mi></mfrac><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><mi>g</mi></mrow><mo>+</mo><mover accent="true"><mi>g</mi><mo>¯</mo></mover></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>=</mo><mrow><mfrac><msup><mi>u</mi><mn>2</mn></msup><mi>n</mi></mfrac><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo>+</mo><mover accent="true"><mi>g</mi><mo>^</mo></mover></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">and both the norm change and its bound for <math id="S4.p5.m9" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> multiply by <math id="S4.p5.m10" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>.
+In particular, under Definition <a href="#S1.Thmtheorem2" title="Definition 1.2 (Uniform strong average self-concordance). ‣ 1.1 Metric and main theorem ‣ 1 Introduction ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.2</span></a>, every <math id="S4.p5.m11" class="ltx_Math" alttext="sG" display="inline"><mrow><mi>s</mi><mo>⁢</mo><mi>G</mi></mrow></math> at a fixed
+matrix order is SASC with a radius that may depend on <math id="S4.p5.m12" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> and <math id="S4.p5.m13" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>.
+A necessary scaling law for SASC alone would therefore have to concern
+a profile <math id="S4.p5.m14" class="ltx_Math" alttext="s=s_{q}" display="inline"><mrow><mi>s</mi><mo>=</mo><msub><mi>s</mi><mi>q</mi></msub></mrow></math> with a radius uniform in <math id="S4.p5.m15" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>. The theorem supplies
+a linear sufficient profile; the lower bound proved here is the SSC
+obstruction.</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">The same scale can be expressed through the barrier’s gradient
+parameter. Relative to
+the Frobenius inner product,
+<math id="S4.p6.m1" class="ltx_Math" alttext="\nabla f_{s}(X)=-sX^{-1}" display="inline"><mrow><mrow><mrow><mo rspace="0.167em">∇</mo><msub><mi>f</mi><mi>s</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>X</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></mrow></math> and
+<math id="S4.p6.m2" class="ltx_Math" alttext="g_{s}(X)^{-1}(V)=s^{-1}XVX" display="inline"><mrow><mrow><msub><mi>g</mi><mi>s</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>s</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mi>X</mi><mo>⁢</mo><mi>V</mi><mo>⁢</mo><mi>X</mi></mrow></mrow></math>, so</p>
+<table id="S4.Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex17.m1" class="ltx_math_unparsed" alttext="\left\langle\nabla f_{s}(X),g_{s}(X)^{-1}\nabla f_{s}(X)\right\rangle_{\mathrm{F}}=sq." display="block"><mrow><msub><mrow><mo>⟨</mo><mo rspace="0.167em">∇</mo><msub><mi>f</mi><mi>s</mi></msub><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><msub><mi>g</mi><mi>s</mi></msub><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo rspace="0.167em" stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo rspace="0.167em">∇</mo><msub><mi>f</mi><mi>s</mi></msub><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo>⟩</mo></mrow><mi>F</mi></msub><mo>=</mo><mi>s</mi><mi>q</mi><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Thus the gradient parameter of <math id="S4.p6.m3" class="ltx_math_unparsed" alttext="-s\log\det" display="inline"><mrow><mo>−</mo><mi>s</mi><mi>log</mi><mo lspace="0.167em">det</mo></mrow></math> is <math id="S4.p6.m4" class="ltx_Math" alttext="sq" display="inline"><mrow><mi>s</mi><mo>⁢</mo><mi>q</mi></mrow></math>: it is
+<math id="S4.p6.m5" class="ltx_Math" alttext="nq=\Theta(q^{3})" display="inline"><mrow><mrow><mi>n</mi><mo>⁢</mo><mi>q</mi></mrow><mo>=</mo><mrow><mi mathvariant="normal">Θ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math> at scale <math id="S4.p6.m6" class="ltx_Math" alttext="s=n" display="inline"><mrow><mi>s</mi><mo>=</mo><mi>n</mi></mrow></math>, and equals
+<math id="S4.p6.m7" class="ltx_Math" alttext="n=\Theta(q^{2})" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mi mathvariant="normal">Θ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>q</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math> at scale <math id="S4.p6.m8" class="ltx_Math" alttext="s=(q+1)/2" display="inline"><mrow><mi>s</mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>. Thus the SASC guarantee is attained with gradient parameter equal to
+the ambient dimension. This is a consequence of the local scaling
+calculation; the mixing results cited in the introduction use their
+own additional geometric and acceptance estimates.</p>
+</div>
+</section>
+<section id="A1" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix"><span class="ltx_tag ltx_tag_appendix">Appendix A </span>Auxiliary Gaussian calculations</h2>
+
+<section id="A1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">A.1 </span>Polynomial Gaussian Poincaré inequality</h3>
+
+<div id="A1.SS1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="A1.SS1.p1.m1" class="ltx_Math" alttext="\xi" display="inline"><mi>ξ</mi></math> be a vector of independent standard Gaussian variables.
+For every polynomial <math id="A1.SS1.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, the inequality
+<math id="A1.SS1.p1.m3" class="ltx_Math" alttext="\operatorname{Var}f(\xi)\leq\mathbb{E}\left\lVert\nabla f(\xi)\right\rVert_{2}^{2}" display="inline"><mrow><mrow><mi>Var</mi><mo lspace="0.167em">⁡</mo><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ξ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msubsup><mrow><mo>‖</mo><mrow><mrow><mo rspace="0.167em">∇</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ξ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>‖</mo></mrow><mn>2</mn><mn>2</mn></msubsup></mrow></mrow></math> follows from a finite
+Hermite expansion. Define the probabilists’ Hermite
+polynomials by
+<math id="A1.SS1.p1.m4" class="ltx_Math" alttext="e^{zu-z^{2}/2}=\sum_{k\geq 0}H_{k}(u)z^{k}/k!" display="inline"><mrow><msup><mi>e</mi><mrow><mrow><mi>z</mi><mo>⁢</mo><mi>u</mi></mrow><mo>−</mo><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></mrow></msup><mo rspace="0.111em">=</mo><mrow><mrow><msub><mo>∑</mo><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow></msub><mrow><msub><mi>H</mi><mi>k</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>z</mi><mi>k</mi></msup></mrow></mrow><mo>/</mo><mrow><mi>k</mi><mo>!</mo></mrow></mrow></mrow></math>. Gaussian integration of
+the product of two generating functions gives
+<math id="A1.SS1.p1.m5" class="ltx_Math" alttext="\mathbb{E}H_{j}(\xi)H_{k}(\xi)=k!\,\delta_{jk}" display="inline"><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msub><mi>H</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ξ</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>H</mi><mi>k</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ξ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>k</mi><mo>!</mo></mrow><mo lspace="0.170em">⁢</mo><msub><mi>δ</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></mrow></mrow></math>, and differentiation in
+<math id="A1.SS1.p1.m6" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> gives <math id="A1.SS1.p1.m7" class="ltx_Math" alttext="H_{k}^{\prime}=kH_{k-1}" display="inline"><mrow><msubsup><mi>H</mi><mi>k</mi><mo>′</mo></msubsup><mo>=</mo><mrow><mi>k</mi><mo>⁢</mo><msub><mi>H</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mrow></math>. Their leading coefficients are one,
+so their products <math id="A1.SS1.p1.m8" class="ltx_Math" alttext="H_{\alpha}" display="inline"><msub><mi>H</mi><mi>α</mi></msub></math> form a basis for multivariate polynomials.
+If <math id="A1.SS1.p1.m9" class="ltx_Math" alttext="f(\xi)=\sum_{\alpha}a_{\alpha}H_{\alpha}(\xi)" display="inline"><mrow><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ξ</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>α</mi></msub><mrow><msub><mi>a</mi><mi>α</mi></msub><mo>⁢</mo><msub><mi>H</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ξ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>, orthogonality,
+independence, and the derivative identity imply</p>
+<table id="A1.Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex18.m1" class="ltx_Math" alttext="\operatorname{Var}f=\sum_{\left|\alpha\right|\geq 1}a_{\alpha}^{2}\alpha!,\qquad\mathbb{E}\left\lVert\nabla f\right\rVert_{2}^{2}=\sum_{\left|\alpha\right|\geq 1}\left|\alpha\right|\,a_{\alpha}^{2}\alpha!." display="block"><mrow><mrow><mrow><mrow><mi>Var</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mrow><mo>|</mo><mi>α</mi><mo>|</mo></mrow><mo>≥</mo><mn>1</mn></mrow></munder><mrow><mrow><msubsup><mi>a</mi><mi>α</mi><mn>2</mn></msubsup><mo>⁢</mo><mi>α</mi></mrow><mo>!</mo></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msubsup><mrow><mo>‖</mo><mrow><mo rspace="0.167em">∇</mo><mi>f</mi></mrow><mo>‖</mo></mrow><mn>2</mn><mn>2</mn></msubsup></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mrow><mo>|</mo><mi>α</mi><mo>|</mo></mrow><mo>≥</mo><mn>1</mn></mrow></munder><mrow><mrow><mrow><mo>|</mo><mi>α</mi><mo>|</mo></mrow><mo lspace="0.170em">⁢</mo><msubsup><mi>a</mi><mi>α</mi><mn>2</mn></msubsup><mo>⁢</mo><mi>α</mi></mrow><mo>!</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="A1.SS1.p1.m10" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is a multi-index,
+<math id="A1.SS1.p1.m11" class="ltx_Math" alttext="\left|\alpha\right|=\sum_{i}\alpha_{i}" display="inline"><mrow><mrow><mo>|</mo><mi>α</mi><mo>|</mo></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>α</mi><mi>i</mi></msub></mrow></mrow></math>, and <math id="A1.SS1.p1.m12" class="ltx_Math" alttext="\alpha!=\prod_{i}\alpha_{i}!" display="inline"><mrow><mrow><mi>α</mi><mo>!</mo></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∏</mo><mi>i</mi></msub><mrow><msub><mi>α</mi><mi>i</mi></msub><mo>!</mo></mrow></mrow></mrow></math>.
+Comparison of the finite sums proves the required inequality.</p>
+</div>
+</section>
+<section id="A1.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">A.2 </span>Exact isotropic trace moments</h3>
+
+<div id="A1.SS2.p1" class="ltx_para">
+<p class="ltx_p">For identity covariance, the coordinate independence permits exact
+formulas for the two moments in (<a href="#S2.E16" title="In 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">16</span></a>). These
+formulas distinguish the actual trace scale from the larger moments
+of the Frobenius norm and verify the <math id="A1.SS2.p1.m1" class="ltx_Math" alttext="q^{3}" display="inline"><msup><mi>q</mi><mn>3</mn></msup></math> order used in the main proof. Let <math id="A1.SS2.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> have identity covariance in
+<math id="A1.SS2.p1.m3" class="ltx_Math" alttext="\mathbb{S}^{q}" display="inline"><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">S</mi><mi>q</mi></msup></math>. Its diagonal entries are independent <math id="A1.SS2.p1.m4" class="ltx_Math" alttext="N(0,1)" display="inline"><mrow><mi>N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>, and
+its upper-triangular off-diagonal entries are independent <math id="A1.SS2.p1.m5" class="ltx_Math" alttext="N(0,1/2)" display="inline"><mrow><mi>N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math>,
+independently of the diagonal entries.</p>
+</div>
+<div id="A1.SS2.p2" class="ltx_para">
+<p class="ltx_p">For an orthonormal basis <math id="A1.SS2.p2.m1" class="ltx_Math" alttext="(F_{a})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>F</mi><mi>a</mi></msub><mo stretchy="false">)</mo></mrow></math>, direct multiplication in the
+basis of Remark <a href="#S2.Thmtheorem2" title="Remark 2.2 (Coordinate normalization). ‣ 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.2</span></a> gives</p>
+<table id="A1.E23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.E23.m1" class="ltx_Math" alttext="\sum_{a}F_{a}UF_{a}=\frac{1}{2}\bigl(U^{\top}+\operatorname{Tr}(U)I_{q}\bigr)\qquad(U\in\mathbb{R}^{q\times q})." display="block"><mrow><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mi>a</mi></munder><mrow><msub><mi>F</mi><mi>a</mi></msub><mo>⁢</mo><mi>U</mi><mo>⁢</mo><msub><mi>F</mi><mi>a</mi></msub></mrow></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><msup><mi>U</mi><mo>⊤</mo></msup><mo>+</mo><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msub><mi>I</mi><mi>q</mi></msub></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow><mspace style="width:2em;" width="2em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mi>U</mi><mo>∈</mo><msup><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">R</mi><mrow><mi>q</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>q</mi></mrow></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(23)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The left side is unchanged by an orthogonal change of basis. Applying
+(<a href="#S2.E14" title="In 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">14</span></a>) with <math id="A1.SS2.p2.m2" class="ltx_Math" alttext="B=(q+1)I_{q}/2" display="inline"><mrow><mi>B</mi><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>I</mi><mi>q</mi></msub></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math> and then
+(<a href="#A1.E23" title="In A.2 Exact isotropic trace moments ‣ Appendix A Auxiliary Gaussian calculations ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">23</span></a>), we obtain</p>
+<table id="A1.EGx5" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="A1.Ex19"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="A1.Ex19.m1" class="ltx_Math" alttext="\displaystyle\mathbb{E}\operatorname{Tr}(W^{4})" display="inline"><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>W</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="A1.Ex19.m2" class="ltx_Math" alttext="\displaystyle=\frac{q(q+1)^{2}}{2}+\frac{1}{2}\sum_{a}\bigl(\operatorname{Tr}(F_{a}^{2})+(\operatorname{Tr}F_{a})^{2}\bigr)" display="inline"><mrow><mphantom></mphantom><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mi>q</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mn>2</mn></mfrac></mstyle><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>a</mi></munder></mstyle><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>F</mi><mi>a</mi><mn>2</mn></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>F</mi><mi>a</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="A1.Ex20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="A1.Ex20.m1" class="ltx_Math" alttext="\displaystyle=\frac{q(q+1)^{2}}{2}+\frac{n+q}{2}=\frac{q(2q^{2}+5q+5)}{4}." display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mi>q</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mn>2</mn></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true"><mfrac><mrow><mi>n</mi><mo>+</mo><mi>q</mi></mrow><mn>2</mn></mfrac></mstyle></mrow><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>q</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><mi>q</mi></mrow><mo>+</mo><mn>5</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>4</mn></mfrac></mstyle></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="A1.SS2.p2.m3" class="ltx_Math" alttext="\sum_{a}\operatorname{Tr}(F_{a}^{2})=n" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>a</mi></msub><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>F</mi><mi>a</mi><mn>2</mn></msubsup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mi>n</mi></mrow></math>, and Parseval applied to <math id="A1.SS2.p2.m4" class="ltx_Math" alttext="I_{q}" display="inline"><msub><mi>I</mi><mi>q</mi></msub></math> gives
+<math id="A1.SS2.p2.m5" class="ltx_Math" alttext="\sum_{a}(\operatorname{Tr}F_{a})^{2}=q" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>a</mi></msub><msup><mrow><mo lspace="0em" stretchy="false">(</mo><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>F</mi><mi>a</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mi>q</mi></mrow></math>.</p>
+</div>
+<div id="A1.SS2.p3" class="ltx_para">
+<p class="ltx_p">For the cubic moment, write <math id="A1.SS2.p3.m1" class="ltx_Math" alttext="d_{i}=W_{ii}" display="inline"><mrow><msub><mi>d</mi><mi>i</mi></msub><mo>=</mo><msub><mi>W</mi><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></math>, <math id="A1.SS2.p3.m2" class="ltx_Math" alttext="x_{ij}=W_{ij}=x_{ji}" display="inline"><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo>=</mo><msub><mi>W</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo>=</mo><msub><mi>x</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></math>
+for <math id="A1.SS2.p3.m3" class="ltx_Math" alttext="i\neq j" display="inline"><mrow><mi>i</mi><mo>≠</mo><mi>j</mi></mrow></math>, and <math id="A1.SS2.p3.m4" class="ltx_Math" alttext="S_{i}=\sum_{j\neq i}x_{ij}^{2}" display="inline"><mrow><msub><mi>S</mi><mi>i</mi></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></msub><msubsup><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow><mn>2</mn></msubsup></mrow></mrow></math>. Expanding the trace
+and using <math id="A1.SS2.p3.m5" class="ltx_Math" alttext="H_{3}(d)=d^{3}-3d" display="inline"><mrow><mrow><msub><mi>H</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>d</mi><mn>3</mn></msup><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></mrow></math> gives</p>
+<table id="A1.Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex21.m1" class="ltx_Math" alttext="\operatorname{Tr}(W^{3})=\sum_{i}H_{3}(d_{i})+3\sum_{i}d_{i}(1+S_{i})+6\sum_{i&lt;j&lt;k}x_{ij}x_{jk}x_{ki}." display="block"><mrow><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>W</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><munder><mo movablelimits="false">∑</mo><mi>i</mi></munder><mrow><msub><mi>H</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>d</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>i</mi></munder><mrow><msub><mi>d</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>+</mo><mrow><mn>6</mn><mo>⁢</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi><mo>&lt;</mo><mi>k</mi></mrow></munder><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo>⁢</mo><msub><mi>x</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The expansion separates diagonal cubic fluctuations, diagonal terms
+weighted by off-diagonal squares, and triangle monomials. These three
+terms are pairwise orthogonal in Gaussian <math id="A1.SS2.p3.m6" class="ltx_Math" alttext="L^{2}" display="inline"><msup><mi>L</mi><mn>2</mn></msup></math>.
+The first two are orthogonal because
+<math id="A1.SS2.p3.m7" class="ltx_Math" alttext="\mathbb{E}H_{3}(d_{i})=\mathbb{E}[d_{i}H_{3}(d_{i})]=0" display="inline"><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msub><mi>H</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>d</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>d</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>H</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>d</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>. Conditional on the
+off-diagonal entries, both have mean zero, while the triangle term
+is fixed. Within the second sum, distinct indices have zero cross
+moment because <math id="A1.SS2.p3.m8" class="ltx_Math" alttext="\mathbb{E}d_{i}d_{j}=0" display="inline"><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msub><mi>d</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>d</mi><mi>j</mi></msub></mrow><mo>=</mo><mn>0</mn></mrow></math>. Distinct triangle
+monomials in the last sum also have zero cross moment, since their
+product contains an edge variable to an odd power. Finally,</p>
+<table id="A1.Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex22.m1" class="ltx_Math" alttext="\mathbb{E}H_{3}(d_{i})^{2}=6,\qquad\mathbb{E}S_{i}=\frac{q-1}{2},\qquad\operatorname{Var}S_{i}=\frac{q-1}{2}." display="block"><mrow><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msub><mi>H</mi><mn>3</mn></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi>d</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mn>6</mn></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo>=</mo><mfrac><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>Var</mi><mo lspace="0.167em">⁡</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo>=</mo><mfrac><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">It follows that</p>
+<table id="A1.EGx6" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="A1.Ex23"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="A1.Ex23.m1" class="ltx_Math" alttext="\displaystyle\mathbb{E}\bigl(\operatorname{Tr}(W^{3})\bigr)^{2}" display="inline"><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo>⁢</mo><msup><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>W</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="A1.Ex23.m2" class="ltx_Math" alttext="\displaystyle=6q+9q\left(\frac{(q+1)^{2}}{4}+\frac{q-1}{2}\right)+\frac{36}{8}\binom{q}{3}" display="inline"><mrow><mphantom></mphantom><mo>=</mo><mrow><mrow><mn>6</mn><mo>⁢</mo><mi>q</mi></mrow><mo>+</mo><mrow><mn>9</mn><mo>⁢</mo><mi>q</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mfrac><msup><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mn>4</mn></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true"><mfrac><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mstyle></mrow><mo>)</mo></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mn>36</mn><mn>8</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0pt"><mi>q</mi><mn>3</mn></mfrac></mstyle><mo>)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="A1.Ex24"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="A1.Ex24.m1" class="ltx_Math" alttext="\displaystyle=\frac{3q(4q^{2}+9q+7)}{4}," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mn>3</mn><mo>⁢</mo><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>4</mn><mo>⁢</mo><msup><mi>q</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>9</mn><mo>⁢</mo><mi>q</mi></mrow><mo>+</mo><mn>7</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>4</mn></mfrac></mstyle></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where the triangle sum is empty for <math id="A1.SS2.p3.m9" class="ltx_Math" alttext="q&lt;3" display="inline"><mrow><mi>q</mi><mo>&lt;</mo><mn>3</mn></mrow></math>.</p>
+</div>
+<div id="A1.SS2.p4" class="ltx_para">
+<p class="ltx_p">The isotropic quartic moment is also the maximum over
+<math id="A1.SS2.p4.m1" class="ltx_Math" alttext="0\preceq Q\preceq I" display="inline"><mrow><mn>0</mn><mo>⪯</mo><mi>Q</mi><mo>⪯</mo><mi>I</mi></mrow></math>. To see this without an entrywise comparison,
+let <math id="A1.SS2.p4.m2" class="ltx_Math" alttext="\mathcal{P}(A)=\operatorname{Tr}(A^{4})" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. For symmetric <math id="A1.SS2.p4.m3" class="ltx_Math" alttext="A,H" display="inline"><mrow><mi>A</mi><mo>,</mo><mi>H</mi></mrow></math>,</p>
+<table id="A1.Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex25.m1" class="ltx_Math" alttext="D^{2}\mathcal{P}(A)[H,H]=8\operatorname{Tr}(A^{2}H^{2})+4\operatorname{Tr}(AHAH)\geq 4\operatorname{Tr}(A^{2}H^{2})\geq 0" display="block"><mrow><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>⁢</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>H</mi><mo>,</mo><mi>H</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mrow><mn>8</mn><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>H</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mn>4</mn><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>⁢</mo><mi>H</mi><mo>⁢</mo><mi>A</mi><mo>⁢</mo><mi>H</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>≥</mo><mrow><mn>4</mn><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>H</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≥</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">by (<a href="#S2.E10" title="In 2 Gaussian trace estimates ‣ Strong average self-concordance of thelog-determinant metric at linear scale" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>). Thus <math id="A1.SS2.p4.m4" class="ltx_Math" alttext="\mathcal{P}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi></math> is convex. Given a centered
+Gaussian <math id="A1.SS2.p4.m5" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> with covariance <math id="A1.SS2.p4.m6" class="ltx_Math" alttext="Q\preceq I" display="inline"><mrow><mi>Q</mi><mo>⪯</mo><mi>I</mi></mrow></math>, take an independent
+centered Gaussian <math id="A1.SS2.p4.m7" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> with covariance <math id="A1.SS2.p4.m8" class="ltx_Math" alttext="I-Q" display="inline"><mrow><mi>I</mi><mo>−</mo><mi>Q</mi></mrow></math>. Then <math id="A1.SS2.p4.m9" class="ltx_Math" alttext="A+Y" display="inline"><mrow><mi>A</mi><mo>+</mo><mi>Y</mi></mrow></math> has
+the same law as <math id="A1.SS2.p4.m10" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>, and conditional Jensen gives</p>
+<table id="A1.Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex26.m1" class="ltx_Math" alttext="\mathbb{E}\operatorname{Tr}(A^{4})\leq\mathbb{E}\operatorname{Tr}((A+Y)^{4})=\mathbb{E}\operatorname{Tr}(W^{4})." display="block"><mrow><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>+</mo><mi>Y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">E</mi><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>W</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This covariance monotonicity argument applies to the convex quartic
+trace. The cubic-trace second-moment bound used in the main proof
+instead follows from Gaussian Poincaré.</p>
+</div>
+</section>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock">
+Y. Kook and S. S. Vempala.
+
+</span>
+<span class="ltx_bibblock">Gaussian cooling and Dikin walks: The interior-point method for
+logconcave sampling.
+
+</span>
+<span class="ltx_bibblock">In <em class="ltx_emph ltx_font_italic">Proceedings of the 37th Conference on Learning Theory
+(COLT)</em>, volume 247 of <em class="ltx_emph ltx_font_italic">Proceedings of Machine Learning Research</em>,
+pages 3137–3240, 2024.
+
+</span>
+<span class="ltx_bibblock"><a href="https://proceedings.mlr.press/v247/kook24b.html" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://proceedings.mlr.press/v247/kook24b.html</a>.
+
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock">
+A. Laddha, Y. T. Lee, and S. S. Vempala.
+
+</span>
+<span class="ltx_bibblock">Strong self-concordance and sampling.
+
+</span>
+<span class="ltx_bibblock">In <em class="ltx_emph ltx_font_italic">Proceedings of the 52nd Annual ACM SIGACT Symposium
+on Theory of Computing (STOC)</em>, pages 1212–1222, 2020.
+
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1145/3357713.3384272" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://doi.org/10.1145/3357713.3384272</a>.
+
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock">
+Z. Song and L. Zhang.
+
+</span>
+<span class="ltx_bibblock">A general framework for Metropolis-adjusted Dikin walks:
+Dimension-square mixing on polytopes and log-det walks on spectrahedra.
+
+</span>
+<span class="ltx_bibblock">arXiv:2608.25273v1, 2026.
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2608.25273v1" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/2608.25273v1</a>.
+
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock">
+Y. Chen and Y. Kook.
+
+</span>
+<span class="ltx_bibblock">On two proofs of <math id="bib.bib4.m1" class="ltx_Math" alttext="d^{2}" display="inline"><msup><mi>d</mi><mn>2</mn></msup></math> mixing of weighted Dikin walks.
+
+</span>
+<span class="ltx_bibblock">arXiv:2608.28566v1, 2026.
+
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2608.28566v1" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://arxiv.org/abs/2608.28566v1</a>.
+
+</span></li>
+    
+</ul>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="Strong average self-concordance of the log-determinant metric at linear scale"></div>
+
+</article>
+{% endraw %}

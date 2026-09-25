@@ -1,0 +1,862 @@
+---
+layout: "repository-paper"
+title: "Highness for isomorphism at Scott rank ω1CK"
+repository_title_html: "Highness for isomorphism at Scott rank <math class=\"ltx_Math\" alttext=\"\\omega_{1}^{\\mathrm{CK}}\" display=\"inline\"><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup></math>"
+description: "We prove that a Turing degree is high for Scott rank ω1CK if and only if it is high for isomorphism, answering Question 1 of Franklin, Rossegger, and Turetsky (arXiv, 2026). The result follows from a uniform encoding of"
+permalink: "/repository/highness-for-isomorphism-at-scott-rank-omega-1-ck/"
+pdf: "/files/repository/HSR-highness_for_isomorphism_at_scott_rank_omega_1_ck.pdf"
+repository_added: "2026-09-19"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-section"><a href="#S2">2 A levelwise normal form for tree path problems</a></li>
+<li class="repository-toc-section"><a href="#S3">3 The Boolean group construction</a></li>
+<li class="repository-toc-section"><a href="#S4">4 The Scott rank bound</a></li>
+<li class="repository-toc-section"><a href="#S5">5 Highness at the boundary ranks</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Highness for isomorphism at Scott rank <math id="m1" class="ltx_Math" alttext="\omega_{1}^{\mathrm{CK}}" display="inline"><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup></math></h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">We prove that a Turing degree is high for Scott rank
+<math id="abstract1.m1" class="ltx_Math" alttext="\omega_{1}^{\mathrm{CK}}" display="inline"><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup></math> if and only if it is high for isomorphism,
+answering Question 1 of Franklin, Rossegger, and Turetsky (arXiv, 2026).
+The result follows from a uniform encoding of arbitrary computable tree
+path problems by isomorphism problems between computable structures of
+Scott rank at most <math id="abstract1.m2" class="ltx_Math" alttext="\omega_{1}^{\mathrm{CK}}" display="inline"><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup></math> in a fixed finite language.
+The structures are isomorphic exactly when the tree has an infinite path,
+and paths and isomorphisms are uniformly computable from one another.
+The key step is a normal form preserving the path problem in which the
+extendible nodes are computable at each fixed level, with the decision
+procedure allowed to depend nonuniformly on the level. We obtain this
+form by coupling a binary path code with numerical decoding bounds:
+upward closure and Dickson’s lemma give a finite description of
+extendibility at each level. Applying the classical Boolean group-tree
+construction then yields computable infinitary definitions of all finite
+tuple orbits. The construction and both reductions are uniform, while
+the highness equivalence uses the usual nonuniform convention.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">A Turing degree is <em class="ltx_emph ltx_font_italic">high for isomorphism</em> if it computes an
+isomorphism between every pair of isomorphic computable structures.
+This notion, introduced by Calvert, Franklin, and
+Turetsky <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite>, measures the strength needed to identify computable
+presentations of the same structure. Restricting the structures by
+Scott rank relates this computational problem to the complexity of
+defining automorphism orbits.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Write <math id="S1.p2.m1" class="ltx_Math" alttext="\kappa=\omega_{1}^{\mathrm{CK}}" display="inline"><mrow><mi>κ</mi><mo>=</mo><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup></mrow></math>. Franklin, Rossegger, and
+Turetsky <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite> ask whether a degree can be high for Scott rank
+<math id="S1.p2.m2" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> without being high for Scott rank <math id="S1.p2.m3" class="ltx_Math" alttext="\kappa+1" display="inline"><mrow><mi>κ</mi><mo>+</mo><mn>1</mn></mrow></math>, and hence
+without being high for isomorphism. Their Theorem 19 shows that highness
+for rank <math id="S1.p2.m4" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> suffices to compute a descending sequence in every
+ill-founded computable linear order. We prove the stronger conclusion
+that it suffices to compute a path through every ill-founded computable
+tree. By <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Proposition 2.6]</cite>, this is equivalent to highness for
+isomorphism and therefore answers their Question 1 negatively.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Computable structures of rank <math id="S1.p3.m1" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> already have a substantial
+construction theory. Makkai <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>]</cite> produced an arithmetical
+example, Knight and Millar <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite> obtained computable examples, and
+Calvert, Knight, and Millar <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>]</cite> realized the rank by computable
+trees. The group-tree construction presented in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, §3]</cite>
+encodes paths by automorphisms. Its Scott-rank analysis uses computable
+bounds on the well-founded node ranks at each fixed level
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, Theorem 3.7]</cite>. The issue here is to meet such a local rank
+condition while preserving the path problem of an arbitrary input tree,
+rather than constructing a particular example of high Scott rank.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">We use the nonuniform highness convention of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Definition 2]</cite>:
+<math id="S1.p4.m1" class="ltx_Math" alttext="\mathbf{d}" display="inline"><mi class="ltx_mathvariant_bold" mathvariant="bold">d</mi></math> is <em class="ltx_emph ltx_font_italic">high for Scott rank</em> <math id="S1.p4.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> if every pair of
+isomorphic computable structures of rank <math id="S1.p4.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> has a
+<math id="S1.p4.m4" class="ltx_Math" alttext="\mathbf{d}" display="inline"><mi class="ltx_mathvariant_bold" mathvariant="bold">d</mi></math>-computable isomorphism. The program may depend on the pair.
+Our convention for Scott rank is likewise that of
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Definition 1]</cite>: <math id="S1.p4.m5" class="ltx_Math" alttext="\operatorname{SR}(\mathcal{M})" display="inline"><mrow><mi>SR</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the least <math id="S1.p4.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>
+such that every finite tuple orbit is definable, without parameters, by
+a <math id="S1.p4.m7" class="ltx_Math" alttext="\Sigma^{\mathrm{in}}_{\alpha}" display="inline"><msubsup><mi mathvariant="normal">Σ</mi><mi>α</mi><mi>in</mi></msubsup></math> formula. In particular,
+<math id="S1.p4.m8" class="ltx_Math" alttext="\operatorname{SR}(\mathcal{M})\leq\kappa" display="inline"><mrow><mrow><mi>SR</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">M</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>κ</mi></mrow></math> if every finite tuple orbit has a
+computable infinitary definition of some computable complexity. Neither
+the defining formulas nor their complexities need be uniform in the
+tuples.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">All computable structures have domain <math id="S1.p5.m1" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>, after a computable
+recoding when necessary. A computable tree is a prefix-closed decidable
+subset of <math id="S1.p5.m2" class="ltx_Math" alttext="\omega^{&lt;\omega}" display="inline"><msup><mi>ω</mi><mrow><mphantom></mphantom><mo>&lt;</mo><mi>ω</mi></mrow></msup></math>, and <math id="S1.p5.m3" class="ltx_Math" alttext="[T]" display="inline"><mrow><mo stretchy="false">[</mo><mi>T</mi><mo stretchy="false">]</mo></mrow></math> denotes its set of infinite
+paths. Uniformity in a tree means uniformity in an index for its
+characteristic function.</p>
+</div>
+<div id="Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Uniformly from a computable tree <math id="Thmtheorem1.p1.m1" class="ltx_Math" alttext="T\subseteq\omega^{&lt;\omega}" display="inline"><mrow><mi>T</mi><mo>⊆</mo><msup><mi>ω</mi><mrow><mphantom></mphantom><mo>&lt;</mo><mi>ω</mi></mrow></msup></mrow></math>, one can
+construct computable structures <math id="Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathcal{A}_{T},\mathcal{B}_{T}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>T</mi></msub><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi>T</mi></msub></mrow></math> in a fixed
+finite language such that:</span></p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;"><span class="ltx_tag ltx_tag_item">1.</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Every finite tuple orbit in either structure has a computable
+infinitary definition. In particular,
+</span><math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\operatorname{SR}(\mathcal{A}_{T}),\operatorname{SR}(\mathcal{B}_{T})\leq\kappa" display="inline"><mrow><mrow><mi>SR</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>T</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mrow><mi>SR</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi>T</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>κ</mi></mrow></mrow></math><span class="ltx_text ltx_font_italic">.</span></p>
+</div></li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;"><span class="ltx_tag ltx_tag_item">2.</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{A}_{T}\cong\mathcal{B}_{T}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>T</mi></msub><mo>≅</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi>T</mi></msub></mrow></math><span class="ltx_text ltx_font_italic"> if and only if
+</span><math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="[T]\neq\varnothing" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>T</mi><mo stretchy="false">]</mo></mrow><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow></math><span class="ltx_text ltx_font_italic">.</span></p>
+</div></li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;"><span class="ltx_tag ltx_tag_item">3.</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">A path in </span><math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math><span class="ltx_text ltx_font_italic"> computes an isomorphism
+</span><math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="\mathcal{A}_{T}\to\mathcal{B}_{T}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>T</mi></msub><mo stretchy="false">→</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi>T</mi></msub></mrow></math><span class="ltx_text ltx_font_italic">, and every such isomorphism computes a
+path in </span><math id="S1.I1.i3.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math><span class="ltx_text ltx_font_italic">. Both conversions are uniform in an index for </span><math id="S1.I1.i3.p1.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math><span class="ltx_text ltx_font_italic">.</span></p>
+</div></li>
+</ol>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">The new step is the normal form in Lemma <a href="#Thmtheorem2" title="Lemma 2. ‣ 2 A levelwise normal form for tree path problems ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>. We write a
+path in binary and attach numerical bounds by which each entry must
+have been decoded. For a fixed binary prefix, increasing these bounds
+preserves extendibility. Dickson’s lemma then gives a finite basis for
+the extendible bound vectors. Thus extendibility is computable on each
+fixed level, although the finite bases need not be obtainable uniformly.
+This yields the local ordinal bounds required for the Scott analysis.</p>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">We combine this recoding with the classical Boolean group-tree
+construction of Makkai and Morozov, as presented in
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, §3 and Theorem 3.1]</cite>. Finite sets of nodes form Boolean groups,
+and parity over parent fibres defines the projections between levels.
+Naming different root vectors in two copies forces an isomorphism to
+encode a nonzero coherent translation, from which a path can be
+recovered. We give a fixed finite-language presentation and explicit
+orbit definitions, so that the rank bound and the uniform reductions
+can be checked directly. Sections <a href="#S2" title="2 A levelwise normal form for tree path problems ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>–<a href="#S4" title="4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>
+prove Theorem <a href="#Thmtheorem1" title="Theorem 1. ‣ 1 Introduction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>; Section <a href="#S5" title="5 Highness at the boundary ranks ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a> derives the
+highness equivalence.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>A levelwise normal form for tree path problems</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">For a tree <math id="S2.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, write <math id="S2.p1.m2" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math> for its <math id="S2.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-th level and put</p>
+<table id="S2.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex1.m1" class="ltx_Math" alttext="\operatorname{Ext}(S)_{n}=\{\sigma\in S_{n}:(\exists X\in[S])\,\sigma\preceq X\}." display="block"><mrow><mrow><mrow><mi>Ext</mi><mo>⁡</mo><msub><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msub></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>n</mi></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mo rspace="0.167em">∃</mo><mi>X</mi></mrow><mo>∈</mo><mrow><mo stretchy="false">[</mo><mi>S</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo lspace="0.170em">⁢</mo><mi>σ</mi></mrow><mo>⪯</mo><mi>X</mi></mrow><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="S2.p1.m4" class="ltx_Math" alttext="\preceq" display="inline"><mo>⪯</mo></math> denotes the initial-segment relation. A node is
+<em class="ltx_emph ltx_font_italic">extendible</em> if it lies on an infinite path, and <em class="ltx_emph ltx_font_italic">dead</em>
+otherwise. Write <math id="S2.p1.m5" class="ltx_Math" alttext="S_{\sigma}" display="inline"><msub><mi>S</mi><mi>σ</mi></msub></math> for the subtree of extensions of
+<math id="S2.p1.m6" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>, with root <math id="S2.p1.m7" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>. On a well-founded subtree we use</p>
+<table id="S2.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex2.m1" class="ltx_Math" alttext="\operatorname{rk}_{S}(\sigma)=\sup\{\operatorname{rk}_{S}(\tau)+1:\tau\text{ is a child of }\sigma\}," display="block"><mrow><mrow><mrow><msub><mi>rk</mi><mi>S</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" movablelimits="false" rspace="0em">sup</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><msub><mi>rk</mi><mi>S</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>τ</mi><mo>⁢</mo><mtext> is a child of </mtext><mo>⁢</mo><mi>σ</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">so leaves have rank zero. Extendible nodes are assigned rank
+<math id="S2.p1.m8" class="ltx_Math" alttext="\infty" display="inline"><mi mathvariant="normal">∞</mi></math>, greater than every ordinal. We use the same convention for
+other rooted trees and forests.</p>
+</div>
+<div id="Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Uniformly from a computable tree <math id="Thmtheorem2.p1.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>, one can construct a computable
+tree <math id="Thmtheorem2.p1.m2" class="ltx_Math" alttext="S\subseteq\omega^{&lt;\omega}" display="inline"><mrow><mi>S</mi><mo>⊆</mo><msup><mi>ω</mi><mrow><mphantom></mphantom><mo>&lt;</mo><mi>ω</mi></mrow></msup></mrow></math> and uniform computable conversions
+between paths in <math id="Thmtheorem2.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> and paths in <math id="Thmtheorem2.p1.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> such that, for each fixed
+<math id="Thmtheorem2.p1.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, the set <math id="Thmtheorem2.p1.m6" class="ltx_Math" alttext="\operatorname{Ext}(S)_{n}" display="inline"><mrow><mi>Ext</mi><mo>⁡</mo><msub><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msub></mrow></math> is computable. The last assertion is not
+uniform in <math id="Thmtheorem2.p1.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Code <math id="S2.p2.m1" class="ltx_Math" alttext="f\in\omega^{\omega}" display="inline"><mrow><mi>f</mi><mo>∈</mo><msup><mi>ω</mi><mi>ω</mi></msup></mrow></math> by the binary real</p>
+<table id="S2.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex3.m1" class="ltx_math_unparsed" alttext="X_{f}=0^{f(0)}1\,0^{f(1)}1\,0^{f(2)}1\cdots." display="block"><mrow><mi>X</mi><msub><mrow></mrow><mi>f</mi></msub><mo>=</mo><mn>0</mn><msup><mrow></mrow><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></msup><mn>1 0</mn><msup><mrow></mrow><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></msup><mn>1 0</mn><msup><mrow></mrow><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></msup><mn>1</mn><mo lspace="0em" rspace="0em">⋯</mo><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For a finite binary string <math id="S2.p2.m2" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math>, let <math id="S2.p2.m3" class="ltx_Math" alttext="R_{T}(\eta,i)" display="inline"><mrow><msub><mi>R</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>η</mi><mo>,</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></math> mean that
+<math id="S2.p2.m4" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> contains at least <math id="S2.p2.m5" class="ltx_Math" alttext="i+1" display="inline"><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></math> occurrences of <math id="S2.p2.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, and that the
+numbers of zeros in its first <math id="S2.p2.m7" class="ltx_Math" alttext="i+1" display="inline"><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></math> completed blocks form a node of
+<math id="S2.p2.m8" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>. This predicate is computable and remains true when <math id="S2.p2.m9" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> is
+extended.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Consider</p>
+<table id="S2.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex4.m1" class="ltx_math_unparsed" alttext="Q_{T}=\{(X,b)\in 2^{\omega}\times\omega^{\omega}:(\forall i)\,R_{T}(X\upharpoonright b(i),i)\}." display="block"><mrow><msub><mi>Q</mi><mi>T</mi></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><msup><mn>2</mn><mi>ω</mi></msup><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi>ω</mi><mi>ω</mi></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo stretchy="false">(</mo><mo rspace="0.167em">∀</mo><mi>i</mi><mo rspace="0.170em" stretchy="false">)</mo></mrow><msub><mi>R</mi><mi>T</mi></msub><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">↾</mo><mi>b</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Every member of <math id="S2.p3.m1" class="ltx_Math" alttext="Q_{T}" display="inline"><msub><mi>Q</mi><mi>T</mi></msub></math> computes a path in <math id="S2.p3.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>: the conditions ensure
+infinitely many delimiters, and every decoded initial segment belongs
+to <math id="S2.p3.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>. Conversely, from <math id="S2.p3.m4" class="ltx_Math" alttext="f\in[T]" display="inline"><mrow><mi>f</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mi>T</mi><mo stretchy="false">]</mo></mrow></mrow></math> compute <math id="S2.p3.m5" class="ltx_Math" alttext="X_{f}" display="inline"><msub><mi>X</mi><mi>f</mi></msub></math> and</p>
+<table id="S2.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex5.m1" class="ltx_Math" alttext="b_{f}(i)=\sum_{j\leq i}(f(j)+1)." display="block"><mrow><mrow><mrow><msub><mi>b</mi><mi>f</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>j</mi><mo>≤</mo><mi>i</mi></mrow></munder><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Then <math id="S2.p3.m6" class="ltx_Math" alttext="(X_{f},b_{f})\in Q_{T}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>X</mi><mi>f</mi></msub><mo>,</mo><msub><mi>b</mi><mi>f</mi></msub><mo stretchy="false">)</mo></mrow><mo>∈</mo><msub><mi>Q</mi><mi>T</mi></msub></mrow></math>.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">To represent <math id="S2.p4.m1" class="ltx_Math" alttext="Q_{T}" display="inline"><msub><mi>Q</mi><mi>T</mi></msub></math> by a computable tree, regard a node of length
+<math id="S2.p4.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> as a pair <math id="S2.p4.m3" class="ltx_Math" alttext="(\rho,u)\in 2^{n}\times\omega^{n}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><msup><mn>2</mn><mi>n</mi></msup><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi>ω</mi><mi>n</mi></msup></mrow></mrow></math>, coding its
+<math id="S2.p4.m4" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math>-th coordinate by <math id="S2.p4.m5" class="ltx_Math" alttext="2u(j)+\rho(j)" display="inline"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>u</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>ρ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Put <math id="S2.p4.m6" class="ltx_Math" alttext="(\rho,u)" display="inline"><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow></math> in <math id="S2.p4.m7" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>
+exactly when</p>
+<table id="S2.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E1.m1" class="ltx_math_unparsed" alttext="(\forall i&lt;n)\bigl[u(i)\leq n\ \Longrightarrow\ R_{T}(\rho\upharpoonright u(i),i)\bigr]." display="block"><mrow><mrow><mo stretchy="false">(</mo><mo rspace="0.167em">∀</mo><mi>i</mi><mo>&lt;</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><mrow><mo maxsize="1.200em" minsize="1.200em">[</mo><mi>u</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><mo>≤</mo><mi>n</mi><mo lspace="0.778em" rspace="0.778em" stretchy="false">⟹</mo><msub><mi>R</mi><mi>T</mi></msub><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo stretchy="false">↾</mo><mi>u</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><mo maxsize="1.200em" minsize="1.200em">]</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Membership is decidable. If a prefix has length <math id="S2.p4.m8" class="ltx_Math" alttext="m&lt;n" display="inline"><mrow><mi>m</mi><mo>&lt;</mo><mi>n</mi></mrow></math>, every check it
+requires has <math id="S2.p4.m9" class="ltx_Math" alttext="i&lt;m" display="inline"><mrow><mi>i</mi><mo>&lt;</mo><mi>m</mi></mrow></math> and <math id="S2.p4.m10" class="ltx_Math" alttext="u(i)\leq m" display="inline"><mrow><mrow><mi>u</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>m</mi></mrow></math>; that same check was required
+at length <math id="S2.p4.m11" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, with the same binary prefix of length <math id="S2.p4.m12" class="ltx_Math" alttext="u(i)" display="inline"><mrow><mi>u</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+Thus <math id="S2.p4.m13" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is prefix-closed. Its root is the empty sequence, even when
+<math id="S2.p4.m14" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is empty.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Under the coordinate coding, <math id="S2.p5.m1" class="ltx_Math" alttext="[S]=Q_{T}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>S</mi><mo stretchy="false">]</mo></mrow><mo>=</mo><msub><mi>Q</mi><mi>T</mi></msub></mrow></math>. Indeed, for a branch
+<math id="S2.p5.m2" class="ltx_Math" alttext="(X,b)\in[S]" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mo stretchy="false">[</mo><mi>S</mi><mo stretchy="false">]</mo></mrow></mrow></math> and a fixed <math id="S2.p5.m3" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>, choose
+<math id="S2.p5.m4" class="ltx_Math" alttext="n\geq\max\{i+1,b(i)\}" display="inline"><mrow><mi>n</mi><mo>≥</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><mo>,</mo><mrow><mi>b</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>. Equation (<a href="#S2.E1" title="In 2 A levelwise normal form for tree path problems ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>) then checks
+<math id="S2.p5.m5" class="ltx_math_unparsed" alttext="R_{T}(X\upharpoonright b(i),i)" display="inline"><mrow><msub><mi>R</mi><mi>T</mi></msub><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">↾</mo><mi>b</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></math>. Conversely, every initial segment of
+a member of <math id="S2.p5.m6" class="ltx_Math" alttext="Q_{T}" display="inline"><msub><mi>Q</mi><mi>T</mi></msub></math> passes all the required checks. This proves the
+claimed uniform conversions between path sets.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Fix <math id="S2.p6.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> and <math id="S2.p6.m2" class="ltx_Math" alttext="\rho\in 2^{n}" display="inline"><mrow><mi>ρ</mi><mo>∈</mo><msup><mn>2</mn><mi>n</mi></msup></mrow></math>, and define</p>
+<table id="S2.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex6.m1" class="ltx_Math" alttext="U_{\rho}=\{u\in\omega^{n}:(\rho,u)\in\operatorname{Ext}(S)_{n}\}." display="block"><mrow><mrow><msub><mi>U</mi><mi>ρ</mi></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>u</mi><mo>∈</mo><msup><mi>ω</mi><mi>n</mi></msup></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi>Ext</mi><mo>⁡</mo><msub><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msub></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The set <math id="S2.p6.m3" class="ltx_Math" alttext="U_{\rho}" display="inline"><msub><mi>U</mi><mi>ρ</mi></msub></math> is upward closed in the coordinatewise order.
+If <math id="S2.p6.m4" class="ltx_Math" alttext="(X,b)\in Q_{T}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><msub><mi>Q</mi><mi>T</mi></msub></mrow></math> extends <math id="S2.p6.m5" class="ltx_Math" alttext="(\rho,u)" display="inline"><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo>,</mo><mi>u</mi><mo stretchy="false">)</mo></mrow></math> and <math id="S2.p6.m6" class="ltx_Math" alttext="v\geq u" display="inline"><mrow><mi>v</mi><mo>≥</mo><mi>u</mi></mrow></math>, replace the
+first <math id="S2.p6.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> coordinates of <math id="S2.p6.m8" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> by <math id="S2.p6.m9" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math>, leaving the rest unchanged.
+The predicates <math id="S2.p6.m10" class="ltx_Math" alttext="R_{T}" display="inline"><msub><mi>R</mi><mi>T</mi></msub></math> remain true because increasing a decoding bound
+only extends the binary string being inspected. The resulting member
+of <math id="S2.p6.m11" class="ltx_Math" alttext="Q_{T}" display="inline"><msub><mi>Q</mi><mi>T</mi></msub></math> extends <math id="S2.p6.m12" class="ltx_Math" alttext="(\rho,v)" display="inline"><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">By Dickson’s lemma <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>]</cite>, every upward closed subset of
+<math id="S2.p7.m1" class="ltx_Math" alttext="\omega^{n}" display="inline"><msup><mi>ω</mi><mi>n</mi></msup></math> has finitely many minimal elements. We recall the argument.
+Every infinite sequence of natural numbers has an infinite nondecreasing
+subsequence: either some value occurs infinitely often, or the tails
+are unbounded and one can choose a strictly increasing subsequence.
+Applying this successively in the finitely many coordinates shows that
+every infinite sequence in <math id="S2.p7.m2" class="ltx_Math" alttext="\omega^{n}" display="inline"><msup><mi>ω</mi><mi>n</mi></msup></math> contains two terms, in their
+original order, that are coordinatewise comparable. Hence antichains,
+and in particular sets of minimal elements, are finite. Moreover,
+every element of an upward closed set lies above a minimal element,
+since it has only finitely many predecessors in <math id="S2.p7.m3" class="ltx_Math" alttext="\omega^{n}" display="inline"><msup><mi>ω</mi><mi>n</mi></msup></math>.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p8.m1" class="ltx_Math" alttext="M_{\rho}" display="inline"><msub><mi>M</mi><mi>ρ</mi></msub></math> be the finite set of minimal elements of <math id="S2.p8.m2" class="ltx_Math" alttext="U_{\rho}" display="inline"><msub><mi>U</mi><mi>ρ</mi></msub></math>,
+allowing the empty set. Then</p>
+<table id="S2.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E2.m1" class="ltx_math_unparsed" alttext="u\in U_{\rho}\quad\Longleftrightarrow\quad(\exists v\in M_{\rho})(\forall j&lt;n)\,v(j)\leq u(j)." display="block"><mrow><mi>u</mi><mo>∈</mo><msub><mi>U</mi><mi>ρ</mi></msub><mo stretchy="false">⟺</mo><mrow><mo stretchy="false">(</mo><mo rspace="0.167em">∃</mo><mi>v</mi><mo>∈</mo><msub><mi>M</mi><mi>ρ</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mo rspace="0.167em">∀</mo><mi>j</mi><mo>&lt;</mo><mi>n</mi><mo rspace="0.170em" stretchy="false">)</mo></mrow><mi>v</mi><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><mo>≤</mo><mi>u</mi><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">For this fixed <math id="S2.p8.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, there are only <math id="S2.p8.m4" class="ltx_Math" alttext="2^{n}" display="inline"><msup><mn>2</mn><mi>n</mi></msup></math> choices of <math id="S2.p8.m5" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math>.
+Their finite bases can therefore be included as constants in a decision
+procedure for <math id="S2.p8.m6" class="ltx_Math" alttext="\operatorname{Ext}(S)_{n}" display="inline"><mrow><mi>Ext</mi><mo>⁡</mo><msub><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msub></mrow></math>. No procedure for finding these bases as
+<math id="S2.p8.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> varies is needed or asserted.
+∎</p>
+</div>
+</div>
+<div id="Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For the tree <math id="Thmtheorem3.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> in Lemma <a href="#Thmtheorem2" title="Lemma 2. ‣ 2 A levelwise normal form for tree path problems ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a> and each <math id="Thmtheorem3.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, there is
+a computable ordinal <math id="Thmtheorem3.p1.m3" class="ltx_Math" alttext="\beta_{n}" display="inline"><msub><mi>β</mi><mi>n</mi></msub></math> such that</span></p>
+<table id="S2.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex7.m1" class="ltx_Math" alttext="\operatorname{rk}_{S}(\sigma)&lt;\beta_{n}\qquad\text{for every }\sigma\in S_{n}\setminus\operatorname{Ext}(S)_{n}." display="block"><mrow><mrow><mrow><mrow><msub><mi>rk</mi><mi>S</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><msub><mi>β</mi><mi>n</mi></msub></mrow><mspace style="width:2em;" width="2em"></mspace><mrow><mrow><mtext class="ltx_mathvariant_italic">for every </mtext><mo>⁢</mo><mi>σ</mi></mrow><mo>∈</mo><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>∖</mo><mrow><mi>Ext</mi><mo>⁡</mo><msub><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msub></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Fix <math id="S2.p9.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>. By Lemma <a href="#Thmtheorem2" title="Lemma 2. ‣ 2 A levelwise normal form for tree path problems ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>, the dead nodes on level <math id="S2.p9.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>
+form a computable set. Form a rooted tree <math id="S2.p9.m3" class="ltx_Math" alttext="W_{n}" display="inline"><msub><mi>W</mi><mi>n</mi></msub></math> whose immediate
+successors are coded by these nodes, with a copy of <math id="S2.p9.m4" class="ltx_Math" alttext="S_{\sigma}" display="inline"><msub><mi>S</mi><mi>σ</mi></msub></math>
+rooted at the successor coded by <math id="S2.p9.m5" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>. Membership in <math id="S2.p9.m6" class="ltx_Math" alttext="W_{n}" display="inline"><msub><mi>W</mi><mi>n</mi></msub></math>
+is computable: first test whether the successor code denotes a dead
+level-<math id="S2.p9.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> node, and then use the decision procedure for <math id="S2.p9.m8" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.
+The tree <math id="S2.p9.m9" class="ltx_Math" alttext="W_{n}" display="inline"><msub><mi>W</mi><mi>n</mi></msub></math> is well-founded, since an infinite path would lie in
+one of the attached dead subtrees. Its Kleene–Brouwer ordering is a
+computable well-order. Its order type plus one is a computable ordinal
+strictly greater than the rank of every attached subtree, and may be
+used as <math id="S2.p9.m10" class="ltx_Math" alttext="\beta_{n}" display="inline"><msub><mi>β</mi><mi>n</mi></msub></math>. The decision procedure for the dead nodes, and
+hence the resulting bound, is only asserted to exist separately for
+each <math id="S2.p9.m11" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>The Boolean group construction</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">We now use the group-tree construction from <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>, §3]</cite> to turn
+paths into isomorphisms. The construction itself uses only membership
+in <math id="S3.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>; the local information from Lemma <a href="#Thmtheorem3" title="Lemma 3. ‣ 2 A levelwise normal form for tree path problems ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a> will enter
+the Scott analysis in the next section.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p2.m1" class="ltx_Math" alttext="\epsilon" display="inline"><mi>ϵ</mi></math> be the empty sequence, so <math id="S3.p2.m2" class="ltx_Math" alttext="S_{0}=\{\epsilon\}" display="inline"><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>ϵ</mi><mo stretchy="false">}</mo></mrow></mrow></math>.
+For each <math id="S3.p2.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, let</p>
+<table id="S3.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex8.m1" class="ltx_Math" alttext="G_{n}=\mathcal{P}_{\mathrm{fin}}(S_{n})" display="block"><mrow><msub><mi>G</mi><mi>n</mi></msub><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>fin</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">be the Boolean group of finite subsets of <math id="S3.p2.m4" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>, with symmetric
+difference as addition. We keep the level in the code of each vector;
+in particular, the zero vectors <math id="S3.p2.m5" class="ltx_Math" alttext="0_{n}=\varnothing" display="inline"><mrow><msub><mn>0</mn><mi>n</mi></msub><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math> at different
+levels are distinct elements. Define</p>
+<table id="S3.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E3.m1" class="ltx_Math" alttext="\pi_{n}:G_{n+1}\longrightarrow G_{n},\qquad\pi_{n}(F)=\bigl\{\sigma\in S_{n}:|\{\tau\in F:\tau\upharpoonright n=\sigma\}|\text{ is odd}\bigr\}." display="block"><mrow><mrow><mrow><msub><mi>π</mi><mi>n</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>G</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">⟶</mo><msub><mi>G</mi><mi>n</mi></msub></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>n</mi></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">|</mo><mrow><mo stretchy="false">{</mo><mrow><mi>τ</mi><mo>∈</mo><mi>F</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>τ</mi><mo stretchy="false">↾</mo><mi>n</mi><mo>=</mo><mi>σ</mi></mrow><mo stretchy="false">}</mo></mrow><mo stretchy="false">|</mo></mrow><mo>⁢</mo><mtext> is odd</mtext></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Parity shows that <math id="S3.p2.m6" class="ltx_Math" alttext="\pi_{n}" display="inline"><msub><mi>π</mi><mi>n</mi></msub></math> is a homomorphism. Put
+<math id="S3.p2.m7" class="ltx_Math" alttext="V=\coprod_{n}G_{n}" display="inline"><mrow><mi>V</mi><mo rspace="0.111em">=</mo><mrow><msub><mo>∐</mo><mi>n</mi></msub><msub><mi>G</mi><mi>n</mi></msub></mrow></mrow></math>, and define <math id="S3.p2.m8" class="ltx_Math" alttext="p:V\to V" display="inline"><mrow><mi>p</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> by
+<math id="S3.p2.m9" class="ltx_Math" alttext="p\upharpoonright G_{n+1}=\pi_{n}" display="inline"><mrow><mi>p</mi><mo stretchy="false">↾</mo><msub><mi>G</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>π</mi><mi>n</mi></msub></mrow></math> and
+<math id="S3.p2.m10" class="ltx_Math" alttext="p\upharpoonright G_{0}=\mathrm{id}" display="inline"><mrow><mi>p</mi><mo stretchy="false">↾</mo><msub><mi>G</mi><mn>0</mn></msub><mo>=</mo><mi>id</mi></mrow></math>.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">To obtain a fixed finite language, we name translation relations by
+indices rather than using a separate symbol for each translation.
+Adjoin an index sort <math id="S3.p3.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>, a copy of <math id="S3.p3.m2" class="ltx_Math" alttext="(\omega,0,s)" display="inline"><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><mn>0</mn><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></math>. For
+<math id="S3.p3.m3" class="ltx_Math" alttext="k\in\omega" display="inline"><mrow><mi>k</mi><mo>∈</mo><mi>ω</mi></mrow></math>, write <math id="S3.p3.m4" class="ltx_Math" alttext="\overline{k}=s^{k}(0)" display="inline"><mrow><mover accent="true"><mi>k</mi><mo stretchy="true">¯</mo></mover><mo>=</mo><mrow><msup><mi>s</mi><mi>k</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for its numeral in this sort.
+Let <math id="S3.p3.m5" class="ltx_Math" alttext="\ell:V\to I" display="inline"><mrow><mi mathvariant="normal">ℓ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>I</mi></mrow></mrow></math> be the level map, so <math id="S3.p3.m6" class="ltx_Math" alttext="\ell(F)=\overline{n}" display="inline"><mrow><mrow><mi mathvariant="normal">ℓ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mover accent="true"><mi>n</mi><mo stretchy="true">¯</mo></mover></mrow></math> for
+<math id="S3.p3.m7" class="ltx_Math" alttext="F\in G_{n}" display="inline"><mrow><mi>F</mi><mo>∈</mo><msub><mi>G</mi><mi>n</mi></msub></mrow></math>. Fix, independently of <math id="S3.p3.m8" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, a computable bijection</p>
+<table id="S3.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex9.m1" class="ltx_Math" alttext="e:\omega\times\mathcal{P}_{\mathrm{fin}}(\omega^{&lt;\omega})\longrightarrow\omega" display="block"><mrow><mi>e</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mi>fin</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>ω</mi><mrow><mphantom></mphantom><mo>&lt;</mo><mi>ω</mi></mrow></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">⟶</mo><mi>ω</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">with computable inverse. Define the ternary relation <math id="S3.p3.m9" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> by</p>
+<table id="S3.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E4.m1" class="ltx_math_unparsed" alttext="D(\overline{e(n,H)},F,F^{\prime})\quad\Longleftrightarrow\quad H\subseteq S_{n},\quad F,F^{\prime}\in G_{n},\quad F^{\prime}=F\mathbin{\triangle}H." display="block"><mrow><mi>D</mi><mrow><mo stretchy="false">(</mo><mover accent="true"><mrow><mi>e</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="true">¯</mo></mover><mo>,</mo><mi>F</mi><mo>,</mo><msup><mi>F</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟺</mo><mi>H</mi><mo>⊆</mo><msub><mi>S</mi><mi>n</mi></msub><mo rspace="1.167em">,</mo><mi>F</mi><mo>,</mo><msup><mi>F</mi><mo>′</mo></msup><mo>∈</mo><msub><mi>G</mi><mi>n</mi></msub><mo rspace="1.167em">,</mo><msup><mi>F</mi><mo>′</mo></msup><mo>=</mo><mi>F</mi><mo lspace="0.222em" rspace="0.222em">△</mo><mi>H</mi><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">It is false on all other triples. In particular, an index that decodes
+to <math id="S3.p3.m10" class="ltx_Math" alttext="(n,H)" display="inline"><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></math> with <math id="S3.p3.m11" class="ltx_Math" alttext="H\not\subseteq S_{n}" display="inline"><mrow><mi>H</mi><mo>⊈</mo><msub><mi>S</mi><mi>n</mi></msub></mrow></math> names the empty relation.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">The language consists of the unary predicate <math id="S3.p4.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>, constants
+<math id="S3.p4.m2" class="ltx_Math" alttext="0,c" display="inline"><mrow><mn>0</mn><mo>,</mo><mi>c</mi></mrow></math>, unary functions <math id="S3.p4.m3" class="ltx_Math" alttext="s,p,\ell" display="inline"><mrow><mi>s</mi><mo>,</mo><mi>p</mi><mo>,</mo><mi mathvariant="normal">ℓ</mi></mrow></math>, and the ternary relation <math id="S3.p4.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>.
+We use a one-sorted presentation on <math id="S3.p4.m5" class="ltx_Math" alttext="I\sqcup V" display="inline"><mrow><mi>I</mi><mo>⊔</mo><mi>V</mi></mrow></math>: extend <math id="S3.p4.m6" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> by the
+identity on <math id="S3.p4.m7" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, and extend <math id="S3.p4.m8" class="ltx_Math" alttext="p,\ell" display="inline"><mrow><mi>p</mi><mo>,</mo><mi mathvariant="normal">ℓ</mi></mrow></math> by the identity on <math id="S3.p4.m9" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>.
+Hereafter <math id="S3.p4.m10" class="ltx_Math" alttext="V(x)" display="inline"><mrow><mi>V</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> abbreviates <math id="S3.p4.m11" class="ltx_Math" alttext="\neg I(x)" display="inline"><mrow><mo rspace="0.167em">¬</mo><mrow><mi>I</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The index sort is rigid,
+since every one of its elements is the value of a numeral.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">These interpretations are computable uniformly from <math id="S3.p5.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>. A finite
+set belongs to <math id="S3.p5.m2" class="ltx_Math" alttext="G_{n}" display="inline"><msub><mi>G</mi><mi>n</mi></msub></math> exactly when all of its members belong to
+<math id="S3.p5.m3" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>, which is a finite computable test. Thus the tagged domain has
+a computable coding as an infinite decidable subset of <math id="S3.p5.m4" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>;
+its increasing enumeration gives a computable bijection with
+<math id="S3.p5.m5" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>, uniformly from <math id="S3.p5.m6" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>. This also makes the codes of the
+vectors <math id="S3.p5.m7" class="ltx_Math" alttext="0_{n}" display="inline"><msub><mn>0</mn><mi>n</mi></msub></math> uniformly computable. No extendibility information is
+used in this presentation.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p6.m1" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math> and <math id="S3.p6.m2" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> have the same reduct just
+described, with</p>
+<table id="S3.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex10.m1" class="ltx_Math" alttext="c^{\mathcal{A}}=0_{0},\qquad c^{\mathcal{B}}=1_{0}:=\{\epsilon\}." display="block"><mrow><mrow><mrow><msup><mi>c</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></msup><mo>=</mo><msub><mn>0</mn><mn>0</mn></msub></mrow><mo rspace="2.167em">,</mo><mrow><msup><mi>c</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></msup><mo>=</mo><msub><mn>1</mn><mn>0</mn></msub><mo>:=</mo><mrow><mo stretchy="false">{</mo><mi>ϵ</mi><mo stretchy="false">}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Thus the two elements of <math id="S3.p6.m3" class="ltx_Math" alttext="G_{0}" display="inline"><msub><mi>G</mi><mn>0</mn></msub></math> are <math id="S3.p6.m4" class="ltx_Math" alttext="0_{0}" display="inline"><msub><mn>0</mn><mn>0</mn></msub></math> and <math id="S3.p6.m5" class="ltx_Math" alttext="1_{0}" display="inline"><msub><mn>1</mn><mn>0</mn></msub></math>.</p>
+</div>
+<div id="Thmtheorem4" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 4</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">An isomorphism <math id="Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathcal{A}\to\mathcal{B}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo stretchy="false">→</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></mrow></math> is exactly a map fixing
+<math id="Thmtheorem4.p1.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> pointwise and acting on each <math id="Thmtheorem4.p1.m3" class="ltx_Math" alttext="G_{n}" display="inline"><msub><mi>G</mi><mi>n</mi></msub></math> as</span></p>
+<table id="S3.E5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E5.m1" class="ltx_Math" alttext="F\longmapsto F\mathbin{\triangle}h_{n},\qquad h_{n}\in G_{n},\qquad\pi_{n}(h_{n+1})=h_{n},\qquad h_{0}=1_{0}." display="block"><mrow><mrow><mrow><mi>F</mi><mo stretchy="false">⟼</mo><mrow><mi>F</mi><mo lspace="0.222em" rspace="0.222em">△</mo><msub><mi>h</mi><mi>n</mi></msub></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>h</mi><mi>n</mi></msub><mo>∈</mo><msub><mi>G</mi><mi>n</mi></msub></mrow><mo rspace="2.167em">,</mo><mrow><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>h</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>h</mi><mi>n</mi></msub></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>h</mi><mn>0</mn></msub><mo>=</mo><msub><mn>1</mn><mn>0</mn></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Automorphisms of either structure have the same description with
+<math id="Thmtheorem4.p1.m4" class="ltx_Math" alttext="h_{0}=0_{0}" display="inline"><mrow><msub><mi>h</mi><mn>0</mn></msub><mo>=</mo><msub><mn>0</mn><mn>0</mn></msub></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">An isomorphism <math id="S3.p7.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> fixes <math id="S3.p7.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> pointwise because it fixes <math id="S3.p7.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> and
+preserves <math id="S3.p7.m4" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>. Preservation of <math id="S3.p7.m5" class="ltx_Math" alttext="\ell" display="inline"><mi mathvariant="normal">ℓ</mi></math> then forces it to preserve
+each level. Set <math id="S3.p7.m6" class="ltx_Math" alttext="h_{n}=f(0_{n})" display="inline"><mrow><msub><mi>h</mi><mi>n</mi></msub><mo>=</mo><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mn>0</mn><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Applying <math id="S3.p7.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to
+<math id="S3.p7.m8" class="ltx_Math" alttext="D(\overline{e(n,F)},0_{n},F)" display="inline"><mrow><mi>D</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mrow><mi>e</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>F</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="true">¯</mo></mover><mo>,</mo><msub><mn>0</mn><mi>n</mi></msub><mo>,</mo><mi>F</mi><mo stretchy="false">)</mo></mrow></mrow></math> gives
+<math id="S3.p7.m9" class="ltx_Math" alttext="f(F)=h_{n}\mathbin{\triangle}F" display="inline"><mrow><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>h</mi><mi>n</mi></msub><mo lspace="0.222em" rspace="0.222em">△</mo><mi>F</mi></mrow></mrow></math>. Since <math id="S3.p7.m10" class="ltx_Math" alttext="p(0_{n+1})=0_{n}" display="inline"><mrow><mrow><mi>p</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mn>0</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mn>0</mn><mi>n</mi></msub></mrow></math>,
+preservation of <math id="S3.p7.m11" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> yields <math id="S3.p7.m12" class="ltx_Math" alttext="\pi_{n}(h_{n+1})=h_{n}" display="inline"><mrow><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>h</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>h</mi><mi>n</mi></msub></mrow></math>.
+For an isomorphism <math id="S3.p7.m13" class="ltx_Math" alttext="\mathcal{A}\to\mathcal{B}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo stretchy="false">→</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></mrow></math>, preservation of <math id="S3.p7.m14" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>
+gives <math id="S3.p7.m15" class="ltx_Math" alttext="h_{0}=1_{0}" display="inline"><mrow><msub><mi>h</mi><mn>0</mn></msub><mo>=</mo><msub><mn>1</mn><mn>0</mn></msub></mrow></math>. For an automorphism of either structure, the
+translation on <math id="S3.p7.m16" class="ltx_Math" alttext="G_{0}" display="inline"><msub><mi>G</mi><mn>0</mn></msub></math> fixes its named element and hence is zero.</p>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">Conversely, a coherent sequence <math id="S3.p8.m1" class="ltx_Math" alttext="(h_{n})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>h</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></math> defines a bijection on each
+level. The homomorphism identity gives</p>
+<table id="S3.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex11.m1" class="ltx_Math" alttext="\pi_{n}(F\mathbin{\triangle}h_{n+1})=\pi_{n}(F)\mathbin{\triangle}h_{n}," display="block"><mrow><mrow><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo lspace="0.222em" rspace="0.222em">△</mo><msub><mi>h</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0.222em" rspace="0.222em">△</mo><msub><mi>h</mi><mi>n</mi></msub></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">so the resulting map preserves <math id="S3.p8.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>. Translating both vector arguments
+in (<a href="#S3.E4" title="In 3 The Boolean group construction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>) leaves their difference unchanged,
+so it preserves <math id="S3.p8.m3" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>. It preserves <math id="S3.p8.m4" class="ltx_Math" alttext="I,s,\ell,0" display="inline"><mrow><mi>I</mi><mo>,</mo><mi>s</mi><mo>,</mo><mi mathvariant="normal">ℓ</mi><mo>,</mo><mn>0</mn></mrow></math> by its definition,
+and the condition at level zero ensures preservation of <math id="S3.p8.m5" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>.
+∎</p>
+</div>
+</div>
+<div id="Thmtheorem5" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 5</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Paths in <math id="Thmtheorem5.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> and isomorphisms <math id="Thmtheorem5.p1.m2" class="ltx_Math" alttext="\mathcal{A}\to\mathcal{B}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo stretchy="false">→</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></mrow></math> compute
+one another uniformly.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">Given a path <math id="S3.p9.m1" class="ltx_Math" alttext="X\in[S]" display="inline"><mrow><mi>X</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mi>S</mi><mo stretchy="false">]</mo></mrow></mrow></math>, put <math id="S3.p9.m2" class="ltx_math_unparsed" alttext="h_{n}=\{X\upharpoonright n\}" display="inline"><mrow><msub><mi>h</mi><mi>n</mi></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>X</mi><mo stretchy="false">↾</mo><mi>n</mi><mo stretchy="false">}</mo></mrow></mrow></math>.
+These vectors satisfy (<a href="#S3.E5" title="In Lemma 4. ‣ 3 The Boolean group construction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>), and the corresponding
+isomorphism is computable from <math id="S3.p9.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</p>
+</div>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">Conversely, an isomorphism <math id="S3.p10.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> computes the finite sets
+<math id="S3.p10.m2" class="ltx_Math" alttext="h_{n}=f(0_{n})" display="inline"><mrow><msub><mi>h</mi><mi>n</mi></msub><mo>=</mo><mrow><mi>f</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mn>0</mn><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Start with <math id="S3.p10.m3" class="ltx_Math" alttext="\sigma_{0}=\epsilon\in h_{0}" display="inline"><mrow><msub><mi>σ</mi><mn>0</mn></msub><mo>=</mo><mi>ϵ</mi><mo>∈</mo><msub><mi>h</mi><mn>0</mn></msub></mrow></math>.
+If <math id="S3.p10.m4" class="ltx_Math" alttext="\sigma_{n}\in h_{n}" display="inline"><mrow><msub><mi>σ</mi><mi>n</mi></msub><mo>∈</mo><msub><mi>h</mi><mi>n</mi></msub></mrow></math>, the coherence equation says that an odd,
+and therefore nonzero, number of members of <math id="S3.p10.m5" class="ltx_Math" alttext="h_{n+1}" display="inline"><msub><mi>h</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math> have parent
+<math id="S3.p10.m6" class="ltx_Math" alttext="\sigma_{n}" display="inline"><msub><mi>σ</mi><mi>n</mi></msub></math>. Choose the one with least code and call it
+<math id="S3.p10.m7" class="ltx_Math" alttext="\sigma_{n+1}" display="inline"><msub><mi>σ</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math>. Then <math id="S3.p10.m8" class="ltx_Math" alttext="\sigma_{n}\preceq\sigma_{n+1}" display="inline"><mrow><msub><mi>σ</mi><mi>n</mi></msub><mo>⪯</mo><msub><mi>σ</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></math> and
+<math id="S3.p10.m9" class="ltx_Math" alttext="\sigma_{n}\in S_{n}" display="inline"><mrow><msub><mi>σ</mi><mi>n</mi></msub><mo>∈</mo><msub><mi>S</mi><mi>n</mi></msub></mrow></math> for all <math id="S3.p10.m10" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, so their union is a path through
+<math id="S3.p10.m11" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>. The procedure uses only evaluations of <math id="S3.p10.m12" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and finite searches.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">4 </span>The Scott rank bound</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">An orbit condition must determine whether a finite translation can be
+extended coherently through all higher levels. The point of the normal
+form is that, at each fixed level, failure of such an extension is
+witnessed by a tree rank below one computable ordinal.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">On the vector sort define the proper child relation</p>
+<table id="S4.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex12.m1" class="ltx_math_unparsed" alttext="C(x,y)\quad\Longleftrightarrow\quad V(x)\wedge V(y)\wedge p(y)=x\wedge y\neq x." display="block"><mrow><mi>C</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟺</mo><mi>V</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi>V</mi><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi>p</mi><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>x</mi><mo>∧</mo><mi>y</mi><mo>≠</mo><mi>x</mi><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">This makes <math id="S4.p2.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> a forest with roots <math id="S4.p2.m2" class="ltx_Math" alttext="0_{0},1_{0}" display="inline"><mrow><msub><mn>0</mn><mn>0</mn></msub><mo>,</mo><msub><mn>1</mn><mn>0</mn></msub></mrow></math>. The subtree rooted
+at <math id="S4.p2.m3" class="ltx_Math" alttext="F\in G_{n}" display="inline"><mrow><mi>F</mi><mo>∈</mo><msub><mi>G</mi><mi>n</mi></msub></mrow></math> is its <em class="ltx_emph ltx_font_italic">lift tree</em>: a child of a vector is a
+vector on the next level projecting to it. Each lift node has a unique
+ancestor chain back to <math id="S4.p2.m4" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math>.</p>
+</div>
+<div id="Thmtheorem6" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 6</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">A vector <math id="Thmtheorem6.p1.m1" class="ltx_Math" alttext="F\in G_{n}" display="inline"><mrow><mi>F</mi><mo>∈</mo><msub><mi>G</mi><mi>n</mi></msub></mrow></math> has an infinite branch in its lift tree if and
+only if <math id="Thmtheorem6.p1.m2" class="ltx_Math" alttext="F\subseteq\operatorname{Ext}(S)_{n}" display="inline"><mrow><mi>F</mi><mo>⊆</mo><mrow><mi>Ext</mi><mo>⁡</mo><msub><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msub></mrow></mrow></math>. If
+<math id="Thmtheorem6.p1.m3" class="ltx_Math" alttext="\sigma\in F\setminus\operatorname{Ext}(S)_{n}" display="inline"><mrow><mi>σ</mi><mo>∈</mo><mrow><mi>F</mi><mo>∖</mo><mrow><mi>Ext</mi><mo>⁡</mo><msub><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msub></mrow></mrow></mrow></math>, the lift tree of <math id="Thmtheorem6.p1.m4" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is
+well-founded and has rank at most <math id="Thmtheorem6.p1.m5" class="ltx_Math" alttext="\operatorname{rk}_{S}(\sigma)" display="inline"><mrow><msub><mi>rk</mi><mi>S</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Suppose every member of <math id="S4.p3.m1" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is extendible. Choose a path extending
+each member, and at each higher level take the finite set of nodes on
+these paths. Paths extending distinct level-<math id="S4.p3.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> nodes remain
+distinct, so the resulting vectors project to one another and give an
+infinite lift branch. For <math id="S4.p3.m3" class="ltx_Math" alttext="F=\varnothing" display="inline"><mrow><mi>F</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, use the all-zero branch.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Now fix a dead node <math id="S4.p4.m1" class="ltx_Math" alttext="\sigma\in F" display="inline"><mrow><mi>σ</mi><mo>∈</mo><mi>F</mi></mrow></math>. We define a map from the lift
+tree of <math id="S4.p4.m2" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> into <math id="S4.p4.m3" class="ltx_Math" alttext="S_{\sigma}" display="inline"><msub><mi>S</mi><mi>σ</mi></msub></math> that takes children to children.
+Send its root to <math id="S4.p4.m4" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>. If a lift node <math id="S4.p4.m5" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> has been sent to
+<math id="S4.p4.m6" class="ltx_Math" alttext="\tau\in E" display="inline"><mrow><mi>τ</mi><mo>∈</mo><mi>E</mi></mrow></math> and <math id="S4.p4.m7" class="ltx_Math" alttext="E^{\prime}" display="inline"><msup><mi>E</mi><mo>′</mo></msup></math> is a child of <math id="S4.p4.m8" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math>, the parity equation
+(<a href="#S3.E3" title="In 3 The Boolean group construction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>) ensures that <math id="S4.p4.m9" class="ltx_Math" alttext="E^{\prime}" display="inline"><msup><mi>E</mi><mo>′</mo></msup></math> contains a child of <math id="S4.p4.m10" class="ltx_Math" alttext="\tau" display="inline"><mi>τ</mi></math>.
+Send <math id="S4.p4.m11" class="ltx_Math" alttext="E^{\prime}" display="inline"><msup><mi>E</mi><mo>′</mo></msup></math> to the child with least code. Uniqueness of ancestor chains
+makes this prescription consistent. An infinite lift branch would map
+to an infinite branch through <math id="S4.p4.m12" class="ltx_Math" alttext="S_{\sigma}" display="inline"><msub><mi>S</mi><mi>σ</mi></msub></math>, which is impossible.
+Finally, well-founded induction gives the rank inequality: if <math id="S4.p4.m13" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>
+is this map and the inequality holds at the children of a lift node
+<math id="S4.p4.m14" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math>, then</p>
+<table id="S4.Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex13.m1" class="ltx_Math" alttext="\operatorname{rk}(E)=\sup_{E^{\prime}\text{ child of }E}\bigl(\operatorname{rk}(E^{\prime})+1\bigr)\leq\sup_{E^{\prime}\text{ child of }E}\bigl(\operatorname{rk}_{S}(q(E^{\prime}))+1\bigr)\leq\operatorname{rk}_{S}(q(E))." display="block"><mrow><mrow><mrow><mi>rk</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">sup</mo><mrow><msup><mi>E</mi><mo>′</mo></msup><mo>⁢</mo><mtext> child of </mtext><mo>⁢</mo><mi>E</mi></mrow></munder><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><mi>rk</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>E</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo rspace="0.1389em">≤</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">sup</mo><mrow><msup><mi>E</mi><mo>′</mo></msup><mo>⁢</mo><mtext> child of </mtext><mo>⁢</mo><mi>E</mi></mrow></munder><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><msub><mi>rk</mi><mi>S</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>E</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>rk</mi><mi>S</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Apply this at the root.
+∎</p>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">For each computable ordinal <math id="S4.p5.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>, rank at least <math id="S4.p5.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> in
+this forest has a computable infinitary definition. Fixing computable
+ordinal notations, define</p>
+<table id="S4.E6" class="ltx_equationgroup ltx_eqn_table">
+<tbody>
+<tr id="S4.E6X" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S4.E6X.m2" class="ltx_Math" alttext="\displaystyle H_{0}(x)" display="inline"><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S4.E6X.m3" class="ltx_Math" alttext="\displaystyle\equiv V(x)," display="inline"><mrow><mrow><mphantom></mphantom><mo>≡</mo><mrow><mi>V</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="3" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equationgroup ltx_align_right">(6)</span></td></tr>
+<tr id="S4.E6Xa" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S4.E6Xa.m2" class="ltx_Math" alttext="\displaystyle H_{\alpha+1}(x)" display="inline"><mrow><msub><mi>H</mi><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S4.E6Xa.m3" class="ltx_Math" alttext="\displaystyle\equiv\exists y\,\bigl(C(x,y)\wedge H_{\alpha}(y)\bigr)," display="inline"><mrow><mrow><mphantom></mphantom><mo>≡</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>y</mi><mo lspace="0.170em">⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><msub><mi>H</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr>
+<tr id="S4.E6Xb" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S4.E6Xb.m2" class="ltx_Math" alttext="\displaystyle H_{\lambda}(x)" display="inline"><mrow><msub><mi>H</mi><mi>λ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S4.E6Xb.m3" class="ltx_Math" alttext="\displaystyle\equiv V(x)\wedge\bigwedge_{j}H_{\lambda_{j}}(x)\qquad(\lambda\text{ a nonzero limit})," display="inline"><mrow><mo>≡</mo><mi>V</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>∧</mo><mstyle displaystyle="true"><mo movablelimits="false">⋀</mo></mstyle><msub><mrow></mrow><mi>j</mi></msub><mi>H</mi><msub><mrow></mrow><msub><mi>λ</mi><mi>j</mi></msub></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>λ</mi><mtext> a nonzero limit</mtext><mo stretchy="false">)</mo><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S4.p5.m3" class="ltx_Math" alttext="(\lambda_{j})_{j}" display="inline"><msub><mrow><mo stretchy="false">(</mo><msub><mi>λ</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow><mi>j</mi></msub></math> is the computable cofinal sequence supplied by
+the chosen notation for <math id="S4.p5.m4" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>. The recursion along the notation
+makes the limit conjunctions effective and yields a computable
+infinitary formula of computable complexity. Induction on <math id="S4.p5.m5" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>
+shows that <math id="S4.p5.m6" class="ltx_Math" alttext="H_{\alpha}" display="inline"><msub><mi>H</mi><mi>α</mi></msub></math> holds exactly at nodes of rank at least
+<math id="S4.p5.m7" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>, with infinite rank included. At a successor step, rank at
+least <math id="S4.p5.m8" class="ltx_Math" alttext="\alpha+1" display="inline"><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow></math> is equivalent to having a child of rank at least
+<math id="S4.p5.m9" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>; at a limit, it is equivalent to having rank at least every
+<math id="S4.p5.m10" class="ltx_Math" alttext="\lambda_{j}" display="inline"><msub><mi>λ</mi><mi>j</mi></msub></math>.</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Choose <math id="S4.p6.m1" class="ltx_Math" alttext="\beta_{n}" display="inline"><msub><mi>β</mi><mi>n</mi></msub></math> as in Lemma <a href="#Thmtheorem3" title="Lemma 3. ‣ 2 A levelwise normal form for tree path problems ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a> and set
+<math id="S4.p6.m2" class="ltx_Math" alttext="\theta_{n}(x)=H_{\beta_{n}}(x)" display="inline"><mrow><mrow><msub><mi>θ</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>H</mi><msub><mi>β</mi><mi>n</mi></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. By Lemma <a href="#Thmtheorem6" title="Lemma 6. ‣ 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>, for
+<math id="S4.p6.m3" class="ltx_Math" alttext="F\in G_{n}" display="inline"><mrow><mi>F</mi><mo>∈</mo><msub><mi>G</mi><mi>n</mi></msub></mrow></math> we have</p>
+<table id="S4.E7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E7.m1" class="ltx_math_unparsed" alttext="\theta_{n}(F)\quad\Longleftrightarrow\quad F\subseteq\operatorname{Ext}(S)_{n}." display="block"><mrow><msub><mi>θ</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟺</mo><mi>F</mi><mo>⊆</mo><mi>Ext</mi><msub><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Vectors with extendible support have infinite lifts. Any other vector
+contains a dead node <math id="S4.p6.m4" class="ltx_Math" alttext="\sigma\in S_{n}" display="inline"><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>n</mi></msub></mrow></math>, so its lift rank is at most
+<math id="S4.p6.m5" class="ltx_Math" alttext="\operatorname{rk}_{S}(\sigma)&lt;\beta_{n}" display="inline"><mrow><mrow><msub><mi>rk</mi><mi>S</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><msub><mi>β</mi><mi>n</mi></msub></mrow></math>. A notation for <math id="S4.p6.m6" class="ltx_Math" alttext="\beta_{n}" display="inline"><msub><mi>β</mi><mi>n</mi></msub></math> is chosen only
+for this particular level; a computable sequence of such notations is
+not required.</p>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">Consider a nonempty tuple of vector-sort elements
+<math id="S4.p7.m1" class="ltx_Math" alttext="a_{i}=(n_{i},F_{i})" display="inline"><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>n</mi><mi>i</mi></msub><mo>,</mo><msub><mi>F</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>, and let <math id="S4.p7.m2" class="ltx_Math" alttext="N=\max_{i}n_{i}" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><msub><mi>max</mi><mi>i</mi></msub><mo lspace="0.167em">⁡</mo><msub><mi>n</mi><mi>i</mi></msub></mrow></mrow></math>. In <math id="S4.p7.m3" class="ltx_Math" alttext="\mathcal{A}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></math>, define</p>
+<table id="S4.E8" class="ltx_equationgroup ltx_eqn_table">
+<tbody>
+<tr id="S4.E8X" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S4.E8X.m2" class="ltx_Math" alttext="\displaystyle\varphi_{\bar{a}}(\bar{x})\equiv\exists z\,\bigl[" display="inline"><mrow><mi>φ</mi><msub><mrow></mrow><mover accent="true"><mi>a</mi><mo>¯</mo></mover></msub><mo stretchy="false">(</mo><mover accent="true"><mi>x</mi><mo>¯</mo></mover><mo stretchy="false">)</mo><mo>≡</mo><mo rspace="0.167em">∃</mo><mi>z</mi><mo lspace="0.170em" maxsize="1.200em" minsize="1.200em">[</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S4.E8X.m3" class="ltx_Math" alttext="\displaystyle V(z)\wedge\ell(z)=\overline{N}\wedge\theta_{N}(z)\wedge p^{N}(z)=c" display="inline"><mrow><mrow><mrow><mi>V</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi mathvariant="normal">ℓ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mover accent="true"><mi>N</mi><mo stretchy="true">¯</mo></mover><mo>∧</mo><mrow><msub><mi>θ</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><msup><mi>p</mi><mi>N</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mi>c</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="2" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equationgroup ltx_align_right">(8)</span></td></tr>
+<tr id="S4.E8Xa" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S4.E8Xa.m2" class="ltx_Math" alttext="\displaystyle}{\displaystyle\wedge\bigwedge_{i}D\bigl(\overline{e(n_{i},F_{i})},p^{N-n_{i}}(z),x_{i}\bigr)\bigr]." display="inline"><mrow><mo>∧</mo><mstyle displaystyle="true"><mo movablelimits="false">⋀</mo></mstyle><msub><mrow></mrow><mi>i</mi></msub><mi>D</mi><mo maxsize="1.200em" minsize="1.200em">(</mo><mover accent="true"><mrow><mi>e</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>n</mi><mi>i</mi></msub><mo>,</mo><msub><mi>F</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="true">¯</mo></mover><mo>,</mo><mi>p</mi><msup><mrow></mrow><mrow><mi>N</mi><mo>−</mo><msub><mi>n</mi><mi>i</mi></msub></mrow></msup><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>,</mo><mi>x</mi><msub><mrow></mrow><mi>i</mi></msub><mo maxsize="1.200em" minsize="1.200em">)</mo><mo maxsize="1.200em" minsize="1.200em">]</mo><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="S4.p7.m4" class="ltx_Math" alttext="p^{k}" display="inline"><msup><mi>p</mi><mi>k</mi></msup></math> is the <math id="S4.p7.m5" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-fold iterate of <math id="S4.p7.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, with <math id="S4.p7.m7" class="ltx_Math" alttext="p^{0}" display="inline"><msup><mi>p</mi><mn>0</mn></msup></math> the
+identity. All numerals in the formula are finite terms in <math id="S4.p7.m8" class="ltx_Math" alttext="0,s" display="inline"><mrow><mn>0</mn><mo>,</mo><mi>s</mi></mrow></math>;
+the entries of <math id="S4.p7.m9" class="ltx_Math" alttext="\bar{a}" display="inline"><mover accent="true"><mi>a</mi><mo>¯</mo></mover></math> are not used as parameters.</p>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">We verify that (<a href="#S4.E8" title="In 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>) defines the orbit of <math id="S4.p8.m1" class="ltx_Math" alttext="\bar{a}" display="inline"><mover accent="true"><mi>a</mi><mo>¯</mo></mover></math>.
+If an automorphism sends <math id="S4.p8.m2" class="ltx_Math" alttext="\bar{a}" display="inline"><mover accent="true"><mi>a</mi><mo>¯</mo></mover></math> to <math id="S4.p8.m3" class="ltx_Math" alttext="\bar{b}" display="inline"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math>, let <math id="S4.p8.m4" class="ltx_Math" alttext="(h_{n})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>h</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></math> be
+its coherent translation sequence. Taking <math id="S4.p8.m5" class="ltx_Math" alttext="z=h_{N}" display="inline"><mrow><mi>z</mi><mo>=</mo><msub><mi>h</mi><mi>N</mi></msub></mrow></math> works: the higher
+coordinates form an infinite lift branch, so <math id="S4.p8.m6" class="ltx_Math" alttext="\theta_{N}(h_{N})" display="inline"><mrow><msub><mi>θ</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>h</mi><mi>N</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> holds,
+and <math id="S4.p8.m7" class="ltx_Math" alttext="p^{N}(h_{N})=h_{0}=0_{0}=c^{\mathcal{A}}" display="inline"><mrow><mrow><msup><mi>p</mi><mi>N</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>h</mi><mi>N</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>h</mi><mn>0</mn></msub><mo>=</mo><msub><mn>0</mn><mn>0</mn></msub><mo>=</mo><msup><mi>c</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></msup></mrow></math>. The translation relations
+express precisely that <math id="S4.p8.m8" class="ltx_Math" alttext="b_{i}=F_{i}\mathbin{\triangle}h_{n_{i}}" display="inline"><mrow><msub><mi>b</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>F</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">△</mo><msub><mi>h</mi><msub><mi>n</mi><mi>i</mi></msub></msub></mrow></mrow></math>.</p>
+</div>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">Conversely, suppose <math id="S4.p9.m1" class="ltx_Math" alttext="\bar{b}" display="inline"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math> satisfies (<a href="#S4.E8" title="In 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>), witnessed
+by <math id="S4.p9.m2" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>. Equation (<a href="#S4.E7" title="In 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>) and Lemma <a href="#Thmtheorem6" title="Lemma 6. ‣ 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>
+extend <math id="S4.p9.m3" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> upward to a coherent sequence. Below level <math id="S4.p9.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>, use
+its iterated projections. The condition <math id="S4.p9.m5" class="ltx_Math" alttext="p^{N}(z)=c^{\mathcal{A}}=0_{0}" display="inline"><mrow><mrow><msup><mi>p</mi><mi>N</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>c</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi></msup><mo>=</mo><msub><mn>0</mn><mn>0</mn></msub></mrow></math>
+ensures that the resulting translation is an automorphism, by
+Lemma <a href="#Thmtheorem4" title="Lemma 4. ‣ 3 The Boolean group construction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>. The last conjunction in
+(<a href="#S4.E8" title="In 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>) makes it send each <math id="S4.p9.m6" class="ltx_Math" alttext="a_{i}" display="inline"><msub><mi>a</mi><mi>i</mi></msub></math> to <math id="S4.p9.m7" class="ltx_Math" alttext="b_{i}" display="inline"><msub><mi>b</mi><mi>i</mi></msub></math>.</p>
+</div>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">Index-sort elements have singleton orbits defined by their numerals.
+For a mixed tuple, conjoin these singleton definitions with
+(<a href="#S4.E8" title="In 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>) for the vector-sort coordinates. A tuple entirely in
+<math id="S4.p10.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> needs only the singleton definitions, and the empty tuple has
+the tautological orbit definition. Each resulting formula is
+computable infinitary of computable complexity. Therefore
+<math id="S4.p10.m2" class="ltx_Math" alttext="\operatorname{SR}(\mathcal{A})\leq\kappa" display="inline"><mrow><mrow><mi>SR</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>κ</mi></mrow></math>.</p>
+</div>
+<div id="S4.p11" class="ltx_para">
+<p class="ltx_p">The automorphisms of <math id="S4.p11.m1" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math> are the same zero-root
+translations. In <math id="S4.p11.m2" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math>, the condition</p>
+<table id="S4.Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex14.m1" class="ltx_Math" alttext="D\bigl(\overline{e(0,\{\epsilon\})},c,w\bigr)" display="block"><mrow><mi>D</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mover accent="true"><mrow><mi>e</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mrow><mo stretchy="false">{</mo><mi>ϵ</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="true">¯</mo></mover><mo>,</mo><mi>c</mi><mo>,</mo><mi>w</mi><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">defines <math id="S4.p11.m3" class="ltx_Math" alttext="w=0_{0}" display="inline"><mrow><mi>w</mi><mo>=</mo><msub><mn>0</mn><mn>0</mn></msub></mrow></math>, since <math id="S4.p11.m4" class="ltx_Math" alttext="c^{\mathcal{B}}=1_{0}" display="inline"><mrow><msup><mi>c</mi><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></msup><mo>=</mo><msub><mn>1</mn><mn>0</mn></msub></mrow></math>. Replacing
+<math id="S4.p11.m5" class="ltx_Math" alttext="p^{N}(z)=c" display="inline"><mrow><mrow><msup><mi>p</mi><mi>N</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>c</mi></mrow></math> in (<a href="#S4.E8" title="In 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>) by</p>
+<table id="S4.Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex15.m1" class="ltx_Math" alttext="D\bigl(\overline{e(0,\{\epsilon\})},c,p^{N}(z)\bigr)" display="block"><mrow><mi>D</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mover accent="true"><mrow><mi>e</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mrow><mo stretchy="false">{</mo><mi>ϵ</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="true">¯</mo></mover><mo>,</mo><mi>c</mi><mo>,</mo><mrow><msup><mi>p</mi><mi>N</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">therefore gives the same orbit verification in <math id="S4.p11.m6" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi></math>, without
+changing the conclusion about computable infinitary definability.
+Thus <math id="S4.p11.m7" class="ltx_Math" alttext="\operatorname{SR}(\mathcal{B})\leq\kappa" display="inline"><mrow><mrow><mi>SR</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>κ</mi></mrow></math> as well. Together with
+Lemmas <a href="#Thmtheorem2" title="Lemma 2. ‣ 2 A levelwise normal form for tree path problems ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a> and <a href="#Thmtheorem5" title="Lemma 5. ‣ 3 The Boolean group construction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>, this completes the proof of
+Theorem <a href="#Thmtheorem1" title="Theorem 1. ‣ 1 Introduction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">5 </span>Highness at the boundary ranks</h2>
+
+<div id="Thmtheorem7" class="ltx_theorem ltx_theorem_corollary">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Corollary 7</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">A Turing degree is high for Scott rank <math id="Thmtheorem7.p1.m1" class="ltx_Math" alttext="\omega_{1}^{\mathrm{CK}}" display="inline"><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup></math> if and only if it is
+high for isomorphism. These conditions are also equivalent to highness
+for Scott rank <math id="Thmtheorem7.p1.m2" class="ltx_Math" alttext="\omega_{1}^{\mathrm{CK}}+1" display="inline"><mrow><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup><mo>+</mo><mn>1</mn></mrow></math>. In particular, the degree requested in
+Question 1 of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite> does not exist.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.p1.m1" class="ltx_Math" alttext="\mathbf{d}" display="inline"><mi class="ltx_mathvariant_bold" mathvariant="bold">d</mi></math> be high for Scott rank <math id="S5.p1.m2" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>. We first use the
+padding observation following Definition 2 of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite>. Given
+isomorphic computable structures of rank at most <math id="S5.p1.m3" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>, take their
+tagged disjoint unions with a fixed computable structure of exact rank
+<math id="S5.p1.m4" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>, whose existence follows from <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite>. The tagged sums
+have exact rank <math id="S5.p1.m5" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>, and an isomorphism between them restricts
+to an isomorphism between the original structures. Hence
+<math id="S5.p1.m6" class="ltx_Math" alttext="\mathbf{d}" display="inline"><mi class="ltx_mathvariant_bold" mathvariant="bold">d</mi></math> computes isomorphisms for pairs of rank at most
+<math id="S5.p1.m7" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> as well.</p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">For any ill-founded computable tree <math id="S5.p2.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>,
+Theorem <a href="#Thmtheorem1" title="Theorem 1. ‣ 1 Introduction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a> supplies isomorphic computable structures
+<math id="S5.p2.m2" class="ltx_Math" alttext="\mathcal{A}_{T},\mathcal{B}_{T}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">A</mi><mi>T</mi></msub><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic" mathvariant="script">B</mi><mi>T</mi></msub></mrow></math> of rank at most <math id="S5.p2.m3" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>.
+A <math id="S5.p2.m4" class="ltx_Math" alttext="\mathbf{d}" display="inline"><mi class="ltx_mathvariant_bold" mathvariant="bold">d</mi></math>-computable isomorphism between them computes a path in
+<math id="S5.p2.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>. Thus <math id="S5.p2.m6" class="ltx_Math" alttext="\mathbf{d}" display="inline"><mi class="ltx_mathvariant_bold" mathvariant="bold">d</mi></math> computes a path through every ill-founded
+computable tree.</p>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">For completeness, the passage from this path property to highness for
+isomorphism is the following implication from
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>, Proposition 2.6]</cite>. Let <math id="S5.p3.m1" class="ltx_Math" alttext="\mathcal{C},\mathcal{D}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo>,</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math> be
+isomorphic computable structures in a common computable language, and
+enumerate the atomic formulas of that language. Form a tree of finite
+sequences of nested finite injections from <math id="S5.p3.m2" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi></math> to
+<math id="S5.p3.m3" class="ltx_Math" alttext="\mathcal{D}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></math>. At stage <math id="S5.p3.m4" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math>, require that the injection cover the
+first <math id="S5.p3.m5" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math> elements in both domain and range. Require also that the
+first <math id="S5.p3.m6" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math> atomic formulas agree in truth value on every assignment
+from its domain and the corresponding image assignment. These are
+finite computable tests, so the tree is computable and prefix-closed.
+An isomorphism supplies a path by taking suitable finite restrictions.
+Conversely, the union along any path is a total bijection, and every
+atomic formula on every tuple is eventually checked. The union is
+therefore an isomorphism. Applying the path property gives a
+<math id="S5.p3.m7" class="ltx_Math" alttext="\mathbf{d}" display="inline"><mi class="ltx_mathvariant_bold" mathvariant="bold">d</mi></math>-computable isomorphism <math id="S5.p3.m8" class="ltx_Math" alttext="\mathcal{C}\to\mathcal{D}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">C</mi><mo stretchy="false">→</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">D</mi></mrow></math>.
+The reverse implication, from highness for isomorphism to highness for
+rank <math id="S5.p3.m9" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>, follows directly from the definitions.</p>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">Finally, every computable structure has Scott rank at most
+<math id="S5.p4.m1" class="ltx_Math" alttext="\kappa+1" display="inline"><mrow><mi>κ</mi><mo>+</mo><mn>1</mn></mrow></math>. Together with the same tagged-sum observation at
+<math id="S5.p4.m2" class="ltx_Math" alttext="\kappa+1" display="inline"><mrow><mi>κ</mi><mo>+</mo><mn>1</mn></mrow></math>, this identifies highness for that rank with highness for
+isomorphism, as noted in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, §4]</cite>.
+∎</p>
+</div>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">The finite bases and ordinal bounds are used only to prove the rank
+bound. They are not inputs to the construction of the structures or to
+the extraction of a path. Consequently, for each input tree, the
+isomorphism program supplied by nonuniform highness can be composed
+with the uniform extraction without any additional oracle information.</p>
+</div>
+<div id="Thmremarkx1" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_italic">Remark</span></span><span class="ltx_text ltx_font_italic"> </span>(Exact rank)<span class="ltx_text ltx_font_italic">.</span></h6>
+<div id="Thmremarkx1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="Thmremarkx1.p1.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> has a path but no hyperarithmetical path, both structures in
+Theorem <a href="#Thmtheorem1" title="Theorem 1. ‣ 1 Introduction ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a> have rank exactly <math id="Thmremarkx1.p1.m2" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>. They are
+isomorphic, and if their common rank were computable, the
+computable-rank upper bound of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Lemma 2]</cite>, together with the
+padding observation, would give a hyperarithmetical isomorphism.
+The extracted path in <math id="Thmremarkx1.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> would then be hyperarithmetical, a
+contradiction.</p>
+</div>
+<div id="Thmremarkx1.p2" class="ltx_para">
+<p class="ltx_p">In this case the well-founded node ranks of <math id="Thmremarkx1.p2.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> have no common
+computable bound. Indeed, if a computable ordinal <math id="Thmremarkx1.p2.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> bounded
+all of them, the rank-at-least-<math id="Thmremarkx1.p2.m3" class="ltx_Math" alttext="\gamma+1" display="inline"><mrow><mi>γ</mi><mo>+</mo><mn>1</mn></mrow></math> test, constructed as in
+(<a href="#S4.E6" title="In 4 The Scott rank bound ‣ Highness for isomorphism at Scott rank 𝜔_1^CK" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>) for the child relation of <math id="Thmremarkx1.p2.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, would decide
+extendibility uniformly in the node using a hyperarithmetical oracle.
+Starting at the root and repeatedly choosing the least extendible
+child would yield a hyperarithmetical path in <math id="Thmremarkx1.p2.m5" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, and hence in
+<math id="Thmremarkx1.p2.m6" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>. In particular, the levelwise bounds <math id="Thmremarkx1.p2.m7" class="ltx_Math" alttext="\beta_{n}" display="inline"><msub><mi>β</mi><mi>n</mi></msub></math> cannot be
+bounded by a computable ordinal.</p>
+</div>
+</div>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography" style="font-size:90%;">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Wesley Calvert, Johanna N. Y. Franklin, and Dan Turetsky,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Structural highness notions</em><span class="ltx_text" style="font-size:90%;">,
+Journal of Symbolic Logic </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">88</span><span class="ltx_text" style="font-size:90%;">(4) (2023), 1692–1724.
+</span><a href="https://doi.org/10.1017/jsl.2022.35" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1017/jsl.2022.35</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Wesley Calvert, Julia F. Knight, and Jessica Millar,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Computable trees of Scott rank <math id="bib.bib2.m1" class="ltx_Math" alttext="\omega_{1}^{\mathrm{CK}}" display="inline"><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup></math>, and
+computable approximation</em><span class="ltx_text" style="font-size:90%;">,
+Journal of Symbolic Logic </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">71</span><span class="ltx_text" style="font-size:90%;">(1) (2006), 283–298.
+</span><a href="https://doi.org/10.2178/jsl/1140641175" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.2178/jsl/1140641175</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Leonard E. Dickson,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Finiteness of the odd perfect and primitive abundant numbers
+with <math id="bib.bib3.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> distinct prime factors</em><span class="ltx_text" style="font-size:90%;">,
+American Journal of Mathematics </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">35</span><span class="ltx_text" style="font-size:90%;">(4) (1913), 413–422.
+</span><a href="https://doi.org/10.2307/2370405" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.2307/2370405</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Johanna N. Y. Franklin, Dino Rossegger, and Dan Turetsky,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Structural vs. computational complexity</em><span class="ltx_text" style="font-size:90%;">,
+arXiv preprint, 2026.
+</span><a href="https://arxiv.org/abs/2606.15196v1" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:2606.15196v1</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib5" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Julia F. Knight and Jessica Millar,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Computable structures of rank <math id="bib.bib5.m1" class="ltx_Math" alttext="\omega_{1}^{\mathrm{CK}}" display="inline"><msubsup><mi>ω</mi><mn>1</mn><mi>CK</mi></msubsup></math></em><span class="ltx_text" style="font-size:90%;">,
+Journal of Mathematical Logic </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">10</span><span class="ltx_text" style="font-size:90%;">(1–2) (2010), 31–43.
+</span><a href="https://doi.org/10.1142/S0219061310000912" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1142/S0219061310000912</a><span class="ltx_text" style="font-size:90%;">.
+Author version:
+</span><a href="https://arxiv.org/abs/math/0508507" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:math/0508507</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib6" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Michael Makkai,
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">An example concerning Scott heights</em><span class="ltx_text" style="font-size:90%;">,
+Journal of Symbolic Logic </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">46</span><span class="ltx_text" style="font-size:90%;">(2) (1981), 301–318.
+</span><a href="https://doi.org/10.2307/2273623" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.2307/2273623</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+    
+</ul>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="Highness for isomorphism at Scott rank omega 1 CK"></div>
+
+</article>
+{% endraw %}

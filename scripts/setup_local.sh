@@ -10,10 +10,10 @@ if ! command -v brew >/dev/null 2>&1; then
   exit 1
 fi
 
-if ! brew list --versions ruby@3.3 >/dev/null 2>&1; then
+ruby_prefix="$(brew --prefix ruby@3.3)"
+if [[ ! -x "$ruby_prefix/bin/ruby" ]]; then
   brew install ruby@3.3
 fi
-ruby_prefix="$(brew --prefix ruby@3.3)"
 
 gem_bin="$($ruby_prefix/bin/ruby -rrubygems -e 'print Gem.bindir')"
 export PATH="$ruby_prefix/bin:$gem_bin:$PATH"

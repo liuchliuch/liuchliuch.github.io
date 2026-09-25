@@ -1,0 +1,1335 @@
+---
+layout: "repository-paper"
+title: "One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements"
+repository_title_html: "One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements"
+description: "We prove that polynomial-time quantum catalytic logspace computations with intermediate measurements and resets can be simulated using one clean qubit and otherwise maximally mixed qubits. The source may use"
+permalink: "/repository/one-clean-qubit-simulation-of-quantum-catalytic-logspace-with-measurements/"
+pdf: "/files/repository/QCL-one_clean_qubit_simulation_of_quantum_catalytic_logspace_with_measurements.pdf"
+repository_added: "2026-09-19"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-subsection"><a href="#S1.SS1">1.1 Model and result</a></li>
+<li class="repository-toc-subsection"><a href="#S1.SS2">1.2 Method and related work</a></li>
+<li class="repository-toc-section"><a href="#S2">2 The catalytic trace identity</a></li>
+<li class="repository-toc-section"><a href="#S3">3 Regularizing the channel history</a></li>
+<li class="repository-toc-section"><a href="#S4">4 The one-clean-qubit simulation</a></li>
+<li class="repository-toc-subsection"><a href="#S4.SS1">4.1 Encoding the history matrix</a></li>
+<li class="repository-toc-subsection"><a href="#S4.SS2">4.2 Coherent spectral filtering</a></li>
+<li class="repository-toc-subsection"><a href="#S4.SS3">4.3 Trace extraction and decision bias</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+<li class="repository-toc-appendix"><a href="#A1">Appendix A Uniform implementation</a></li>
+<li class="repository-toc-subsection"><a href="#A1.SS1">A.1 Compiling the adaptive source</a></li>
+<li class="repository-toc-subsection"><a href="#A1.SS2">A.2 Controls and circuit generation</a></li>
+<li class="repository-toc-subsection"><a href="#A1.SS3">A.3 Angles and precision</a></li>
+<li class="repository-toc-appendix"><a href="#A2">Appendix B A phase-estimation error bound</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements</h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">We prove that polynomial-time quantum catalytic logspace computations
+with intermediate measurements and resets can be simulated using one
+clean qubit and otherwise maximally mixed qubits. The source may use
+logarithmic-space classical control and polynomially many catalytic
+qubits, whose arbitrary unknown state must be restored exactly, including
+its correlations with an inaccessible reference. The simulator has
+polynomial size, is deterministic-logspace-uniform, and is unitary until a
+final measurement with inverse-polynomial signed acceptance bias. Thus
+<math id="abstract1.m1" class="ltx_Math" alttext="\mathsf{BQCL}\subseteq\mathsf{DQC1}" display="inline"><mrow><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">BQCL</mi><mo>⊆</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">DQC1</mi></mrow></math> under this bias convention, extending
+the unitary containment of Buhrman et al. (TQC, 2025).
+The main difficulty is to avoid storing a polynomial-length measurement
+history in initialized memory. We express the source’s acceptance bias as
+a normalized trace involving the inverse of a channel-history matrix.
+Although the history matrix can be poorly conditioned, complete positivity
+bounds the Frobenius norm of its inverse. A nuclear-norm regularization estimate then
+controls the required trace with no dependence on the exponential catalyst
+dimension. We implement the resulting bounded spectral filter by coherent
+phase estimation and extract its relevant block through a reflected
+unitary trace test. The logarithmic auxiliary space is included in the
+maximally mixed input at only an inverse-polynomial loss in bias.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Catalytic space separates initialized work memory from borrowed memory
+whose unknown contents must be restored. In the classical setting,
+Buhrman et al. <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite> showed that this additional memory can
+support computations not known to fit in the initialized workspace alone.
+Quantum catalytic space imposes a stronger restoration requirement: a
+borrowed register must be returned in its original state for every quantum
+input to that register. This also preserves its entanglement with any
+inaccessible reference. The model asks how much computation a large
+register can support without consuming the information it contains.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Buhrman et al. <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>]</cite> introduced quantum catalytic space and proved
+that its unitary logspace computations admit one-clean-qubit simulations.
+They left open the corresponding containment when intermediate
+measurements are allowed. The usual deferred-measurement construction
+does not settle this question. It stores measurement outcomes coherently,
+requiring a fresh initialized register for a potentially polynomial-length
+history. Resets pose a related difficulty: unlike unitary conjugations,
+they need not be contractions in the Hilbert–Schmidt norm.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">We prove the containment for the measured model. The simulator does not
+reproduce the source state or retain its measurement outcomes. Instead,
+it recovers the sign of the source’s acceptance bias from a normalized
+trace. Exact restoration provides an identity on the entire catalyst
+operator space, not merely on its diagonal coordinates. This identity
+supplies the trace multiplicity needed to offset the size of the catalyst.</p>
+</div>
+<section id="S1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">1.1 </span>Model and result</h3>
+
+<div id="S1.SS1.p1" class="ltx_para">
+<p class="ltx_p">We use the polynomial-length, logspace-uniform general-circuit formulation
+of quantum catalytic space in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, Definitions 15, 18–24 and 30]</cite>.
+For an input <math id="S1.SS1.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> of length <math id="S1.SS1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, the source has an initialized work register
+<math id="S1.SS1.p1.m3" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> of <math id="S1.SS1.p1.m4" class="ltx_Math" alttext="s=O(\log n)" display="inline"><mrow><mi>s</mi><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> qubits and a catalytic register <math id="S1.SS1.p1.m5" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> of
+<math id="S1.SS1.p1.m6" class="ltx_Math" alttext="c=\operatorname{poly}(n)" display="inline"><mrow><mi>c</mi><mo>=</mo><mrow><mi>poly</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> qubits. Its live classical controller, including
+all retained measurement outcomes, counts toward the work-space bound.
+The computation has a worst-case polynomial time bound and may use
+computational-basis measurements, resets, and classically controlled
+constant-local gates. There is no uncharged classical transcript available
+for later queries. The input is classical and is available to the
+logspace circuit generator.</p>
+</div>
+<div id="S1.SS1.p2" class="ltx_para">
+<p class="ltx_p">Writing <math id="S1.SS1.p2.m1" class="ltx_Math" alttext="\Phi_{x}" display="inline"><msub><mi mathvariant="normal">Φ</mi><mi>x</mi></msub></math> for the overall channel before the final output is read,
+we require a work state <math id="S1.SS1.p2.m2" class="ltx_Math" alttext="\eta_{x}" display="inline"><msub><mi>η</mi><mi>x</mi></msub></math> such that, for every reference register
+<math id="S1.SS1.p2.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> and every state <math id="S1.SS1.p2.m4" class="ltx_Math" alttext="\rho_{CR}" display="inline"><msub><mi>ρ</mi><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></msub></math>,</p>
+<table id="S1.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E1.m1" class="ltx_math_unparsed" alttext="(\Phi_{x}\otimes\operatorname{id}_{R})\bigl(\lvert 0^{s}\rangle\langle 0^{s}\rvert_{W}\otimes\rho_{CR}\bigr)=\eta_{x}\otimes\rho_{CR}." display="block"><mrow><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>x</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>id</mi><mi>R</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>s</mi></msup><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>s</mi></msup><mo rspace="0.055em" stretchy="false">|</mo></mrow><mi>W</mi></msub><mo rspace="0.222em">⊗</mo><msub><mi>ρ</mi><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></msub><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mo>=</mo><msub><mi>η</mi><mi>x</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>ρ</mi><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Lemma <a href="#Thmtheorem2" title="Lemma 2 (Exact restoration). ‣ 2 The catalytic trace identity ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a> shows that this product form follows already
+from exact restoration of the catalyst marginal for every catalyst state.
+In particular, it remains valid after the live controller is included in
+<math id="S1.SS1.p2.m5" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>. A designated work qubit is the output; its probability of being <math id="S1.SS1.p2.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>
+is denoted by <math id="S1.SS1.p2.m7" class="ltx_Math" alttext="p_{x}" display="inline"><msub><mi>p</mi><mi>x</mi></msub></math>. The bounded-error class <math id="S1.SS1.p2.m8" class="ltx_Math" alttext="\mathsf{BQCL}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">BQCL</mi></math> uses
+<math id="S1.SS1.p2.m9" class="ltx_Math" alttext="p_{x}\geq 2/3" display="inline"><mrow><msub><mi>p</mi><mi>x</mi></msub><mo>≥</mo><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></mrow></math> on yes instances and <math id="S1.SS1.p2.m10" class="ltx_Math" alttext="p_{x}\leq 1/3" display="inline"><mrow><msub><mi>p</mi><mi>x</mi></msub><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow></mrow></math> on no instances; <math id="S1.SS1.p2.m11" class="ltx_Math" alttext="\mathsf{QCL}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">QCL</mi></math>
+is the exact version.</p>
+</div>
+<div id="S1.SS1.p3" class="ltx_para">
+<p class="ltx_p">For <math id="S1.SS1.p3.m1" class="ltx_Math" alttext="\mathsf{DQC1}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">DQC1</mi></math> we use the signed-bias convention
+of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, Definitions 49–51]</cite>. A circuit starts with one qubit in
+<math id="S1.SS1.p3.m2" class="ltx_math_unparsed" alttext="\lvert 0\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math> and polynomially many qubits in the maximally mixed state, applies
+a polynomial-size logspace-uniform unitary circuit, and measures the
+clean probe at the end. There is a polynomial <math id="S1.SS1.p3.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> such that acceptance
+has probability at least <math id="S1.SS1.p3.m4" class="ltx_Math" alttext="1/2+1/q(n)" display="inline"><mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow><mo>+</mo><mrow><mn>1</mn><mo>/</mo><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> on yes instances and at most
+<math id="S1.SS1.p3.m5" class="ltx_Math" alttext="1/2-1/q(n)" display="inline"><mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> on no instances. We do not assert constant bias within a
+single one-clean-qubit circuit.</p>
+</div>
+<div id="S1.SS1.p4" class="ltx_para">
+<p class="ltx_p">We fix the same effective elementary-gate convention for the source and
+the simulator. Constant-local unitaries are described using phase and
+rotation gates and classical reversible gates; adjoints, complex
+conjugates, and controlled versions have logspace-generated descriptions.
+This closure requirement is part of the gate-description convention.
+Additional angles introduced by the simulation are computed to
+inverse-polynomial accuracy in logarithmic space. Exact restoration is
+assumed for the original source channel; approximation is used only in
+the target construction. This distinction is relevant to the gate-set
+issues discussed in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, Section 3.3]</cite>.</p>
+</div>
+<div id="Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1</span></span><span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Every polynomial-time, deterministic-logspace-uniform quantum catalytic
+computation in the model above, with bounded error, <math id="Thmtheorem1.p1.m1" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> initialized
+work qubits, and polynomially many catalytic qubits, has a
+polynomial-size logspace-uniform simulation using one clean qubit and
+otherwise maximally mixed qubits. The simulation is unitary until its
+final measurement and has inverse-polynomial signed acceptance bias.
+Consequently, under the stated circuit and bias conventions,</span></p>
+<table id="S1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex1.m1" class="ltx_Math" alttext="\mathsf{BQCL}\subseteq\mathsf{DQC1}." display="block"><mrow><mrow><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">BQCL</mi><mo>⊆</mo><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">DQC1</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The containment also holds for the exact class <math id="Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathsf{QCL}" display="inline"><mi class="ltx_mathvariant_sans-serif" mathvariant="sans-serif">QCL</mi></math>.</span></p>
+</div>
+</div>
+</section>
+<section id="S1.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">1.2 </span>Method and related work</h3>
+
+<div id="S1.SS2.p1" class="ltx_para">
+<p class="ltx_p">The proof uses a history-matrix inverse to represent a product of channel
+matrices. Its conditioning may be exponentially poor. Approximating the
+entire inverse in operator norm would therefore give an unsuitable
+simulation. What we need, however, is only a particular normalized trace.
+Every nonzero block of the inverse is the matrix of a channel, so complete
+positivity bounds the inverse’s Frobenius norm. A regularization estimate
+in nuclear norm then controls the trace error at an inverse-polynomial
+regularization scale. The catalyst dimension cancels from this bound.
+This use of channel structure, together with the catalytic trace identity,
+is the main step specific to the measured catalytic model.</p>
+</div>
+<div id="S1.SS2.p2" class="ltx_para">
+<p class="ltx_p">Measurement elimination in ordinary space-bounded quantum computation
+was established by Fefferman and Remscrim <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>]</cite>. For a computation
+using space <math id="S1.SS2.p2.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> and time <math id="S1.SS2.p2.m2" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>, their construction uses
+<math id="S1.SS2.p2.m3" class="ltx_Math" alttext="O(S+\log t)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>+</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>t</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> space and <math id="S1.SS2.p2.m4" class="ltx_Math" alttext="\operatorname{poly}(t2^{S})" display="inline"><mrow><mi>poly</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo>⁢</mo><msup><mn>2</mn><mi>S</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math> time. Applying that
+bound with <math id="S1.SS2.p2.m5" class="ltx_Math" alttext="S=s+c" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mi>s</mi><mo>+</mo><mi>c</mi></mrow></mrow></math> does not provide a polynomial-time one-clean-qubit
+simulation when <math id="S1.SS2.p2.m6" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> is polynomial. The present argument instead treats
+the initialized and catalytic parts separately and uses exact restoration
+to control a normalized trace rather than the whole computation.</p>
+</div>
+<div id="S1.SS2.p3" class="ltx_para">
+<p class="ltx_p">The circuit ingredients for processing this trace are established ones.
+Normalized unitary trace estimation is native to the one-clean-qubit
+model <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, <a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite>. Cade and Montanaro <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>]</cite> gave
+one-clean-qubit algorithms for smooth spectral functions of log-local
+Hamiltonians. Edenhofer, Hasegawa, and Le Gall <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib7" title="" class="ltx_ref">7</a>]</cite> treated
+spectral sums in a block-encoding input model, including trace extraction
+with logarithmically many block ancillas. More recently, Ji et
+al. <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>]</cite> studied DQC1-completeness of normalized spectral traces
+under approximation-theoretic hypotheses. These results concern trace
+estimation once a suitable matrix representation has been obtained; the
+catalytic reduction and its dimension-independent regularization bound
+supply that representation here.</p>
+</div>
+<div id="S1.SS2.p4" class="ltx_para">
+<p class="ltx_p">Our implementation uses linear combinations of unitaries and the
+compression-to-walk construction underlying qubitization and singular
+value transformation <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib9" title="" class="ltx_ref">9</a>, <a href="#bib.bib10" title="" class="ltx_ref">10</a>]</cite>. We give a direct coherent
+phase-estimation implementation of the required filter to keep its
+logarithmic auxiliary space and deterministic logspace uniformity
+explicit. A reflection then extracts the desired ancillary block from a
+unitary trace. Thus the block ancillas need not be physically initialized
+in the final circuit.</p>
+</div>
+</section>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>The catalytic trace identity</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">We first express an adaptive computation as a fixed channel sequence.
+A computational-basis measurement is implemented by resetting a work
+bit, copying the measured basis value into it, and dephasing that bit.
+Later controlled gates read the resulting classical configuration.
+Irreversible controller updates use reversible Boolean gates and resets
+on logarithmic work space. By scanning the polynomially many tape
+addresses, the emitted schedule can be made independent of measurement
+outcomes. Appendix <a href="#A1" title="Appendix A Uniform implementation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A</span></a> gives the implementation, including
+conditional resets and the accounting for temporary work bits.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">This is the mixed-state circuit formalism of Aharonov, Kitaev, and
+Nisan <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib11" title="" class="ltx_ref">11</a>]</cite>, with the work-space accounting made explicit.
+After this conversion and padding, write</p>
+<table id="S2.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E2.m1" class="ltx_math_unparsed" alttext="\Phi_{x}=\Phi_{T}\circ\cdots\circ\Phi_{1},\qquad T=\operatorname{poly}(n)." display="block"><mrow><msub><mi mathvariant="normal">Φ</mi><mi>x</mi></msub><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mi>T</mi></msub><mo lspace="0.222em">∘</mo><mo lspace="0.055em" rspace="0.055em">⋯</mo><mo rspace="0.222em">∘</mo><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><mo rspace="2.167em">,</mo><mi>T</mi><mo>=</mo><mi>poly</mi><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Each elementary map is a constant-local unitary conjugation, a one-qubit
+dephasing, or a one-qubit reset. In particular, it is completely positive
+and trace preserving (CPTP) on the whole computational Hilbert space,
+including controller configurations unreachable from the clean input.
+We may take <math id="S2.p2.m1" class="ltx_Math" alttext="s\geq 1" display="inline"><mrow><mi>s</mi><mo>≥</mo><mn>1</mn></mrow></math> and <math id="S2.p2.m2" class="ltx_Math" alttext="T\geq 1" display="inline"><mrow><mi>T</mi><mo>≥</mo><mn>1</mn></mrow></math> and pad their bounds as functions of <math id="S2.p2.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+For small inputs, all asymptotic bounds can be read with
+<math id="S2.p2.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> replaced by <math id="S2.p2.m5" class="ltx_Math" alttext="\max\{n,2\}" display="inline"><mrow><mi>max</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mrow><mi>n</mi><mo>,</mo><mn>2</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>. Set</p>
+<table id="S2.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex2.m1" class="ltx_Math" alttext="K=2^{s},\qquad D=2^{c},\qquad d=KD." display="block"><mrow><mrow><mrow><mi>K</mi><mo>=</mo><msup><mn>2</mn><mi>s</mi></msup></mrow><mo rspace="2.167em">,</mo><mrow><mi>D</mi><mo>=</mo><msup><mn>2</mn><mi>c</mi></msup></mrow><mo rspace="2.167em">,</mo><mrow><mi>d</mi><mo>=</mo><mrow><mi>K</mi><mo>⁢</mo><mi>D</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Thus <math id="S2.p2.m6" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> is polynomial, whereas <math id="S2.p2.m7" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> may be exponential.</p>
+</div>
+<div id="Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2</span></span><span class="ltx_text ltx_font_bold"> </span>(Exact restoration)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="Thmtheorem2.p1.m1" class="ltx_Math" alttext="\Psi:C\to WC" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>C</mi><mo stretchy="false">→</mo><mrow><mi>W</mi><mo>⁢</mo><mi>C</mi></mrow></mrow></mrow></math> be a CPTP map such that
+<math id="Thmtheorem2.p1.m2" class="ltx_Math" alttext="\operatorname{Tr}_{W}\Psi(\rho)=\rho" display="inline"><mrow><mrow><msub><mi>Tr</mi><mi>W</mi></msub><mo lspace="0.167em">⁡</mo><mrow><mi mathvariant="normal">Ψ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mi>ρ</mi></mrow></math> for every state <math id="Thmtheorem2.p1.m3" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math> on <math id="Thmtheorem2.p1.m4" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>. There is a state
+<math id="Thmtheorem2.p1.m5" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> on <math id="Thmtheorem2.p1.m6" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> such that <math id="Thmtheorem2.p1.m7" class="ltx_Math" alttext="\Psi(X)=\eta\otimes X" display="inline"><mrow><mrow><mi mathvariant="normal">Ψ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>η</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>X</mi></mrow></mrow></math> for every operator <math id="Thmtheorem2.p1.m8" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+on <math id="Thmtheorem2.p1.m9" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>. Consequently, <math id="Thmtheorem2.p1.m10" class="ltx_Math" alttext="\Psi" display="inline"><mi mathvariant="normal">Ψ</mi></math> also preserves arbitrary correlations of <math id="Thmtheorem2.p1.m11" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>
+with an inaccessible reference.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Since states span the operator space, <math id="S2.p3.m1" class="ltx_Math" alttext="\operatorname{Tr}_{W}\Psi=\operatorname{id}_{C}" display="inline"><mrow><mrow><msub><mi>Tr</mi><mi>W</mi></msub><mo lspace="0.167em">⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mo>=</mo><msub><mi>id</mi><mi>C</mi></msub></mrow></math>.
+Let <math id="S2.p3.m2" class="ltx_math_unparsed" alttext="\lvert\Omega\rangle=D^{-1/2}\sum_{i=0}^{D-1}\lvert i\rangle_{C}\lvert i\rangle_{R}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msup><mi>D</mi><mrow><mo>−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><msubsup><mo rspace="0em">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>D</mi><mo>−</mo><mn>1</mn></mrow></msubsup><msub><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mi>C</mi></msub><msub><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mi>R</mi></msub></mrow></math> be the
+normalized maximally entangled vector, and put
+<math id="S2.p3.m3" class="ltx_math_unparsed" alttext="\Omega_{CR}=\lvert\Omega\rangle\langle\Omega\rvert" display="inline"><mrow><msub><mi mathvariant="normal">Ω</mi><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="false">|</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">|</mo></mrow></mrow></math>.
+The state <math id="S2.p3.m4" class="ltx_Math" alttext="\tau=(\Psi\otimes\operatorname{id}_{R})(\Omega_{CR})" display="inline"><mrow><mi>τ</mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">Ψ</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>id</mi><mi>R</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> has <math id="S2.p3.m5" class="ltx_Math" alttext="CR" display="inline"><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></math> marginal
+<math id="S2.p3.m6" class="ltx_Math" alttext="\Omega_{CR}" display="inline"><msub><mi mathvariant="normal">Ω</mi><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></msub></math>. Put <math id="S2.p3.m7" class="ltx_Math" alttext="P=I_{W}\otimes\Omega_{CR}" display="inline"><mrow><mi>P</mi><mo>=</mo><mrow><msub><mi>I</mi><mi>W</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></msub></mrow></mrow></math>. Then
+<math id="S2.p3.m8" class="ltx_Math" alttext="\operatorname{Tr}((I-P)\tau)=0" display="inline"><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><mi>P</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>τ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>. Positivity implies
+<math id="S2.p3.m9" class="ltx_Math" alttext="\tau^{1/2}(I-P)=0" display="inline"><mrow><mrow><msup><mi>τ</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><mi>P</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>, since the squared Frobenius norm of this operator
+is <math id="S2.p3.m10" class="ltx_Math" alttext="\operatorname{Tr}((I-P)\tau)" display="inline"><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><mi>P</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>τ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>. Hence <math id="S2.p3.m11" class="ltx_Math" alttext="\tau=P\tau P" display="inline"><mrow><mi>τ</mi><mo>=</mo><mrow><mi>P</mi><mo>⁢</mo><mi>τ</mi><mo>⁢</mo><mi>P</mi></mrow></mrow></math>. The range of <math id="S2.p3.m12" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> is
+<math id="S2.p3.m13" class="ltx_math_unparsed" alttext="W\otimes\operatorname{span}\{\lvert\Omega\rangle\}" display="inline"><mrow><mi>W</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>span</mi><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">|</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></math>, so
+<math id="S2.p3.m14" class="ltx_Math" alttext="\tau=\eta\otimes\Omega_{CR}" display="inline"><mrow><mi>τ</mi><mo>=</mo><mrow><mi>η</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi mathvariant="normal">Ω</mi><mrow><mi>C</mi><mo>⁢</mo><mi>R</mi></mrow></msub></mrow></mrow></math> for a state <math id="S2.p3.m15" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math>.
+Comparing coefficients of <math id="S2.p3.m16" class="ltx_math_unparsed" alttext="\lvert i\rangle\langle j\rvert_{R}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><mi>j</mi><mo stretchy="false">|</mo></mrow><mi>R</mi></msub></mrow></math> in the two Choi states gives
+<math id="S2.p3.m17" class="ltx_math_unparsed" alttext="\Psi(\lvert i\rangle\langle j\rvert)=\eta\otimes\lvert i\rangle\langle j\rvert" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi>j</mi><mo stretchy="false">|</mo></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>η</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi>j</mi><mo stretchy="false">|</mo></mrow></mrow></math> for all <math id="S2.p3.m18" class="ltx_Math" alttext="i,j" display="inline"><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></math>. Linearity proves the
+claim, and tensoring this identity with <math id="S2.p3.m19" class="ltx_Math" alttext="\operatorname{id}_{R}" display="inline"><msub><mi>id</mi><mi>R</mi></msub></math> proves the reference
+statement.
+∎</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Applying the lemma to
+<math id="S2.p4.m1" class="ltx_math_unparsed" alttext="\Psi(X)=\Phi_{x}(\lvert 0^{s}\rangle\langle 0^{s}\rvert\otimes X)" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mi>x</mi></msub><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>s</mi></msup><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>s</mi></msup><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> proves
+(<a href="#S1.E1" title="In 1.1 Model and result ‣ 1 Introduction ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>) from marginal restoration alone. It also shows why
+including the final controller and temporary registers in the work
+output does not impose an additional catalytic condition.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Vectorize operators by
+<math id="S2.p5.m1" class="ltx_math_unparsed" alttext="\operatorname{vec}(\lvert i\rangle\langle j\rvert)=\lvert i\rangle\lvert j\rangle" display="inline"><mrow><mi>vec</mi><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi>j</mi><mo stretchy="false">|</mo></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">|</mo><mi>j</mi><mo stretchy="false">⟩</mo></mrow></mrow></math>, and order the doubled registers as
+<math id="S2.p5.m2" class="ltx_Math" alttext="W,\overline{W},C,\overline{C}" display="inline"><mrow><mi>W</mi><mo>,</mo><mover accent="true"><mi>W</mi><mo stretchy="true">¯</mo></mover><mo>,</mo><mi>C</mi><mo>,</mo><mover accent="true"><mi>C</mi><mo stretchy="true">¯</mo></mover></mrow></math>. Bars label the second operator-coordinate
+copy; they do not denote additional input information. A unitary
+conjugation by <math id="S2.p5.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> has matrix <math id="S2.p5.m4" class="ltx_Math" alttext="G\otimes\overline{G}" display="inline"><mrow><mi>G</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mover accent="true"><mi>G</mi><mo stretchy="true">¯</mo></mover></mrow></math>, up to this fixed
+reordering. Let <math id="S2.p5.m5" class="ltx_Math" alttext="S_{t}" display="inline"><msub><mi>S</mi><mi>t</mi></msub></math> be the <math id="S2.p5.m6" class="ltx_Math" alttext="d^{2}" display="inline"><msup><mi>d</mi><mn>2</mn></msup></math>-dimensional Liouville matrix of
+<math id="S2.p5.m7" class="ltx_Math" alttext="\Phi_{t}" display="inline"><msub><mi mathvariant="normal">Φ</mi><mi>t</mi></msub></math>, and set <math id="S2.p5.m8" class="ltx_math_unparsed" alttext="S=S_{T}\cdots S_{1}" display="inline"><mrow><mi>S</mi><mo>=</mo><mi>S</mi><msub><mrow></mrow><mi>T</mi></msub><mo lspace="0em" rspace="0em">⋯</mo><mi>S</mi><msub><mrow></mrow><mn>1</mn></msub></mrow></math>. Exact restoration gives</p>
+<table id="S2.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E3.m1" class="ltx_math_unparsed" alttext="S\bigl(\lvert\omega\rangle\otimes I_{D^{2}}\bigr)=\lvert\eta_{x}\rangle\otimes I_{D^{2}},\qquad\lvert\omega\rangle=\lvert 0^{2s}\rangle,\quad\lvert\eta_{x}\rangle=\operatorname{vec}(\eta_{x})." display="block"><mrow><mi>S</mi><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mo stretchy="false">|</mo><mi>ω</mi><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mi>I</mi><msup><mi>D</mi><mn>2</mn></msup></msub><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><msub><mi>η</mi><mi>x</mi></msub><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mi>I</mi><msup><mi>D</mi><mn>2</mn></msup></msub><mo rspace="2.167em">,</mo><mrow><mo stretchy="false">|</mo><mi>ω</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mrow><mn>2</mn><mo>⁢</mo><mi>s</mi></mrow></msup><mo stretchy="false">⟩</mo></mrow><mo rspace="1.167em">,</mo><mrow><mo stretchy="false">|</mo><msub><mi>η</mi><mi>x</mi></msub><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mi>vec</mi><mrow><mo stretchy="false">(</mo><msub><mi>η</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">This is an identity on all <math id="S2.p5.m9" class="ltx_Math" alttext="D^{2}" display="inline"><msup><mi>D</mi><mn>2</mn></msup></math> catalyst operator coordinates, including
+the off-diagonal ones.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Define the output observable and signed acceptance bias by</p>
+<table id="S2.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex3.m1" class="ltx_math_unparsed" alttext="O=(\lvert 1\rangle\langle 1\rvert-\lvert 0\rangle\langle 0\rvert)_{\rm out}\otimes I_{W\setminus\mathrm{out}},\qquad e_{x}=\operatorname{Tr}(O\eta_{x})=2p_{x}-1,\qquad\lvert z\rangle=\frac{\operatorname{vec}(O)}{\sqrt{K}}." display="block"><mrow><mi>O</mi><mo>=</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo stretchy="false">|</mo></mrow><mo>−</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mn>0</mn><mo stretchy="false">|</mo></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mi>out</mi></msub><mo rspace="0.222em">⊗</mo><msub><mi>I</mi><mrow><mi>W</mi><mo>∖</mo><mi>out</mi></mrow></msub><mo rspace="2.167em">,</mo><msub><mi>e</mi><mi>x</mi></msub><mo>=</mo><mi>Tr</mi><mrow><mo stretchy="false">(</mo><mi>O</mi><msub><mi>η</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><mo>=</mo><mn>2</mn><msub><mi>p</mi><mi>x</mi></msub><mo>−</mo><mn>1</mn><mo rspace="2.167em">,</mo><mrow><mo stretchy="false">|</mo><mi>z</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mfrac><mrow><mi>vec</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>O</mi><mo stretchy="false">)</mo></mrow></mrow><msqrt><mi>K</mi></msqrt></mfrac><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The vector <math id="S2.p6.m1" class="ltx_math_unparsed" alttext="\lvert z\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mi>z</mi><mo stretchy="false">⟩</mo></mrow></math> is normalized because <math id="S2.p6.m2" class="ltx_Math" alttext="\operatorname{Tr}(O^{2})=K" display="inline"><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>O</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>K</mi></mrow></math>.
+It can be prepared by creating <math id="S2.p6.m3" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> Bell pairs and applying
+<math id="S2.p6.m4" class="ltx_Math" alttext="XZX=-Z" display="inline"><mrow><mrow><mi>X</mi><mo>⁢</mo><mi>Z</mi><mo>⁢</mo><mi>X</mi></mrow><mo>=</mo><mrow><mo>−</mo><mi>Z</mi></mrow></mrow></math> to the output half in the first copy, where <math id="S2.p6.m5" class="ltx_Math" alttext="X,Z" display="inline"><mrow><mi>X</mi><mo>,</mo><mi>Z</mi></mrow></math> are Pauli
+matrices. Retaining this sign is important in the later trace test.
+Equation (<a href="#S2.E3" title="In 2 The catalytic trace identity ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>) yields</p>
+<table id="S2.E4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E4.m1" class="ltx_math_unparsed" alttext="\frac{1}{D^{2}}\operatorname{Tr}\!\left[(\lvert\omega\rangle\langle z\rvert\otimes I_{D^{2}})S\right]=\frac{e_{x}}{\sqrt{K}}." display="block"><mrow><mfrac><mn>1</mn><msup><mi>D</mi><mn>2</mn></msup></mfrac><mpadded style="width:1.032em;" width="1.032em"><mi>Tr</mi></mpadded><mrow><mo>[</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mi>ω</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi>z</mi><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mi>I</mi><msup><mi>D</mi><mn>2</mn></msup></msub><mo stretchy="false">)</mo></mrow><mi>S</mi><mo>]</mo></mrow><mo>=</mo><mfrac><msub><mi>e</mi><mi>x</mi></msub><msqrt><mi>K</mi></msqrt></mfrac><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Indeed, the trace over each catalyst coordinate is
+<math id="S2.p6.m6" class="ltx_Math" alttext="\langle z\mid\eta_{x}\rangle=\operatorname{Tr}(O\eta_{x})/\sqrt{K}" display="inline"><mrow><mrow><mo stretchy="false">⟨</mo><mi>z</mi><mo lspace="0em" rspace="0.167em">∣</mo><msub><mi>η</mi><mi>x</mi></msub><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>O</mi><mo>⁢</mo><msub><mi>η</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><msqrt><mi>K</mi></msqrt></mrow></mrow></math>.
+For a bounded-error source, <math id="S2.p6.m7" class="ltx_Math" alttext="e_{x}\geq 1/3" display="inline"><mrow><msub><mi>e</mi><mi>x</mi></msub><mo>≥</mo><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow></mrow></math> on yes instances and
+<math id="S2.p6.m8" class="ltx_math_unparsed" alttext="e_{x}\leq-1/3" display="inline"><mrow><mi>e</mi><msub><mrow></mrow><mi>x</mi></msub><mo rspace="0em">≤</mo><mo lspace="0em">−</mo><mn>1</mn><mo>/</mo><mn>3</mn></mrow></math> on no instances; for an exact source, <math id="S2.p6.m9" class="ltx_Math" alttext="e_{x}\in\{-1,1\}" display="inline"><mrow><msub><mi>e</mi><mi>x</mi></msub><mo>∈</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The factor <math id="S2.p7.m1" class="ltx_Math" alttext="D^{2}" display="inline"><msup><mi>D</mi><mn>2</mn></msup></math> in (<a href="#S2.E4" title="In 2 The catalytic trace identity ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>) is specific to restoration
+of the full operator space. Merely preserving the maximally mixed state
+does not suffice: the completely depolarizing channel has Liouville
+trace <math id="S2.p7.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, whereas the identity channel has Liouville trace <math id="S2.p7.m3" class="ltx_Math" alttext="D^{2}" display="inline"><msup><mi>D</mi><mn>2</mn></msup></math>.
+Preserving only the computational-basis states similarly controls just
+<math id="S2.p7.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> diagonal coordinates. The stronger multiplicity in
+(<a href="#S2.E4" title="In 2 The catalytic trace identity ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>) is what permits the dimension cancellation below.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>Regularizing the channel history</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">We place the channel product in a corner of an inverse history matrix.
+The inverse need not have polynomial operator norm. Its blocks,
+however, satisfy a common Frobenius bound, and that is enough to
+approximate the trace in (<a href="#S2.E4" title="In 2 The catalytic trace identity ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>).
+For a matrix, <math id="S3.p1.m1" class="ltx_Math" alttext="\left\lVert\cdot\right\rVert" display="inline"><mrow><mo>‖</mo><mo lspace="0em" rspace="0em">⋅</mo><mo>‖</mo></mrow></math> denotes operator norm,
+<math id="S3.p1.m2" class="ltx_Math" alttext="\left\lVert\cdot\right\rVert_{F}" display="inline"><msub><mrow><mo>‖</mo><mo lspace="0em" rspace="0em">⋅</mo><mo>‖</mo></mrow><mi>F</mi></msub></math> Frobenius norm, and <math id="S3.p1.m3" class="ltx_Math" alttext="\left\lVert\cdot\right\rVert_{1}" display="inline"><msub><mrow><mo>‖</mo><mo lspace="0em" rspace="0em">⋅</mo><mo>‖</mo></mrow><mn>1</mn></msub></math> nuclear norm.</p>
+</div>
+<div id="Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3</span></span><span class="ltx_text ltx_font_bold"> </span>(CPTP Frobenius bound)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="Thmtheorem3.p1.m1" class="ltx_Math" alttext="S_{\Psi}" display="inline"><msub><mi>S</mi><mi mathvariant="normal">Ψ</mi></msub></math> is the Liouville matrix of a CPTP map on a <math id="Thmtheorem3.p1.m2" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>-dimensional
+system, then <math id="Thmtheorem3.p1.m3" class="ltx_Math" alttext="\left\lVert S_{\Psi}\right\rVert_{F}^{2}\leq d^{2}" display="inline"><mrow><msubsup><mrow><mo>‖</mo><msub><mi>S</mi><mi mathvariant="normal">Ψ</mi></msub><mo>‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup><mo>≤</mo><msup><mi>d</mi><mn>2</mn></msup></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">The unnormalized Choi matrix
+<math id="S3.p2.m1" class="ltx_math_unparsed" alttext="\mathcal{J}(\Psi)=\sum_{i,j}\Psi(\lvert i\rangle\langle j\rvert)\otimes\lvert i\rangle\langle j\rvert" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">J</mi><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false">)</mo></mrow><mo rspace="0.111em">=</mo><msub><mo>∑</mo><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mi mathvariant="normal">Ψ</mi><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi>j</mi><mo stretchy="false">|</mo></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⊗</mo><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi>j</mi><mo stretchy="false">|</mo></mrow></mrow></math>
+is positive semidefinite by complete positivity <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib12" title="" class="ltx_ref">12</a>]</cite> and has
+trace <math id="S3.p2.m2" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> by trace preservation. Its entries are a reshuffling of the
+entries of <math id="S3.p2.m3" class="ltx_Math" alttext="S_{\Psi}" display="inline"><msub><mi>S</mi><mi mathvariant="normal">Ψ</mi></msub></math>, so the two Frobenius norms agree. If <math id="S3.p2.m4" class="ltx_Math" alttext="\mu_{i}\geq 0" display="inline"><mrow><msub><mi>μ</mi><mi>i</mi></msub><mo>≥</mo><mn>0</mn></mrow></math>
+are its eigenvalues, then</p>
+<table id="S3.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex4.m1" class="ltx_Math" alttext="\left\lVert S_{\Psi}\right\rVert_{F}^{2}=\operatorname{Tr}\bigl(\mathcal{J}(\Psi)^{2}\bigr)=\sum_{i}\mu_{i}^{2}\leq\left(\sum_{i}\mu_{i}\right)^{2}=d^{2}.\qed" display="block"><mrow><mrow><msubsup><mrow><mo>‖</mo><msub><mi>S</mi><mi mathvariant="normal">Ψ</mi></msub><mo>‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">J</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>i</mi></munder><msubsup><mi>μ</mi><mi>i</mi><mn>2</mn></msubsup></mrow><mo>≤</mo><msup><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>i</mi></munder><msub><mi>μ</mi><mi>i</mi></msub></mrow><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mi>d</mi><mn>2</mn></msup></mrow><mo lspace="0em" rspace="0.0835em">.</mo><mo class="ltx_mathvariant_italic" lspace="0.0835em" mathvariant="italic" separator="true">∎</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p3.m1" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> be the least power of two with <math id="S3.p3.m2" class="ltx_Math" alttext="J\geq T+1" display="inline"><mrow><mi>J</mi><mo>≥</mo><mrow><mi>T</mi><mo>+</mo><mn>1</mn></mrow></mrow></math>. On a <math id="S3.p3.m3" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math>-state clock
+and the Liouville register, define</p>
+<table id="S3.E5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E5.m1" class="ltx_math_unparsed" alttext="L=\sum_{t=1}^{T}\lvert t\rangle\langle t-1\rvert\otimes S_{t},\qquad A=I-L,\qquad B=A^{-1}=\sum_{r=0}^{T}L^{r}." display="block"><mrow><mi>L</mi><mo rspace="0.111em">=</mo><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><mi>T</mi></munderover><mrow><mo stretchy="false">|</mo><mi>t</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mi>S</mi><mi>t</mi></msub><mo rspace="2.167em">,</mo><mi>A</mi><mo>=</mo><mi>I</mi><mo>−</mo><mi>L</mi><mo rspace="2.167em">,</mo><mi>B</mi><mo>=</mo><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo rspace="0.111em">=</mo><munderover><mo movablelimits="false">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><mi>T</mi></munderover><msup><mi>L</mi><mi>r</mi></msup><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The inverse formula follows from <math id="S3.p3.m4" class="ltx_Math" alttext="L^{T+1}=0" display="inline"><mrow><msup><mi>L</mi><mrow><mi>T</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mn>0</mn></mrow></math>. In particular,
+<math id="S3.p3.m5" class="ltx_Math" alttext="B_{T,0}=S" display="inline"><mrow><msub><mi>B</mi><mrow><mi>T</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>=</mo><mi>S</mi></mrow></math>. Apart from its <math id="S3.p3.m6" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> diagonal identity blocks, the only
+nonzero blocks of <math id="S3.p3.m7" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> are
+<math id="S3.p3.m8" class="ltx_math_unparsed" alttext="B_{t,r}=S_{t}\cdots S_{r+1}" display="inline"><mrow><mi>B</mi><msub><mrow></mrow><mrow><mi>t</mi><mo>,</mo><mi>r</mi></mrow></msub><mo>=</mo><mi>S</mi><msub><mrow></mrow><mi>t</mi></msub><mo lspace="0em" rspace="0em">⋯</mo><mi>S</mi><msub><mrow></mrow><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></math> for <math id="S3.p3.m9" class="ltx_Math" alttext="0\leq r&lt;t\leq T" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mi>t</mi><mo>≤</mo><mi>T</mi></mrow></math>.
+Each such product is the Liouville matrix of a CPTP map.
+Since there are at most <math id="S3.p3.m10" class="ltx_Math" alttext="J^{2}" display="inline"><msup><mi>J</mi><mn>2</mn></msup></math> nonzero blocks,
+Lemma <a href="#Thmtheorem3" title="Lemma 3 (CPTP Frobenius bound). ‣ 3 Regularizing the channel history ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a> gives</p>
+<table id="S3.E6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E6.m1" class="ltx_Math" alttext="\left\lVert B\right\rVert_{F}^{2}\leq J^{2}d^{2}=J^{2}K^{2}D^{2}." display="block"><mrow><mrow><msubsup><mrow><mo>‖</mo><mi>B</mi><mo>‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup><mo>≤</mo><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>d</mi><mn>2</mn></msup></mrow><mo>=</mo><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>K</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>D</mi><mn>2</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">This bound does not require a polynomial lower bound on the smallest
+singular value of <math id="S3.p3.m11" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.</p>
+</div>
+<div id="Thmtheorem4" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 4</span></span><span class="ltx_text ltx_font_bold"> </span>(Nuclear-norm regularization)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For an invertible matrix <math id="Thmtheorem4.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> and <math id="Thmtheorem4.p1.m2" class="ltx_Math" alttext="\lambda&gt;0" display="inline"><mrow><mi>λ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, put</span></p>
+<table id="S3.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex5.m1" class="ltx_Math" alttext="B_{\lambda}=A^{\dagger}(AA^{\dagger}+\lambda^{2}I)^{-1}." display="block"><mrow><mrow><msub><mi>B</mi><mi>λ</mi></msub><mo>=</mo><mrow><msup><mi>A</mi><mo>†</mo></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>A</mi><mo>⁢</mo><msup><mi>A</mi><mo>†</mo></msup></mrow><mo>+</mo><mrow><msup><mi>λ</mi><mn>2</mn></msup><mo>⁢</mo><mi>I</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Then</span></p>
+<table id="S3.E7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E7.m1" class="ltx_Math" alttext="\left\lVert A^{-1}-B_{\lambda}\right\rVert_{1}\leq\frac{\lambda}{2}\left\lVert A^{-1}\right\rVert_{F}^{2}." display="block"><mrow><mrow><msub><mrow><mo>‖</mo><mrow><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><msub><mi>B</mi><mi>λ</mi></msub></mrow><mo>‖</mo></mrow><mn>1</mn></msub><mo>≤</mo><mrow><mfrac><mi>λ</mi><mn>2</mn></mfrac><mo>⁢</mo><msubsup><mrow><mo>‖</mo><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">If <math id="S3.p4.m1" class="ltx_Math" alttext="A=U\Sigma V^{\dagger}" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mi>U</mi><mo>⁢</mo><mi mathvariant="normal">Σ</mi><mo>⁢</mo><msup><mi>V</mi><mo>†</mo></msup></mrow></mrow></math> is a singular value decomposition, then
+<math id="S3.p4.m2" class="ltx_Math" alttext="A^{-1}-B_{\lambda}" display="inline"><mrow><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><msub><mi>B</mi><mi>λ</mi></msub></mrow></math>
+is <math id="S3.p4.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> times the diagonal matrix with entries</p>
+<table id="S3.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex6.m1" class="ltx_Math" alttext="\frac{1}{\sigma}-\frac{\sigma}{\sigma^{2}+\lambda^{2}}=\frac{\lambda^{2}}{\sigma(\sigma^{2}+\lambda^{2})}\leq\frac{\lambda}{2\sigma^{2}}" display="block"><mrow><mrow><mfrac><mn>1</mn><mi>σ</mi></mfrac><mo>−</mo><mfrac><mi>σ</mi><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>+</mo><msup><mi>λ</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo>=</mo><mfrac><msup><mi>λ</mi><mn>2</mn></msup><mrow><mi>σ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>+</mo><msup><mi>λ</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>≤</mo><mfrac><mi>λ</mi><mrow><mn>2</mn><mo>⁢</mo><msup><mi>σ</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">times <math id="S3.p4.m4" class="ltx_Math" alttext="U^{\dagger}" display="inline"><msup><mi>U</mi><mo>†</mo></msup></math>. The entries are nonnegative. The inequality is
+<math id="S3.p4.m5" class="ltx_Math" alttext="2\lambda\sigma\leq\sigma^{2}+\lambda^{2}" display="inline"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>λ</mi><mo>⁢</mo><mi>σ</mi></mrow><mo>≤</mo><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>+</mo><msup><mi>λ</mi><mn>2</mn></msup></mrow></mrow></math>; summing over the singular
+values proves (<a href="#S3.E7" title="In Lemma 4 (Nuclear-norm regularization). ‣ 3 Regularizing the channel history ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>).
+∎</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Define the contraction</p>
+<table id="S3.E8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E8.m1" class="ltx_math_unparsed" alttext="Q=\lvert 0\rangle\langle T\rvert_{\rm clock}\otimes\lvert\omega\rangle\langle z\rvert\otimes I_{D^{2}}." display="block"><mrow><mi>Q</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><mi>T</mi><mo rspace="0.055em" stretchy="false">|</mo></mrow><mi>clock</mi></msub><mo rspace="0.222em">⊗</mo><mrow><mo stretchy="false">|</mo><mi>ω</mi><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mi>z</mi><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mi>I</mi><msup><mi>D</mi><mn>2</mn></msup></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Equations (<a href="#S2.E4" title="In 2 The catalytic trace identity ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>) and (<a href="#S3.E5" title="In 3 Regularizing the channel history ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>) imply</p>
+<table id="S3.E9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E9.m1" class="ltx_Math" alttext="\frac{\operatorname{Tr}(QB)}{D^{2}}=\frac{e_{x}}{\sqrt{K}}." display="block"><mrow><mrow><mfrac><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>Q</mi><mo>⁢</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><msup><mi>D</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><msub><mi>e</mi><mi>x</mi></msub><msqrt><mi>K</mi></msqrt></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Using <math id="S3.p5.m1" class="ltx_Math" alttext="|\operatorname{Tr}(QM)|\leq\left\lVert Q\right\rVert\left\lVert M\right\rVert_{1}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>Q</mi><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mrow><mrow><mo>‖</mo><mi>Q</mi><mo>‖</mo></mrow><mo>⁢</mo><msub><mrow><mo>‖</mo><mi>M</mi><mo>‖</mo></mrow><mn>1</mn></msub></mrow></mrow></math>, we obtain</p>
+<table id="S3.E10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E10.m1" class="ltx_Math" alttext="\left|\frac{\operatorname{Tr}(QB_{\lambda})}{D^{2}}-\frac{e_{x}}{\sqrt{K}}\right|\leq\frac{\left\lVert B-B_{\lambda}\right\rVert_{1}}{D^{2}}\leq\frac{\lambda}{2}J^{2}K^{2}." display="block"><mrow><mrow><mrow><mo>|</mo><mrow><mfrac><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>Q</mi><mo>⁢</mo><msub><mi>B</mi><mi>λ</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><msup><mi>D</mi><mn>2</mn></msup></mfrac><mo>−</mo><mfrac><msub><mi>e</mi><mi>x</mi></msub><msqrt><mi>K</mi></msqrt></mfrac></mrow><mo>|</mo></mrow><mo>≤</mo><mfrac><msub><mrow><mo>‖</mo><mrow><mi>B</mi><mo>−</mo><msub><mi>B</mi><mi>λ</mi></msub></mrow><mo>‖</mo></mrow><mn>1</mn></msub><msup><mi>D</mi><mn>2</mn></msup></mfrac><mo>≤</mo><mrow><mfrac><mi>λ</mi><mn>2</mn></mfrac><mo>⁢</mo><msup><mi>J</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>K</mi><mn>2</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(10)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The exponential factor <math id="S3.p5.m2" class="ltx_Math" alttext="D^{2}" display="inline"><msup><mi>D</mi><mn>2</mn></msup></math> in the Frobenius bound cancels against the
+trace normalization supplied by exact restoration. Hence an
+inverse-polynomial <math id="S3.p5.m3" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> suffices even when the inverse itself is
+ill-conditioned. The bounded matrix <math id="S3.p5.m4" class="ltx_Math" alttext="\lambda B_{\lambda}" display="inline"><mrow><mi>λ</mi><mo>⁢</mo><msub><mi>B</mi><mi>λ</mi></msub></mrow></math>, rather than
+<math id="S3.p5.m5" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> in operator norm, is the object implemented next.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">4 </span>The one-clean-qubit simulation</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">A block encoding of a contraction <math id="S4.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a unitary <math id="S4.p1.m2" class="ltx_Math" alttext="U_{M}" display="inline"><msub><mi>U</mi><mi>M</mi></msub></math> such that
+<math id="S4.p1.m3" class="ltx_math_unparsed" alttext="(\langle 0^{a}\rvert\otimes I)U_{M}(\lvert 0^{a}\rangle\otimes I)=M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>a</mi></msup><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><msub><mi>U</mi><mi>M</mi></msub><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>a</mi></msup><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>M</mi></mrow></math>.
+The all-zero ancillas specify a matrix block. They are not assumed to be
+initialized in the final simulator; the trace readout will extract that
+block from a maximally mixed input.</p>
+</div>
+<section id="S4.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">4.1 </span>Encoding the history matrix</h3>
+
+<div id="S4.SS1.p1" class="ltx_para">
+<p class="ltx_p">Every elementary channel matrix <math id="S4.SS1.p1.m1" class="ltx_Math" alttext="S_{t}" display="inline"><msub><mi>S</mi><mi>t</mi></msub></math> has a three-ancilla block encoding
+of <math id="S4.SS1.p1.m2" class="ltx_Math" alttext="S_{t}/2" display="inline"><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>/</mo><mn>2</mn></mrow></math>. For a unitary channel, <math id="S4.SS1.p1.m3" class="ltx_Math" alttext="S_{t}=G\otimes\overline{G}" display="inline"><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mrow><mi>G</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mover accent="true"><mi>G</mi><mo stretchy="true">¯</mo></mover></mrow></mrow></math> is unitary.
+For one-qubit dephasing, <math id="S4.SS1.p1.m4" class="ltx_Math" alttext="S_{t}=(II+ZZ)/2" display="inline"><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>I</mi><mo>⁢</mo><mi>I</mi></mrow><mo>+</mo><mrow><mi>Z</mi><mo>⁢</mo><mi>Z</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></mrow></math>, where juxtaposition denotes
+a tensor product of Pauli matrices. The reset
+<math id="S4.SS1.p1.m5" class="ltx_math_unparsed" alttext="X\mapsto\lvert 0\rangle\langle 0\rvert\operatorname{Tr}X" display="inline"><mrow><mi>X</mi><mo stretchy="false">↦</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mn>0</mn><mo rspace="0.167em" stretchy="false">|</mo></mrow><mi>Tr</mi><mi>X</mi></mrow></math> has Liouville matrix</p>
+<table id="S4.E11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E11.m1" class="ltx_math_unparsed" alttext="S_{\rm reset}=\lvert 00\rangle\langle 00\rvert+\lvert 00\rangle\langle 11\rvert=\frac{1}{4}(II+IZ+ZI+ZZ+XX+iXY+iYX-YY)." display="block"><mrow><msub><mi>S</mi><mi>reset</mi></msub><mo>=</mo><mrow><mo stretchy="false">|</mo><mn>00</mn><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mn>00</mn><mo stretchy="false">|</mo></mrow><mo>+</mo><mrow><mo stretchy="false">|</mo><mn>00</mn><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><mn>11</mn><mo stretchy="false">|</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mrow><mo stretchy="false">(</mo><mi>I</mi><mi>I</mi><mo>+</mo><mi>I</mi><mi>Z</mi><mo>+</mo><mi>Z</mi><mi>I</mi><mo>+</mo><mi>Z</mi><mi>Z</mi><mo>+</mo><mi>X</mi><mi>X</mi><mo>+</mo><mi>i</mi><mi>X</mi><mi>Y</mi><mo>+</mo><mi>i</mi><mi>Y</mi><mi>X</mi><mo>−</mo><mi>Y</mi><mi>Y</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(11)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The eight signed Pauli terms in (<a href="#S4.E11" title="In 4.1 Encoding the history matrix ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">11</span></a>), averaged with equal
+weights, therefore encode <math id="S4.SS1.p1.m6" class="ltx_Math" alttext="S_{\rm reset}/2" display="inline"><mrow><msub><mi>S</mi><mi>reset</mi></msub><mo>/</mo><mn>2</mn></mrow></math>.
+For a unitary <math id="S4.SS1.p1.m7" class="ltx_Math" alttext="S_{t}" display="inline"><msub><mi>S</mi><mi>t</mi></msub></math>, use four copies of <math id="S4.SS1.p1.m8" class="ltx_Math" alttext="S_{t}" display="inline"><msub><mi>S</mi><mi>t</mi></msub></math> and the four terms
+<math id="S4.SS1.p1.m9" class="ltx_Math" alttext="I,-I,I,-I" display="inline"><mrow><mi>I</mi><mo>,</mo><mrow><mo>−</mo><mi>I</mi></mrow><mo>,</mo><mi>I</mi><mo>,</mo><mrow><mo>−</mo><mi>I</mi></mrow></mrow></math>; their average is <math id="S4.SS1.p1.m10" class="ltx_Math" alttext="S_{t}/2" display="inline"><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>/</mo><mn>2</mn></mrow></math>.
+For dephasing, use <math id="S4.SS1.p1.m11" class="ltx_Math" alttext="II,II,ZZ,ZZ,II,-II,II,-II" display="inline"><mrow><mrow><mi>I</mi><mo>⁢</mo><mi>I</mi></mrow><mo>,</mo><mrow><mi>I</mi><mo>⁢</mo><mi>I</mi></mrow><mo>,</mo><mrow><mi>Z</mi><mo>⁢</mo><mi>Z</mi></mrow><mo>,</mo><mrow><mi>Z</mi><mo>⁢</mo><mi>Z</mi></mrow><mo>,</mo><mrow><mi>I</mi><mo>⁢</mo><mi>I</mi></mrow><mo>,</mo><mrow><mo>−</mo><mrow><mi>I</mi><mo>⁢</mo><mi>I</mi></mrow></mrow><mo>,</mo><mrow><mi>I</mi><mo>⁢</mo><mi>I</mi></mrow><mo>,</mo><mrow><mo>−</mo><mrow><mi>I</mi><mo>⁢</mo><mi>I</mi></mrow></mrow></mrow></math>.
+An inactive clock value uses four copies each of <math id="S4.SS1.p1.m12" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> and <math id="S4.SS1.p1.m13" class="ltx_Math" alttext="-I" display="inline"><mrow><mo>−</mo><mi>I</mi></mrow></math>, encoding
+zero. The signs and factors of <math id="S4.SS1.p1.m14" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> are phases of the selected unitaries,
+not probabilities.</p>
+</div>
+<div id="S4.SS1.p2" class="ltx_para">
+<p class="ltx_p">Preparing three selector qubits with Hadamard gates, applying the
+selected term, and undoing the preparation realizes each average.
+This is the constant-size linear-combination construction
+of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib10" title="" class="ltx_ref">10</a>, Lemma 52]</cite>. Multiplex the encoding of <math id="S4.SS1.p2.m1" class="ltx_Math" alttext="S_{r+1}/2" display="inline"><mrow><msub><mi>S</mi><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>/</mo><mn>2</mn></mrow></math> on
+clock value <math id="S4.SS1.p2.m2" class="ltx_Math" alttext="r&lt;T" display="inline"><mrow><mi>r</mi><mo>&lt;</mo><mi>T</mi></mrow></math> and the encoding of zero on <math id="S4.SS1.p2.m3" class="ltx_Math" alttext="r\geq T" display="inline"><mrow><mi>r</mi><mo>≥</mo><mi>T</mi></mrow></math>, then cyclically
+increment the clock. The resulting unitary <math id="S4.SS1.p2.m4" class="ltx_Math" alttext="U_{L}" display="inline"><msub><mi>U</mi><mi>L</mi></msub></math> encodes <math id="S4.SS1.p2.m5" class="ltx_Math" alttext="L/2" display="inline"><mrow><mi>L</mi><mo>/</mo><mn>2</mn></mrow></math>.
+The zero blocks exclude both unused transitions and clock wraparound.</p>
+</div>
+<div id="S4.SS1.p3" class="ltx_para">
+<p class="ltx_p">An additional selector, prepared in
+<math id="S4.SS1.p3.m1" class="ltx_math_unparsed" alttext="\sqrt{1/3}\lvert 0\rangle+\sqrt{2/3}\lvert 1\rangle" display="inline"><mrow><msqrt><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow></msqrt><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mo>+</mo><msqrt><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msqrt><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></mrow></math>, selects <math id="S4.SS1.p3.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> or <math id="S4.SS1.p3.m3" class="ltx_Math" alttext="-U_{L}" display="inline"><mrow><mo>−</mo><msub><mi>U</mi><mi>L</mi></msub></mrow></math>.
+Undoing this preparation gives a unitary <math id="S4.SS1.p3.m4" class="ltx_Math" alttext="U_{A}" display="inline"><msub><mi>U</mi><mi>A</mi></msub></math> with all-zero ancillary
+block</p>
+<table id="S4.E12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E12.m1" class="ltx_Math" alttext="A/3=(I-L)/3." display="block"><mrow><mrow><mrow><mi>A</mi><mo>/</mo><mn>3</mn></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><mi>L</mi></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>3</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(12)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The multiplexers are implemented by enumerating clock values and source
+gate indices. Their controls act on <math id="S4.SS1.p3.m5" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> bits and admit
+ancilla-free polynomial-size implementations, as described in
+Appendix <a href="#A1" title="Appendix A Uniform implementation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A</span></a>. Thus <math id="S4.SS1.p3.m6" class="ltx_Math" alttext="U_{A}" display="inline"><msub><mi>U</mi><mi>A</mi></msub></math> has polynomial size and a
+logspace-uniform description. It uses only <math id="S4.SS1.p3.m7" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> qubits beyond
+the doubled data register.</p>
+</div>
+<div id="S4.SS1.p4" class="ltx_para">
+<p class="ltx_p">Add a selector qubit <math id="S4.SS1.p4.m1" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> and form the Hermitian unitary</p>
+<table id="S4.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex7.m1" class="ltx_math_unparsed" alttext="U=\lvert 0\rangle\langle 1\rvert_{h}\otimes U_{A}+\lvert 1\rangle\langle 0\rvert_{h}\otimes U_{A}^{\dagger}." display="block"><mrow><mi>U</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo rspace="0.055em" stretchy="false">|</mo></mrow><mi>h</mi></msub><mo rspace="0.222em">⊗</mo><msub><mi>U</mi><mi>A</mi></msub><mo>+</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><mn>0</mn><mo rspace="0.055em" stretchy="false">|</mo></mrow><mi>h</mi></msub><mo rspace="0.222em">⊗</mo><msubsup><mi>U</mi><mi>A</mi><mo>†</mo></msubsup><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Let <math id="S4.SS1.p4.m2" class="ltx_Math" alttext="\Pi" display="inline"><mi mathvariant="normal">Π</mi></math> project onto the all-zero block-encoding ancillas, leaving
+<math id="S4.SS1.p4.m3" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> and the history/data register unrestricted. If their number is <math id="S4.SS1.p4.m4" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>,
+then the compression of <math id="S4.SS1.p4.m5" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> to this subspace is</p>
+<table id="S4.E13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E13.m1" class="ltx_math_unparsed" alttext="H=(\langle 0^{a}\rvert\otimes I)U(\lvert 0^{a}\rangle\otimes I)=\frac{1}{3}\begin{pmatrix}0&amp;A\\
+A^{\dagger}&amp;0\end{pmatrix}." display="block"><mrow><mi>H</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>a</mi></msup><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><mi>U</mi><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>a</mi></msup><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mi>A</mi></mtd></mtr><mtr><mtd><msup><mi>A</mi><mo>†</mo></msup></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(13)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">In particular, <math id="S4.SS1.p4.m6" class="ltx_Math" alttext="\left\lVert H\right\rVert\leq 1" display="inline"><mrow><mrow><mo>‖</mo><mi>H</mi><mo>‖</mo></mrow><mo>≤</mo><mn>1</mn></mrow></math>. This dilation turns the regularized inverse
+into a scalar function of a Hermitian contraction.</p>
+</div>
+</section>
+<section id="S4.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">4.2 </span>Coherent spectral filtering</h3>
+
+<div id="Thmtheorem5" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 5</span></span><span class="ltx_text ltx_font_bold"> </span>(Coherent spectral filter)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="Thmtheorem5.p1.m1" class="ltx_Math" alttext="0&lt;\delta,\varepsilon\leq 1" display="inline"><mrow><mrow><mn>0</mn><mo>&lt;</mo><mi>δ</mi></mrow><mo>,</mo><mrow><mi>ε</mi><mo>≤</mo><mn>1</mn></mrow></mrow></math>, with <math id="Thmtheorem5.p1.m2" class="ltx_Math" alttext="\delta^{-1}" display="inline"><msup><mi>δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> and <math id="Thmtheorem5.p1.m3" class="ltx_Math" alttext="\varepsilon^{-1}" display="inline"><msup><mi>ε</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> bounded
+by polynomials in <math id="Thmtheorem5.p1.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> and with logspace-computable descriptions.
+There is a polynomial-size, logspace-uniform unitary whose all-zero
+ancillary block is within operator norm <math id="Thmtheorem5.p1.m5" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> of</span></p>
+<table id="S4.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex8.m1" class="ltx_Math" alttext="f_{\delta}(H)=\frac{\delta H}{H^{2}+\delta^{2}I}." display="block"><mrow><mrow><mrow><msub><mi>f</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mi>δ</mi><mo>⁢</mo><mi>H</mi></mrow><mrow><msup><mi>H</mi><mn>2</mn></msup><mo>+</mo><mrow><msup><mi>δ</mi><mn>2</mn></msup><mo>⁢</mo><mi>I</mi></mrow></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The ancillary register has <math id="Thmtheorem5.p1.m6" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> qubits.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.SS2.p1" class="ltx_para">
+<p class="ltx_p">Put <math id="S4.SS2.p1.m1" class="ltx_Math" alttext="\mathcal{R}=2\Pi-I" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">R</mi><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi mathvariant="normal">Π</mi></mrow><mo>−</mo><mi>I</mi></mrow></mrow></math> and <math id="S4.SS2.p1.m2" class="ltx_Math" alttext="V=\mathcal{R}U" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">R</mi><mo>⁢</mo><mi>U</mi></mrow></mrow></math>. Since <math id="S4.SS2.p1.m3" class="ltx_Math" alttext="U=U^{\dagger}" display="inline"><mrow><mi>U</mi><mo>=</mo><msup><mi>U</mi><mo>†</mo></msup></mrow></math>,</p>
+<table id="S4.E14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E14.m1" class="ltx_Math" alttext="\frac{V+V^{\dagger}}{2}=\Pi U\Pi-(I-\Pi)U(I-\Pi)." display="block"><mrow><mrow><mfrac><mrow><mi>V</mi><mo>+</mo><msup><mi>V</mi><mo>†</mo></msup></mrow><mn>2</mn></mfrac><mo>=</mo><mrow><mrow><mi mathvariant="normal">Π</mi><mo>⁢</mo><mi>U</mi><mo>⁢</mo><mi mathvariant="normal">Π</mi></mrow><mo>−</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><mi mathvariant="normal">Π</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>U</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><mi mathvariant="normal">Π</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(14)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">This operator is block diagonal with respect to <math id="S4.SS2.p1.m4" class="ltx_Math" alttext="\Pi" display="inline"><mi mathvariant="normal">Π</mi></math>, with compression
+<math id="S4.SS2.p1.m5" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>. Define the periodic function
+<math id="S4.SS2.p1.m6" class="ltx_Math" alttext="g_{\delta}(\theta)=f_{\delta}(\cos\theta)" display="inline"><mrow><mrow><msub><mi>g</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>f</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, where
+<math id="S4.SS2.p1.m7" class="ltx_Math" alttext="f_{\delta}(t)=\delta t/(t^{2}+\delta^{2})" display="inline"><mrow><mrow><msub><mi>f</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>δ</mi><mo>⁢</mo><mi>t</mi></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><msup><mi>δ</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+On a <math id="S4.SS2.p1.m8" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>-eigenvector with eigenvalue <math id="S4.SS2.p1.m9" class="ltx_Math" alttext="e^{i\theta}" display="inline"><msup><mi>e</mi><mrow><mi>i</mi><mo>⁢</mo><mi>θ</mi></mrow></msup></math>, the Hermitian
+operator <math id="S4.SS2.p1.m10" class="ltx_Math" alttext="(V+V^{\dagger})/2" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>+</mo><msup><mi>V</mi><mo>†</mo></msup></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mn>2</mn></mrow></math> has eigenvalue <math id="S4.SS2.p1.m11" class="ltx_Math" alttext="\cos\theta" display="inline"><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></math>.
+Functional calculus in (<a href="#S4.E14" title="In 4.2 Coherent spectral filtering ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">14</span></a>) therefore gives</p>
+<table id="S4.E15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E15.m1" class="ltx_math_unparsed" alttext="(\langle 0^{a}\rvert\otimes I)g_{\delta}(V)(\lvert 0^{a}\rangle\otimes I)=f_{\delta}(H)," display="block"><mrow><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>a</mi></msup><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><msub><mi>g</mi><mi>δ</mi></msub><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>a</mi></msup><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><msub><mi>f</mi><mi>δ</mi></msub><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(15)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S4.SS2.p1.m12" class="ltx_Math" alttext="g_{\delta}(V)" display="inline"><mrow><msub><mi>g</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> denotes the operator taking value
+<math id="S4.SS2.p1.m13" class="ltx_Math" alttext="g_{\delta}(\theta)" display="inline"><mrow><msub><mi>g</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math> at eigenphase <math id="S4.SS2.p1.m14" class="ltx_Math" alttext="\theta" display="inline"><mi>θ</mi></math>.
+The scalar bounds</p>
+<table id="S4.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex9.m1" class="ltx_Math" alttext="|g_{\delta}(\theta)|\leq\frac{1}{2},\qquad|g_{\delta}^{\prime}(\theta)|\leq\frac{1}{\delta}" display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>g</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mo stretchy="false">|</mo><mrow><msubsup><mi>g</mi><mi>δ</mi><mo>′</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mfrac><mn>1</mn><mi>δ</mi></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">follow from <math id="S4.SS2.p1.m15" class="ltx_Math" alttext="2\delta|t|\leq t^{2}+\delta^{2}" display="inline"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>δ</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mi>t</mi><mo stretchy="false">|</mo></mrow></mrow><mo>≤</mo><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><msup><mi>δ</mi><mn>2</mn></msup></mrow></mrow></math> and
+<math id="S4.SS2.p1.m16" class="ltx_Math" alttext="|f_{\delta}^{\prime}(t)|=\delta|\delta^{2}-t^{2}|/(t^{2}+\delta^{2})^{2}\leq 1/\delta" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msubsup><mi>f</mi><mi>δ</mi><mo>′</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mrow><mi>δ</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mrow><msup><mi>δ</mi><mn>2</mn></msup><mo>−</mo><msup><mi>t</mi><mn>2</mn></msup></mrow><mo stretchy="false">|</mo></mrow></mrow><mo>/</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><msup><mi>δ</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mi>δ</mi></mrow></mrow></math>.</p>
+</div>
+<div id="S4.SS2.p2" class="ltx_para">
+<p class="ltx_p">Apply coherent phase estimation to <math id="S4.SS2.p2.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> with an <math id="S4.SS2.p2.m2" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>-qubit phase register.
+For phase label <math id="S4.SS2.p2.m3" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math>, apply to another qubit the real rotation whose
+zero-to-zero amplitude is <math id="S4.SS2.p2.m4" class="ltx_Math" alttext="g_{\delta}(2\pi j/2^{m})" display="inline"><mrow><msub><mi>g</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>j</mi></mrow><mo>/</mo><msup><mn>2</mn><mi>m</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>, and then uncompute
+phase estimation. Such a rotation is <math id="S4.SS2.p2.m5" class="ltx_Math" alttext="R_{y}(2\arccos g_{\delta}(2\pi j/2^{m}))" display="inline"><mrow><msub><mi>R</mi><mi>y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo lspace="0.167em">⁢</mo><mrow><mi>arccos</mi><mo lspace="0.167em">⁡</mo><msub><mi>g</mi><mi>δ</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>j</mi></mrow><mo>/</mo><msup><mn>2</mn><mi>m</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>,
+with <math id="S4.SS2.p2.m6" class="ltx_math_unparsed" alttext="R_{y}(\alpha)=e^{-i\alpha Y/2}" display="inline"><mrow><msub><mi>R</mi><mi>y</mi></msub><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>i</mi><mi>α</mi><mi>Y</mi><mo>/</mo><mn>2</mn></mrow></msup></mrow></math>.
+For a <math id="S4.SS2.p2.m7" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>-eigenvector of phase <math id="S4.SS2.p2.m8" class="ltx_Math" alttext="\theta" display="inline"><mi>θ</mi></math>, the resulting all-zero
+phase/rotation block has amplitude</p>
+<table id="S4.E16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E16.m1" class="ltx_Math" alttext="\sum_{j=0}^{2^{m}-1}\Pr[j\mid\theta]g_{\delta}(2\pi j/2^{m})." display="block"><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><msup><mn>2</mn><mi>m</mi></msup><mo>−</mo><mn>1</mn></mrow></munderover><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mi>j</mi><mo lspace="0em" rspace="0.167em">∣</mo><mi>θ</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>⁢</mo><msub><mi>g</mi><mi>δ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>j</mi></mrow><mo>/</mo><msup><mn>2</mn><mi>m</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(16)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The probabilities appear because phase estimation is uncomputed; no
+measurement or postselection is used.</p>
+</div>
+<div id="S4.SS2.p3" class="ltx_para">
+<p class="ltx_p">Choose circular phase error <math id="S4.SS2.p3.m1" class="ltx_Math" alttext="O(\varepsilon\delta)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ε</mi><mo>⁢</mo><mi>δ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> and failure probability
+<math id="S4.SS2.p3.m2" class="ltx_Math" alttext="O(\varepsilon)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ε</mi><mo stretchy="false">)</mo></mrow></mrow></math>. The Lipschitz and range bounds imply a uniform <math id="S4.SS2.p3.m3" class="ltx_Math" alttext="O(\varepsilon)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ε</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+error in (<a href="#S4.E16" title="In 4.2 Coherent spectral filtering ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">16</span></a>). The explicit estimate in
+Appendix <a href="#A2" title="Appendix B A phase-estimation error bound ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">B</span></a> gives error at most <math id="S4.SS2.p3.m4" class="ltx_Math" alttext="\varepsilon/8" display="inline"><mrow><mi>ε</mi><mo>/</mo><mn>8</mn></mrow></math> with</p>
+<table id="S4.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex10.m1" class="ltx_Math" alttext="m=O\!\left(\log\frac{1}{\delta\varepsilon^{2}}\right)." display="block"><mrow><mrow><mi>m</mi><mo>=</mo><mrow><mpadded style="width:0.621em;" width="0.621em"><mi>O</mi></mpadded><mo>⁡</mo><mrow><mo>(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mfrac><mn>1</mn><mrow><mi>δ</mi><mo>⁢</mo><msup><mi>ε</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Phase estimation uses <math id="S4.SS2.p3.m5" class="ltx_Math" alttext="2^{m}-1" display="inline"><mrow><msup><mn>2</mn><mi>m</mi></msup><mo>−</mo><mn>1</mn></mrow></math> calls to <math id="S4.SS2.p3.m6" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> when controlled powers are
+expanded into repetitions, hence polynomially many calls. Approximating
+the label-dependent rotations and elementary target operations within
+the remaining error budget gives operator-norm error at most <math id="S4.SS2.p3.m7" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>:
+the phase-average estimate holds uniformly on every eigenspace of <math id="S4.SS2.p3.m8" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>,
+and compression cannot increase operator norm.</p>
+</div>
+<div id="S4.SS2.p4" class="ltx_para">
+<p class="ltx_p">For uniformity, enumerate the <math id="S4.SS2.p4.m1" class="ltx_Math" alttext="2^{m}" display="inline"><msup><mn>2</mn><mi>m</mi></msup></math> phase labels in the classical circuit
+description. The rotation amplitudes are</p>
+<table id="S4.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex11.m1" class="ltx_Math" alttext="\frac{\delta\cos(2\pi j/2^{m})}{\cos^{2}(2\pi j/2^{m})+\delta^{2}}." display="block"><mrow><mfrac><mrow><mi>δ</mi><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>j</mi></mrow><mo>/</mo><msup><mn>2</mn><mi>m</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><mrow><msup><mi>cos</mi><mn>2</mn></msup><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>j</mi></mrow><mo>/</mo><msup><mn>2</mn><mi>m</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><msup><mi>δ</mi><mn>2</mn></msup></mrow></mfrac><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The denominator is at least <math id="S4.SS2.p4.m2" class="ltx_Math" alttext="\delta^{2}" display="inline"><msup><mi>δ</mi><mn>2</mn></msup></math> and the amplitude has magnitude
+at most <math id="S4.SS2.p4.m3" class="ltx_Math" alttext="1/2" display="inline"><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></math>. Computing cosine, this quotient, and its inverse cosine
+to sufficient fixed precision takes logarithmic space and polynomial
+time; Appendix <a href="#A1" title="Appendix A Uniform implementation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A</span></a> gives explicit series and precision
+bounds. The circuit itself needs no arithmetic workspace for these
+values: it contains one classically specified, label-controlled rotation
+for each <math id="S4.SS2.p4.m4" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math>. All its large controls have logarithmic length.
+Finally compress the original <math id="S4.SS2.p4.m5" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> block ancillas as
+in (<a href="#S4.E15" title="In 4.2 Coherent spectral filtering ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">15</span></a>). The total ancillary space is <math id="S4.SS2.p4.m6" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S4.SS2.p5" class="ltx_para">
+<p class="ltx_p">Set <math id="S4.SS2.p5.m1" class="ltx_Math" alttext="\delta=\lambda/3" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><mi>λ</mi><mo>/</mo><mn>3</mn></mrow></mrow></math>. Squaring the block matrix in (<a href="#S4.E13" title="In 4.1 Encoding the history matrix ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">13</span></a>)
+shows that the lower-left selector block of the filter is</p>
+<table id="S4.E17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E17.m1" class="ltx_math_unparsed" alttext="\langle 1\rvert_{h}f_{\lambda/3}(H)\lvert 0\rangle_{h}=\lambda A^{\dagger}(AA^{\dagger}+\lambda^{2}I)^{-1}=\lambda B_{\lambda}." display="block"><mrow><msub><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo stretchy="false">|</mo></mrow><mi>h</mi></msub><msub><mi>f</mi><mrow><mi>λ</mi><mo>/</mo><mn>3</mn></mrow></msub><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>h</mi></msub><mo>=</mo><mi>λ</mi><msup><mi>A</mi><mo>†</mo></msup><msup><mrow><mo stretchy="false">(</mo><mi>A</mi><msup><mi>A</mi><mo>†</mo></msup><mo>+</mo><msup><mi>λ</mi><mn>2</mn></msup><mi>I</mi><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>λ</mi><msub><mi>B</mi><mi>λ</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(17)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Thus one inverse-polynomial scaling factor suffices for the whole
+channel product, rather than one such factor per channel.</p>
+</div>
+</section>
+<section id="S4.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">4.3 </span>Trace extraction and decision bias</h3>
+
+<div id="S4.SS3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.SS3.p1.m1" class="ltx_Math" alttext="U_{f}" display="inline"><msub><mi>U</mi><mi>f</mi></msub></math> be the filter circuit from Lemma <a href="#Thmtheorem5" title="Lemma 5 (Coherent spectral filter). ‣ 4.2 Coherent spectral filtering ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>.
+Separate its <math id="S4.SS3.p1.m2" class="ltx_Math" alttext="D^{2}" display="inline"><msup><mi>D</mi><mn>2</mn></msup></math>-dimensional register <math id="S4.SS3.p1.m3" class="ltx_Math" alttext="C\overline{C}" display="inline"><mrow><mi>C</mi><mo>⁢</mo><mover accent="true"><mi>C</mi><mo stretchy="true">¯</mo></mover></mrow></math> from all the
+remaining registers. The latter have <math id="S4.SS3.p1.m4" class="ltx_Math" alttext="k=O(\log n)" display="inline"><mrow><mi>k</mi><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> qubits, including the
+doubled work register, clock, selector <math id="S4.SS3.p1.m5" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math>, and every block, phase, and
+rotation ancilla. There is an explicitly specified unitary <math id="S4.SS3.p1.m6" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> on these
+small registers satisfying</p>
+<table id="S4.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex12.m1" class="ltx_math_unparsed" alttext="F\lvert 0^{k}\rangle=\lvert 1\rangle_{h}\lvert T\rangle_{\rm clock}\lvert z\rangle_{W\overline{W}}\lvert 0\rangle_{\rm block/phase/rotation\ ancillas}." display="block"><mrow><mi>F</mi><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>k</mi></msup><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>h</mi></msub><msub><mrow><mo stretchy="false">|</mo><mi>T</mi><mo stretchy="false">⟩</mo></mrow><mi>clock</mi></msub><msub><mrow><mo stretchy="false">|</mo><mi>z</mi><mo stretchy="false">⟩</mo></mrow><mrow><mi>W</mi><mo>⁢</mo><mover accent="true"><mi>W</mi><mo stretchy="true">¯</mo></mover></mrow></msub><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mrow><mi>block</mi><mo>/</mo><mi>phase</mi><mo>/</mo><mrow><mi>rotation</mi><mo lspace="0.400em">⁢</mo><mi>ancillas</mi></mrow></mrow></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">It uses basis-state preparation and the Bell-pair preparation of <math id="S4.SS3.p1.m7" class="ltx_math_unparsed" alttext="\lvert z\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mi>z</mi><mo stretchy="false">⟩</mo></mrow></math>.
+Define <math id="S4.SS3.p1.m8" class="ltx_Math" alttext="W_{*}=F^{\dagger}U_{f}" display="inline"><mrow><msub><mi>W</mi><mo>∗</mo></msub><mo>=</mo><mrow><msup><mi>F</mi><mo>†</mo></msup><mo>⁢</mo><msub><mi>U</mi><mi>f</mi></msub></mrow></mrow></math> and</p>
+<table id="S4.E18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E18.m1" class="ltx_math_unparsed" alttext="a_{x}=\frac{1}{D^{2}}\operatorname{Re}\operatorname{Tr}\!\left[(\langle 0^{k}\rvert\otimes I)W_{*}(\lvert 0^{k}\rangle\otimes I)\right]." display="block"><mrow><msub><mi>a</mi><mi>x</mi></msub><mo>=</mo><mfrac><mn>1</mn><msup><mi>D</mi><mn>2</mn></msup></mfrac><mi>Re</mi><mpadded style="width:1.032em;" width="1.032em"><mi>Tr</mi></mpadded><mrow><mo>[</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>k</mi></msup><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><msub><mi>W</mi><mo>∗</mo></msub><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>k</mi></msup><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mo rspace="0.222em">⊗</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><mo>]</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(18)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The selected input is <math id="S4.SS3.p1.m9" class="ltx_math_unparsed" alttext="\lvert 0\rangle_{h}\lvert 0\rangle_{\rm clock}\lvert\omega\rangle" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>h</mi></msub><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>clock</mi></msub><mrow><mo stretchy="false">|</mo><mi>ω</mi><mo stretchy="false">⟩</mo></mrow></mrow></math> and the
+selected output is <math id="S4.SS3.p1.m10" class="ltx_math_unparsed" alttext="\lvert 1\rangle_{h}\lvert T\rangle_{\rm clock}\lvert z\rangle" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>h</mi></msub><msub><mrow><mo stretchy="false">|</mo><mi>T</mi><mo stretchy="false">⟩</mo></mrow><mi>clock</mi></msub><mrow><mo stretchy="false">|</mo><mi>z</mi><mo stretchy="false">⟩</mo></mrow></mrow></math>.
+Consequently, (<a href="#S4.E17" title="In 4.2 Coherent spectral filtering ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">17</span></a>) and (<a href="#S3.E10" title="In 3 Regularizing the channel history ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>) imply</p>
+<table id="S4.E19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E19.m1" class="ltx_Math" alttext="\left|a_{x}-\lambda\frac{e_{x}}{\sqrt{K}}\right|\leq\frac{\lambda^{2}}{2}J^{2}K^{2}+\varepsilon." display="block"><mrow><mrow><mrow><mo>|</mo><mrow><msub><mi>a</mi><mi>x</mi></msub><mo>−</mo><mrow><mi>λ</mi><mo>⁢</mo><mfrac><msub><mi>e</mi><mi>x</mi></msub><msqrt><mi>K</mi></msqrt></mfrac></mrow></mrow><mo>|</mo></mrow><mo>≤</mo><mrow><mrow><mfrac><msup><mi>λ</mi><mn>2</mn></msup><mn>2</mn></mfrac><mo>⁢</mo><msup><mi>J</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>K</mi><mn>2</mn></msup></mrow><mo>+</mo><mi>ε</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(19)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Here the filter error remains at most <math id="S4.SS3.p1.m11" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> after taking the selected
+block, and a <math id="S4.SS3.p1.m12" class="ltx_Math" alttext="D^{2}" display="inline"><msup><mi>D</mi><mn>2</mn></msup></math>-dimensional matrix of operator norm at most <math id="S4.SS3.p1.m13" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>
+has normalized trace of magnitude at most <math id="S4.SS3.p1.m14" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>.</p>
+</div>
+<div id="S4.SS3.p2" class="ltx_para">
+<p class="ltx_p">The following trace cancellation is a direct block-readout construction.
+It gives the logarithmic-ancilla trace reduction used in one-clean-qubit
+spectral estimation, without initializing those ancillas;
+compare <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib7" title="" class="ltx_ref">7</a>, Theorem 4.6]</cite>.</p>
+</div>
+<div id="Thmtheorem6" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 6</span></span><span class="ltx_text ltx_font_bold"> </span>(Ancillary-block trace readout)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For <math id="Thmtheorem6.p1.m1" class="ltx_Math" alttext="W_{*}" display="inline"><msub><mi>W</mi><mo>∗</mo></msub></math> and <math id="Thmtheorem6.p1.m2" class="ltx_Math" alttext="a_{x}" display="inline"><msub><mi>a</mi><mi>x</mi></msub></math> as above, a one-clean-qubit circuit has final probe
+expectation <math id="Thmtheorem6.p1.m3" class="ltx_Math" alttext="a_{x}/2^{k}" display="inline"><mrow><msub><mi>a</mi><mi>x</mi></msub><mo>/</mo><msup><mn>2</mn><mi>k</mi></msup></mrow></math>. Its other qubits are maximally mixed.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.SS3.p3" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.SS3.p3.m1" class="ltx_math_unparsed" alttext="P=\lvert 0^{k}\rangle\langle 0^{k}\rvert\otimes I_{D^{2}}" display="inline"><mrow><mi>P</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>k</mi></msup><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>k</mi></msup><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mi>I</mi><msup><mi>D</mi><mn>2</mn></msup></msub></mrow></math>. Introduce a maximally mixed
+qubit <math id="S4.SS3.p3.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> and define the unitary</p>
+<table id="S4.Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex13.m1" class="ltx_math_unparsed" alttext="\mathcal{V}=\lvert 0\rangle\langle 0\rvert_{b}\otimes W_{*}+\lvert 1\rangle\langle 1\rvert_{b}\otimes(2P-I)W_{*}." display="block"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">V</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><mn>0</mn><mo rspace="0.055em" stretchy="false">|</mo></mrow><mi>b</mi></msub><mo rspace="0.222em">⊗</mo><msub><mi>W</mi><mo>∗</mo></msub><mo>+</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo rspace="0.055em" stretchy="false">|</mo></mrow><mi>b</mi></msub><mo rspace="0.222em">⊗</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>P</mi><mo>−</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><msub><mi>W</mi><mo>∗</mo></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Its normalized trace satisfies</p>
+<table id="S4.E20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E20.m1" class="ltx_Math" alttext="\frac{\operatorname{Tr}\mathcal{V}}{2^{k+1}D^{2}}=\frac{\operatorname{Tr}(W_{*})+\operatorname{Tr}((2P-I)W_{*})}{2^{k+1}D^{2}}=\frac{\operatorname{Tr}(PW_{*})}{2^{k}D^{2}}." display="block"><mrow><mrow><mfrac><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">V</mi></mrow><mrow><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msup><mi>D</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>W</mi><mo>∗</mo></msub><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>P</mi></mrow><mo>−</mo><mi>I</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>W</mi><mo>∗</mo></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msup><mi>D</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>P</mi><mo>⁢</mo><msub><mi>W</mi><mo>∗</mo></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><msup><mn>2</mn><mi>k</mi></msup><mo>⁢</mo><msup><mi>D</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(20)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Prepare the clean probe in <math id="S4.SS3.p3.m3" class="ltx_math_unparsed" alttext="\lvert+\rangle" display="inline"><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">+</mo><mo stretchy="false">⟩</mo></mrow></math>, apply controlled-<math id="S4.SS3.p3.m4" class="ltx_Math" alttext="\mathcal{V}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">V</mi></math>, and
+apply a Hadamard to the probe. For a maximally mixed target of dimension
+<math id="S4.SS3.p3.m5" class="ltx_Math" alttext="N=2^{k+1}D^{2}" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msup><mi>D</mi><mn>2</mn></msup></mrow></mrow></math>, the off-diagonal entry of the probe state before the
+last Hadamard is <math id="S4.SS3.p3.m6" class="ltx_Math" alttext="\operatorname{Tr}(\mathcal{V}^{\dagger})/(2N)" display="inline"><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi class="ltx_font_mathcaligraphic" mathvariant="script">V</mi><mo>†</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>N</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>. Its final Pauli-<math id="S4.SS3.p3.m7" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math>
+expectation is therefore <math id="S4.SS3.p3.m8" class="ltx_Math" alttext="\operatorname{Re}\operatorname{Tr}(\mathcal{V})/N" display="inline"><mrow><mrow><mi>Re</mi><mo lspace="0.167em">⁡</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>/</mo><mi>N</mi></mrow></math>, which
+is <math id="S4.SS3.p3.m9" class="ltx_Math" alttext="a_{x}/2^{k}" display="inline"><mrow><msub><mi>a</mi><mi>x</mi></msub><mo>/</mo><msup><mn>2</mn><mi>k</mi></msup></mrow></math> by (<a href="#S4.E20" title="In 4.3 Trace extraction and decision bias ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">20</span></a>). This is the one-clean-qubit
+trace test <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite>.</p>
+</div>
+<div id="S4.SS3.p4" class="ltx_para">
+<p class="ltx_p">The reflection involves only the <math id="S4.SS3.p4.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> small-register qubits. Write</p>
+<table id="S4.Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex14.m1" class="ltx_math_unparsed" alttext="P_{0}=\lvert 0^{k}\rangle\langle 0^{k}\rvert=2^{-k}\sum_{S\subseteq[k]}Z_{S},\qquad Z_{S}=\prod_{j\in S}Z_{j}," display="block"><mrow><msub><mi>P</mi><mn>0</mn></msub><mo>=</mo><mrow><mo stretchy="false">|</mo><msup><mn>0</mn><mi>k</mi></msup><mo stretchy="false">⟩</mo></mrow><mrow><mo stretchy="false">⟨</mo><msup><mn>0</mn><mi>k</mi></msup><mo stretchy="false">|</mo></mrow><mo>=</mo><msup><mn>2</mn><mrow><mo>−</mo><mi>k</mi></mrow></msup><munder><mo movablelimits="false">∑</mo><mrow><mi>S</mi><mo>⊆</mo><mrow><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo></mrow></mrow></munder><msub><mi>Z</mi><mi>S</mi></msub><mo rspace="2.167em">,</mo><msub><mi>Z</mi><mi>S</mi></msub><mo rspace="0.111em">=</mo><munder><mo movablelimits="false">∏</mo><mrow><mi>j</mi><mo>∈</mo><mi>S</mi></mrow></munder><msub><mi>Z</mi><mi>j</mi></msub><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S4.SS3.p4.m2" class="ltx_Math" alttext="Z_{j}" display="inline"><msub><mi>Z</mi><mi>j</mi></msub></math> acts on the <math id="S4.SS3.p4.m3" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math>th small-register qubit and <math id="S4.SS3.p4.m4" class="ltx_Math" alttext="Z_{\varnothing}=I" display="inline"><mrow><msub><mi>Z</mi><mi mathvariant="normal">∅</mi></msub><mo>=</mo><mi>I</mi></mrow></math>.
+Since <math id="S4.SS3.p4.m5" class="ltx_Math" alttext="P_{0}" display="inline"><msub><mi>P</mi><mn>0</mn></msub></math> is a projector,
+<math id="S4.SS3.p4.m6" class="ltx_Math" alttext="2P_{0}-I=-e^{i\pi P_{0}}" display="inline"><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><msub><mi>P</mi><mn>0</mn></msub></mrow><mo>−</mo><mi>I</mi></mrow><mo>=</mo><mrow><mo>−</mo><msup><mi>e</mi><mrow><mi>i</mi><mo>⁢</mo><mi>π</mi><mo>⁢</mo><msub><mi>P</mi><mn>0</mn></msub></mrow></msup></mrow></mrow></math>.
+The exponential factors into <math id="S4.SS3.p4.m7" class="ltx_Math" alttext="2^{k}" display="inline"><msup><mn>2</mn><mi>k</mi></msup></math> commuting Pauli rotations.
+Each Pauli-string rotation has an ancilla-free implementation, and
+<math id="S4.SS3.p4.m8" class="ltx_Math" alttext="2^{k}=\operatorname{poly}(n)" display="inline"><mrow><msup><mn>2</mn><mi>k</mi></msup><mo>=</mo><mrow><mi>poly</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. In a controlled implementation, the
+leading minus sign is retained as a phase on the control; the empty-set
+term is also retained. Adding the controls on <math id="S4.SS3.p4.m9" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> and the probe leaves
+polynomial size and logarithmic-space uniformity unchanged, as detailed
+in Appendix <a href="#A1" title="Appendix A Uniform implementation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A</span></a>.
+∎</p>
+</div>
+</div>
+<div id="S4.SS3.p5" class="ltx_para">
+<p class="ltx_p">Choose</p>
+<table id="S4.E21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E21.m1" class="ltx_Math" alttext="\lambda=\frac{1}{100J^{2}K^{3}},\qquad\delta=\lambda/3,\qquad\varepsilon=\frac{\lambda}{200K}." display="block"><mrow><mrow><mrow><mi>λ</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mn>100</mn><mo>⁢</mo><msup><mi>J</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>K</mi><mn>3</mn></msup></mrow></mfrac></mrow><mo rspace="2.167em">,</mo><mrow><mi>δ</mi><mo>=</mo><mrow><mi>λ</mi><mo>/</mo><mn>3</mn></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>ε</mi><mo>=</mo><mfrac><mi>λ</mi><mrow><mn>200</mn><mo>⁢</mo><mi>K</mi></mrow></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(21)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">All three reciprocals are polynomially bounded. Equation (<a href="#S4.E19" title="In 4.3 Trace extraction and decision bias ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">19</span></a>)
+then gives</p>
+<table id="S4.E22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E22.m1" class="ltx_Math" alttext="\left|a_{x}-\lambda\frac{e_{x}}{\sqrt{K}}\right|\leq\frac{\lambda}{100K}\leq\frac{\lambda}{100\sqrt{K}}." display="block"><mrow><mrow><mrow><mo>|</mo><mrow><msub><mi>a</mi><mi>x</mi></msub><mo>−</mo><mrow><mi>λ</mi><mo>⁢</mo><mfrac><msub><mi>e</mi><mi>x</mi></msub><msqrt><mi>K</mi></msqrt></mfrac></mrow></mrow><mo>|</mo></mrow><mo>≤</mo><mfrac><mi>λ</mi><mrow><mn>100</mn><mo>⁢</mo><mi>K</mi></mrow></mfrac><mo>≤</mo><mfrac><mi>λ</mi><mrow><mn>100</mn><mo>⁢</mo><msqrt><mi>K</mi></msqrt></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(22)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">As <math id="S4.SS3.p5.m1" class="ltx_Math" alttext="1/3-1/100&gt;1/4" display="inline"><mrow><mrow><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mn>100</mn></mrow></mrow><mo>&gt;</mo><mrow><mn>1</mn><mo>/</mo><mn>4</mn></mrow></mrow></math>, we have</p>
+<table id="S4.Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex15.m1" class="ltx_Math" alttext="a_{x}\geq\frac{\lambda}{4\sqrt{K}}\quad\text{on yes instances},\qquad a_{x}\leq-\frac{\lambda}{4\sqrt{K}}\quad\text{on no instances}." display="block"><mrow><mrow><mrow><msub><mi>a</mi><mi>x</mi></msub><mo>≥</mo><mfrac><mi>λ</mi><mrow><mn>4</mn><mo>⁢</mo><msqrt><mi>K</mi></msqrt></mrow></mfrac></mrow><mspace style="width:1em;" width="1em"></mspace><mtext>on yes instances</mtext><mo rspace="2.167em">,</mo><mrow><msub><mi>a</mi><mi>x</mi></msub><mo>≤</mo><mrow><mo>−</mo><mfrac><mi>λ</mi><mrow><mn>4</mn><mo>⁢</mo><msqrt><mi>K</mi></msqrt></mrow></mfrac></mrow></mrow><mspace style="width:1em;" width="1em"></mspace><mtext>on no instances</mtext></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Accepting when the final probe is <math id="S4.SS3.p5.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, Lemma <a href="#Thmtheorem6" title="Lemma 6 (Ancillary-block trace readout). ‣ 4.3 Trace extraction and decision bias ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a> gives</p>
+<table id="S4.E23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.E23.m1" class="ltx_Math" alttext="p_{\rm yes}\geq\frac{1}{2}+\gamma,\qquad p_{\rm no}\leq\frac{1}{2}-\gamma,\qquad\gamma=\frac{\lambda}{2^{k+3}\sqrt{K}}." display="block"><mrow><mrow><mrow><msub><mi>p</mi><mi>yes</mi></msub><mo>≥</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mi>γ</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>p</mi><mi>no</mi></msub><mo>≤</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>−</mo><mi>γ</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mi>γ</mi><mo>=</mo><mfrac><mi>λ</mi><mrow><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>3</mn></mrow></msup><mo>⁢</mo><msqrt><mi>K</mi></msqrt></mrow></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(23)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">A final NOT converts this to the convention that output <math id="S4.SS3.p5.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> means
+acceptance, without another qubit.</p>
+</div>
+<div id="S4.SS3.p6" class="ltx_para">
+<p class="ltx_p">For completeness, the construction tolerates further approximation of
+target gates. Let <math id="S4.SS3.p6.m1" class="ltx_Math" alttext="N_{g}=\operatorname{poly}(n)" display="inline"><mrow><msub><mi>N</mi><mi>g</mi></msub><mo>=</mo><mrow><mi>poly</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> bound the number of
+elementary gates in the complete unitary trace circuit, and put
+<math id="S4.SS3.p6.m2" class="ltx_Math" alttext="\xi=\lambda/(2^{k+6}K)" display="inline"><mrow><mi>ξ</mi><mo>=</mo><mrow><mi>λ</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mn>2</mn><mrow><mi>k</mi><mo>+</mo><mn>6</mn></mrow></msup><mo>⁢</mo><mi>K</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Approximate each gate requiring numerical
+synthesis in operator norm by at most <math id="S4.SS3.p6.m3" class="ltx_Math" alttext="\xi/N_{g}" display="inline"><mrow><mi>ξ</mi><mo>/</mo><msub><mi>N</mi><mi>g</mi></msub></mrow></math>, retaining any exact
+source primitives as such. Telescoping products bounds the total unitary
+error by <math id="S4.SS3.p6.m4" class="ltx_Math" alttext="\xi" display="inline"><mi>ξ</mi></math>. For any input state, the change in a measurement
+probability is at most <math id="S4.SS3.p6.m5" class="ltx_Math" alttext="2\xi\leq\gamma/4" display="inline"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>ξ</mi></mrow><mo>≤</mo><mrow><mi>γ</mi><mo>/</mo><mn>4</mn></mrow></mrow></math>.
+Thus the weaker gap <math id="S4.SS3.p6.m6" class="ltx_Math" alttext="\gamma/2" display="inline"><mrow><mi>γ</mi><mo>/</mo><mn>2</mn></mrow></math> is valid for the synthesized circuit as
+well. Every required accuracy is still inverse-polynomial. Approximating
+these target operations does not alter the source channel to which the
+exact restoration hypothesis was applied.</p>
+</div>
+<div id="S4.SS3.p7" class="ltx_para">
+<p class="ltx_p">The final circuit has one clean probe and <math id="S4.SS3.p7.m1" class="ltx_Math" alttext="2c+k+1" display="inline"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>c</mi></mrow><mo>+</mo><mi>k</mi><mo>+</mo><mn>1</mn></mrow></math> maximally mixed
+qubits. The <math id="S4.SS3.p7.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> small-register qubits include every auxiliary register
+used for block encoding and filtering; the additional mixed qubit is
+<math id="S4.SS3.p7.m3" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>. No initialized measurement record or hidden clean workspace is
+used. All operations before the final probe measurement are unitary.
+The channel multiplexer, the repeated walk calls in phase estimation,
+the phase-label rotations, and the small-register reflections each
+have polynomial size. Their gate descriptions are generated with
+logarithmic-space counters and arithmetic, as justified in
+Appendix <a href="#A1" title="Appendix A Uniform implementation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A</span></a>. Padding the source and target register
+bounds as functions of <math id="S4.SS3.p7.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> gives a fixed reciprocal-polynomial lower
+bound on the bias. This proves Theorem <a href="#Thmtheorem1" title="Theorem 1. ‣ 1.1 Model and result ‣ 1 Introduction ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>; exact source
+acceptance probabilities satisfy the same separation from <math id="S4.SS3.p7.m5" class="ltx_Math" alttext="1/2" display="inline"><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></math>.</p>
+</div>
+</section>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography" style="font-size:90%;">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Harry Buhrman, Richard Cleve, Michal Koucký, Bruno Loff, and Florian Speelman.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Computing with a full memory: Catalytic space.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">In </span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Proceedings of the 46th Annual ACM Symposium on Theory
+of Computing (STOC 2014)</em><span class="ltx_text" style="font-size:90%;">, pp. 857–866, 2014.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1145/2591796.2591874" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1145/2591796.2591874</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Harry Buhrman, Marten Folkertsma, Ian Mertz, Florian Speelman,
+Sergii Strelchuk, Sathyawageeswar Subramanian, and Quinten Tupker.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Quantum catalytic space.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">In </span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">20th Conference on the Theory of Quantum Computation,
+Communication and Cryptography (TQC 2025)</em><span class="ltx_text" style="font-size:90%;">, LIPIcs </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">350</span><span class="ltx_text" style="font-size:90%;">,
+pp. 11:1–11:24, 2025.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.4230/LIPIcs.TQC.2025.11" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.4230/LIPIcs.TQC.2025.11</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Bill Fefferman and Zachary Remscrim.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Eliminating intermediate measurements in space-bounded quantum
+computation.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">In </span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Proceedings of the 53rd Annual ACM SIGACT Symposium
+on Theory of Computing (STOC 2021)</em><span class="ltx_text" style="font-size:90%;">, pp. 1343–1356, 2021.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1145/3406325.3451051" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1145/3406325.3451051</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Full version: </span><a href="https://arxiv.org/abs/2006.03530" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:2006.03530</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+E. Knill and R. Laflamme.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Power of one bit of quantum information.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Physical Review Letters</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">81</span><span class="ltx_text" style="font-size:90%;">(25), 5672–5675, 1998.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1103/PhysRevLett.81.5672" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1103/PhysRevLett.81.5672</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib5" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Dan Shepherd.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Computation with unitaries and one pure qubit.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">arXiv:quant-ph/0608132, 2006.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/quant-ph/0608132" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:quant-ph/0608132</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib6" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Chris Cade and Ashley Montanaro.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">The quantum complexity of computing Schatten </span><math id="bib.bib6.m1" class="ltx_Math" alttext="p" display="inline"><mi mathsize="0.900em">p</mi></math><span class="ltx_text" style="font-size:90%;">-norms.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">In </span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">13th Conference on the Theory of Quantum Computation,
+Communication and Cryptography (TQC 2018)</em><span class="ltx_text" style="font-size:90%;">, LIPIcs </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">111</span><span class="ltx_text" style="font-size:90%;">,
+pp. 4:1–4:20, 2018.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.4230/LIPIcs.TQC.2018.4" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.4230/LIPIcs.TQC.2018.4</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib7" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Roman Edenhofer, Atsuya Hasegawa, and François Le Gall.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Dequantization and hardness of spectral sum estimation.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">arXiv:2509.20183v1, 2025.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2509.20183v1" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:2509.20183v1</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib8" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Zhengfeng Ji, Tongyang Li, Changpeng Shao, Xinzhao Wang, and Yuxin Zhang.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">DQC1-completeness of normalized trace estimation for functions
+of log-local Hamiltonians.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Accepted to the 67th IEEE Symposium on Foundations of
+Computer Science (FOCS 2026). Preprint, arXiv:2604.01519, 2026.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/2604.01519" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:2604.01519</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib9" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Guang Hao Low and Isaac L. Chuang.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Hamiltonian simulation by qubitization.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Quantum</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">3</span><span class="ltx_text" style="font-size:90%;">, 163, 2019.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.22331/q-2019-07-12-163" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.22331/q-2019-07-12-163</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib10" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[10]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+András Gilyén, Yuan Su, Guang Hao Low, and Nathan Wiebe.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Quantum singular value transformation and beyond:
+exponential improvements for quantum matrix arithmetics.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">In </span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Proceedings of the 51st Annual ACM SIGACT Symposium
+on Theory of Computing (STOC 2019)</em><span class="ltx_text" style="font-size:90%;">, pp. 193–204, 2019.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://arxiv.org/abs/1806.01838" title="" class="ltx_ref ltx_href" style="font-size:90%;">arXiv:1806.01838</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib11" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[11]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Dorit Aharonov, Alexei Kitaev, and Noam Nisan.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Quantum circuits with mixed states.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">In </span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Proceedings of the 30th Annual ACM Symposium on
+Theory of Computing (STOC 1998)</em><span class="ltx_text" style="font-size:90%;">, pp. 20–30, 1998.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1145/276698.276708" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1145/276698.276708</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib12" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[12]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Man-Duen Choi.
+</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">Completely positive linear maps on complex matrices.
+</span>
+</span>
+<span class="ltx_bibblock"><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Linear Algebra and its Applications</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">10</span><span class="ltx_text" style="font-size:90%;">(3),
+285–290, 1975.
+</span>
+</span>
+<span class="ltx_bibblock"><a href="https://doi.org/10.1016/0024-3795(75)90075-0" title="" class="ltx_ref ltx_href" style="font-size:90%;">doi:10.1016/0024-3795(75)90075-0</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+    
+</ul>
+</section>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<section id="A1" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix"><span class="ltx_tag ltx_tag_appendix">Appendix A </span>Uniform implementation</h2>
+
+<section id="A1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">A.1 </span>Compiling the adaptive source</h3>
+
+<div id="A1.SS1.p1" class="ltx_para">
+<p class="ltx_p">A computational-basis measurement of a qubit <math id="A1.SS1.p1.m1" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> with a retained outcome
+is the channel obtained by resetting a work bit <math id="A1.SS1.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> to <math id="A1.SS1.p1.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, applying
+<math id="A1.SS1.p1.m4" class="ltx_Math" alttext="\mathrm{CNOT}_{q\to b}" display="inline"><msub><mi>CNOT</mi><mrow><mi>q</mi><mo stretchy="false">→</mo><mi>b</mi></mrow></msub></math>, and dephasing <math id="A1.SS1.p1.m5" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>.
+On an input operator <math id="A1.SS1.p1.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> this gives
+<math id="A1.SS1.p1.m7" class="ltx_math_unparsed" alttext="\sum_{u\in\{0,1\}}P_{u}XP_{u}\otimes\lvert u\rangle\langle u\rvert_{b}" display="inline"><mrow><msub><mo>∑</mo><mrow><mi>u</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></msub><msub><mi>P</mi><mi>u</mi></msub><mi>X</mi><msub><mi>P</mi><mi>u</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mrow><mo stretchy="false">|</mo><mi>u</mi><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><mi>u</mi><mo stretchy="false">|</mo></mrow><mi>b</mi></msub></mrow></math>, where
+<math id="A1.SS1.p1.m8" class="ltx_math_unparsed" alttext="P_{u}=\lvert u\rangle\langle u\rvert_{q}\otimes I" display="inline"><mrow><msub><mi>P</mi><mi>u</mi></msub><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>u</mi><mo stretchy="false">⟩</mo></mrow><msub><mrow><mo stretchy="false">⟨</mo><mi>u</mi><mo rspace="0.055em" stretchy="false">|</mo></mrow><mi>q</mi></msub><mo rspace="0.222em">⊗</mo><mi>I</mi></mrow></math> on the measured system and its other registers.
+This is exactly the measurement instrument, including its effect on
+correlations. Overwriting an outcome is a reset on its work bit.</p>
+</div>
+<div id="A1.SS1.p2" class="ltx_para">
+<p class="ltx_p">A logspace classical controller has polynomially many configurations.
+Its live tape, internal state, and input and quantum-tape head positions
+occupy <math id="A1.SS1.p2.m1" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> bits. During one simulated transition, keep its old
+configuration fixed. Scan all relevant gate types and tape addresses,
+using equality tests on the old configuration to select the prescribed
+operation. The addresses occupy logarithmic space because the input and
+catalytic tape lengths are polynomial. Exactly the selected operation
+acts on each classical branch; the configuration is not updated midway
+through the scan.</p>
+</div>
+<div id="A1.SS1.p3" class="ltx_para">
+<p class="ltx_p">Conditional measurements are handled by conditionally copying the
+addressed basis value into a zero work bit and then dephasing that bit.
+For a conditional reset, first reset a temporary work qubit to <math id="A1.SS1.p3.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>,
+conditionally swap it with the addressed qubit, and reset the temporary
+qubit again. On the inactive branch the addressed qubit is unchanged;
+on the active branch it is reset. The condition is classical on all
+reachable configurations. These implementations are nevertheless
+compositions of unitaries, dephasings, and resets on the entire Hilbert
+space, so they define CPTP maps even on unreachable inputs.</p>
+</div>
+<div id="A1.SS1.p4" class="ltx_para">
+<p class="ltx_p">Compute the new classical configuration into a second logarithmic
+register using reversible Boolean gates, the old configuration, the
+outcome bits, and the read-only input. Uncompute the temporary equality
+flags, reset the old configuration and expired outcomes, and exchange
+the roles of the two configuration registers. Invalid encodings may be
+assigned a fixed halting transition. Halting configurations use identity
+operations, permitting padding to the worst-case polynomial time bound.
+All temporary registers are logarithmic and can be reset and reused in
+the source. The scan, the controller transition, and their local-gate
+decompositions have logspace-generated polynomial-length descriptions.
+This proves the fixed-channel representation (<a href="#S2.E2" title="In 2 The catalytic trace identity ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>) without
+assuming any initialized history outside the work-space bound.</p>
+</div>
+</section>
+<section id="A1.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">A.2 </span>Controls and circuit generation</h3>
+
+<div id="A1.SS2.p1" class="ltx_para">
+<p class="ltx_p">The target construction can implement all its controls without initialized
+scratch qubits. For a specified <math id="A1.SS2.p1.m1" class="ltx_Math" alttext="\ell" display="inline"><mi mathvariant="normal">ℓ</mi></math>-bit control string, let</p>
+<table id="A1.Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex16.m1" class="ltx_Math" alttext="P_{\rm ctrl}=\prod_{j=1}^{\ell}\frac{I+\sigma_{j}Z_{j}}{2},\qquad\sigma_{j}\in\{-1,1\}." display="block"><mrow><mrow><mrow><msub><mi>P</mi><mi>ctrl</mi></msub><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∏</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">ℓ</mi></munderover><mfrac><mrow><mi>I</mi><mo>+</mo><mrow><msub><mi>σ</mi><mi>j</mi></msub><mo>⁢</mo><msub><mi>Z</mi><mi>j</mi></msub></mrow></mrow><mn>2</mn></mfrac></mrow></mrow><mo rspace="2.167em">,</mo><mrow><msub><mi>σ</mi><mi>j</mi></msub><mo>∈</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">A rotation conditioned on this string has generator
+<math id="A1.SS2.p1.m2" class="ltx_Math" alttext="P_{\rm ctrl}\otimes A" display="inline"><mrow><msub><mi>P</mi><mi>ctrl</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>A</mi></mrow></math>, where <math id="A1.SS2.p1.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is a one-qubit Pauli matrix.
+Expanding the product gives <math id="A1.SS2.p1.m4" class="ltx_Math" alttext="2^{\ell}" display="inline"><msup><mn>2</mn><mi mathvariant="normal">ℓ</mi></msup></math> mutually commuting Pauli strings,
+so exponentiating the sum gives a product of Pauli-string rotations.
+Each such rotation is implemented by changing the Pauli bases to <math id="A1.SS2.p1.m5" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math>,
+computing parity onto one of its participating qubits with CNOT gates,
+rotating that qubit, and undoing the parity computation and basis changes.
+This uses no extra qubit. Purely diagonal phase gates are treated by the
+same expansion. In particular, a controlled NOT is exactly</p>
+<table id="A1.Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex17.m1" class="ltx_math_unparsed" alttext="\exp\!\left[-\frac{i\pi}{2}P_{\rm ctrl}\otimes(X-I)\right]," display="block"><mrow><mpadded style="width:1.370em;" width="1.370em"><mi>exp</mi></mpadded><mrow><mo>[</mo><mo lspace="0em">−</mo><mfrac><mrow><mi>i</mi><mo>⁢</mo><mi>π</mi></mrow><mn>2</mn></mfrac><msub><mi>P</mi><mi>ctrl</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>−</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><mo>]</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">which keeps the relative phase that would be lost by replacing <math id="A1.SS2.p1.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> with
+a Pauli rotation alone.</p>
+</div>
+<div id="A1.SS2.p2" class="ltx_para">
+<p class="ltx_p">In every application, <math id="A1.SS2.p2.m1" class="ltx_Math" alttext="\ell=O(\log n)" display="inline"><mrow><mi mathvariant="normal">ℓ</mi><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, so enumerating the subsets and
+their signed coefficients costs polynomial time and logarithmic space.
+Cyclic clock increments can be decomposed into successive controlled
+bit flips. Phase-label controls, the history selectors, and the
+reflections use the same construction. All scalar phases are retained
+when a unitary is subsequently controlled. Additional constant-local
+source primitives are handled under the gate-description closure
+convention stated in the introduction. Their controls from the clock,
+selectors, and phase estimation together still have logarithmic length.</p>
+</div>
+<div id="A1.SS2.p3" class="ltx_para">
+<p class="ltx_p">An indexed source gate can be recovered by replaying the source’s
+logspace generator with a gate counter. The inverse of a polynomial gate
+list is generated by replaying this procedure in reverse index order
+and taking each gate’s adjoint. Complex conjugation is gatewise. Nested
+loops for the clock multiplexer and the phase-estimation powers require
+only a fixed number of polynomially bounded counters. They therefore
+preserve deterministic logspace uniformity.</p>
+</div>
+</section>
+<section id="A1.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_tag ltx_tag_subsection">A.3 </span>Angles and precision</h3>
+
+<div id="A1.SS3.p1" class="ltx_para">
+<p class="ltx_p">Only the extra target angles require numerical evaluation by the
+compiler. The fixed selector weights, the Fourier phases, the reflection
+phases, and the phase-filter rotations can all be evaluated with
+<math id="A1.SS3.p1.m1" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> bits of precision. To make the latter claim explicit, reduce
+the argument of cosine to <math id="A1.SS3.p1.m2" class="ltx_Math" alttext="[-\pi,\pi]" display="inline"><mrow><mo stretchy="false">[</mo><mrow><mrow><mo>−</mo><mi>π</mi></mrow><mo>,</mo><mi>π</mi></mrow><mo stretchy="false">]</mo></mrow></math> and use its Taylor series.
+After <math id="A1.SS3.p1.m3" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> terms the error is at most
+<math id="A1.SS3.p1.m4" class="ltx_Math" alttext="\pi^{2r}/(2r)!" display="inline"><mrow><msup><mi>π</mi><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></msup><mo>/</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow><mo stretchy="false">)</mo></mrow><mo>!</mo></mrow></mrow></math>. For inverse-polynomial error, <math id="A1.SS3.p1.m5" class="ltx_Math" alttext="r=O(\log n)" display="inline"><mrow><mi>r</mi><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> suffices.
+The terms can be generated one at a time by their recurrence, maintaining
+only the current term and partial sum. A logspace-computable value of
+<math id="A1.SS3.p1.m6" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math> can be obtained, for example, from
+<math id="A1.SS3.p1.m7" class="ltx_Math" alttext="\pi=16\arctan(1/5)-4\arctan(1/239)" display="inline"><mrow><mi>π</mi><mo>=</mo><mrow><mrow><mn>16</mn><mo lspace="0.167em">⁢</mo><mrow><mi>arctan</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mn>5</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>−</mo><mrow><mn>4</mn><mo lspace="0.167em">⁢</mo><mrow><mi>arctan</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mn>239</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></math> and the geometrically convergent
+arctangent series.</p>
+</div>
+<div id="A1.SS3.p2" class="ltx_para">
+<p class="ltx_p">If <math id="A1.SS3.p2.m1" class="ltx_Math" alttext="t=\cos\theta" display="inline"><mrow><mi>t</mi><mo>=</mo><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow></math> is perturbed by <math id="A1.SS3.p2.m2" class="ltx_Math" alttext="\nu" display="inline"><mi>ν</mi></math>, the filter value
+<math id="A1.SS3.p2.m3" class="ltx_Math" alttext="\delta t/(t^{2}+\delta^{2})" display="inline"><mrow><mrow><mi>δ</mi><mo>⁢</mo><mi>t</mi></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><msup><mi>δ</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math> changes by at most <math id="A1.SS3.p2.m4" class="ltx_Math" alttext="|\nu|/\delta" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>ν</mi><mo stretchy="false">|</mo></mrow><mo>/</mo><mi>δ</mi></mrow></math>.
+The quotient can also be evaluated directly with guard bits, since
+its denominator is at least <math id="A1.SS3.p2.m5" class="ltx_Math" alttext="\delta^{2}" display="inline"><msup><mi>δ</mi><mn>2</mn></msup></math>. Both losses are polynomial.
+After evaluating the quotient, clip its approximation to <math id="A1.SS3.p2.m6" class="ltx_math_unparsed" alttext="[-1/2,1/2]" display="inline"><mrow><mo stretchy="false">[</mo><mo lspace="0em">−</mo><mn>1</mn><mo>/</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>/</mo><mn>2</mn><mo stretchy="false">]</mo></mrow></math>;
+this does not increase its error relative to the exact filter value.
+On this interval, <math id="A1.SS3.p2.m7" class="ltx_Math" alttext="|\frac{d}{du}\arccos u|\leq 2/\sqrt{3}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mo>⁢</mo><mi>u</mi></mrow></mfrac><mo lspace="0.167em">⁢</mo><mrow><mi>arccos</mi><mo lspace="0.167em">⁡</mo><mi>u</mi></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mrow><mn>2</mn><mo>/</mo><msqrt><mn>3</mn></msqrt></mrow></mrow></math>.
+Evaluate <math id="A1.SS3.p2.m8" class="ltx_Math" alttext="\arccos u=\pi/2-\arcsin u" display="inline"><mrow><mrow><mi>arccos</mi><mo lspace="0.167em">⁡</mo><mi>u</mi></mrow><mo>=</mo><mrow><mrow><mi>π</mi><mo>/</mo><mn>2</mn></mrow><mo>−</mo><mrow><mi>arcsin</mi><mo lspace="0.167em">⁡</mo><mi>u</mi></mrow></mrow></mrow></math> using</p>
+<table id="A1.Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex18.m1" class="ltx_Math" alttext="\arcsin u=\sum_{r=0}^{\infty}\frac{\binom{2r}{r}}{4^{r}(2r+1)}u^{2r+1}." display="block"><mrow><mrow><mrow><mi>arcsin</mi><mo lspace="0.167em">⁡</mo><mi>u</mi></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mrow><mfrac><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow><mi>r</mi></mfrac><mo>)</mo></mrow><mrow><msup><mn>4</mn><mi>r</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>⁢</mo><msup><mi>u</mi><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow><mo>+</mo><mn>1</mn></mrow></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For <math id="A1.SS3.p2.m9" class="ltx_Math" alttext="|u|\leq 1/2" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>u</mi><mo stretchy="false">|</mo></mrow><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></math>, the absolute tail after <math id="A1.SS3.p2.m10" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> terms is bounded by a
+constant times <math id="A1.SS3.p2.m11" class="ltx_Math" alttext="4^{-r}" display="inline"><msup><mn>4</mn><mrow><mo>−</mo><mi>r</mi></mrow></msup></math>. Again logarithmically many terms suffice, and
+the summands <math id="A1.SS3.p2.m12" class="ltx_Math" alttext="a_{r}" display="inline"><msub><mi>a</mi><mi>r</mi></msub></math> obey
+<math id="A1.SS3.p2.m13" class="ltx_Math" alttext="a_{r+1}=a_{r}u^{2}(2r+1)^{2}/[2(r+1)(2r+3)]" display="inline"><mrow><msub><mi>a</mi><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mrow><msub><mi>a</mi><mi>r</mi></msub><mo>⁢</mo><msup><mi>u</mi><mn>2</mn></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>/</mo><mrow><mo stretchy="false">[</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math> with <math id="A1.SS3.p2.m14" class="ltx_Math" alttext="a_{0}=u" display="inline"><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>=</mo><mi>u</mi></mrow></math>.
+Thus only the previous summand, the partial sum, and an index are needed.</p>
+</div>
+<div id="A1.SS3.p3" class="ltx_para">
+<p class="ltx_p">Fixed-precision addition, multiplication, and division on
+<math id="A1.SS3.p3.m1" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>-bit registers can be performed by schoolbook algorithms
+using <math id="A1.SS3.p3.m2" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> work bits and polynomial time. The series require
+only a constant number of such registers and a logarithmic counter.
+Polynomial error amplification and logarithmically many rounding steps
+are absorbed by choosing a sufficiently large constant in the
+<math id="A1.SS3.p3.m3" class="ltx_Math" alttext="O(\log n)" display="inline"><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> precision bound. The number of controlled rotations emitted
+is polynomial, so allocating reciprocal-polynomial error to each gate
+also keeps the aggregate error within Lemma <a href="#Thmtheorem5" title="Lemma 5 (Coherent spectral filter). ‣ 4.2 Coherent spectral filtering ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a> and the
+budget following (<a href="#S4.E23" title="In 4.3 Trace extraction and decision bias ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">23</span></a>). This numerical work is performed
+by the classical circuit generator, not by a hidden clean quantum
+register. No eigenvalue computation or phase-finding procedure on a
+classically supplied matrix is needed.</p>
+</div>
+</section>
+</section>
+<section id="A2" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix"><span class="ltx_tag ltx_tag_appendix">Appendix B </span>A phase-estimation error bound</h2>
+
+<div id="A2.p1" class="ltx_para">
+<p class="ltx_p">For an eigenphase <math id="A2.p1.m1" class="ltx_Math" alttext="2\pi\varphi" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>φ</mi></mrow></math> of <math id="A2.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, phase estimation with
+<math id="A2.p1.m3" class="ltx_Math" alttext="M=2^{m}" display="inline"><mrow><mi>M</mi><mo>=</mo><msup><mn>2</mn><mi>m</mi></msup></mrow></math> labels has amplitudes</p>
+<table id="A2.Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A2.Ex19.m1" class="ltx_Math" alttext="\alpha_{j}(\varphi)=\frac{1}{M}\sum_{r=0}^{M-1}e^{2\pi ir(\varphi-j/M)}." display="block"><mrow><mrow><mrow><msub><mi>α</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>φ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mi>M</mi></mfrac><mo>⁢</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>M</mi><mo>−</mo><mn>1</mn></mrow></munderover><msup><mi>e</mi><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>φ</mi><mo>−</mo><mrow><mi>j</mi><mo>/</mo><mi>M</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">If the circular distance between <math id="A2.p1.m4" class="ltx_Math" alttext="\varphi" display="inline"><mi>φ</mi></math> and <math id="A2.p1.m5" class="ltx_Math" alttext="j/M" display="inline"><mrow><mi>j</mi><mo>/</mo><mi>M</mi></mrow></math> is
+<math id="A2.p1.m6" class="ltx_Math" alttext="0&lt;\Delta\leq 1/2" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi mathvariant="normal">Δ</mi><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></math>, the geometric-sum formula and
+<math id="A2.p1.m7" class="ltx_Math" alttext="|\sin(\pi\Delta)|\geq 2\Delta" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>π</mi><mo>⁢</mo><mi mathvariant="normal">Δ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mn>2</mn><mo>⁢</mo><mi mathvariant="normal">Δ</mi></mrow></mrow></math> give</p>
+<table id="A2.Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A2.Ex20.m1" class="ltx_Math" alttext="|\alpha_{j}(\varphi)|^{2}\leq\frac{1}{4M^{2}\Delta^{2}}." display="block"><mrow><mrow><msup><mrow><mo stretchy="false">|</mo><mrow><msub><mi>α</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>φ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><mo>≤</mo><mfrac><mn>1</mn><mrow><mn>4</mn><mo>⁢</mo><msup><mi>M</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi mathvariant="normal">Δ</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Fix <math id="A2.p1.m8" class="ltx_Math" alttext="0&lt;\zeta\leq 1/2" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>ζ</mi><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></math> with <math id="A2.p1.m9" class="ltx_Math" alttext="M\zeta\geq 1" display="inline"><mrow><mrow><mi>M</mi><mo>⁢</mo><mi>ζ</mi></mrow><mo>≥</mo><mn>1</mn></mrow></math>.
+On either side of <math id="A2.p1.m10" class="ltx_Math" alttext="\varphi" display="inline"><mi>φ</mi></math> around the circle, the quantities
+<math id="A2.p1.m11" class="ltx_Math" alttext="M\Delta" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mi mathvariant="normal">Δ</mi></mrow></math> for labels with <math id="A2.p1.m12" class="ltx_Math" alttext="\Delta&gt;\zeta" display="inline"><mrow><mi mathvariant="normal">Δ</mi><mo>&gt;</mo><mi>ζ</mi></mrow></math> form a truncated sequence
+whose successive terms differ by <math id="A2.p1.m13" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and whose first term is at least
+<math id="A2.p1.m14" class="ltx_Math" alttext="M\zeta" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mi>ζ</mi></mrow></math>. Thus the failure probability is at most</p>
+<table id="A2.Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A2.Ex21.m1" class="ltx_Math" alttext="\frac{1}{2}\sum_{r=0}^{\infty}\frac{1}{(M\zeta+r)^{2}}\leq\frac{1}{2}\left(\frac{1}{(M\zeta)^{2}}+\frac{1}{M\zeta}\right)\leq\frac{1}{M\zeta}." display="block"><mrow><mrow><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>M</mi><mo>⁢</mo><mi>ζ</mi></mrow><mo>+</mo><mi>r</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mrow></mrow><mo>≤</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mo>(</mo><mrow><mfrac><mn>1</mn><msup><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>⁢</mo><mi>ζ</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><mn>1</mn><mrow><mi>M</mi><mo>⁢</mo><mi>ζ</mi></mrow></mfrac></mrow><mo>)</mo></mrow></mrow><mo>≤</mo><mfrac><mn>1</mn><mrow><mi>M</mi><mo>⁢</mo><mi>ζ</mi></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">The middle inequality follows by bounding the sum after its first term
+by the integral of <math id="A2.p1.m15" class="ltx_Math" alttext="u\mapsto(M\zeta+u)^{-2}" display="inline"><mrow><mi>u</mi><mo stretchy="false">↦</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>M</mi><mo>⁢</mo><mi>ζ</mi></mrow><mo>+</mo><mi>u</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></math> over <math id="A2.p1.m16" class="ltx_Math" alttext="[0,\infty)" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+<div id="A2.p2" class="ltx_para">
+<p class="ltx_p">Take <math id="A2.p2.m1" class="ltx_Math" alttext="\zeta=\varepsilon\delta/(32\pi)" display="inline"><mrow><mi>ζ</mi><mo>=</mo><mrow><mrow><mi>ε</mi><mo>⁢</mo><mi>δ</mi></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mn>32</mn><mo>⁢</mo><mi>π</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and let <math id="A2.p2.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be the least power of two
+at least <math id="A2.p2.m3" class="ltx_Math" alttext="4096/(\delta\varepsilon^{2})" display="inline"><mrow><mn>4096</mn><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>δ</mi><mo>⁢</mo><msup><mi>ε</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+On the event of circular error at most <math id="A2.p2.m4" class="ltx_Math" alttext="\zeta" display="inline"><mi>ζ</mi></math>, the change in
+<math id="A2.p2.m5" class="ltx_Math" alttext="g_{\delta}" display="inline"><msub><mi>g</mi><mi>δ</mi></msub></math> is at most <math id="A2.p2.m6" class="ltx_Math" alttext="2\pi\zeta/\delta=\varepsilon/16" display="inline"><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>ζ</mi></mrow><mo>/</mo><mi>δ</mi></mrow><mo>=</mo><mrow><mi>ε</mi><mo>/</mo><mn>16</mn></mrow></mrow></math>.
+On the complementary event it is at most <math id="A2.p2.m7" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, while that event has
+probability at most <math id="A2.p2.m8" class="ltx_Math" alttext="1/(M\zeta)\leq\pi\varepsilon/128&lt;\varepsilon/16" display="inline"><mrow><mrow><mn>1</mn><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>⁢</mo><mi>ζ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mrow><mi>π</mi><mo>⁢</mo><mi>ε</mi></mrow><mo>/</mo><mn>128</mn></mrow><mo>&lt;</mo><mrow><mi>ε</mi><mo>/</mo><mn>16</mn></mrow></mrow></math>.
+The error in the ideal phase average (<a href="#S4.E16" title="In 4.2 Coherent spectral filtering ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">16</span></a>) is
+therefore at most <math id="A2.p2.m9" class="ltx_Math" alttext="\varepsilon/8" display="inline"><mrow><mi>ε</mi><mo>/</mo><mn>8</mn></mrow></math>, uniformly over all eigenphases.
+This leaves room for the rotation and elementary-gate errors in
+Lemma <a href="#Thmtheorem5" title="Lemma 5 (Coherent spectral filter). ‣ 4.2 Coherent spectral filtering ‣ 4 The one-clean-qubit simulation ‣ One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>. The choices give
+<math id="A2.p2.m10" class="ltx_Math" alttext="m=O(\log(1/(\delta\varepsilon^{2})))" display="inline"><mrow><mi>m</mi><mo>=</mo><mrow><mi>O</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>log</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>δ</mi><mo>⁢</mo><msup><mi>ε</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and polynomially many walk calls.</p>
+</div>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:subject" content="Logspace-uniform simulation with exact quantum catalysts"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="One-Clean-Qubit Simulation of Quantum Catalytic Logspace with Measurements"></div>
+
+</article>
+{% endraw %}

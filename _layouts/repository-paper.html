@@ -1,0 +1,34 @@
+---
+layout: mondrian-home
+---
+
+<nav class="repository-paper-navigation" aria-label="Repository navigation">
+  <a href="{{ '/repository.html' | relative_url }}"><span aria-hidden="true">←</span> Repository</a>
+</nav>
+
+<header class="repository-paper-header">
+  <p class="repository-paper-kicker">Repository · Full text</p>
+  <h1>{{ page.repository_title_html | default: page.title }}</h1>
+  <div class="repository-paper-toolbar">
+    {% if page.pdf and page.pdf != '' %}
+    {% assign pdf_url = page.pdf %}
+    {% unless pdf_url contains '://' %}{% assign pdf_url = pdf_url | relative_url %}{% endunless %}
+    <a class="repository-paper-pdf" href="{{ pdf_url | escape }}">Read PDF <span aria-hidden="true">↗</span></a>
+    {% endif %}
+    <p class="repository-paper-version">
+      {% if page.repository_version %}HTML version {{ page.repository_version | escape }}{% endif %}
+      {% if page.repository_version and page.repository_added %}<span aria-hidden="true"> · </span>{% endif %}
+      {% if page.repository_added %}Added <time datetime="{{ page.repository_added | date: '%Y-%m-%d' }}">{{ page.repository_added | date: '%B %-d, %Y' }}</time>{% endif %}
+    </p>
+  </div>
+  <p class="repository-paper-disclaimer">Papers are listed without authors and are not intended for submission or formal publication.</p>
+</header>
+
+<div class="repository-paper-content">
+  {{ content }}
+</div>
+
+<nav class="repository-paper-end-navigation" aria-label="After the paper">
+  <a href="{{ '/repository.html' | relative_url }}"><span aria-hidden="true">←</span> All papers</a>
+  <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+</nav>

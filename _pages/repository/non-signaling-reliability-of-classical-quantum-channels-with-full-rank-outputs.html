@@ -1,0 +1,773 @@
+---
+layout: "repository-paper"
+title: "Non-signaling reliability of classical–quantum channels with full-rank outputs"
+repository_title_html: "Non-signaling reliability of classical–quantum channels\n<br class=\"ltx_break\">with full-rank outputs"
+description: "We prove that non-signaling assistance attains the sphere-packing error exponent for every finite classical–quantum channel with full-rank output states, at every strictly positive rate below the Holevo capacity. Thus,"
+permalink: "/repository/non-signaling-reliability-of-classical-quantum-channels-with-full-rank-outputs/"
+pdf: "/files/repository/NSR-non_signaling_reliability_of_classical_quantum_channels_with_full_rank_outputs.pdf"
+repository_added: "2026-09-19"
+repository_version: 1
+repository_fulltext: true
+profile_reveals: false
+schema_type: "ScholarlyArticle"
+---
+
+<details class="repository-toc">
+  <summary>Contents</summary>
+  <nav aria-label="Paper contents"><ol>
+<li class="repository-toc-section"><a href="#S1">1 Introduction</a></li>
+<li class="repository-toc-section"><a href="#S2">2 Coding programs and effect completion</a></li>
+<li class="repository-toc-section"><a href="#S3">3 Passage to reliability exponents</a></li>
+<li class="repository-toc-bibliography"><a href="#bib">References</a></li>
+<li class="repository-toc-appendix"><a href="#A1">Appendix A Operational form of the non-signaling program</a></li>
+  </ol></nav>
+</details>
+
+{% raw %}
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Non-signaling reliability of classical–quantum channels
+<br class="ltx_break">with full-rank outputs</h1>
+
+<div id="abstract1" class="ltx_abstract"><h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+    
+<p class="ltx_p">We prove that non-signaling assistance attains the sphere-packing error
+exponent for every finite classical–quantum channel with full-rank output
+states, at every strictly positive rate below the Holevo capacity. Thus, in
+this setting, the auxiliary noiseless bit in the activated reliability
+theorem of Oufkir, Tomamichel, and Berta (Lett. Math. Phys., 2026) is
+unnecessary. The main result is a dimension-independent one-shot comparison:
+for every finite classical–quantum channel <math id="abstract1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and integer <math id="abstract1.m2" class="ltx_Math" alttext="M\geq 2" display="inline"><mrow><mi>M</mi><mo>≥</mo><mn>2</mn></mrow></math>,
+<math id="abstract1.m3" class="ltx_Math" alttext="\varepsilon_{\mathrm{MC}}(M,V)\leq\varepsilon_{\mathrm{NS}}(M,V)\leq\varepsilon_{\mathrm{MC}}(M+6,V)" display="inline"><mrow><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, where <math id="abstract1.m4" class="ltx_Math" alttext="\varepsilon_{\mathrm{NS}}" display="inline"><msub><mi>ε</mi><mi>NS</mi></msub></math> is the optimal
+non-signaling error and <math id="abstract1.m5" class="ltx_Math" alttext="\varepsilon_{\mathrm{MC}}" display="inline"><msub><mi>ε</mi><mi>MC</mi></msub></math> its meta-converse relaxation. We obtain the
+upper bound by completing the operator normalization of a relaxed decoding
+family while preserving its input distribution and increasing every effect
+in the positive-semidefinite order. The correction is determined by a linear
+map close to the identity; the message-count slack gives spectral margins
+that keep the solution between zero and the identity. Unlike an additive
+error estimate, this comparison preserves exponentially small errors. The
+one-shot result also holds for singular output states. For full-rank
+channels, continuity of the sphere-packing function transfers the known
+meta-converse exponent to non-signaling coding and yields ordinary limits
+for both assisted models with exactly <math id="abstract1.m6" class="ltx_Math" alttext="\lceil 2^{nR}\rceil" display="inline"><mrow><mo stretchy="false">⌈</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>⁢</mo><mi>R</mi></mrow></msup><mo stretchy="false">⌉</mo></mrow></math> messages.</p>
+  
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"></p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Note.</span> This paper was generated entirely by AI, including MiMo, using an automated research pipeline developed by Chenghua Liu and Hanyu Li.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">A finite classical–quantum (cq) channel maps each letter of a finite input
+alphabet to a density operator on a finite-dimensional output space. Its
+reliability function describes the exponential decay of the optimal decoding
+error at a fixed communication rate below capacity. To determine this
+exponent from a converse relaxation, an achievability argument must preserve
+errors that are already exponentially small. An additive discrepancy that
+vanishes with the block length need not suffice. For non-signaling-assisted
+cq coding, the coding program and its meta-converse relaxation differ only
+by an operator normalization constraint. We show that this constraint can
+be imposed without increasing the error, at the cost of a fixed reduction
+in the number of messages.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">For classical channels, Matthews <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite> identified the optimum over
+non-signaling codes with the finite-blocklength converse of Polyanskiy,
+Poor, and Verdú. Wang, Xie, and Duan <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>]</cite> developed semidefinite
+formulations for non-signaling-assisted coding over quantum channels.
+Wang, Fang, and Tomamichel <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>]</cite> showed that a single auxiliary noiseless
+classical bit suffices to attain the meta-converse after accounting for the
+communication supplied by that bit. For cq channels, Oufkir, Tomamichel,
+and Berta <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite> determined the resulting activated reliability function
+and proved that it equals the sphere-packing exponent. They also removed
+activation for channels with positive non-signaling zero-error capacity and,
+more generally, above a specified rate threshold
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Propositions 5.1 and 5.2]</cite>. These results do not cover all low
+positive rates for general full-rank output states.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The sphere-packing exponent was established as an unassisted converse bound
+by Dalai <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite>. Renes <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>]</cite> and Li and Yang <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib7" title="" class="ltx_ref">7</a>]</cite> proved
+unassisted achievability of the random-coding exponent, which matches the
+sphere-packing bound above the critical rate. Cheng and Liu <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>]</cite>
+subsequently obtained a one-shot random-coding bound through an operator
+layer cake theorem. These results concern unassisted coding. Here the
+additional power of non-signaling assistance allows us to attain the
+sphere-packing exponent also at low positive rates for full-rank channels.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">A different comparison between non-signaling coding and the meta-converse
+was proved by Oufkir and Berta <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib9" title="" class="ltx_ref">9</a>, Proposition 8]</cite>. In terms of error
+probabilities, their success-probability bound gives</p>
+<table id="S1.E1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E1.m1" class="ltx_Math" alttext="\varepsilon_{\mathrm{NS}}(M,V)\leq\varepsilon_{\mathrm{MC}}(M,V)+\frac{1-\varepsilon_{\mathrm{MC}}(M,V)}{M}\leq\varepsilon_{\mathrm{MC}}(M,V)+\frac{1}{M}." display="block"><mrow><mrow><mrow><msub><mi>ε</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mi>M</mi></mfrac></mrow><mo>≤</mo><mrow><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mfrac><mn>1</mn><mi>M</mi></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">This estimate is useful for strong-converse exponents, where the success
+probability is small. In the reliability regime, however, the additive
+term <math id="S1.p4.m1" class="ltx_Math" alttext="1/M" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>M</mi></mrow></math> has exponent equal to the rate and need not preserve a larger
+error exponent. We instead compare errors at message counts differing by
+an absolute constant.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Write <math id="S1.p5.m1" class="ltx_Math" alttext="\varepsilon_{\mathrm{NS}}(M,V)" display="inline"><mrow><msub><mi>ε</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> for the minimum average error in transmitting one of <math id="S1.p5.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+equiprobable messages through <math id="S1.p5.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> with non-signaling assistance, and
+<math id="S1.p5.m4" class="ltx_Math" alttext="\varepsilon_{\mathrm{MC}}(M,V)" display="inline"><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> for its meta-converse relaxation. Their optimization programs
+are given in Section <a href="#S2" title="2 Coding programs and effect completion ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>.</p>
+</div>
+<div id="Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1</span></span><span class="ltx_text ltx_font_bold"> </span>(One-shot comparison)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For every finite cq channel <math id="Thmtheorem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and integer <math id="Thmtheorem1.p1.m2" class="ltx_Math" alttext="M\geq 2" display="inline"><mrow><mi>M</mi><mo>≥</mo><mn>2</mn></mrow></math>,</span></p>
+<table id="S1.E2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E2.m1" class="ltx_Math" alttext="\varepsilon_{\mathrm{MC}}(M,V)\leq\varepsilon_{\mathrm{NS}}(M,V)\leq\varepsilon_{\mathrm{MC}}(M+6,V)." display="block"><mrow><mrow><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">The bound is uniform in the input alphabet and output dimension and imposes
+no rank assumption on the output states. The constant six is sufficient for
+the spectral estimates in the proof; we do not claim that it is optimal.</p>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">To state the asymptotic consequence, let <math id="S1.p7.m1" class="ltx_Math" alttext="W:x\mapsto\rho_{x}" display="inline"><mrow><mi>W</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>x</mi><mo stretchy="false">↦</mo><msub><mi>ρ</mi><mi>x</mi></msub></mrow></mrow></math> have output
+space <math id="S1.p7.m2" class="ltx_Math" alttext="\mathcal{H}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi></math>. Write <math id="S1.p7.m3" class="ltx_Math" alttext="\mathcal{P}(\mathcal{X})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">X</mi><mo stretchy="false">)</mo></mrow></mrow></math> for the input probability
+distributions and <math id="S1.p7.m4" class="ltx_Math" alttext="\mathcal{S}(\mathcal{H})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">S</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mo stretchy="false">)</mo></mrow></mrow></math> for the density operators on
+<math id="S1.p7.m5" class="ltx_Math" alttext="\mathcal{H}" display="inline"><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi></math>. All logarithms are base two. With
+<math id="S1.p7.m6" class="ltx_Math" alttext="S(\rho)=-\Tr\rho\log_{2}\rho" display="inline"><mrow><mrow><mi>S</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo rspace="0.167em">−</mo><mrow><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mi>ρ</mi></mrow><mo lspace="0.167em">⁢</mo><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0.167em">⁢</mo><mi>ρ</mi></mrow></mrow></mrow></math>, the Holevo capacity is</p>
+<table id="S1.E3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E3.m1" class="ltx_Math" alttext="C(W)=\max_{p\in\mathcal{P}(\mathcal{X})}\left\{S\!\left(\sum_{x}p(x)\rho_{x}\right)-\sum_{x}p(x)S(\rho_{x})\right\}." display="block"><mrow><mrow><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><munder><mi>max</mi><mrow><mi>p</mi><mo>∈</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></munder><mo>⁡</mo><mrow><mo>{</mo><mrow><mrow><mpadded style="width:0.501em;" width="0.501em"><mi>S</mi></mpadded><mo>⁡</mo><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>x</mi></munder><mrow><mrow><mi>p</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msub><mi>ρ</mi><mi>x</mi></msub></mrow></mrow><mo>)</mo></mrow></mrow><mo rspace="0.055em">−</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><mrow><mi>p</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>ρ</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">For <math id="S1.p7.m7" class="ltx_Math" alttext="0&lt;\alpha&lt;1" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>α</mi><mo>&lt;</mo><mn>1</mn></mrow></math>, define the Petz Rényi divergence and the order-<math id="S1.p7.m8" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>
+channel capacity by</p>
+<table id="S1.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S1.E4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S1.E4.m1" class="ltx_math_unparsed" alttext="\displaystyle D_{\alpha}(\rho\|\sigma)" display="inline"><mrow><msub><mi>D</mi><mi>α</mi></msub><mrow><mo stretchy="false">(</mo><mi>ρ</mi><mo lspace="0em" rspace="0.167em">∥</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S1.E4.m2" class="ltx_Math" alttext="\displaystyle=\frac{1}{\alpha-1}\log_{2}\Tr\rho^{\alpha}\sigma^{1-\alpha}," display="inline"><mrow><mrow><mphantom></mphantom><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mn>1</mn><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mstyle><mo lspace="0.167em">⁢</mo><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mrow><msup><mi>ρ</mi><mi>α</mi></msup><mo>⁢</mo><msup><mi>σ</mi><mrow><mn>1</mn><mo>−</mo><mi>α</mi></mrow></msup></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+<tbody id="S1.E5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S1.E5.m1" class="ltx_Math" alttext="\displaystyle C_{\alpha}(W)" display="inline"><mrow><msub><mi>C</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S1.E5.m2" class="ltx_math_unparsed" alttext="\displaystyle=\max_{p\in\mathcal{P}(\mathcal{X})}\inf_{\sigma\in\mathcal{S}(\mathcal{H})}\sum_{x:p(x)&gt;0}p(x)D_{\alpha}(\rho_{x}\|\sigma)." display="inline"><mrow><mo>=</mo><munder><mi>max</mi><mrow><mi>p</mi><mo>∈</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></munder><munder><mo lspace="0.167em" movablelimits="false" rspace="0.167em">inf</mo><mrow><mi>σ</mi><mo>∈</mo><mrow><mi class="ltx_font_mathcaligraphic" mathvariant="script">S</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></munder><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>p</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></mrow></munder></mstyle><mi>p</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><msub><mi>D</mi><mi>α</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>ρ</mi><mi>x</mi></msub><mo lspace="0em" rspace="0.167em">∥</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">The divergence is <math id="S1.p7.m9" class="ltx_Math" alttext="+\infty" display="inline"><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></math> when the trace in
+(<a href="#S1.E4" title="In 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>) vanishes. The continuous extension at
+<math id="S1.p7.m10" class="ltx_Math" alttext="\alpha=1" display="inline"><mrow><mi>α</mi><mo>=</mo><mn>1</mn></mrow></math> is <math id="S1.p7.m11" class="ltx_Math" alttext="C_{1}(W)=C(W)" display="inline"><mrow><mrow><msub><mi>C</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The sphere-packing function is</p>
+<table id="S1.E6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E6.m1" class="ltx_Math" alttext="E_{\mathrm{sp}}(R)=\sup_{0&lt;\alpha\leq 1}\frac{1-\alpha}{\alpha}\bigl(C_{\alpha}(W)-R\bigr)," display="block"><mrow><mrow><mrow><msub><mi>E</mi><mi>sp</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0.167em">sup</mo><mrow><mn>0</mn><mo>&lt;</mo><mi>α</mi><mo>≤</mo><mn>1</mn></mrow></munder><mrow><mfrac><mrow><mn>1</mn><mo>−</mo><mi>α</mi></mrow><mi>α</mi></mfrac><mo>⁢</mo><mrow><mo maxsize="1.200em" minsize="1.200em">(</mo><mrow><mrow><msub><mi>C</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mi>R</mi></mrow><mo maxsize="1.200em" minsize="1.200em">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">where the <math id="S1.p7.m12" class="ltx_Math" alttext="\alpha=1" display="inline"><mrow><mi>α</mi><mo>=</mo><mn>1</mn></mrow></math> term is defined to be zero.</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">Set <math id="S1.p8.m1" class="ltx_Math" alttext="M_{n}(R)=\lceil 2^{nR}\rceil" display="inline"><mrow><mrow><msub><mi>M</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">⌈</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>⁢</mo><mi>R</mi></mrow></msup><mo stretchy="false">⌉</mo></mrow></mrow></math> and let <math id="S1.p8.m2" class="ltx_Math" alttext="I_{2}" display="inline"><msub><mi>I</mi><mn>2</mn></msub></math> denote a noiseless classical
+bit channel. When the limits exist, put</p>
+<table id="S1.EGx2" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S1.E7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S1.E7.m1" class="ltx_Math" alttext="\displaystyle E_{\mathrm{NS}}(R)" display="inline"><mrow><msub><mi>E</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S1.E7.m2" class="ltx_math_unparsed" alttext="\displaystyle=\lim_{n\to\infty}-\frac{1}{n}\log_{2}\varepsilon_{\mathrm{NS}}(M_{n}(R),W^{\otimes n})," display="inline"><mrow><mo rspace="0.1389em">=</mo><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mo lspace="0em">−</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>n</mi></mfrac></mstyle><msub><mi>log</mi><mn>2</mn></msub><msub><mi>ε</mi><mi>NS</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>M</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><msup><mi>W</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msup><mo stretchy="false">)</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+<tbody id="S1.E8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S1.E8.m1" class="ltx_Math" alttext="\displaystyle E_{\mathrm{ANS}}(R)" display="inline"><mrow><msub><mi>E</mi><mi>ANS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S1.E8.m2" class="ltx_math_unparsed" alttext="\displaystyle=\lim_{n\to\infty}-\frac{1}{n}\log_{2}\varepsilon_{\mathrm{NS}}(M_{n}(R),W^{\otimes n}\otimes I_{2})." display="inline"><mrow><mo rspace="0.1389em">=</mo><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mo lspace="0em">−</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>n</mi></mfrac></mstyle><msub><mi>log</mi><mn>2</mn></msub><msub><mi>ε</mi><mi>NS</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>M</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><msup><mi>W</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>I</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Here <math id="S1.p8.m3" class="ltx_Math" alttext="I_{2}" display="inline"><msub><mi>I</mi><mn>2</mn></msub></math> is used once for the entire block, not once per channel use, and
+we use the convention <math id="S1.p8.m4" class="ltx_Math" alttext="-\log_{2}0=+\infty" display="inline"><mrow><mrow><mo rspace="0.167em">−</mo><mrow><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0.167em">⁡</mo><mn>0</mn></mrow></mrow><mo>=</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></mrow></math>.</p>
+</div>
+<div id="Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 2</span></span><span class="ltx_text ltx_font_bold"> </span>(Reliability without activation)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="Thmtheorem2.p1.m1" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be a finite cq channel whose output states are full rank.
+For every <math id="Thmtheorem2.p1.m2" class="ltx_Math" alttext="0&lt;R&lt;C(W)" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>R</mi><mo>&lt;</mo><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, the limits in
+(<a href="#S1.E7" title="In 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>) and (<a href="#S1.E8" title="In 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>) exist and satisfy</span></p>
+<table id="S1.E9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.E9.m1" class="ltx_Math" alttext="E_{\mathrm{NS}}(R)=E_{\mathrm{ANS}}(R)=E_{\mathrm{sp}}(R)." display="block"><mrow><mrow><mrow><msub><mi>E</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>E</mi><mi>ANS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>E</mi><mi>sp</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div id="S1.p9" class="ltx_para">
+<p class="ltx_p">The new ingredient is the one-shot comparison, rather than the
+meta-converse exponent, which is supplied by <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite>. Its proof is an
+effect-completion argument. Adding the same positive normalization defect
+to every effect can violate the upper bound by the identity. Instead, we
+add a correction of the form <math id="S1.p9.m1" class="ltx_Math" alttext="(I-T_{x})^{1/2}X(I-T_{x})^{1/2}" display="inline"><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>T</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>⁢</mo><mi>X</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>T</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></math>. This preserves
+the effect bounds whenever <math id="S1.p9.m2" class="ltx_Math" alttext="0\leq X\leq I" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>X</mi><mo>≤</mo><mi>I</mi></mrow></math> and turns the normalization
+constraint into a linear equation. A norm estimate and the six-message
+slack place its solution inside that interval. Full rank is used only in
+the asymptotic argument, to ensure that the sphere-packing function is
+finite and continuous at every positive rate.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">2 </span>Coding programs and effect completion</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p1.m1" class="ltx_Math" alttext="V:x\mapsto\omega_{x}" display="inline"><mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>x</mi><mo stretchy="false">↦</mo><msub><mi>ω</mi><mi>x</mi></msub></mrow></mrow></math> be a finite cq channel. An effect on its output
+space is an operator <math id="S2.p1.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> satisfying <math id="S2.p1.m3" class="ltx_Math" alttext="0\leq T\leq I" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>T</mi><mo>≤</mo><mi>I</mi></mrow></math>, where inequalities
+between Hermitian operators are in the positive-semidefinite order.
+For a real parameter <math id="S2.p1.m4" class="ltx_Math" alttext="L\geq 1" display="inline"><mrow><mi>L</mi><mo>≥</mo><mn>1</mn></mrow></math>, the meta-converse program is</p>
+<table id="S2.E10" class="ltx_equationgroup ltx_eqn_table">
+<tbody>
+<tr id="S2.E10X" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E10X.m2" class="ltx_Math" alttext="\displaystyle\varepsilon_{\mathrm{MC}}(L,V)=\min_{q,T}" display="inline"><mrow><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>L</mi><mo mathsize="0.700em">,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><munder><mi>min</mi><mrow><mi>q</mi><mo>,</mo><mi>T</mi></mrow></munder></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E10X.m3" class="ltx_Math" alttext="\displaystyle\sum_{x}q_{x}\Tr\omega_{x}(I-T_{x})" display="inline"><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder></mstyle><mrow><msub><mi>q</mi><mi>x</mi></msub><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>ω</mi><mi>x</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>T</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="3" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equationgroup ltx_align_right">(10)</span></td></tr>
+<tr id="S2.E10Xa" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E10Xa.m2" class="ltx_Math" alttext="\displaystyle\text{subject to}" display="inline"><mtext>subject to</mtext></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E10Xa.m3" class="ltx_Math" alttext="\displaystyle q\in\mathcal{P}(\mathcal{X}),\qquad 0\leq T_{x}\leq I," display="inline"><mrow><mi>q</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">P</mi><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">X</mi><mo stretchy="false">)</mo><mo rspace="2.167em">,</mo><mn>0</mn><mo>≤</mo><mi>T</mi><msub><mrow></mrow><mi>x</mi></msub><mo>≤</mo><mi>I</mi><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr>
+<tr id="S2.E10Xb" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E10Xb.m2" class="ltx_Math" alttext="\displaystyle\sum_{x}q_{x}T_{x}\leq I/L." display="inline"><mrow><mrow><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder></mstyle><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>T</mi><mi>x</mi></msub></mrow></mrow><mo>≤</mo><mrow><mi>I</mi><mo>/</mo><mi>L</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">For integer <math id="S2.p1.m5" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>, the non-signaling program has the same objective and
+replaces the last inequality by equality. These are the cq specializations
+of the assisted coding programs in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, <a href="#bib.bib3" title="" class="ltx_ref">3</a>]</cite>; in the notation of
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Eq. (29) and Eq. (35)]</cite>, the change of variables is
+<math id="S2.p1.m6" class="ltx_Math" alttext="p_{x}=Lq_{x}" display="inline"><mrow><msub><mi>p</mi><mi>x</mi></msub><mo>=</mo><mrow><mi>L</mi><mo>⁢</mo><msub><mi>q</mi><mi>x</mi></msub></mrow></mrow></math> and <math id="S2.p1.m7" class="ltx_Math" alttext="\Lambda_{x}=Lq_{x}T_{x}" display="inline"><mrow><msub><mi mathvariant="normal">Λ</mi><mi>x</mi></msub><mo>=</mo><mrow><mi>L</mi><mo>⁢</mo><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>T</mi><mi>x</mi></msub></mrow></mrow></math>. At indices with <math id="S2.p1.m8" class="ltx_Math" alttext="q_{x}=0" display="inline"><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>=</mo><mn>0</mn></mrow></math>, the choice of
+<math id="S2.p1.m9" class="ltx_Math" alttext="T_{x}" display="inline"><msub><mi>T</mi><mi>x</mi></msub></math> is immaterial. The feasible sets in <math id="S2.p1.m10" class="ltx_Math" alttext="(q,T)" display="inline"><mrow><mo stretchy="false">(</mo><mi>q</mi><mo>,</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></math> are compact, so the minima
+are attained. Equivalently, substituting <math id="S2.p1.m11" class="ltx_Math" alttext="S_{x}=q_{x}T_{x}" display="inline"><mrow><msub><mi>S</mi><mi>x</mi></msub><mo>=</mo><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>T</mi><mi>x</mi></msub></mrow></mrow></math> gives semidefinite
+programs with constraints <math id="S2.p1.m12" class="ltx_Math" alttext="0\leq S_{x}\leq q_{x}I" display="inline"><mrow><mn>0</mn><mo>≤</mo><msub><mi>S</mi><mi>x</mi></msub><mo>≤</mo><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><mi>I</mi></mrow></mrow></math>. The operational
+interpretation of the equality constraint is recalled in
+Appendix <a href="#A1" title="Appendix A Operational form of the non-signaling program ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">A</span></a>.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Both error functions are nondecreasing in the message count and vanish at
+one message. For the meta-converse, monotonicity follows by inclusion of
+the feasible sets. For the non-signaling program, let <math id="S2.p2.m1" class="ltx_Math" alttext="1\leq L\leq N" display="inline"><mrow><mn>1</mn><mo>≤</mo><mi>L</mi><mo>≤</mo><mi>N</mi></mrow></math> be
+integers with <math id="S2.p2.m2" class="ltx_Math" alttext="N&gt;1" display="inline"><mrow><mi>N</mi><mo>&gt;</mo><mn>1</mn></mrow></math>, and let <math id="S2.p2.m3" class="ltx_Math" alttext="(q,T)" display="inline"><mrow><mo stretchy="false">(</mo><mi>q</mi><mo>,</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></math> be feasible at <math id="S2.p2.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>. The effects
+<math id="S2.p2.m5" class="ltx_Math" alttext="T^{\prime}_{x}=T_{x}+t(I-T_{x})" display="inline"><mrow><msubsup><mi>T</mi><mi>x</mi><mo>′</mo></msubsup><mo>=</mo><mrow><msub><mi>T</mi><mi>x</mi></msub><mo>+</mo><mrow><mi>t</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>T</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>, where</p>
+<table id="S2.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex1.m1" class="ltx_Math" alttext="t=\frac{1/L-1/N}{1-1/N}\in[0,1]," display="block"><mrow><mrow><mi>t</mi><mo>=</mo><mfrac><mrow><mrow><mn>1</mn><mo>/</mo><mi>L</mi></mrow><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mi>N</mi></mrow></mrow><mrow><mn>1</mn><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mi>N</mi></mrow></mrow></mfrac><mo>∈</mo><mrow><mo stretchy="false">[</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">satisfy <math id="S2.p2.m6" class="ltx_Math" alttext="T^{\prime}_{x}\geq T_{x}" display="inline"><mrow><msubsup><mi>T</mi><mi>x</mi><mo>′</mo></msubsup><mo>≥</mo><msub><mi>T</mi><mi>x</mi></msub></mrow></math> and <math id="S2.p2.m7" class="ltx_Math" alttext="\sum_{x}q_{x}T^{\prime}_{x}=I/L" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>x</mi></msub><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msubsup><mi>T</mi><mi>x</mi><mo>′</mo></msubsup></mrow></mrow><mo>=</mo><mrow><mi>I</mi><mo>/</mo><mi>L</mi></mrow></mrow></math>. They are therefore feasible
+at <math id="S2.p2.m8" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> and have no larger error, proving the claimed monotonicity.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">The next lemma supplies a completion with the stronger requirement that
+every original effect be increased. It is independent of the channel
+states.</p>
+</div>
+<div id="Thmlemma1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem"><span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 1</span></span><span class="ltx_text ltx_font_bold"> </span>(Effect completion)<span class="ltx_text ltx_font_bold">.</span></h6>
+<div id="Thmlemma1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let <math id="Thmlemma1.p1.m1" class="ltx_Math" alttext="M\geq 2" display="inline"><mrow><mi>M</mi><mo>≥</mo><mn>2</mn></mrow></math> be an integer and put <math id="Thmlemma1.p1.m2" class="ltx_Math" alttext="K=M+6" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow></mrow></math>. Suppose <math id="Thmlemma1.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> is a probability
+distribution on a finite set and <math id="Thmlemma1.p1.m4" class="ltx_Math" alttext="T_{x}" display="inline"><msub><mi>T</mi><mi>x</mi></msub></math> are effects on a finite-dimensional
+Hilbert space such that</span></p>
+<table id="S2.E11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E11.m1" class="ltx_Math" alttext="A:=\sum_{x}q_{x}T_{x}\leq I/K." display="block"><mrow><mrow><mi>A</mi><mo rspace="0.111em">:=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>T</mi><mi>x</mi></msub></mrow></mrow><mo>≤</mo><mrow><mi>I</mi><mo>/</mo><mi>K</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(11)</span></td></tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Then there are effects <math id="Thmlemma1.p1.m5" class="ltx_Math" alttext="Q_{x}" display="inline"><msub><mi>Q</mi><mi>x</mi></msub></math> satisfying</span></p>
+<table id="S2.E12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E12.m1" class="ltx_Math" alttext="T_{x}\leq Q_{x}\leq I,\qquad\sum_{x}q_{x}Q_{x}=I/M." display="block"><mrow><mrow><mrow><msub><mi>T</mi><mi>x</mi></msub><mo>≤</mo><msub><mi>Q</mi><mi>x</mi></msub><mo>≤</mo><mi>I</mi></mrow><mo rspace="2.000em">,</mo><mrow><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>Q</mi><mi>x</mi></msub></mrow></mrow><mo>=</mo><mrow><mi>I</mi><mo>/</mo><mi>M</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(12)</span></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Set <math id="S2.p4.m1" class="ltx_Math" alttext="C_{x}=(I-T_{x})^{1/2}" display="inline"><mrow><msub><mi>C</mi><mi>x</mi></msub><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>T</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></math>, <math id="S2.p4.m2" class="ltx_Math" alttext="D_{x}=I-C_{x}" display="inline"><mrow><msub><mi>D</mi><mi>x</mi></msub><mo>=</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>C</mi><mi>x</mi></msub></mrow></mrow></math>, and <math id="S2.p4.m3" class="ltx_Math" alttext="B=\sum_{x}q_{x}D_{x}" display="inline"><mrow><mi>B</mi><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>x</mi></msub><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>D</mi><mi>x</mi></msub></mrow></mrow></mrow></math>.
+For <math id="S2.p4.m4" class="ltx_Math" alttext="0\leq t\leq 1" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>1</mn></mrow></math>, we have
+<math id="S2.p4.m5" class="ltx_Math" alttext="0\leq 1-\sqrt{1-t}\leq t\leq 1" display="inline"><mrow><mn>0</mn><mo>≤</mo><mrow><mn>1</mn><mo>−</mo><msqrt><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></msqrt></mrow><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>1</mn></mrow></math>. Spectral calculus therefore gives
+<math id="S2.p4.m6" class="ltx_Math" alttext="0\leq D_{x}^{2}\leq D_{x}\leq T_{x}" display="inline"><mrow><mn>0</mn><mo>≤</mo><msubsup><mi>D</mi><mi>x</mi><mn>2</mn></msubsup><mo>≤</mo><msub><mi>D</mi><mi>x</mi></msub><mo>≤</mo><msub><mi>T</mi><mi>x</mi></msub></mrow></math>, and hence</p>
+<table id="S2.E13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E13.m1" class="ltx_Math" alttext="0\leq B\leq A\leq I/K,\qquad\sum_{x}q_{x}D_{x}^{2}\leq A\leq I/K." display="block"><mrow><mrow><mrow><mn>0</mn><mo>≤</mo><mi>B</mi><mo>≤</mo><mi>A</mi><mo>≤</mo><mrow><mi>I</mi><mo>/</mo><mi>K</mi></mrow></mrow><mo rspace="2.000em">,</mo><mrow><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msubsup><mi>D</mi><mi>x</mi><mn>2</mn></msubsup></mrow></mrow><mo>≤</mo><mi>A</mi><mo>≤</mo><mrow><mi>I</mi><mo>/</mo><mi>K</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(13)</span></td></tr></tbody>
+</table>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">On the real vector space of Hermitian operators, equipped with the
+operator norm <math id="S2.p5.m1" class="ltx_math_unparsed" alttext="\|\cdot\|_{\infty}" display="inline"><mrow><mo rspace="0em">∥</mo><mo lspace="0em" rspace="0em">⋅</mo><mo lspace="0em">∥</mo><msub><mrow></mrow><mi mathvariant="normal">∞</mi></msub></mrow></math>, define</p>
+<table id="S2.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex2.m1" class="ltx_Math" alttext="\Phi(X)=\sum_{x}q_{x}C_{x}XC_{x},\qquad\Psi(X)=\sum_{x}q_{x}D_{x}XD_{x}." display="block"><mrow><mrow><mrow><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>C</mi><mi>x</mi></msub><mo>⁢</mo><mi>X</mi><mo>⁢</mo><msub><mi>C</mi><mi>x</mi></msub></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi mathvariant="normal">Ψ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>D</mi><mi>x</mi></msub><mo>⁢</mo><mi>X</mi><mo>⁢</mo><msub><mi>D</mi><mi>x</mi></msub></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Expanding <math id="S2.p5.m2" class="ltx_Math" alttext="C_{x}=I-D_{x}" display="inline"><mrow><msub><mi>C</mi><mi>x</mi></msub><mo>=</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>D</mi><mi>x</mi></msub></mrow></mrow></math> gives</p>
+<table id="S2.E14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E14.m1" class="ltx_Math" alttext="\Phi(X)=X-BX-XB+\Psi(X)." display="block"><mrow><mrow><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>X</mi><mo>−</mo><mrow><mi>B</mi><mo>⁢</mo><mi>X</mi></mrow><mo>−</mo><mrow><mi>X</mi><mo>⁢</mo><mi>B</mi></mrow></mrow><mo>+</mo><mrow><mi mathvariant="normal">Ψ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(14)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">For Hermitian <math id="S2.p5.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, the inequalities
+<math id="S2.p5.m4" class="ltx_Math" alttext="-\|X\|_{\infty}I\leq X\leq\|X\|_{\infty}I" display="inline"><mrow><mrow><mo>−</mo><mrow><msub><mrow><mo stretchy="false">‖</mo><mi>X</mi><mo stretchy="false">‖</mo></mrow><mi mathvariant="normal">∞</mi></msub><mo>⁢</mo><mi>I</mi></mrow></mrow><mo>≤</mo><mi>X</mi><mo>≤</mo><mrow><msub><mrow><mo stretchy="false">‖</mo><mi>X</mi><mo stretchy="false">‖</mo></mrow><mi mathvariant="normal">∞</mi></msub><mo>⁢</mo><mi>I</mi></mrow></mrow></math> imply</p>
+<table id="S2.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex3.m1" class="ltx_Math" alttext="-\|X\|_{\infty}\sum_{x}q_{x}D_{x}^{2}\leq\Psi(X)\leq\|X\|_{\infty}\sum_{x}q_{x}D_{x}^{2}." display="block"><mrow><mrow><mo rspace="0em">−</mo><mo fence="false" lspace="0em">|</mo><mrow><mi>X</mi><mo fence="false" rspace="0.111em">|</mo><mrow><mrow><mrow><mrow><mmultiscripts><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mprescripts></mprescripts><mi mathvariant="normal">∞</mi><mrow></mrow></mmultiscripts><mo>⁡</mo><msub><mi>q</mi><mi>x</mi></msub></mrow><mo>⁢</mo><msubsup><mi>D</mi><mi>x</mi><mn>2</mn></msubsup></mrow><mo>≤</mo><mrow><mi mathvariant="normal">Ψ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mphantom></mphantom></mrow><mo fence="false">|</mo><mrow><mi>X</mi><mo fence="false" rspace="0.111em">|</mo><mrow><mrow><mmultiscripts><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mprescripts></mprescripts><mi mathvariant="normal">∞</mi><mrow></mrow></mmultiscripts><mo>⁡</mo><msub><mi>q</mi><mi>x</mi></msub></mrow><mo>⁢</mo><msubsup><mi>D</mi><mi>x</mi><mn>2</mn></msubsup></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Consequently, <math id="S2.p5.m5" class="ltx_Math" alttext="\|\Psi(X)\|_{\infty}\leq\|X\|_{\infty}/K" display="inline"><mrow><msub><mrow><mo stretchy="false">‖</mo><mrow><mi mathvariant="normal">Ψ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">‖</mo></mrow><mi mathvariant="normal">∞</mi></msub><mo>≤</mo><mrow><msub><mrow><mo stretchy="false">‖</mo><mi>X</mi><mo stretchy="false">‖</mo></mrow><mi mathvariant="normal">∞</mi></msub><mo>/</mo><mi>K</mi></mrow></mrow></math>.
+Together with <math id="S2.p5.m6" class="ltx_Math" alttext="\|B\|_{\infty}\leq 1/K" display="inline"><mrow><msub><mrow><mo stretchy="false">‖</mo><mi>B</mi><mo stretchy="false">‖</mo></mrow><mi mathvariant="normal">∞</mi></msub><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mi>K</mi></mrow></mrow></math>, equation (<a href="#S2.E14" title="In 2 Coding programs and effect completion ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">14</span></a>)
+yields the induced-norm bound</p>
+<table id="S2.E15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E15.m1" class="ltx_Math" alttext="\|\mathrm{id}-\Phi\|_{\infty\to\infty}\leq 3/K&lt;1." display="block"><mrow><mrow><msub><mrow><mo stretchy="false">‖</mo><mrow><mi>id</mi><mo>−</mo><mi mathvariant="normal">Φ</mi></mrow><mo stretchy="false">‖</mo></mrow><mrow><mi mathvariant="normal">∞</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></msub><mo>≤</mo><mrow><mn>3</mn><mo>/</mo><mi>K</mi></mrow><mo>&lt;</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(15)</span></td></tr></tbody>
+</table>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">To obtain the required normalization, we solve
+<math id="S2.p6.m1" class="ltx_Math" alttext="\Phi(X)=H" display="inline"><mrow><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>H</mi></mrow></math> with <math id="S2.p6.m2" class="ltx_Math" alttext="H=I/M-A" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mrow><mi>I</mi><mo>/</mo><mi>M</mi></mrow><mo>−</mo><mi>A</mi></mrow></mrow></math>. By (<a href="#S2.E15" title="In 2 Coding programs and effect completion ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">15</span></a>), the Neumann series</p>
+<table id="S2.E16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E16.m1" class="ltx_Math" alttext="X=\Phi^{-1}(H)=\sum_{j=0}^{\infty}(\mathrm{id}-\Phi)^{j}(H)" display="block"><mrow><mi>X</mi><mo>=</mo><mrow><msup><mi mathvariant="normal">Φ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>id</mi><mo>−</mo><mi mathvariant="normal">Φ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>j</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(16)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">converges in operator norm to a Hermitian solution. Since
+<math id="S2.p6.m3" class="ltx_Math" alttext="0\leq H\leq I/M" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>H</mi><mo>≤</mo><mrow><mi>I</mi><mo>/</mo><mi>M</mi></mrow></mrow></math>, its distance from <math id="S2.p6.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> satisfies</p>
+<table id="S2.E17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E17.m1" class="ltx_Math" alttext="\|X-H\|_{\infty}\leq\frac{3/K}{1-3/K}\,\frac{1}{M}=\frac{3}{M(K-3)}." display="block"><mrow><mrow><msub><mrow><mo stretchy="false">‖</mo><mrow><mi>X</mi><mo>−</mo><mi>H</mi></mrow><mo stretchy="false">‖</mo></mrow><mi mathvariant="normal">∞</mi></msub><mo>≤</mo><mrow><mfrac><mrow><mn>3</mn><mo>/</mo><mi>K</mi></mrow><mrow><mn>1</mn><mo>−</mo><mrow><mn>3</mn><mo>/</mo><mi>K</mi></mrow></mrow></mfrac><mo lspace="0.170em">⁢</mo><mfrac><mn>1</mn><mi>M</mi></mfrac></mrow><mo>=</mo><mfrac><mn>3</mn><mrow><mi>M</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>K</mi><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(17)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Using <math id="S2.p6.m5" class="ltx_Math" alttext="H\geq(1/M-1/K)I" display="inline"><mrow><mi>H</mi><mo>≥</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>1</mn><mo>/</mo><mi>M</mi></mrow><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mi>K</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>I</mi></mrow></mrow></math> and <math id="S2.p6.m6" class="ltx_Math" alttext="K=M+6" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow></mrow></math>, we obtain</p>
+<table id="S2.EGx3" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S2.E18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E18.m1" class="ltx_Math" alttext="\displaystyle X" display="inline"><mi>X</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E18.m2" class="ltx_Math" alttext="\displaystyle\geq\left(\frac{1}{M}-\frac{1}{M+6}-\frac{3}{M(M+3)}\right)I=\frac{3}{(M+6)(M+3)}I&gt;0," display="inline"><mrow><mrow><mphantom></mphantom><mo>≥</mo><mrow><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>M</mi></mfrac></mstyle><mo>−</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow></mfrac></mstyle><mo>−</mo><mstyle displaystyle="true"><mfrac><mn>3</mn><mrow><mi>M</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle></mrow><mo>)</mo></mrow><mo>⁢</mo><mi>I</mi></mrow><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mn>3</mn><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle><mo>⁢</mo><mi>I</mi></mrow><mo>&gt;</mo><mn>0</mn></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(18)</span></td></tr></tbody>
+<tbody id="S2.E19"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.E19.m1" class="ltx_Math" alttext="\displaystyle X" display="inline"><mi>X</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.E19.m2" class="ltx_Math" alttext="\displaystyle\leq\left(\frac{1}{M}+\frac{3}{M(M+3)}\right)I=\frac{M+6}{M(M+3)}I\leq\frac{4}{5}I&lt;I." display="inline"><mrow><mrow><mphantom></mphantom><mo>≤</mo><mrow><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>M</mi></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true"><mfrac><mn>3</mn><mrow><mi>M</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle></mrow><mo>)</mo></mrow><mo>⁢</mo><mi>I</mi></mrow><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow><mrow><mi>M</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle><mo>⁢</mo><mi>I</mi></mrow><mo>≤</mo><mrow><mstyle displaystyle="true"><mfrac><mn>4</mn><mn>5</mn></mfrac></mstyle><mo>⁢</mo><mi>I</mi></mrow><mo>&lt;</mo><mi>I</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(19)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Thus <math id="S2.p6.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> lies in the effect interval. This conclusion uses the spectral
+margins above, not positivity of the inverse map <math id="S2.p6.m8" class="ltx_Math" alttext="\Phi^{-1}" display="inline"><msup><mi mathvariant="normal">Φ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math>.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">Define</p>
+<table id="S2.E20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E20.m1" class="ltx_Math" alttext="Q_{x}=T_{x}+C_{x}XC_{x}." display="block"><mrow><mrow><msub><mi>Q</mi><mi>x</mi></msub><mo>=</mo><mrow><msub><mi>T</mi><mi>x</mi></msub><mo>+</mo><mrow><msub><mi>C</mi><mi>x</mi></msub><mo>⁢</mo><mi>X</mi><mo>⁢</mo><msub><mi>C</mi><mi>x</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(20)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Then <math id="S2.p7.m1" class="ltx_Math" alttext="Q_{x}-T_{x}=C_{x}XC_{x}\geq 0" display="inline"><mrow><mrow><msub><mi>Q</mi><mi>x</mi></msub><mo>−</mo><msub><mi>T</mi><mi>x</mi></msub></mrow><mo>=</mo><mrow><msub><mi>C</mi><mi>x</mi></msub><mo>⁢</mo><mi>X</mi><mo>⁢</mo><msub><mi>C</mi><mi>x</mi></msub></mrow><mo>≥</mo><mn>0</mn></mrow></math> and
+<math id="S2.p7.m2" class="ltx_Math" alttext="I-Q_{x}=C_{x}(I-X)C_{x}\geq 0" display="inline"><mrow><mrow><mi>I</mi><mo>−</mo><msub><mi>Q</mi><mi>x</mi></msub></mrow><mo>=</mo><mrow><msub><mi>C</mi><mi>x</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><mi>X</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>C</mi><mi>x</mi></msub></mrow><mo>≥</mo><mn>0</mn></mrow></math>. Finally,</p>
+<table id="S2.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex4.m1" class="ltx_Math" alttext="\sum_{x}q_{x}Q_{x}=A+\Phi(X)=A+H=I/M," display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>Q</mi><mi>x</mi></msub></mrow></mrow><mo>=</mo><mrow><mi>A</mi><mo>+</mo><mrow><mi mathvariant="normal">Φ</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mi>A</mi><mo>+</mo><mi>H</mi></mrow><mo>=</mo><mrow><mi>I</mi><mo>/</mo><mi>M</mi></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">which proves (<a href="#S2.E12" title="In Lemma 1 (Effect completion). ‣ 2 Coding programs and effect completion ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">12</span></a>).
+∎</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a href="#Thmtheorem1" title="Theorem 1 (One-shot comparison). ‣ 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>.</h6>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Apply Lemma <a href="#Thmlemma1" title="Lemma 1 (Effect completion). ‣ 2 Coding programs and effect completion ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a> to a minimizing pair <math id="S2.p8.m1" class="ltx_Math" alttext="(q,T)" display="inline"><mrow><mo stretchy="false">(</mo><mi>q</mi><mo>,</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></math> in
+(<a href="#S2.E10" title="In 2 Coding programs and effect completion ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>) with <math id="S2.p8.m2" class="ltx_Math" alttext="L=M+6" display="inline"><mrow><mi>L</mi><mo>=</mo><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow></mrow></math>. The completed pair <math id="S2.p8.m3" class="ltx_Math" alttext="(q,Q)" display="inline"><mrow><mo stretchy="false">(</mo><mi>q</mi><mo>,</mo><mi>Q</mi><mo stretchy="false">)</mo></mrow></math> is feasible
+for the non-signaling program at <math id="S2.p8.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>. Since <math id="S2.p8.m5" class="ltx_Math" alttext="Q_{x}\geq T_{x}" display="inline"><mrow><msub><mi>Q</mi><mi>x</mi></msub><mo>≥</mo><msub><mi>T</mi><mi>x</mi></msub></mrow></math> and
+<math id="S2.p8.m6" class="ltx_Math" alttext="\omega_{x}\geq 0" display="inline"><mrow><msub><mi>ω</mi><mi>x</mi></msub><mo>≥</mo><mn>0</mn></mrow></math>, we have</p>
+<table id="S2.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex5.m1" class="ltx_Math" alttext="\Tr\omega_{x}(I-Q_{x})\leq\Tr\omega_{x}(I-T_{x})" display="block"><mrow><mrow><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>ω</mi><mi>x</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>Q</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>ω</mi><mi>x</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>T</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">for every <math id="S2.p8.m7" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>. Averaging with the unchanged distribution <math id="S2.p8.m8" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> proves
+<math id="S2.p8.m9" class="ltx_Math" alttext="\varepsilon_{\mathrm{NS}}(M,V)\leq\varepsilon_{\mathrm{MC}}(M+6,V)" display="inline"><mrow><mrow><msub><mi>ε</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>+</mo><mn>6</mn></mrow><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. The other inequality in
+(<a href="#S1.E2" title="In Theorem 1 (One-shot comparison). ‣ 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>) follows by relaxing the non-signaling equality
+constraint. No rank or commutation assumption on the channel outputs is
+used.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">3 </span>Passage to reliability exponents</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">We use the meta-converse exponent established by Oufkir, Tomamichel, and
+Berta <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Theorem 4.1 and Eq. (34)]</cite>. The remaining issue is to
+justify that the fixed message-count change in
+Theorem <a href="#Thmtheorem1" title="Theorem 1 (One-shot comparison). ‣ 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>, and the rounding required for actual codes,
+do not change the limit.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a href="#Thmtheorem2" title="Theorem 2 (Reliability without activation). ‣ 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>.</h6>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p2.m1" class="ltx_Math" alttext="d=\dim\mathcal{H}" display="inline"><mrow><mi>d</mi><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mi class="ltx_font_mathcaligraphic" mathvariant="script">H</mi></mrow></mrow></math> and
+<math id="S3.p2.m2" class="ltx_Math" alttext="\lambda=\min_{x}\lambda_{\min}(\rho_{x})&gt;0" display="inline"><mrow><mi>λ</mi><mo>=</mo><mrow><mrow><msub><mi>min</mi><mi>x</mi></msub><mo lspace="0.167em">⁡</mo><msub><mi>λ</mi><mi>min</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>ρ</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math>.
+Evaluating the infimum in (<a href="#S1.E5" title="In 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>) at <math id="S3.p2.m3" class="ltx_Math" alttext="\sigma=I/d" display="inline"><mrow><mi>σ</mi><mo>=</mo><mrow><mi>I</mi><mo>/</mo><mi>d</mi></mrow></mrow></math> gives</p>
+<table id="S3.E21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E21.m1" class="ltx_Math" alttext="C_{\alpha}(W)\leq-\frac{\alpha}{1-\alpha}\log_{2}(d\lambda),\qquad 0&lt;\alpha&lt;1." display="block"><mrow><mrow><mrow><mrow><msub><mi>C</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mo>−</mo><mrow><mfrac><mi>α</mi><mrow><mn>1</mn><mo>−</mo><mi>α</mi></mrow></mfrac><mo lspace="0.167em">⁢</mo><mrow><msub><mi>log</mi><mn>2</mn></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>d</mi><mo>⁢</mo><mi>λ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mn>0</mn><mo>&lt;</mo><mi>α</mi><mo>&lt;</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(21)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Indeed, <math id="S3.p2.m4" class="ltx_Math" alttext="\Tr\rho_{x}^{\alpha}\geq d\lambda^{\alpha}" display="inline"><mrow><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msubsup><mi>ρ</mi><mi>x</mi><mi>α</mi></msubsup></mrow><mo>≥</mo><mrow><mi>d</mi><mo>⁢</mo><msup><mi>λ</mi><mi>α</mi></msup></mrow></mrow></math>, so
+<math id="S3.p2.m5" class="ltx_Math" alttext="\Tr\rho_{x}^{\alpha}(I/d)^{1-\alpha}\geq(d\lambda)^{\alpha}" display="inline"><mrow><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mrow><msubsup><mi>ρ</mi><mi>x</mi><mi>α</mi></msubsup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>/</mo><mi>d</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>−</mo><mi>α</mi></mrow></msup></mrow></mrow><mo>≥</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>d</mi><mo>⁢</mo><mi>λ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>α</mi></msup></mrow></math>;
+division by <math id="S3.p2.m6" class="ltx_Math" alttext="\alpha-1&lt;0" display="inline"><mrow><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow><mo>&lt;</mo><mn>0</mn></mrow></math> yields (<a href="#S3.E21" title="In 3 Passage to reliability exponents ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">21</span></a>).
+It follows that, for every <math id="S3.p2.m7" class="ltx_Math" alttext="r&gt;0" display="inline"><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,</p>
+<table id="S3.E22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E22.m1" class="ltx_Math" alttext="0\leq E_{\mathrm{sp}}(r)\leq-\log_{2}(d\lambda)&lt;\infty." display="block"><mrow><mrow><mn>0</mn><mo>≤</mo><mrow><msub><mi>E</mi><mi>sp</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mo rspace="0.167em">−</mo><mrow><msub><mi>log</mi><mn>2</mn></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>d</mi><mo>⁢</mo><mi>λ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(22)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">As a supremum of affine functions of <math id="S3.p2.m8" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, <math id="S3.p2.m9" class="ltx_Math" alttext="E_{\mathrm{sp}}" display="inline"><msub><mi>E</mi><mi>sp</mi></msub></math> is convex and therefore
+continuous on <math id="S3.p2.m10" class="ltx_Math" alttext="(0,\infty)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow></math>. Moreover,
+<math id="S3.p2.m11" class="ltx_Math" alttext="C_{0}(W):=\lim_{\alpha\downarrow 0}C_{\alpha}(W)=0" display="inline"><mrow><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">:=</mo><mrow><msub><mo lspace="0.1389em" rspace="0.167em">lim</mo><mrow><mi>α</mi><mo stretchy="false">↓</mo><mn>0</mn></mrow></msub><mrow><msub><mi>C</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>, by
+(<a href="#S3.E21" title="In 3 Passage to reliability exponents ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">21</span></a>) and nonnegativity of the Rényi divergence.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">The achievability and converse bounds in
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Propositions 4.2 and 4.3]</cite>, together with its meta-converse
+identification, therefore apply throughout <math id="S3.p3.m1" class="ltx_Math" alttext="0&lt;r&lt;C(W)" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>r</mi><mo>&lt;</mo><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. In base-two units,
+they give</p>
+<table id="S3.E23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E23.m1" class="ltx_math_unparsed" alttext="\lim_{n\to\infty}-\frac{1}{n}\log_{2}\varepsilon_{\mathrm{MC}}(2^{nr},W^{\otimes n})=E_{\mathrm{sp}}(r),\qquad 0&lt;r&lt;C(W)." display="block"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mo lspace="0em">−</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><msub><mi>log</mi><mn>2</mn></msub><msub><mi>ε</mi><mi>MC</mi></msub><mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>⁢</mo><mi>r</mi></mrow></msup><mo>,</mo><msup><mi>W</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msup><mo stretchy="false">)</mo></mrow><mo>=</mo><msub><mi>E</mi><mi>sp</mi></msub><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><mo rspace="2.167em">,</mo><mn>0</mn><mo>&lt;</mo><mi>r</mi><mo>&lt;</mo><mi>C</mi><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(23)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Here the real-valued message parameter is interpreted through
+(<a href="#S2.E10" title="In 2 Coding programs and effect completion ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>). The limit is ordinary: the two cited propositions
+provide matching upper and lower asymptotic bounds. The errors in
+(<a href="#S3.E23" title="In 3 Passage to reliability exponents ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">23</span></a>) are positive. More generally, for <math id="S3.p3.m2" class="ltx_Math" alttext="L&gt;1" display="inline"><mrow><mi>L</mi><mo>&gt;</mo><mn>1</mn></mrow></math>, any feasible
+pair in the block-channel program satisfies</p>
+<table id="S3.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex6.m1" class="ltx_Math" alttext="\sum_{x^{n}}q_{x^{n}}\Tr\rho_{x^{n}}(I-T_{x^{n}})\geq\lambda^{n}\Tr\!\left(I-\sum_{x^{n}}q_{x^{n}}T_{x^{n}}\right)\geq(d\lambda)^{n}(1-1/L)&gt;0," display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><msup><mi>x</mi><mi>n</mi></msup></munder><mrow><msub><mi>q</mi><msup><mi>x</mi><mi>n</mi></msup></msub><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>ρ</mi><msup><mi>x</mi><mi>n</mi></msup></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>T</mi><msup><mi>x</mi><mi>n</mi></msup></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≥</mo><mrow><msup><mi>λ</mi><mi>n</mi></msup><mo lspace="0.167em">⁢</mo><mrow><mpadded style="width:1.032em;" width="1.032em"><mi>Tr</mi></mpadded><mo>⁡</mo><mrow><mo>(</mo><mrow><mi>I</mi><mo rspace="0.055em">−</mo><mrow><munder><mo movablelimits="false">∑</mo><msup><mi>x</mi><mi>n</mi></msup></munder><mrow><msub><mi>q</mi><msup><mi>x</mi><mi>n</mi></msup></msub><mo>⁢</mo><msub><mi>T</mi><msup><mi>x</mi><mi>n</mi></msup></msub></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo>≥</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>d</mi><mo>⁢</mo><mi>λ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mi>L</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S3.p3.m3" class="ltx_math_unparsed" alttext="\rho_{x^{n}}=\rho_{x_{1}}\otimes\cdots\otimes\rho_{x_{n}}" display="inline"><mrow><mi>ρ</mi><msub><mrow></mrow><msup><mi>x</mi><mi>n</mi></msup></msub><mo>=</mo><mi>ρ</mi><msub><mrow></mrow><msub><mi>x</mi><mn>1</mn></msub></msub><mo lspace="0.222em">⊗</mo><mo lspace="0.055em" rspace="0.055em">⋯</mo><mo rspace="0.222em">⊗</mo><mi>ρ</mi><msub><mrow></mrow><msub><mi>x</mi><mi>n</mi></msub></msub></mrow></math>.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">We first extend (<a href="#S3.E23" title="In 3 Passage to reliability exponents ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">23</span></a>) to arbitrary message-count
+sequences. Suppose <math id="S3.p4.m1" class="ltx_Math" alttext="L_{n}\geq 1" display="inline"><mrow><msub><mi>L</mi><mi>n</mi></msub><mo>≥</mo><mn>1</mn></mrow></math> and
+<math id="S3.p4.m2" class="ltx_Math" alttext="n^{-1}\log_{2}L_{n}\to r\in(0,C(W))" display="inline"><mrow><mrow><msup><mi>n</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo lspace="0.167em">⁢</mo><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0.167em">⁢</mo><msub><mi>L</mi><mi>n</mi></msub></mrow><mo stretchy="false">→</mo><mi>r</mi><mo>∈</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>. For every
+<math id="S3.p4.m3" class="ltx_Math" alttext="0&lt;\delta&lt;\min\{r,C(W)-r\}" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>δ</mi><mo>&lt;</mo><mrow><mi>min</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mrow><mi>r</mi><mo>,</mo><mrow><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mi>r</mi></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>, eventually</p>
+<table id="S3.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex7.m1" class="ltx_Math" alttext="2^{n(r-\delta)}\leq L_{n}\leq 2^{n(r+\delta)}." display="block"><mrow><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>−</mo><mi>δ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></msup><mo>≤</mo><msub><mi>L</mi><mi>n</mi></msub><mo>≤</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>+</mo><mi>δ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></msup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Monotonicity of <math id="S3.p4.m4" class="ltx_Math" alttext="\varepsilon_{\mathrm{MC}}" display="inline"><msub><mi>ε</mi><mi>MC</mi></msub></math> and (<a href="#S3.E23" title="In 3 Passage to reliability exponents ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">23</span></a>) imply</p>
+<table id="S3.EGx4" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex8.m1" class="ltx_Math" alttext="\displaystyle E_{\mathrm{sp}}(r+\delta)" display="inline"><mrow><msub><mi>E</mi><mi>sp</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>+</mo><mi>δ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex8.m2" class="ltx_math_unparsed" alttext="\displaystyle\leq\liminf_{n\to\infty}-\frac{1}{n}\log_{2}\varepsilon_{\mathrm{MC}}(L_{n},W^{\otimes n})," display="inline"><mrow><mo rspace="0.1389em">≤</mo><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim inf</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mo lspace="0em">−</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>n</mi></mfrac></mstyle><msub><mi>log</mi><mn>2</mn></msub><msub><mi>ε</mi><mi>MC</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>L</mi><mi>n</mi></msub><mo>,</mo><msup><mi>W</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msup><mo stretchy="false">)</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+<tbody id="S3.Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex9.m1" class="ltx_math_unparsed" alttext="\displaystyle\limsup_{n\to\infty}-\frac{1}{n}\log_{2}\varepsilon_{\mathrm{MC}}(L_{n},W^{\otimes n})" display="inline"><mrow><munder><mo movablelimits="false">lim sup</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mo lspace="0em">−</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>n</mi></mfrac></mstyle><msub><mi>log</mi><mn>2</mn></msub><msub><mi>ε</mi><mi>MC</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>L</mi><mi>n</mi></msub><mo>,</mo><msup><mi>W</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msup><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex9.m2" class="ltx_Math" alttext="\displaystyle\leq E_{\mathrm{sp}}(r-\delta)." display="inline"><mrow><mrow><mphantom></mphantom><mo>≤</mo><mrow><msub><mi>E</mi><mi>sp</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>−</mo><mi>δ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">Letting <math id="S3.p4.m5" class="ltx_Math" alttext="\delta\downarrow 0" display="inline"><mrow><mi>δ</mi><mo stretchy="false">↓</mo><mn>0</mn></mrow></math> and using continuity gives</p>
+<table id="S3.E24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E24.m1" class="ltx_math_unparsed" alttext="\lim_{n\to\infty}-\frac{1}{n}\log_{2}\varepsilon_{\mathrm{MC}}(L_{n},W^{\otimes n})=E_{\mathrm{sp}}(r)." display="block"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mo lspace="0em">−</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><msub><mi>log</mi><mn>2</mn></msub><msub><mi>ε</mi><mi>MC</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>L</mi><mi>n</mi></msub><mo>,</mo><msup><mi>W</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msup><mo stretchy="false">)</mo></mrow><mo>=</mo><msub><mi>E</mi><mi>sp</mi></msub><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(24)</span></td></tr></tbody>
+</table>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Now fix <math id="S3.p5.m1" class="ltx_Math" alttext="0&lt;R&lt;C(W)" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>R</mi><mo>&lt;</mo><mrow><mi>C</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and set <math id="S3.p5.m2" class="ltx_Math" alttext="V_{n}=W^{\otimes n}" display="inline"><mrow><msub><mi>V</mi><mi>n</mi></msub><mo>=</mo><msup><mi>W</mi><mrow><mphantom></mphantom><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>n</mi></mrow></msup></mrow></math>.
+Theorem <a href="#Thmtheorem1" title="Theorem 1 (One-shot comparison). ‣ 1 Introduction ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a> gives</p>
+<table id="S3.E25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E25.m1" class="ltx_Math" alttext="\varepsilon_{\mathrm{MC}}(M_{n}(R),V_{n})\leq\varepsilon_{\mathrm{NS}}(M_{n}(R),V_{n})\leq\varepsilon_{\mathrm{MC}}(M_{n}(R)+6,V_{n})." display="block"><mrow><mrow><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>M</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>V</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>M</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>V</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msub><mi>M</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mn>6</mn></mrow><mo>,</mo><msub><mi>V</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(25)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">Both bounding message counts have normalized logarithm tending to <math id="S3.p5.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>.
+Applying (<a href="#S3.E24" title="In 3 Passage to reliability exponents ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">24</span></a>) to the two bounds proves the
+existence of <math id="S3.p5.m4" class="ltx_Math" alttext="E_{\mathrm{NS}}(R)" display="inline"><mrow><msub><mi>E</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></math> and the equality
+<math id="S3.p5.m5" class="ltx_Math" alttext="E_{\mathrm{NS}}(R)=E_{\mathrm{sp}}(R)" display="inline"><mrow><mrow><msub><mi>E</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>E</mi><mi>sp</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">For the activated model, the one-bit activation identity
+<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib3" title="" class="ltx_ref">3</a>, <a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite> states that, for every integer <math id="S3.p6.m1" class="ltx_Math" alttext="m\geq 1" display="inline"><mrow><mi>m</mi><mo>≥</mo><mn>1</mn></mrow></math>,</p>
+<table id="S3.E26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E26.m1" class="ltx_Math" alttext="\varepsilon_{\mathrm{NS}}(2m,V_{n}\otimes I_{2})=\varepsilon_{\mathrm{MC}}(m,V_{n});" display="block"><mrow><mrow><mrow><msub><mi>ε</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>m</mi></mrow><mo>,</mo><mrow><msub><mi>V</mi><mi>n</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>I</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><msub><mi>V</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>;</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(26)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">see <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>, Eq. (32)]</cite>. Thus, for every integer <math id="S3.p6.m2" class="ltx_Math" alttext="L\geq 2" display="inline"><mrow><mi>L</mi><mo>≥</mo><mn>2</mn></mrow></math>,
+monotonicity of the non-signaling error gives</p>
+<table id="S3.E27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.E27.m1" class="ltx_Math" alttext="\varepsilon_{\mathrm{MC}}(\lfloor L/2\rfloor,V_{n})\leq\varepsilon_{\mathrm{NS}}(L,V_{n}\otimes I_{2})\leq\varepsilon_{\mathrm{MC}}(\lceil L/2\rceil,V_{n})." display="block"><mrow><mrow><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">⌊</mo><mrow><mi>L</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">⌋</mo></mrow><mo>,</mo><msub><mi>V</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>NS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>L</mi><mo>,</mo><mrow><msub><mi>V</mi><mi>n</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>I</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><msub><mi>ε</mi><mi>MC</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">⌈</mo><mrow><mi>L</mi><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">⌉</mo></mrow><mo>,</mo><msub><mi>V</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(27)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">With <math id="S3.p6.m3" class="ltx_Math" alttext="L=M_{n}(R)" display="inline"><mrow><mi>L</mi><mo>=</mo><mrow><msub><mi>M</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, both bounding message counts again have normalized
+logarithm tending to <math id="S3.p6.m4" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>. Equation (<a href="#S3.E24" title="In 3 Passage to reliability exponents ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">24</span></a>) proves
+that <math id="S3.p6.m5" class="ltx_Math" alttext="E_{\mathrm{ANS}}(R)" display="inline"><mrow><msub><mi>E</mi><mi>ANS</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></math> exists and equals <math id="S3.p6.m6" class="ltx_Math" alttext="E_{\mathrm{sp}}(R)" display="inline"><mrow><msub><mi>E</mi><mi>sp</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></math>, completing the
+proof.
+∎</p>
+</div>
+</div>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography" style="font-size:90%;">References</h2>
+
+<ul class="ltx_biblist">
+      
+<li id="bib.bib1" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+William Matthews.
+A linear program for the finite block length converse of
+Polyanskiy–Poor–Verdú via nonsignaling codes.
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">IEEE Trans. Inf. Theory</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">58</span><span class="ltx_text" style="font-size:90%;">(12), 7036–7044 (2012).
+</span><a href="https://doi.org/10.1109/TIT.2012.2210695" title="" class="ltx_ref ltx_href" style="font-size:90%;"><span class="ltx_ref ltx_nolink">doi:10.1109/TIT.2012.2210695</span></a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib2" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Xin Wang, Wei Xie, and Runyao Duan.
+Semidefinite programming strong converse bounds for classical capacity.
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">IEEE Trans. Inf. Theory</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">64</span><span class="ltx_text" style="font-size:90%;">(1), 640–653 (2018).
+</span><a href="https://doi.org/10.1109/TIT.2017.2741101" title="" class="ltx_ref ltx_href" style="font-size:90%;"><span class="ltx_ref ltx_nolink">doi:10.1109/TIT.2017.2741101</span></a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib3" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Xin Wang, Kun Fang, and Marco Tomamichel.
+On converse bounds for classical communication over quantum channels.
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">IEEE Trans. Inf. Theory</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">65</span><span class="ltx_text" style="font-size:90%;">(7), 4609–4619 (2019).
+</span><a href="https://doi.org/10.1109/TIT.2019.2898656" title="" class="ltx_ref ltx_href" style="font-size:90%;"><span class="ltx_ref ltx_nolink">doi:10.1109/TIT.2019.2898656</span></a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib4" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Aadil Oufkir, Marco Tomamichel, and Mario Berta.
+Error exponent of activated non-signaling-assisted classical-quantum
+channel coding.
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Lett. Math. Phys.</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">116</span><span class="ltx_text" style="font-size:90%;">, article 33 (2026).
+</span><a href="https://doi.org/10.1007/s11005-026-02061-z" title="" class="ltx_ref ltx_href" style="font-size:90%;"><span class="ltx_ref ltx_nolink">doi:10.1007/s11005-026-02061-z</span></a><span class="ltx_text" style="font-size:90%;">.
+Author version: arXiv:2410.01084v2 (2024),
+</span><a href="https://arxiv.org/abs/2410.01084v2" title="" class="ltx_ref ltx_url ltx_font_typewriter" style="font-size:90%;">https://arxiv.org/abs/2410.01084v2</a><span class="ltx_text" style="font-size:90%;">.
+The theorem, proposition, and equation numbers cited here refer to this
+author version.
+</span>
+</span></li>
+      
+<li id="bib.bib5" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Marco Dalai.
+Lower bounds on the probability of error for classical and
+classical-quantum channels.
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">IEEE Trans. Inf. Theory</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">59</span><span class="ltx_text" style="font-size:90%;">(12), 8027–8056 (2013).
+</span><a href="https://doi.org/10.1109/TIT.2013.2283794" title="" class="ltx_ref ltx_href" style="font-size:90%;"><span class="ltx_ref ltx_nolink">doi:10.1109/TIT.2013.2283794</span></a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib6" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Joseph M. Renes.
+Tight lower bound on the error exponent of classical-quantum channels.
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">IEEE Trans. Inf. Theory</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">71</span><span class="ltx_text" style="font-size:90%;">(1), 530–538 (2025).
+</span><a href="https://doi.org/10.1109/TIT.2024.3500578" title="" class="ltx_ref ltx_href" style="font-size:90%;"><span class="ltx_ref ltx_nolink">doi:10.1109/TIT.2024.3500578</span></a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib7" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Ke Li and Dong Yang.
+Reliability function of classical-quantum channels.
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Phys. Rev. Lett.</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">134</span><span class="ltx_text" style="font-size:90%;">, 010802 (2025).
+</span><a href="https://doi.org/10.1103/PhysRevLett.134.010802" title="" class="ltx_ref ltx_href" style="font-size:90%;"><span class="ltx_ref ltx_nolink">doi:10.1103/PhysRevLett.134.010802</span></a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib8" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Hao-Chung Cheng and Po-Chieh Liu.
+Error exponents for quantum packing problems via an operator layer cake
+theorem.
+arXiv:2507.06232v4 (2026).
+</span><a href="https://arxiv.org/abs/2507.06232v4" title="" class="ltx_ref ltx_url ltx_font_typewriter" style="font-size:90%;">https://arxiv.org/abs/2507.06232v4</a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+      
+<li id="bib.bib9" class="ltx_bibitem"><span class="ltx_tag ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Aadil Oufkir and Mario Berta.
+Quantum channel coding: Approximation algorithms and strong converse
+exponents.
+</span><em class="ltx_emph ltx_font_italic" style="font-size:90%;">Quantum</em><span class="ltx_text" style="font-size:90%;"> </span><span class="ltx_text ltx_font_bold" style="font-size:90%;">9</span><span class="ltx_text" style="font-size:90%;">, 1877 (2025).
+</span><a href="https://doi.org/10.22331/q-2025-10-06-1877" title="" class="ltx_ref ltx_href" style="font-size:90%;"><span class="ltx_ref ltx_nolink">doi:10.22331/q-2025-10-06-1877</span></a><span class="ltx_text" style="font-size:90%;">.
+</span>
+</span></li>
+    
+</ul>
+</section>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<section id="A1" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix"><span class="ltx_tag ltx_tag_appendix">Appendix A </span>Operational form of the non-signaling program</h2>
+
+<div id="A1.p1" class="ltx_para">
+<p class="ltx_p">For completeness, we describe the non-signaling operation associated with
+the equality constraint in Section <a href="#S2" title="2 Coding programs and effect completion ‣ Non-signaling reliability of classical–quantum channelswith full-rank outputs" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>. Alice receives a
+classical message <math id="A1.p1.m1" class="ltx_Math" alttext="m\in\{1,\ldots,M\}" display="inline"><mrow><mi>m</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mrow><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>M</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math> and outputs a channel input <math id="A1.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>;
+Bob receives the quantum output of the channel and outputs an estimate
+<math id="A1.p1.m3" class="ltx_Math" alttext="\widehat{m}" display="inline"><mover accent="true"><mi>m</mi><mo>^</mo></mover></math>. Such an operation is specified by positive operators
+<math id="A1.p1.m4" class="ltx_Math" alttext="F_{x,\widehat{m}\mid m}" display="inline"><msub><mi>F</mi><mrow><mi>x</mi><mo>,</mo><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo fence="false">|</mo><mi>m</mi></mrow></mrow></msub></math> on Bob’s input space. For each <math id="A1.p1.m5" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>, they sum to
+<math id="A1.p1.m6" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> over <math id="A1.p1.m7" class="ltx_Math" alttext="(x,\widehat{m})" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></math>. No signaling from Bob to Alice requires
+<math id="A1.p1.m8" class="ltx_Math" alttext="\sum_{\widehat{m}}F_{x,\widehat{m}\mid m}=q(x\mid m)I" display="inline"><mrow><mrow><msub><mo>∑</mo><mover accent="true"><mi>m</mi><mo>^</mo></mover></msub><msub><mi>F</mi><mrow><mi>x</mi><mo>,</mo><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo fence="false">|</mo><mi>m</mi></mrow></mrow></msub></mrow><mo>=</mo><mrow><mrow><mi>q</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mi>I</mi></mrow></mrow></math> for a probability
+distribution <math id="A1.p1.m9" class="ltx_math_unparsed" alttext="q(\cdot\mid m)" display="inline"><mrow><mi>q</mi><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo lspace="0em" rspace="0.167em">∣</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></math>, and no signaling from Alice to Bob requires
+<math id="A1.p1.m10" class="ltx_Math" alttext="\sum_{x}F_{x,\widehat{m}\mid m}" display="inline"><mrow><msub><mo>∑</mo><mi>x</mi></msub><msub><mi>F</mi><mrow><mi>x</mi><mo>,</mo><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo fence="false">|</mo><mi>m</mi></mrow></mrow></msub></mrow></math> to be independent of <math id="A1.p1.m11" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>.</p>
+</div>
+<div id="A1.p2" class="ltx_para">
+<p class="ltx_p">Given a feasible pair <math id="A1.p2.m1" class="ltx_Math" alttext="(q,Q)" display="inline"><mrow><mo stretchy="false">(</mo><mi>q</mi><mo>,</mo><mi>Q</mi><mo stretchy="false">)</mo></mrow></math> with <math id="A1.p2.m2" class="ltx_Math" alttext="M\geq 2" display="inline"><mrow><mi>M</mi><mo>≥</mo><mn>2</mn></mrow></math>, define</p>
+<table id="A1.E28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.E28.m1" class="ltx_Math" alttext="F_{x,\widehat{m}\mid m}=\begin{cases}q_{x}Q_{x},&amp;\widehat{m}=m,\\[2.0pt]
+\displaystyle\frac{q_{x}(I-Q_{x})}{M-1},&amp;\widehat{m}\neq m.\end{cases}" display="block"><mrow><msub><mi>F</mi><mrow><mi>x</mi><mo>,</mo><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo fence="false">|</mo><mi>m</mi></mrow></mrow></msub><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>Q</mi><mi>x</mi></msub></mrow><mo>,</mo></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo>=</mo><mi>m</mi></mrow><mo>,</mo></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mfrac><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>I</mi><mo>−</mo><msub><mi>Q</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>M</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>,</mo></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo>≠</mo><mi>m</mi></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(28)</span></td></tr></tbody>
+</table>
+<p class="ltx_p">These operators are positive and satisfy</p>
+<table id="A1.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex10.m1" class="ltx_Math" alttext="\sum_{\widehat{m}}F_{x,\widehat{m}\mid m}=q_{x}I,\qquad\sum_{x}F_{x,\widehat{m}\mid m}=I/M." display="block"><mrow><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mover accent="true"><mi>m</mi><mo>^</mo></mover></munder><msub><mi>F</mi><mrow><mi>x</mi><mo>,</mo><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo fence="false">|</mo><mi>m</mi></mrow></mrow></msub></mrow><mo>=</mo><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><mi>I</mi></mrow></mrow><mo rspace="2.000em">,</mo><mrow><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><msub><mi>F</mi><mrow><mi>x</mi><mo>,</mo><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo fence="false">|</mo><mi>m</mi></mrow></mrow></msub></mrow><mo>=</mo><mrow><mi>I</mi><mo>/</mo><mi>M</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+<p class="ltx_p">They therefore define a non-signaling operation. Connecting Alice’s output
+<math id="A1.p2.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> to the channel <math id="A1.p2.m4" class="ltx_Math" alttext="V:x\mapsto\omega_{x}" display="inline"><mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>x</mi><mo stretchy="false">↦</mo><msub><mi>ω</mi><mi>x</mi></msub></mrow></mrow></math> gives average success probability</p>
+<table id="A1.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="A1.Ex11.m1" class="ltx_Math" alttext="\frac{1}{M}\sum_{m=1}^{M}\sum_{x}\Tr\omega_{x}F_{x,m\mid m}=\sum_{x}q_{x}\Tr\omega_{x}Q_{x}." display="block"><mrow><mrow><mrow><mfrac><mn>1</mn><mi>M</mi></mfrac><mo>⁢</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></munderover><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mrow><msub><mi>ω</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>F</mi><mrow><mi>x</mi><mo>,</mo><mrow><mi>m</mi><mo fence="false">|</mo><mi>m</mi></mrow></mrow></msub></mrow></mrow></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>x</mi></munder><mrow><msub><mi>q</mi><mi>x</mi></msub><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>ω</mi><mi>x</mi></msub></mrow><mo>⁢</mo><msub><mi>Q</mi><mi>x</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td></tr></tbody>
+</table>
+</div>
+<div id="A1.p3" class="ltx_para">
+<p class="ltx_p">Conversely, average any non-signaling operation over simultaneous
+permutations of the message and estimate labels. This preserves its average
+success probability and both non-signaling conditions. The resulting
+operators have the form <math id="A1.p3.m1" class="ltx_Math" alttext="G_{x}" display="inline"><msub><mi>G</mi><mi>x</mi></msub></math> when <math id="A1.p3.m2" class="ltx_Math" alttext="\widehat{m}=m" display="inline"><mrow><mover accent="true"><mi>m</mi><mo>^</mo></mover><mo>=</mo><mi>m</mi></mrow></math> and <math id="A1.p3.m3" class="ltx_Math" alttext="H_{x}" display="inline"><msub><mi>H</mi><mi>x</mi></msub></math> otherwise.
+The Bob-to-Alice condition gives
+<math id="A1.p3.m4" class="ltx_Math" alttext="G_{x}+(M-1)H_{x}=q_{x}I" display="inline"><mrow><mrow><msub><mi>G</mi><mi>x</mi></msub><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>M</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>H</mi><mi>x</mi></msub></mrow></mrow><mo>=</mo><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><mi>I</mi></mrow></mrow></math> for a distribution <math id="A1.p3.m5" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>. The Alice-to-Bob condition
+and normalization give
+<math id="A1.p3.m6" class="ltx_Math" alttext="\sum_{x}G_{x}=\sum_{x}H_{x}=I/M" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>x</mi></msub><msub><mi>G</mi><mi>x</mi></msub></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>x</mi></msub><msub><mi>H</mi><mi>x</mi></msub></mrow><mo>=</mo><mrow><mi>I</mi><mo>/</mo><mi>M</mi></mrow></mrow></math>. Thus <math id="A1.p3.m7" class="ltx_Math" alttext="0\leq G_{x}\leq q_{x}I" display="inline"><mrow><mn>0</mn><mo>≤</mo><msub><mi>G</mi><mi>x</mi></msub><mo>≤</mo><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><mi>I</mi></mrow></mrow></math>, and setting
+<math id="A1.p3.m8" class="ltx_Math" alttext="Q_{x}=G_{x}/q_{x}" display="inline"><mrow><msub><mi>Q</mi><mi>x</mi></msub><mo>=</mo><mrow><msub><mi>G</mi><mi>x</mi></msub><mo>/</mo><msub><mi>q</mi><mi>x</mi></msub></mrow></mrow></math> for <math id="A1.p3.m9" class="ltx_Math" alttext="q_{x}&gt;0" display="inline"><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>&gt;</mo><mn>0</mn></mrow></math>, with <math id="A1.p3.m10" class="ltx_Math" alttext="Q_{x}=0" display="inline"><mrow><msub><mi>Q</mi><mi>x</mi></msub><mo>=</mo><mn>0</mn></mrow></math> otherwise, yields
+<math id="A1.p3.m11" class="ltx_Math" alttext="0\leq Q_{x}\leq I" display="inline"><mrow><mn>0</mn><mo>≤</mo><msub><mi>Q</mi><mi>x</mi></msub><mo>≤</mo><mi>I</mi></mrow></math> and <math id="A1.p3.m12" class="ltx_Math" alttext="\sum_{x}q_{x}Q_{x}=I/M" display="inline"><mrow><mrow><msub><mo>∑</mo><mi>x</mi></msub><mrow><msub><mi>q</mi><mi>x</mi></msub><mo>⁢</mo><msub><mi>Q</mi><mi>x</mi></msub></mrow></mrow><mo>=</mo><mrow><mi>I</mi><mo>/</mo><mi>M</mi></mrow></mrow></math>. This recovers the equality
+program and its objective.</p>
+</div>
+</section><div class="ltx_rdf" about="" property="dcterms:creator"></div>
+<div class="ltx_rdf" about="" property="dcterms:title" content="Non-signaling reliability of classical-quantum channels with full-rank outputs"></div>
+
+</article>
+{% endraw %}

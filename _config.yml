@@ -186,6 +186,16 @@ exclude:
   - package.json*
   - Rakefile
   - README
+  # Repository documentation and maintenance tools are not website content.
+  - README.md
+  - CONTRIBUTING.md
+  - docs
+  - scripts
+  - markdown_generator
+  - talkmap.py
+  - talkmap.ipynb
+  - talkmap_out.ipynb
+  - docker-compose.yaml
   - tmp
   - vendor
 keep_files:
