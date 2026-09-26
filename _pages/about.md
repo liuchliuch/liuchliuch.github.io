@@ -30,12 +30,27 @@ redirect_from:
       <div class="publication-title">MiMo-V2.6</div>
       <div class="publication-details">Core contributor · <a href="https://mimo.xiaomi.com/mimo-v2-6">Website</a> · <a href="https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/blob/main/MiMo_V2_6_technical_report.pdf">Technical report</a></div>
     </li>
+
+    <li class="publication">
+      <div class="publication-title">PinkArc {% include pinkarc-mark.html tooltip=false %} <span class="work-status">Ongoing development</span></div>
+      <div class="publication-details">A harness for autonomous theoretical research. Powers all Rising Sea papers below.
+        <details class="work-design">
+          <summary>Design</summary>
+          <div class="work-design-copy">Minimal by design, PinkArc encourages cross-domain thinking beyond familiar frameworks. Database-backed memory organizes research, while lightweight orchestration reduces token overhead.</div>
+        </details>
+      </div>
+    </li>
+
+    <li class="publication">
+      <div class="publication-title">PinkFold {% include pinkfold-mark.html %} <span class="work-status">Early experiments</span></div>
+      <div class="publication-details">A minimal harness for fast autoformalization in Lean through multi-model collaboration, currently in development.</div>
+    </li>
   </ol>
 
   <details class="more-work">
     <summary>More work</summary>
 
-    <ol class="publication-list publication-list--secondary" start="2">
+    <ol class="publication-list publication-list--secondary" start="4">
       <li class="publication">
         <div class="publication-title">Flow-Matched Motion Priors: Online Optimal-Transport Rewards for Imitation Learning</div>
         <div class="publication-authors">Yilin Zou, <strong>Chenghua Liu</strong>, Chenglong Wu, and Fanghua Jiang. <abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr></div>
@@ -47,67 +62,67 @@ redirect_from:
 
 <section class="home-section rising-sea-section" aria-labelledby="rising-sea-title">
   <div class="section-heading">
-    <h2 id="rising-sea-title">Rising Sea</h2>
+    <h2 id="rising-sea-title">Rising Sea {% include pinkarc-mark.html %}</h2>
     <a class="repository-link" href="{{ '/repository.html' | relative_url }}">Repository <span aria-hidden="true">→</span></a>
   </div>
 
   <ol class="publication-list">
     <li class="publication">
-      <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative Weights</div>
+      <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">A Generalized Stein Lemma for Quantum Channels</div>
+      <div class="publication-title">A Generalized Stein Lemma for Quantum <span class="publication-title-tail">Channels {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="{{ '/files/generalized-stein-lemma-quantum-channels.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">Quantum Channel Stein’s Lemma with an Exponential Strong Converse</div>
+      <div class="publication-title">Quantum Channel Stein’s Lemma with an Exponential Strong <span class="publication-title-tail">Converse {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27196">arXiv</a> · <a href="{{ '/files/quantum-channel-stein-lemma-exponential-strong-converse.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">Quantum Behaviors Are Not Semialgebraic</div>
+      <div class="publication-title">Quantum Behaviors Are Not <span class="publication-title-tail">Semialgebraic {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18865">arXiv</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">Hidden Circuits and Exact Counting in Ordered Graphs</div>
+      <div class="publication-title">Hidden Circuits and Exact Counting in Ordered <span class="publication-title-tail">Graphs {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18132">arXiv</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact Width</div>
+      <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact <span class="publication-title-tail">Width {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">A Full Complexity Dichotomy for Complex-Valued Boolean Holant Problems</div>
+      <div class="publication-title">A Full Complexity Dichotomy for Complex-Valued Boolean Holant <span class="publication-title-tail">Problems {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong>, Boning Meng, and Juqiu Wang. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">A Dichotomy for Complex Boolean Holant with Binary Disequality</div>
+      <div class="publication-title">A Dichotomy for Complex Boolean Holant with Binary <span class="publication-title-tail">Disequality {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00219">arXiv</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">Bounded Relative Boundary Implies Narrow DNF Approximation</div>
+      <div class="publication-title">Bounded Relative Boundary Implies Narrow DNF <span class="publication-title-tail">Approximation {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00240">arXiv</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">From Block Orthogonality to Decidability in Complex-Weighted Counting CSP</div>
+      <div class="publication-title">From Block Orthogonality to Decidability in Complex-Weighted Counting <span class="publication-title-tail">CSP {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.14845">arXiv</a></div>
     </li>
@@ -118,25 +133,25 @@ redirect_from:
 
     <ol class="publication-list publication-list--secondary" start="11">
       <li class="publication">
-        <div class="publication-title">Optimal Covariance Inflation under Gaussian Tilts</div>
+        <div class="publication-title">Optimal Covariance Inflation under Gaussian <span class="publication-title-tail">Tilts {% include pinkarc-mark.html %}</span></div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.08930">arXiv</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">Independent Set Discovery on Biclique-Free Graphs Is Fixed-Parameter Tractable</div>
+        <div class="publication-title">Independent Set Discovery on Biclique-Free Graphs Is Fixed-Parameter <span class="publication-title-tail">Tractable {% include pinkarc-mark.html %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27837">arXiv</a> · <a href="{{ '/files/independent-set-discovery-biclique-free-graphs.pdf' | relative_url }}">PDF</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">Lower Bounds for Domination-Type Problems Parameterized by Rank-Width</div>
+        <div class="publication-title">Lower Bounds for Domination-Type Problems Parameterized by <span class="publication-title-tail">Rank-Width {% include pinkarc-mark.html %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.18854">arXiv</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">A Correlation-Gap Bound for Nonlinear Gaussian PCA</div>
+        <div class="publication-title">A Correlation-Gap Bound for Nonlinear Gaussian <span class="publication-title-tail">PCA {% include pinkarc-mark.html %}</span></div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.15035">arXiv</a></div>
       </li>
