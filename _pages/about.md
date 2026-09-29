@@ -33,6 +33,7 @@ redirect_from:
 
     <li class="publication">
       <div class="publication-title">PinkArc {% include pinkarc-mark.html tooltip=false %} <span class="work-status">Ongoing development</span></div>
+      <div class="publication-authors">Contributors: Boning Meng, Minbo Gao.</div>
       <div class="publication-details">A harness for autonomous theoretical research. Powers all Rising Sea papers below.
         <details class="work-design">
           <summary>Design</summary>
@@ -67,6 +68,12 @@ redirect_from:
   </div>
 
   <ol class="publication-list">
+    <li class="publication">
+      <div class="publication-title">Simultaneously Query-Optimal Quantum Linear-System <span class="publication-title-tail">Algorithm {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.33686">arXiv</a></div>
+    </li>
+
     <li class="publication">
       <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
@@ -131,7 +138,7 @@ redirect_from:
   <details class="more-work">
     <summary>More papers</summary>
 
-    <ol class="publication-list publication-list--secondary" start="11">
+    <ol class="publication-list publication-list--secondary" start="12">
       <li class="publication">
         <div class="publication-title">Optimal Covariance Inflation under Gaussian <span class="publication-title-tail">Tilts {% include pinkarc-mark.html %}</span></div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
@@ -166,7 +173,7 @@ redirect_from:
     <li class="publication">
       <div class="publication-title">Quantum Communication Lower Bounds for Search Problems via Matrix Discrepancy</div>
       <div class="publication-authors">Minbo Gao, <strong>Chenghua Liu</strong>, Guangxu Yang, and Tianyi Zhang. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.08517">arXiv</a></div>
+      <div class="publication-details">SODA 2027 · <a href="https://arxiv.org/abs/2607.08517">arXiv</a></div>
     </li>
 
     <li class="publication">
