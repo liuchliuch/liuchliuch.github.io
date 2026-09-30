@@ -140,6 +140,24 @@ redirect_from:
 
     <ol class="publication-list publication-list--secondary" start="12">
       <li class="publication">
+        <div class="publication-title">Approximating Combinatorial Contracts with Arbitrary <span class="publication-title-tail">Costs {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-authors">Xiaotie Deng, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.35803">arXiv</a></div>
+      </li>
+
+      <li class="publication">
+        <div class="publication-title">Cardinality-Constrained Randomized Assortments with Balanced Market <span class="publication-title-tail">Share {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-authors">Xiaotie Deng, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.35802">arXiv</a></div>
+      </li>
+
+      <li class="publication">
+        <div class="publication-title">Exact Hill Shares Are Simultaneous <span class="publication-title-tail">Guarantees {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-authors">Bo Li, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.35801">arXiv</a></div>
+      </li>
+
+      <li class="publication">
         <div class="publication-title">Optimal Covariance Inflation under Gaussian <span class="publication-title-tail">Tilts {% include pinkarc-mark.html %}</span></div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.08930">arXiv</a></div>
