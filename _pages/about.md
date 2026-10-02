@@ -107,13 +107,13 @@ redirect_from:
     <li class="publication">
       <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact <span class="publication-title-tail">Width {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00079">arXiv</a> · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
       <div class="publication-title">A Full Complexity Dichotomy for Complex-Valued Boolean Holant <span class="publication-title-tail">Problems {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong>, Boning Meng, and Juqiu Wang. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00081">arXiv</a> · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
     </li>
 
     <li class="publication">
@@ -142,7 +142,7 @@ redirect_from:
       <li class="publication">
         <div class="publication-title">Approximating Combinatorial Contracts with Arbitrary <span class="publication-title-tail">Costs {% include pinkarc-mark.html %}</span></div>
         <div class="publication-authors">Xiaotie Deng, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.35803">arXiv</a></div>
+        <div class="publication-details">SOSA 2027 · <a href="https://arxiv.org/abs/2609.35803">arXiv</a></div>
       </li>
 
       <li class="publication">
