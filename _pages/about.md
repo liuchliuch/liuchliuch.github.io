@@ -69,9 +69,9 @@ redirect_from:
 
   <ol class="publication-list">
     <li class="publication">
-      <div class="publication-title">Simultaneously Query-Optimal Quantum Linear-System <span class="publication-title-tail">Algorithm {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">Simultaneously Query-Optimal Quantum Linear-System <span class="publication-title-tail">Algorithm {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.33686">arXiv</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.33686">arXiv</a> · <a href="https://github.com/liuchliuch/optimal-qls-lean">Lean</a></div>
     </li>
 
     <li class="publication">
@@ -81,21 +81,21 @@ redirect_from:
     </li>
 
     <li class="publication">
-      <div class="publication-title">A Generalized Stein Lemma for Quantum <span class="publication-title-tail">Channels {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">A Generalized Stein Lemma for Quantum <span class="publication-title-tail">Channels {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.30762">arXiv</a> · <a href="{{ '/files/generalized-stein-lemma-quantum-channels.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.30762">arXiv</a> · <a href="https://github.com/liuchliuch/generalized-channel-stein-lean">Lean</a> · <a href="{{ '/files/generalized-stein-lemma-quantum-channels.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">Quantum Channel Stein’s Lemma with an Exponential Strong <span class="publication-title-tail">Converse {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">Quantum Channel Stein’s Lemma with an Exponential Strong <span class="publication-title-tail">Converse {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27196">arXiv</a> · <a href="{{ '/files/quantum-channel-stein-lemma-exponential-strong-converse.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27196">arXiv</a> · <a href="https://github.com/liuchliuch/quantum-channel-stein-lean">Lean</a> · <a href="{{ '/files/quantum-channel-stein-lemma-exponential-strong-converse.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">Quantum Behaviors Are Not <span class="publication-title-tail">Semialgebraic {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">Quantum Behaviors Are Not <span class="publication-title-tail">Semialgebraic {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18865">arXiv</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18865">arXiv</a> · <a href="https://github.com/liuchliuch/nonsemialgebraic-quantum-behaviors-lean">Lean</a></div>
     </li>
 
     <li class="publication">

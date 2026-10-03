@@ -838,7 +838,8 @@ body.mondrian-home {
   vertical-align: calc(-0.22em - 2px);
 }
 
-.pinkarc-mark[data-tooltip] {
+.pinkarc-mark[data-tooltip],
+.pinkfold-mark[data-tooltip] {
   cursor: help;
 }
 
@@ -975,7 +976,8 @@ body.mondrian-home {
 
 .order-mark::after,
 .rip-mark::after,
-.pinkarc-mark[data-tooltip]::after {
+.pinkarc-mark[data-tooltip]::after,
+.pinkfold-mark[data-tooltip]::after {
   position: absolute;
   z-index: 6;
   bottom: calc(100% + 0.45rem);
@@ -1010,7 +1012,8 @@ body.mondrian-home {
   white-space: normal;
 }
 
-.pinkarc-mark[data-tooltip]::after {
+.pinkarc-mark[data-tooltip]::after,
+.pinkfold-mark[data-tooltip]::after {
   right: 0;
   left: auto;
   content: attr(data-tooltip);
@@ -1023,7 +1026,9 @@ body.mondrian-home {
 }
 
 .pinkarc-mark[data-tooltip]:hover::after,
-.pinkarc-mark[data-tooltip]:focus::after {
+.pinkarc-mark[data-tooltip]:focus::after,
+.pinkfold-mark[data-tooltip]:hover::after,
+.pinkfold-mark[data-tooltip]:focus::after {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
