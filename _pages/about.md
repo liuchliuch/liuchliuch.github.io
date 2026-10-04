@@ -75,9 +75,9 @@ redirect_from:
     </li>
 
     <li class="publication">
-      <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://github.com/liuchliuch/planar-homomorphisms-lean">Lean</a> · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
@@ -99,15 +99,15 @@ redirect_from:
     </li>
 
     <li class="publication">
-      <div class="publication-title">Hidden Circuits and Exact Counting in Ordered <span class="publication-title-tail">Graphs {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">Hidden Circuits and Exact Counting in Ordered <span class="publication-title-tail">Graphs {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18132">arXiv</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18132">arXiv</a> · <a href="https://github.com/liuchliuch/hidden-circuits-lean">Lean</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact <span class="publication-title-tail">Width {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact <span class="publication-title-tail">Width {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00079">arXiv</a> · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00079">arXiv</a> · <a href="https://github.com/liuchliuch/matchgate-width-lean">Lean</a> · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
     </li>
 
     <li class="publication">
@@ -123,15 +123,15 @@ redirect_from:
     </li>
 
     <li class="publication">
-      <div class="publication-title">Bounded Relative Boundary Implies Narrow DNF <span class="publication-title-tail">Approximation {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">Bounded Relative Boundary Implies Narrow DNF <span class="publication-title-tail">Approximation {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00240">arXiv</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00240">arXiv</a> · <a href="https://github.com/liuchliuch/narrow-dnf-lean">Lean</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">From Block Orthogonality to Decidability in Complex-Weighted Counting <span class="publication-title-tail">CSP {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">From Block Orthogonality to Decidability in Complex-Weighted Counting <span class="publication-title-tail">CSP {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.14845">arXiv</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.14845">arXiv</a> · <a href="https://github.com/liuchliuch/complex-csp-decidability-lean">Lean</a></div>
     </li>
   </ol>
 
@@ -140,15 +140,15 @@ redirect_from:
 
     <ol class="publication-list publication-list--secondary" start="12">
       <li class="publication">
-        <div class="publication-title">Approximating Combinatorial Contracts with Arbitrary <span class="publication-title-tail">Costs {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-title">Approximating Combinatorial Contracts with Arbitrary <span class="publication-title-tail">Costs {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Xiaotie Deng, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">SOSA 2027 · <a href="https://arxiv.org/abs/2609.35803">arXiv</a></div>
+        <div class="publication-details">SOSA 2027 · <a href="https://arxiv.org/abs/2609.35803">arXiv</a> · <a href="https://github.com/liuchliuch/combinatorial-contracts-lean">Lean</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">Cardinality-Constrained Randomized Assortments with Balanced Market <span class="publication-title-tail">Share {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-title">Cardinality-Constrained Randomized Assortments with Balanced Market <span class="publication-title-tail">Share {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Xiaotie Deng, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.35802">arXiv</a></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.35802">arXiv</a> · <a href="https://github.com/liuchliuch/balanced-assortments-lean">Lean</a></div>
       </li>
 
       <li class="publication">
