@@ -152,33 +152,33 @@ redirect_from:
       </li>
 
       <li class="publication">
-        <div class="publication-title">Exact Hill Shares Are Simultaneous <span class="publication-title-tail">Guarantees {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-title">Exact Hill Shares Are Simultaneous <span class="publication-title-tail">Guarantees {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Bo Li, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.35801">arXiv</a></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.35801">arXiv</a> · <a href="https://github.com/liuchliuch/exact-hill-shares-lean">Lean</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">Optimal Covariance Inflation under Gaussian <span class="publication-title-tail">Tilts {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-title">Optimal Covariance Inflation under Gaussian <span class="publication-title-tail">Tilts {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.08930">arXiv</a></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.08930">arXiv</a> · <a href="https://github.com/liuchliuch/gaussian-tilt-covariance-lean">Lean</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">Independent Set Discovery on Biclique-Free Graphs Is Fixed-Parameter <span class="publication-title-tail">Tractable {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-title">Independent Set Discovery on Biclique-Free Graphs Is Fixed-Parameter <span class="publication-title-tail">Tractable {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27837">arXiv</a> · <a href="{{ '/files/independent-set-discovery-biclique-free-graphs.pdf' | relative_url }}">PDF</a></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27837">arXiv</a> · <a href="https://github.com/liuchliuch/independent-set-discovery-lean">Lean</a> · <a href="{{ '/files/independent-set-discovery-biclique-free-graphs.pdf' | relative_url }}">PDF</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">Lower Bounds for Domination-Type Problems Parameterized by <span class="publication-title-tail">Rank-Width {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-title">Lower Bounds for Domination-Type Problems Parameterized by <span class="publication-title-tail">Rank-Width {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.18854">arXiv</a></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.18854">arXiv</a> · <a href="https://github.com/liuchliuch/rankwidth-domination-lean">Lean</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">A Correlation-Gap Bound for Nonlinear Gaussian <span class="publication-title-tail">PCA {% include pinkarc-mark.html %}</span></div>
+        <div class="publication-title">A Correlation-Gap Bound for Nonlinear Gaussian <span class="publication-title-tail">PCA {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.15035">arXiv</a></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.15035">arXiv</a> · <a href="https://github.com/liuchliuch/gaussian-pca-lean">Lean</a></div>
       </li>
     </ol>
   </details>
