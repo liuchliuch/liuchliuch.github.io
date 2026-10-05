@@ -838,6 +838,10 @@ body.mondrian-home {
   vertical-align: calc(-0.22em - 2px);
 }
 
+.pinkfold-mark {
+  top: -1px;
+}
+
 .pinkarc-mark[data-tooltip],
 .pinkfold-mark[data-tooltip] {
   cursor: help;
