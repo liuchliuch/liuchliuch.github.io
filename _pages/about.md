@@ -77,7 +77,7 @@ redirect_from:
     <li class="publication">
       <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://github.com/liuchliuch/planar-homomorphisms-lean">Lean</a> · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.05412">arXiv</a> · <a href="https://github.com/liuchliuch/planar-homomorphisms-lean">Lean</a> · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF (draft)</a></div>
     </li>
 
     <li class="publication">
