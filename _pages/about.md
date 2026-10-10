@@ -28,7 +28,7 @@ redirect_from:
   <ol class="publication-list">
     <li class="publication">
       <div class="publication-title">MiMo-V2.6</div>
-      <div class="publication-details">Core contributor · <a href="https://mimo.xiaomi.com/mimo-v2-6">Website</a> · <a href="https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/blob/main/MiMo_V2_6_technical_report.pdf">Technical report</a></div>
+      <div class="publication-details">Core contributor · <a href="https://mimo.xiaomi.com/mimo-v2-6">Website</a> · <a href="https://arxiv.org/abs/2610.11959">Technical report</a></div>
     </li>
 
     <li class="publication">
@@ -111,15 +111,15 @@ redirect_from:
     </li>
 
     <li class="publication">
-      <div class="publication-title">A Full Complexity Dichotomy for Complex-Valued Boolean Holant <span class="publication-title-tail">Problems {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">A Full Complexity Dichotomy for Complex-Valued Boolean Holant <span class="publication-title-tail">Problems {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong>, Boning Meng, and Juqiu Wang. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00081">arXiv</a> · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00081">arXiv</a> · <a href="https://github.com/liuchliuch/holant-dichotomy-lean">Lean</a> · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
     </li>
 
     <li class="publication">
-      <div class="publication-title">A Dichotomy for Complex Boolean Holant with Binary <span class="publication-title-tail">Disequality {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-title">A Dichotomy for Complex Boolean Holant with Binary <span class="publication-title-tail">Disequality {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00219">arXiv</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00219">arXiv</a> · <a href="https://github.com/liuchliuch/holant-binary-disequality-lean">Lean</a></div>
     </li>
 
     <li class="publication">
