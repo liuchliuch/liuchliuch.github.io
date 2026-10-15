@@ -2,6 +2,8 @@
 
 公开路径为 `/countinglib/`，文档位于 `/countinglib/docs/`，随个人网站通过 GitHub Pages 部署。网站发布与 Lean 库版本发布相互独立。
 
+`liuchliuch/countinglib` 仓库自身的 GitHub Pages 应保持关闭：同名项目站会优先占用 `/countinglib/`，即使没有部署内容，也会遮蔽个人网站中的整个子目录。2026-10-15 接入时已停用该仓库遗留的空 Pages 配置；页面由本仓库统一发布。
+
 ## 内容与来源
 
 - `_pages/countinglib/index.html`：双语交互介绍页，来自 counting-complexity 项目 `website/countinglib/` 的 v7 设计。
