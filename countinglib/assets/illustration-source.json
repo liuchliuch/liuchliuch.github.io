@@ -1,0 +1,31 @@
+{
+  "asset": "possibility-architecture-v6.png",
+  "title": "One path, a world of possibilities",
+  "method": "Built-in image_gen generation, followed by a route-continuity edit",
+  "concept": "A small explorer and one ochre route within a larger branching architectural landscape introduce finding one solution versus considering all solutions.",
+  "boundaries": "Editorial metaphor, not a graph with a certified path count, a complexity classification, or a Lean proof artifact. The size of a solution space alone does not establish computational hardness.",
+  "prompt": "Use case: stylized-concept.\nAsset type: original editorial illustration for a mathematics magazine-style website introducing CountingLib, a library about counting all solutions. Output one finished artwork, landscape 3:2, no typography.\nConcept: \"One path, a world of possibilities.\" Finding a single way through a network is different from understanding all possible ways. The visual must communicate this through its composition, not through floating math symbols.\n\nScene and subject: A meticulously drawn imaginary architectural landscape, a branching network made tangible as narrow ivory stone walkways, small arched bridges and terraced landings over a deep midnight blue void. The architecture fans out and recedes in a controlled elevated three-quarter view. At the near lower-left entrance is ONE very small human explorer wearing a burnt orange coat, dwarfed by the possible routes. A single continuous narrow ochre inlay in the walkway guides the eye from this entrance through several meaningful forks to a distant warm-lit opening. The other ivory routes remain clearly visible and equally tangible, branching, rejoining, passing at carefully separated heights. The central idea is one chosen path within a much larger space of possibilities. A graceful architectural canopy/arch at the distant upper-right is the focal destination. This should feel like a beautiful thought-provoking editorial print, not an escape-room game.\nComposition: asymmetrical sweep from foreground lower left to far upper right; 3 large coherent groups of branching architecture, connected by bridges, interspersed with generous irregular areas of dark negative space. Foreground edges and stairs crisply detailed, middle distance readable, far distance simplifies into rhythmic small forms. Strong dramatic silhouette at thumbnail scale, logical construction on close inspection. Show the entire main structure with breathing room, do not fill the frame uniformly. No radial chart, no circular medallions, no centered infographic.\nStyle and medium: sophisticated hand-drawn editorial illustration; cut-paper silhouettes with fine lithographic grain, drybrush gouache surfaces and delicate engraved hatching. Intentional slightly imperfect ink edges, rich flat color masses, consistent perspective and shadow direction. Tactile matte printed finish. Warm cream stone, midnight indigo shadows, slate blue atmosphere and restrained ochre/copper accents. Clear light/dark hierarchy. A subtle warm glow near the destination, not neon. Confident elegant composition, curiosity and intellectual wonder, restrained surrealism.\nCraft constraints: bridges must connect to landings, stairs have consistent steps, supported arches terminate in stone, paths have consistent width and convincing junctions; no impossible collisions, detached railings, tangled wires, stray spheres, glowing nodes, pseudo-machinery, decorative equations, numerals, labels, words, logos or watermarks. No glossy 3D, plastic, generic futuristic data network, photorealism, random shards or doodles. The architectural network is an editorial metaphor, not a literal diagram of a specific algorithm or a proof. Original composition; do not reproduce any existing magazine artwork.",
+  "designStudy": [
+    {
+      "article": "https://www.quantamagazine.org/mathematicians-build-long-awaited-graph-sandwich-20260918/",
+      "artist": "Kristina Armitage",
+      "observation": "A familiar physical object carries the abstract relation: aligned layers visualize graph containment."
+    },
+    {
+      "article": "https://www.quantamagazine.org/the-four-color-theorem-gets-a-rare-new-proof-20260910/",
+      "artist": "Vico Santos",
+      "observation": "A painter and a colored landscape make the mathematical action the subject; texture and saturated color create a focal hierarchy."
+    },
+    {
+      "article": "https://www.quantamagazine.org/what-is-maths-mysterious-langlands-program-really-about-20260909/",
+      "artist": "Samuel Velasco",
+      "observation": "Galaxies connected by passages make relationships between mathematical domains spatial."
+    },
+    {
+      "article": "https://www.quantamagazine.org/computer-scientists-invent-an-efficient-new-way-to-count-20240516/",
+      "artist": "Nico Roper",
+      "observation": "Contrasting human actions turn record-keeping and randomized estimation into a narrative."
+    }
+  ],
+  "referenceUse": "Study of published artwork and article context only. No Quanta artwork is included in the website or supplied as an image-generation input. Observations are this project's interpretation, not claims about artists' stated intent."
+}

@@ -7,6 +7,9 @@
 | 内容 | 文件或目录 |
 | --- | --- |
 | 主页介绍、Works & Days、Rising Sea、Publications | `_pages/about.md` |
+| CountingLib 介绍页与文档页面 | `_pages/countinglib/` |
+| CountingLib 独立样式、脚本、API 数据与素材 | `countinglib/` |
+| Counting Problems for Babies 完整绘本 | `files/counting-problems-for-babies.pdf` |
 | Repository 论文清单、摘要、日期、PDF 路径 | `_data/repository.yml` |
 | Repository 列表页 | `_pages/repository.html` |
 | 论文全文 HTML（由 LaTeX 生成并提交） | `_pages/repository/` |
@@ -17,9 +20,12 @@
 | 主页和列表页样式 | `assets/css/mondrian-home.css` |
 | PinkArc / PinkFold 图标引用 | `_includes/pinkarc-mark.html` / `_includes/pinkfold-mark.html` |
 | PinkArc / PinkFold 图标资源 | `images/pinkarc.svg` / `images/pinkfold.svg` |
+| CountingLib 图标引用与资源 | `_includes/countinglib-mark.html` / `images/countinglib.svg` |
 | 论文全文页样式 | `assets/css/repository-paper.css` |
 | 第三方 LaTeXML 样式（保留上游原文） | `assets/css/vendor/latexml/` |
 | 站点配置 / 本地预览配置 | `_config.yml` / `_config_local.yml` |
+
+CountingLib 的页面来源、预览与更新约定见 [维护说明](docs/countinglib.md)。
 
 全文生成、固定链接和样式维护见 [Repository 维护说明](docs/repository.md)。
 
@@ -47,7 +53,7 @@ macOS 使用 Homebrew Ruby 3.3 与 Bundler 2.7.2。首次安装依赖：
 
 ## 目录约定
 
-- `_pages/`、`_data/`、`_layouts/`、`assets/`、`files/` 和 `images/` 是网站内容及资源。
+- `_pages/`、`_data/`、`_layouts/`、`assets/`、`files/` 和 `images/` 是网站内容及资源；`countinglib/` 保存 CountingLib 子站的独立运行时资源。
 - `scripts/` 是本地安装、预览、全文生成与 CV 维护工具；`docs/` 是维护文档。
 - `_includes/`、`_sass/`、各旧内容集合，以及 `markdown_generator/`、`talkmap*` 保留了 Academic Pages 的基础功能和历史入口。
 - `_site/`、`.sass-cache/`、`.bundle/`、`vendor/` 和 `node_modules/` 是本地产物或依赖，不提交。

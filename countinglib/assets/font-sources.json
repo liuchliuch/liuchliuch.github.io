@@ -1,0 +1,21 @@
+{
+  "source": "Google Fonts, self-hosted Latin subsets",
+  "fonts": {
+    "dm-sans-normal.woff2": {
+      "family": "DM Sans",
+      "style": "normal",
+      "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K6z9mXg.woff2",
+      "bytes": 36980
+    },
+    "dm-serif-display.woff2": {
+      "family": "DM Serif Display",
+      "style": "normal",
+      "source": "https://fonts.gstatic.com/s/dmserifdisplay/v17/-nFnOHM81r4j6k0gjAW3mujVU2B2G_Bx0vrx52g.woff2",
+      "bytes": 17844
+    }
+  },
+  "licenses": [
+    "dmsans-OFL.txt",
+    "dmserifdisplay-OFL.txt"
+  ]
+}

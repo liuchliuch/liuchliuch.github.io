@@ -1,0 +1,143 @@
+---
+layout: null
+permalink: /countinglib/
+title: "CountingLib — The mathematics of counting possibilities"
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="An interactive introduction to counting complexity and CountingLib, a Lean library connecting mathematical models, algorithms, and classification theorems.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CountingLib — The mathematics of counting possibilities">
+  <meta property="og:description" content="Finding one answer is only the beginning. Explore the mathematics of counting them all, and the library bringing its proofs into Lean.">
+  <meta property="og:url" content="https://liuchliuch.github.io/countinglib/">
+  <meta property="og:image" content="https://liuchliuch.github.io/countinglib/assets/possibility-architecture-v6.png">
+  <link rel="canonical" href="https://liuchliuch.github.io/countinglib/">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/dm-serif-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/dm-sans-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+  <title>CountingLib — The mathematics of counting possibilities</title>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-zh="跳到正文">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="CountingLib, back to top"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path d="M7 8 25 8 25 24 7 24Z M7 8 25 24"/><circle cx="7" cy="8" r="4"/><circle cx="25" cy="8" r="4"/><circle cx="25" cy="24" r="4"/><circle cx="7" cy="24" r="4"/></svg>CountingLib</a>
+      <nav aria-label="Main navigation"><a href="#idea" data-zh="从一个问题开始">The idea</a><a href="#research" data-zh="研究">The research</a><a href="./docs/" data-zh="文档">Documentation</a></nav>
+      <div class="header-actions"><button id="language-toggle" type="button" aria-label="切换为中文">中文</button><a href="https://github.com/liuchliuch/countinglib" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="cover-wrap">
+    <div class="cover">
+    <header class="article-header">
+      <p class="eyebrow" data-zh="COUNTINGLIB · 一次关于计数的探索">COUNTINGLIB · AN INTERACTIVE INTRODUCTION</p>
+      <h1 data-zh="所有可能，<br>究竟有多少？">The mathematics of counting possibilities.</h1>
+      <p class="dek" data-zh="找到一个答案，只是开始。CountingLib 探索数清所有答案的难度，并在 Lean 中建立可检查、可复用的数学证明。">Finding one answer is only the beginning. CountingLib explores how hard it is to count them all—and brings the proofs into Lean.</p>
+      <div class="article-meta"><span data-zh="计数复杂性">Counting complexity</span><span class="meta-dot">·</span><span data-zh="形式化数学">Formal mathematics</span><span class="meta-dot">·</span><a href="#play" data-zh="从一个小实验开始 ↓">Begin with a small experiment ↓</a></div>
+    </header>
+    <figure class="cover-art">
+      <img src="./assets/possibility-architecture-v6.png" width="1536" height="1024" alt="A small explorer faces a vast landscape of branching stone bridges. One golden route crosses the network toward a distant illuminated arch." fetchpriority="high">
+      <figcaption><span data-zh="一条路径，一个充满可能的世界">ONE PATH. A WORLD OF POSSIBILITIES.</span><span data-zh="究竟有多少种走法？">How many ways through?</span></figcaption>
+    </figure>
+    </div>
+    <div class="cover-bottom"><span data-zh="一个问题，通向整个研究领域。">A simple question. An entire field of mathematics.</span><div class="cover-resources"><a href="./docs/" data-zh="文档与 API →">Documentation &amp; API →</a><a href="../files/counting-problems-for-babies.pdf" data-zh="For babies · PDF ↗">For babies · PDF ↗</a><a href="#play" data-zh="开始探索 ↓">Explore the idea ↓</a></div></div>
+    </div>
+
+    <figure class="counting-figure wide" id="play" aria-labelledby="figure-one-title">
+      <div class="figure-heading"><span id="figure-one-title" data-zh="图 1 · 六个点，许多种可能">FIGURE 1 · SIX POINTS, MANY POSSIBILITIES</span><span class="interactive-label"><i aria-hidden="true"></i><span data-zh="动手试一试">Interactive</span></span></div>
+      <p class="figure-instruction" data-zh="每个点可以亮起或熄灭。连线两端的点，不能同时亮起。">Each point can be on or off. Connected points cannot both be on.</p>
+      <div class="counting-stage">
+        <div class="configuration">
+          <div class="stage-label" data-zh="一种状态">One configuration</div>
+          <div class="switch-graph"><svg id="constraint-lines" viewBox="0 0 240 208" aria-hidden="true"></svg><div id="switch-nodes" role="group" aria-label="Six points. Press a point to toggle it."></div></div>
+          <p id="arrangement-status" class="arrangement-status" role="status">✓ This one works</p>
+          <button class="quiet-button" id="next-arrangement" type="button" data-zh="换一种可行的状态 ↻">Try another valid one ↻</button>
+        </div>
+        <div class="diagram-arrow" aria-hidden="true">→</div>
+        <div class="possibilities">
+          <div class="stage-label" data-zh="全部 2⁶ = 64 种状态">All 2⁶ = 64 configurations</div>
+          <div id="patterns" class="patterns" role="group" aria-label="All 64 configurations. Use arrow keys to explore; Enter to select."></div>
+          <div class="pattern-legend"><span><i class="valid-dot"></i><span data-zh="符合规则">Allowed</span></span><span><i class="invalid-dot"></i><span data-zh="违反规则">Ruled out</span></span><span class="select-hint" data-zh="点选任意一种状态">Select any pattern</span></div>
+        </div>
+        <div class="count-answer" aria-live="polite" aria-atomic="true"><span class="answer-number" id="valid-count">18</span><span class="answer-label" data-zh="种符合规则">possibilities<br>remain</span><div class="count-fraction"><span id="valid-fraction">18</span> / 64</div></div>
+      </div>
+      <div class="figure-controls"><span data-zh="改变规则">Change the rules</span><div class="rule-controls" role="group" aria-label="Choose a rule set"><button type="button" data-rule="free" aria-pressed="false" data-zh="没有连线">No connections</button><button type="button" data-rule="pair" aria-pressed="false" data-zh="一条连线">One connection</button><button type="button" data-rule="cycle" aria-pressed="true" data-zh="连成一圈">A cycle</button></div><button class="reset-button" id="reset-experiment" type="button" data-zh="重置 ↺">Reset ↺</button></div>
+      <figcaption data-zh="改变一条局部规则，整个解的集合就会变化。试试不同的连线：答案依次是 64、48 和 18。">A local rule changes the whole space of solutions. Try the three rule sets: the answers are 64, 48, and 18.</figcaption>
+      <noscript><p>This cycle has 18 valid configurations out of 64. Enable JavaScript to explore the patterns interactively.</p></noscript>
+    </figure>
+
+    <article class="narrative">
+      <section id="idea" class="reading-section">
+        <div class="section-marker" data-zh="01 / 问题">01 / THE QUESTION</div>
+        <h2 data-zh="找到一个，和数清所有。">Finding one. Counting them all.</h2>
+        <p data-zh="想象一张没有冲突的课表。找到一张，就能回答“这样的课表存在吗？”计数提出了另一个问题：一共有多少张课表满足条件？">Imagine a timetable with no clashes. Finding one answers the question “Is this possible?” Counting asks something more: how many different timetables satisfy the rules?</p>
+        <p data-zh="这个区别出现在许多地方：给地图染色、匹配任务与工人、描述物理系统的构型。检查某个答案可能很容易，数清所有答案却可能需要截然不同的思路。">The same distinction appears in coloring maps, matching workers to tasks, and describing configurations of a physical system. Checking a proposed answer can be easy. Counting every answer may demand a very different idea.</p>
+        <aside class="margin-note"><span class="note-title" data-zh="一个名字：#P">A name for this: #P</span><span data-zh="#P 是一个复杂性类，描述那些计数函数：它们所计数的解，可以被高效检查。">#P is a complexity class of counting functions whose solutions can be checked efficiently.</span></aside>
+        <p data-zh="上面的例子只有六个点，枚举全部状态就足够。但 100 个点已经有 2¹⁰⁰ 种亮灭组合。计数复杂性关心的是：<strong>什么时候，问题的结构能让我们避免逐一枚举？</strong>">Our six-point example is small enough to list every configuration. With 100 points, there are already 2<sup>100</sup> on/off patterns. Counting complexity asks: <strong>when does the structure let us avoid examining them one by one?</strong></p>
+        <div class="insight"><span class="insight-mark" aria-hidden="true">↳</span><p data-zh="“可能的状态很多”本身，并不能证明问题很难。比如，没有任何连线时，n 个点的答案就是 2ⁿ。真正关键的是规则的结构。">A huge number of possibilities does not by itself make counting hard. With no connections, the answer for <em>n</em> points is simply 2<sup>n</sup>. The structure of the rules is what matters.</p></div>
+      </section>
+
+      <section id="weights" class="reading-section">
+        <div class="section-marker" data-zh="02 / 共同语言">02 / A COMMON LANGUAGE</div>
+        <h2 data-zh="当每种可能，不再同等重要。">When possibilities carry weight.</h2>
+        <p data-zh="通常的计数，让每个可行答案贡献 1。但在许多模型里，不同的答案具有不同的权重。我们把这些贡献相加，得到一个<strong>配分函数</strong>。">Ordinary counting gives every valid answer a contribution of 1. In many models, different answers carry different weights. Adding those contributions gives a <strong>partition function.</strong></p>
+        <aside class="margin-note"><span class="note-title" data-zh="从计数到求值">From counting to evaluation</span><span data-zh="下面用非负实数来建立直觉。研究中还会出现复数权重，它们可以相互抵消。">The example below uses nonnegative real weights. In research, weights can also be complex numbers, allowing contributions to cancel.</span></aside>
+        <p data-zh="回到六个点组成的环。每亮起一个点，就乘上一个权重 λ。恰好亮起 k 个点的状态，贡献就是 λᵏ。拖动滑块，看看普通计数如何变成加权求和。">Return to the six-point cycle. Give each point that is on a weight λ. A configuration with <em>k</em> points on then contributes λ<sup>k</sup>. Move the slider to turn a count into a weighted sum.</p>
+        <figure class="weight-figure" aria-labelledby="figure-two-title">
+          <div class="figure-heading"><span id="figure-two-title" data-zh="图 2 · 同一个环，不同的权重">FIGURE 2 · THE SAME CYCLE, DIFFERENT WEIGHTS</span><span class="interactive-label"><i aria-hidden="true"></i><span data-zh="动手试一试">Interactive</span></span></div>
+          <div class="weight-groups" id="weight-groups"></div>
+          <div class="weight-equation" aria-label="Z of lambda equals 1 plus 6 lambda plus 9 lambda squared plus 2 lambda cubed"><span class="math">Z(λ) = 1 + 6λ + 9λ² + 2λ³</span><span class="equals">=</span><output id="weighted-total" aria-live="polite">18</output></div>
+          <div class="weight-control"><label for="weight-slider"><span data-zh="每个亮点的权重">Weight per point</span> <span class="math">λ = <output id="lambda-value">1.00</output></span></label><div class="slider-row"><span>0</span><input type="range" id="weight-slider" min="0" max="2" step="0.25" value="1" aria-label="Weight per point, lambda"><span>2</span><button type="button" id="reset-weight" class="reset-button" data-zh="重置">Reset</button></div></div>
+          <figcaption id="weight-caption">At λ = 1, every valid configuration counts equally. The sum is 18 again.</figcaption>
+        </figure>
+        <p data-zh="局部规则给出贡献，整体问题对所有赋值求和。这个共同的模式，让约束、图和网络上的问题彼此相连，也为复用它们的证明提供了基础。">Local rules supply contributions; the whole problem sums over assignments. This shared pattern connects questions about constraints, graphs, and networks—and gives their proofs common ground.</p>
+      </section>
+
+      <section id="research" class="reading-section research-section">
+        <div class="section-marker" data-zh="03 / 研究图景">03 / THE RESEARCH LANDSCAPE</div>
+        <h2 data-zh="哪些结构，让计数变得可行？">Which structures make counting tractable?</h2>
+        <p data-zh="一个算法解决一类问题。一个分类定理进一步追问：整个问题族中，哪些情形允许高效算法，哪些情形是 #P 困难的？CountingLib 围绕以下研究方向，组织这些结果及其可复用的数学基础。">An algorithm solves a class of problems. A classification theorem asks a broader question: across a whole family, which cases admit efficient algorithms, and which are #P-hard? CountingLib connects these results and their reusable mathematics across the following directions.</p>
+        <aside class="margin-note"><span class="note-title" data-zh="“困难”的准确含义">What “hard” means</span><span data-zh="#P 困难性通过归约来表述。它本身并不无条件证明不存在高效算法；精确条件见各篇论文。">#P-hardness is stated through reductions. It does not unconditionally rule out efficient algorithms; the papers give the exact scope.</span></aside>
+        <div class="research-list">
+          <article class="research-entry"><div class="research-diagram" id="art-networks" aria-hidden="true"></div><div><p class="research-category">BOOLEAN HOLANT</p><h3 data-zh="局部函数，全局求和。">Local functions. A global sum.</h3><p data-zh="在网络的交点放置函数，对连线上的所有赋值求和。Boolean Holant 二分定理揭示哪些函数族允许高效求值，哪些导致 #P 困难。">Place a function at each junction of a network, then sum over assignments to its wires. Boolean Holant dichotomies classify the function families that permit efficient evaluation and those that lead to #P-hardness.</p><div class="research-links"><a href="https://arxiv.org/abs/2610.00081v1" target="_blank" rel="noopener noreferrer" data-zh="论文 ↗">Paper ↗</a><a href="https://github.com/liuchliuch/holant-dichotomy-lean/tree/97731bce1618bef0d9ee7911b6ac8bc8698077b2" target="_blank" rel="noopener noreferrer" data-zh="Lean 源码 ↗">Lean source ↗</a><a href="https://arxiv.org/abs/2609.00219v1" target="_blank" rel="noopener noreferrer" data-zh="二元不等关系情形 ↗">Binary-disequality case ↗</a></div></div></article>
+          <article class="research-entry"><div class="research-diagram" id="art-constraints" aria-hidden="true"></div><div><p class="research-category">COMPLEX-WEIGHTED CSP</p><h3 data-zh="从一组规则，识别问题的难度。">Recognizing what the rules allow.</h3><p data-zh="变量通过带权的局部约束联系起来。这里的研究既关心求值问题的分类，也关心如何有效识别：给定的一组规则属于哪种情形。">Variables interact through weighted local constraints. The research addresses both the classification of evaluation problems and effective recognition of which case a given collection of rules belongs to.</p><div class="research-links"><a href="https://arxiv.org/abs/2608.14845v1" target="_blank" rel="noopener noreferrer" data-zh="论文 ↗">Paper ↗</a><a href="https://github.com/liuchliuch/complex-csp-decidability-lean/tree/c454c2d6426cd8b9f9bcfd3e54bd69de1dcf48ec" target="_blank" rel="noopener noreferrer" data-zh="Lean 源码 ↗">Lean source ↗</a></div></div></article>
+          <article class="research-entry"><div class="research-diagram" id="art-maps" aria-hidden="true"></div><div><p class="research-category">PLANAR GRAPH HOMOMORPHISMS</p><h3 data-zh="一张图，可以怎样映入另一张图？">How many ways can one graph fit another?</h3><p data-zh="为顶点指定类型，同时遵守哪些类型允许相邻。图染色是一个熟悉的例子；库中包含非负代数权重下的平面图同态二分结果。">Assign a type to each vertex while respecting which types may be neighbors. Graph coloring is a familiar example. The library includes planar homomorphism dichotomies for nonnegative algebraic weights.</p><div class="research-links"><a href="https://arxiv.org/abs/2610.05412v1" target="_blank" rel="noopener noreferrer" data-zh="论文 ↗">Paper ↗</a><a href="https://github.com/liuchliuch/planar-homomorphisms-lean/tree/db68e745380769c38c8347736d2d84fcde38263c" target="_blank" rel="noopener noreferrer" data-zh="Lean 源码 ↗">Lean source ↗</a></div></div></article>
+          <article class="research-entry"><div class="research-diagram" id="art-compression" aria-hidden="true"></div><div><p class="research-category">MATCHGATE WIDTH</p><h3 data-zh="精确表示，究竟可以多紧凑？">How compact can an exact representation be?</h3><p data-zh="一个复杂的计数对象，有时可以用更小的对象精确表示。Matchgate Width 研究这种压缩的能力与边界，包括 qutrit 三分定理和精确压缩。">A complicated counting object may admit a smaller exact representation. Matchgate-width results explore the power and limits of this compression, including qutrit trichotomy and exact compression.</p><div class="research-links"><a href="https://arxiv.org/abs/2610.00079v1" target="_blank" rel="noopener noreferrer" data-zh="论文 ↗">Paper ↗</a><a href="https://github.com/liuchliuch/matchgate-width-lean/tree/da4f3a7beda4651a615638c361927820035e83d9" target="_blank" rel="noopener noreferrer" data-zh="Lean 源码 ↗">Lean source ↗</a></div></div></article>
+        </div>
+        <p class="small-note" data-zh="以上是概念导读。图形为示意，精确的假设、归约与结论请参阅对应论文及形式化源码。">These are introductions to the ideas. The diagrams are schematic; the linked papers and formal sources give the precise assumptions, reductions, and conclusions.</p>
+      </section>
+
+      <section id="library" class="reading-section library-section">
+        <div class="section-marker" data-zh="04 / 从研究到数学库">04 / FROM RESEARCH TO A LIBRARY</div>
+        <h2 data-zh="让证明，也成为下一步的起点。">Proofs that other proofs can build on.</h2>
+        <p data-zh="论文解释为什么一个结论成立。Lean 是一种证明助手：它能根据精确定义与假设，检查形式化证明的每一步逻辑。这样的证明也可以成为新结果的一部分。">A paper explains why a result is true. Lean is a proof assistant: it checks the logical steps of a formal proof against precise definitions and assumptions. Those proofs can then become parts of new results.</p>
+        <aside class="margin-note"><span class="note-title" data-zh="第一次听说 Lean？">New to Lean?</span><span data-zh="可以把它想成一套数学语言，配有严格的逻辑检查器。">Think of it as a language for mathematics with a rigorous logical checker.</span><a href="https://lean-lang.org/" target="_blank" rel="noopener noreferrer" data-zh="了解 Lean ↗">Meet Lean ↗</a></aside>
+        <p data-zh="CountingLib 把研究成果连接为一个可复用的系统。公共定义描述计数对象，算法明确它们计算什么，桥接定理连接不同模型，分类结果则保留各自的精确适用条件。">CountingLib connects research into a reusable system. Shared definitions describe the objects being counted. Algorithms specify what they compute. Bridge theorems connect models. Classification results retain their precise scope.</p>
+        <figure class="architecture-figure" aria-labelledby="architecture-caption">
+          <div class="architecture-layer"><span class="layer-number">01</span><div><h3 data-zh="共同的基础">Shared foundations</h3><p data-zh="计数 · 配分函数 · 编码 · 机器">Counts · partitions · encodings · machines</p></div><span class="layer-symbol" aria-hidden="true">∑</span></div>
+          <div class="architecture-layer"><span class="layer-number">02</span><div><h3 data-zh="算法与桥接">Algorithms & bridges</h3><p data-zh="变量消去 · 插值 · Pfaffian · 归约">Variable elimination · interpolation · Pfaffians · reductions</p></div><span class="layer-symbol" aria-hidden="true">↔</span></div>
+          <div class="architecture-layer"><span class="layer-number">03</span><div><h3 data-zh="分类与识别">Classification & recognition</h3><p>Holant · ComplexCSP · PlanarHom · Matchgate Width</p></div><span class="layer-symbol" aria-hidden="true">⊢</span></div>
+          <figcaption id="architecture-caption" data-zh="数学模型、计算方法与研究结果各有职责，通过明确的接口与证明相连。">Models, computation, and research results have distinct roles, connected through explicit interfaces and proofs.</figcaption>
+        </figure>
+        <p data-zh="“算出了正确的值”和“证明了某种运行时间”是不同的保证。CountingLib 分别陈述这些结论，让下一项研究可以清楚地知道：它正在使用什么，又依赖哪些条件。">Computing the right value and proving a running-time bound are different guarantees. CountingLib states them separately, so the next piece of research can see exactly what it uses and what it assumes.</p>
+        <div class="library-links"><a href="https://github.com/liuchliuch/countinglib" class="primary-link" target="_blank" rel="noopener noreferrer" data-zh="探索 CountingLib ↗">Explore CountingLib ↗</a><a href="./docs/#architecture" data-zh="阅读架构介绍 ↗">Read the architecture ↗</a></div>
+      </section>
+
+      <section id="reading" class="further-reading" aria-labelledby="reading-title">
+        <h2 id="reading-title" data-zh="继续读下去">Further reading</h2>
+        <a href="./docs/references.html"><span><strong data-zh="论文与形式化源码">Papers & formalizations</strong><small data-zh="从数学陈述追溯到对应的来源。">Follow the mathematical statements to their sources.</small></span><span aria-hidden="true">↗</span></a>
+        <a href="./docs/"><span><strong data-zh="使用指南与 API">Documentation & API</strong><small data-zh="安装、导入，以及如何在自己的工作中使用这个库。">Installation, imports, and using the library in your own work.</small></span><span aria-hidden="true">↗</span></a>
+        <a href="../files/counting-problems-for-babies.pdf"><span><strong>Counting Problems for Babies</strong><small data-zh="英文绘本与大人注释，一份 38 页的完整 PDF。">An illustrated introduction, with notes for grown-ups. 38-page PDF.</small></span><span class="reading-format">PDF ↗</span></a>
+        <p class="small-note" data-zh="本页交互通过浏览器中的小规模枚举展示数学直觉，并非 Lean 验证过的可执行程序。文档标注了对应的源码版本；仓库展示后续进展。">The interactive figures use small browser computations to illustrate the mathematics; they are not Lean-verified executables. The documentation identifies its source snapshot; the repository tracks further development.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><div><a href="#" class="footer-brand">CountingLib</a><span data-zh="计数复杂性，在 Lean 中相连。">Counting complexity, connected in Lean.</span></div><div><a href="https://liuchliuch.github.io/">Chenghua Liu ↗</a><a href="https://github.com/liuchliuch/countinglib/blob/v0.1.0/LICENSE.md" target="_blank" rel="noopener noreferrer" data-zh="来源与各组件许可">Sources & licenses</a></div></footer>
+</body>
+</html>

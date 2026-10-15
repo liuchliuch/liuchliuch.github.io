@@ -1,0 +1,52 @@
+---
+layout: null
+permalink: /countinglib/docs/examples.html
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Seven Lean clients show how to use the public interfaces. The four flagship tutorials prove concrete premises before applying the corresponding research theorem.">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://liuchliuch.github.io/countinglib/docs/examples.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<title>Worked examples · CountingLib</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body data-page="examples">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="../"><span class="brand-mark" aria-hidden="true">#</span>CountingLib</a>
+<span class="preview-label">v0.1.1 preview</span>
+<button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+<nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="index.html">Overview</a><a href="guide.html">Guide</a><a href="api.html">API</a><a href="examples.html" aria-current="page">Examples</a><a href="references.html">References</a><a href="https://github.com/liuchliuch/countinglib">GitHub <span aria-hidden="true">↗</span></a></nav>
+</div></header>
+<main id="main-content" class="document-layout examples"><article class="document-main"><header class="document-header"><p class="page-kicker">COUNTING COMPLEXITY IN LEAN</p><h1>Worked examples</h1><p class="document-lead">Seven Lean clients show how to use the public interfaces. The four flagship tutorials prove concrete premises before applying the corresponding research theorem.</p></header><section class="document-section" id="holant"><h2>Holant: an explicit tractable language</h2><p>A Boolean unary signature with weights [1, 2] and binary equality has an explicit one-factor tensor decomposition. The tutorial proves the arity-two tractability branch, supplies valid exact descriptors, and obtains a fixed-language polynomial-time evaluator. The output follows the original exact root representation.</p><p class="code-caption">Excerpt; requires the definitions and namespace in the complete Lean file.</p><pre><code class="language-lean">import Counting.Flagships.Holant
+import Paper2.ExactInput.Coverage
+
+-- In the complete tutorial, after family_tractable is proved:
+theorem fixed_language_inFP (L : Language) (hL : L.family = family) :
+    Paper2.Problem.InFP .ordinary L := by
+  apply Counting.HolantUnified.FullDichotomy.ordinary_inFP L
+  rw [hL]
+  exact family_tractable</code></pre><nav class="section-links" aria-label="Holant: an explicit tractable language resources"><a href="https://github.com/liuchliuch/countinglib/blob/6ca34e19e6610f1b785d668d085776129a8e8865/docs/examples/Holant.lean">Complete Lean example <span aria-hidden="true">↗</span></a><a href="api.html#family=holant-full">Holant API</a><a href="references.html#holant">Paper and source release</a></nav></section><section class="document-section" id="complex-csp"><h2>ComplexCSP: repeated occurrences and structural collapse</h2><p>The language has Boolean domain and one constant binary signature of weight 2. Two repeated occurrences, repeated ports, and an isolated hidden variable give partition value 16. The tutorial proves joint Block Orthogonality for every generated table, applies structural collapse, and obtains fixed-language tractability with an explicit rational basis.</p><p class="code-caption">Excerpt; requires the definitions and namespace in the complete Lean file.</p><pre><code class="language-lean">-- Excerpt from Counting.Tutorial.ComplexCSP:
+theorem repeated_instance_partition :
+    repeatedInstance.partition Fin.elim0 = (16 : ℂ) := by
+  rw [partition_formula]
+  norm_num [repeatedInstance, Fintype.card_fun]</code></pre><nav class="section-links" aria-label="ComplexCSP: repeated occurrences and structural collapse resources"><a href="https://github.com/liuchliuch/countinglib/blob/6ca34e19e6610f1b785d668d085776129a8e8865/docs/examples/ComplexCSP.lean">Complete Lean example <span aria-hidden="true">↗</span></a><a href="api.html#family=complex-csp">ComplexCSP API</a><a href="references.html#complex-csp">Paper and source release</a></nav></section><section class="document-section" id="planar-hom"><h2>PlanarHom: a positive rank-one interaction</h2><p>The matrix [[1, 2], [2, 4]] has positive rank-one factors 1 and 2. The tutorial constructs its algebraic-real language, proves membership in the tractable structural class, and applies Theorem 1.1. The result is an exact fixed-language bit machine on promised ordinary planar multigraph inputs. Loops, parallel edges, and isolated vertices remain permitted.</p><p class="code-caption">Excerpt; requires the definitions and namespace in the complete Lean file.</p><pre><code class="language-lean">-- Excerpt from Counting.Tutorial.PlanarHom:
+theorem fixed_planar_evaluation_inFP : twoColour.problem.InFP := by
+  apply (MainDichotomyScope.theorem11 twoColour (fun _ =&gt; rfl) ?_ ?_).1
+    structural_membership
+  · intro i j
+    exact mul_comm _ _
+  · intro i j
+    exact mul_nonneg (amplitude_positive i).le (amplitude_positive j).le</code></pre><nav class="section-links" aria-label="PlanarHom: a positive rank-one interaction resources"><a href="https://github.com/liuchliuch/countinglib/blob/6ca34e19e6610f1b785d668d085776129a8e8865/docs/examples/PlanarHom.lean">Complete Lean example <span aria-hidden="true">↗</span></a><a href="api.html#family=planar-homomorphisms">PlanarHom API</a><a href="references.html#planar-hom">Paper and source release</a></nav></section><section class="document-section" id="matchgate-width"><h2>Matchgate width: an exact representation obstruction</h2><p>Choose the rational qutrit family member at k = 16 and the actual ordered-planar instance class. The tutorial proves its rank and deficient-port premises, then rules out every width-two exact replacement, even over a different nonempty finite domain. This is an exact representation result; it carries no generic evaluation-time claim.</p><p class="code-caption">Excerpt; requires the definitions and namespace in the complete Lean file.</p><pre><code class="language-lean">-- Excerpt from Counting.Tutorial.MatchgateWidth:
+theorem sample_minimum_exceeds_two :
+    2 &lt; integerSourceMinimum orderedPlanarInstances 16 := by
+  exact (Counting.MatchgateWidth.flag_family_unbounded
+    orderedPlanarInstances orderedPlanar_contains).2.2 2</code></pre><nav class="section-links" aria-label="Matchgate width: an exact representation obstruction resources"><a href="https://github.com/liuchliuch/countinglib/blob/6ca34e19e6610f1b785d668d085776129a8e8865/docs/examples/MatchgateWidth.lean">Complete Lean example <span aria-hidden="true">↗</span></a><a href="api.html#family=matchgate-width">Matchgate width API</a><a href="references.html#matchgate-width">Paper and source release</a></nav></section><section class="document-section" id="foundations"><h2>Three introductory clients</h2><div class="table-wrap"><table><thead><tr><th scope="col">Example</th><th scope="col">Concrete result</th></tr></thead><tbody><tr><td>Relational counting</td><td>A repeated unary constraint fixes one Boolean variable; an isolated variable leaves two satisfying assignments.</td></tr><tr><td>Graph-to-CSP reduction</td><td>A loop, parallel edges, and an isolated vertex survive the reduction; both partitions equal 5298.</td></tr><tr><td>Interpolation</td><td>Three rational samples recover the coefficient 3 of 3X² + 2X + 5; duplicate nodes are rejected.</td></tr></tbody></table></div><nav class="section-links" aria-label="Three introductory clients resources"><a href="https://github.com/liuchliuch/countinglib/blob/6ca34e19e6610f1b785d668d085776129a8e8865/docs/examples/RelationalCounting.lean">RelationalCounting.lean <span aria-hidden="true">↗</span></a><a href="https://github.com/liuchliuch/countinglib/blob/6ca34e19e6610f1b785d668d085776129a8e8865/docs/examples/GraphReduction.lean">GraphReduction.lean <span aria-hidden="true">↗</span></a><a href="https://github.com/liuchliuch/countinglib/blob/6ca34e19e6610f1b785d668d085776129a8e8865/docs/examples/Interpolation.lean">Interpolation.lean <span aria-hidden="true">↗</span></a></nav></section><section class="document-section" id="run"><h2>Compile the complete clients</h2><p>The displayed flagship code is an excerpt: its definitions, namespace, and supporting lemmas are in the linked complete file. Run the checker from the source checkout to compile and audit all seven files.</p><pre><code class="language-sh">python3 scripts/check_examples.py --scope all --workers 2</code></pre><nav class="section-links" aria-label="Compile the complete clients resources"><a href="guide.html#checkout">Build and dependency setup</a></nav></section></article><aside class="document-toc" aria-label="On this page"><div class="panel-label">ON THIS PAGE</div><a href="#holant">Holant: an explicit tractable language</a><a href="#complex-csp">ComplexCSP: repeated occurrences and structural collapse</a><a href="#planar-hom">PlanarHom: a positive rank-one interaction</a><a href="#matchgate-width">Matchgate width: an exact representation obstruction</a><a href="#foundations">Three introductory clients</a><a href="#run">Compile the complete clients</a></aside></main>
+<footer class="site-footer"><span>CountingLib <span class="footer-divider">/</span> Local preview</span><span>Lean 4.34.1 <span class="footer-divider">·</span> Source <a href="https://github.com/liuchliuch/countinglib/tree/6ca34e19e6610f1b785d668d085776129a8e8865"><code>6ca34e1</code></a></span><nav aria-label="Project resources"><a href="../">Introduction</a><a href="https://github.com/liuchliuch/countinglib/blob/6ca34e19e6610f1b785d668d085776129a8e8865/LICENSE.md">License scopes</a><a href="manifest.json">Build manifest</a><a href="api-data.json">Selected API data</a></nav></footer>
+</body>
+</html>

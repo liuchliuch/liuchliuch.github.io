@@ -46,12 +46,18 @@ redirect_from:
       <div class="publication-title">PinkFold {% include pinkfold-mark.html %} <span class="work-status">Early experiments</span></div>
       <div class="publication-details">A minimal harness for fast autoformalization in Lean through multi-model collaboration, currently in development.</div>
     </li>
+
+    <li class="publication">
+      <div class="publication-title"><a href="{{ '/countinglib/' | relative_url }}">CountingLib</a> {% include countinglib-mark.html %}</div>
+      <div class="publication-details">A Lean library for counting complexity, unifying reusable foundations, verified algorithms, and classification theorems across counting models. <a href="{{ '/countinglib/' | relative_url }}">Website</a></div>
+      <div class="publication-details"><span class="picture-book-mark" aria-hidden="true">🧸</span> <a href="{{ '/files/counting-problems-for-babies.pdf' | relative_url }}">Counting Problems for Babies</a> — A picture-book introduction to counting complexity.</div>
+    </li>
   </ol>
 
   <details class="more-work">
     <summary>More work</summary>
 
-    <ol class="publication-list publication-list--secondary" start="4">
+    <ol class="publication-list publication-list--secondary" start="5">
       <li class="publication">
         <div class="publication-title">Flow-Matched Motion Priors: Online Optimal-Transport Rewards for Imitation Learning</div>
         <div class="publication-authors">Yilin Zou, <strong>Chenghua Liu</strong>, Chenglong Wu, and Fanghua Jiang. <abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr></div>

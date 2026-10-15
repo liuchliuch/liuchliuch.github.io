@@ -1,0 +1,88 @@
+{
+  "content_input": {
+    "path": "scripts/api_site/content.json",
+    "sha256": "592dfc3d7fc4edbeab0a01b18ecfdeb604ed763f1d277e8b95a24435a2461c48"
+  },
+  "contract_families": 30,
+  "declarations": 333,
+  "display_label": "v0.1.1 preview",
+  "inputs": [
+    {
+      "path": "data/api/core-index.json",
+      "sha256": "d68de592e9453665add6c5e14e3e419ae6d7fae75ffae9a864f0202112fcb16d"
+    },
+    {
+      "path": "data/api/core-types.jsonl",
+      "sha256": "794cc974fe0a18291af516e3a4419498973660cdc66f9833117cf367c9ab1931"
+    },
+    {
+      "path": "data/api/readable-types.jsonl",
+      "sha256": "9444d7c78366f9020866fa51c48238d378e9e32f9820c8cd2e4642ee93dd900d"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "path": "projects/reuse-catalog/data/exported-types.jsonl",
+      "sha256": "886bc7f23d889a4f5dc397b55d691502b0171ab4046a012e9444d4cf55af1f85"
+    },
+    {
+      "path": "projects/reuse-catalog/data/tool-index.json",
+      "sha256": "9ffe0abc03a792b0e9428f4ce029a0a7087daab4931e69bd41b84e4be5089f0d"
+    },
+    {
+      "path": "projects/reuse-contracts/data/exported-types.jsonl",
+      "sha256": "8c5e3bdabfe289565fdb5788bffdf75e31b3dde45e6f3f722051eca320e2af2f"
+    },
+    {
+      "path": "projects/reuse-contracts/data/flagship-index.json",
+      "sha256": "6c272d21694ca205566a6247831c2f5c78d74aad3af2603cbe7e699fd9a6519a"
+    }
+  ],
+  "modules": 80,
+  "outputs": [
+    {
+      "path": "index.html",
+      "sha256": "c2a8fce6300b41195c2561f35638142fb09cfafe9604eec09432d544bba1a580"
+    },
+    {
+      "path": "guide.html",
+      "sha256": "85de7facf2bacef351ff9fbfaa40ec07dd0d9e6fa2a5f3f72fa4bbb2eb0d9de2"
+    },
+    {
+      "path": "api.html",
+      "sha256": "7f609a7b3e1b15d1fa64b692c3f82ba7f61dcf0f87d154b2b98c15d56d2b7232"
+    },
+    {
+      "path": "examples.html",
+      "sha256": "d76be2ab5a9988c7c1a5c3a48e797e92994d6c3e15e6b5fa283ddcebb679e42b"
+    },
+    {
+      "path": "references.html",
+      "sha256": "0ae7fc1ecd4f70eb63efeec1ef4cc7c2b30144356ae43df9a7ba05df560f882b"
+    },
+    {
+      "path": "style.css",
+      "sha256": "ce8e8546338847c7234af7549d84756a64fbe5636b42ad02c6dcb3e7fc55840e"
+    },
+    {
+      "path": "app.js",
+      "sha256": "520bec710b0eb7f8b2344fd535d57d9ecd612a059de5ec4e2f858c18bcc844e2"
+    },
+    {
+      "path": "api-data.json",
+      "sha256": "5f840ed44f794c43b39123af05f503a036e2f34626c7c09fc71d413cca2bf17e"
+    }
+  ],
+  "publication_status": "Documentation preview hosted on the personal website; not a Lean library release",
+  "schema_version": 2,
+  "scope": "Selected public interfaces: foundations, algorithms, intermediate tools, and four flagship directions. This is not the complete declaration reference. Full elaborated types are rendered from the recorded Lean environment exports; this site is not a proof certificate.",
+  "source_files_checked": 80,
+  "source_ref": "6ca34e19e6610f1b785d668d085776129a8e8865",
+  "integration": {
+    "description": "Personal-site integration, with introduction navigation and page metadata.",
+    "site_url": "https://liuchliuch.github.io/countinglib/docs/",
+    "upstream_manifest_sha256": "61fe642142d1468f9b2b0d70c073962ea6638c221180cea7f4fd7b88f7db3601"
+  }
+}
