@@ -43,7 +43,7 @@ redirect_from:
     </li>
 
     <li class="publication">
-      <div class="publication-title">PinkFold {% include pinkfold-mark.html %} <span class="work-status">Early experiments</span></div>
+      <div class="publication-title">PinkFold {% include pinkfold-mark.html %} <span class="work-status">Ongoing development</span></div>
       <div class="publication-details">A minimal harness for fast autoformalization in Lean through multi-model collaboration, currently in development.</div>
     </li>
 
