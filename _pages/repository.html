@@ -58,6 +58,9 @@ excerpt: "A repository started by Chenghua Liu and Hanyu Li to share AI-generate
           {% unless pdf_url contains '://' %}{% assign pdf_url = pdf_url | relative_url %}{% endunless %}
           <a href="{{ pdf_url | escape }}" aria-label="PDF: {{ paper.title | escape }}">PDF</a>
           {% endif %}
+          {% if paper.lean and paper.lean != '' %}
+          <a href="{{ paper.lean | escape }}" aria-label="Lean formalization: {{ paper.title | escape }}">Lean</a>
+          {% endif %}
           {% if paper.abstract and paper.abstract != '' %}
           <button class="repository-abstract-toggle" type="button" aria-expanded="false" aria-controls="paper-abstract-{{ forloop.index }}">
             <span class="repository-abstract-arrow" aria-hidden="true">▸</span> Abstract
