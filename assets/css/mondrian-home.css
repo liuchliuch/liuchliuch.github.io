@@ -846,6 +846,7 @@ body.mondrian-home {
 
 .pinkarc-mark,
 .pinkfold-mark,
+.pinkyak-mark,
 .countinglib-mark {
   position: relative;
   display: inline-flex;
@@ -861,12 +862,14 @@ body.mondrian-home {
 }
 
 .pinkarc-mark[data-tooltip],
-.pinkfold-mark[data-tooltip] {
+.pinkfold-mark[data-tooltip],
+.pinkyak-mark[data-tooltip] {
   cursor: help;
 }
 
 .pinkarc-mark img,
 .pinkfold-mark img,
+.pinkyak-mark img,
 .countinglib-mark img {
   display: block;
   width: 100%;
@@ -877,6 +880,12 @@ body.mondrian-home {
 .works-days-section .pinkfold-mark,
 .works-days-section .countinglib-mark {
   vertical-align: calc(-0.22em - 1px);
+}
+
+.pinkyak-mark {
+  width: 1.5em;
+  height: 1.3em;
+  vertical-align: -0.25em;
 }
 
 #rising-sea-title .pinkarc-mark {
@@ -1001,7 +1010,8 @@ body.mondrian-home {
 .order-mark::after,
 .rip-mark::after,
 .pinkarc-mark[data-tooltip]::after,
-.pinkfold-mark[data-tooltip]::after {
+.pinkfold-mark[data-tooltip]::after,
+.pinkyak-mark[data-tooltip]::after {
   position: absolute;
   z-index: 6;
   bottom: calc(100% + 0.45rem);
@@ -1037,7 +1047,8 @@ body.mondrian-home {
 }
 
 .pinkarc-mark[data-tooltip]::after,
-.pinkfold-mark[data-tooltip]::after {
+.pinkfold-mark[data-tooltip]::after,
+.pinkyak-mark[data-tooltip]::after {
   right: 0;
   left: auto;
   content: attr(data-tooltip);
@@ -1052,7 +1063,9 @@ body.mondrian-home {
 .pinkarc-mark[data-tooltip]:hover::after,
 .pinkarc-mark[data-tooltip]:focus::after,
 .pinkfold-mark[data-tooltip]:hover::after,
-.pinkfold-mark[data-tooltip]:focus::after {
+.pinkfold-mark[data-tooltip]:focus::after,
+.pinkyak-mark[data-tooltip]:hover::after,
+.pinkyak-mark[data-tooltip]:focus::after {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);

@@ -48,6 +48,16 @@ redirect_from:
     </li>
 
     <li class="publication">
+      <div class="publication-title">PinkYak {% include pinkyak-mark.html %} <span class="work-status">Early experiments</span></div>
+      <div class="publication-details">A harness for distilling AI-generated mathematics into clear, elegant proofs.
+        <details class="work-design">
+          <summary>Design</summary>
+          <div class="work-design-copy">PinkYak repeatedly examines, simplifies, and reconstructs arguments to uncover their core ideas and find proofs that help human readers understand why a result holds.</div>
+        </details>
+      </div>
+    </li>
+
+    <li class="publication">
       <div class="publication-title"><a href="{{ '/countinglib/' | relative_url }}">CountingLib</a> {% include countinglib-mark.html %}</div>
       <div class="publication-details">A Lean library for counting complexity, unifying reusable foundations, verified algorithms, and classification theorems across counting models. <a href="{{ '/countinglib/' | relative_url }}">Website</a></div>
       <div class="publication-details"><span class="picture-book-mark" aria-hidden="true">🧸</span> <a href="{{ '/files/counting-problems-for-babies.pdf' | relative_url }}">Counting Problems for Babies</a> — A picture-book introduction to counting complexity.</div>
@@ -57,7 +67,7 @@ redirect_from:
   <details class="more-work">
     <summary>More work</summary>
 
-    <ol class="publication-list publication-list--secondary" start="5">
+    <ol class="publication-list publication-list--secondary" start="6">
       <li class="publication">
         <div class="publication-title">Flow-Matched Motion Priors: Online Optimal-Transport Rewards for Imitation Learning</div>
         <div class="publication-authors">Yilin Zou, <strong>Chenghua Liu</strong>, Chenglong Wu, and Fanghua Jiang. <abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr></div>
@@ -74,6 +84,18 @@ redirect_from:
   </div>
 
   <ol class="publication-list">
+    <li class="publication">
+      <div class="publication-title">A Simplified Proof of PARITY ∉ <span class="publication-title-tail">QAC<sup>0</sup> {% include pinkyak-mark.html tooltip=true %}</span></div>
+      <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://eccc.weizmann.ac.il/report/2026/258/">ECCC</a></div>
+    </li>
+
+    <li class="publication">
+      <div class="publication-title">A Simplified Proof of the FPRAS for Counting Perfect <span class="publication-title-tail">Matchings {% include pinkyak-mark.html tooltip=true %}</span></div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.26803">arXiv</a></div>
+    </li>
+
     <li class="publication">
       <div class="publication-title">Simultaneously Query-Optimal Quantum Linear-System <span class="publication-title-tail">Algorithm {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
@@ -144,7 +166,7 @@ redirect_from:
   <details class="more-work">
     <summary>More papers</summary>
 
-    <ol class="publication-list publication-list--secondary" start="12">
+    <ol class="publication-list publication-list--secondary" start="14">
       <li class="publication">
         <div class="publication-title">Approximating Combinatorial Contracts with Arbitrary <span class="publication-title-tail">Costs {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Xiaotie Deng, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>

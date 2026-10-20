@@ -20,6 +20,7 @@
 | 主页和列表页样式 | `assets/css/mondrian-home.css` |
 | PinkArc / PinkFold 图标引用 | `_includes/pinkarc-mark.html` / `_includes/pinkfold-mark.html` |
 | PinkArc / PinkFold 图标资源 | `images/pinkarc.svg` / `images/pinkfold.svg` |
+| PinkYak 图标引用与资源 | `_includes/pinkyak-mark.html` / `images/pinkyak.svg` |
 | CountingLib 图标引用与资源 | `_includes/countinglib-mark.html` / `images/countinglib.svg` |
 | 论文全文页样式 | `assets/css/repository-paper.css` |
 | 第三方 LaTeXML 样式（保留上游原文） | `assets/css/vendor/latexml/` |
@@ -30,6 +31,8 @@ CountingLib 的页面来源、预览与更新约定见 [维护说明](docs/count
 全文生成、固定链接和样式维护见 [Repository 维护说明](docs/repository.md)。
 
 PinkArc / PinkFold 的文案与开发状态在 `_pages/about.md` 中维护。PinkArc 的 Design 使用原生 `<details>`，默认折叠，入口紧接介绍末尾；无需 JavaScript。PinkArc 项目名称旁的图标通过 `tooltip=false` 关闭提示，Rising Sea 标题及论文旁的图标保留 “Powered by PinkArc” 提示。图标位置在主页样式中按项目名称、栏目标题和论文标题分别设置。
+
+PinkYak 接在 PinkFold 后，沿用相同的状态和 Design 折叠样式。`images/pinkyak.svg` 来自已确认的 `pinkyak-approved.svg`（设计对话 `01a13d4f-c9c9-7913-b796-65adb26cc45a`），保留原始路径与颜色，收紧 viewBox 留白，并添加同色圆角描边以增强小尺寸下的线条。名称旁的图标不添加悬停提示；论文标题后通过 `tooltip=true` 显示 “Refined with PinkYak”，支持悬停和键盘聚焦。
 
 ## 本地预览
 
