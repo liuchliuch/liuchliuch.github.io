@@ -85,6 +85,12 @@ redirect_from:
 
   <ol class="publication-list">
     <li class="publication">
+      <div class="publication-title">A Dichotomy for Exact Quantum Circuit <span class="publication-title-tail">Amplitudes {% include pinkarc-mark.html %}</span></div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="{{ '/files/dichotomy-exact-quantum-circuit-amplitudes.pdf' | relative_url }}">PDF</a></div>
+    </li>
+
+    <li class="publication">
       <div class="publication-title">A Simplified Proof of PARITY ∉ <span class="publication-title-tail">QAC<sup>0</sup> {% include pinkyak-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://eccc.weizmann.ac.il/report/2026/258/">ECCC</a></div>
@@ -166,7 +172,7 @@ redirect_from:
   <details class="more-work">
     <summary>More papers</summary>
 
-    <ol class="publication-list publication-list--secondary" start="14">
+    <ol class="publication-list publication-list--secondary" start="15">
       <li class="publication">
         <div class="publication-title">Approximating Combinatorial Contracts with Arbitrary <span class="publication-title-tail">Costs {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Xiaotie Deng, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
