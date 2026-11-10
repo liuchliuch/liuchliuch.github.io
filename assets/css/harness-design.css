@@ -1,0 +1,155 @@
+/* Adapted from slide 4 of PINKAI_Deck_Fixed.html.
+   Keep its Jost typography, SVG labels, fixed canvas, and interaction targets. */
+@font-face {
+  font-family: "PinkAI Jost";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/pinkai-jost.woff2") format("woff2");
+}
+
+.harness-explorer.theory-showcase {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 895 / 419.0625;
+  min-height: 19rem;
+  margin: 0.65rem 0 0.25rem;
+  color: #2f2926;
+  font-family: "PinkAI Jost", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.harness-explorer .theory-layout {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 44% 51%;
+  gap: 5%;
+}
+
+.harness-explorer .theory-system {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.harness-explorer .theory-cycle {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  margin-top: -1.676cqw;
+  font-family: inherit;
+}
+
+.theory-harness-name { fill: #55325f; font-size: 31px; font-weight: 500; letter-spacing: -0.6px; }
+.theory-harness-role { fill: #6f5c6d; font-size: 18px; font-weight: 450; }
+.theory-feedback-title { fill: #75468e; font-size: 21px; font-weight: 500; letter-spacing: -0.2px; }
+.theory-model-title { fill: #784b98; font-size: 21px; font-weight: 500; letter-spacing: -0.2px; }
+.theory-traces-label { fill: #7f5798; font-size: 18px; font-weight: 450; }
+.theory-harness { cursor: pointer; outline: none; }
+.theory-harness .theory-hit { fill: transparent; stroke: transparent; stroke-width: 1; }
+.theory-harness text { transition: fill 0.2s ease; paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+.theory-harness:hover .theory-harness-name,
+.theory-harness.is-active .theory-harness-name { fill: #8147a0; }
+.theory-harness:focus-visible .theory-hit { stroke: #a181b4; stroke-dasharray: 2 5; }
+
+.harness-explorer .theory-evidence {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  padding-left: 2.458cqw;
+  border-left: 1px solid #dfd3e5;
+}
+.harness-explorer .theory-evidence [hidden] { display: none !important; }
+.harness-explorer .theory-results,
+.harness-explorer .theory-harness-details {
+  position: absolute;
+  inset: 0 0 0 2.458cqw;
+}
+
+.harness-explorer .theory-overview-item + .theory-overview-item { margin-top: 0.75rem; }
+.harness-explorer .theory-overview-item h3 {
+  margin: 0 0 0.2rem;
+  color: #70428c;
+  font: 500 1.1rem/1.25 "PinkAI Jost", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.02em;
+}
+.harness-explorer .theory-overview-item p {
+  margin: 0;
+  color: #655861;
+  font: 450 0.8125rem/1.45 "PinkAI Jost", "Helvetica Neue", sans-serif;
+}
+
+.harness-explorer .theory-detail-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 450;
+  line-height: 1.3;
+  color: #705a77;
+}
+.harness-explorer .theory-return {
+  border: 0;
+  padding: 0.1rem 0;
+  background: none;
+  font: inherit;
+  color: #75607b;
+  cursor: pointer;
+}
+.harness-explorer .theory-return:hover { color: #8147a0; }
+.harness-explorer .theory-return:focus-visible { outline: 1px solid #8147a0; outline-offset: 3px; }
+.harness-explorer .theory-detail-heading { display: flex; align-items: center; gap: 1.117cqw; }
+.harness-explorer .theory-detail-heading h3 {
+  margin: 0;
+  color: #603675;
+  font: 500 clamp(1.35rem, 3.631cqw, 1.6rem)/1.15 "PinkAI Jost", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.03em;
+}
+.harness-explorer .theory-detail-intro {
+  margin: 0.4rem 0 0.65rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: #4f414e;
+  font-weight: 450;
+  letter-spacing: -0.012em;
+}
+.harness-explorer .theory-design { margin: 0; }
+.harness-explorer .theory-design > div { margin: 0 0 0.45rem; }
+.harness-explorer .theory-design dt {
+  margin: 0 0 0.14rem;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #70428c;
+}
+.harness-explorer .theory-design dd {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  font-weight: 450;
+  color: #655861;
+}
+.harness-explorer .theory-detail-status {
+  margin: 0.55rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  font-weight: 450;
+  color: #7b687f;
+}
+
+@media (max-width: 560px) {
+  .harness-explorer.theory-showcase { aspect-ratio: auto; min-height: 0; }
+  .harness-explorer .theory-layout { position: relative; grid-template-columns: 1fr; gap: 0.8rem; }
+  .harness-explorer .theory-system { padding-right: 8%; }
+  .harness-explorer .theory-cycle { margin-top: 0; }
+  .harness-explorer .theory-evidence { height: 23rem; padding: 0.75rem 0 0; border-left: 0; border-top: 1px solid #dfd3e5; }
+  .harness-explorer .theory-results,
+  .harness-explorer .theory-harness-details { inset: 0.75rem 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theory-harness text { transition: none; }
+}

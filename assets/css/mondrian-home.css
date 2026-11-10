@@ -127,14 +127,14 @@ body.mondrian-home {
   animation: mondrian-field-in 700ms ease-out both;
 }
 
-/* The upper white field becomes a quiet portrait reveal on mouse hover. */
+/* Anchor the portrait to the opening page, not the scrolling viewport. */
 .portrait-reveal {
-  position: fixed;
+  position: absolute;
   z-index: 2;
-  top: 5vh;
-  left: 62vw;
-  width: 16vw;
-  height: 36vh;
+  top: 7.25rem;
+  right: 1.1rem;
+  width: 27%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
@@ -147,17 +147,13 @@ body.mondrian-home {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: 40% center;
-  transform: scale(1.025);
-  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  object-position: 50% 100%;
+  transform: scale(1.7);
+  transform-origin: 55% 82%;
 }
 
 .portrait-reveal.is-visible {
   opacity: 1;
-}
-
-.portrait-reveal.is-visible img {
-  transform: scale(1);
 }
 
 /* A second white field quietly reveals interests beyond research. */
@@ -831,6 +827,86 @@ body.mondrian-home {
   font-size: 0.8em;
   font-weight: 400;
   white-space: nowrap;
+}
+
+.research-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.1rem 1rem;
+  border-bottom: 1px solid rgba(121, 90, 141, 0.22);
+  margin-bottom: 1rem;
+  padding-bottom: 0.15rem;
+}
+
+.research-filters[hidden],
+.research-group[hidden] {
+  display: none;
+}
+
+.research-filters button {
+  position: relative;
+  padding: 0.4rem 0 0.5rem;
+  border: 0;
+  background: transparent;
+  color: rgba(17, 17, 17, 0.60);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.research-filters button[aria-pressed="true"] {
+  color: #674777;
+}
+
+.research-filters button[aria-pressed="true"]::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.2rem;
+  left: 0;
+  height: 2px;
+  background: #9b7ba8;
+  content: "";
+}
+
+.research-filters button:hover {
+  color: #674777;
+}
+
+.research-filters button:focus-visible {
+  outline: 2px solid #9b7ba8;
+  outline-offset: 3px;
+}
+
+.research-count {
+  margin-left: 0.18em;
+  font-size: 0.78em;
+  opacity: 0.65;
+}
+
+.research-group + .research-group {
+  margin-top: 1.75rem;
+}
+
+.research-group-title {
+  margin: 0 0 0.8rem;
+  color: rgba(17, 17, 17, 0.65);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.research-filtered .research-group {
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  .research-filters {
+    column-gap: 0.8rem;
+  }
 }
 
 .picture-book-mark {

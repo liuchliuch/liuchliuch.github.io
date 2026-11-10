@@ -23,6 +23,7 @@
 
   const trackPointer = (event) => {
     zones.forEach((zone) => {
+      zone.bounds = zone.element.getBoundingClientRect();
       const isInside =
         event.clientX >= zone.bounds.left &&
         event.clientX <= zone.bounds.right &&
@@ -37,6 +38,10 @@
 
   updateBounds();
   window.addEventListener("pointermove", trackPointer, { passive: true });
+  window.addEventListener("scroll", () => {
+    hideReveals();
+    updateBounds();
+  }, { passive: true });
   window.addEventListener("resize", updateBounds, { passive: true });
   window.addEventListener("blur", hideReveals);
   document.documentElement.addEventListener("mouseleave", hideReveals);

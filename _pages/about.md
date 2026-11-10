@@ -2,6 +2,7 @@
 layout: mondrian-home
 permalink: /
 author_profile: false
+research_filters: true
 excerpt: "Chenghua Liu is a PhD student conducting research on large language models at MiMo, with prior interests in quantum computing, algorithms, and complexity."
 redirect_from:
   - /about/
@@ -24,35 +25,18 @@ redirect_from:
 
 <section class="home-section works-days-section" aria-labelledby="works-days-title">
   <h2 id="works-days-title">Works &amp; Days</h2>
-
   <ol class="publication-list">
     <li class="publication">
       <div class="publication-title">MiMo-V2.6</div>
       <div class="publication-details">Core contributor · <a href="https://mimo.xiaomi.com/mimo-v2-6">Website</a> · <a href="https://arxiv.org/abs/2610.11959">Technical report</a></div>
     </li>
 
-    <li class="publication">
-      <div class="publication-title">PinkArc {% include pinkarc-mark.html tooltip=false %} <span class="work-status">Ongoing development</span></div>
-      <div class="publication-authors">Contributors: Boning Meng, Minbo Gao.</div>
-      <div class="publication-details">A harness for autonomous theoretical research. Powers all Rising Sea papers below.
-        <details class="work-design">
-          <summary>Design</summary>
-          <div class="work-design-copy">Minimal by design, PinkArc encourages cross-domain thinking beyond familiar frameworks. Database-backed memory organizes research, while lightweight orchestration reduces token overhead.</div>
-        </details>
-      </div>
-    </li>
-
-    <li class="publication">
-      <div class="publication-title">PinkFold {% include pinkfold-mark.html %} <span class="work-status">Ongoing development</span></div>
-      <div class="publication-details">A minimal harness for fast autoformalization in Lean through multi-model collaboration, currently in development.</div>
-    </li>
-
-    <li class="publication">
-      <div class="publication-title">PinkYak {% include pinkyak-mark.html %} <span class="work-status">Early experiments</span></div>
-      <div class="publication-details">A harness for distilling AI-generated mathematics into clear, elegant proofs.
-        <details class="work-design">
-          <summary>Design</summary>
-          <div class="work-design-copy">PinkYak repeatedly examines, simplifies, and reconstructs arguments to uncover their core ideas and find proofs that help human readers understand why a result holds.</div>
+    <li class="publication harness-family">
+      <div class="publication-title">Harness Design</div>
+      <div class="publication-details">Harnesses for autonomous research, formal verification, and proof refinement.
+        <details class="work-design harness-family-design">
+          <summary>Explore</summary>
+          {% include harness-design.html %}
         </details>
       </div>
     </li>
@@ -63,11 +47,9 @@ redirect_from:
       <div class="publication-details"><span class="picture-book-mark" aria-hidden="true">🧸</span> <a href="{{ '/files/counting-problems-for-babies.pdf' | relative_url }}">Counting Problems for Babies</a> — A picture-book introduction to counting complexity.</div>
     </li>
   </ol>
-
   <details class="more-work">
     <summary>More work</summary>
-
-    <ol class="publication-list publication-list--secondary" start="6">
+    <ol class="publication-list publication-list--secondary" start="4">
       <li class="publication">
         <div class="publication-title">Flow-Matched Motion Priors: Online Optimal-Transport Rewards for Imitation Learning</div>
         <div class="publication-authors">Yilin Zou, <strong>Chenghua Liu</strong>, Chenglong Wu, and Fanghua Jiang. <abbr class="order-mark" data-order="Contribution order" aria-label="Contribution order">C</abbr></div>
@@ -83,96 +65,96 @@ redirect_from:
     <a class="repository-link" href="{{ '/repository.html' | relative_url }}">Repository <span aria-hidden="true">→</span></a>
   </div>
 
-  <ol class="publication-list">
-    <li class="publication">
+  <nav class="research-filters" aria-label="Filter papers by research area" hidden>
+    <button type="button" data-research-filter="all" aria-pressed="true">All <span class="research-count">21</span></button>
+    <button type="button" data-research-filter="quantum" aria-pressed="false">Quantum <span class="research-count">5</span></button>
+    <button type="button" data-research-filter="counting" aria-pressed="false">Counting complexity <span class="research-count">6</span></button>
+    <button type="button" data-research-filter="algorithms" aria-pressed="false">Algorithms &amp; optimization <span class="research-count">8</span></button>
+    <button type="button" data-research-filter="simpler" aria-pressed="false">Simpler proofs <span class="research-count">2</span></button>
+  </nav>
+  <div class="research-group" data-research-group="quantum" role="region" aria-labelledby="research-quantum-title">
+    <h3 class="research-group-title" id="research-quantum-title">Quantum computing</h3>
+    <ol class="publication-list">
+      <li class="publication">
       <div class="publication-title">A Dichotomy for Exact Quantum Circuit <span class="publication-title-tail">Amplitudes {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="{{ '/files/dichotomy-exact-quantum-circuit-amplitudes.pdf' | relative_url }}">PDF</a></div>
     </li>
 
-    <li class="publication">
-      <div class="publication-title">A Simplified Proof of PARITY ∉ <span class="publication-title-tail">QAC<sup>0</sup> {% include pinkyak-mark.html tooltip=true %}</span></div>
-      <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://eccc.weizmann.ac.il/report/2026/258/">ECCC</a></div>
-    </li>
-
-    <li class="publication">
-      <div class="publication-title">A Simplified Proof of the FPRAS for Counting Perfect <span class="publication-title-tail">Matchings {% include pinkyak-mark.html tooltip=true %}</span></div>
-      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.26803">arXiv</a></div>
-    </li>
-
-    <li class="publication">
+      <li class="publication">
       <div class="publication-title">Simultaneously Query-Optimal Quantum Linear-System <span class="publication-title-tail">Algorithm {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.33686">arXiv</a> · <a href="https://github.com/liuchliuch/optimal-qls-lean">Lean</a></div>
     </li>
 
-    <li class="publication">
-      <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
-      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.05412">arXiv</a> · <a href="https://github.com/liuchliuch/planar-homomorphisms-lean">Lean</a> · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF (draft)</a></div>
-    </li>
-
-    <li class="publication">
+      <li class="publication">
       <div class="publication-title">A Generalized Stein Lemma for Quantum <span class="publication-title-tail">Channels {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.30762">arXiv</a> · <a href="https://github.com/liuchliuch/generalized-channel-stein-lean">Lean</a> · <a href="{{ '/files/generalized-stein-lemma-quantum-channels.pdf' | relative_url }}">PDF</a></div>
     </li>
 
-    <li class="publication">
+      <li class="publication">
       <div class="publication-title">Quantum Channel Stein’s Lemma with an Exponential Strong <span class="publication-title-tail">Converse {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27196">arXiv</a> · <a href="https://github.com/liuchliuch/quantum-channel-stein-lean">Lean</a> · <a href="{{ '/files/quantum-channel-stein-lemma-exponential-strong-converse.pdf' | relative_url }}">PDF</a></div>
     </li>
 
-    <li class="publication">
+      <li class="publication">
       <div class="publication-title">Quantum Behaviors Are Not <span class="publication-title-tail">Semialgebraic {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18865">arXiv</a> · <a href="https://github.com/liuchliuch/nonsemialgebraic-quantum-behaviors-lean">Lean</a></div>
     </li>
-
-    <li class="publication">
-      <div class="publication-title">Hidden Circuits and Exact Counting in Ordered <span class="publication-title-tail">Graphs {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
+    </ol>
+  </div>
+  <div class="research-group" data-research-group="counting" role="region" aria-labelledby="research-counting-title">
+    <h3 class="research-group-title" id="research-counting-title">Counting complexity</h3>
+    <ol class="publication-list">
+      <li class="publication">
+      <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18132">arXiv</a> · <a href="https://github.com/liuchliuch/hidden-circuits-lean">Lean</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.05412">arXiv</a> · <a href="https://github.com/liuchliuch/planar-homomorphisms-lean">Lean</a> · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF (draft)</a></div>
     </li>
 
-    <li class="publication">
-      <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact <span class="publication-title-tail">Width {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
-      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00079">arXiv</a> · <a href="https://github.com/liuchliuch/matchgate-width-lean">Lean</a> · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
-    </li>
-
-    <li class="publication">
+      <li class="publication">
       <div class="publication-title">A Full Complexity Dichotomy for Complex-Valued Boolean Holant <span class="publication-title-tail">Problems {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong>, Boning Meng, and Juqiu Wang. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00081">arXiv</a> · <a href="https://github.com/liuchliuch/holant-dichotomy-lean">Lean</a> · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
     </li>
 
-    <li class="publication">
+      <li class="publication">
+      <div class="publication-title">From Block Orthogonality to Decidability in Complex-Weighted Counting <span class="publication-title-tail">CSP {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.14845">arXiv</a> · <a href="https://github.com/liuchliuch/complex-csp-decidability-lean">Lean</a></div>
+    </li>
+
+      <li class="publication">
+      <div class="publication-title">Hidden Circuits and Exact Counting in Ordered <span class="publication-title-tail">Graphs {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.18132">arXiv</a> · <a href="https://github.com/liuchliuch/hidden-circuits-lean">Lean</a></div>
+    </li>
+
+      <li class="publication">
+      <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact <span class="publication-title-tail">Width {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00079">arXiv</a> · <a href="https://github.com/liuchliuch/matchgate-width-lean">Lean</a> · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
+    </li>
+
+      <li class="publication">
       <div class="publication-title">A Dichotomy for Complex Boolean Holant with Binary <span class="publication-title-tail">Disequality {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00219">arXiv</a> · <a href="https://github.com/liuchliuch/holant-binary-disequality-lean">Lean</a></div>
     </li>
-
-    <li class="publication">
+    </ol>
+  </div>
+  <div class="research-group" data-research-group="algorithms" role="region" aria-labelledby="research-algorithms-title">
+    <h3 class="research-group-title" id="research-algorithms-title">Algorithms &amp; optimization</h3>
+    <ol class="publication-list">
+      <li class="publication">
       <div class="publication-title">Bounded Relative Boundary Implies Narrow DNF <span class="publication-title-tail">Approximation {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00240">arXiv</a> · <a href="https://github.com/liuchliuch/narrow-dnf-lean">Lean</a></div>
     </li>
 
-    <li class="publication">
-      <div class="publication-title">From Block Orthogonality to Decidability in Complex-Weighted Counting <span class="publication-title-tail">CSP {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
-      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2608.14845">arXiv</a> · <a href="https://github.com/liuchliuch/complex-csp-decidability-lean">Lean</a></div>
-    </li>
-  </ol>
-
-  <details class="more-work">
-    <summary>More papers</summary>
-
-    <ol class="publication-list publication-list--secondary" start="15">
       <li class="publication">
         <div class="publication-title">Approximating Combinatorial Contracts with Arbitrary <span class="publication-title-tail">Costs {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Xiaotie Deng, Hanyu Li, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
@@ -215,7 +197,23 @@ redirect_from:
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.15035">arXiv</a> · <a href="https://github.com/liuchliuch/gaussian-pca-lean">Lean</a></div>
       </li>
     </ol>
-  </details>
+  </div>
+  <div class="research-group" data-research-group="simpler" role="region" aria-labelledby="research-simpler-title">
+    <h3 class="research-group-title" id="research-simpler-title">Simpler proofs</h3>
+    <ol class="publication-list">
+      <li class="publication">
+      <div class="publication-title">A Simplified Proof of PARITY ∉ <span class="publication-title-tail">QAC<sup>0</sup> {% include pinkyak-mark.html tooltip=true %}</span></div>
+      <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://eccc.weizmann.ac.il/report/2026/258/">ECCC</a></div>
+    </li>
+
+      <li class="publication">
+      <div class="publication-title">A Simplified Proof of the FPRAS for Counting Perfect <span class="publication-title-tail">Matchings {% include pinkyak-mark.html tooltip=true %}</span></div>
+      <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.26803">arXiv</a></div>
+    </li>
+    </ol>
+  </div>
 </section>
 
 <section class="home-section publications-section" aria-labelledby="publications-title">

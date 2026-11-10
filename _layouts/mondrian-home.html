@@ -7,7 +7,10 @@ layout: compress
   <head>
     {% include head.html %}
     {% include head/custom.html %}
-    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-57">
+    <link rel="stylesheet" href="{{ '/assets/css/mondrian-home.css' | relative_url }}?v=mondrian-72">
+    {% if page.research_filters %}
+    <link rel="stylesheet" href="{{ '/assets/css/harness-design.css' | relative_url }}?v=1">
+    {% endif %}
     {% if page.repository_fulltext %}
     <link rel="stylesheet" href="{{ '/assets/css/vendor/latexml/latexml.css' | relative_url }}?v=1">
     <link rel="stylesheet" href="{{ '/assets/css/vendor/latexml/article.css' | relative_url }}?v=1">
@@ -25,13 +28,12 @@ layout: compress
 
     <div class="mondrian-field" aria-hidden="true"></div>
 
-    {% unless page.profile_reveals == false %}
-    <div class="portrait-reveal" data-pointer-reveal aria-hidden="true">
-      <img src="{{ '/images/profile.png' | relative_url }}" alt="">
-    </div>
-    {% endunless %}
-
     <main class="home-page{% if page.repository_fulltext %} repository-paper-page{% endif %}" id="main-content" itemscope itemtype="https://schema.org/{{ page.schema_type | default: 'Person' | escape }}">
+      {% unless page.profile_reveals == false %}
+      <div class="portrait-reveal" data-pointer-reveal aria-hidden="true">
+        <img src="{{ '/images/profile-stanley.jpg' | relative_url }}" alt="">
+      </div>
+      {% endunless %}
       {{ content }}
       {% if page.url == '/' %}
       <footer class="design-credit">
@@ -48,8 +50,14 @@ layout: compress
       </div>
     </aside>
 
-    <script defer src="{{ '/assets/js/mondrian-home.js' | relative_url }}?v=reveal-2"></script>
+    <script defer src="{{ '/assets/js/mondrian-home.js' | relative_url }}?v=reveal-3"></script>
     {% endunless %}
+    {% if page.research_filters %}
+    <script defer src="{{ '/assets/js/research-filters.js' | relative_url }}?v=2"></script>
+    {% endif %}
+    {% if page.research_filters %}
+    <script defer src="{{ '/assets/js/harness-design.js' | relative_url }}?v=4"></script>
+    {% endif %}
     {% include analytics.html %}
   </body>
 </html>
