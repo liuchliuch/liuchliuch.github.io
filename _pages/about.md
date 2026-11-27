@@ -146,13 +146,13 @@ redirect_from:
     </li>
 
       <li class="publication">
-        <div class="publication-title">Separating Kolmogorov–Loveland randomness from Martin–Löf randomness</div>
+        <div class="publication-title">Separating Kolmogorov–Loveland randomness from Martin–Löf <span class="publication-title-tail">randomness {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.31004">arXiv</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">A disproof of the El-Zahar–Erdős conjecture</div>
+        <div class="publication-title">A disproof of the El-Zahar–Erdős <span class="publication-title-tail">conjecture {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.24735">arXiv</a></div>
       </li>
@@ -162,13 +162,13 @@ redirect_from:
     <h3 class="research-group-title" id="research-algorithms-title">Algorithms &amp; optimization</h3>
     <ol class="publication-list">
       <li class="publication">
-        <div class="publication-title">The Gvozdenović–Laurent neighborhood bound for the stability number</div>
+        <div class="publication-title">The Gvozdenović–Laurent neighborhood bound for the stability <span class="publication-title-tail">number {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://hexagonmath.org/2611.01074v1">Hexagon</a></div>
       </li>
 
       <li class="publication">
-        <div class="publication-title">Tight Bounds for Differentially Private Cut Release</div>
+        <div class="publication-title">Tight Bounds for Differentially Private Cut <span class="publication-title-tail">Release {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.19538">arXiv</a></div>
       </li>
