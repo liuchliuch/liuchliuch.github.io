@@ -66,10 +66,11 @@ redirect_from:
   </div>
 
   <nav class="research-filters" aria-label="Filter papers by research area" hidden>
-    <button type="button" data-research-filter="all" aria-pressed="true">All <span class="research-count">21</span></button>
+    <button type="button" data-research-filter="all" aria-pressed="true">All <span class="research-count">25</span></button>
     <button type="button" data-research-filter="quantum" aria-pressed="false">Quantum <span class="research-count">5</span></button>
     <button type="button" data-research-filter="counting" aria-pressed="false">Counting complexity <span class="research-count">6</span></button>
-    <button type="button" data-research-filter="algorithms" aria-pressed="false">Algorithms &amp; optimization <span class="research-count">8</span></button>
+    <button type="button" data-research-filter="algorithms" aria-pressed="false">Algorithms &amp; optimization <span class="research-count">10</span></button>
+    <button type="button" data-research-filter="combinatorics" aria-pressed="false">Combinatorics &amp; complexity <span class="research-count">2</span></button>
     <button type="button" data-research-filter="simpler" aria-pressed="false">Simpler proofs <span class="research-count">2</span></button>
   </nav>
   <div class="research-group" data-research-group="quantum" role="region" aria-labelledby="research-quantum-title">
@@ -78,7 +79,7 @@ redirect_from:
       <li class="publication">
       <div class="publication-title">A Dichotomy for Exact Quantum Circuit <span class="publication-title-tail">Amplitudes {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="{{ '/files/dichotomy-exact-quantum-circuit-amplitudes.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.22899">arXiv</a> · <a href="https://arxiv.org/pdf/2611.22899">PDF</a></div>
     </li>
 
       <li class="publication">
@@ -90,13 +91,13 @@ redirect_from:
       <li class="publication">
       <div class="publication-title">A Generalized Stein Lemma for Quantum <span class="publication-title-tail">Channels {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.30762">arXiv</a> · <a href="https://github.com/liuchliuch/generalized-channel-stein-lean">Lean</a> · <a href="{{ '/files/generalized-stein-lemma-quantum-channels.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.30762">arXiv</a> · <a href="https://github.com/liuchliuch/generalized-channel-stein-lean">Lean</a> · <a href="https://arxiv.org/pdf/2609.30762">PDF</a></div>
     </li>
 
       <li class="publication">
       <div class="publication-title">Quantum Channel Stein’s Lemma with an Exponential Strong <span class="publication-title-tail">Converse {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27196">arXiv</a> · <a href="https://github.com/liuchliuch/quantum-channel-stein-lean">Lean</a> · <a href="{{ '/files/quantum-channel-stein-lemma-exponential-strong-converse.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27196">arXiv</a> · <a href="https://github.com/liuchliuch/quantum-channel-stein-lean">Lean</a> · <a href="https://arxiv.org/pdf/2609.27196">PDF</a></div>
     </li>
 
       <li class="publication">
@@ -112,13 +113,13 @@ redirect_from:
       <li class="publication">
       <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.05412">arXiv</a> · <a href="https://github.com/liuchliuch/planar-homomorphisms-lean">Lean</a> · <a href="{{ '/files/dichotomy-planar-graph-homomorphisms-nonnegative-weights.pdf' | relative_url }}">PDF (draft)</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.05412">arXiv</a> · <a href="https://github.com/liuchliuch/planar-homomorphisms-lean">Lean</a> · <a href="https://arxiv.org/pdf/2610.05412">PDF</a></div>
     </li>
 
       <li class="publication">
       <div class="publication-title">A Full Complexity Dichotomy for Complex-Valued Boolean Holant <span class="publication-title-tail">Problems {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong>, Boning Meng, and Juqiu Wang. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00081">arXiv</a> · <a href="https://github.com/liuchliuch/holant-dichotomy-lean">Lean</a> · <a href="{{ '/files/complex_holant_lch_mbn_wjq.pdf' | relative_url }}">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00081">arXiv</a> · <a href="https://github.com/liuchliuch/holant-dichotomy-lean">Lean</a> · <a href="https://arxiv.org/pdf/2610.00081">PDF</a> · <a href="{{ '/holant-comic.html' | relative_url }}"><span aria-hidden="true">💬</span> Comic</a></div>
     </li>
 
       <li class="publication">
@@ -134,9 +135,9 @@ redirect_from:
     </li>
 
       <li class="publication">
-      <div class="publication-title">When Matchgate Base Collapse Fails: A Qutrit Trichotomy and Unbounded Exact <span class="publication-title-tail">Width {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
+      <div class="publication-title">When Matchgate Base Collapse <span class="publication-title-tail">Fails {% include pinkarc-mark.html %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00079">arXiv</a> · <a href="https://github.com/liuchliuch/matchgate-width-lean">Lean</a> · <a href="{{ '/files/matchgate-base-collapse-qutrit-trichotomy.pdf' | relative_url }}">PDF</a></div>
+      <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2610.00079">arXiv</a> · <a href="https://arxiv.org/pdf/2610.00079">PDF</a></div>
     </li>
 
       <li class="publication">
@@ -149,6 +150,18 @@ redirect_from:
   <div class="research-group" data-research-group="algorithms" role="region" aria-labelledby="research-algorithms-title">
     <h3 class="research-group-title" id="research-algorithms-title">Algorithms &amp; optimization</h3>
     <ol class="publication-list">
+      <li class="publication">
+        <div class="publication-title">The Gvozdenović–Laurent neighborhood bound for the stability number</div>
+        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://hexagonmath.org/2611.01074v1">Hexagon</a></div>
+      </li>
+
+      <li class="publication">
+        <div class="publication-title">Tight Bounds for Differentially Private Cut Release</div>
+        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.19538">arXiv</a></div>
+      </li>
+
       <li class="publication">
       <div class="publication-title">Bounded Relative Boundary Implies Narrow DNF <span class="publication-title-tail">Approximation {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
@@ -182,7 +195,7 @@ redirect_from:
       <li class="publication">
         <div class="publication-title">Independent Set Discovery on Biclique-Free Graphs Is Fixed-Parameter <span class="publication-title-tail">Tractable {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27837">arXiv</a> · <a href="https://github.com/liuchliuch/independent-set-discovery-lean">Lean</a> · <a href="{{ '/files/independent-set-discovery-biclique-free-graphs.pdf' | relative_url }}">PDF</a></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.27837">arXiv</a> · <a href="https://github.com/liuchliuch/independent-set-discovery-lean">Lean</a> · <a href="https://arxiv.org/pdf/2609.27837">PDF</a></div>
       </li>
 
       <li class="publication">
@@ -195,6 +208,22 @@ redirect_from:
         <div class="publication-title">A Correlation-Gap Bound for Nonlinear Gaussian <span class="publication-title-tail">PCA {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.15035">arXiv</a> · <a href="https://github.com/liuchliuch/gaussian-pca-lean">Lean</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="research-group" data-research-group="combinatorics" role="region" aria-labelledby="research-combinatorics-title">
+    <h3 class="research-group-title" id="research-combinatorics-title">Combinatorics &amp; complexity</h3>
+    <ol class="publication-list">
+      <li class="publication">
+        <div class="publication-title">Separating Kolmogorov–Loveland randomness from Martin–Löf randomness</div>
+        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.31004">arXiv</a></div>
+      </li>
+
+      <li class="publication">
+        <div class="publication-title">A disproof of the El-Zahar–Erdős conjecture</div>
+        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.24735">arXiv</a></div>
       </li>
     </ol>
   </div>
