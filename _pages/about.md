@@ -68,9 +68,8 @@ redirect_from:
   <nav class="research-filters" aria-label="Filter papers by research area" hidden>
     <button type="button" data-research-filter="all" aria-pressed="true">All <span class="research-count">25</span></button>
     <button type="button" data-research-filter="quantum" aria-pressed="false">Quantum <span class="research-count">5</span></button>
-    <button type="button" data-research-filter="counting" aria-pressed="false">Counting complexity <span class="research-count">6</span></button>
+    <button type="button" data-research-filter="combinatorics" aria-pressed="false">Combinatorics &amp; complexity <span class="research-count">8</span></button>
     <button type="button" data-research-filter="algorithms" aria-pressed="false">Algorithms &amp; optimization <span class="research-count">10</span></button>
-    <button type="button" data-research-filter="combinatorics" aria-pressed="false">Combinatorics &amp; complexity <span class="research-count">2</span></button>
     <button type="button" data-research-filter="simpler" aria-pressed="false">Simpler proofs <span class="research-count">2</span></button>
   </nav>
   <div class="research-group" data-research-group="quantum" role="region" aria-labelledby="research-quantum-title">
@@ -107,8 +106,8 @@ redirect_from:
     </li>
     </ol>
   </div>
-  <div class="research-group" data-research-group="counting" role="region" aria-labelledby="research-counting-title">
-    <h3 class="research-group-title" id="research-counting-title">Counting complexity</h3>
+  <div class="research-group" data-research-group="combinatorics" role="region" aria-labelledby="research-combinatorics-title">
+    <h3 class="research-group-title" id="research-combinatorics-title">Combinatorics &amp; complexity</h3>
     <ol class="publication-list">
       <li class="publication">
       <div class="publication-title">A Dichotomy for Planar Graph Homomorphisms with Nonnegative <span class="publication-title-tail">Weights {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
@@ -145,6 +144,18 @@ redirect_from:
       <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
       <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2609.00219">arXiv</a> · <a href="https://github.com/liuchliuch/holant-binary-disequality-lean">Lean</a></div>
     </li>
+
+      <li class="publication">
+        <div class="publication-title">Separating Kolmogorov–Loveland randomness from Martin–Löf randomness</div>
+        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.31004">arXiv</a></div>
+      </li>
+
+      <li class="publication">
+        <div class="publication-title">A disproof of the El-Zahar–Erdős conjecture</div>
+        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
+        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.24735">arXiv</a></div>
+      </li>
     </ol>
   </div>
   <div class="research-group" data-research-group="algorithms" role="region" aria-labelledby="research-algorithms-title">
@@ -208,22 +219,6 @@ redirect_from:
         <div class="publication-title">A Correlation-Gap Bound for Nonlinear Gaussian <span class="publication-title-tail">PCA {% include pinkarc-mark.html %} {% include pinkfold-mark.html tooltip=true %}</span></div>
         <div class="publication-authors">Minbo Gao, Zhengfeng Ji, and <strong>Chenghua Liu</strong>. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
         <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2607.15035">arXiv</a> · <a href="https://github.com/liuchliuch/gaussian-pca-lean">Lean</a></div>
-      </li>
-    </ol>
-  </div>
-  <div class="research-group" data-research-group="combinatorics" role="region" aria-labelledby="research-combinatorics-title">
-    <h3 class="research-group-title" id="research-combinatorics-title">Combinatorics &amp; complexity</h3>
-    <ol class="publication-list">
-      <li class="publication">
-        <div class="publication-title">Separating Kolmogorov–Loveland randomness from Martin–Löf randomness</div>
-        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.31004">arXiv</a></div>
-      </li>
-
-      <li class="publication">
-        <div class="publication-title">A disproof of the El-Zahar–Erdős conjecture</div>
-        <div class="publication-authors"><strong>Chenghua Liu</strong> and Boning Meng. <abbr class="order-mark" data-order="Alphabetical order" aria-label="Alphabetical order">A</abbr></div>
-        <div class="publication-details">Preprint · <a href="https://arxiv.org/abs/2611.24735">arXiv</a></div>
       </li>
     </ol>
   </div>
